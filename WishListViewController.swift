@@ -110,10 +110,13 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
         let cell = sender.superview?.superview as! WishLIstTableViewCell
         let indexPath = wishListTableView.indexPathForCell(cell)
         
-        let alertController = UIAlertController(title: "Items", message: "Quanitty to be added to cart", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
 
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
             if let field = alertController.textFields![0] as? UITextField {
+                field.resignFirstResponder()
+                    if field.text?.isBlank == false{
+                        if field.text?.isPhoneNumber == true {
                     let params:[String:AnyObject]? = [
                         "product_id": self.wislistList[indexPath!.row].product_id,
                         "device_id":"1234",
@@ -124,14 +127,16 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
                 
                     ServerManager.sharedInstance().customerAddtoWishlist(params) { (isSuccessful, error, result) in
                         print("Successfull")
-            
-                
+              }
+            }else{
+                self.toastViewForTextfield("Not a valid number to enter")
             }
-            }else {
-                // user did not fill field
+        }else{
+            self.toastViewForTextfield("Cannot be left blank")
+        }
             }
     }
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in

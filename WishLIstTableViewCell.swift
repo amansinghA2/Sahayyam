@@ -53,10 +53,14 @@ class WishLIstTableViewCell: UITableViewCell {
 //            self.productQuantity.text = String(productQuantity)
 //        }
 
-        if let customerProductImage1 = wishList?.thumb {
-            self.wishlistImage.imageFromUrl(customerProductImage1)
+        if wishList?.thumb != "" {
+            if let customerProductImage1 = wishList?.thumb{
+                self.wishlistImage.imageFromUrl(customerProductImage1)
+            }
+        }else{
+            self.wishlistImage.image = UIImage(named: "v_no_image")
         }
-        
+
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

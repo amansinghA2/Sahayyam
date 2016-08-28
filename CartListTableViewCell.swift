@@ -44,12 +44,16 @@ class CartListTableViewCell: UITableViewCell {
            self.productQuantity.text = String(productQuantity)
         }
 
-        if let customerProductImage1 = cartList?.image{
-            self.productImage.imageFromUrl(customerProductImage1)
+        if cartList?.image != "" {
+            if let customerProductImage1 = cartList?.image{
+                self.productImage.imageFromUrl(customerProductImage1)
+            }
+        }else{
+            self.productImage.image = UIImage(named: "v_no_image")
         }
 
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

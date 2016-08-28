@@ -73,9 +73,12 @@ extension CommonJsonMapper {
                                 if let str = value.valueForKey("del"){
                                     detail.del = str as! String
                                 }
-                                
-                                if let str = value.valueForKey("del_hour"){
-                                    detail.del_hour = str as! String
+
+                                let text:AnyObject = value.valueForKey("del_hour")!
+                                if text is String {
+                                    detail.del_hour = text as! String
+                                }else{
+                                    detail.del_hour = String(text)
                                 }
                                 
                                 if let str = value.valueForKey("del_min"){

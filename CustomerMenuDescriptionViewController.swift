@@ -81,9 +81,16 @@ class CustomerMenuDescriptionViewController: UIViewController {
     
     @IBAction func SegmentButtonAction(sender: AnyObject) {
         
+       segmentSelected()
+  
+        
+    }
+
+    func segmentSelected() {
+        
         switch self.segmentControl.selectedSegmentIndex {
         case 0:
-            
+
             let params:[String:AnyObject]? = [
                 "product_id":self.getProductList.product_id,
                 "device_id":"1234",
@@ -91,48 +98,63 @@ class CustomerMenuDescriptionViewController: UIViewController {
                 ]
 
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
-        
+
             })
-            
+
             AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
-            
+
         case 1:
-            
+
             let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
             let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
                 if let field = alertController.textFields![0] as? UITextField {
-                    let params:[String:AnyObject]? = [
-                        "product_id":self.getProductList.product_id,
-                        "device_id":"1234",
-                        "token":token,
-                        "quantity":Int(field.text!)!
-                    ]
-                    
-                    print(params)
-                    
-                    ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
-        
+                    if field.text?.isBlank == false{
+                        if field.text?.isPhoneNumber == true {
+                            let params:[String:AnyObject]? = [
+                                "product_id":self.getProductList.product_id,
+                                "device_id":"1234",
+                                "token":token,
+                                "quantity":Int(field.text!)!
+                            ]
+
+                            print(params)
+
+                            ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
+
+                            }
+                        }else{
+                            self.toastViewForTextfield("Not a valid number to enter")
+                        }
+                    }else{
+                        self.toastViewForTextfield("Cannot be left blank")
                     }
                 }
-                else {
-                    // user did not fill field
-                }
             }
-            
+
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 textField.placeholder = "Number Of Items"
             }
-            
+
             alertController.addAction(confirmAction)
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         default:
-            print("")
+            let params:[String:AnyObject]? = [
+                "product_id":self.getProductList.product_id,
+                "device_id":"1234",
+                "token":token,
+                ]
+
+            ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
+
+            })
+            
+            AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
         }
-  
-        
+
     }
+
     /*
     // MARK: - Navigation
 

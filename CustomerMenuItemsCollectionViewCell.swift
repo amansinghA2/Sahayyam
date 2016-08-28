@@ -18,6 +18,8 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
     var quanitityCount = Int()
     var str = ""
     
+    @IBOutlet weak var wishListImage: UIButton!
+    
     var getProductCollectionLists:ProductCollectionList!{
         didSet{
             bindModeltoViews()

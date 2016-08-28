@@ -46,7 +46,7 @@
                             <constraint firstAttribute="width" constant="25" id="E33-zr-M2G"/>
                             <constraint firstAttribute="height" constant="27" id="rPP-M1-qS8"/>
                         </constraints>
-                        <state key="normal" backgroundImage="ic_add_wishlist"/>
+                        <state key="normal" backgroundImage="ic_action_wishlist"/>
                         <connections>
                             <action selector="addToWishList:" destination="gTV-IL-0wX" eventType="touchUpInside" id="uWk-ue-FxD"/>
                         </connections>
@@ -97,12 +97,13 @@
                 <outlet property="customerProductImage" destination="Dgn-Qs-6i2" id="bqM-hz-pRO"/>
                 <outlet property="customerProductName" destination="7EJ-in-ZWr" id="uzU-xY-3Hj"/>
                 <outlet property="customerproductCost" destination="Al3-BS-Hjc" id="oS4-D4-AhB"/>
+                <outlet property="wishListImage" destination="gDC-l2-UIF" id="OhV-jC-gEb"/>
             </connections>
             <point key="canvasLocation" x="241" y="195.5"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic_action_wishlist" width="128" height="128"/>
         <image name="ic_add_cart" width="128" height="128"/>
-        <image name="ic_add_wishlist" width="128" height="128"/>
     </resources>
 </document>

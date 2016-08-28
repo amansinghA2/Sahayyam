@@ -52,6 +52,8 @@ class VendorListTableViewCell: UITableViewCell {
             if vendorImage != "" {
             let str = image_base_url + vendorImage
             self.vendorImage.imageFromUrl(str)
+            }else{
+                self.vendorImage.image = UIImage(named: "v_no_image")
             }
         }
         

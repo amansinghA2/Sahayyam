@@ -27,7 +27,7 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
         self.showHud("Loading...")
         let nib1 = UINib(nibName: "VendorListTableViewCell", bundle: nil)
         self.vendorListTAbleView.registerNib(nib1, forCellReuseIdentifier: "vendorListIdentifier")
-        
+
         // Do any additional setup after loading the view.
     }
 
@@ -45,6 +45,8 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
         ServerManager.sharedInstance().customerGetVendorsList(params) { (isSuccessful, error, result) in
             self.hideHud()
             self.vendorsLists = result!
+            self.vendorsLists.sortInPlace() { $1.nickname > $0.nickname }
+            self.vendorListTAbleView.reloadData()
             self.vendorListTAbleView.dataSource = self
             self.vendorListTAbleView.delegate = self
             self.vendorListTAbleView.reloadData()
@@ -57,14 +59,17 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("vendorListIdentifier") as! VendorListTableViewCell
-
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.tag = indexPath.row
+
         if cell.tag == indexPath.row{
             let vendorList = self.vendorsLists[indexPath.row]
             cell.vendorList = vendorList
+
         }
-        
+
+
+
         return cell
     }
     

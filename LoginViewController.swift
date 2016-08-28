@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginbutton(sender: AnyObject) {
         self.showHud("Loading...")
-
+        self.view.endEditing(true)
        if (usernameTextField.text?.isPhoneNumber  == true && usernameTextField.text?.isBlank == false) && (passwordTextField.text?.isBlank == false){
         
             if Reachability.checkInternetConnectivity() {
@@ -136,7 +136,10 @@ class LoginViewController: UIViewController {
     func viewControllerPassing(storyBoard:String) {
         let sb = UIStoryboard(name: storyBoard, bundle: nil)
         let vc1 = sb.instantiateInitialViewController()! as UIViewController
-        self.navigationController?.pushViewController(vc1, animated: true)
+        //       vc1.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        // vc1.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        self.presentViewController(vc1, animated: false, completion:
+            nil)
     }
 
     func setUpView() {

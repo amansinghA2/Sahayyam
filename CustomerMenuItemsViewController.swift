@@ -37,7 +37,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var refreshControl:UIRefreshControl?
     var tableView = UITableView()
     var vendorList:VendorList!
-    
+    var favSetter = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -74,8 +75,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.prepareUI()
+
+        
+
         self.showHud("Loading...")
-        self.vendorListTextfield.text = defaultVendorName
+      self.vendorListTextfield.text = defaultVendorName
         
         let customerProductsParams:[String:AnyObject]? = [
             "filter_category":categoryLIst.category_id,
@@ -95,8 +99,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 self.collectionView.reloadData()
             }
         }
+
+
+
     }
-    
+
     deinit{
         self.removeObservers()
     }
@@ -122,7 +129,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dropDownCell") as! CustomerDropDownTableViewCell
-        self.categoryLIst = self.categoryLIsts[indexPath.row]
         cell.listLabel.text = menuArray[indexPath.row] as? String
 
         return cell
@@ -171,6 +177,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         
         cell.addToCart.tag = indexPath.row
         cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+
+
 
         if (self.searchBarActive) {
             getProductList = self.dataSourceForSearchResult[indexPath.row]
@@ -268,9 +276,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: Custom Functions
     
     func setUpView(){
-        
         tokenCheck()
-        
         self.showHud("Loading...")
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
@@ -297,8 +303,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     func passDefaultVendorLIst (viewcontroller:VendorsListViewController , vendorList:VendorList){
         
-        // self.vendorList = vendorList
-        
+        self.vendorList = vendorList
+
         let params = [
             "vendorRow":vendorList.vendorId,
             "token":token,
@@ -309,12 +315,17 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         
         ServerManager.sharedInstance().customerSetDefaultVendor(params) { (isSuccessful, error, result) in
             self.categoryLIsts = result!
-            self.tableView.reloadData()
             if let vendorName = vendorList.nickname as? String {
                 defaultVendorName = vendorName
+                defaultVendorID = vendorList.vendorId
                 NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
+                NSUserDefaults.standardUserDefaults().setObject(defaultVendorID, forKey: "defaultvendorID")
                 defaultVendorName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName") as! String
+                defaultVendorID = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorID") as! String
+
+                self.vendorListTextfield.text = defaultVendorName
             }
+            self.tableView.reloadData()
         }
         
     }
@@ -337,11 +348,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-                    if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
-                        defaultVendorName = defaultVendName as! String
-                    }
-//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("token")
-//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("sessionID")
+                 NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
+                     NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
             }
@@ -361,13 +371,15 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         
         let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
+            self.view.endEditing(true)
         if let field = alertController.textFields![0] as? UITextField {
-
+            if field.text?.isBlank == false{
+                if field.text?.isPhoneNumber == true {
                 let cell = sender.superview!.superview as! CustomerMenuItemsCollectionViewCell
-                self.selectedIndexPath = self.collectionView.indexPathForCell(cell)!
+               let indexPath = self.collectionView.indexPathForCell(cell)!
 
                     let params:[String:AnyObject]? = [
-                        "product_id":self.getProductCollectionList[self.selectedIndexPath.row].product_id,
+                        "product_id":self.getProductCollectionList[indexPath.row].product_id,
                         "device_id":"1234",
                         "token":token,
                         "quantity":Int(field.text!)!
@@ -376,7 +388,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                     ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
                 
                     }
-               }
+            }else{
+                self.toastViewForTextfield("Not a valid number to enter")
+            }
+            }else{
+                self.toastViewForTextfield("Cannot be left blank")
+            }
+          }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
@@ -394,16 +412,21 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     func addToWishlistButtonClicked(sender:UIButton) {
         
         let cell = sender.superview!.superview as! CustomerMenuItemsCollectionViewCell
-        self.selectedIndexPath = self.collectionView.indexPathForCell(cell)!
+        let indexPath = self.collectionView.indexPathForCell(cell)!
+        let selectedCell = self.collectionView.cellForItemAtIndexPath(indexPath) as! CustomerMenuItemsCollectionViewCell
 
             let params:[String:AnyObject]? = [
-                "product_id":self.getProductCollectionList[self.selectedIndexPath.row].product_id,
+                "product_id":self.getProductCollectionList[indexPath.row].product_id,
                 "device_id":"1234",
                 "token":token,
             ]
             
             print(params)
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
+
+//                if let image = UIImage(named: "like") {
+//                    selectedCell.wishListImage.setImage(image, forState: .Normal)
+//                }
                 let alert = UIAlertController(title: "Alert", message: "Product is added to Wishlist", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)

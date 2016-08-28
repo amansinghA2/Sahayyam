@@ -21,6 +21,7 @@ var defaultVendorName = String()
 var defaultvendorId = String()
 var sessionID = String()
 var checkTokenHealth = Bool()
+var defaultVendorID = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,7 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
         }
-        
+
+
+        if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultVendorID"){
+            defaultVendorID = defaultVendName as! String
+        }
+
         if NSUserDefaults.standardUserDefaults().boolForKey("isChecked"){
            
             if let token1 = NSUserDefaults.standardUserDefaults().objectForKey("token"){
@@ -44,22 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 }
 
-                ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
-                    if isSuccessful{
-                        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                        let viewController = storyBoard.instantiateViewControllerWithIdentifier("SwitchUVController") as! SwitchUserViewController
-                        self.window?.rootViewController = viewController
-                        self.window?.makeKeyAndVisible()
-                    }else{
-                        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                        let viewController = storyBoard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-                        self.window?.rootViewController = viewController
-                        self.window?.makeKeyAndVisible()
-                    }
+//                ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
+//                    if isSuccessful{
+//
+//                    }
+//                }
 
-                }
             }
             
             if let customerType1 = NSUserDefaults.standardUserDefaults().objectForKey("customerType"){
@@ -77,6 +73,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let isChecked1 = NSUserDefaults.standardUserDefaults().objectForKey("isChecked"){
                 isChecked = isChecked1 as! Bool
             }
+
+
+            switch profile{
+            case true:
+                switch customerType{
+                case 1:
+                    viewControllerPassing("Customer", identifier: "CustomerMenuItems")
+                case 2:
+                    viewControllerPassing("Customer", identifier: "CustomerMenuItems")
+                default:
+                    print("")
+                }
+            case false:
+                switch customerType{
+                case 0:
+                    switch profileType{
+                    case 1:
+                        viewControllerPassing("Main", identifier: "SwitchUVController")
+                    case 3:
+                        viewControllerPassing("Main", identifier: "SwitchUVController")
+                    default:
+                        print("")
+                    }
+                case 1:
+                    viewControllerPassing("Customer", identifier: "revealView")
+               
+                case 2:
+                    viewControllerPassing("Main", identifier: "LoginVC")
+
+                case 3:
+                    viewControllerPassing("Main", identifier: "SwitchUVController")
+                default:
+                    print("")
+                }
+            }
+
+
         }else{
 //            print("\(token)")
 //            print("\(customerType)")
@@ -84,7 +117,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("\(profile)")
 //            print("\(isChecked)")
         }
-        
+
+
         return true
     }
 
@@ -110,6 +144,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
 
+    }
+
+    func viewControllerPassing(storyBoard:String , identifier:String) {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
+        let viewController = storyBoard.instantiateViewControllerWithIdentifier(identifier)
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
     }
 
 }
