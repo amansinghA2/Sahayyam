@@ -1,0 +1,1669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0130E410B1C33F39F4D11ED6858A76A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		036F34CEEB075B4967E66B39F30F0770 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B420BA979D059BB2724A5E39437363 /* M13CheckboxGestureRecognizer.swift */; };
+		03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FEE0570FEBE5C13A8522B074BDD2CBA5 /* PDTSimpleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05511C7FABA81B192C1AC98616E223B6 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA8A11CC515A82E97A11E2BFF2B7417 /* TPKeyboardAvoidingCollectionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FEF1BE4D0013996164A2368FC25B6 /* Error.swift */; };
+		096EFF0F52924F21FDCB53AB634268BB /* M13CheckboxFillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B9E9531CD2DEA0B837433803BB78CC /* M13CheckboxFillManager.swift */; };
+		0A93FAF80DF05CE951EE778E96769ED0 /* SwiftLoader-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CEB4778FFFC7A3E0D4B35355E3FE20 /* SwiftLoader-dummy.m */; };
+		0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = CF3BBCEFF3F5D4EECACC32A68ACABE5C /* PDTSimpleCalendarViewFlowLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D6CF4C3A7240C715EA32214B70C054 /* Timeline.swift */; };
+		1614233200F77EEC7A5AEEB73F97FD04 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3B664ACB8E2FB1C7655FA33A6D709 /* M13Checkbox+IB.swift */; };
+		17978EDBED95F907EE4FCB70AC5EE7FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2331BAF78D4EDDCD400CF6388C7978 /* UIKit.framework */; };
+		1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC0BE81B44C932E4C9A1279068BC7F0 /* PDTSimpleCalendarViewWeekdayHeader.m */; };
+		20ED1B6D9F64B4845F37792CF8319E4F /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815CBB4F4AAB016B759AC26174F11CB /* SwiftLoader.swift */; };
+		2161CB44569782E42E45439692FBE3ED /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B983E6C270AC9F0B44E551CD4EDFDD9 /* M13Checkbox-dummy.m */; };
+		219E6749ADF7F7C9625105F8ECF6FFE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 056350C7E5B0ABACD03B4B3497E76744 /* PDTSimpleCalendarViewFlowLayout.m */; };
+		294DFEB7763AC0F824C42ADE1CE0AF02 /* Pods-SahayyamUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B290A221FB601425D872B4811ED5A30 /* Pods-SahayyamUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B0AD0AE315F8EF162765CED5A7CB1AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2331BAF78D4EDDCD400CF6388C7978 /* UIKit.framework */; };
+		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30793B773BF3C48204196F83D2A2FF6F /* Validation.swift */; };
+		2D39AFF4DCB31D402488B07909551F55 /* M13CheckboxSpiralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE616FFE9E3665713CDD6D9EF2E6CE5 /* M13CheckboxSpiralManager.swift */; };
+		305133BCAA8380E5E6E9AF4FE3AEB087 /* M13CheckboxDotPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E0FC54847B5598A90776ED955E2B8 /* M13CheckboxDotPathPresets.swift */; };
+		3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1ADCB603CFEA599CB222BA945D02E6 /* PDTSimpleCalendarViewCell.m */; };
+		3391A826E404FE0E7CE9C7691AD35D85 /* M13CheckboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3811E7DECBEF20AB4B95DC47C38ED01 /* M13CheckboxManager.swift */; };
+		344E3DF69C9074A03520AA295EF770AF /* TPKeyboardAvoiding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CF89FEA3ABCF570E0BA8704FD90B62 /* TPKeyboardAvoiding-dummy.m */; };
+		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB6157EE5EBA06347C6E3C8759A07B /* NetworkReachabilityManager.swift */; };
+		3932CD96F5BA8507D0073808CC20FDCC /* TPKeyboardAvoiding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BEA328871DE32DFB8899E2B4E622CD6 /* TPKeyboardAvoiding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		397029D16274E5548FE02E1813E68DE4 /* SwiftLoader-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 523EB962BFD77C227361A8452FABCDBF /* SwiftLoader-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FB20D3D4A16C35AB562B4E2E3A05D8 /* ResponseSerialization.swift */; };
+		3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BA89CE5EC91CB2197CE7979CFA5895 /* PDTSimpleCalendarViewHeader.m */; };
+		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57AE04CEE53F59571CFEF16B936BE6C /* Manager.swift */; };
+		425E6D3816E71420E9BFC1AC3B561656 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CCDF0ACEE37ED4308724E62FCDE939 /* CoreGraphics.framework */; };
+		45017A01A5B354FFF23CF26A6A75DA38 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F959B69F3179E5AB75D5FDCB25189B3F /* TPKeyboardAvoidingScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		453B79655DE9504AB5235CF84C7972C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		4E99830DDC4A9A73AFEFBAC6A631CFF9 /* M13CheckboxPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F91A316B3509EA3DAC7538CD024B6D5 /* M13CheckboxPathPresets.swift */; };
+		5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15933D2B4F6D3F604369B69D3880BF82 /* PDTSimpleCalendar-dummy.m */; };
+		56BAEBDFB4BE82AFFBEC2D543C191247 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 55D97CF0C3D0926ACA5F7C831D65F920 /* PDTSimpleCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E04AE311AAA72A0785EAADE3E6048 /* Upload.swift */; };
+		5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0024D77B51D5150E805299BCFA2AD473 /* PDTSimpleCalendarViewHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E398BDCE957EA13906CF0D93DACAC0 /* Download.swift */; };
+		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480ED691537C145430B1485E5CDE390 /* Response.swift */; };
+		6EA36EC0F7C934C4058F8C82EC0DB45D /* TPKeyboardAvoidingTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 016EC63B52527B0CF8EE31EC4BD20A5D /* TPKeyboardAvoidingTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A6D04E6391AB243F35BAE217FF6F81D /* M13CheckboxAnimationPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5FE11F5EE766E933C34E361168BE9C /* M13CheckboxAnimationPresets.swift */; };
+		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD639919505509A6F4FECC58B9AAE6D /* ServerTrustPolicy.swift */; };
+		7CB724C4486C6CF5CDFA86A838A7010C /* TPKeyboardAvoidingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0104DE4A9C2582FE0EEC23BFD2F861DC /* TPKeyboardAvoidingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8002901EEAC6026FB9EA6777BC8B1C0D /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081A628FBB67CC6096E3BC2312A8624 /* M13Checkbox.swift */; };
+		84E341BC8535DD01582617F2C0DA35BD /* M13CheckboxExpandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729642A4F760E8172AA038FA37E771B7 /* M13CheckboxExpandManager.swift */; };
+		854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 058DF0A047E8F65F133AF74DB9B185E7 /* PDTSimpleCalendarViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89746AFED1601736D8E1F149AABD1A40 /* M13CheckboxBounceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C0CF9D438056E1C90BF0BD0DF1DCD /* M13CheckboxBounceManager.swift */; };
+		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611F3A2F2E644884EA5FE63C4D73D85 /* Alamofire.swift */; };
+		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		928EBAF19E6D4739410ACCC4DE0249F5 /* M13CheckboxSpiralPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BF8EBAC779F42E635610E7916C2F14 /* M13CheckboxSpiralPathPresets.swift */; };
+		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E09E34D98D1CB0E317CDD0CF08ED17F8 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		953E59E39D897923D01679A30C5B3145 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F966B0C1AA7A13906254BBFD2CE313F /* PDTSimpleCalendarViewWeekdayHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A746405668EC051223B53A6203402767 /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = ED9646791870D3A0FC41FF8B5A27AE59 /* UIScrollView+TPKeyboardAvoidingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BAE14BEF145568C430C8D90EF0B11D /* Result.swift */; };
+		AB83B753F91649BFBAAFAF8FE7BBA526 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5893043E1C0E12D181D53786BFB14E77 /* Alamofire-dummy.m */; };
+		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B5A6AFFC9B58FFA74D5DBE9B1CD3E5 /* Stream.swift */; };
+		AEBE620F411A96FB1678EA33E39CA32E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01391C4918C0DE574B6AB14C8675CB /* UIScrollView+TPKeyboardAvoidingAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AF18CA30C7A88ACD14C79828E5CF0BBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9854452B704969D40D932335DEE0FF /* Foundation.framework */; };
+		BAF3A97EA7C1C2D563D0523D79864492 /* Pods-Sahayyam-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C862B6319DE94B636CB8172C052B26 /* Pods-Sahayyam-dummy.m */; };
+		BC3B9E7AFBEDC160E284B9DE85BBC0FF /* M13CheckboxFadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929B7731F511AD2685E9DAFECFE090E4 /* M13CheckboxFadeManager.swift */; };
+		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A13D5BB4E163A83973806C60E5415B /* Notifications.swift */; };
+		BF82975857F88C2BCC8C5CABDADD06A2 /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C82B62EA2E7F034956FF2648DB5F6714 /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587F812FA71C60386B80E2CBD726C780 /* ParameterEncoding.swift */; };
+		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A324D4529FF77D51767651BB8EEA8CA /* MultipartFormData.swift */; };
+		C9F70F20277B5AC10E7826F259525679 /* TPKeyboardAvoidingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E21A258B7AA026558D0CA9842F4F1BB /* TPKeyboardAvoidingCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCB85C8ED93117C457925C9E1CF8FF37 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1763705A1B130B2801AE074A71E64484 /* TPKeyboardAvoidingTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		CD7C552ACD6156D56AE4BE1F228CD688 /* M13CheckboxStrokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0122488E4F708292C967710AE4F759A /* M13CheckboxStrokeManager.swift */; };
+		D36954D39A6FC66D1BA6BC4FFDDFA085 /* Pods-Sahayyam-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCCA354A7A528C49D8C30FBD975BC67 /* Pods-Sahayyam-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCC386EBA6E19F8FED5A3C3CABE322C7 /* PDTSimpleCalendarViewController.m */; };
+		D945906E1578BF1EB91094FC4AE2B14E /* Pods-SahayyamTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20ED95C86D01155C6FB4E5D6A50A0C91 /* Pods-SahayyamTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 492A10BB39AC63EEB26599FB245E93D6 /* PDTSimpleCalendarViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F93AF18C61533145C598AEF185205E /* Request.swift */; };
+		F31B4CB5FED9CA97A27BD9EA00E2AFB7 /* M13CheckboxFlatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AA46AD0CDEA93260FA771E06EB9F92 /* M13CheckboxFlatManager.swift */; };
+		F44047DF453E3DCEE6C2D09BC695AB39 /* M13CheckboxDotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1220123F44EA6D149414A396A1BB26B /* M13CheckboxDotManager.swift */; };
+		F5D382140DDB8E8A85D6C5147ECE940D /* Pods-SahayyamTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B96D0616597AC4A1587A26590B5EABBA /* Pods-SahayyamTests-dummy.m */; };
+		FEE903B766384B5996E2971ABE01E8A6 /* Pods-SahayyamUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C45772A075E0F2B3B8F75E5E00C379 /* Pods-SahayyamUITests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B7A091900F57A66FF2E4986A5A5B39B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 526B1D8D019EFA2E973491A6B0411ECC;
+			remoteInfo = SwiftLoader;
+		};
+		5110FBF3E76F5A23B7276CD90E55A4B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77AB16E71967928775ACD2706514E867;
+			remoteInfo = PDTSimpleCalendar;
+		};
+		7334AF7CF86819D1FE8747E499383AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED3AFC0E9905CA362D94DA496A23E2DD;
+			remoteInfo = M13Checkbox;
+		};
+		E8C67D2FD2A37F77DA72A6F13B9BE03D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 79C040AFDDCE1BCBF6D8B5EB0B85887F;
+			remoteInfo = Alamofire;
+		};
+		FD5A53F667C79B30044961F53BB8A3A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA039E6879B0CD64BB2A06674BBE53D5;
+			remoteInfo = TPKeyboardAvoiding;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0024D77B51D5150E805299BCFA2AD473 /* PDTSimpleCalendarViewHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.h; sourceTree = "<group>"; };
+		0104DE4A9C2582FE0EEC23BFD2F861DC /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		016EC63B52527B0CF8EE31EC4BD20A5D /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		02BA89CE5EC91CB2197CE7979CFA5895 /* PDTSimpleCalendarViewHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewHeader.m; sourceTree = "<group>"; };
+		056350C7E5B0ABACD03B4B3497E76744 /* PDTSimpleCalendarViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewFlowLayout.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.m; sourceTree = "<group>"; };
+		05743D20DAB895F73241DACCD6E4B1D0 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		058DF0A047E8F65F133AF74DB9B185E7 /* PDTSimpleCalendarViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewCell.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.h; sourceTree = "<group>"; };
+		05C45772A075E0F2B3B8F75E5E00C379 /* Pods-SahayyamUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SahayyamUITests-dummy.m"; sourceTree = "<group>"; };
+		05EAE672BC7968ACC8894484844093A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		067464FB81BD628DB9CEAAE5CE3E85EA /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0815CBB4F4AAB016B759AC26174F11CB /* SwiftLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftLoader.swift; path = src/SwiftLoader/SwiftLoader.swift; sourceTree = "<group>"; };
+		09A13D5BB4E163A83973806C60E5415B /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		0AF9BA76F636DFE05EEDE40C2B3BB023 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B983E6C270AC9F0B44E551CD4EDFDD9 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
+		0E059200894E8295E4F574D9FD4D81E2 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		0F2331BAF78D4EDDCD400CF6388C7978 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		0F97821C43B63BB157E3201D28B7B50B /* Pods-SahayyamTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SahayyamTests-frameworks.sh"; sourceTree = "<group>"; };
+		1055C54DA1A64634F4E1C079950D19EC /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		1081A628FBB67CC6096E3BC2312A8624 /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		15933D2B4F6D3F604369B69D3880BF82 /* PDTSimpleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PDTSimpleCalendar-dummy.m"; sourceTree = "<group>"; };
+		1763705A1B130B2801AE074A71E64484 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		18E398BDCE957EA13906CF0D93DACAC0 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
+		1A5FE11F5EE766E933C34E361168BE9C /* M13CheckboxAnimationPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationPresets.swift; path = Sources/M13CheckboxAnimationPresets.swift; sourceTree = "<group>"; };
+		1AB7B721D31DC0DB106E1E927CF3871D /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
+		1F966B0C1AA7A13906254BBFD2CE313F /* PDTSimpleCalendarViewWeekdayHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewWeekdayHeader.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.h; sourceTree = "<group>"; };
+		20C46673C9553C9D2FF8AE077D8BA487 /* SwiftLoader.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftLoader.modulemap; sourceTree = "<group>"; };
+		20ED95C86D01155C6FB4E5D6A50A0C91 /* Pods-SahayyamTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SahayyamTests-umbrella.h"; sourceTree = "<group>"; };
+		2352A88D1C62BC7E174060CB5AC78A15 /* SwiftLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2962FAEFDB85A3D052C7147308C0A278 /* Pods-Sahayyam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sahayyam.release.xcconfig"; sourceTree = "<group>"; };
+		2A14866D0648CEC0D83569066004EEF1 /* Pods-SahayyamTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SahayyamTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2B0E04AE311AAA72A0785EAADE3E6048 /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
+		2B0E0FC54847B5598A90776ED955E2B8 /* M13CheckboxDotPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotPathPresets.swift; path = Sources/Presets/M13CheckboxDotPathPresets.swift; sourceTree = "<group>"; };
+		2E188D5D73F4D61053A8383FCF69DF6A /* Pods-SahayyamUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SahayyamUITests-frameworks.sh"; sourceTree = "<group>"; };
+		2E630DE86976AC54F7B4D4E53E534113 /* Pods-SahayyamUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SahayyamUITests-resources.sh"; sourceTree = "<group>"; };
+		2F0937EBC5F329A0784D673B55B1DD9C /* Pods-SahayyamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SahayyamTests.release.xcconfig"; sourceTree = "<group>"; };
+		2FD639919505509A6F4FECC58B9AAE6D /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		30793B773BF3C48204196F83D2A2FF6F /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		3A324D4529FF77D51767651BB8EEA8CA /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		3BEA328871DE32DFB8899E2B4E622CD6 /* TPKeyboardAvoiding-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-umbrella.h"; sourceTree = "<group>"; };
+		3C9854452B704969D40D932335DEE0FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3D765D52E200CBB501A176944ED001C0 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		3FE616FFE9E3665713CDD6D9EF2E6CE5 /* M13CheckboxSpiralManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralManager.swift; path = Sources/Managers/M13CheckboxSpiralManager.swift; sourceTree = "<group>"; };
+		41DD32F391FB046710C47D153AD11EA6 /* Pods-SahayyamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SahayyamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		492A10BB39AC63EEB26599FB245E93D6 /* PDTSimpleCalendarViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewController.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.h; sourceTree = "<group>"; };
+		4FB0D08CB167883C8A894B2037372EC7 /* Pods-Sahayyam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sahayyam.debug.xcconfig"; sourceTree = "<group>"; };
+		523EB962BFD77C227361A8452FABCDBF /* SwiftLoader-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLoader-umbrella.h"; sourceTree = "<group>"; };
+		54FB36C60DAD0D6C36FD61C8B3A1EC97 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55B3B664ACB8E2FB1C7655FA33A6D709 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		55D97CF0C3D0926ACA5F7C831D65F920 /* PDTSimpleCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendar.h; path = PDTSimpleCalendar/PDTSimpleCalendar.h; sourceTree = "<group>"; };
+		56A888B140B04789EF008DA6F8775B4C /* Pods-Sahayyam-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sahayyam-frameworks.sh"; sourceTree = "<group>"; };
+		575F3DBA0499E47FBBEF189BA954389A /* PDTSimpleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PDTSimpleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		587F812FA71C60386B80E2CBD726C780 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		5893043E1C0E12D181D53786BFB14E77 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		5B290A221FB601425D872B4811ED5A30 /* Pods-SahayyamUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SahayyamUITests-umbrella.h"; sourceTree = "<group>"; };
+		5E5ADD8370C95E0A7F3B5A5FEAD967C3 /* Pods-Sahayyam-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sahayyam-resources.sh"; sourceTree = "<group>"; };
+		5FA8A11CC515A82E97A11E2BFF2B7417 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingCollectionView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		61A5E6985B1D51159232CF299290DD5E /* PDTSimpleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PDTSimpleCalendar.xcconfig; sourceTree = "<group>"; };
+		61BAE14BEF145568C430C8D90EF0B11D /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		65B420BA979D059BB2724A5E39437363 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		6E7C6A3FF6004F856C26F78A22A6CB6A /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		6EC0BE81B44C932E4C9A1279068BC7F0 /* PDTSimpleCalendarViewWeekdayHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewWeekdayHeader.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewWeekdayHeader.m; sourceTree = "<group>"; };
+		6FDFE9ED93038F584D387CA75125D217 /* Pods-SahayyamUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SahayyamUITests.modulemap"; sourceTree = "<group>"; };
+		729642A4F760E8172AA038FA37E771B7 /* M13CheckboxExpandManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandManager.swift; path = Sources/Managers/M13CheckboxExpandManager.swift; sourceTree = "<group>"; };
+		742CFA80D12FBC27DC332078F293AAC8 /* TPKeyboardAvoiding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TPKeyboardAvoiding.xcconfig; sourceTree = "<group>"; };
+		7611F3A2F2E644884EA5FE63C4D73D85 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		76D6CF4C3A7240C715EA32214B70C054 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		77AA46AD0CDEA93260FA771E06EB9F92 /* M13CheckboxFlatManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatManager.swift; path = Sources/Managers/M13CheckboxFlatManager.swift; sourceTree = "<group>"; };
+		78B5A6AFFC9B58FFA74D5DBE9B1CD3E5 /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
+		7BD08F24FCFBC0AD14E97B5EA402FDE9 /* Pods-SahayyamUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SahayyamUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		7DDE8F8480F3A776F3C396B82455E9A6 /* Pods_SahayyamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85707ACF66B7AF175F1CEDE16420C373 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCB6157EE5EBA06347C6E3C8759A07B /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		8DF1CF9463ED8687686B0840D6B4E8B3 /* Pods-Sahayyam-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sahayyam-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8F91A316B3509EA3DAC7538CD024B6D5 /* M13CheckboxPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathPresets.swift; path = Sources/M13CheckboxPathPresets.swift; sourceTree = "<group>"; };
+		913C7F65CF5D02682EAC6DE250FC8C7F /* Pods_SahayyamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91BE6189615CAE0C66455D310F682717 /* Pods_Sahayyam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sahayyam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		929B7731F511AD2685E9DAFECFE090E4 /* M13CheckboxFadeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeManager.swift; path = Sources/Managers/M13CheckboxFadeManager.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9480ED691537C145430B1485E5CDE390 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		94FB20D3D4A16C35AB562B4E2E3A05D8 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		952406B141CF17B1B2699EB231379595 /* Pods-SahayyamTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SahayyamTests.modulemap"; sourceTree = "<group>"; };
+		966D354D81DD951D612D4999E8540B7C /* Pods-Sahayyam-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sahayyam-acknowledgements.plist"; sourceTree = "<group>"; };
+		9E21A258B7AA026558D0CA9842F4F1BB /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingCollectionView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		A0122488E4F708292C967710AE4F759A /* M13CheckboxStrokeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeManager.swift; path = Sources/Managers/M13CheckboxStrokeManager.swift; sourceTree = "<group>"; };
+		A1220123F44EA6D149414A396A1BB26B /* M13CheckboxDotManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotManager.swift; path = Sources/Managers/M13CheckboxDotManager.swift; sourceTree = "<group>"; };
+		A1FB9DF16EF835B1795EFAC4B88319BA /* SwiftLoader.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLoader.xcconfig; sourceTree = "<group>"; };
+		A3A2433A6B8C978CBA3EFA23AF6323D8 /* Pods-SahayyamTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SahayyamTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A7BF8EBAC779F42E635610E7916C2F14 /* M13CheckboxSpiralPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralPathPresets.swift; path = Sources/Presets/M13CheckboxSpiralPathPresets.swift; sourceTree = "<group>"; };
+		AA510627C76CBD8721D2BED8558AD994 /* SwiftLoader-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftLoader-prefix.pch"; sourceTree = "<group>"; };
+		AA69CF39F1AD5EB38CC828DA4DA9B5D0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B48A51F5F0B5D3EA0D8DBE55717F1B4E /* TPKeyboardAvoiding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TPKeyboardAvoiding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4CCDF0ACEE37ED4308724E62FCDE939 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		B6F93AF18C61533145C598AEF185205E /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		B8D460E9D24E1D2F43C27F4737880458 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B938D396543A6E21D2297D6E9268FA5C /* PDTSimpleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		B96D0616597AC4A1587A26590B5EABBA /* Pods-SahayyamTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SahayyamTests-dummy.m"; sourceTree = "<group>"; };
+		BCCCA354A7A528C49D8C30FBD975BC67 /* Pods-Sahayyam-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Sahayyam-umbrella.h"; sourceTree = "<group>"; };
+		C1B9E9531CD2DEA0B837433803BB78CC /* M13CheckboxFillManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillManager.swift; path = Sources/Managers/M13CheckboxFillManager.swift; sourceTree = "<group>"; };
+		C74D068F6B5270642A84BA7AD8838020 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
+		C82B62EA2E7F034956FF2648DB5F6714 /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
+		C8CF89FEA3ABCF570E0BA8704FD90B62 /* TPKeyboardAvoiding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TPKeyboardAvoiding-dummy.m"; sourceTree = "<group>"; };
+		CF1ADCB603CFEA599CB222BA945D02E6 /* PDTSimpleCalendarViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewCell.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewCell.m; sourceTree = "<group>"; };
+		CF3BBCEFF3F5D4EECACC32A68ACABE5C /* PDTSimpleCalendarViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDTSimpleCalendarViewFlowLayout.h; path = PDTSimpleCalendar/PDTSimpleCalendarViewFlowLayout.h; sourceTree = "<group>"; };
+		D1653247E6A0C64C6CB67DDCE1546852 /* Pods-SahayyamUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SahayyamUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D3811E7DECBEF20AB4B95DC47C38ED01 /* M13CheckboxManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxManager.swift; path = Sources/M13CheckboxManager.swift; sourceTree = "<group>"; };
+		D7CEB4778FFFC7A3E0D4B35355E3FE20 /* SwiftLoader-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftLoader-dummy.m"; sourceTree = "<group>"; };
+		DBFD67005273B01CD841F27DE6CD788B /* Pods-Sahayyam.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Sahayyam.modulemap"; sourceTree = "<group>"; };
+		DCC386EBA6E19F8FED5A3C3CABE322C7 /* PDTSimpleCalendarViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDTSimpleCalendarViewController.m; path = PDTSimpleCalendar/PDTSimpleCalendarViewController.m; sourceTree = "<group>"; };
+		DD3F1C8ED1874071A03FCE4748C117D8 /* PDTSimpleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PDTSimpleCalendar.modulemap; sourceTree = "<group>"; };
+		DE1E82B64A926EE2031A845180388D31 /* Pods-SahayyamTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SahayyamTests-resources.sh"; sourceTree = "<group>"; };
+		DECAAE4D766E99D2A14C087CF42A2C99 /* Pods-SahayyamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SahayyamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E04C0CF9D438056E1C90BF0BD0DF1DCD /* M13CheckboxBounceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceManager.swift; path = Sources/Managers/M13CheckboxBounceManager.swift; sourceTree = "<group>"; };
+		E09E34D98D1CB0E317CDD0CF08ED17F8 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		E155CE9D9A3C95672F3BB93046838E01 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3D119E9B2B1218213BF5B271880ECC3 /* TPKeyboardAvoiding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TPKeyboardAvoiding.modulemap; sourceTree = "<group>"; };
+		E7C862B6319DE94B636CB8172C052B26 /* Pods-Sahayyam-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sahayyam-dummy.m"; sourceTree = "<group>"; };
+		EB9FEF1BE4D0013996164A2368FC25B6 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Source/Error.swift; sourceTree = "<group>"; };
+		ED9646791870D3A0FC41FF8B5A27AE59 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		F57AE04CEE53F59571CFEF16B936BE6C /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
+		F959B69F3179E5AB75D5FDCB25189B3F /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		FB01391C4918C0DE574B6AB14C8675CB /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		FB400CE814286642864FD054B06F6F78 /* Pods-SahayyamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SahayyamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FD27C76FEC8EC4269BF9D6FF41FC3069 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD3BCAE7C71A45AFB35FB259773E31DB /* TPKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
+		FEE0570FEBE5C13A8522B074BDD2CBA5 /* PDTSimpleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PDTSimpleCalendar-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D6597E72E2BE74C26E0E96CE99CC42B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				953E59E39D897923D01679A30C5B3145 /* Foundation.framework in Frameworks */,
+				2B0AD0AE315F8EF162765CED5A7CB1AD /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3455DE85679EFA44112AF41AB2211078 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF18CA30C7A88ACD14C79828E5CF0BBA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58399B1798FDC7D17507985A02D94969 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				425E6D3816E71420E9BFC1AC3B561656 /* CoreGraphics.framework in Frameworks */,
+				AB83B753F91649BFBAAFAF8FE7BBA526 /* Foundation.framework in Frameworks */,
+				17978EDBED95F907EE4FCB70AC5EE7FB /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69EFB5422564EA242E4AB461BC51A55C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0130E410B1C33F39F4D11ED6858A76A4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86968193699CE81FF7E1F6BF128E9C31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				453B79655DE9504AB5235CF84C7972C4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1729F851F648EC60EE93CDB3C8BAEAD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C289923E55EA18E227F2D71157BA3ED0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56BAEBDFB4BE82AFFBEC2D543C191247 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F847666C931B7CD24B0E419C94204AF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219E6749ADF7F7C9625105F8ECF6FFE2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		066DD073D63B2C55B39536B22FB7DE47 /* M13Checkbox */ = {
+			isa = PBXGroup;
+			children = (
+				1081A628FBB67CC6096E3BC2312A8624 /* M13Checkbox.swift */,
+				55B3B664ACB8E2FB1C7655FA33A6D709 /* M13Checkbox+IB.swift */,
+				1A5FE11F5EE766E933C34E361168BE9C /* M13CheckboxAnimationPresets.swift */,
+				E04C0CF9D438056E1C90BF0BD0DF1DCD /* M13CheckboxBounceManager.swift */,
+				A1220123F44EA6D149414A396A1BB26B /* M13CheckboxDotManager.swift */,
+				2B0E0FC54847B5598A90776ED955E2B8 /* M13CheckboxDotPathPresets.swift */,
+				729642A4F760E8172AA038FA37E771B7 /* M13CheckboxExpandManager.swift */,
+				929B7731F511AD2685E9DAFECFE090E4 /* M13CheckboxFadeManager.swift */,
+				C1B9E9531CD2DEA0B837433803BB78CC /* M13CheckboxFillManager.swift */,
+				77AA46AD0CDEA93260FA771E06EB9F92 /* M13CheckboxFlatManager.swift */,
+				65B420BA979D059BB2724A5E39437363 /* M13CheckboxGestureRecognizer.swift */,
+				D3811E7DECBEF20AB4B95DC47C38ED01 /* M13CheckboxManager.swift */,
+				8F91A316B3509EA3DAC7538CD024B6D5 /* M13CheckboxPathPresets.swift */,
+				3FE616FFE9E3665713CDD6D9EF2E6CE5 /* M13CheckboxSpiralManager.swift */,
+				A7BF8EBAC779F42E635610E7916C2F14 /* M13CheckboxSpiralPathPresets.swift */,
+				A0122488E4F708292C967710AE4F759A /* M13CheckboxStrokeManager.swift */,
+				B064E554A8AE422EF953DACD2718AEE8 /* Support Files */,
+			);
+			path = M13Checkbox;
+			sourceTree = "<group>";
+		};
+		099F6FF597282389C2BC334E12F1E7FB /* Pods-Sahayyam */ = {
+			isa = PBXGroup;
+			children = (
+				B8D460E9D24E1D2F43C27F4737880458 /* Info.plist */,
+				DBFD67005273B01CD841F27DE6CD788B /* Pods-Sahayyam.modulemap */,
+				8DF1CF9463ED8687686B0840D6B4E8B3 /* Pods-Sahayyam-acknowledgements.markdown */,
+				966D354D81DD951D612D4999E8540B7C /* Pods-Sahayyam-acknowledgements.plist */,
+				E7C862B6319DE94B636CB8172C052B26 /* Pods-Sahayyam-dummy.m */,
+				56A888B140B04789EF008DA6F8775B4C /* Pods-Sahayyam-frameworks.sh */,
+				5E5ADD8370C95E0A7F3B5A5FEAD967C3 /* Pods-Sahayyam-resources.sh */,
+				BCCCA354A7A528C49D8C30FBD975BC67 /* Pods-Sahayyam-umbrella.h */,
+				4FB0D08CB167883C8A894B2037372EC7 /* Pods-Sahayyam.debug.xcconfig */,
+				2962FAEFDB85A3D052C7147308C0A278 /* Pods-Sahayyam.release.xcconfig */,
+			);
+			name = "Pods-Sahayyam";
+			path = "Target Support Files/Pods-Sahayyam";
+			sourceTree = "<group>";
+		};
+		0A68FE8A6158D395EC4CB10F8472F165 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B4CCDF0ACEE37ED4308724E62FCDE939 /* CoreGraphics.framework */,
+				3C9854452B704969D40D932335DEE0FF /* Foundation.framework */,
+				0F2331BAF78D4EDDCD400CF6388C7978 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A68FE8A6158D395EC4CB10F8472F165 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1822118A93A7F88EC902C56A36DAEDB5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				418E1D9411B57337730CFF6ADA2874B7 /* Alamofire */,
+				066DD073D63B2C55B39536B22FB7DE47 /* M13Checkbox */,
+				2951ABAFC7A57B220D50CD51FF7E895C /* PDTSimpleCalendar */,
+				F8B540111A976B87F679DDD6859CD211 /* SwiftLoader */,
+				7D7B736C35B00DB8897EB331C9D1E02B /* TPKeyboardAvoiding */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2951ABAFC7A57B220D50CD51FF7E895C /* PDTSimpleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				55D97CF0C3D0926ACA5F7C831D65F920 /* PDTSimpleCalendar.h */,
+				058DF0A047E8F65F133AF74DB9B185E7 /* PDTSimpleCalendarViewCell.h */,
+				CF1ADCB603CFEA599CB222BA945D02E6 /* PDTSimpleCalendarViewCell.m */,
+				492A10BB39AC63EEB26599FB245E93D6 /* PDTSimpleCalendarViewController.h */,
+				DCC386EBA6E19F8FED5A3C3CABE322C7 /* PDTSimpleCalendarViewController.m */,
+				CF3BBCEFF3F5D4EECACC32A68ACABE5C /* PDTSimpleCalendarViewFlowLayout.h */,
+				056350C7E5B0ABACD03B4B3497E76744 /* PDTSimpleCalendarViewFlowLayout.m */,
+				0024D77B51D5150E805299BCFA2AD473 /* PDTSimpleCalendarViewHeader.h */,
+				02BA89CE5EC91CB2197CE7979CFA5895 /* PDTSimpleCalendarViewHeader.m */,
+				1F966B0C1AA7A13906254BBFD2CE313F /* PDTSimpleCalendarViewWeekdayHeader.h */,
+				6EC0BE81B44C932E4C9A1279068BC7F0 /* PDTSimpleCalendarViewWeekdayHeader.m */,
+				67240EB22C0ABCCE3E9A04599F6881B1 /* Support Files */,
+			);
+			path = PDTSimpleCalendar;
+			sourceTree = "<group>";
+		};
+		418E1D9411B57337730CFF6ADA2874B7 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				7611F3A2F2E644884EA5FE63C4D73D85 /* Alamofire.swift */,
+				18E398BDCE957EA13906CF0D93DACAC0 /* Download.swift */,
+				EB9FEF1BE4D0013996164A2368FC25B6 /* Error.swift */,
+				F57AE04CEE53F59571CFEF16B936BE6C /* Manager.swift */,
+				3A324D4529FF77D51767651BB8EEA8CA /* MultipartFormData.swift */,
+				8CCB6157EE5EBA06347C6E3C8759A07B /* NetworkReachabilityManager.swift */,
+				09A13D5BB4E163A83973806C60E5415B /* Notifications.swift */,
+				587F812FA71C60386B80E2CBD726C780 /* ParameterEncoding.swift */,
+				B6F93AF18C61533145C598AEF185205E /* Request.swift */,
+				9480ED691537C145430B1485E5CDE390 /* Response.swift */,
+				94FB20D3D4A16C35AB562B4E2E3A05D8 /* ResponseSerialization.swift */,
+				61BAE14BEF145568C430C8D90EF0B11D /* Result.swift */,
+				2FD639919505509A6F4FECC58B9AAE6D /* ServerTrustPolicy.swift */,
+				78B5A6AFFC9B58FFA74D5DBE9B1CD3E5 /* Stream.swift */,
+				76D6CF4C3A7240C715EA32214B70C054 /* Timeline.swift */,
+				2B0E04AE311AAA72A0785EAADE3E6048 /* Upload.swift */,
+				30793B773BF3C48204196F83D2A2FF6F /* Validation.swift */,
+				D2E90FDCC607EF32F3AA6D74AA235DC9 /* Support Files */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		5553EB78ED2DA1634CE9DBD0C0B7BCC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05743D20DAB895F73241DACCD6E4B1D0 /* Alamofire.framework */,
+				067464FB81BD628DB9CEAAE5CE3E85EA /* M13Checkbox.framework */,
+				575F3DBA0499E47FBBEF189BA954389A /* PDTSimpleCalendar.framework */,
+				91BE6189615CAE0C66455D310F682717 /* Pods_Sahayyam.framework */,
+				913C7F65CF5D02682EAC6DE250FC8C7F /* Pods_SahayyamTests.framework */,
+				7DDE8F8480F3A776F3C396B82455E9A6 /* Pods_SahayyamUITests.framework */,
+				2352A88D1C62BC7E174060CB5AC78A15 /* SwiftLoader.framework */,
+				B48A51F5F0B5D3EA0D8DBE55717F1B4E /* TPKeyboardAvoiding.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67240EB22C0ABCCE3E9A04599F6881B1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0AF9BA76F636DFE05EEDE40C2B3BB023 /* Info.plist */,
+				DD3F1C8ED1874071A03FCE4748C117D8 /* PDTSimpleCalendar.modulemap */,
+				61A5E6985B1D51159232CF299290DD5E /* PDTSimpleCalendar.xcconfig */,
+				15933D2B4F6D3F604369B69D3880BF82 /* PDTSimpleCalendar-dummy.m */,
+				B938D396543A6E21D2297D6E9268FA5C /* PDTSimpleCalendar-prefix.pch */,
+				FEE0570FEBE5C13A8522B074BDD2CBA5 /* PDTSimpleCalendar-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PDTSimpleCalendar";
+			sourceTree = "<group>";
+		};
+		77DFD5F488462CE87653DF510054DC59 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				099F6FF597282389C2BC334E12F1E7FB /* Pods-Sahayyam */,
+				DE67FECE366F563324476A5214688CFE /* Pods-SahayyamTests */,
+				ACF372AEFB796E3500F5E4877EE34E9B /* Pods-SahayyamUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7D7B736C35B00DB8897EB331C9D1E02B /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				9E21A258B7AA026558D0CA9842F4F1BB /* TPKeyboardAvoidingCollectionView.h */,
+				5FA8A11CC515A82E97A11E2BFF2B7417 /* TPKeyboardAvoidingCollectionView.m */,
+				0104DE4A9C2582FE0EEC23BFD2F861DC /* TPKeyboardAvoidingScrollView.h */,
+				F959B69F3179E5AB75D5FDCB25189B3F /* TPKeyboardAvoidingScrollView.m */,
+				016EC63B52527B0CF8EE31EC4BD20A5D /* TPKeyboardAvoidingTableView.h */,
+				1763705A1B130B2801AE074A71E64484 /* TPKeyboardAvoidingTableView.m */,
+				ED9646791870D3A0FC41FF8B5A27AE59 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				FB01391C4918C0DE574B6AB14C8675CB /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				F1E4C37662A281A09F9C44EBF38B62FF /* Support Files */,
+			);
+			path = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				1822118A93A7F88EC902C56A36DAEDB5 /* Pods */,
+				5553EB78ED2DA1634CE9DBD0C0B7BCC8 /* Products */,
+				77DFD5F488462CE87653DF510054DC59 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		ACF372AEFB796E3500F5E4877EE34E9B /* Pods-SahayyamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				05EAE672BC7968ACC8894484844093A4 /* Info.plist */,
+				6FDFE9ED93038F584D387CA75125D217 /* Pods-SahayyamUITests.modulemap */,
+				D1653247E6A0C64C6CB67DDCE1546852 /* Pods-SahayyamUITests-acknowledgements.markdown */,
+				7BD08F24FCFBC0AD14E97B5EA402FDE9 /* Pods-SahayyamUITests-acknowledgements.plist */,
+				05C45772A075E0F2B3B8F75E5E00C379 /* Pods-SahayyamUITests-dummy.m */,
+				2E188D5D73F4D61053A8383FCF69DF6A /* Pods-SahayyamUITests-frameworks.sh */,
+				2E630DE86976AC54F7B4D4E53E534113 /* Pods-SahayyamUITests-resources.sh */,
+				5B290A221FB601425D872B4811ED5A30 /* Pods-SahayyamUITests-umbrella.h */,
+				FB400CE814286642864FD054B06F6F78 /* Pods-SahayyamUITests.debug.xcconfig */,
+				DECAAE4D766E99D2A14C087CF42A2C99 /* Pods-SahayyamUITests.release.xcconfig */,
+			);
+			name = "Pods-SahayyamUITests";
+			path = "Target Support Files/Pods-SahayyamUITests";
+			sourceTree = "<group>";
+		};
+		B064E554A8AE422EF953DACD2718AEE8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA69CF39F1AD5EB38CC828DA4DA9B5D0 /* Info.plist */,
+				1AB7B721D31DC0DB106E1E927CF3871D /* M13Checkbox.modulemap */,
+				6E7C6A3FF6004F856C26F78A22A6CB6A /* M13Checkbox.xcconfig */,
+				0B983E6C270AC9F0B44E551CD4EDFDD9 /* M13Checkbox-dummy.m */,
+				C74D068F6B5270642A84BA7AD8838020 /* M13Checkbox-prefix.pch */,
+				C82B62EA2E7F034956FF2648DB5F6714 /* M13Checkbox-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/M13Checkbox";
+			sourceTree = "<group>";
+		};
+		D2E90FDCC607EF32F3AA6D74AA235DC9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D765D52E200CBB501A176944ED001C0 /* Alamofire.modulemap */,
+				1055C54DA1A64634F4E1C079950D19EC /* Alamofire.xcconfig */,
+				5893043E1C0E12D181D53786BFB14E77 /* Alamofire-dummy.m */,
+				0E059200894E8295E4F574D9FD4D81E2 /* Alamofire-prefix.pch */,
+				E09E34D98D1CB0E317CDD0CF08ED17F8 /* Alamofire-umbrella.h */,
+				FD27C76FEC8EC4269BF9D6FF41FC3069 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		DE67FECE366F563324476A5214688CFE /* Pods-SahayyamTests */ = {
+			isa = PBXGroup;
+			children = (
+				E155CE9D9A3C95672F3BB93046838E01 /* Info.plist */,
+				952406B141CF17B1B2699EB231379595 /* Pods-SahayyamTests.modulemap */,
+				A3A2433A6B8C978CBA3EFA23AF6323D8 /* Pods-SahayyamTests-acknowledgements.markdown */,
+				2A14866D0648CEC0D83569066004EEF1 /* Pods-SahayyamTests-acknowledgements.plist */,
+				B96D0616597AC4A1587A26590B5EABBA /* Pods-SahayyamTests-dummy.m */,
+				0F97821C43B63BB157E3201D28B7B50B /* Pods-SahayyamTests-frameworks.sh */,
+				DE1E82B64A926EE2031A845180388D31 /* Pods-SahayyamTests-resources.sh */,
+				20ED95C86D01155C6FB4E5D6A50A0C91 /* Pods-SahayyamTests-umbrella.h */,
+				41DD32F391FB046710C47D153AD11EA6 /* Pods-SahayyamTests.debug.xcconfig */,
+				2F0937EBC5F329A0784D673B55B1DD9C /* Pods-SahayyamTests.release.xcconfig */,
+			);
+			name = "Pods-SahayyamTests";
+			path = "Target Support Files/Pods-SahayyamTests";
+			sourceTree = "<group>";
+		};
+		F1E4C37662A281A09F9C44EBF38B62FF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				85707ACF66B7AF175F1CEDE16420C373 /* Info.plist */,
+				E3D119E9B2B1218213BF5B271880ECC3 /* TPKeyboardAvoiding.modulemap */,
+				742CFA80D12FBC27DC332078F293AAC8 /* TPKeyboardAvoiding.xcconfig */,
+				C8CF89FEA3ABCF570E0BA8704FD90B62 /* TPKeyboardAvoiding-dummy.m */,
+				FD3BCAE7C71A45AFB35FB259773E31DB /* TPKeyboardAvoiding-prefix.pch */,
+				3BEA328871DE32DFB8899E2B4E622CD6 /* TPKeyboardAvoiding-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/TPKeyboardAvoiding";
+			sourceTree = "<group>";
+		};
+		F8B540111A976B87F679DDD6859CD211 /* SwiftLoader */ = {
+			isa = PBXGroup;
+			children = (
+				0815CBB4F4AAB016B759AC26174F11CB /* SwiftLoader.swift */,
+				FC51E4E683021B5E51442EDC853DC13A /* Support Files */,
+			);
+			path = SwiftLoader;
+			sourceTree = "<group>";
+		};
+		FC51E4E683021B5E51442EDC853DC13A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				54FB36C60DAD0D6C36FD61C8B3A1EC97 /* Info.plist */,
+				20C46673C9553C9D2FF8AE077D8BA487 /* SwiftLoader.modulemap */,
+				A1FB9DF16EF835B1795EFAC4B88319BA /* SwiftLoader.xcconfig */,
+				D7CEB4778FFFC7A3E0D4B35355E3FE20 /* SwiftLoader-dummy.m */,
+				AA510627C76CBD8721D2BED8558AD994 /* SwiftLoader-prefix.pch */,
+				523EB962BFD77C227361A8452FABCDBF /* SwiftLoader-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLoader";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		193BD53FEC9AE8E1225754EA29E81662 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03F8D3C0A7C01EF3B6137D0680C0FFA8 /* PDTSimpleCalendar-umbrella.h in Headers */,
+				5AEA2F6273636026297A3A38EE7325A8 /* PDTSimpleCalendar.h in Headers */,
+				854283650126B8707A6A537527271DB2 /* PDTSimpleCalendarViewCell.h in Headers */,
+				DFBB9FA86B4F26AF435900587A9B09CD /* PDTSimpleCalendarViewController.h in Headers */,
+				0B1AC909F43FD2AD6BE051127942C053 /* PDTSimpleCalendarViewFlowLayout.h in Headers */,
+				5BFF83DA99463594922E324F61931692 /* PDTSimpleCalendarViewHeader.h in Headers */,
+				9B9A49ACF3256835B723CBBCD326DE11 /* PDTSimpleCalendarViewWeekdayHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B14BC5B59C0A74755FB84B5D5474231 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D945906E1578BF1EB91094FC4AE2B14E /* Pods-SahayyamTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		227E3CBCC55A04FCCD8C019832A11234 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF82975857F88C2BCC8C5CABDADD06A2 /* M13Checkbox-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73A18C3AB52E7810EAFEDC87CB24D800 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3932CD96F5BA8507D0073808CC20FDCC /* TPKeyboardAvoiding-umbrella.h in Headers */,
+				C9F70F20277B5AC10E7826F259525679 /* TPKeyboardAvoidingCollectionView.h in Headers */,
+				7CB724C4486C6CF5CDFA86A838A7010C /* TPKeyboardAvoidingScrollView.h in Headers */,
+				6EA36EC0F7C934C4058F8C82EC0DB45D /* TPKeyboardAvoidingTableView.h in Headers */,
+				A746405668EC051223B53A6203402767 /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDF75B5ACE6651F271D4BB90CFAD4B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397029D16274E5548FE02E1813E68DE4 /* SwiftLoader-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D05E15285F52642633BA1AA73850D1AE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36954D39A6FC66D1BA6BC4FFDDFA085 /* Pods-Sahayyam-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6219F5EF21DE7E5DA1D91E03A208CC2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				294DFEB7763AC0F824C42ADE1CE0AF02 /* Pods-SahayyamUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDF3B631BBB965A372347705CA14854 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		299A1CC33BAC48FAC847473F9FC8ED4D /* Pods-SahayyamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 179218317208DF2C6F2788AC2F893779 /* Build configuration list for PBXNativeTarget "Pods-SahayyamTests" */;
+			buildPhases = (
+				CDE15911B7D2C125243DB175CBCE8817 /* Sources */,
+				86968193699CE81FF7E1F6BF128E9C31 /* Frameworks */,
+				1B14BC5B59C0A74755FB84B5D5474231 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SahayyamTests";
+			productName = "Pods-SahayyamTests";
+			productReference = 913C7F65CF5D02682EAC6DE250FC8C7F /* Pods_SahayyamTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		526B1D8D019EFA2E973491A6B0411ECC /* SwiftLoader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAE101B3C67855585C10CFA7E1781C62 /* Build configuration list for PBXNativeTarget "SwiftLoader" */;
+			buildPhases = (
+				D34964A48D085AA6C4D0A154FEF9F84B /* Sources */,
+				1D6597E72E2BE74C26E0E96CE99CC42B /* Frameworks */,
+				BDDF75B5ACE6651F271D4BB90CFAD4B8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftLoader;
+			productName = SwiftLoader;
+			productReference = 2352A88D1C62BC7E174060CB5AC78A15 /* SwiftLoader.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		58EB66C81CD839A8ACDCCE2C9A608197 /* Pods-SahayyamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 381152A5D95745F769E526B35C12538B /* Build configuration list for PBXNativeTarget "Pods-SahayyamUITests" */;
+			buildPhases = (
+				6620C6F3A79D2FCFA16573C112CE8364 /* Sources */,
+				3455DE85679EFA44112AF41AB2211078 /* Frameworks */,
+				D6219F5EF21DE7E5DA1D91E03A208CC2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SahayyamUITests";
+			productName = "Pods-SahayyamUITests";
+			productReference = 7DDE8F8480F3A776F3C396B82455E9A6 /* Pods_SahayyamUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6295A47A047994DB2288444E240A0E /* Build configuration list for PBXNativeTarget "PDTSimpleCalendar" */;
+			buildPhases = (
+				41150AC80251A01A8C37895E7E43D7AC /* Sources */,
+				F847666C931B7CD24B0E419C94204AF8 /* Frameworks */,
+				193BD53FEC9AE8E1225754EA29E81662 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PDTSimpleCalendar;
+			productName = PDTSimpleCalendar;
+			productReference = 575F3DBA0499E47FBBEF189BA954389A /* PDTSimpleCalendar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildPhases = (
+				95CC2C7E06DC188A05DAAEE9CAA555A3 /* Sources */,
+				B1729F851F648EC60EE93CDB3C8BAEAD /* Frameworks */,
+				EFDF3B631BBB965A372347705CA14854 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alamofire;
+			productName = Alamofire;
+			productReference = 05743D20DAB895F73241DACCD6E4B1D0 /* Alamofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D306F864A42DBC1F7A101326604B891A /* Pods-Sahayyam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1361E8DFA12CCDCA45A6DB3363E356CA /* Build configuration list for PBXNativeTarget "Pods-Sahayyam" */;
+			buildPhases = (
+				F249C9684ACF46F8A26B1278393E1E1F /* Sources */,
+				C289923E55EA18E227F2D71157BA3ED0 /* Frameworks */,
+				D05E15285F52642633BA1AA73850D1AE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42B14804997CC3A5A28F21DD5E29BFC5 /* PBXTargetDependency */,
+				6CB4B5B472D2735C02633F67D5F1AA5C /* PBXTargetDependency */,
+				C5A597C7F208E080395335EACC09E188 /* PBXTargetDependency */,
+				B5F6277AFA590EBF18BAD8604523F6F2 /* PBXTargetDependency */,
+				5EB79B769932E200A0900AA08F35CF81 /* PBXTargetDependency */,
+			);
+			name = "Pods-Sahayyam";
+			productName = "Pods-Sahayyam";
+			productReference = 91BE6189615CAE0C66455D310F682717 /* Pods_Sahayyam.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ED3AFC0E9905CA362D94DA496A23E2DD /* M13Checkbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDB7EEF73FAC4784FB37CAC86AD636EC /* Build configuration list for PBXNativeTarget "M13Checkbox" */;
+			buildPhases = (
+				543C4BC81F4224D82B158B6D814B8FA1 /* Sources */,
+				58399B1798FDC7D17507985A02D94969 /* Frameworks */,
+				227E3CBCC55A04FCCD8C019832A11234 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = M13Checkbox;
+			productName = M13Checkbox;
+			productReference = 067464FB81BD628DB9CEAAE5CE3E85EA /* M13Checkbox.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA039E6879B0CD64BB2A06674BBE53D5 /* TPKeyboardAvoiding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4745CAF7BEB185A01081622A0FE62915 /* Build configuration list for PBXNativeTarget "TPKeyboardAvoiding" */;
+			buildPhases = (
+				ABACBD8F9F7F63D302C3F5D342348C68 /* Sources */,
+				69EFB5422564EA242E4AB461BC51A55C /* Frameworks */,
+				73A18C3AB52E7810EAFEDC87CB24D800 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPKeyboardAvoiding;
+			productName = TPKeyboardAvoiding;
+			productReference = B48A51F5F0B5D3EA0D8DBE55717F1B4E /* TPKeyboardAvoiding.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 5553EB78ED2DA1634CE9DBD0C0B7BCC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */,
+				ED3AFC0E9905CA362D94DA496A23E2DD /* M13Checkbox */,
+				77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */,
+				D306F864A42DBC1F7A101326604B891A /* Pods-Sahayyam */,
+				299A1CC33BAC48FAC847473F9FC8ED4D /* Pods-SahayyamTests */,
+				58EB66C81CD839A8ACDCCE2C9A608197 /* Pods-SahayyamUITests */,
+				526B1D8D019EFA2E973491A6B0411ECC /* SwiftLoader */,
+				FA039E6879B0CD64BB2A06674BBE53D5 /* TPKeyboardAvoiding */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41150AC80251A01A8C37895E7E43D7AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5463C51DD3A9FC35667EC1EB7420F6BC /* PDTSimpleCalendar-dummy.m in Sources */,
+				3241DF7F6F8EDD17C8EF4265FCFF3622 /* PDTSimpleCalendarViewCell.m in Sources */,
+				D8CBB295F72802B913B30D7AF4CB13ED /* PDTSimpleCalendarViewController.m in Sources */,
+				237DBD4AA2591207CC798EE5577A36CA /* PDTSimpleCalendarViewFlowLayout.m in Sources */,
+				3EC5B14874C6570500292FB5739E1150 /* PDTSimpleCalendarViewHeader.m in Sources */,
+				1A95D9723C194E02E91E8D943EE9620F /* PDTSimpleCalendarViewWeekdayHeader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		543C4BC81F4224D82B158B6D814B8FA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1614233200F77EEC7A5AEEB73F97FD04 /* M13Checkbox+IB.swift in Sources */,
+				2161CB44569782E42E45439692FBE3ED /* M13Checkbox-dummy.m in Sources */,
+				8002901EEAC6026FB9EA6777BC8B1C0D /* M13Checkbox.swift in Sources */,
+				7A6D04E6391AB243F35BAE217FF6F81D /* M13CheckboxAnimationPresets.swift in Sources */,
+				89746AFED1601736D8E1F149AABD1A40 /* M13CheckboxBounceManager.swift in Sources */,
+				F44047DF453E3DCEE6C2D09BC695AB39 /* M13CheckboxDotManager.swift in Sources */,
+				305133BCAA8380E5E6E9AF4FE3AEB087 /* M13CheckboxDotPathPresets.swift in Sources */,
+				84E341BC8535DD01582617F2C0DA35BD /* M13CheckboxExpandManager.swift in Sources */,
+				BC3B9E7AFBEDC160E284B9DE85BBC0FF /* M13CheckboxFadeManager.swift in Sources */,
+				096EFF0F52924F21FDCB53AB634268BB /* M13CheckboxFillManager.swift in Sources */,
+				F31B4CB5FED9CA97A27BD9EA00E2AFB7 /* M13CheckboxFlatManager.swift in Sources */,
+				036F34CEEB075B4967E66B39F30F0770 /* M13CheckboxGestureRecognizer.swift in Sources */,
+				3391A826E404FE0E7CE9C7691AD35D85 /* M13CheckboxManager.swift in Sources */,
+				4E99830DDC4A9A73AFEFBAC6A631CFF9 /* M13CheckboxPathPresets.swift in Sources */,
+				2D39AFF4DCB31D402488B07909551F55 /* M13CheckboxSpiralManager.swift in Sources */,
+				928EBAF19E6D4739410ACCC4DE0249F5 /* M13CheckboxSpiralPathPresets.swift in Sources */,
+				CD7C552ACD6156D56AE4BE1F228CD688 /* M13CheckboxStrokeManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6620C6F3A79D2FCFA16573C112CE8364 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEE903B766384B5996E2971ABE01E8A6 /* Pods-SahayyamUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95CC2C7E06DC188A05DAAEE9CAA555A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */,
+				8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */,
+				5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */,
+				095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */,
+				4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */,
+				C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */,
+				34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */,
+				BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */,
+				C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */,
+				EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */,
+				62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */,
+				3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */,
+				AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */,
+				7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */,
+				AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */,
+				16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */,
+				5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */,
+				2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABACBD8F9F7F63D302C3F5D342348C68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				344E3DF69C9074A03520AA295EF770AF /* TPKeyboardAvoiding-dummy.m in Sources */,
+				05511C7FABA81B192C1AC98616E223B6 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				45017A01A5B354FFF23CF26A6A75DA38 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				CCB85C8ED93117C457925C9E1CF8FF37 /* TPKeyboardAvoidingTableView.m in Sources */,
+				AEBE620F411A96FB1678EA33E39CA32E /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDE15911B7D2C125243DB175CBCE8817 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D382140DDB8E8A85D6C5147ECE940D /* Pods-SahayyamTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D34964A48D085AA6C4D0A154FEF9F84B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A93FAF80DF05CE951EE778E96769ED0 /* SwiftLoader-dummy.m in Sources */,
+				20ED1B6D9F64B4845F37792CF8319E4F /* SwiftLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F249C9684ACF46F8A26B1278393E1E1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAF3A97EA7C1C2D563D0523D79864492 /* Pods-Sahayyam-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42B14804997CC3A5A28F21DD5E29BFC5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 79C040AFDDCE1BCBF6D8B5EB0B85887F /* Alamofire */;
+			targetProxy = E8C67D2FD2A37F77DA72A6F13B9BE03D /* PBXContainerItemProxy */;
+		};
+		5EB79B769932E200A0900AA08F35CF81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TPKeyboardAvoiding;
+			target = FA039E6879B0CD64BB2A06674BBE53D5 /* TPKeyboardAvoiding */;
+			targetProxy = FD5A53F667C79B30044961F53BB8A3A4 /* PBXContainerItemProxy */;
+		};
+		6CB4B5B472D2735C02633F67D5F1AA5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = M13Checkbox;
+			target = ED3AFC0E9905CA362D94DA496A23E2DD /* M13Checkbox */;
+			targetProxy = 7334AF7CF86819D1FE8747E499383AFD /* PBXContainerItemProxy */;
+		};
+		B5F6277AFA590EBF18BAD8604523F6F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLoader;
+			target = 526B1D8D019EFA2E973491A6B0411ECC /* SwiftLoader */;
+			targetProxy = 0B7A091900F57A66FF2E4986A5A5B39B /* PBXContainerItemProxy */;
+		};
+		C5A597C7F208E080395335EACC09E188 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PDTSimpleCalendar;
+			target = 77AB16E71967928775ACD2706514E867 /* PDTSimpleCalendar */;
+			targetProxy = 5110FBF3E76F5A23B7276CD90E55A4B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		149FE5244FA8C1CCA72DDA8284477E20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F0937EBC5F329A0784D673B55B1DD9C /* Pods-SahayyamTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SahayyamTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SahayyamTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		209E411D0FE17407FD530D78E35B8869 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A5E6985B1D51159232CF299290DD5E /* PDTSimpleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PDTSimpleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PDTSimpleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		32AD5F8918CA8B349E4671410FA624C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1055C54DA1A64634F4E1C079950D19EC /* Alamofire.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3FA451D268613890FA8A5A03801E11D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42270CB2870FEB0F213C065A90D294DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E7C6A3FF6004F856C26F78A22A6CB6A /* M13Checkbox.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = M13Checkbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4DFAB005B5AC0EB277D88C2059A31654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E7C6A3FF6004F856C26F78A22A6CB6A /* M13Checkbox.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = M13Checkbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		52C0CB47EC982070DCA8287F964EF273 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1FB9DF16EF835B1795EFAC4B88319BA /* SwiftLoader.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLoader/SwiftLoader-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLoader/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLoader/SwiftLoader.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftLoader;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		57B863117BD40BF976B9A48B7CB61DE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A5E6985B1D51159232CF299290DD5E /* PDTSimpleCalendar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PDTSimpleCalendar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PDTSimpleCalendar/PDTSimpleCalendar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PDTSimpleCalendar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		6541C4BE57DD697441D1C02B079DA18B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1FB9DF16EF835B1795EFAC4B88319BA /* SwiftLoader.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftLoader/SwiftLoader-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftLoader/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftLoader/SwiftLoader.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftLoader;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		75218111E718FACE36F771E8ABECDB62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1055C54DA1A64634F4E1C079950D19EC /* Alamofire.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8EBF33FBBC87B1BE94A2BAF3847A748C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FB0D08CB167883C8A894B2037372EC7 /* Pods-Sahayyam.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Sahayyam/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Sahayyam/Pods-Sahayyam.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Sahayyam;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		94039D636EA4A1A24A00A7629855EC6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB400CE814286642864FD054B06F6F78 /* Pods-SahayyamUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SahayyamUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SahayyamUITests/Pods-SahayyamUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SahayyamUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AA29811EBF643FC5CD9A9F6B7FAE9D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41DD32F391FB046710C47D153AD11EA6 /* Pods-SahayyamTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SahayyamTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SahayyamTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B521ED950EDC8E9AA9AC822CE55F1350 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2962FAEFDB85A3D052C7147308C0A278 /* Pods-Sahayyam.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Sahayyam/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Sahayyam/Pods-Sahayyam.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Sahayyam;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B53F8C1C41C96ABD0A33D70BB6F6AB43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 742CFA80D12FBC27DC332078F293AAC8 /* TPKeyboardAvoiding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TPKeyboardAvoiding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = TPKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C83EB6A10DACF61B2605E875728CE4DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DECAAE4D766E99D2A14C087CF42A2C99 /* Pods-SahayyamUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SahayyamUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SahayyamUITests/Pods-SahayyamUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SahayyamUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E6EADCFF47EAEC2C00D41AEE89359FCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 742CFA80D12FBC27DC332078F293AAC8 /* TPKeyboardAvoiding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TPKeyboardAvoiding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = TPKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1361E8DFA12CCDCA45A6DB3363E356CA /* Build configuration list for PBXNativeTarget "Pods-Sahayyam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EBF33FBBC87B1BE94A2BAF3847A748C /* Debug */,
+				B521ED950EDC8E9AA9AC822CE55F1350 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		179218317208DF2C6F2788AC2F893779 /* Build configuration list for PBXNativeTarget "Pods-SahayyamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA29811EBF643FC5CD9A9F6B7FAE9D32 /* Debug */,
+				149FE5244FA8C1CCA72DDA8284477E20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E62115DE8C09934BF8D2FE5D15FED1E /* Debug */,
+				3FA451D268613890FA8A5A03801E11D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		381152A5D95745F769E526B35C12538B /* Build configuration list for PBXNativeTarget "Pods-SahayyamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94039D636EA4A1A24A00A7629855EC6B /* Debug */,
+				C83EB6A10DACF61B2605E875728CE4DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3CFB42910790CF0BDBCCEBAACD6B9367 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75218111E718FACE36F771E8ABECDB62 /* Debug */,
+				32AD5F8918CA8B349E4671410FA624C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4745CAF7BEB185A01081622A0FE62915 /* Build configuration list for PBXNativeTarget "TPKeyboardAvoiding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B53F8C1C41C96ABD0A33D70BB6F6AB43 /* Debug */,
+				E6EADCFF47EAEC2C00D41AEE89359FCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDB7EEF73FAC4784FB37CAC86AD636EC /* Build configuration list for PBXNativeTarget "M13Checkbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42270CB2870FEB0F213C065A90D294DC /* Debug */,
+				4DFAB005B5AC0EB277D88C2059A31654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB6295A47A047994DB2288444E240A0E /* Build configuration list for PBXNativeTarget "PDTSimpleCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209E411D0FE17407FD530D78E35B8869 /* Debug */,
+				57B863117BD40BF976B9A48B7CB61DE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAE101B3C67855585C10CFA7E1781C62 /* Build configuration list for PBXNativeTarget "SwiftLoader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52C0CB47EC982070DCA8287F964EF273 /* Debug */,
+				6541C4BE57DD697441D1C02B079DA18B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

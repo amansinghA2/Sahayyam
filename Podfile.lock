@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (3.4.1)
+  - M13Checkbox (2.1.2)
+  - PDTSimpleCalendar (0.9.1)
+  - SwiftLoader (0.2.5)
+  - TPKeyboardAvoiding (1.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4)
+  - M13Checkbox
+  - PDTSimpleCalendar
+  - SwiftLoader
+  - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  M13Checkbox: fbc53145e3ca8ecd1c444a76439bdc0ddb17b008
+  PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
+  SwiftLoader: 12d7a6f661f5e9a2c9a72003e7dd6162f4ff0cc4
+  TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
+
+PODFILE CHECKSUM: 162b12f513a68edbc1c5c372b548355e1a4f38ca
+
+COCOAPODS: 1.0.1

@@ -1,4 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15D21" minimumToolsVersion="Automatic">
+    <entity name="LoginData" representedClassName=".LoginData" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="allowCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="allowState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="busType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="categoryId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="children" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cookie" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerGroup" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="customerType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="custType" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dated" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="designation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="disabled" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dob" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isGlobal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="memory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="msRef" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parentId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postCodeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="products" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ref" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sellerId" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sortorder" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="success" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="switchProfileCustType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="switchProfileType" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateProfile" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="vendorAddress1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorAvatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorbuiHolidays" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorBusType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorCompany" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorDelCharges" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendordelTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorFirstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorFromDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorIsDefault" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="vendorLastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorMo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorNickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorPostcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorStoreUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorTelNo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorToDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendorUrgentDelivery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendoryCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zoneId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zoneName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LoginData" positionX="-63" positionY="-18" width="128" height="1035"/>
+    </elements>
 </model>

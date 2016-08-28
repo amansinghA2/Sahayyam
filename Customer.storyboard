@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fNV-3B-P41">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reveal View Controller-->
+        <scene sceneID="6NZ-xR-TVx">
+            <objects>
+                <viewController id="fNV-3B-P41" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hhh-Km-hfs"/>
+                        <viewControllerLayoutGuide type="bottom" id="YN6-ph-fzm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KSV-n5-oVb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="04N-ut-0KD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="KOD-kR-A3V"/>
+                        <segue destination="nXC-k9-uUX" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="e9B-Ed-HJE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2si-dD-aEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="-972"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="eIY-c4-2OX">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewContrller" id="yxu-Dv-mJt" customClass="MenuViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wV3-lR-BmA"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Keb-UI-o9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="21"/>
+        </scene>
+        <!--Customer Menu Items View Controller-->
+        <scene sceneID="6QN-db-6jt">
+            <objects>
+                <viewController storyboardIdentifier="CustomerMenuItems" id="53q-ea-a9b" customClass="CustomerMenuItemsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Mrq-pj-UDd">
+                        <nil key="title"/>
+                        <leftBarButtonItems>
+                            <barButtonItem image="menu-interface-symbol-of-four-horizontal-lines-with-dots" id="lw6-7p-JVy">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="B7m-c8-SZg">
+                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="pDe-gI-OfQ" customClass="TextField" customModule="Material">
+                                    <rect key="frame" x="59" y="7" width="128" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="openDefaultVendorLIst:" destination="53q-ea-a9b" id="Tt9-CE-Kpw"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem image="more" id="BmS-Db-CSc">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="moreOptionAction:" destination="53q-ea-a9b" id="Pq1-Bl-JbA"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="add-to-cart-e-commerce-interface-symbol" id="o8H-LK-I4F">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="CartListAction:" destination="53q-ea-a9b" id="U4Z-g8-ypY"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="menuButton" destination="lw6-7p-JVy" id="mM6-Iv-x5y"/>
+                        <outlet property="moreOptionButton" destination="BmS-Db-CSc" id="5h8-IF-KdX"/>
+                        <outlet property="vendorListTextfield" destination="pDe-gI-OfQ" id="vGg-6U-e3T"/>
+                        <segue destination="JUa-GK-iLw" kind="show" identifier="productDescSegue" id="mKU-Gk-VTF"/>
+                        <segue destination="wwR-41-2mc" kind="show" identifier="vendorListIdentifier" id="mTR-Fg-XuP"/>
+                        <segue destination="S9n-ho-QGe" kind="show" identifier="customerUpdateSegue" id="a9X-6d-z47"/>
+                        <segue destination="xFY-yF-nfU" kind="show" identifier="switchProfileSegue" id="deq-lD-2c2"/>
+                        <segue destination="4ba-8a-7Js" kind="show" identifier="wishListSegue" id="Fne-wK-Xpb"/>
+                        <segue destination="RcJ-ye-VRZ" kind="show" identifier="bestDealsSegue" id="gZg-MZ-rhK"/>
+                        <segue destination="e3x-6T-CM9" kind="show" identifier="trackOrdersSegue" id="n9a-py-dc4"/>
+                        <segue destination="8UB-zg-xTa" kind="show" identifier="aboutUsSegue" id="8vi-vm-mJ6"/>
+                        <segue destination="1sc-bz-1kR" kind="show" identifier="cartListSegue" id="xy6-Td-PNS"/>
+                        <segue destination="OJ9-9L-uEE" kind="show" identifier="loginSegue" id="IfX-z9-ndB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-nZ-CXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="-1322"/>
+        </scene>
+        <!--Wish List View Controller-->
+        <scene sceneID="wtu-6O-apx">
+            <objects>
+                <viewController id="4ba-8a-7Js" customClass="WishListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hkb-Zv-mtt"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2q-BG-cJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920" y="-1942"/>
+        </scene>
+        <!--Customer Menu Description View Controller-->
+        <scene sceneID="V2G-wJ-0iu">
+            <objects>
+                <viewController id="JUa-GK-iLw" customClass="CustomerMenuDescriptionViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="CsB-qL-Fhp"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSD-Bq-Xul" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="495" y="-1960"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jEp-iR-RT2">
+            <objects>
+                <navigationController id="04N-ut-0KD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="q06-h0-dMr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="53q-ea-a9b" kind="relationship" relationship="rootViewController" id="y5Q-E0-ze5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oxZ-Vn-MQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="-1322"/>
+        </scene>
+        <!--Vendors List View Controller-->
+        <scene sceneID="f9s-Gu-rNB">
+            <objects>
+                <viewController id="wwR-41-2mc" customClass="VendorsListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="41S-xq-ObM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="495" y="-517"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QOa-oO-nIq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nXC-k9-uUX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ogt-K1-fDx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yxu-Dv-mJt" kind="relationship" relationship="rootViewController" id="vPx-QQ-yGg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMb-uD-cEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="-687"/>
+        </scene>
+        <!--Customer Best Deals View Controller-->
+        <scene sceneID="lrv-a1-MWi">
+            <objects>
+                <viewController id="RcJ-ye-VRZ" customClass="CustomerBestDealsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8A9-Un-lKg"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9w-U5-31x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="-1350"/>
+        </scene>
+        <!--About Us View Controller-->
+        <scene sceneID="DbU-gd-frK">
+            <objects>
+                <viewController id="8UB-zg-xTa" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="no9-zQ-wkr"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zIA-X8-3JX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1695" y="-687"/>
+        </scene>
+        <!--Track Order View Controller-->
+        <scene sceneID="al3-8v-K3C">
+            <objects>
+                <viewController id="e3x-6T-CM9" customClass="TrackOrderViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cuV-iX-PUy"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="qV4-Fv-nas" kind="show" identifier="trackOrderDetailsSegue" id="vUP-rA-Y1R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8g-p6-0Ts" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935" y="-681"/>
+        </scene>
+        <!--Order Details View Controller-->
+        <scene sceneID="eDo-lo-7RV">
+            <objects>
+                <viewController id="qV4-Fv-nas" customClass="OrderDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ugw-Hp-JbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1328" y="-687"/>
+        </scene>
+        <!--CustomerUPViewController-->
+        <scene sceneID="Tpu-j6-k7B">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CustomerUPViewController" id="S9n-ho-QGe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KEj-Gt-1mE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Frs-Ng-WaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="862.5" y="-1571"/>
+        </scene>
+        <!--SwitchUVController-->
+        <scene sceneID="7HW-va-DLX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SwitchUserViewController" storyboardName="Main" referencedIdentifier="SwitchUVController" id="xFY-yF-nfU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Rzl-3m-qMH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljy-au-ar6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920" y="-1220"/>
+        </scene>
+        <!--LoginVC-->
+        <scene sceneID="iMB-BP-dH6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="LoginVC" id="OJ9-9L-uEE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJw-CV-2IZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833.5" y="-1138"/>
+        </scene>
+        <!--Cart List View Controller-->
+        <scene sceneID="qPw-hc-PL0">
+            <objects>
+                <viewController id="1sc-bz-1kR" customClass="CartListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Gab-6m-BvO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="wTd-uI-9sm" kind="show" identifier="checkoutSegue" id="JJl-4G-lMN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heI-JA-O5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="-1301"/>
+        </scene>
+        <!--Checkout View Controller-->
+        <scene sceneID="T1Q-a8-y9W">
+            <objects>
+                <viewController id="wTd-uI-9sm" customClass="CheckoutViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9z-x2-X99" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="-1882"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add-to-cart-e-commerce-interface-symbol" width="24" height="24"/>
+        <image name="menu-interface-symbol-of-four-horizontal-lines-with-dots" width="24" height="24"/>
+        <image name="more" width="8" height="32"/>
+    </resources>
+</document>
