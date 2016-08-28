@@ -23,9 +23,9 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
        
-    tokenCheck()
+     tokenCheck()
      self.navigationItem.hidesBackButton = true
-        setUpView()
+     setUpView()
         
     
     }

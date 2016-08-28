@@ -821,7 +821,7 @@
 				TargetAttributes = {
 					AF1F1F451D4A07E400E36DB0 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = HB4QDUMJ42;
+						DevelopmentTeam = 5QGU5762A7;
 					};
 					AF1F1F5C1D4A07E400E36DB0 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1278,8 +1278,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sahayyam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayyam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayya;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";
@@ -1301,8 +1302,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sahayyam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayyam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayya;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";

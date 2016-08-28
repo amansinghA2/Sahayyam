@@ -58,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self.window?.rootViewController = viewController
                         self.window?.makeKeyAndVisible()
                     }
-                }
 
+                }
             }
             
             if let customerType1 = NSUserDefaults.standardUserDefaults().objectForKey("customerType"){
@@ -77,13 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let isChecked1 = NSUserDefaults.standardUserDefaults().objectForKey("isChecked"){
                 isChecked = isChecked1 as! Bool
             }
-            
-//            if let sessionId = NSUserDefaults.standardUserDefaults().objectForKey("sessionID"){
-//                sessionID = sessionId as! String
-//            }
-            
-            
-
         }else{
 //            print("\(token)")
 //            print("\(customerType)")

@@ -94,13 +94,13 @@ class ServerManager: NSObject {
     func getSessionID(response:(Response<AnyObject, NSError>)){
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL((response.response?.URL)!)
         
-        for (index , element) in cookies!.enumerate() {
-            if index == 0 {
+        for (_ , element) in cookies!.enumerate() {
+            if element.value.characters.count > 15 {
             sessionID = element.value
              NSUserDefaults.standardUserDefaults().setObject(sessionID, forKey: "sessionID")
+              }
             }
          }
-    }
     
     // MARK: - Logout
     

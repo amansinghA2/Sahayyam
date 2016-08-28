@@ -28,6 +28,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var getSpecificProductList:ProductCollectionList!
     var selectedIndexPath:NSIndexPath = NSIndexPath()
     var menuArray = []
+    var categoryLIsts = [CategoryList]()
+    var categoryLIst = CategoryList()
     var dataSourceForSearchResult = [ProductCollectionList]()
     var searchBarActive:Bool = false
     var searchBarBoundsY:CGFloat?
@@ -72,14 +74,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.prepareUI()
-//        self.showHud("Loading...")
+        self.showHud("Loading...")
         self.vendorListTextfield.text = defaultVendorName
         
         let customerProductsParams:[String:AnyObject]? = [
-            "filter_category":"",
+            "filter_category":categoryLIst.category_id,
             "token":token,
             "device_id": "1234",
-            "filter_name":""
+            "filter_name":categoryLIst.active
         ]
        
         print(customerProductsParams)
@@ -120,7 +122,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dropDownCell") as! CustomerDropDownTableViewCell
-        
+        self.categoryLIst = self.categoryLIsts[indexPath.row]
         cell.listLabel.text = menuArray[indexPath.row] as? String
 
         return cell
@@ -268,17 +270,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     func setUpView(){
         
         tokenCheck()
-//        ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
-//            if isSuccessful{
-//                checkTokenHealth = true
-//                self.hideHud()
-//            }else{
-//                AlertView.alertViewToGoToLogin("OK", message: error!, alertTitle: "OK", viewController: self)
-//                self.hideHud()
-//            }
-//        }
         
-//        self.showHud("Loading...")
+        self.showHud("Loading...")
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
         let nib = UINib(nibName: "CustomerMenuItemsCollectionViewCell", bundle: nil)
@@ -315,7 +308,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         print(params)
         
         ServerManager.sharedInstance().customerSetDefaultVendor(params) { (isSuccessful, error, result) in
-            self.hideHud()
+            self.categoryLIsts = result!
+            self.tableView.reloadData()
             if let vendorName = vendorList.nickname as? String {
                 defaultVendorName = vendorName
                 NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")

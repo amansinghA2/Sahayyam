@@ -100,9 +100,10 @@ extension UIViewController {
     
     func toastView(text:String) {
         let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 25))
-        toastLabel.backgroundColor = UIColor.orangeColor()
-        toastLabel.textColor = UIColor.blackColor()
+        toastLabel.backgroundColor = UIColor.blackColor()
+        toastLabel.textColor = UIColor.whiteColor()
         toastLabel.textAlignment = NSTextAlignment.Center;
+        toastLabel.font = UIFont (name: "HelveticaNeue-UltraLight", size: 15)
         self.view.addSubview(toastLabel)
         toastLabel.text = text
         toastLabel.alpha = 1.0

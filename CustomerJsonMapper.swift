@@ -464,9 +464,47 @@ extension CommonJsonMapper {
     
     
     
-    class func getVendorcategoryList(result:[String:AnyObject]) -> CategoryList {
+    class func getVendorcategoryList(result:[String:AnyObject]) -> [CategoryList] {
      
-        
+        var categoryLists = [CategoryList]()
+
+
+        if let arr = result["category"] as? NSArray{
+
+            for (_, value) in arr.enumerate(){
+                let categoryList = CategoryList()
+                if let categoryID = value.valueForKey("category_id"){
+                    categoryList.category_id = categoryID as! String
+                }
+                if let active = value.valueForKey("active"){
+                    categoryList.active = active as! String
+                }
+                if let level = value.valueForKey("level"){
+                    categoryList.level = level as! Int
+                }
+                if let products = value.valueForKey("products"){
+                    categoryList.products = products as! String
+                }
+
+//                if let categoryID = value.valueForKey("category_id"){
+//                    categoryList.category_id = categoryID as! String
+//                }
+//                if let categoryID = value.valueForKey("category_id"){
+//                    categoryList.category_id = categoryID as! String
+//                }
+//                if let categoryID = value.valueForKey("category_id"){
+//                    categoryList.category_id = categoryID as! String
+//                }
+//                if let categoryID = value.valueForKey("category_id"){
+//                    categoryList.category_id = categoryID as! String
+//                }
+                categoryLists.append(categoryList)
+            }
+
+        }
+
+        print(categoryLists)
+        return categoryLists
         
 //        if let firstname = dic["firstname"] {
 //            populateData.firstname = firstname as! String

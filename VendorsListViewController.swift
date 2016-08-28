@@ -69,9 +69,7 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-         self.showHud("Loading...")
-        self.delegate?.passDefaultVendorLIst(self, vendorList: self.vendorsLists[indexPath.row])
-        
+      self.delegate?.passDefaultVendorLIst(self, vendorList: self.vendorsLists[indexPath.row])
       self.toastView("Vendor update successfully changed")
     }
     
