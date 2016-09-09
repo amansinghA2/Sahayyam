@@ -33,20 +33,48 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
 //            
 //            var string1 = String()
 //            for i in deliverCharges {
-//                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
+//                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "                                      " + i.appliedPrice + "\n")
 //                
 //            }
 //            totalPrice.text = string1
 //        }
         
+        var string1 = String()
+        var string2 = String()
+        var string3 = String()
+        
         if let total = orderdetailList?.orderTotals {
-            var string1 = String()
+            
             for i in total {
+                if i.title != "" {
                 string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
+            }
+            }
+        }
+        
+        if let total = orderdetailList?.extraDeliveryTotals {
+            
+            for i in total {
+                 if i.title != "" {
+                string2 = string2.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
                 
             }
-            grandTotalLabel.text = string1.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            }
+            
         }
+        
+            if let total1 = orderdetailList?.extraOrderCosts{
+                for i in total1 {
+                    if i.title != "" {
+                  string3 = string3.stringByAppendingString("Grand Total" + "            " + i.text + "          " + i.appliedPrice )
+                }
+              }
+            }
+        
+        
+//        stringByTrimmingCharactersInSet(
+//            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        grandTotalLabel.text = string1 + string2 + string3
         
     }
     

@@ -18,10 +18,9 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tokenCheck()
-        
+        //tokenCheck()
         setBackButtonForNavigation()
-        changeNavigationBarColor()
+       // changeNavigationBarColor()
         
         
         // Do any additional setup after loading the view.

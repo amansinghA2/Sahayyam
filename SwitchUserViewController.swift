@@ -17,16 +17,16 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label1: UILabel!
     var custTypeString = String()
-
+    var categoryLIsts = [CategoryList]()
     // MARK: - View Methods
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-     tokenCheck()
-     self.navigationItem.hidesBackButton = true
+//    self.navigationController?.navigationBarHidden = false
+    self.navigationItem.hidesBackButton = true
      setUpView()
         
+      
     
     }
 
@@ -35,14 +35,17 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
   }
     
     override func viewWillAppear(animated: Bool) {
-        
- 
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
     }
     
     // MARK: Actions
 
     @IBAction func segueButtonAction(sender: AnyObject) {
-
+        if Reachability.checkInternetConnectivity() {
         switch sender.tag {
         case 0:
             self.custTypeString = "customer"
@@ -73,10 +76,29 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
             "token":token
         ]
 
+        
         ServerManager.sharedInstance().requestSwitchProfile(params) { (isSuccessful, error, result) in
             if (isSuccessful){
+            self.categoryLIsts = result!
+               
+            filteredArr = CustomClass.DataFilter(self.categoryLIsts)
+                
+            let data = NSKeyedArchiver.archivedDataWithRootObject(filteredArr)
+                NSUserDefaults.standardUserDefaults().setObject(data, forKey: "categoryLists")
+              
+            if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
+                    filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
             }
+
+            }
+            }
+          }
+          else{
+          
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+              self.hideHud()
         }
+
     }
 
     //  MARK: - Navigation
@@ -91,18 +113,12 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
     // MARK: - Custom Function
     
     func setUpView() {
-//        self.changeNavigationBarColor()
-//        hideBackBarButton()
         addingCustomerVendorImage()
-        
-
     }
 
     func viewControllerPassing(storyBoard:String) {
         let sb = UIStoryboard(name: storyBoard, bundle: nil)
         let vc1 = sb.instantiateInitialViewController()! as UIViewController
-        //       vc1.modalPresentationStyle = UIModalPresentationStyle.FullScreen
-       // vc1.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         self.presentViewController(vc1, animated: false, completion:
             nil)
     }

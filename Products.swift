@@ -25,7 +25,9 @@ class Products: NSObject {
         dynamic var urgent_delivery = String()
         dynamic var checkoutDeliveryTime = [CheckoutDeliveryTime]()
         dynamic var customerCartDetails = [CheckoutOrderTotals]()
+       dynamic var is_express = Bool()
     
+       dynamic var totalOrder = String()
  
 // Specify properties to ignore (Realm won't persist these)
     

@@ -42,22 +42,22 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Z-ji-BPj">
-                                    <rect key="frame" x="35" y="340" width="73" height="21"/>
+                                    <rect key="frame" x="42" y="340" width="87" height="21"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="73" id="cbk-ET-jv1"/>
+                                        <constraint firstAttribute="width" constant="87" id="cbk-ET-jv1"/>
                                         <constraint firstAttribute="height" constant="21" id="rcW-Ga-TZY"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxr-Vm-qkh">
-                                    <rect key="frame" x="224" y="336" width="96" height="30"/>
+                                    <rect key="frame" x="203" y="336" width="117" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="a5p-Yt-Xkb"/>
-                                        <constraint firstAttribute="width" constant="96" id="d6R-A0-swr"/>
+                                        <constraint firstAttribute="width" constant="117" id="d6R-A0-swr"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Forgot Password?"/>
                                     <connections>
@@ -81,11 +81,11 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-Qe-3R9" customClass="M13Checkbox" customModule="M13Checkbox">
-                                    <rect key="frame" x="11" y="341" width="20" height="20"/>
+                                    <rect key="frame" x="10" y="336" width="27" height="30"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="k3f-gJ-hFU"/>
-                                        <constraint firstAttribute="height" constant="20" id="r8Y-my-WUB"/>
+                                        <constraint firstAttribute="width" constant="27" id="k3f-gJ-hFU"/>
+                                        <constraint firstAttribute="height" constant="30" id="r8Y-my-WUB"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
@@ -96,12 +96,13 @@
                             <constraints>
                                 <constraint firstItem="6dE-xy-b1a" firstAttribute="top" secondItem="Jxr-Vm-qkh" secondAttribute="bottom" constant="51" id="6Gx-OI-kCg"/>
                                 <constraint firstAttribute="trailing" secondItem="6dE-xy-b1a" secondAttribute="trailing" constant="8" id="7Oe-WC-MK7"/>
+                                <constraint firstItem="Mo3-Qe-3R9" firstAttribute="centerY" secondItem="12Z-ji-BPj" secondAttribute="centerY" id="9aQ-VI-9gJ"/>
                                 <constraint firstItem="Jxr-Vm-qkh" firstAttribute="top" secondItem="7Lt-dm-rb3" secondAttribute="bottom" constant="14" id="B2c-rw-FsF"/>
                                 <constraint firstItem="7Lt-dm-rb3" firstAttribute="leading" secondItem="tJq-ZS-PGU" secondAttribute="leading" constant="8" id="LHT-Cc-RpK"/>
                                 <constraint firstItem="uGt-3j-OQ3" firstAttribute="top" secondItem="pCq-ef-Vmk" secondAttribute="bottom" constant="62" id="N08-l4-OrZ"/>
                                 <constraint firstItem="pCq-ef-Vmk" firstAttribute="centerX" secondItem="tJq-ZS-PGU" secondAttribute="centerX" id="Reg-I4-eqX"/>
-                                <constraint firstItem="Mo3-Qe-3R9" firstAttribute="top" secondItem="7Lt-dm-rb3" secondAttribute="bottom" constant="19" id="V7u-kD-AFj"/>
-                                <constraint firstItem="Mo3-Qe-3R9" firstAttribute="leading" secondItem="tJq-ZS-PGU" secondAttribute="leading" constant="11" id="Wxc-1Z-6Cd"/>
+                                <constraint firstItem="Mo3-Qe-3R9" firstAttribute="top" secondItem="7Lt-dm-rb3" secondAttribute="bottom" constant="14" id="V7u-kD-AFj"/>
+                                <constraint firstItem="Mo3-Qe-3R9" firstAttribute="leading" secondItem="tJq-ZS-PGU" secondAttribute="leading" constant="10" id="Wxc-1Z-6Cd"/>
                                 <constraint firstItem="12Z-ji-BPj" firstAttribute="top" secondItem="7Lt-dm-rb3" secondAttribute="bottom" constant="18" id="Y8V-4n-FoW"/>
                                 <constraint firstItem="6dE-xy-b1a" firstAttribute="leading" secondItem="tJq-ZS-PGU" secondAttribute="leading" constant="8" id="YQu-RZ-TTS"/>
                                 <constraint firstItem="6dE-xy-b1a" firstAttribute="top" secondItem="12Z-ji-BPj" secondAttribute="bottom" constant="56" id="iy3-Zf-LXM"/>
@@ -110,8 +111,7 @@
                                 <constraint firstAttribute="trailing" secondItem="Jxr-Vm-qkh" secondAttribute="trailing" id="mk2-gs-vSG"/>
                                 <constraint firstItem="7Lt-dm-rb3" firstAttribute="top" secondItem="uGt-3j-OQ3" secondAttribute="bottom" constant="23" id="uZD-ZU-rVf"/>
                                 <constraint firstItem="Jxr-Vm-qkh" firstAttribute="top" secondItem="7Lt-dm-rb3" secondAttribute="bottom" constant="14" id="vUi-U9-IEm"/>
-                                <constraint firstItem="12Z-ji-BPj" firstAttribute="leading" secondItem="Mo3-Qe-3R9" secondAttribute="trailing" constant="4" id="vXW-zZ-bKy"/>
-                                <constraint firstItem="6dE-xy-b1a" firstAttribute="top" secondItem="Mo3-Qe-3R9" secondAttribute="bottom" constant="56" id="x3y-jA-5aw"/>
+                                <constraint firstItem="12Z-ji-BPj" firstAttribute="leading" secondItem="Mo3-Qe-3R9" secondAttribute="trailing" constant="5" id="vXW-zZ-bKy"/>
                                 <constraint firstItem="pCq-ef-Vmk" firstAttribute="top" secondItem="tJq-ZS-PGU" secondAttribute="top" constant="57" id="xHP-Az-FDI"/>
                                 <constraint firstAttribute="trailing" secondItem="uGt-3j-OQ3" secondAttribute="trailing" constant="8" id="zq3-OR-epj"/>
                             </constraints>

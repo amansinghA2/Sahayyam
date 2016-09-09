@@ -33,6 +33,15 @@ class AlertView: NSObject {
         }))
         viewController.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    class func alertViewWithPopup(controllertitle:String , message:String , alertTitle:String , viewController:UIViewController) {
+        let alert = UIAlertController(title: controllertitle, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: alertTitle, style: UIAlertActionStyle.Default, handler: { (action) in
+            viewController.navigationController?.popViewControllerAnimated(true)
+        }))
+        viewController.presentViewController(alert, animated: true, completion: nil)
+    }
 
     
 }

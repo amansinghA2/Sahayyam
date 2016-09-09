@@ -24,16 +24,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-
-        
     }
 
     override func viewWillAppear(animated: Bool) {
      self.navigationController?.navigationBarHidden = true
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-       self.navigationController?.navigationBarHidden = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,18 +35,31 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
     // MARK: Actions
 
     @IBAction func loginbutton(sender: AnyObject) {
-        self.showHud("Loading...")
+        self.showHud("Logging in please wait...")
         self.view.endEditing(true)
+          if Reachability.checkInternetConnectivity() {
        if (usernameTextField.text?.isPhoneNumber  == true && usernameTextField.text?.isBlank == false) && (passwordTextField.text?.isBlank == false){
         
-            if Reachability.checkInternetConnectivity() {
             ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
                 if (isSuccessful) {
                     self.customerLoginData = result!
+                    
+                    if let defaultVendor = self.customerLoginData?.vendorList{
+                        for list in defaultVendor{
+                            if list.defaultVendorId == "1"{
+                            defaultVendorName = list.nickname
+                            NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
+                          }
+                      }
+                    }
+                  
+                    address = self.customerLoginData.address + " " + self.customerLoginData.country + " " + self.customerLoginData.postcode
+                    NSUserDefaults.standardUserDefaults().setObject(address, forKey: "address")
+                    print(address)
+                    
                     token = self.customerLoginData.cookie
                     NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
                     print(token)
@@ -106,14 +113,14 @@ class LoginViewController: UIViewController {
             })
                 
             }else{
-                    self.hideHud()
-                    self.checkBoxState()
-                    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Invalid username or password", alertTitle: "OK" , viewController: self)
             }
         }
             else{
             self.hideHud()
-            AlertView.alertView("Alert", message: "Invalid username or password", alertTitle: "OK" , viewController: self)
+            self.checkBoxState()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
             }
 
     }

@@ -21,7 +21,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moreOptionButton: UIBarButtonItem!
-    
+    var fromMenuToProductPage = ""
     var delegate:CustomerMenuItemsViewControllerDelegate?
     var getProductCollectionList = [ProductCollectionList]()
     var getProductList:ProductCollectionList!
@@ -38,11 +38,18 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var tableView = UITableView()
     var vendorList:VendorList!
     var favSetter = false
+    var selectedCategoryLIst:CategoryList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        
       }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+        tableView.hidden = true
+    }
     
     @IBAction func moreOptionAction(sender: AnyObject) {
 
@@ -52,11 +59,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
-        tableView.frame = CGRectMake(x-130, 26, 125, 350)
+        tableView.frame = CGRectMake(x-100, 24, 140, 350)
         self.tableView.layer.borderWidth = 1.0
-        self.tableView.layer.borderColor = UIColor.blackColor().CGColor
-        self.tableView.layer.cornerRadius = 1
-
+        self.tableView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.tableView.scrollEnabled = false
         if tableView.hidden == true {
             let currentWindow = UIApplication.sharedApplication().keyWindow! as UIWindow
             currentWindow.addSubview(tableView)
@@ -75,21 +81,48 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.prepareUI()
-
+        self.vendorListTextfield.text = defaultVendorName
+          if Reachability.isConnectedToNetwork(){
+        if fromMenuToProductPage == "goToProductsPage"{
+        productFunction()
+        }else{
+            let customerProductsParams:[String:AnyObject]? = [
+                "filter_category":"",
+                "token":token,
+                "device_id": "1234",
+                "filter_name":""
+            ]
+            
+            print(customerProductsParams)
+            
+            ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result) in
+ 
+                if isSuccessful{
+                    self.hideHud()
+                    self.getProductCollectionList = result!
+                    self.collectionView.dataSource = self
+                    self.collectionView.delegate = self
+                    self.collectionView.reloadData()
+                }
+            }
+        }
         
+    }
+    else{
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+    }
+    }
 
-        self.showHud("Loading...")
-      self.vendorListTextfield.text = defaultVendorName
-        
+    func productFunction() {
         let customerProductsParams:[String:AnyObject]? = [
-            "filter_category":categoryLIst.category_id,
+            "filter_category":selectedCategoryLIst.category_id,
             "token":token,
             "device_id": "1234",
-            "filter_name":categoryLIst.active
+            "filter_name":selectedCategoryLIst.name
         ]
-       
-        print(customerProductsParams)
         
+        print(customerProductsParams)
         ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result) in
             if isSuccessful{
                 self.hideHud()
@@ -98,9 +131,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 self.collectionView.delegate = self
                 self.collectionView.reloadData()
             }
+//            }else{
+//                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+//                self.hideHud()
+//            }
         }
-
-
 
     }
 
@@ -135,14 +170,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        
         switch indexPath.row {
         case 0:
-                self.performSegueWithIdentifier("wishListSegue", sender: nil)
+            self.performSegueWithIdentifier("wishListSegue", sender: nil)
         case 1:
             performSegueWithIdentifier("bestDealsSegue", sender: nil)
-        case 2
-            :
+        case 2:
             performSegueWithIdentifier("switchProfileSegue", sender: nil)
         case 3:
             performSegueWithIdentifier("trackOrdersSegue", sender: nil)
@@ -165,10 +199,22 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.searchBarActive {
-            return self.dataSourceForSearchResult.count;
+        let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        
+        if getProductCollectionList.count == 0 {
+            emptyLabel.text = "No Products"
+            emptyLabel.textAlignment = NSTextAlignment.Center
+            self.collectionView.backgroundView = emptyLabel
+           // self.collectionView.separatorStyle = UITableViewCellSeparatorStyle.None
+            return 0
+        }else{
+            if self.searchBarActive {
+                emptyLabel.text = ""
+                return self.dataSourceForSearchResult.count;
+            }
+            emptyLabel.text = ""
+            return getProductCollectionList.count
         }
-        return getProductCollectionList.count
     }
     
     // make a cell for each cell index path
@@ -209,11 +255,12 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                                 insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(self.searchBar!.frame.size.height, 0, 0, 0);
     }
+    
     func collectionView (collectionView: UICollectionView,
                          layout collectionViewLayout: UICollectionViewLayout,
                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        let cellLeg = (collectionView.frame.size.width/2);
-        return CGSizeMake(cellLeg,cellLeg);
+       // let cellLeg = (collectionView.frame.size.width/2);
+        return CGSizeMake(160,175);
     }
     
     
@@ -274,10 +321,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     // MARK: Custom Functions
+
     
     func setUpView(){
         tokenCheck()
         self.showHud("Loading...")
+          slideMenuShow(menuButton , viewcontroller: self)
+
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
         let nib = UINib(nibName: "CustomerMenuItemsCollectionViewCell", bundle: nil)
@@ -287,14 +337,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "dropDownCell")
 
         self.changeNavigationBarColor()
-           slideMenuShow(menuButton)
+        
         vendorListTextfield.delegate = self
         vendorListTextfield.layer.cornerRadius = 5
         vendorListTextfield.layer.masksToBounds = true
         vendorListTextfield.backgroundColor = UIColor.whiteColor()
         vendorListTextfield.rightViewMode = UITextFieldViewMode.Always
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30 , height: 30))
-        let image = UIImage(named:"drop")
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24 , height: 24))
+        let image = UIImage(named:"Down Right-1")
         imageView.image = image
         vendorListTextfield.rightView = imageView
         
@@ -302,34 +352,50 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     func passDefaultVendorLIst (viewcontroller:VendorsListViewController , vendorList:VendorList){
-        
+           if Reachability.isConnectedToNetwork(){
         self.vendorList = vendorList
 
         let params = [
             "vendorRow":vendorList.vendorId,
             "token":token,
             "device_id":"1234"
-        ]
+        ]	
         
         print(params)
-        
         ServerManager.sharedInstance().customerSetDefaultVendor(params) { (isSuccessful, error, result) in
+            
+            if isSuccessful{
             self.categoryLIsts = result!
-            if let vendorName = vendorList.nickname as? String {
-                defaultVendorName = vendorName
-                defaultVendorID = vendorList.vendorId
-                NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
-                NSUserDefaults.standardUserDefaults().setObject(defaultVendorID, forKey: "defaultvendorID")
-                defaultVendorName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName") as! String
-                defaultVendorID = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorID") as! String
-
-                self.vendorListTextfield.text = defaultVendorName
+            
+            filteredArr = CustomClass.DataFilter(self.categoryLIsts)
+            
+            let data = NSKeyedArchiver.archivedDataWithRootObject(filteredArr)
+            NSUserDefaults.standardUserDefaults().setObject(data, forKey: "categoryLists")
+            
+            if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
+                filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
             }
-            self.tableView.reloadData()
+            
+            
+            if let vendorName = self.vendorList.nickname as? String {
+                defaultVendorName = vendorName
+                NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
+             }
+            }
+//            }else{
+//                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+//                self.hideHud()
+//            }
+            
         }
-        
+}
+else{
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+}
+
     }
-    
+
     func alertControllerToLogout() {
         
         if tableView.hidden == false {
@@ -348,9 +414,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-                 NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-                     NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
                     NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
@@ -360,34 +424,40 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
-    
+
     func PoppingController(notification:NSNotification){
         self.navigationController?.popViewControllerAnimated(true)
     }
     
     func buttonClicked(sender:UIButton) {
-        
+           if Reachability.isConnectedToNetwork(){
         let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
             self.view.endEditing(true)
         if let field = alertController.textFields![0] as? UITextField {
             if field.text?.isBlank == false{
                 if field.text?.isPhoneNumber == true {
-                let cell = sender.superview!.superview as! CustomerMenuItemsCollectionViewCell
+                let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
                let indexPath = self.collectionView.indexPathForCell(cell)!
-
+            self.getProductList = self.getProductCollectionList[indexPath.row]
                     let params:[String:AnyObject]? = [
-                        "product_id":self.getProductCollectionList[indexPath.row].product_id,
+                        "product_id":self.getProductList.product_id,
                         "device_id":"1234",
                         "token":token,
                         "quantity":Int(field.text!)!
                     ]
             
                     ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
-                
-                    }
+                        
+                        if isSuccessful{
+                   self.toastViewForTextfield("Successfully added to cart")
+                        }
+//                        }else{
+//                            AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+//                            self.hideHud()
+//                        }
+                        }
             }else{
                 self.toastViewForTextfield("Not a valid number to enter")
             }
@@ -401,19 +471,25 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in
             textField.placeholder = "Number Of Items"
+            textField.text = "1"
+            textField.keyboardType = .PhonePad
         }
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)  
+        self.presentViewController(alertController, animated: true, completion: nil)
+}
+else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+}
     }
-    
+
     func addToWishlistButtonClicked(sender:UIButton) {
         
-        let cell = sender.superview!.superview as! CustomerMenuItemsCollectionViewCell
+        let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
         let indexPath = self.collectionView.indexPathForCell(cell)!
-        let selectedCell = self.collectionView.cellForItemAtIndexPath(indexPath) as! CustomerMenuItemsCollectionViewCell
 
             let params:[String:AnyObject]? = [
                 "product_id":self.getProductCollectionList[indexPath.row].product_id,
@@ -424,12 +500,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             print(params)
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
 
-//                if let image = UIImage(named: "like") {
-//                    selectedCell.wishListImage.setImage(image, forState: .Normal)
-//                }
-                let alert = UIAlertController(title: "Alert", message: "Product is added to Wishlist", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.toastViewForTextfield("Product id added to wishlist")
+
+//                let alert = UIAlertController(title: "Alert", message: "Product is added to Wishlist", preferredStyle: UIAlertControllerStyle.Alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//                self.presentViewController(alert, animated: true, completion: nil)
             })
     }
     
@@ -512,35 +587,32 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
      _ = UIApplication.sharedApplication().keyWindow! as UIWindow
-        
         if tableView.hidden == false {
-          tableView.removeFromSuperview()
+            tableView.removeFromSuperview()
             tableView.hidden = true
         }
-
-     if segue.identifier == "popoverSegue" {
-     let popoverViewController = segue.destinationViewController 
-     popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-       let screen = UIScreen.mainScreen().bounds
-     popoverViewController.preferredContentSize = CGSize(width: screen.width * 0.5 - 25, height: screen.height * 0.5 - 50)
-     popoverViewController.popoverPresentationController!.delegate = self
-     }else if segue.identifier == "productDescSegue"{
-       let vc = segue.destinationViewController as? CustomerMenuDescriptionViewController
-        vc!.getProductList = self.getSpecificProductList
-        print(vc!.getProductList)
+        
+    if segue.identifier == "popoverSegue" {
+       let popoverViewController = segue.destinationViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            let screen = UIScreen.mainScreen().bounds
+            popoverViewController.preferredContentSize = CGSize(width: screen.width * 0.5 - 25, height: screen.height * 0.5 - 50)
+            popoverViewController.popoverPresentationController!.delegate = self
+     } else if segue.identifier == "productDescSegue" {
+            let vc = segue.destinationViewController as? CustomerMenuDescriptionViewController
+            vc!.getProductList = self.getSpecificProductList
      } else if segue.identifier == "customerUpdateSegue" {
             let vc = segue.destinationViewController as? CustomerUpdateProfileViewController
             vc!.isLogin = "customerDropDown"
-        }else if segue.identifier == "vendorListIdentifier"{
+     } else if segue.identifier == "vendorListIdentifier" {
             let vc = segue.destinationViewController as! VendorsListViewController
             vc.delegate = self
-        }
-
-
-  
-}
+     }else if segue.identifier == "cartListSegue" {
+            let vc = segue.destinationViewController as! CartListViewController
+            vc.getProductCollectionList = self.getProductList
+     }
+   }
     
     // MARK: - Actions
     
@@ -555,7 +627,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: - TextField Delegates
     
     func textFieldDidBeginEditing(textField: UITextField) {
-    
+        self.view.endEditing(true)
+  
         self.performSegueWithIdentifier("vendorListIdentifier", sender: nil)
         textField.resignFirstResponder()
     }

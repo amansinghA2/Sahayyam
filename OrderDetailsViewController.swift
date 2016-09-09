@@ -17,6 +17,7 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.showHud("Loading...")
         tokenCheck()
         setUpView()
        
@@ -76,7 +77,6 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCellWithIdentifier("orderDetailHeader") as! OrderDetailHeaderTableViewCell
-        
         switch section {
         case 0:
             header.headerName.text = "Order Details"
@@ -108,7 +108,7 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
         case 2:
-            return 100
+            return 120
         default:
             return 0
         }
@@ -120,8 +120,8 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     
     
     func setUpView() {
-       self.showHud("Loading...")
-        
+        setBackButtonForNavigation()
+        self.showHud("Loading...")
         let nib1 = UINib(nibName: "OrderDetailsTableViewCell", bundle: nil)
         self.orderDetailsTableView.registerNib(nib1, forCellReuseIdentifier: "orderDetailsIdentifier")
         let nib2 = UINib(nibName: "OrderDetailHeaderTableViewCell", bundle: nil)
@@ -132,15 +132,15 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
         self.orderDetailsTableView.registerNib(nib4, forCellReuseIdentifier: "oderproductDetailsIdentifier")
         let nib5 = UINib(nibName: "CustomerDetailsTableViewCell", bundle: nil)
         self.orderDetailsTableView.registerNib(nib5, forCellReuseIdentifier: "customerDetailsIdentifier")
-        
-        
+              if Reachability.isConnectedToNetwork(){ 
         let params:[String : AnyObject] = [
         "token":token,
         "device_id":"1234",
         "order_id": trackLoadData.order_id
         ]
         
-        
+        print(params)
+                
         ServerManager.sharedInstance().customerOrderDetails(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
@@ -150,9 +150,11 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
                 self.orderDetailsTableView.reloadData()
             }
         }
-        
-        
-        
+    }
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
     }
 
     /*

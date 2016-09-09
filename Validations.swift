@@ -11,7 +11,7 @@ import SwiftLoader
 
 class Validations: NSObject {
     
-class func isValidPassAndConfirmPassword(password:String , confirmPassword:String) -> Bool{
+    class func isValidPassAndConfirmPassword(password:String , confirmPassword:String) -> Bool{
     
     if (password == confirmPassword) && (password.characters.count == confirmPassword.characters.count) {
         return true

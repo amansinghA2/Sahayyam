@@ -19,13 +19,14 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
         super.viewDidLoad()
         setUp()
         
-        ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
-            if isSuccessful{
-                
-            }else{
-                AlertView.alertViewToGoToLogin("Alert", message: error!, alertTitle: "OK", viewController: self)
-            }
-        }
+        tokenCheck()
+//        ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
+//            if isSuccessful{
+//                
+//            }else{
+//                AlertView.alertViewToGoToLogin("Alert", message: error!, alertTitle: "OK", viewController: self)
+//            }
+//        }
         
         // Do any additional setup after loading the view.
     }
@@ -47,11 +48,11 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
     }
 
     override func viewWillAppear(animated: Bool) {
+        if Reachability.isConnectedToNetwork(){
         let params:[String:AnyObject]? = [
             "token":token,
             "device_id":"1234"
         ]
-        
         
         ServerManager.sharedInstance().customerGetWishlistList(params) { (isSuccessful, error, result) in
             self.hideHud()
@@ -62,8 +63,14 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
                 self.wishListTableView.reloadData()
             }
         }
+        
     }
-    
+    else{
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+    }
+    }
+
    // Table View Delegates
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,8 +99,8 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
         cell.removeButtonOutlet.tag = indexPath.row
         cell.removeButtonOutlet.addTarget(self, action: #selector(WishListViewController.removeButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
-        cell.layer.borderColor = UIColor.orangeColor().CGColor
-        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor.orangeColor().CGColor
+//        cell.layer.borderWidth = 1
         
         return cell
         
@@ -106,14 +113,13 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
     
     func addButtonClicked(sender:UIButton){
         
-        
         let cell = sender.superview?.superview as! WishLIstTableViewCell
         let indexPath = wishListTableView.indexPathForCell(cell)
-        
+               if Reachability.isConnectedToNetwork(){
         let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
 
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
-            if let field = alertController.textFields![0] as? UITextField {
+            if let field = alertController.textFields![0] as? UITextField{
                 field.resignFirstResponder()
                     if field.text?.isBlank == false{
                         if field.text?.isPhoneNumber == true {
@@ -125,8 +131,8 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
                     ]
                 
                 
-                    ServerManager.sharedInstance().customerAddtoWishlist(params) { (isSuccessful, error, result) in
-                        print("Successfull")
+                    ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
+                        self.toastViewForTextfield("Successfully added to wishlist")
               }
             }else{
                 self.toastViewForTextfield("Not a valid number to enter")
@@ -141,14 +147,21 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in
             textField.placeholder = "Number Of Items"
+            textField.text = "1"
+            textField.keyboardType = .PhonePad
         }
         
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+        }
+else{
+                self.hideHud()
+                AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+}
     }
-    
+
     func removeButtonClicked(sender:UIButton){
         
         let cell = sender.superview?.superview as! WishLIstTableViewCell
@@ -171,7 +184,7 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
                 }
             }
             
-           self.wislistList.removeAtIndex((indexPath?.row)!)
+            self.wislistList.removeAtIndex((indexPath?.row)!)
             self.wishListTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             
             self.wishListTableView.reloadData()

@@ -50,7 +50,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         
         self.showHud("Loading...")
         setBackButtonForNavigation()
-        changeNavigationBarColor()
+        //changeNavigationBarColor()
         
         imagePicker.delegate = self
         dateOfBirthTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
@@ -116,7 +116,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
         self.showHud("Loading...")
         
-        
         if formValidation() {
             let params:[String:AnyObject]? = [
                 "token":token,
@@ -147,10 +146,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
-        }else{
-            self.hideHud()
         }
-        
+        else{
+            self.hideHud()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+        }
     }
     
     func convertImageToBase64(image: UIImage) -> String {
@@ -189,7 +189,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     //    }
     
     func formValidation() -> Bool{
-        if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || emailIdTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true || stateTextField.text?.isBlank == true || cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
+        if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true || stateTextField.text?.isBlank == true || cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }

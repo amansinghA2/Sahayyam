@@ -14,7 +14,7 @@ extension ServerManager {
 
     // MARK: Customer Products List
 
-    func customerProducts(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [ProductCollectionList]?) -> Void) {
+    func customerProducts(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ProductCollectionList]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -32,14 +32,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
            }
     }
 
-    func customerProductDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: ProductDetails?) -> Void) {
+    func customerProductDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: ProductDetails?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -57,8 +57,9 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
          }
@@ -66,7 +67,7 @@ extension ServerManager {
 
     // MARK: Cart List
 
-    func customerGetCartList(params:[String:AnyObject]?,  completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [Products]? , dict:[String : AnyObject]?) -> Void) {
+    func customerGetCartList(params:[String:AnyObject]?,  completionClosure: (isSuccessful:Bool,error:String?, result: [Products]? , dict:[String : AnyObject]?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -86,13 +87,13 @@ extension ServerManager {
                         }
                     case .Failure(let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: nil,result: nil , dict: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , dict: nil)
                     }
                 }
         }
     }
 
-    func customerAddToCart(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func customerAddToCart(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -115,12 +116,42 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-                        completionClosure(isSuccessful: false,error: errorInfo,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
     }
+    
+    func customerEditToCart(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, customerEditToCartUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let res = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            if let result = dict["success"]!{
+                                if result as! Bool {
+                                    completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                                }else{
+                                    completionClosure(isSuccessful: false, error: nil, result: dict as? Dictionary<String, String>)
+                                }
+                            }
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+
 
     func customerRemoveFromCart(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
 
@@ -141,7 +172,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-//                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
+
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
@@ -150,7 +181,7 @@ extension ServerManager {
 
     // MARK: - Checkout
 
-    func customerCheckout(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func customerCheckout(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [String:AnyObject]?) -> Void) {
 
         
         let headers = [
@@ -164,14 +195,13 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                          
+                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject])
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
                         print(error)
-//                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-            
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
@@ -180,7 +210,7 @@ extension ServerManager {
 
     // MARK: Wish LIst
 
-    func customerGetWishlistList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result:[WishlistProductList]?) -> Void) {
+    func customerGetWishlistList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[WishlistProductList]?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -199,14 +229,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure( let error):
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
     }
 
-    func customerAddtoWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func customerAddtoWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -223,14 +253,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
     }
 
-    func customerRemovefromWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func customerRemovefromWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -249,7 +279,7 @@ extension ServerManager {
                         }
                     case .Failure(let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
@@ -257,7 +287,7 @@ extension ServerManager {
 
     // MARK: - Promotion
 
-    func customerPromotion (params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func customerPromotion (params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -274,8 +304,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-                        completionClosure(isSuccessful: false,error: errorInfo,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
@@ -284,7 +313,7 @@ extension ServerManager {
 
     // MARK: Track Orders
 
-    func customerOrders(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CustomerOrders]?) -> Void) {
+    func customerOrders(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -302,14 +331,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }
     }
 
-    func customerOrderDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: CustomerOrderDetails?) -> Void) {
+    func customerOrderDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: CustomerOrderDetails?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -328,9 +357,8 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        //                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
         }
@@ -359,15 +387,14 @@ extension ServerManager {
                         }
                     case .Failure(let error):
                         print(error)
-                        //                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                      completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
         }
     }
 
     
-    func customerSetDefaultVendor(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]?) -> Void) {
+    func customerSetDefaultVendor(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CategoryList]?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -385,9 +412,8 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        //                        let errorInfo = ["code":res.statusCode,"message":error.userInfo["NSLocalizedFailureReason"]!]
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                       completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
         }
@@ -395,7 +421,7 @@ extension ServerManager {
 
     // MARK: - Update Profile
 
-    func customerUpdateProfilePopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: PopulateData?) -> Void) {
+    func customerUpdateProfilePopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: PopulateData?) -> Void) {
         
         let params = [
             "token":token,
@@ -417,14 +443,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                       completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
             }
         }
 
-    func customerUpdateProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func customerUpdateProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -441,14 +467,14 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
              }
         }
     }
     
-    func customerUploadImage(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result:[String : AnyObject]?) -> Void) {
+    func customerUploadImage(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[String : AnyObject]?) -> Void) {
 
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -465,14 +491,71 @@ extension ServerManager {
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
-                    case .Failure(_):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                }
          }
     }
     
-// MARK: - Categories
+// MARK: - Push Notification
+    
+    func customerPushNotifications(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[String : AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, customerPushNotificationUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String:AnyObject])
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+// MARK: - OTP Functionality
+    
+    func customerOTP(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, customerForgotPasswordUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            if let isSuccess = dict["success"] as? Bool{
+                                if isSuccess == true {
+                                    completionClosure(isSuccessful: true, error: nil, result: dict as? [String:AnyObject])
+                                }else{
+                                    completionClosure(isSuccessful: false, error: nil, result: nil)
+                                }
+                            }
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    
     
 
 }

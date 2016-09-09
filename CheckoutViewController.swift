@@ -12,20 +12,25 @@ import M13Checkbox
 class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource {
     
     
-//    @IBOutlet weak var deliverChargesLabel: UILabel!
-//    @IBOutlet weak var subTotalLabel: UILabel!
-    
-    
+    @IBOutlet weak var urgentAmountLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var expressDeliveryHeightCheckBox: NSLayoutConstraint!
+    @IBOutlet weak var expressDeliveryHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var checkBoxConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expressDeliveryConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expressDeliveryLabel: UILabel!
     @IBOutlet weak var expressDeliveryCheckBox: M13Checkbox!
+    @IBOutlet weak var cashOnDeliveryButton: M13Checkbox!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var deliveryTimeLabel: UILabel!
-    @IBOutlet weak var deliveryDateTextField: TextField!
+    @IBOutlet weak var deliveryDateTextField: UITextField!
     @IBOutlet weak var placeOrderLabel: Button!
     @IBOutlet weak var paymentOrderLabel: Button!
     @IBOutlet weak var tableView: UITableView!
+    var filterCheckoutTime = [CheckoutDeliveryTime]()
+    var isCheck = false
     var total = CheckoutOrderTotals()
-    var expressDeliveryString = String()
-    var withoutExpressDeliveryString = String()
+    var str = ""
     
     var cartList:Products!{
         didSet{
@@ -33,77 +38,107 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         }
     }
     
-    var checkoutDeliveryTime:CheckoutDeliveryTime!
+    var checkoutDelivery:CheckoutDeliveryTime!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.deliveryDateTextField.delegate = self
+      
+        
+        self.cashOnDeliveryButton.checkState = .Checked
+        isCheck = false
+        self.expressDeliveryCheckBox.checkState = .Unchecked
+        deliveryDateTextField.userInteractionEnabled = true
+        deliveryTimeLabel.userInteractionEnabled = true
+        urgentAmountLabel.text = ""
+        
+        if let checkoutDelivery = cartList?.checkoutDeliveryTime {
+         filterCheckoutTime = checkoutDelivery.filter { (checkoutTime) -> Bool in
+            if checkoutTime.del_hour != "00" || checkoutTime.del_min != "00"{
+            return true
+            }
+            return false
+        }
+        }
+        
+            for delilvery in filterCheckoutTime {
+                self.checkoutDelivery = delilvery
+            }
+        
+        if filterCheckoutTime.count == 0 {
+            deliveryTimeLabel.userInteractionEnabled = false
+            deliveryTimeLabel.text = "Timing Not Mentioned"
+        }else{
+                deliveryTimeLabel.userInteractionEnabled = true
+                deliveryTimeLabel.text = "Set Time"
+        }
+        
         tokenCheck()
         self.tableView.hidden = true
-        
+        setBackButtonForNavigation()
         let nib = UINib(nibName: "DeliveryTimeTableViewCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "deliveryTimeIdentifier")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CheckoutViewController.deliveryTimeLabelClicked(_:)))
         tapGesture.numberOfTapsRequired = 1
         deliveryTimeLabel.addGestureRecognizer(tapGesture)
-        deliveryTimeLabel.userInteractionEnabled = true
-        deliveryTimeLabel.text = "Set Time"
         
         deliveryDateTextField.placeholder = "Delivery Date"
-        deliveryDateTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         
         if let deliverCharges = cartList?.customerCartDetails {
-            
-           self.total = deliverCharges[3]
-           self.expressDeliveryString = self.total.text
-            
             var string1 = String()
             for i in deliverCharges {
+                if i.title != "" {
                 string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
-              
-            }
-                totalPrice.text = string1
+                   }
+                }
+            totalPrice.text = string1
         }
         
-//        totalPrice.sizeToFit()
-        // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        if cartList.is_express == false {
+            expressDeliveryCheckBox.hidden = true
+            expressDeliveryLabel.hidden = true
+            expressDeliveryHeightCheckBox.constant = 0
+            expressDeliveryHeightContraint.constant = 0
+        }
+        addressLabel.text = address
+    }
     
     func deliveryTimeLabelClicked(sender:UITapGestureRecognizer){
 
-        if cartList.checkoutDeliveryTime.count == 0 || (checkoutDeliveryTime.del_hour == "00" &&  checkoutDeliveryTime.del_min == "00"){
-            self.tableView.hidden = false
-            deliveryTimeLabel.text = "Timing Not Mentioned"
-        }
-        
-        if self.tableView.hidden == false {
+        if filterCheckoutTime.count == 0 {
             self.tableView.hidden = true
         }else{
-            self.tableView.hidden = false
+            if self.tableView.hidden == false {
+                self.tableView.hidden = true
+            }else{
+                self.tableView.hidden = false
+            }
         }
-
     }
     
 //  Mark: - Tableview DataSource and Delegate Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartList.checkoutDeliveryTime.count
+        return filterCheckoutTime.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("deliveryTimeIdentifier") as! DeliveryTimeTableViewCell
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+      
         self.tableView.layer.borderWidth = 1.0
         self.tableView.layer.borderColor = UIColor.blackColor().CGColor
         self.tableView.layer.cornerRadius = 1
-        self.tableView.reloadData()
         
-         checkoutDeliveryTime  = cartList.checkoutDeliveryTime[indexPath.row]
+         checkoutDelivery  = filterCheckoutTime[indexPath.row]
         
-         cell.deliveryTimeCell.text = checkoutDeliveryTime.del_hour + ":" + checkoutDeliveryTime.del_min + "  " + checkoutDeliveryTime.del
+         cell.deliveryTimeCell.text = checkoutDelivery.del_hour + ":" + checkoutDelivery.del_min + "  " + checkoutDelivery.del
         
          return cell
     }
@@ -111,8 +146,8 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.hidden = true
         
-        checkoutDeliveryTime  = cartList.checkoutDeliveryTime[indexPath.row]
-         deliveryTimeLabel.text = checkoutDeliveryTime.del_hour + ":" + checkoutDeliveryTime.del_min + "  " + checkoutDeliveryTime.del
+        checkoutDelivery  = filterCheckoutTime[indexPath.row]
+         deliveryTimeLabel.text = checkoutDelivery.del_hour + ":" + checkoutDelivery.del_min + "  " + checkoutDelivery.del
         
     }
     
@@ -126,28 +161,79 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
     }
 
     @IBAction func paymentMethodAction(sender: AnyObject) {
+
+    }
+    
+    
+    @IBAction func placeOrderAction(sender: AnyObject) {
+        self.showHud("Please Wait...")
+        self.view.endEditing(true)
+        
+        if isCheck == true {
+            str = "2,Rs. " + cartList.urgent_delivery + ","  + cartList.totalOrder.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            customerChekout()
+        }
+        else{
+            if deliveryDateTextField.text == "" {
+                AlertView.alertView("Alert", message: "DeliveryDate cannot be left blank", alertTitle: "OK", viewController: self)
+                self.hideHud()
+            }else{
+             str = "1," + String(deliveryDateTextField.text!) + "," + String(deliveryTimeLabel.text!)
+                customerChekout()
+            }
+          }
+        }
+
+    
+    // MARK: - Custom Functions
+    
+    @IBAction func cashOnDeliveryAction(sender: AnyObject) {
+        if self.cashOnDeliveryButton.checkState == .Unchecked{
+            deliveryDateTextField.userInteractionEnabled = true
+            self.expressDeliveryCheckBox.checkState = .Checked
+            deliveryTimeLabel.text = "Set Time"
+            deliveryDateTextField.userInteractionEnabled = false
+            deliveryTimeLabel.userInteractionEnabled = false
+            tableView.hidden = true
+            isCheck = true
+            deliveryDateTextField.text = ""
+            urgentAmountLabel.text = "Rs. " + cartList.urgent_delivery + "/- INR added"
+        }else{
+            isCheck = false
+           self.expressDeliveryCheckBox.checkState = .Unchecked
+            deliveryDateTextField.userInteractionEnabled = true
+            deliveryTimeLabel.userInteractionEnabled = true
+            urgentAmountLabel.text = ""
+        }
+    }
+    
+    @IBAction func expressDeliveryAction(sender: AnyObject) {
+        
+        if self.expressDeliveryCheckBox?.checkState == .Unchecked {
+            isCheck = false
+            deliveryDateTextField.userInteractionEnabled = true
+            deliveryTimeLabel.userInteractionEnabled = true
+            self.cashOnDeliveryButton.checkState = .Checked
+            urgentAmountLabel.text = ""
+        }else{
+            isCheck = true
+            self.cashOnDeliveryButton.checkState = .Unchecked
+            deliveryTimeLabel.text = "Set Time"
+            deliveryDateTextField.userInteractionEnabled = false
+            deliveryTimeLabel.userInteractionEnabled = false
+            tableView.hidden = true
+            deliveryDateTextField.text = ""
+            urgentAmountLabel.text = "Rs. " + cartList.urgent_delivery + "/- INR added"
+        }
         
     }
     
-//    func timeFormatter() {
-//        let starttimedatePicker = UIDatePicker()
-//        deliveryDateTextField.inputView = starttimedatePicker
-//        starttimedatePicker.datePickerMode = UIDatePickerMode.Time
-//        starttimedatePicker.addTarget(self, action: #selector(CheckoutViewController.startTimeDiveChanged(_:)), forControlEvents: .ValueChanged)
-//    }
-//    
-//    func startTimeDiveChanged(sender: UIDatePicker) {
-//        let formatter = NSDateFormatter()
-//        formatter.timeStyle = .ShortStyle
-//        deliveryDateTextField.text = formatter.stringFromDate(sender.date)
-//    }
-    
-    @IBAction func placeOrderAction(sender: AnyObject) {
-        
+    func customerChekout() {
+           if Reachability.isConnectedToNetwork(){
         let params:[String:AnyObject] = [
             "token":token,
             "device_id":"1234",
-            "urgent":"2,Rs. " + cartList.urgent_delivery + "," + "Rs. " + expressDeliveryString
+            "urgent":str
         ]
         
         print(params)
@@ -155,31 +241,78 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         ServerManager.sharedInstance().customerCheckout(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
-               AlertView.alertView("Order Confirmation", message: "Thank you for shopping at ", alertTitle: "OK", viewController: self)
+                
+                let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(result!["total"]!)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                      self.navigationController?.popToRootViewControllerAnimated(true)
+                    }
+                ))
+                
+                self.presentViewController(refreshAlert, animated: true, completion: nil)
+                
             }else{
-                AlertView.alertView("Alert", message: error!, alertTitle: "OK", viewController: self)
+                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                self.hideHud()
             }
+        }
+    }
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
+    }
+
+
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+         addDatePickerToTextField()
+        return true
+    }
+    
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.view.endEditing(true)
+            if deliveryDateTextField.text!.isEmpty{
+                let date = NSDate()
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                deliveryDateTextField.text = dateFormatter.stringFromDate(date)
+        }
+        if isCheck == true {
+           deliveryDateTextField.text = ""
         }
         
     }
-    
-    // MARK: - Custom Functions
-    
-    func checkBoxState() {
-        
-            if let state = self.expressDeliveryCheckBox?.checkState {
-                switch state {
-                case .Unchecked:
-                    isChecked = false
-            print("")
-                case .Checked:
-                    isChecked = true
-            print("")
-                case .Mixed:
-                    print("")
-                }
-         }
+
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return false
     }
+    
+    private func addDatePickerToTextField(){
+        
+        let datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.minimumDate = NSDate()
+        datePickerView.backgroundColor = UIColor.whiteColor()
+        deliveryDateTextField.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(CheckoutViewController.handleDatePicker(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if !deliveryDateTextField.text!.isEmpty {
+            let currentDate = deliveryDateTextField.text
+            let date = dateFormatter.dateFromString(currentDate!)
+            datePickerView.setDate(date!, animated: false)
+        }
+    }
+    
+    func handleDatePicker(sender: UIDatePicker) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        deliveryDateTextField.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -18,93 +18,115 @@ class CustomerMenuDescriptionViewController: UIViewController {
 
     @IBOutlet weak var productStocks: UILabel!
     
+    @IBOutlet weak var detailsDescription: UILabel!
+    
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
-    var getProductList = ProductCollectionList()
-    var getDetailsProducts = ProductDetails()
+    var getProductList:ProductCollectionList!
+    
+    var getDetailsProducts:ProductDetails!{
+        didSet{
+            bindModelToViews()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         tokenCheck()
         
-        print(getProductList)
         self.changeNavigationBarColor()
         let params:[String : AnyObject] = [
         "token":token,
         "device_id":"1234",
         "product_id":getProductList.product_id,
-        "width":"",
-        "height":"",
+        "width":"100",
+        "height":"100",
         ]
-  
+
         print(params)
-        
+        if Reachability.isConnectedToNetwork(){
         ServerManager.sharedInstance().customerProductDetails(params) { (isSuccessful, error, result) in
-            
             if isSuccessful{
-            
-            if let details = result {
-            self.getDetailsProducts = details
-              }
-            
-                if self.getProductList.image1 != "" {
-                if let image = self.getProductList.image1 as? String{
-                    self.productDetailsImage.imageFromUrl(image)
-                }
-                }else{
-                    self.productDetailsImage.image = UIImage(named: "v_no_image")
-                }
-                
-                if let name = self.getDetailsProducts.name as? String{
-                    self.productName.text = name
-                }
-
-                
-                if let price = self.getDetailsProducts.price as? String{
-                    self.productSellingPrice.text = price
-                }
-
-                if let stock = self.getDetailsProducts.stock as? String{
-                   self.productStocks.text = stock
-                }
+                if result != nil {
+               self.getDetailsProducts = result!
+               print(self.getDetailsProducts)
+             }
+            }else{
+                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                self.hideHud()
+            }
             }
         }
-    
+        else{
+            self.hideHud()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+        }
+        
     }
 
+    override func viewWillAppear(animated: Bool) {
+        
+ 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func bindModelToViews() {
+    
+        if let customerProductImage1 = self.getDetailsProducts.detailsImage as? String{
+            if customerProductImage1 != "" {
+                self.productDetailsImage.imageFromUrl(image_base_url + customerProductImage1)
+            } else {
+                self.productDetailsImage.image = UIImage(named: "v_no_image")
+            }
+        }
+        
+        if let name = self.getDetailsProducts.name as? String{
+            self.productName.text = name
+        }
+        
+        if let price = self.getDetailsProducts.price as? String{
+            self.productSellingPrice.text = "Selling Price : " + price
+        }
+        
+        if let stock = self.getDetailsProducts.stock as? String{
+            self.productStocks.text = stock + " units in stock"
+        }
+        
+        if let detailsDescription = self.getDetailsProducts.productDescription as? String{
+            self.detailsDescription.text = "Details: " + detailsDescription
+        }
+        
+    }
+    
     @IBAction func SegmentButtonAction(sender: AnyObject) {
-        
        segmentSelected()
-  
-        
     }
 
     func segmentSelected() {
-        
+           if Reachability.isConnectedToNetwork(){
         switch self.segmentControl.selectedSegmentIndex {
         case 0:
-
             let params:[String:AnyObject]? = [
                 "product_id":self.getProductList.product_id,
                 "device_id":"1234",
                 "token":token,
                 ]
-
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
-
+                
+                if isSuccessful {
+                    AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
+                }else{
+                    AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                    self.hideHud()
+                }
+                
             })
-
-            AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
-
         case 1:
-
             let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
             let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
                 if let field = alertController.textFields![0] as? UITextField {
@@ -116,11 +138,16 @@ class CustomerMenuDescriptionViewController: UIViewController {
                                 "token":token,
                                 "quantity":Int(field.text!)!
                             ]
-
                             print(params)
-
                             ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
-
+                                
+                                if isSuccessful{
+                                    
+                                }else{
+                                    AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                                    self.hideHud()
+                                }
+                                
                             }
                         }else{
                             self.toastViewForTextfield("Not a valid number to enter")
@@ -130,31 +157,29 @@ class CustomerMenuDescriptionViewController: UIViewController {
                     }
                 }
             }
-
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in
+              self.segmentControl.selectedSegmentIndex = UISegmentedControlNoSegment
+            }
+            
             alertController.addTextFieldWithConfigurationHandler { (textField) in
                 textField.placeholder = "Number Of Items"
+                textField.text = "1"
+                textField.keyboardType = .PhonePad
             }
-
+            
             alertController.addAction(confirmAction)
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
         default:
-            let params:[String:AnyObject]? = [
-                "product_id":self.getProductList.product_id,
-                "device_id":"1234",
-                "token":token,
-                ]
-
-            ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
-
-            })
-            
-            AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
-        }
-
+            print("Nothing")
     }
-
+    }
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
+    }
     /*
     // MARK: - Navigation
 

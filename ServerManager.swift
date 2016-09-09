@@ -61,7 +61,7 @@ class ServerManager: NSObject {
         }
     }
     
-    func requestSwitchProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: Dictionary<String,String>?) -> Void) {
+    func requestSwitchProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]?) -> Void) {
         
         
         let headers = [
@@ -76,7 +76,9 @@ class ServerManager: NSObject {
                         if let dict = response.result.value {
                             if let success = dict["success"]{
                                 if success as! Bool {
-                                    completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                                    print(dict)
+                               let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
+                                    completionClosure(isSuccessful: true, error: nil, result: arr)
                                 }else{
                                     completionClosure(isSuccessful: false, error: nil, result: nil)
                                 }
@@ -106,11 +108,11 @@ class ServerManager: NSObject {
     
     func loginLogout(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result:[String : AnyObject]?) -> Void) {
         
-//        let headers = [
-//            "Cookie":"PHPSESSID=" + sessionID
-//        ]
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
         
-         defaultManager.request(.POST, loginLogoutUrl, parameters: params, encoding: .URL, headers: nil)
+         defaultManager.request(.POST, loginLogoutUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

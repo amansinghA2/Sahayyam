@@ -22,8 +22,9 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackButtonForNavigation()
+        tokenCheck()
         
-      tokenCheck()
         self.showHud("Loading...")
         let nib1 = UINib(nibName: "VendorListTableViewCell", bundle: nil)
         self.vendorListTAbleView.registerNib(nib1, forCellReuseIdentifier: "vendorListIdentifier")
@@ -36,7 +37,9 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
+        self.showHud("Loading...")
+        if Reachability.isConnectedToNetwork(){
         let params = [
             "token":token ,
             "device_id":"1234"
@@ -44,13 +47,22 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
         
         ServerManager.sharedInstance().customerGetVendorsList(params) { (isSuccessful, error, result) in
             self.hideHud()
-            self.vendorsLists = result!
+            if let results = result {
+            self.vendorsLists = results
+            }
             self.vendorsLists.sortInPlace() { $1.nickname > $0.nickname }
             self.vendorListTAbleView.reloadData()
             self.vendorListTAbleView.dataSource = self
             self.vendorListTAbleView.delegate = self
             self.vendorListTAbleView.reloadData()
         }
+        
+    }
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,9 +79,6 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
             cell.vendorList = vendorList
 
         }
-
-
-
         return cell
     }
     

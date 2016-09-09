@@ -10,6 +10,7 @@ import UIKit
 
 class CartListStaticTableViewCell: UITableViewCell {
 
+
     @IBOutlet weak var subTotal: UILabel!
     @IBOutlet weak var deliveryCost: UILabel!
     @IBOutlet weak var totalcartPrice: UILabel!
@@ -34,13 +35,12 @@ class CartListStaticTableViewCell: UITableViewCell {
     }
 
     func bindModelToViews(){
-        
+      
         if let deliverCharges = cartList?.customerCartDetails {
             var string1 = String()
             for i in deliverCharges {
-                print(i)
-
-                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
+               
+                string1 = string1.stringByAppendingString(i.title + "         " + i.text   + "          " + i.appliedPrice + "\n")
 
           }
             self.subTotal.text = string1

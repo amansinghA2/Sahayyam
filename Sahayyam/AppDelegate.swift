@@ -22,6 +22,8 @@ var defaultvendorId = String()
 var sessionID = String()
 var checkTokenHealth = Bool()
 var defaultVendorID = String()
+var filteredArr = [CategoryList]()
+var address = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,33 +32,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+//        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+//        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+//        
+//        application.registerUserNotificationSettings(pushNotificationSettings)
+//        application.registerForRemoteNotifications()
+        
+//        if let launchOptions = launchOptions {
+//            let userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject]
+//            let aps = userInfo!["aps"] as? [NSObject: AnyObject]
+//            let alert1 = aps!["alerts"] as? String
+//            let link1 = aps!["links"] as? String
+//            print(userInfo)
+//        }
+        
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
         }
-
-
+        
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultVendorID"){
             defaultVendorID = defaultVendName as! String
         }
-
+        
+        if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
+           filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
+        }
+        
+        if let address1 = NSUserDefaults.standardUserDefaults().objectForKey("address"){
+            address = address1 as! String
+        }
+        
         if NSUserDefaults.standardUserDefaults().boolForKey("isChecked"){
-           
             if let token1 = NSUserDefaults.standardUserDefaults().objectForKey("token"){
-            
                 token = token1 as! String
-                
-                if let sessionid1 = NSUserDefaults.standardUserDefaults().objectForKey("sessionID") {
+                if let sessionid1 = NSUserDefaults.standardUserDefaults().objectForKey("sessionID"){
                      sessionID = sessionid1 as! String
                     
                 }
-
-//                ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
-//                    if isSuccessful{
-//
-//                    }
-//                }
-
             }
+            
+            
             
             if let customerType1 = NSUserDefaults.standardUserDefaults().objectForKey("customerType"){
                 customerType = customerType1 as! Int
@@ -73,7 +88,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let isChecked1 = NSUserDefaults.standardUserDefaults().objectForKey("isChecked"){
                 isChecked = isChecked1 as! Bool
             }
-
 
             switch profile{
             case true:
@@ -122,6 +136,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+//    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+//        
+////        let params = [
+////        "token":token,
+////        "messageText":""
+////        ]
+////        
+////     ServerManager.sharedInstance().customerPushNotifications(params) { (isSuccessful, error, result) in
+////        if isSuccessful {
+////            print("Success")
+////        }
+////        
+////        }
+//
+//    }
+    
+//    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+//        print(error)
+//    }
+//    
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+//        print(userInfo)
+//    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

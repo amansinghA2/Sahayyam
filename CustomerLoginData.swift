@@ -18,11 +18,13 @@ class CustomerLoginData: NSObject {
     dynamic var cust_type = Int()
     dynamic var profile = Bool()
     dynamic var memory = String()
-    dynamic var id = String()
+    dynamic var address = String()
+    dynamic var city = String()
+    dynamic var country = String()
+    dynamic var postcode = String()
     
-// Specify properties to ignore (Realm won't persist these)
     
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+    dynamic var vendorList = [VendorList]()
+    dynamic var categoryList = [CategoryList]()
+    
 }

@@ -17,6 +17,8 @@ class CustomerOrderDetails: NSObject {
     dynamic var payment_method = String()
     dynamic var orderProducts = [OrderProductList]()
     dynamic var orderTotals = [CheckoutOrderTotals]()
+    dynamic var extraDeliveryTotals = [CheckoutOrderTotals]()
+    dynamic var extraOrderCosts = [CheckoutOrderTotals]()
     
 //    dynamic var title = String()
 //    dynamic var text = String()

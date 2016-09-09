@@ -12,6 +12,8 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBOutlet weak var mobileNumberTextfield: TextField!
     @IBOutlet weak var birthDatetextfield: TextField!
+    var optData = [String:AnyObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,23 +37,51 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     @IBAction func senOTPAction(sender: AnyObject){
-
+        
+        if Reachability.isConnectedToNetwork(){
+        if  birthDatetextfield.text?.isBlank == false{
         if mobileNumberTextfield.text?.isPhoneNumber  == true && mobileNumberTextfield.text?.isBlank == false {
+            let params:[String:AnyObject]? = [
+            "dobirth": birthDatetextfield.text!,
+            "mobile":mobileNumberTextfield.text!
+            ]
             
+        ServerManager.sharedInstance().customerOTP(params, completionClosure: { (isSuccessful, error, result) in
             
+            if isSuccessful {
+                self.optData = result!
+                self.performSegueWithIdentifier("goToOTPPage", sender: self)
+            }else{
+                AlertView.alertView("Invalid", message: "Invalid Data", alertTitle: "OK", viewController: self)
+            }
             
+        })
+        }else{
+                AlertView.alertView("Invalid", message: "Invalid Mobile Number or the field is empty", alertTitle: "OK", viewController: self)
+             }
+        }
+        else{
+                AlertView.alertView("Invalid", message: "Field is blank", alertTitle: "OK", viewController: self)
+        }
+    }
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
+    }
+
+    
+    // MARK: - Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == "goToOTPPage" {
+            let vc = segue.destinationViewController as! OTPViewController
+            vc.otpData = optData
+            print(vc.otpData)
         }
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
 
 }

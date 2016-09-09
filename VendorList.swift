@@ -11,7 +11,7 @@ import UIKit
 class VendorList: NSObject {
     
     
-   dynamic var nickname = String()
+    dynamic var nickname = String()
     dynamic var tel = String()
     dynamic var address_1 = String()
     dynamic var from_date = String()
@@ -19,5 +19,6 @@ class VendorList: NSObject {
     dynamic var fromToDate = String()
     dynamic var image = String()
     dynamic var vendorId = String()
+    dynamic var defaultVendorId = String()
     
 }

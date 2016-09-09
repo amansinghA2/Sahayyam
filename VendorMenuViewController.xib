@@ -14,9 +14,30 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.29093739942352936" blue="0.19199682915366434" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-dy-98k">
+                    <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-Zg-ia0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
+                    <color key="backgroundColor" red="1" green="0.58540464709999995" blue="0.23874236530000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="sy7-r6-wRR"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="p7g-Zg-ia0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GAX-Nb-CEm"/>
+                <constraint firstAttribute="trailing" secondItem="p7g-Zg-ia0" secondAttribute="trailing" id="ItU-Gb-PqS"/>
+                <constraint firstAttribute="bottom" secondItem="wT5-dy-98k" secondAttribute="bottom" id="QZU-F9-F66"/>
+                <constraint firstItem="p7g-Zg-ia0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kls-Pz-Z2d"/>
+                <constraint firstAttribute="trailing" secondItem="wT5-dy-98k" secondAttribute="trailing" id="pgh-38-gyQ"/>
+                <constraint firstItem="wT5-dy-98k" firstAttribute="top" secondItem="p7g-Zg-ia0" secondAttribute="bottom" id="t6p-EV-qnr"/>
+                <constraint firstItem="wT5-dy-98k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z1Q-1M-sla"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="246" y="287"/>
+            <point key="canvasLocation" x="137" y="208"/>
         </view>
     </objects>
 </document>

@@ -16,8 +16,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+let BASE_URL = "http://192.168.1.2/sahayyam/"
+let image_base_url = "http://192.168.1.2/sahayyam/image/"
+
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
 // MARK: - Common Url
 
@@ -25,6 +28,8 @@ let urlString = BASE_URL+"index.php?route=api/login"
 let switchProfileUrl = BASE_URL+"index.php?route=api/switchprofile"
 let customerUpdateProfileUrl = BASE_URL+"index.php?route=api/customer"
 let customerUploadImageUrl = BASE_URL+"index.php?route=api/filemanager/upload"
+let customerForgotPasswordUrl = BASE_URL+"index.php?route=api/forgetPassword/chk_valid"
+let customerPushNotificationUrl = BASE_URL+"index.php?route=api/mobileNotification"
 let loginLogoutUrl = BASE_URL+"index.php?route=api/login/logout"
 let checkTokenHealthUrl = BASE_URL+"index.php?route=api/login/getHealth"
 
@@ -43,6 +48,7 @@ let setDefaultVendorUrl = BASE_URL+"index.php?route=api/vendor/setDefaultVendor"
 let customergetcartListUrl = BASE_URL+"index.php?route=api/cart/products"
 let customerRemoveFromCartUrl = BASE_URL+"index.php?route=api/cart/remove"
 let customerAddToCartUrl = BASE_URL+"index.php?route=api/cart/add"
+let customerEditToCartUrl = BASE_URL+"index.php?route=api/cart/edit"
 let customerGetWishlistUrl = BASE_URL+"index.php?route=api/wishlist/products"
 let customerAddToWishlist = BASE_URL+"index.php?route=api/wishlist/add"
 let customerRemoveFromWishListUrl = BASE_URL+"index.php?route=api/wishlist/remove"
@@ -69,6 +75,8 @@ extension String
         return  self == filtered
         
     }
+    
+    
     
   
     

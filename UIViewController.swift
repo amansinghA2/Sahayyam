@@ -49,14 +49,14 @@ extension UIViewController {
 
     func showHud(message:String){
         var config : SwiftLoader.Config = SwiftLoader.Config()
-        config.size = 100
+        config.size = 120
 
-        config.foregroundColor = .whiteColor()
+        config.foregroundColor = UIColor.blackColor()
         config.foregroundAlpha = 0.5
-        config.backgroundColor = UIColor.orangeColor()
+        config.backgroundColor = UIColor.lightGrayColor()
         config.spinnerLineWidth = 3.0
         SwiftLoader.setConfig(config)
-        SwiftLoader.show(title: "Loading...", animated: true)
+        SwiftLoader.show(title: message, animated: true)
         
     }
     
@@ -66,42 +66,49 @@ extension UIViewController {
 
     // MARK: - ALERT View
 
-   
-
-    func slideMenuShow(menuButton:UIBarButtonItem){
-
+    func slideMenuShow(menuButton:UIBarButtonItem , viewcontroller:UIViewController){
+        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+          
         }
-        self.revealViewController().rearViewRevealWidth = 150
+        
+          self.revealViewController().rearViewRevealWidth = 225
 
     }
     
     func viewControllerPassToLogin() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc1 = sb.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-       // vc1.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         self.navigationController?.pushViewController(vc1, animated: true)
+        
     }
     
     func tokenCheck() {
+               if Reachability.isConnectedToNetwork(){
         ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
             if isSuccessful{
+                self.hideHud()
                 checkTokenHealth = true
                 self.hideHud()
             }else{
-                 AlertView.alertViewToGoToLogin("OK", message: error!, alertTitle: "OK", viewController: self)
+                AlertView.alertViewToGoToLogin("OK", message:"error_login", alertTitle: "OK", viewController: self)
                 self.hideHud()
             }
         }
     }
-    
+    else{
+    self.hideHud()
+    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+    }
+    }
+
     func toastView(text:String) {
         let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 25))
-        toastLabel.backgroundColor = UIColor.blackColor()
-        toastLabel.textColor = UIColor.whiteColor()
+        toastLabel.backgroundColor = UIColor.orangeColor()
+        toastLabel.textColor = UIColor.blackColor()
         toastLabel.textAlignment = NSTextAlignment.Center;
         toastLabel.font = UIFont (name: "HelveticaNeue-Bold", size: 15)
         self.view.addSubview(toastLabel)
@@ -110,8 +117,8 @@ extension UIViewController {
         toastLabel.layer.cornerRadius = 10;
         toastLabel.clipsToBounds  =  true
         
-        UIView.animateWithDuration(3.0, delay: 0.1, options: .CurveEaseOut, animations: {
-            toastLabel.alpha = 0.0
+        UIView.animateWithDuration(2.0, delay: 0.1, options: .CurveEaseOut, animations: {
+            toastLabel.alpha = 0.5
         }) { (completion) in
             self.navigationController?.popViewControllerAnimated(true)
         }
@@ -119,14 +126,14 @@ extension UIViewController {
 
     func toastViewForTextfield(text:String) {
         let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 25))
-        toastLabel.backgroundColor = UIColor.whiteColor()
+        toastLabel.backgroundColor = UIColor.orangeColor()
         toastLabel.textColor = UIColor.blackColor()
         toastLabel.textAlignment = NSTextAlignment.Center;
         toastLabel.font = UIFont (name: "HelveticaNeue-Bold", size: 15)
         self.view.addSubview(toastLabel)
         toastLabel.text = text
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
+        toastLabel.layer.cornerRadius = 5;
         toastLabel.clipsToBounds  =  true
 
         UIView.animateWithDuration(4.0, delay: 0.1, options: .CurveEaseOut, animations: {

@@ -15,6 +15,7 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var customerProductImage: UIImageView!
     @IBOutlet weak var customerProductName: UILabel!
     @IBOutlet weak var customerproductCost: UILabel!
+    @IBOutlet weak var productOfferPrice: UILabel!
     var quanitityCount = Int()
     var str = ""
     
@@ -52,11 +53,15 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
         if let customerproductCost = getProductCollectionLists?.price {
             self.customerproductCost.text = customerproductCost
         }
-
+        
+        if let offerPrice = getProductCollectionLists?.offerPrice {
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: offerPrice)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+            self.productOfferPrice.attributedText = attributeString
+        }
     }
 
-    
- 
     @IBAction func addToWishList(sender: AnyObject) {
         
     }

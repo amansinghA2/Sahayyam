@@ -10,6 +10,7 @@ import UIKit
 
 class CartListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var quantitytextField: UITextField!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UITextField!
@@ -19,7 +20,10 @@ class CartListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        productImage.layer.borderWidth = 1.0
+        productImage.layer.cornerRadius = 5
+        productImage.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
+        
     }
 
     var cartList:Products!{
@@ -43,7 +47,7 @@ class CartListTableViewCell: UITableViewCell {
             print(productQuantity)
            self.productQuantity.text = String(productQuantity)
         }
-
+        
         if cartList?.image != "" {
             if let customerProductImage1 = cartList?.image{
                 self.productImage.imageFromUrl(customerProductImage1)

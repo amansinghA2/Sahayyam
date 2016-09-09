@@ -20,6 +20,7 @@ class ProductCollectionList: NSObject {
     dynamic var selectedProductQuantity = Int()
     dynamic var width = String()
     dynamic var height = String()
+    dynamic var key = String()
 
     dynamic var id = Int()
     

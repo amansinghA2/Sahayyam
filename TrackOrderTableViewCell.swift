@@ -41,7 +41,6 @@ class TrackOrderTableViewCell: UITableViewCell {
         if let saleOrder = trackLoadData?.status {
             self.orderreceivedStatus.text = saleOrder
 //            self.orderreceivedStatus.tintColor = UIColor.orangeColor()
-            self.orderreceivedStatus.textColor = UIColor.orangeColor()
         }
         
         if let saleOrder = trackLoadData?.products {
@@ -51,6 +50,7 @@ class TrackOrderTableViewCell: UITableViewCell {
         if let saleOrder = trackLoadData?.total {
             self.productTotalPrice.text = String(saleOrder)
         }
+        
         if let saleOrder = trackLoadData?.sales_order {
             self.saleOrderId.text = String(saleOrder)
         }

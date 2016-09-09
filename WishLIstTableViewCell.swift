@@ -15,7 +15,7 @@ class WishLIstTableViewCell: UITableViewCell {
     @IBOutlet weak var productStock: UILabel!
     
     @IBOutlet weak var wishlistImage: UIImageView!
-//    @IBOutlet weak var productImageLabel: UIImageView!
+//  @IBOutlet weak var productImageLabel: UIImageView!
     
     @IBOutlet weak var addToCartOutlet: UIButton!
     
@@ -29,6 +29,9 @@ class WishLIstTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        wishlistImage.layer.borderWidth = 1.0
+        wishlistImage.layer.cornerRadius = 5
+        wishlistImage.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).CGColor
         // Initialization code
     }
 
@@ -45,7 +48,7 @@ class WishLIstTableViewCell: UITableViewCell {
         }
         
         if let productStock = wishList?.stock1 {
-            self.productStock.text =  "Stock remaining" + String(productStock)
+            self.productStock.text =  "Stock remaining " + String(productStock)
         }
         
 //        if let productImageLabel = wishList?.cartQuantity {
