@@ -500,7 +500,7 @@ else{
             print(params)
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
 
-                self.toastViewForTextfield("Product id added to wishlist")
+                self.toastViewForTextfield("Product is added to wishlist")
 
 //                let alert = UIAlertController(title: "Alert", message: "Product is added to Wishlist", preferredStyle: UIAlertControllerStyle.Alert)
 //                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))

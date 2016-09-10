@@ -9,9 +9,8 @@
 import UIKit
 
 class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
-
-    @IBOutlet weak var orderDetailsTableView: UITableView!
     
+    @IBOutlet weak var orderDetailsTableView: UITableView!
     var trackLoadData = CustomerOrders()
     var orderDetailsList = CustomerOrderDetails()
     
@@ -20,20 +19,17 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
         self.showHud("Loading...")
         tokenCheck()
         setUpView()
-       
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
         return 3        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
         switch section {
         case 0:
             return 1

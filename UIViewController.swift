@@ -99,10 +99,10 @@ extension UIViewController {
             }
         }
     }
-    else{
+    else {
     self.hideHud()
     AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
-    }
+       }
     }
 
     func toastView(text:String) {
@@ -114,7 +114,7 @@ extension UIViewController {
         self.view.addSubview(toastLabel)
         toastLabel.text = text
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
+        toastLabel.layer.cornerRadius = 5;
         toastLabel.clipsToBounds  =  true
         
         UIView.animateWithDuration(2.0, delay: 0.1, options: .CurveEaseOut, animations: {

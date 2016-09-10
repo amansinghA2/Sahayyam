@@ -33,29 +33,29 @@ class CustomerMenuDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
-        
+        setBackButtonForNavigation()
         self.changeNavigationBarColor()
         let params:[String : AnyObject] = [
         "token":token,
         "device_id":"1234",
         "product_id":getProductList.product_id,
-        "width":"100",
-        "height":"100",
+        "width":"200",
+        "height":"200",
         ]
 
         print(params)
         if Reachability.isConnectedToNetwork(){
-        ServerManager.sharedInstance().customerProductDetails(params) { (isSuccessful, error, result) in
+            ServerManager.sharedInstance().customerProductDetails(params) { (isSuccessful, error, result) in
             if isSuccessful{
                 if result != nil {
-               self.getDetailsProducts = result!
-               print(self.getDetailsProducts)
+                self.getDetailsProducts = result!
+                print(self.getDetailsProducts)
              }
             }else{
                 AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                 self.hideHud()
             }
-            }
+          }
         }
         else{
             self.hideHud()
