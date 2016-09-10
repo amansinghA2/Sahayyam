@@ -140,21 +140,22 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
             return false
         })
         
-       selectedCategoryLIst = subChildArray[(indexPath?.row)!]
+        selectedCategoryLIst = subChildArray[(indexPath?.row)!]
         
-//        let sb = UIStoryboard(name: "Customer", bundle: nil)
-//        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
-//        self.navigationController?.pushViewController(vc1, animated: true)
-//        let sb = UIStoryboard(name: "Customer", bundle: nil)
-//        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
-////        self.navigationController?.pushViewController(vc1, animated: false, completion:
-////            nil)
-//        
-//        navigationController?.pushViewController(vc1, animated: false)
-        
-       self.performSegueWithIdentifier("menuProductsSegue", sender: self)
- 
+        let sb = UIStoryboard(name: "Customer", bundle: nil)
+        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
+
+        vc1.fromMenuToProductPage = "goToProductsPage"
+        vc1.selectedCategoryLIst = subChildArray[(indexPath?.row)!]
+     
+        let nc = UINavigationController(rootViewController: vc1)
+        nc.setViewControllers([vc1], animated: true)
+        self.revealViewController().setFrontViewController(nc, animated: false)
+        self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+          self.revealViewController().revealToggleAnimated(true)
     }
+    
+    //let vc = CustomerMenuItemsViewController()
     
     func toggleCollapse(sender: UIButton) {
         let section = sender.tag
@@ -190,11 +191,12 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "menuProductsSegue" {
-            let vc = segue.destinationViewController as! CustomerMenuItemsViewController
+        let navVC = segue.destinationViewController as! UINavigationController
+        
+        let vc = navVC.viewControllers.first as! CustomerMenuItemsViewController
+        
             vc.fromMenuToProductPage = "goToProductsPage"
             vc.selectedCategoryLIst = selectedCategoryLIst
-        }
     }
  
 

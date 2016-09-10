@@ -15,7 +15,7 @@ protocol CustomerMenuItemsViewControllerDelegate {
     optional func collapseSidePanels()
 }
 
-class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate  , UITableViewDataSource , UITableViewDelegate , DefaultVendordelegate {
+class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate  , UITableViewDataSource , UITableViewDelegate , DefaultVendordelegate , SWRevealViewControllerDelegate{
 
     @IBOutlet weak var vendorListTextfield: TextField!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -42,14 +42,27 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setUpView()
-        
       }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
         tableView.hidden = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+
+    }
+    
+//    func receiveData(notification:NSNotification) {
+//       let dict = notification.object as! NSDictionary
+//        fromMenuToProductPage = dict["frommenuPage"] as! String
+//        selectedCategoryLIst = dict["selectedcatoryLIst"] as! CategoryList
+//        
+//        print(fromMenuToProductPage)
+//        print(selectedCategoryLIst)
+//    }
     
     @IBAction func moreOptionAction(sender: AnyObject) {
 
@@ -77,9 +90,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.receiveData(_:)), name: "selectedIndexIdData", object: self)
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
           if Reachability.isConnectedToNetwork(){
@@ -320,13 +334,44 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.searchBar!.text = ""
     }
     
+    // MARk:-  RevealView Controler Delegate
+    
+    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+        
+        if position == FrontViewPosition.Left{
+            self.view.userInteractionEnabled = true
+        }else{
+            self.view.userInteractionEnabled = true
+        }
+        
+    }
+    
+    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
+        
+        if position == FrontViewPosition.Left{
+            self.view.userInteractionEnabled = true
+        }else{
+            self.view.userInteractionEnabled = true
+        }
+        
+    }
+    
     // MARK: Custom Functions
 
     
     func setUpView(){
         tokenCheck()
         self.showHud("Loading...")
-          slideMenuShow(menuButton , viewcontroller: self)
+       
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+            self.revealViewController().delegate = self
+        }
+        
+            self.revealViewController().rearViewRevealWidth = 235
 
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
@@ -627,6 +672,7 @@ else{
     // MARK: - TextField Delegates
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        fromMenuToProductPage = ""
         self.view.endEditing(true)
   
         self.performSegueWithIdentifier("vendorListIdentifier", sender: nil)
