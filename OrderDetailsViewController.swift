@@ -26,7 +26,7 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
-        return 3        
+        return 4
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
@@ -37,6 +37,8 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
             return 1
         case 2:
             return self.orderDetailsList.orderProducts.count
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -62,9 +64,13 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
            let orderProduct = self.orderDetailsList.orderProducts[indexPath.row]
            cell.orderProducts = orderProduct
             return cell
+        case 3:
+            let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
+            cell.orderdetailList = self.orderDetailsList
+            return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-            
+            cell.orderdetailList = self.orderDetailsList
             return cell
 
         }
@@ -85,30 +91,40 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
         }
         return header
     }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 2:
-            let footer = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-            
-            footer.orderdetailList = self.orderDetailsList
-            
-            orderDetailsTableView.tableFooterView = footer
-             return footer
-        default:
-            print("No more footers")
-        }
-        return nil
-    }
-
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        switch section {
-        case 2:
-            return 120
-        default:
+        case 3:
             return 0
+        default:
+            print("")
         }
+        return 44
     }
+    
+    
+//    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        switch section {
+//        case 2:
+//            let footer = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
+//            
+//            footer.orderdetailList = self.orderDetailsList
+//            
+//            orderDetailsTableView.tableFooterView = footer
+//             return footer
+//        default:
+//            print("No more footers")
+//        }
+//        return nil
+//    }
+
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        switch section {
+//        case 2:
+//            return UITableViewAutomaticDimension
+//        default:
+//            return 0
+//        }
+//    }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension

@@ -15,26 +15,26 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOB-Xk-NST">
-                        <rect key="frame" x="8" y="21" width="78" height="21"/>
+                        <rect key="frame" x="13" y="21" width="78" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="78" id="34n-o2-60d"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508620689655" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaW-2z-m53">
-                        <rect key="frame" x="114" y="21" width="198" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="129" y="21" width="191" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508620689655" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uaW-2z-m53" firstAttribute="leading" secondItem="jOB-Xk-NST" secondAttribute="trailing" constant="28" id="8Og-pf-9Kv"/>
+                    <constraint firstItem="uaW-2z-m53" firstAttribute="leading" secondItem="jOB-Xk-NST" secondAttribute="trailing" constant="38" id="8Og-pf-9Kv"/>
                     <constraint firstItem="jOB-Xk-NST" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="JGM-BD-SzK"/>
-                    <constraint firstItem="jOB-Xk-NST" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="MJc-Oh-PeJ"/>
-                    <constraint firstAttribute="trailing" secondItem="uaW-2z-m53" secondAttribute="trailing" constant="8" id="WWB-G8-aE8"/>
+                    <constraint firstItem="jOB-Xk-NST" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="MJc-Oh-PeJ"/>
+                    <constraint firstAttribute="trailing" secondItem="uaW-2z-m53" secondAttribute="trailing" id="WWB-G8-aE8"/>
                     <constraint firstItem="uaW-2z-m53" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="fK5-66-5ol"/>
                     <constraint firstAttribute="bottom" secondItem="jOB-Xk-NST" secondAttribute="bottom" constant="22" id="hZ2-gY-eMW"/>
                     <constraint firstAttribute="bottom" secondItem="uaW-2z-m53" secondAttribute="bottom" constant="22" id="xvv-GZ-Wd0"/>
@@ -43,7 +43,7 @@
             <connections>
                 <outlet property="addressLabel" destination="uaW-2z-m53" id="78T-3Q-1aJ"/>
             </connections>
-            <point key="canvasLocation" x="259" y="239.5"/>
+            <point key="canvasLocation" x="157" y="223.5"/>
         </tableViewCell>
     </objects>
 </document>

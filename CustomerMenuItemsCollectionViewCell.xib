@@ -41,7 +41,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al3-BS-Hjc">
-                                <rect key="frame" x="17" y="117" width="122" height="17"/>
+                                <rect key="frame" x="12" y="117" width="135" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="71M-uy-eFD"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWb-0h-Sts">
-                                <rect key="frame" x="17" y="98" width="122" height="16"/>
+                                <rect key="frame" x="12" y="98" width="135" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="HvK-Du-tkQ"/>
                                 </constraints>
@@ -59,7 +59,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EJ-in-ZWr">
-                                <rect key="frame" x="17" y="80" width="122" height="16"/>
+                                <rect key="frame" x="12" y="80" width="135" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="Q3h-Aq-Ya6"/>
                                 </constraints>
@@ -89,11 +89,11 @@
                             <constraint firstItem="lhs-cl-Mzv" firstAttribute="top" secondItem="Al3-BS-Hjc" secondAttribute="bottom" constant="7" id="Z7X-E1-Ohz"/>
                             <constraint firstItem="VWb-0h-Sts" firstAttribute="top" secondItem="7EJ-in-ZWr" secondAttribute="bottom" constant="2" id="ZEN-ET-f0z"/>
                             <constraint firstItem="7EJ-in-ZWr" firstAttribute="trailing" secondItem="VWb-0h-Sts" secondAttribute="trailing" id="ZQQ-Wz-N2G"/>
-                            <constraint firstItem="7EJ-in-ZWr" firstAttribute="trailing" secondItem="bnr-m0-UCd" secondAttribute="trailingMargin" constant="-11" id="fOK-au-Btv"/>
+                            <constraint firstItem="7EJ-in-ZWr" firstAttribute="trailing" secondItem="bnr-m0-UCd" secondAttribute="trailingMargin" constant="-3" id="fOK-au-Btv"/>
                             <constraint firstItem="Dgn-Qs-6i2" firstAttribute="top" secondItem="bnr-m0-UCd" secondAttribute="top" constant="6" id="gcj-Ms-eMY"/>
                             <constraint firstItem="7EJ-in-ZWr" firstAttribute="top" secondItem="Dgn-Qs-6i2" secondAttribute="bottom" constant="1" id="kPh-WA-Htk"/>
                             <constraint firstItem="VWb-0h-Sts" firstAttribute="trailing" secondItem="Al3-BS-Hjc" secondAttribute="trailing" id="pqm-Pg-6x1"/>
-                            <constraint firstItem="7EJ-in-ZWr" firstAttribute="centerX" secondItem="bnr-m0-UCd" secondAttribute="centerX" constant="-1" id="yMe-Bp-qaW"/>
+                            <constraint firstItem="7EJ-in-ZWr" firstAttribute="centerX" secondItem="bnr-m0-UCd" secondAttribute="centerX" constant="0.5" id="yMe-Bp-qaW"/>
                         </constraints>
                     </view>
                 </subviews>

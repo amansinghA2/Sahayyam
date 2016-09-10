@@ -18,6 +18,8 @@
 		8F069A2BE53A3C6EF6A95808 /* Pods_SahayyamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */; };
 		AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF142BDE1D7EC30A00273C06 /* VendorMenuTableViewCell.swift */; };
 		AF142BE11D7EC30A00273C06 /* VendorMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF142BDF1D7EC30A00273C06 /* VendorMenuTableViewCell.xib */; };
+		AF1685B41D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1685B21D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift */; };
+		AF1685B51D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1685B31D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib */; };
 		AF1F1F4A1D4A07E400E36DB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1F1F491D4A07E400E36DB0 /* AppDelegate.swift */; };
 		AF1F1F4F1D4A07E400E36DB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1F1F4D1D4A07E400E36DB0 /* Main.storyboard */; };
 		AF1F1F521D4A07E400E36DB0 /* Sahayyam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF1F1F501D4A07E400E36DB0 /* Sahayyam.xcdatamodeld */; };
@@ -48,8 +50,6 @@
 		AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1F1FC21D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib */; };
 		AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3844BA1D7415E100E4F2B4 /* CustomClass.swift */; };
 		AF3D717A1D4C60A00025EF32 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */; };
-		AF4313201D7839AC0048B82A /* CustomerDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF43131F1D7839AC0048B82A /* CustomerDropDownTableViewCell.swift */; };
-		AF4313221D7839B60048B82A /* CustomerDropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4313211D7839B60048B82A /* CustomerDropDownTableViewCell.xib */; };
 		AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4680C51D71C7EF005BF406 /* CategoryList.swift */; };
 		AF4E78BF1D50857300E2FB20 /* TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E78BD1D50857300E2FB20 /* TrackOrderViewController.swift */; };
 		AF4E78C01D50857300E2FB20 /* TrackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4E78BE1D50857300E2FB20 /* TrackOrderViewController.xib */; };
@@ -192,6 +192,8 @@
 		A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF142BDE1D7EC30A00273C06 /* VendorMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AF142BDF1D7EC30A00273C06 /* VendorMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorMenuTableViewCell.xib; sourceTree = "<group>"; };
+		AF1685B21D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDropDownTableViewCell.swift; sourceTree = "<group>"; };
+		AF1685B31D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerDropDownTableViewCell.xib; sourceTree = "<group>"; };
 		AF1F1F461D4A07E400E36DB0 /* Sahayyam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sahayyam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1F1F491D4A07E400E36DB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF1F1F4E1D4A07E400E36DB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -230,8 +232,6 @@
 		AF3D71771D4C609F0025EF32 /* Sahayyam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sahayyam-Bridging-Header.h"; sourceTree = "<group>"; };
 		AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		AF43131F1D7839AC0048B82A /* CustomerDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDropDownTableViewCell.swift; sourceTree = "<group>"; };
-		AF4313211D7839B60048B82A /* CustomerDropDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerDropDownTableViewCell.xib; sourceTree = "<group>"; };
 		AF4680C51D71C7EF005BF406 /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		AF4E78BD1D50857300E2FB20 /* TrackOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackOrderViewController.swift; sourceTree = "<group>"; };
 		AF4E78BE1D50857300E2FB20 /* TrackOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackOrderViewController.xib; sourceTree = "<group>"; };
@@ -643,10 +643,10 @@
 				AF1F1FAD1D4A121C00E36DB0 /* MenuViewController.xib */,
 				AF1F1FB91D4A1D6200E36DB0 /* MenuTableViewCell.swift */,
 				AF1F1FBA1D4A1D6200E36DB0 /* MenuTableViewCell.xib */,
+				AF1685B21D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift */,
+				AF1685B31D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib */,
 				AF4E78BD1D50857300E2FB20 /* TrackOrderViewController.swift */,
 				AF4E78BE1D50857300E2FB20 /* TrackOrderViewController.xib */,
-				AF43131F1D7839AC0048B82A /* CustomerDropDownTableViewCell.swift */,
-				AF4313211D7839B60048B82A /* CustomerDropDownTableViewCell.xib */,
 				AF4E78C11D5085D900E2FB20 /* TrackOrderTableViewCell.swift */,
 				AF4E78C21D5085D900E2FB20 /* TrackOrderTableViewCell.xib */,
 				AFBC273E1D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.swift */,
@@ -890,9 +890,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF4313221D7839B60048B82A /* CustomerDropDownTableViewCell.xib in Resources */,
 				AFBF2D331D5C889F007A8655 /* CheckoutViewController.xib in Resources */,
 				AFBC27531D54B3E2003ECBF6 /* WishLIstTableViewCell.xib in Resources */,
+				AF1685B51D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib in Resources */,
 				AFBF9CB91D589C06007E17C3 /* CartListStaticTableViewCell.xib in Resources */,
 				AFBC27451D54A558003ECBF6 /* AboutUsViewController.xib in Resources */,
 				07F442741D621E5D00733E91 /* CustomerDetailsTableViewCell.xib in Resources */,
@@ -1086,6 +1086,7 @@
 			files = (
 				AFB6A1F81D5DF05700A9731B /* OrderDetailHeaderTableViewCell.swift in Sources */,
 				AF4E78C31D5085D900E2FB20 /* TrackOrderTableViewCell.swift in Sources */,
+				AF1685B41D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift in Sources */,
 				AFC26FC61D4F192E0003471B /* CommonJsonMapper.swift in Sources */,
 				AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */,
 				AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */,
@@ -1097,7 +1098,6 @@
 				AF1F1FB21D4A122F00E36DB0 /* VendorMenuViewController.swift in Sources */,
 				AFC26FBA1D4F05D90003471B /* CheckBoxButton.swift in Sources */,
 				AFE659541D81509300B632D6 /* ChangePasswordViewController.swift in Sources */,
-				AF4313201D7839AC0048B82A /* CustomerDropDownTableViewCell.swift in Sources */,
 				AFC2B78B1D641C3600BF8E3C /* OrderProductDetails.swift in Sources */,
 				AF1F1F981D4A09B000E36DB0 /* String.swift in Sources */,
 				AF530B081D756DB7004A269F /* MenuDetailsHeaderTableViewCell.swift in Sources */,

@@ -12,6 +12,14 @@ import M13Checkbox
 class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource {
     
     
+    @IBOutlet weak var totalShowLabel: UILabel!
+    @IBOutlet weak var subTotalShowLabel: UILabel!
+    @IBOutlet weak var deliverychargesShowLabel: UILabel!
+    @IBOutlet weak var priceShowLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var subTotalLabel: UILabel!
+    @IBOutlet weak var offerPriceLabel: UILabel!
+    @IBOutlet weak var deliveryChargesLabel: UILabel!
     @IBOutlet weak var urgentAmountLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var expressDeliveryHeightCheckBox: NSLayoutConstraint!
@@ -88,13 +96,51 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         deliveryDateTextField.placeholder = "Delivery Date"
         
         if let deliverCharges = cartList?.customerCartDetails {
-            var string1 = String()
-            for i in deliverCharges {
-                if i.title != "" {
-                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
-                   }
-                }
-            totalPrice.text = string1
+            
+            let offerPrice = deliverCharges[0]
+            let deliveryCharges = deliverCharges[1]
+            let subTotal = deliverCharges[2]
+            let total = deliverCharges[3]
+            
+            if offerPrice.title != "" {
+            offerPriceLabel.text = offerPrice.title
+            }
+            
+            if deliveryCharges.title != "" {
+                deliveryChargesLabel.text = deliveryCharges.title
+            }
+            
+            if subTotal.title != "" {
+                subTotalLabel.text = subTotal.title
+            }
+            
+            if total.title != "" {
+                totalLabel.text = total.title
+            }
+            
+            if offerPrice.title != "" {
+                priceShowLabel.text = offerPrice.text
+            }
+            
+            if deliveryCharges.title != "" {
+                deliverychargesShowLabel.text = deliveryCharges.text
+            }
+            
+            if subTotal.title != "" {
+                subTotalShowLabel.text = "Rs. " + subTotal.text
+            }
+            
+            if total.title != "" {
+                totalShowLabel.text = "Rs. " + total.text
+            }
+            
+//            var string1 = String()
+//            for i in deliverCharges {
+//                if i.title != "" {
+//                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
+//                   }
+//                }
+//            totalPrice.text = string1
         }
         
     }

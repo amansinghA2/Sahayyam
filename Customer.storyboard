@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2si-dD-aEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-406" y="-1080"/>
+            <point key="canvasLocation" x="-640" y="-1046"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="eIY-c4-2OX">
@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Keb-UI-o9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="21"/>
+            <point key="canvasLocation" x="17" y="73"/>
         </scene>
         <!--Customer Menu Items View Controller-->
         <scene sceneID="6QN-db-6jt">
@@ -179,7 +179,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMb-uD-cEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21" y="-674"/>
+            <point key="canvasLocation" x="-206" y="-672"/>
         </scene>
         <!--Customer Best Deals View Controller-->
         <scene sceneID="lrv-a1-MWi">
@@ -284,6 +284,6 @@
         <image name="add-to-cart-e-commerce-interface-symbol" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y5Q-E0-ze5"/>
+        <segue reference="qev-dk-wOJ"/>
     </inferredMetricsTieBreakers>
 </document>
