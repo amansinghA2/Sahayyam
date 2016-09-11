@@ -150,6 +150,7 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
      
         let nc = UINavigationController(rootViewController: vc1)
         nc.setViewControllers([vc1], animated: true)
+        nc.navigationBar.barTintColor = UIColor.orangeColor()
         self.revealViewController().setFrontViewController(nc, animated: false)
         self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
         self.revealViewController().revealToggleAnimated(true)
@@ -179,6 +180,7 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
 //
 //        let nc = UINavigationController(rootViewController: vc1)
 //        nc.setViewControllers([vc1], animated: true)
+//        nc.navigationBar.barTintColor = UIColor.orangeColor()
 //        self.revealViewController().setFrontViewController(nc, animated: false)
 //        self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
 //        self.revealViewController().revealToggleAnimated(true)

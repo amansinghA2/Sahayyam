@@ -92,6 +92,7 @@
                         <outlet property="menuButton" destination="lw6-7p-JVy" id="mM6-Iv-x5y"/>
                         <outlet property="moreOptionButton" destination="BmS-Db-CSc" id="5h8-IF-KdX"/>
                         <outlet property="vendorListTextfield" destination="pDe-gI-OfQ" id="vGg-6U-e3T"/>
+                        <outlet property="vendorSelectBarButtonItem" destination="B7m-c8-SZg" id="M24-H6-1ON"/>
                         <segue destination="JUa-GK-iLw" kind="show" identifier="productDescSegue" id="mKU-Gk-VTF"/>
                         <segue destination="wwR-41-2mc" kind="show" identifier="vendorListIdentifier" id="mTR-Fg-XuP"/>
                         <segue destination="S9n-ho-QGe" kind="show" identifier="customerUpdateSegue" id="a9X-6d-z47"/>

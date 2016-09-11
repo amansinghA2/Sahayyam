@@ -86,15 +86,16 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBAction func uploadImageAction(sender: AnyObject) {
         
         //      print(convertImageToBase64(customerImage.image!))
+        if let image = self.customerImage.image {
         self.showHud("Loading...")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let params:[String:AnyObject] = [
-                "file":self.convertImageToBase64(self.customerImage.image!),
+                "file":self.convertImageToBase64(image),
                 "flag":1,
                 "token":token,
                 "device_id":"1234"
             ]
-            
+
             print(params)
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -107,7 +108,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                         }
                     }
                 }
+
             })
+          }
+        }else{
+            AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
         }
     }
     
@@ -189,12 +194,12 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     //    }
     
     func formValidation() -> Bool{
-        if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true || stateTextField.text?.isBlank == true || cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
+        if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true ||  cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
         
-        if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) {
+        if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
             return false
         }
