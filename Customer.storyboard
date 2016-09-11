@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fNV-3B-P41">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fNV-3B-P41">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -53,7 +53,7 @@
                         <leftBarButtonItems>
                             <barButtonItem image="List Filled-35" id="lw6-7p-JVy">
                                 <inset key="imageInsets" minX="0.0" minY="4" maxX="3" maxY="2"/>
-                                <color key="tintColor" white="0.0" alpha="0.74722521551724141" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </barButtonItem>
                             <barButtonItem style="plain" id="B7m-c8-SZg">
                                 <inset key="imageInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
@@ -71,16 +71,15 @@
                             </barButtonItem>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
-                            <barButtonItem image="Menu 2-35" style="plain" id="BmS-Db-CSc">
-                                <inset key="imageInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
-                                <color key="tintColor" white="0.0" alpha="0.75180495689655169" colorSpace="calibratedWhite"/>
+                            <barButtonItem image="Menu 2-24 (2)" style="plain" id="BmS-Db-CSc">
+                                <inset key="imageInsets" minX="-10" minY="4" maxX="9" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="0.75180495689655169" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="moreOptionAction:" destination="53q-ea-a9b" id="Pq1-Bl-JbA"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="add-to-cart-e-commerce-interface-symbol" width="30" id="o8H-LK-I4F">
-                                <inset key="imageInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <color key="tintColor" white="0.0" alpha="0.75180495689655169" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="0.75180495689655169" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="CartListAction:" destination="53q-ea-a9b" id="U4Z-g8-ypY"/>
                                 </connections>
@@ -107,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-nZ-CXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="-1372"/>
+            <point key="canvasLocation" x="132" y="-1418"/>
         </scene>
         <!--Wish List View Controller-->
         <scene sceneID="wtu-6O-apx">
@@ -280,10 +279,10 @@
     </scenes>
     <resources>
         <image name="List Filled-35" width="35" height="35"/>
-        <image name="Menu 2-35" width="26" height="26"/>
+        <image name="Menu 2-24 (2)" width="24" height="24"/>
         <image name="add-to-cart-e-commerce-interface-symbol" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qev-dk-wOJ"/>
+        <segue reference="y5Q-E0-ze5"/>
     </inferredMetricsTieBreakers>
 </document>

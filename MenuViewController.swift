@@ -152,7 +152,7 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
         nc.setViewControllers([vc1], animated: true)
         self.revealViewController().setFrontViewController(nc, animated: false)
         self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
-          self.revealViewController().revealToggleAnimated(true)
+        self.revealViewController().revealToggleAnimated(true)
     }
     
     //let vc = CustomerMenuItemsViewController()
@@ -170,9 +170,18 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
             }
             return false
         })
-        
-        selectedCategoryLIst = parentArray[section]
 
+//        let sb = UIStoryboard(name: "Customer", bundle: nil)
+//        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
+//
+//        vc1.fromMenuToProductPage = "goToProductsPage"
+//        vc1.selectedCategoryLIst = parentArray[section]
+//
+//        let nc = UINavigationController(rootViewController: vc1)
+//        nc.setViewControllers([vc1], animated: true)
+//        self.revealViewController().setFrontViewController(nc, animated: false)
+//        self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+//        self.revealViewController().revealToggleAnimated(true)
 
         // Reload section
         self.menuTableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)

@@ -12,11 +12,14 @@ import Alamofire
 extension UIImageView {
 
     func imageFromUrl(convertedImageString:String) {
-    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
         if let url = NSURL(string: convertedImageString){
-            Alamofire.request(.GET, url).response { (request, response, data, error) in
-                self.image = UIImage(data: data!, scale:0)
+            Alamofire.request(.GET, url.absoluteString).response { (request, response, data, error) in
+                dispatch_async(dispatch_get_main_queue(), {
+                                 self.image = UIImage(data: data!, scale:0)
+            });
             }
+        }
         }
     }
 

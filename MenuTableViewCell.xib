@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,8 +16,8 @@
                 <subviews>
                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiM-Ij-Stv">
                         <rect key="frame" x="47" y="11" width="145" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84797952586206893" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMB-rV-3Ff">
@@ -30,6 +30,9 @@
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3I-DZ-SbX">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
+                        <state key="normal">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508619999996" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
@@ -46,13 +49,12 @@
                     <constraint firstAttribute="bottom" secondItem="K3I-DZ-SbX" secondAttribute="bottom" id="tH7-vY-dpt"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.63511429519999996" green="1" blue="0.86685485360000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="arrowSelectionButton" destination="AMB-rV-3Ff" id="O2t-Mo-zvP"/>
                 <outlet property="dropDownButton" destination="K3I-DZ-SbX" id="FaJ-fA-hNm"/>
                 <outlet property="menuLabel" destination="SiM-Ij-Stv" id="bjP-Yf-VxS"/>
             </connections>
-            <point key="canvasLocation" x="28" y="123"/>
+            <point key="canvasLocation" x="111" y="139"/>
         </tableViewCell>
     </objects>
     <resources>

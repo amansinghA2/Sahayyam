@@ -195,11 +195,16 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         case 3:
             performSegueWithIdentifier("trackOrdersSegue", sender: nil)
         case 4:
-            performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+            }
         case 5:
             alertControllerToLogout()
         case 6:
-            performSegueWithIdentifier("aboutUsSegue", sender: nil)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
+            }
+
         default:
             print("Nothing")
         }
@@ -276,8 +281,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
        // let cellLeg = (collectionView.frame.size.width/2);
         return CGSizeMake(160,175);
     }
-    
-    
+
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+//    {
+//        return CGSizeMake((UIScreen.mainScreen().bounds.width)/2,175); //use height whatever you wants.
+//    }
+
+
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
