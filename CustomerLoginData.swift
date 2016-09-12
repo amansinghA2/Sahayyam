@@ -22,6 +22,9 @@ class CustomerLoginData: NSObject {
     dynamic var city = String()
     dynamic var country = String()
     dynamic var postcode = String()
+    dynamic var firstName = String()
+    dynamic var lastName = String()
+    dynamic var fullName = String()
     
     
     dynamic var vendorList = [VendorList]()

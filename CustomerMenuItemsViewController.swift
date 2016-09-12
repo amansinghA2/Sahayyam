@@ -134,7 +134,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             "filter_category":selectedCategoryLIst.category_id,
             "token":token,
             "device_id": "1234",
-            "filter_name":selectedCategoryLIst.name
+            "filter_name":""
         ]
         
         print(customerProductsParams)
@@ -377,15 +377,17 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         tokenCheck()
         self.showHud("Loading...")
        
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-            self.revealViewController().delegate = self
-        }
-        
-            self.revealViewController().rearViewRevealWidth = 235
+        slideMenuShow(menuButton, viewcontroller: self)
+         self.revealViewController().delegate = self
+//        if self.revealViewController() != nil {
+//            menuButton.target = self.revealViewController()
+//            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+//           
+//        }
+//        
+//            self.revealViewController().rearViewRevealWidth = 235
 
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
@@ -434,8 +436,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
                 filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
             }
-            
-            
+
             if let vendorName = self.vendorList.nickname as? String {
                 defaultVendorName = vendorName
                 NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")

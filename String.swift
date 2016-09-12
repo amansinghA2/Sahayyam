@@ -16,11 +16,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-// let BASE_URL = "http://192.168.1.2/sahayyam/"
-// let image_base_url = "http://192.168.1.2/sahayyam/image/"
+ let BASE_URL = "http://192.168.1.2/sahayyam/"
+ let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
 // MARK: - Common Url
 
@@ -55,6 +55,23 @@ let customerRemoveFromWishListUrl = BASE_URL+"index.php?route=api/wishlist/remov
 let customerUpdateProfilePopulateUrl = BASE_URL+"index.php?route=api/customer/getInfo"
 
 // MARK:- Vendors Url
+
+let categoryUrl = BASE_URL+"index.php?route=api/category"
+let getCustomerUrl = BASE_URL+"index.php?route=api/vendor/getCustomer"
+let vendorSubscriptionurl = BASE_URL+"index.php?route=api/vendor/getVendorSubscription"
+let transactionsUrl = BASE_URL+"index.php?route=api/vendor/getPayHistory"
+let viewordersUrl = BASE_URL+"index.php?route=api/vendorOrder/getTableData&iColumns=10"
+let globalLIstUrl = BASE_URL+"index.php?route=api/vendor/globalList"
+let getVendorServicesUrl = BASE_URL+"index.php?route=api/vendor/getVendorServices"
+let myproductsGlobalListUrl = BASE_URL+"index.php?route=api/vendor/globalList"
+let autoCompleteCategoryUrl = BASE_URL+"index.php?route=catalog/category/autocomplete"
+let displayPromotionListUrl = BASE_URL+"index.php?route=api/promotion/displayPromotion"
+let addpromotionUrl = BASE_URL+"index.php?route=api/promotion/addPromotion"
+let editproducturl = BASE_URL+"index.php?route=api/vendor/editProduct"
+let editpromotionurl = BASE_URL+"index.php?route=api/promotion/editPromotion"
+let registerCustomerUrl = BASE_URL+"index.php?route=api/account-customer/register"
+let vendororderdetailsUrl = BASE_URL+"index.php?route=api/vendorOrder/viewOrder"
+
 
 
 

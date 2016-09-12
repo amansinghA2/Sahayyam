@@ -14,12 +14,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3a-EO-Z6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="316"/>
+            <point key="canvasLocation" x="-117" y="1002"/>
         </scene>
-        <!--View Controller-->
+        <!--Reveal View Controller-->
         <scene sceneID="nay-GC-oc2">
             <objects>
-                <viewController id="TCQ-sB-waJ" sceneMemberID="viewController">
+                <viewController id="TCQ-sB-waJ" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="chx-gI-p6C"/>
                         <viewControllerLayoutGuide type="bottom" id="eCZ-8Z-dm2"/>
@@ -31,32 +31,74 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="SKW-fU-p3i" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Xnc-QO-VOy"/>
+                        <segue destination="u9Z-cB-3Uy" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="MH9-v9-q2V"/>
+                        <segue destination="np3-lt-5os" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="d9J-vX-8O3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMc-Kc-6aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-198" y="316"/>
+            <point key="canvasLocation" x="-495" y="326"/>
+        </scene>
+        <!--Vendor List View Controller-->
+        <scene sceneID="fuw-dh-swg">
+            <objects>
+                <viewController id="peY-dw-R73" customClass="VendorListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="U08-dW-dEz">
+                        <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="wxw-Vd-T68">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="menuButton" destination="wxw-Vd-T68" id="LwM-2E-JrC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j3T-Qv-aP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="326"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="nUt-0W-c9X">
+        <scene sceneID="Ihx-m4-hDa">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SKW-fU-p3i" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="np3-lt-5os" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lNJ-v0-J5U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x9b-Ll-4Ok">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Bfh-Pp-VJD" kind="relationship" relationship="rootViewController" id="ZdE-4Q-tx6"/>
+                        <segue destination="Bfh-Pp-VJD" kind="relationship" relationship="rootViewController" id="N9K-9a-l4g"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wiP-kL-7aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qmV-Aj-DgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="316"/>
+            <point key="canvasLocation" x="-495" y="1002"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jmt-Wf-ciO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u9Z-cB-3Uy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dDX-9f-0YE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="peY-dw-R73" kind="relationship" relationship="rootViewController" id="H78-5m-ykB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VVH-l1-jbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-117" y="326"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="List Filled-35" width="35" height="35"/>
+    </resources>
 </document>

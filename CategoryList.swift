@@ -23,6 +23,11 @@ class CategoryList: NSObject {
     dynamic var level = String()
 //    dynamic var sort_order = String()
     dynamic var products = String()
+//    dynamic var firstName = String()
+//    dynamic var lastName = String()
+//    dynamic var company = String()
+//    dynamic var isDefault = String()
+    
     dynamic var collapsed = true
 //    init(category_id: String, name: String , parent_id: String, isglobel: String, active: String, level: Int , products: String) {
 //        self.category_id = name

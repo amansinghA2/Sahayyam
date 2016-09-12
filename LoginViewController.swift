@@ -26,14 +26,14 @@ class LoginViewController: UIViewController {
         setUpView()
     }
 
-    override func viewWillAppear(animated: Bool) {
-     self.navigationController?.navigationBarHidden = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func viewWillAppear(animated: Bool) {
+//     self.navigationController?.navigationBarHidden = true
+//    }
+//    
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 
     // MARK: Actions
 
@@ -59,7 +59,8 @@ class LoginViewController: UIViewController {
                     address = self.customerLoginData.address + " " + self.customerLoginData.country + " " + self.customerLoginData.postcode
                     NSUserDefaults.standardUserDefaults().setObject(address, forKey: "address")
                     print(address)
-                    
+                    customerFullName = self.customerLoginData.firstName + " " + self.customerLoginData.lastName
+                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                     token = self.customerLoginData.cookie
                     NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
                     print(token)

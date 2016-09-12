@@ -29,6 +29,14 @@ class CommonJsonMapper: NSObject {
                         loginData.address = address
                     }
                     
+                    if let address = dic["firstname"] as? String{
+                        loginData.firstName = address
+                    }
+                    
+                    if let address = dic["lastname"] as? String{
+                        loginData.lastName = address
+                    }
+                    
                     if let city = dic["city"] as? String {
                         loginData.city = city
                     }

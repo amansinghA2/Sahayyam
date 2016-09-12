@@ -16,7 +16,7 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setBackButtonForNavigation()
         mobileNumberTextfield.setTextFieldStyle(TextFieldStyle.MobileNumber)
         birthDatetextfield.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
 

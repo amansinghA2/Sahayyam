@@ -10,9 +10,15 @@ import UIKit
 
 class VendorMenuViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
+    var listArray = []
+    var listImageArray = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+    listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
+    listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
+        
         // Do any additional setup after loading the view.
     }
 
@@ -23,13 +29,16 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return listArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("")
+        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! VendorMenuTableViewCell
+        
+        //cell.listImage.image =
+        cell.listNames.text = self.listArray[indexPath.row] as? String
 
-        return cell!
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){

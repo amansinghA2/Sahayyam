@@ -32,14 +32,31 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
     var childArray = [CategoryList]()
     var subChildArray = [CategoryList]()
     var selectedCategoryLIst = CategoryList()
+    @IBOutlet weak var gradientView: UIView!
+    
+    @IBOutlet weak var customerName: UILabel!
+    @IBOutlet weak var vendorName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tokenCheck()
         let nib = UINib(nibName: "MenuTableViewCell", bundle: nil)
         menuTableView.registerNib(nib, forCellReuseIdentifier: "menuCell")
         let nib1 = UINib(nibName: "MenuDetailsHeaderTableViewCell", bundle: nil)
         menuTableView.registerNib(nib1, forCellReuseIdentifier: "menuDetailsHeaderIdentifier")
+        let colorTop =  UIColor(red: 255.0/255.0, green: 127.0/255.0, blue: 80.0/255.0, alpha: 1.0).CGColor
+        let colorBottom = UIColor(red: 255.0/255.0, green: 165.0/255.0, blue: 0.0/255.0, alpha: 1.0).CGColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [ colorTop, colorBottom]
+        gradientLayer.locations = [ 0.0, 1.0]
+        gradientLayer.frame = self.gradientView.bounds
+        
+        self.gradientView.layer.addSublayer(gradientLayer)
+        self.gradientView.addSubview(customerName)
+        self.gradientView.addSubview(vendorName)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -49,7 +66,8 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
     }
     
     override func viewWillAppear(animated: Bool) {
-
+        customerName.text = defaultVendorName
+        vendorName.text = customerFullName
         parentArray = filteredArr.filter({
             if $0.level == "0" {
                 return true
@@ -171,13 +189,12 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
             }
             return false
         })
-
+        
 //        let sb = UIStoryboard(name: "Customer", bundle: nil)
 //        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
 //
 //        vc1.fromMenuToProductPage = "goToProductsPage"
 //        vc1.selectedCategoryLIst = parentArray[section]
-//
 //        let nc = UINavigationController(rootViewController: vc1)
 //        nc.setViewControllers([vc1], animated: true)
 //        nc.navigationBar.barTintColor = UIColor.orangeColor()

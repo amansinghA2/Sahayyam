@@ -530,6 +530,26 @@ extension CommonJsonMapper {
         
         var categoryLists = [CategoryList]()
         
+//        if let dict = result["customer"] {
+//            if let name = dict["firstname"]{
+//        
+//            }
+//            
+//            if let name = dict["lastname"]{
+//                
+//            }
+//            
+//        }
+//
+//        if let dict = result["vendors"] {
+//            if let is_default = dict["company"]{
+//                
+//            }
+//            
+//            if let is_default = dict["is_default"]{
+//                
+//            }
+//        }
         
         if let arr = result["category"] as? NSArray{
             

@@ -72,7 +72,6 @@ extension UIViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-          
         }
         
           self.revealViewController().rearViewRevealWidth = 225

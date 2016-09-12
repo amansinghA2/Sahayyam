@@ -1,18 +1,15 @@
 //
-//  CustomerDetailsTableViewCell.swift
+//  CustomerListTableViewCell.swift
 //  Sahayyam
 //
-//  Created by Aman on 8/15/16.
+//  Created by Sanjeev Jikamade on 12/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class CustomerDetailsTableViewCell: UITableViewCell {
+class CustomerListTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var customerName: UILabel!
-    @IBOutlet weak var customerLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

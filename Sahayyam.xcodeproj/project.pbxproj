@@ -62,6 +62,14 @@
 		AF6A881B1D532C3C00986ECC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A881A1D532C3C00986ECC /* Products.swift */; };
 		AF6A881D1D532C4900986ECC /* CartAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A881C1D532C4900986ECC /* CartAmount.swift */; };
 		AF6A881F1D532C5D00986ECC /* VendorDeliverTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A881E1D532C5D00986ECC /* VendorDeliverTiming.swift */; };
+		AF6D18C51D86636E00F220FE /* VendorServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D18C41D86636E00F220FE /* VendorServerManager.swift */; };
+		AF6D18C71D86637F00F220FE /* VendorJSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D18C61D86637F00F220FE /* VendorJSONMapper.swift */; };
+		AF6D18CA1D8666AB00F220FE /* CustomerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D18C81D8666AB00F220FE /* CustomerListTableViewCell.swift */; };
+		AF6D18CB1D8666AB00F220FE /* CustomerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6D18C91D8666AB00F220FE /* CustomerListTableViewCell.xib */; };
+		AF6D18CE1D8666C600F220FE /* CustomerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D18CC1D8666C600F220FE /* CustomerListViewController.swift */; };
+		AF6D18CF1D8666C600F220FE /* CustomerListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6D18CD1D8666C600F220FE /* CustomerListViewController.xib */; };
+		AF6D18D21D8670FE00F220FE /* VendorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D18D01D8670FE00F220FE /* VendorListViewController.swift */; };
+		AF6D18D31D8670FE00F220FE /* VendorListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6D18D11D8670FE00F220FE /* VendorListViewController.xib */; };
 		AF8036AC1D62E19700422C54 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036AB1D62E19700422C54 /* AlertView.swift */; };
 		AF8036AF1D62E9AC00422C54 /* VendorsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036AD1D62E9AC00422C54 /* VendorsListViewController.swift */; };
 		AF8036B01D62E9AC00422C54 /* VendorsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8036AE1D62E9AC00422C54 /* VendorsListViewController.xib */; };
@@ -240,6 +248,14 @@
 		AF6A881A1D532C3C00986ECC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		AF6A881C1D532C4900986ECC /* CartAmount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartAmount.swift; sourceTree = "<group>"; };
 		AF6A881E1D532C5D00986ECC /* VendorDeliverTiming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorDeliverTiming.swift; sourceTree = "<group>"; };
+		AF6D18C41D86636E00F220FE /* VendorServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorServerManager.swift; sourceTree = "<group>"; };
+		AF6D18C61D86637F00F220FE /* VendorJSONMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorJSONMapper.swift; sourceTree = "<group>"; };
+		AF6D18C81D8666AB00F220FE /* CustomerListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerListTableViewCell.swift; sourceTree = "<group>"; };
+		AF6D18C91D8666AB00F220FE /* CustomerListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerListTableViewCell.xib; sourceTree = "<group>"; };
+		AF6D18CC1D8666C600F220FE /* CustomerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerListViewController.swift; sourceTree = "<group>"; };
+		AF6D18CD1D8666C600F220FE /* CustomerListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerListViewController.xib; sourceTree = "<group>"; };
+		AF6D18D01D8670FE00F220FE /* VendorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorListViewController.swift; sourceTree = "<group>"; };
+		AF6D18D11D8670FE00F220FE /* VendorListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorListViewController.xib; sourceTree = "<group>"; };
 		AF8036AB1D62E19700422C54 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		AF8036AD1D62E9AC00422C54 /* VendorsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorsListViewController.swift; sourceTree = "<group>"; };
 		AF8036AE1D62E9AC00422C54 /* VendorsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorsListViewController.xib; sourceTree = "<group>"; };
@@ -684,12 +700,16 @@
 				AF1F1FB11D4A122F00E36DB0 /* VendorMenuViewController.xib */,
 				AFEB255C1D506BF9006B52C5 /* VendorUpdateProfileViewController.swift */,
 				AFEB255D1D506BF9006B52C5 /* VendorUpdateProfileViewController.xib */,
-				AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */,
-				AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */,
 				AF142BDE1D7EC30A00273C06 /* VendorMenuTableViewCell.swift */,
 				AF142BDF1D7EC30A00273C06 /* VendorMenuTableViewCell.xib */,
 				0701434C1D7F43AA009E2F19 /* VendorEditPFViewController.swift */,
 				0701434D1D7F43AA009E2F19 /* VendorEditPFViewController.xib */,
+				AF6D18CC1D8666C600F220FE /* CustomerListViewController.swift */,
+				AF6D18CD1D8666C600F220FE /* CustomerListViewController.xib */,
+				AF6D18C81D8666AB00F220FE /* CustomerListTableViewCell.swift */,
+				AF6D18C91D8666AB00F220FE /* CustomerListTableViewCell.xib */,
+				AF6D18D01D8670FE00F220FE /* VendorListViewController.swift */,
+				AF6D18D11D8670FE00F220FE /* VendorListViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -697,6 +717,8 @@
 		AFC5241D1D4B3DBA007864B9 /* CustomerAPI */ = {
 			isa = PBXGroup;
 			children = (
+				AF6D18C41D86636E00F220FE /* VendorServerManager.swift */,
+				AF6D18C61D86637F00F220FE /* VendorJSONMapper.swift */,
 			);
 			name = CustomerAPI;
 			sourceTree = "<group>";
@@ -706,6 +728,8 @@
 			children = (
 				AFB8BF1A1D5212AE00E815A7 /* CityHeadViewController.swift */,
 				AFB8BF1B1D5212AE00E815A7 /* CityHeadViewController.xib */,
+				AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */,
+				AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -887,17 +911,20 @@
 				AF8036B01D62E9AC00422C54 /* VendorsListViewController.xib in Resources */,
 				AFC26FCB1D4F1E100003471B /* CustomerMenuDescriptionViewController.xib in Resources */,
 				AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */,
+				AF6D18CB1D8666AB00F220FE /* CustomerListTableViewCell.xib in Resources */,
 				AF1F1FA51D4A0C4200E36DB0 /* SwitchUserViewController.xib in Resources */,
 				AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */,
 				AF1F1FA11D4A0C2D00E36DB0 /* LoginViewController.xib in Resources */,
 				AF1F1FA71D4A106200E36DB0 /* Vendor.storyboard in Resources */,
 				AFE659511D81508200B632D6 /* OTPViewController.xib in Resources */,
 				AF1F1FB31D4A122F00E36DB0 /* VendorMenuViewController.xib in Resources */,
+				AF6D18CF1D8666C600F220FE /* CustomerListViewController.xib in Resources */,
 				AF1F1FA91D4A106C00E36DB0 /* Customer.storyboard in Resources */,
 				AF4E78C41D5085D900E2FB20 /* TrackOrderTableViewCell.xib in Resources */,
 				AFB8BF1D1D5212AE00E815A7 /* CityHeadViewController.xib in Resources */,
 				AFBC274F1D54B3CA003ECBF6 /* WishListViewController.xib in Resources */,
 				AF8036B41D62EA4700422C54 /* VendorListTableViewCell.xib in Resources */,
+				AF6D18D31D8670FE00F220FE /* VendorListViewController.xib in Resources */,
 				AFBF9CB51D58996B007E17C3 /* CartListTableViewCell.xib in Resources */,
 				AFE659551D81509300B632D6 /* ChangePasswordViewController.xib in Resources */,
 				AFBC27411D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.xib in Resources */,
@@ -1077,6 +1104,7 @@
 				AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */,
 				AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */,
 				AFC26FCF1D4F33320003471B /* ForgotPasswordViewController.swift in Sources */,
+				AF6D18CA1D8666AB00F220FE /* CustomerListTableViewCell.swift in Sources */,
 				AFBC27441D54A558003ECBF6 /* AboutUsViewController.swift in Sources */,
 				AF1F1FA01D4A0C2D00E36DB0 /* LoginViewController.swift in Sources */,
 				AFBC27521D54B3E2003ECBF6 /* WishLIstTableViewCell.swift in Sources */,
@@ -1114,6 +1142,7 @@
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,
+				AF6D18CE1D8666C600F220FE /* CustomerListViewController.swift in Sources */,
 				AF6A88181D5325DB00986ECC /* CartProductList.swift in Sources */,
 				AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */,
 				AF1F1F9C1D4A0A9F00E36DB0 /* TextField.swift in Sources */,
@@ -1122,6 +1151,7 @@
 				AFB6A1F01D5DEE4000A9731B /* OrderDetailsViewController.swift in Sources */,
 				AF1F1F4A1D4A07E400E36DB0 /* AppDelegate.swift in Sources */,
 				AF8036AC1D62E19700422C54 /* AlertView.swift in Sources */,
+				AF6D18C71D86637F00F220FE /* VendorJSONMapper.swift in Sources */,
 				AFBF2D351D5CA674007A8655 /* CustomerOrders.swift in Sources */,
 				AFD0CD991D65B73C00EC1F09 /* CheckoutOrderTotals.swift in Sources */,
 				AFEB255E1D506BF9006B52C5 /* VendorUpdateProfileViewController.swift in Sources */,
@@ -1138,12 +1168,14 @@
 				AFBF9CB81D589C06007E17C3 /* CartListStaticTableViewCell.swift in Sources */,
 				AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */,
 				AF1F1FC31D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift in Sources */,
+				AF6D18C51D86636E00F220FE /* VendorServerManager.swift in Sources */,
 				AF8036AF1D62E9AC00422C54 /* VendorsListViewController.swift in Sources */,
 				AF8036B61D62F38900422C54 /* VendorList.swift in Sources */,
 				AF1F1FB81D4A162B00E36DB0 /* ServerManager.swift in Sources */,
 				AFBF2D371D5CA685007A8655 /* CustomerOrderDetails.swift in Sources */,
 				AFBF9CB41D58996B007E17C3 /* CartListTableViewCell.swift in Sources */,
 				AFB6A1FC1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.swift in Sources */,
+				AF6D18D21D8670FE00F220FE /* VendorListViewController.swift in Sources */,
 				AFBC27481D54B08B003ECBF6 /* CustomerBestDealsViewController.swift in Sources */,
 				AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */,
 				AFBC27401D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.swift in Sources */,

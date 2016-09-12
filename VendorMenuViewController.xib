@@ -18,6 +18,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-dy-98k">
                     <rect key="frame" x="0.0" y="128" width="320" height="440"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="i5M-Pr-FkT" id="tej-kW-Qqv"/>
+                        <outlet property="delegate" destination="i5M-Pr-FkT" id="ecw-rT-cJu"/>
+                    </connections>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-Zg-ia0">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>

@@ -61,7 +61,7 @@ class ServerManager: NSObject {
         }
     }
     
-    func requestSwitchProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]?) -> Void) {
+    func requestSwitchProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]? , dictResult:[String:AnyObject]?) -> Void) {
         
         
         let headers = [
@@ -78,16 +78,16 @@ class ServerManager: NSObject {
                                 if success as! Bool {
                                     print(dict)
                                let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
-                                    completionClosure(isSuccessful: true, error: nil, result: arr)
+                                    completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
                                 }else{
-                                    completionClosure(isSuccessful: false, error: nil, result: nil)
+                                    completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
                                 }
                             }
                                 }else{
-                                    completionClosure(isSuccessful: false, error: nil, result: nil)
+                                    completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
                                 }
                     case .Failure( _):
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                        completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
                     }
                 }
         }

@@ -77,10 +77,31 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
         ]
 
         
-        ServerManager.sharedInstance().requestSwitchProfile(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().requestSwitchProfile(params) { (isSuccessful, error, result , dicResult) in
             if (isSuccessful){
             self.categoryLIsts = result!
                
+//                        if let dict = dicResult!["customer"] {
+//                            if let firstname = dict["firstname"]{
+//                
+//                            }
+//                
+//                            if let firstname = dict["lastname"]{
+//                
+//                            }
+//                
+//                        }
+                
+                        if let dict = dicResult!["vendors"] {
+                            if let firstname = dict["company"]{
+                                
+                            }
+                            
+                            if let firstname = dict["is_default"]{
+                                
+                            }
+                        }
+                
             filteredArr = CustomClass.DataFilter(self.categoryLIsts)
                 
             let data = NSKeyedArchiver.archivedDataWithRootObject(filteredArr)

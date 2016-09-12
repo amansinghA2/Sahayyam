@@ -24,6 +24,7 @@ var checkTokenHealth = Bool()
 var defaultVendorID = String()
 var filteredArr = [CategoryList]()
 var address = String()
+var customerFullName = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
+        }
+        
+        if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
+            customerFullName = customerFullName1 as! String
         }
         
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultVendorID"){

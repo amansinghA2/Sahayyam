@@ -10,6 +10,8 @@ import UIKit
 
 class VendorMenuTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var listImage: UIImageView!
+    @IBOutlet weak var listNames: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
