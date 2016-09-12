@@ -127,22 +127,13 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             }
             
             if subTotal.title != "" {
-                subTotalShowLabel.text = "Rs. " + subTotal.text
+                subTotalShowLabel.text = "Rs. " + subTotal.text + ".00"
             }
             
             if total.title != "" {
-                totalShowLabel.text = "Rs. " + total.text
+                totalShowLabel.text = "Rs. " + total.text + ".00"
             }
-            
-//            var string1 = String()
-//            for i in deliverCharges {
-//                if i.title != "" {
-//                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
-//                   }
-//                }
-//            totalPrice.text = string1
         }
-        
     }
 
     override func viewWillAppear(animated: Bool) {

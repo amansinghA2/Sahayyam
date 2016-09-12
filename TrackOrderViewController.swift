@@ -17,8 +17,7 @@ class TrackOrderViewController: UIViewController , UITableViewDataSource , UITab
     var selectedIndexPath = NSIndexPath()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    tokenCheck()
+        tokenCheck()
         self.showHud("Loading...")
         setBackButtonForNavigation()
         
@@ -31,11 +30,11 @@ class TrackOrderViewController: UIViewController , UITableViewDataSource , UITab
         ]
         
         ServerManager.sharedInstance().customerOrders(params) { (isSuccessful, error, result) in
-            self.hideHud()
             self.trackLoadDataList = result!
             self.trackOrderTableView.dataSource = self
             self.trackOrderTableView.delegate = self
             self.trackOrderTableView.reloadData()
+            self.hideHud()
         }
     }
     else{

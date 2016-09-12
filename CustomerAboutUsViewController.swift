@@ -1,26 +1,24 @@
 //
-//  AboutUsViewController.swift
+//  CustomerAboutUsViewController.swift
 //  Sahayyam
 //
-//  Created by Sanjeev Jikamade on 05/08/16.
+//  Created by Sanjeev Jikamade on 12/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class AboutUsViewController: UIViewController {
+class CustomerAboutUsViewController: UIViewController {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    @IBOutlet weak var addresstextField: UITextField!
-    
-    @IBOutlet weak var messageTextField: UITextView!
+    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var vendorName: UILabel!
+    @IBOutlet weak var vendorNumber: UILabel!
+    @IBOutlet weak var mailIdLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButtonForNavigation()
-        // tokenCheck()
-        // changeNavigationBarColor()
+
         // Do any additional setup after loading the view.
     }
 

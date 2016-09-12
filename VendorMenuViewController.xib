@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorMenuViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="gradientView" destination="szK-Dv-aEd" id="pwo-Ec-lru"/>
+                <outlet property="menuListTableView" destination="wT5-dy-98k" id="1op-Kx-Wqw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,32 +18,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-dy-98k">
-                    <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                    <rect key="frame" x="0.0" y="186" width="320" height="382"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="i5M-Pr-FkT" id="tej-kW-Qqv"/>
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="ecw-rT-cJu"/>
                     </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7g-Zg-ia0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
-                    <color key="backgroundColor" red="1" green="0.58540464709999995" blue="0.23874236530000001" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szK-Dv-aEd">
+                    <rect key="frame" x="0.0" y="58" width="320" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="128" id="sy7-r6-wRR"/>
+                        <constraint firstAttribute="height" constant="128" id="kg8-DF-r3Q"/>
                     </constraints>
-                </imageView>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="p7g-Zg-ia0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GAX-Nb-CEm"/>
-                <constraint firstAttribute="trailing" secondItem="p7g-Zg-ia0" secondAttribute="trailing" id="ItU-Gb-PqS"/>
+                <constraint firstItem="szK-Dv-aEd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8ld-bJ-6SZ"/>
+                <constraint firstItem="szK-Dv-aEd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="58" id="IJg-xl-BiZ"/>
                 <constraint firstAttribute="bottom" secondItem="wT5-dy-98k" secondAttribute="bottom" id="QZU-F9-F66"/>
-                <constraint firstItem="p7g-Zg-ia0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kls-Pz-Z2d"/>
+                <constraint firstAttribute="trailing" secondItem="szK-Dv-aEd" secondAttribute="trailing" id="UIr-DN-OOn"/>
                 <constraint firstAttribute="trailing" secondItem="wT5-dy-98k" secondAttribute="trailing" id="pgh-38-gyQ"/>
-                <constraint firstItem="wT5-dy-98k" firstAttribute="top" secondItem="p7g-Zg-ia0" secondAttribute="bottom" id="t6p-EV-qnr"/>
                 <constraint firstItem="wT5-dy-98k" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="z1Q-1M-sla"/>
+                <constraint firstItem="wT5-dy-98k" firstAttribute="top" secondItem="szK-Dv-aEd" secondAttribute="bottom" id="zoH-LL-HC9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="137" y="208"/>
+            <point key="canvasLocation" x="130" y="96"/>
         </view>
     </objects>
 </document>

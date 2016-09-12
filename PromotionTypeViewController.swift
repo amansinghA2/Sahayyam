@@ -1,26 +1,17 @@
 //
-//  AboutUsViewController.swift
+//  PromotionTypeViewController.swift
 //  Sahayyam
 //
-//  Created by Sanjeev Jikamade on 05/08/16.
+//  Created by Sanjeev Jikamade on 12/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class AboutUsViewController: UIViewController {
+class PromotionTypeViewController: UIViewController {
 
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    @IBOutlet weak var addresstextField: UITextField!
-    
-    @IBOutlet weak var messageTextField: UITextView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButtonForNavigation()
-        // tokenCheck()
-        // changeNavigationBarColor()
         // Do any additional setup after loading the view.
     }
 

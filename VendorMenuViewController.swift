@@ -13,11 +13,30 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     var listArray = []
     var listImageArray = []
     
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var menuListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-    listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
-    listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
+       menuListTableView.delegate = self
+       menuListTableView.dataSource = self
+        
+        let nib1 = UINib(nibName: "VendorMenuTableViewCell", bundle: nil)
+        self.menuListTableView.registerNib(nib1, forCellReuseIdentifier: "menuCell")
+        
+        let colorTop =  UIColor(red: 255.0/255.0, green: 127.0/255.0, blue: 80.0/255.0, alpha: 1.0).CGColor
+        let colorBottom = UIColor(red: 255.0/255.0, green: 165.0/255.0, blue: 0.0/255.0, alpha: 1.0).CGColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [ colorTop, colorBottom]
+        gradientLayer.locations = [ 0.0, 1.0]
+        gradientLayer.frame = self.gradientView.bounds
+        
+        self.gradientView.layer.addSublayer(gradientLayer)
+//        self.gradientView.addSubview(customerName)
+//        self.gradientView.addSubview(vendorName)
+
+       listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
+       listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
         
         // Do any additional setup after loading the view.
     }
@@ -35,16 +54,41 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! VendorMenuTableViewCell
         
-        //cell.listImage.image =
         cell.listNames.text = self.listArray[indexPath.row] as? String
-
+        //cell.listImage.image = UIImage(named: [self.listImageArray[indexPath.row]])
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         switch indexPath.row{
         case 0:
-          print("Nothing")
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 1:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 2:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 3:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 4:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 5:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 6:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 7:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 8:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 9:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 10:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 11:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 12:
+            self.cellClickNavigation("Main" , identifier: "LoginVC")
+        case 13:
+            alertControllerToLogout()
         default:
             print("")
         }
@@ -54,6 +98,43 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         return 50
     }
     
+    
+    func alertControllerToLogout() {
+        
+        let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            let params = [
+                "token":token,
+                "device_id":"1234"
+            ]
+            
+            ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                    self.hideHud()
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+                    self.cellClickNavigation("Main" , identifier: "LoginVC")
+                }
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func cellClickNavigation(storyBoard:String ,identifier:String) {
+        let sb = UIStoryboard(name: storyBoard, bundle: nil)
+        let vc1 = sb.instantiateViewControllerWithIdentifier(identifier)
+        
+        let nc = UINavigationController(rootViewController: vc1)
+        nc.setViewControllers([vc1], animated: true)
+        nc.navigationBar.barTintColor = UIColor.orangeColor()
+        self.revealViewController().setFrontViewController(nc, animated: false)
+        self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+        self.revealViewController().revealToggleAnimated(true)
+    }
     /*
     // MARK: - Navigation
 

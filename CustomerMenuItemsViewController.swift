@@ -200,6 +200,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
             }
         case 5:
+            if tableView.hidden == false {
+                tableView.removeFromSuperview()
+                tableView.hidden = true
+            }
             alertControllerToLogout()
         case 6:
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -456,36 +460,6 @@ else{
 
     }
 
-    func alertControllerToLogout() {
-        
-        if tableView.hidden == false {
-            tableView.removeFromSuperview()
-            tableView.hidden = true
-        }
-        
-        let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-            let params = [
-                "token":token,
-                "device_id":"1234"
-            ]
-            
-            ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
-                if isSuccessful {
-                    self.hideHud()
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
-                    self.performSegueWithIdentifier("loginSegue", sender: nil)
-                }
-            }
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
     func PoppingController(notification:NSNotification){
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -688,6 +662,32 @@ else{
     
     @IBAction func openDefaultVendorLIst(sender: AnyObject) {
         
+    }
+    
+    
+    func alertControllerToLogout() {
+        
+        let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            let params = [
+                "token":token,
+                "device_id":"1234"
+            ]
+            
+            ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                    self.hideHud()
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+                    self.performSegueWithIdentifier("loginSegue", sender: nil)
+                }
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     // MARK: - TextField Delegates

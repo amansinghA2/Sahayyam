@@ -81,6 +81,7 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("cartListStaticCell") as! CartListStaticTableViewCell
+           cell.backgroundColor = cell.contentView.backgroundColor
            cell.cartList = cartList
            cell.chekoutbuttonoutlet.tag = indexPath.row
            cell.chekoutbuttonoutlet.addTarget(self, action: #selector(CartListViewController.checkoutButtonClicked), forControlEvents: UIControlEvents.TouchUpInside)

@@ -45,7 +45,10 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         return cell
     }
     
-   
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.performSegueWithIdentifier("gotoTrackDetails", sender: nil)
+    }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension

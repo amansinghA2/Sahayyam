@@ -5,9 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartListViewController" customModule="Sahayyam" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorPromotionsViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="cartListTableView" destination="aoO-2o-EXP" id="ybP-FS-9YK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,20 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aoO-2o-EXP" customClass="TPKeyboardAvoidingTableView">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ktn-FW-EMO">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="aoO-2o-EXP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3tR-QZ-WqI"/>
-                <constraint firstItem="aoO-2o-EXP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N33-lu-tbF"/>
-                <constraint firstAttribute="trailing" secondItem="aoO-2o-EXP" secondAttribute="trailing" id="WV7-0s-YNB"/>
-                <constraint firstAttribute="bottom" secondItem="aoO-2o-EXP" secondAttribute="bottom" id="dg8-e3-WIA"/>
+                <constraint firstItem="ktn-FW-EMO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Dh-HT-gWh"/>
+                <constraint firstAttribute="trailing" secondItem="ktn-FW-EMO" secondAttribute="trailing" id="Ava-fa-L7e"/>
+                <constraint firstAttribute="bottom" secondItem="ktn-FW-EMO" secondAttribute="bottom" id="Kqg-M5-x4z"/>
+                <constraint firstItem="ktn-FW-EMO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mcJ-KB-rw7"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="240" y="262"/>
+            <point key="canvasLocation" x="177" y="230"/>
         </view>
     </objects>
 </document>
