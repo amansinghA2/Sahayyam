@@ -205,7 +205,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
             }
-
         default:
             print("Nothing")
         }
