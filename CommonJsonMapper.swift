@@ -16,29 +16,29 @@ class CommonJsonMapper: NSObject {
     class func loginMapper(result:[String:AnyObject])  -> CustomerLoginData {
             let loginData = CustomerLoginData()
                 if let dic = result["switchprofile"]{
-                    if let profileType = dic["profileType"]{
-                        loginData.profileType = profileType as! Int
+                    if let profileType = dic["profileType"] as? Int{
+                        loginData.profileType = profileType
                     }
-                    if let cust_type = dic["cust_type"]{
-                        loginData.cust_type = cust_type as! Int
+                    if let cust_type = dic["cust_type"] as? Int {
+                        loginData.cust_type = cust_type
                     }
                 }
 
                 if let dic = result["customer"] {
-                    if let address = dic["address"]{
-                        loginData.address = address as! String
+                    if let address = dic["address"] as? String{
+                        loginData.address = address
                     }
                     
-                    if let city = dic["city"]{
-                        loginData.city = city as! String
+                    if let city = dic["city"] as? String {
+                        loginData.city = city
                     }
                     
-                    if let country = dic["country"]{
-                        loginData.country = country as! String
+                    if let country = dic["country"] as? String{
+                        loginData.country = country
                     }
                     
-                    if let postcode = dic["postcode"]{
-                        loginData.postcode = postcode as! String
+                    if let postcode = dic["postcode"] as? String{
+                        loginData.postcode = postcode 
                     }
                 }
         

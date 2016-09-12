@@ -17,6 +17,7 @@ protocol CustomerMenuItemsViewControllerDelegate {
 
 class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate  , UITableViewDataSource , UITableViewDelegate , DefaultVendordelegate , SWRevealViewControllerDelegate{
 
+    @IBOutlet weak var vendorSelectBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var vendorListTextfield: TextField!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -93,7 +94,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.receiveData(_:)), name: "selectedIndexIdData", object: self)
+        self.showHud("Loading...")
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
           if Reachability.isConnectedToNetwork(){
@@ -195,11 +196,16 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         case 3:
             performSegueWithIdentifier("trackOrdersSegue", sender: nil)
         case 4:
-            performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+            }
         case 5:
             alertControllerToLogout()
         case 6:
-            performSegueWithIdentifier("aboutUsSegue", sender: nil)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
+            }
+
         default:
             print("Nothing")
         }
@@ -234,11 +240,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // make a cell for each cell index path
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier",forIndexPath: indexPath) as! CustomerMenuItemsCollectionViewCell
-        
         cell.addToCart.tag = indexPath.row
         cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-
-
 
         if (self.searchBarActive) {
             getProductList = self.dataSourceForSearchResult[indexPath.row]
@@ -276,8 +279,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
        // let cellLeg = (collectionView.frame.size.width/2);
         return CGSizeMake(160,175);
     }
-    
-    
+
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+//    {
+//        return CGSizeMake((UIScreen.mainScreen().bounds.width)/2,175); //use height whatever you wants.
+//    }
+
+
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
@@ -314,6 +322,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        if tableView.hidden == false {
+            tableView.removeFromSuperview()
+            tableView.hidden = true
+        }
         // we used here to set self.searchBarActive = YES
         // but we'll not do that any more... it made problems
         // it's better to set self.searchBarActive = YES when user typed something
@@ -337,25 +349,28 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARk:-  RevealView Controler Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        
+
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
+            vendorSelectBarButtonItem.enabled = true
         }else{
-            self.view.userInteractionEnabled = true
+            self.view.userInteractionEnabled = false
+            vendorSelectBarButtonItem.enabled = false
         }
-        
     }
-    
+
     func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-        
+
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
+            vendorSelectBarButtonItem.enabled = true
         }else{
-            self.view.userInteractionEnabled = true
+            self.view.userInteractionEnabled = false
+            vendorSelectBarButtonItem.enabled = false
         }
-        
+
     }
-    
+
     // MARK: Custom Functions
 
     
@@ -476,6 +491,10 @@ else{
     }
     
     func buttonClicked(sender:UIButton) {
+        if tableView.hidden == false {
+            tableView.removeFromSuperview()
+            tableView.hidden = true
+        }
            if Reachability.isConnectedToNetwork(){
         let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
@@ -532,7 +551,10 @@ else{
     }
 
     func addToWishlistButtonClicked(sender:UIButton) {
-        
+        if tableView.hidden == false {
+            tableView.removeFromSuperview()
+            tableView.hidden = true
+        }
         let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
         let indexPath = self.collectionView.indexPathForCell(cell)!
 
@@ -632,7 +654,6 @@ else{
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     _ = UIApplication.sharedApplication().keyWindow! as UIWindow
         if tableView.hidden == false {
             tableView.removeFromSuperview()
             tableView.hidden = true

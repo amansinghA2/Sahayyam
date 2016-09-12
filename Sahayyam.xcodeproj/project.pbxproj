@@ -139,10 +139,6 @@
 		AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */; };
 		AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */; };
 		AFF1A40B1D63529E00B819C5 /* OrderProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */; };
-		AFFB67E41D702E93005774D2 /* EmptyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB67E21D702E93005774D2 /* EmptyListViewController.swift */; };
-		AFFB67E51D702E93005774D2 /* EmptyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFB67E31D702E93005774D2 /* EmptyListViewController.xib */; };
-		AFFB67E81D7040C5005774D2 /* EmptyWishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB67E61D7040C5005774D2 /* EmptyWishListViewController.swift */; };
-		AFFB67E91D7040C5005774D2 /* EmptyWishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFB67E71D7040C5005774D2 /* EmptyWishListViewController.xib */; };
 		BEEA9B6FBD021500C3164805 /* Pods_Sahayyam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B93071768787237F472CE4 /* Pods_Sahayyam.framework */; };
 /* End PBXBuildFile section */
 
@@ -319,10 +315,6 @@
 		AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHMainMenuViewController.swift; sourceTree = "<group>"; };
 		AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CHMainMenuViewController.xib; sourceTree = "<group>"; };
 		AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductList.swift; sourceTree = "<group>"; };
-		AFFB67E21D702E93005774D2 /* EmptyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyListViewController.swift; sourceTree = "<group>"; };
-		AFFB67E31D702E93005774D2 /* EmptyListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyListViewController.xib; sourceTree = "<group>"; };
-		AFFB67E61D7040C5005774D2 /* EmptyWishListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyWishListViewController.swift; sourceTree = "<group>"; };
-		AFFB67E71D7040C5005774D2 /* EmptyWishListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyWishListViewController.xib; sourceTree = "<group>"; };
 		B49491475D650865308633A3 /* Pods-SahayyamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SahayyamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4B93071768787237F472CE4 /* Pods_Sahayyam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sahayyam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE2C592CE0716FAD25849DD /* Pods_SahayyamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,10 +369,6 @@
 				07F442721D621E5D00733E91 /* CustomerDetailsTableViewCell.xib */,
 				AFB653771D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift */,
 				AFB653781D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib */,
-				AFFB67E21D702E93005774D2 /* EmptyListViewController.swift */,
-				AFFB67E31D702E93005774D2 /* EmptyListViewController.xib */,
-				AFFB67E61D7040C5005774D2 /* EmptyWishListViewController.swift */,
-				AFFB67E71D7040C5005774D2 /* EmptyWishListViewController.xib */,
 			);
 			name = "Orders Page";
 			sourceTree = "<group>";
@@ -899,7 +887,6 @@
 				AF8036B01D62E9AC00422C54 /* VendorsListViewController.xib in Resources */,
 				AFC26FCB1D4F1E100003471B /* CustomerMenuDescriptionViewController.xib in Resources */,
 				AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */,
-				AFFB67E91D7040C5005774D2 /* EmptyWishListViewController.xib in Resources */,
 				AF1F1FA51D4A0C4200E36DB0 /* SwitchUserViewController.xib in Resources */,
 				AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */,
 				AF1F1FA11D4A0C2D00E36DB0 /* LoginViewController.xib in Resources */,
@@ -930,7 +917,6 @@
 				AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */,
 				AF530B091D756DB7004A269F /* MenuDetailsHeaderTableViewCell.xib in Resources */,
 				AFB6A1F51D5DEE5B00A9731B /* OrderDetailsTableViewCell.xib in Resources */,
-				AFFB67E51D702E93005774D2 /* EmptyListViewController.xib in Resources */,
 				AFBC27491D54B08B003ECBF6 /* CustomerBestDealsViewController.xib in Resources */,
 				AFEB25571D50649F006B52C5 /* CustomerUpdateProfileViewController.xib in Resources */,
 				AF1F1F541D4A07E400E36DB0 /* Assets.xcassets in Resources */,
@@ -1123,8 +1109,6 @@
 				AF6A881B1D532C3C00986ECC /* Products.swift in Sources */,
 				AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */,
 				AF6A881D1D532C4900986ECC /* CartAmount.swift in Sources */,
-				AFFB67E81D7040C5005774D2 /* EmptyWishListViewController.swift in Sources */,
-				AFFB67E41D702E93005774D2 /* EmptyListViewController.swift in Sources */,
 				AFBC274B1D54B179003ECBF6 /* RoundedView.swift in Sources */,
 				AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */,
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,

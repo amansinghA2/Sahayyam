@@ -18,28 +18,15 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        
         tokenCheck()
-//        ServerManager.sharedInstance().checkTokenHealth(nil) { (isSuccessful, error, result) in
-//            if isSuccessful{
-//                
-//            }else{
-//                AlertView.alertViewToGoToLogin("Alert", message: error!, alertTitle: "OK", viewController: self)
-//            }
-//        }
-        
-        // Do any additional setup after loading the view.
     }
 
     
     func setUp() {
      self.showHud("Loading...")
         setBackButtonForNavigation()
-     
-        
         let nib = UINib(nibName: "WishLIstTableViewCell", bundle: nil)
         self.wishListTableView.registerNib(nib, forCellReuseIdentifier: "wishListCell")
-        
     }
     
     override func didReceiveMemoryWarning() {

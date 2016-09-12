@@ -19,14 +19,6 @@ class ForgotPasswordViewController: UIViewController {
 
         mobileNumberTextfield.setTextFieldStyle(TextFieldStyle.MobileNumber)
         birthDatetextfield.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
-        
-  
-        
-//        var vc = PDTSimpleCalendarViewController()
-//        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)!
-//        calendar.locale = NSLocale.currentLocale()
-//        calendar.timeZone = NSDate.localTimeZone()
-//        vc.calendar = calendar
 
         // Do any additional setup after loading the view.
     }
@@ -58,7 +50,7 @@ class ForgotPasswordViewController: UIViewController {
         })
         }else{
                 AlertView.alertView("Invalid", message: "Invalid Mobile Number or the field is empty", alertTitle: "OK", viewController: self)
-             }
+           }
         }
         else{
                 AlertView.alertView("Invalid", message: "Field is blank", alertTitle: "OK", viewController: self)
@@ -67,7 +59,7 @@ class ForgotPasswordViewController: UIViewController {
     else{
     self.hideHud()
     AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
-    }
+      }
     }
 
     
