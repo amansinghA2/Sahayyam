@@ -174,7 +174,7 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
         self.revealViewController().revealToggleAnimated(true)
     }
     
-    //let vc = CustomerMenuItemsViewController()
+    //let vc = Cust omerMenuItemsViewController()
     
     func toggleCollapse(sender: UIButton) {
         let section = sender.tag
