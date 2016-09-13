@@ -13,7 +13,7 @@ import Alamofire
 extension ServerManager {
     
  
-    func vendorsCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ProductCollectionList]?) -> Void) {
+    func vendorsCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CategoryList]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -26,7 +26,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr  = CommonJsonMapper.productCollectionList(dict as! [String : AnyObject])
+                            let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
+                            print(arr)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -38,7 +39,7 @@ extension ServerManager {
         }
     }
     
-    func getCustomerList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: ProductDetails?) -> Void) {
+    func getCustomerList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerList]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -51,7 +52,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let detail = CommonJsonMapper.getproductDetails(dict as! [String : AnyObject])
+                            let detail = VendorJSONMapper.getCustomerListMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result:detail)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -66,7 +67,7 @@ extension ServerManager {
     
     // MARK: Cart List
     
-    func getVendorSubscription(params:[String:AnyObject]?,  completionClosure: (isSuccessful:Bool,error:String?, result: [Products]? , dict:[String : AnyObject]?) -> Void) {
+    func getVendorSubscription(params:[String:AnyObject]?,  completionClosure: (isSuccessful:Bool,error:String?, result: [SubscriptionList]? , dict:[String : AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -79,7 +80,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = CommonJsonMapper.getCartListMapper(dict as! [String : AnyObject])
+                            let arr = VendorJSONMapper.getSubscriptionDetailsMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr , dict: dict as? [String : AnyObject])
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil , dict: nil)
@@ -92,7 +93,7 @@ extension ServerManager {
         }
     }
     
-    func getTransactions(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func getTransactionsHistory(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorPayment]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -100,17 +101,13 @@ extension ServerManager {
         
         defaultManager.request(.GET, transactionsUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
-                if let res = response.response {
+                if let _ = response.response {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
-                            if let result = dict["success"]!{
-                                if result as! Bool {
-                                    completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
-                                }else{
-                                    completionClosure(isSuccessful: false, error: nil, result: dict as? Dictionary<String, String>)
-                                }
-                            }
+                            print(dict)
+                            let arr = VendorJSONMapper.getTransactionsHistoryMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -121,7 +118,7 @@ extension ServerManager {
         }
     }
     
-    func viewVendorOrders(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func viewVendorOrders(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -129,23 +126,18 @@ extension ServerManager {
         
         defaultManager.request(.GET, viewordersUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
-                if let res = response.response {
+                if let _ = response.response {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
-                            if let result = dict["success"]!{
-                                if result as! Bool {
-                                    completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
-                                }else{
-                                    completionClosure(isSuccessful: false, error: nil, result: dict as? Dictionary<String, String>)
-                                }
-                            }
+                            print(dict)
+                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-                        print(error)
-                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
         }

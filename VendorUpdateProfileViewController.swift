@@ -10,15 +10,76 @@ import UIKit
 
 class VendorUpdateProfileViewController: UIViewController {
 
+    @IBOutlet weak var firstName: TextField!
+    @IBOutlet weak var lastName: TextField!
+    @IBOutlet weak var dobTextField: TextField!
+    @IBOutlet weak var emailID: TextField!
+    @IBOutlet weak var mobileNumber: TextField!
+    @IBOutlet weak var passwordtextfield: TextField!
+    @IBOutlet weak var confirmPasswordtextField: TextField!
+    var populateDataList = PopulateData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        dobTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+        passwordtextfield.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
+        confirmPasswordtextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
+        firstName.setTextFieldStyle(TextFieldStyle.TextfieldNames)
+        lastName.setTextFieldStyle(TextFieldStyle.TextfieldNames)
+        mobileNumber.setTextFieldStyle(TextFieldStyle.MobileNumber)
+        
+        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+            if isSuccessful{
+                self.populateDataList  = result!
+                self.dataInTextField()
+                self.hideHud()
+            }
+        })
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func updateProfileAction(sender: AnyObject) {
+        
+        
+        
+    }
+    
+    func formValidation() -> Bool{
+        if (firstName.text?.isBlank == true  || lastName.text?.isBlank == true || dobTextField.text?.isBlank == true || mobileNumber.text?.isBlank == true || passwordtextfield.text?.isBlank == true || confirmPasswordtextField.text?.isBlank == true){
+            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !(emailID.isValidEmail(emailID.text!)) && emailID.text != "" {
+            AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !(Validations.isValidPassAndConfirmPassword(passwordtextfield.text! , confirmPassword: confirmPasswordtextField.text!)) {
+            AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
+            return false
+        }
+        return true
+    }
+    
+    func dataInTextField(){
+        
+        firstName.text = populateDataList.firstname
+        
+        lastName.text = populateDataList.lastName
+        
+        dobTextField.text = populateDataList.mobileNumber
+        
+        emailID.text = populateDataList.dateOfBirth
+        
+        mobileNumber.text = populateDataList.emailId
+        
     }
     
     /*

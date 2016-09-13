@@ -1,17 +1,20 @@
 //
-//  PromotionTypeViewController.swift
+//  ShowInvoiceViewController.swift
 //  Sahayyam
 //
-//  Created by Sanjeev Jikamade on 12/09/16.
+//  Created by Sanjeev Jikamade on 13/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class PromotionTypeViewController: UIViewController {
+class ShowInvoiceViewController: UIViewController {
 
+    @IBOutlet weak var invoiceView: UIWebView!
     override func viewDidLoad() {
-       super.viewDidLoad()
+        super.viewDidLoad()
+        invoiceView.loadRequest(NSURLRequest(URL: NSURL(string: "ab")!))
+        
         // Do any additional setup after loading the view.
     }
 

@@ -19,6 +19,6 @@ class CustomerOrders: NSObject {
     var sales_order = String()
     var status = String()
     var total = String()
-    
+    var suborder_status = String()
     
 }

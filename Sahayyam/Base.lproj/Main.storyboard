@@ -81,7 +81,7 @@
         <!--Vendor Update Profile View Controller-->
         <scene sceneID="2ou-jO-vnJ">
             <objects>
-                <viewController id="Szc-c1-mAQ" customClass="VendorUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VendorUpdateID" id="Szc-c1-mAQ" customClass="VendorUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-il-EWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -66,25 +66,25 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 1:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 2:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
         case 3:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
         case 4:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 5:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 6:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "categoryListID")
         case 7:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
         case 8:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
         case 9:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
         case 10:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 11:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Main" , identifier: "VendorUpdateID")
         case 12:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 13:
@@ -118,9 +118,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
                 }
             }
         }))
-        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
-        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 

@@ -29,7 +29,7 @@ class CustomClass: NSObject {
             }
             return false
         })
-        
+        print(filteredLists)
         return filteredLists
         
     }

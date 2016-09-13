@@ -35,9 +35,6 @@
                 <viewController storyboardIdentifier="MenuViewContrller" automaticallyAdjustsScrollViewInsets="NO" id="yxu-Dv-mJt" customClass="MenuViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="wV3-lR-BmA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="53q-ea-a9b" kind="show" identifier="menuProductsSegue" id="qev-dk-wOJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Keb-UI-o9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -107,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDY-nZ-CXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="-1381"/>
+            <point key="canvasLocation" x="235" y="-1363"/>
         </scene>
         <!--Wish List View Controller-->
         <scene sceneID="wtu-6O-apx">
@@ -265,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heI-JA-O5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="-1301"/>
+            <point key="canvasLocation" x="1156" y="-1301"/>
         </scene>
         <!--Checkout View Controller-->
         <scene sceneID="T1Q-a8-y9W">
@@ -283,7 +280,4 @@
         <image name="Menu 2-24 (2)" width="24" height="24"/>
         <image name="add-to-cart-e-commerce-interface-symbol" width="24" height="24"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="qev-dk-wOJ"/>
-    </inferredMetricsTieBreakers>
 </document>

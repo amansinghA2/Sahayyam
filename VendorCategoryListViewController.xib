@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerListViewController" customModule="Sahayyam" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorCategoryListViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="customerListTableView" destination="bzi-PU-1Jx" id="BHF-Fh-hnv"/>
+                <outlet property="vendorCategoryTableview" destination="VEM-FW-S2V" id="zWu-hq-8Cf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,20 +16,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bzi-PU-1Jx">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-FW-S2V">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="bzi-PU-1Jx" secondAttribute="bottom" id="Nwp-IS-EIX"/>
-                <constraint firstItem="bzi-PU-1Jx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S2v-dA-m0y"/>
-                <constraint firstAttribute="trailing" secondItem="bzi-PU-1Jx" secondAttribute="trailing" id="j4x-js-AwM"/>
-                <constraint firstItem="bzi-PU-1Jx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ph5-sQ-YV5"/>
+                <constraint firstItem="VEM-FW-S2V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6W0-lM-nhG"/>
+                <constraint firstItem="VEM-FW-S2V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8yv-X3-dXm"/>
+                <constraint firstAttribute="trailing" secondItem="VEM-FW-S2V" secondAttribute="trailing" id="FcB-NO-bwZ"/>
+                <constraint firstAttribute="bottom" secondItem="VEM-FW-S2V" secondAttribute="bottom" id="iqj-1l-A8x"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="46" y="206"/>
+            <point key="canvasLocation" x="138" y="125"/>
         </view>
     </objects>
 </document>

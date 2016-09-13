@@ -10,10 +10,33 @@ import UIKit
 
 class CustomerListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var customerListButtonlabel: UIButton!
+    var customerList:CustomerList!{
+        didSet{
+            bindMOdelToViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func bindMOdelToViews() {
+        
+        if let name = customerList.name as? String{
+            nameLabel.text = name
+        }
+        
+        if let mobileNumber = customerList.mobileNumber as? String{
+            numberLabel.text = mobileNumber
+        }
+        
+    }
+    
+
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -276,11 +276,10 @@ extension CommonJsonMapper {
                 data.products = value.valueForKey("products") as! Int
                 data.sales_order = value.valueForKey("sales_order") as! String
                 data.status = value.valueForKey("status") as! String
+                data.suborder_status = value.valueForKey("suborder_status") as! String
                 data.total = value.valueForKey("total") as! String
                 data.href = value.valueForKey("href") as! String
-                
                 orderLists.append(data)
-                print("\(orderLists)")
             }
         }
         return orderLists

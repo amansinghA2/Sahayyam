@@ -80,7 +80,7 @@
                             <constraint firstAttribute="height" constant="1" id="VKW-i3-aDZ"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnA-K1-RiA">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnA-K1-RiA">
                         <rect key="frame" x="0.0" y="146" width="320" height="1"/>
                         <color key="backgroundColor" white="0.0" alpha="0.65261314660000003" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -129,13 +129,13 @@
                             <constraint firstAttribute="width" constant="1" id="mX8-eC-YlS"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVp-D5-wMh">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVp-D5-wMh">
                         <rect key="frame" x="14" y="113" width="108" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-w7-b4J">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-w7-b4J">
                         <rect key="frame" x="9" y="137" width="303" height="1"/>
                         <color key="backgroundColor" white="0.66666666669999997" alpha="0.74571659479999997" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -152,6 +152,9 @@
                         <state key="normal" title="Cancel Order">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="cancelOrderButton:" destination="jYW-mA-8v9" eventType="touchUpInside" id="lFj-IL-aF1"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -168,6 +171,7 @@
                     <constraint firstItem="AVp-D5-wMh" firstAttribute="top" secondItem="LKC-db-hxe" secondAttribute="bottom" constant="3" id="6Us-Bv-BRi"/>
                     <constraint firstAttribute="leadingMargin" secondItem="LKC-db-hxe" secondAttribute="leading" id="8NH-03-xdf"/>
                     <constraint firstItem="yIp-9L-2A9" firstAttribute="top" secondItem="6bu-mH-5zT" secondAttribute="bottom" constant="2" id="9R9-0M-OAj"/>
+                    <constraint firstItem="8p1-w7-b4J" firstAttribute="centerX" secondItem="wnA-K1-RiA" secondAttribute="centerX" id="9cE-hm-vlF"/>
                     <constraint firstItem="QtD-ag-LwJ" firstAttribute="leading" secondItem="kbU-Vy-sDn" secondAttribute="trailing" constant="13" id="As9-Mc-idf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="2AL-jV-5co" secondAttribute="bottom" id="BDs-Lh-BdK"/>
                     <constraint firstItem="wnA-K1-RiA" firstAttribute="top" secondItem="8p1-w7-b4J" secondAttribute="bottom" constant="8" id="BT7-kN-1I4"/>
@@ -188,6 +192,7 @@
                     <constraint firstItem="oEk-3x-oFA" firstAttribute="leading" secondItem="xxZ-33-pCT" secondAttribute="trailing" constant="71" id="Ua5-zm-Gbm"/>
                     <constraint firstItem="oms-3R-9IF" firstAttribute="leading" secondItem="kbU-Vy-sDn" secondAttribute="trailing" constant="13" id="VST-HK-QSZ"/>
                     <constraint firstItem="kbU-Vy-sDn" firstAttribute="leading" secondItem="BEz-mj-Dpx" secondAttribute="trailing" constant="26" id="WM4-7e-8jk"/>
+                    <constraint firstItem="8p1-w7-b4J" firstAttribute="trailing" secondItem="nsi-7V-5JS" secondAttribute="trailing" id="WNx-b4-RwZ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="b7b-NB-eGP" secondAttribute="trailing" constant="1" id="Wgg-4Z-JuQ"/>
                     <constraint firstItem="LKC-db-hxe" firstAttribute="top" secondItem="nsi-7V-5JS" secondAttribute="bottom" id="Xbh-gK-xM5"/>
                     <constraint firstItem="yIp-9L-2A9" firstAttribute="leading" secondItem="2AL-jV-5co" secondAttribute="trailing" constant="5" id="Yom-Bz-7s4"/>
@@ -198,6 +203,7 @@
                     <constraint firstAttribute="leadingMargin" secondItem="2tm-JM-nDy" secondAttribute="leading" id="deP-5v-606"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LKC-db-hxe" secondAttribute="trailing" constant="2" id="eCG-qU-vyt"/>
                     <constraint firstItem="b7b-NB-eGP" firstAttribute="top" secondItem="oms-3R-9IF" secondAttribute="bottom" constant="2" id="euQ-Qb-b2w"/>
+                    <constraint firstItem="8p1-w7-b4J" firstAttribute="bottom" secondItem="kbU-Vy-sDn" secondAttribute="bottom" id="eyr-ub-5rh"/>
                     <constraint firstAttribute="topMargin" secondItem="2tm-JM-nDy" secondAttribute="top" id="fxy-uj-on4"/>
                     <constraint firstAttribute="trailingMargin" secondItem="6bu-mH-5zT" secondAttribute="trailing" constant="1" id="gBK-3l-0Wy"/>
                     <constraint firstItem="kbU-Vy-sDn" firstAttribute="leading" secondItem="yIp-9L-2A9" secondAttribute="trailing" constant="26" id="hQb-JF-YI1"/>
@@ -218,6 +224,13 @@
                     <constraint firstAttribute="leadingMargin" secondItem="b7b-NB-eGP" secondAttribute="leading" id="zLa-Id-Pjg"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cancelOrderLabel" destination="xxZ-33-pCT" id="32x-NH-6iP"/>
+                <outlet property="name" destination="0l7-0b-9HR" id="5Vu-j5-o6g"/>
+                <outlet property="price" destination="oms-3R-9IF" id="ps8-9R-0fK"/>
+                <outlet property="quantity" destination="QtD-ag-LwJ" id="Zhl-YZ-WBS"/>
+                <outlet property="total" destination="nsi-7V-5JS" id="Yjh-Jx-PcR"/>
+            </connections>
             <point key="canvasLocation" x="245" y="177.5"/>
         </tableViewCell>
     </objects>
