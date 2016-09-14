@@ -10,6 +10,8 @@ target 'Sahayyam' do
    pod 'M13Checkbox'
 pod ‘PDTSimpleCalendar’
 pod 'TPKeyboardAvoiding'
+pod 'SwiftyJSON'
+pod ‘Dropper’
 
   target 'SahayyamTests' do
     inherit! :search_paths

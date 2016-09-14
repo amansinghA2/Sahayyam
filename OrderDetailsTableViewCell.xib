@@ -193,7 +193,7 @@
                 <outlet property="quantityLabel" destination="t9m-6U-KH1" id="bSV-8W-3L9"/>
                 <outlet property="totalLabel" destination="HGc-yv-T50" id="D0F-ew-ceE"/>
             </connections>
-            <point key="canvasLocation" x="296" y="162.5"/>
+            <point key="canvasLocation" x="197" y="137.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -19,11 +19,13 @@
                         <segue destination="9gK-fZ-Oyh" kind="show" id="EV4-Cw-B1a"/>
                         <segue destination="2pf-qB-exL" kind="show" id="8p0-Tl-In0"/>
                         <segue destination="g05-se-aBk" kind="show" id="HYo-Sp-lh0"/>
+                        <segue destination="lwM-zS-L8R" kind="show" id="7zJ-8w-yis"/>
+                        <segue destination="dFM-rZ-mEn" kind="show" id="Px5-Vf-IhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3a-EO-Z6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-397" y="1072"/>
+            <point key="canvasLocation" x="-413" y="1072"/>
         </scene>
         <!--Global List View Controller-->
         <scene sceneID="agA-Ea-BFA">
@@ -68,7 +70,7 @@
         <!--Vendor List View Controller-->
         <scene sceneID="fuw-dh-swg">
             <objects>
-                <viewController id="peY-dw-R73" customClass="VendorListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VendorListID" id="peY-dw-R73" customClass="VendorListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="U08-dW-dEz">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="wxw-Vd-T68">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,6 +95,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFt-zD-pO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="279" y="326"/>
+        </scene>
+        <!--My Products View Controller-->
+        <scene sceneID="7KX-7i-dzz">
+            <objects>
+                <viewController storyboardIdentifier="MyProductsViewID" id="lwM-zS-L8R" customClass="MyProductsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2xP-eB-eb2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NZP-4v-eSf">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="Rue-jP-FOF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="KSC-0X-Spb" kind="show" identifier="vendorProductDetailsSegue" id="jrK-0T-5Mc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iaw-sM-2nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="318"/>
+        </scene>
+        <!--Product Details View Controller-->
+        <scene sceneID="gBX-bh-bHy">
+            <objects>
+                <viewController id="KSC-0X-Spb" customClass="ProductDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LCn-Vh-iFJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Hwo-i9-U4F">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="editProductAction:" destination="KSC-0X-Spb" id="VTu-SL-N92"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGM-PO-Agf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ihx-m4-hDa">
@@ -152,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPf-bW-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="1072"/>
+            <point key="canvasLocation" x="330" y="1058"/>
         </scene>
         <!--Subscription Details View Controller-->
         <scene sceneID="HA8-wW-KTk">
@@ -167,7 +208,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oc5-J9-hsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="642" y="1082"/>
+            <point key="canvasLocation" x="728" y="1044"/>
+        </scene>
+        <!--Vndornew Product Add View Controller-->
+        <scene sceneID="w8w-PU-CTU">
+            <objects>
+                <viewController storyboardIdentifier="ProductAddID" id="dFM-rZ-mEn" customClass="VndornewProductAddViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QH8-8l-A4t">
+                        <barButtonItem key="leftBarButtonItem" id="sx7-hl-FEW"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MxR-SI-MYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-429" y="1771"/>
         </scene>
         <!--Vendor Category List View Controller-->
         <scene sceneID="7QI-gf-hI0">

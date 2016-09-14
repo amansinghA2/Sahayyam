@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Dropper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>M13Checkbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TPKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>526B1D8D019EFA2E973491A6B0411ECC</key>
+		<key>37BA548A065CEDB82A46BB598D8044AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C4CFD9D7558A4E128038D2CB8AC471D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D306F864A42DBC1F7A101326604B891A</key>
+		<key>8F4ADBDB71FA93499DF6DBC00A521760</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0AB8EA0C64B745623A06DAF63FD4CBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA039E6879B0CD64BB2A06674BBE53D5</key>
+		<key>FB3E347AAA14EC80067F6F471F311078</key>
 		<dict>
 			<key>primary</key>
 			<true/>

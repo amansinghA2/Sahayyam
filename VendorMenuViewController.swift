@@ -32,8 +32,8 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         gradientLayer.frame = self.gradientView.bounds
         
         self.gradientView.layer.addSublayer(gradientLayer)
-//        self.gradientView.addSubview(customerName)
-//        self.gradientView.addSubview(vendorName)
+//      self.gradientView.addSubview(customerName)
+//      self.gradientView.addSubview(vendorName)
 
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
        listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
@@ -62,15 +62,15 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         switch indexPath.row{
         case 0:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "VendorListID")
         case 1:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
-        case 2:
             self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
+        case 2:
+            self.cellClickNavigation("Vendor" , identifier: "MyProductsViewID")
         case 3:
             self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
         case 4:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
         case 5:
             self.cellClickNavigation("Main" , identifier: "LoginVC")
         case 6:

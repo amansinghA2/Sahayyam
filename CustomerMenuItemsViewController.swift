@@ -99,7 +99,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.vendorListTextfield.text = defaultVendorName
           if Reachability.isConnectedToNetwork(){
         if fromMenuToProductPage == "goToProductsPage"{
-        productFunction()
+            productFunction()
         }else{
             let customerProductsParams:[String:AnyObject]? = [
                 "filter_category":"",
@@ -168,7 +168,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             self.collectionView?.reloadData()
             self.refreshControl?.endRefreshing()
         }
-        
     }
     
     // Mark: - TableView Methods
@@ -264,7 +263,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-       getSpecificProductList = getProductCollectionList[indexPath.row]
+       getSpecificProductList =
+        getProductCollectionList[indexPath.row]
        performSegueWithIdentifier("productDescSegue", sender: nil)
     }
     

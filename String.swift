@@ -60,7 +60,7 @@ let categoryUrl = BASE_URL+"index.php?route=api/category"
 let getCustomerUrl = BASE_URL+"index.php?route=api/vendor/getCustomer"
 let vendorSubscriptionurl = BASE_URL+"index.php?route=api/vendor/getVendorSubscription"
 let transactionsUrl = BASE_URL+"index.php?route=api/vendor/getPayHistory"
-let viewordersUrl = BASE_URL+"index.php?route=api/vendorOrder/getTableData&iColumns=10"
+let viewordersUrl = BASE_URL+"index.php?route=api/vendorOrder/getTableData&iColumns=50"
 let globalLIstUrl = BASE_URL+"index.php?route=api/vendor/globalList"
 let getVendorServicesUrl = BASE_URL+"index.php?route=api/vendor/getVendorServices"
 let myproductsGlobalListUrl = BASE_URL+"index.php?route=api/vendor/globalList"
@@ -71,8 +71,7 @@ let editproducturl = BASE_URL+"index.php?route=api/vendor/editProduct"
 let editpromotionurl = BASE_URL+"index.php?route=api/promotion/editPromotion"
 let registerCustomerUrl = BASE_URL+"index.php?route=api/account-customer/register"
 let vendororderdetailsUrl = BASE_URL+"index.php?route=api/vendorOrder/viewOrder"
-
-
+let getProductdetailsUrl = BASE_URL + "index.php?route=api/vendor/getProducts"
 
 
 extension String

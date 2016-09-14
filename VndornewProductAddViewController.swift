@@ -30,6 +30,9 @@ class VndornewProductAddViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UITextField!
     
+    @IBOutlet weak var productImage: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +44,6 @@ class VndornewProductAddViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -51,5 +53,10 @@ class VndornewProductAddViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func saveButton(sender: AnyObject) {
+        
+        
+        
+    }
 
 }

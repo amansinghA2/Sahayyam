@@ -11,17 +11,36 @@ import UIKit
 class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
 
     @IBOutlet weak var orderDetailsTableView: UITableView!
-    var trackLoadData = CustomerOrders()
+    var vendorListData = CustomerOrders()
+    var customerDetails = CustomerOrderDetails()
    // var orderDetailsList = CustomerOrderDetails()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showHud("Loading...")
-        self.orderDetailsTableView.delegate = self
-        self.orderDetailsTableView.dataSource = self
         
         tokenCheck()
         setUpView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let params = [
+        "order_id":vendorListData.order_id,
+        "device_id":"1234",
+        "token":token
+        ]
+        
+        print(params)
+        
+        ServerManager.sharedInstance().vendorOrderDetails(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+              self.customerDetails = result!
+               self.orderDetailsTableView.delegate = self
+               self.orderDetailsTableView.dataSource = self
+                self.orderDetailsTableView.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +58,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         case 1:
             return 1
         case 2:
-            return 4
+            return self.customerDetails.orderProducts.count
         case 3:
             return 1
         default:
@@ -52,27 +71,28 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier("oderproductDetailsIdentifier") as! OrderProductDetailsTableViewCell
-            cell.orderNoLabel.text = "asd"
-            cell.dateLabel.text = "asda"
-            cell.paymentLabel.text = "asdasd"
+            cell.orderNoLabel.text = self.customerDetails.sales_order
+            cell.dateLabel.text = self.customerDetails.date_added
+            cell.paymentLabel.text = self.customerDetails.payment_method
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("customerDetailsIdentifier") as! CustomerDetailsTableViewCell
-//            cell.addressLabel.text = self.orderDetailsList.payment_address
+            cell.addressLabel.text = self.customerDetails.payment_address
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsIdentifier") as! DetailsOrderTableViewCell
-//            let orderProduct = self.orderDetailsList.orderProducts[indexPath.row]
+            let orderProduct = self.customerDetails.orderProducts[indexPath.row]
+            cell.vendorProducts = orderProduct
             return cell
         case 3:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-//            cell.orderdetailList = self.orderDetailsList
+            cell.vendorOrderList = self.customerDetails
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-//            cell.orderdetailList = self.orderDetailsList
+            cell.vendorOrderList = self.customerDetails
             return cell
         }
         

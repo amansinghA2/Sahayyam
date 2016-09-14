@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 extension CommonJsonMapper {
     
@@ -159,12 +160,26 @@ extension CommonJsonMapper {
                     productList1.offerPrice = offerPrice as! String
                 }
                 
-                let imageString = value.valueForKey("image") as! String
-                productList1.image1  =  imageString
-                productList1.price = value.valueForKey("price") as! String
-                productList1.id = value.valueForKey("product_id") as! Int
-                productList1.width = value.valueForKey("width") as! String
-                productList1.height = value.valueForKey("height") as! String
+                if  let imageString = value.valueForKey("image") as? String {
+                   productList1.image1  = imageString
+                }
+                
+                if let width = value.valueForKey("price") as? String {
+                    productList1.price = width
+                }
+                
+                if let width = value.valueForKey("product_id") as? Int {
+                    productList1.id = width
+                }
+                
+                if let width = value.valueForKey("width") as? String {
+                    productList1.width = width
+                }
+                
+                if let width = value.valueForKey("height") as? String {
+                    productList1.height = width
+                }
+                
                 if let str = value.valueForKey("quantity") as? Int {
                     productList1.quantity1 = str
                 }
@@ -173,6 +188,10 @@ extension CommonJsonMapper {
                         productList1.prodnName = value.valueForKey("name")as! String
                         productList1.prodDesc = value.valueForKey("description") as! String
                     }
+                }
+                
+                if let name1 = value.valueForKey("name") as? String {
+                    productList1.name = name1
                 }
                 
                 productLists.append(productList1)
@@ -264,24 +283,63 @@ extension CommonJsonMapper {
     
     
     // MARK: - Track Orders LIst
-    class func customerProductsOrdersMapper(result:[String:AnyObject]) -> [CustomerOrders]{
+    
+    class func customerProductsOrdersMapper(result:JSON) -> [CustomerOrders]{
         var orderLists = [CustomerOrders]()
         
-        if let arr = result["orders"] as? NSArray{
-            for (_,value) in arr.enumerate(){
+        if let arr = result["orders"].array {
+            for dict in arr{
                 let data = CustomerOrders()
-                data.date_added = value.valueForKey("date_added") as! String
-                data.name = value.valueForKey("name") as! String
-                data.order_id = value.valueForKey("order_id") as! String
-                data.products = value.valueForKey("products") as! Int
-                data.sales_order = value.valueForKey("sales_order") as! String
-                data.status = value.valueForKey("status") as! String
-                data.suborder_status = value.valueForKey("suborder_status") as! String
-                data.total = value.valueForKey("total") as! String
-                data.href = value.valueForKey("href") as! String
+                
+                if let dateAdded = dict["date_added"].string {
+                    data.date_added = dateAdded
+                }
+                
+                if let dateAdded = dict["name"].string {
+                    data.name = dateAdded
+                }
+                
+                if let dateAdded = dict["order_id"].string {
+                    data.order_id = dateAdded
+                }
+                
+                if let dateAdded = dict["products"].int {
+                    data.products = dateAdded
+                }
+                
+                if let dateAdded = dict["sales_order"].string {
+                    data.sales_order = dateAdded
+                }
+                
+                if let dateAdded = dict["status"].string {
+                    data.status = dateAdded
+                }
+                
+                if let dateAdded = dict["suborder_status"].string {
+                    data.suborder_status = dateAdded
+                }
+                
+                if let dateAdded = dict["total"].string {
+                    data.total = dateAdded
+                }
+                
+                if let dateAdded = dict["href"].string {
+                    data.href = dateAdded
+                }
+                
+                if let dateAdded = dict["customer_name"].string {
+                    data.customerName = dateAdded
+                }
+                
+                if let payment_method = dict["payment_method"].string {
+                    data.payment_method = payment_method
+                }
+
                 orderLists.append(data)
             }
         }
+        
+        print(orderLists)
         return orderLists
     }
     
@@ -383,11 +441,30 @@ extension CommonJsonMapper {
         if let arr = result["products"] as? NSArray {
             for (_,value) in arr.enumerate(){
                 let productList = OrderProductList()
-                productList.name = value.valueForKey("name") as! String
-                productList.quantity = value.valueForKey("quantity") as! String
-                productList.price = value.valueForKey("price") as! String
-                productList.total = value.valueForKey("total") as! String
-                //              productLists.append(productList)
+                
+                if let totalDetailTitle = value.valueForKey("name") as? String{
+                    productList.name = totalDetailTitle
+                }
+                
+                if let totalDetailTitle = value.valueForKey("quantity") as? String{
+                    productList.quantity = totalDetailTitle 
+                }
+                
+                let text:AnyObject = value.valueForKey("price")!
+                if text is String {
+                    productList.price = text as! String
+                }else{
+                    productList.price = String(text)
+                }
+                
+                let text1:AnyObject = value.valueForKey("total")!
+                if text1 is String {
+                    productList.total = text1 as! String
+                }else{
+                    productList.total = String(text1)
+                }
+   
+              //productLists.append(productList)
                 productDetail.orderProducts.append(productList)
             }
             
@@ -582,15 +659,6 @@ extension CommonJsonMapper {
                     categoryList.parent_id = parentId as! String
                 }
                 
-                //                if let categoryID = value.valueForKey("category_id"){
-                //                    categoryList.category_id = categoryID as! String
-                //                }
-                //                if let categoryID = value.valueForKey("category_id"){
-                //                    categoryList.category_id = categoryID as! String
-                //                }
-                //                if let categoryID = value.valueForKey("category_id"){
-                //                    categoryList.category_id = categoryID as! String
-                //                }
                 categoryLists.append(categoryList)
             }
             
@@ -599,12 +667,9 @@ extension CommonJsonMapper {
         print(categoryLists)
         return categoryLists
         
-        //        if let firstname = dic["firstname"] {
-        //            populateData.firstname = firstname as! String
-        //        }
-        
     }
     
+
     
-    
+ 
 }

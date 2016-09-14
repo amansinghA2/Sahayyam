@@ -123,5 +123,41 @@ class VendorJSONMapper: NSObject {
         }
         return customerLists
     }
+    
+    
+    
+    class func vendorServicesMapper(result:[String:AnyObject]) -> [VendorService]  {
+        
+        var customerLists = [VendorService]()
+        
+        if let customers = result["vendor_service"] as? NSArray{
+            
+            for (_,value) in customers.enumerate(){
+                let customerList = VendorService()
+                
+                if let subscription = value.valueForKey("id") as? String{
+                    customerList.id = subscription
+                }
+                
+                if let customer = value.valueForKey("bus_type") as? String{
+                    customerList.bus_type = customer
+                }
+                
+                if let Customercount = value.valueForKey("code") as? String{
+                    customerList.code = Customercount
+                }
+                
+                if let status = value.valueForKey("desc") as? String{
+                    customerList.desc = status
+                }
+                
+                customerLists.append(customerList)
+            }
+            
+        }
+        return customerLists
+    }
+    
+    
   
 }

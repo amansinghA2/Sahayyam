@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 extension ServerManager {
     
@@ -121,59 +122,57 @@ extension ServerManager {
     func viewVendorOrders(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         
         let headers = [
-            "Cookie":"PHPSESSID=" + sessionID
+            "Cookie":"PHPSESSID=" + sessionID,
         ]
-        
+    
         defaultManager.request(.GET, viewordersUrl, parameters: params, encoding: .URL, headers: headers)
-            .responseJSON { response in
+            .validate()
+            .responseData
+            { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let dict = response.result.value {
-                            print(dict)
-                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict as! [String : AnyObject])
+                        if let data = response.result.value {
+                            let dict = JSON(data: data)
+                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
-                    }
-                }
-        }
+                        }
+                  }
+           }
     }
     
-    
-    func getVendorGlobalList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
-        
-        //token, product_name, limit, page, device_id, global=1, service_id
-        
+    func getproductDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.GET, globalLIstUrl, parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, getProductdetailsUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let res = response.response {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
-                            print(dict)
                             completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-                        
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
-        }
-    }
+           }
+      }
     
     // MARK: - Checkout
     
-    func getVendorServices(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [String:AnyObject]?) -> Void) {
+    func getVendorServices(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorService]?) -> Void) {
         
         
         let headers = [
@@ -187,8 +186,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject])
+                         let arr = VendorJSONMapper.vendorServicesMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr )
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -202,7 +201,7 @@ extension ServerManager {
     
     // MARK: Wish LIst
     
-    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[WishlistProductList]?) -> Void) {
+    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[ProductCollectionList]?) -> Void) {
         
         //token, product_name,  limit, page, device_id, global=0, service_id
         
@@ -217,7 +216,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr  =  CommonJsonMapper.getWishlistListMapper(dict as! [String : AnyObject])
+                            let arr  =  CommonJsonMapper.productCollectionList(dict as! [String : AnyObject])
                             print(arr)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
@@ -326,8 +325,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict as! [String : AnyObject])
-                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                           // let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
+                            completionClosure(isSuccessful: true, error: nil, result: nil)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -398,7 +397,7 @@ extension ServerManager {
     }
     
     
-    func vendorOrderDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CategoryList]?) -> Void) {
+    func vendorOrderDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: CustomerOrderDetails?) -> Void) {
         
         // order_id, device_id, token
         
@@ -413,7 +412,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
+                            let arr = CommonJsonMapper.customerProductsDetailsMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)

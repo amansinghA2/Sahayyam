@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsOrderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var quantity: UILabel!
     @IBOutlet weak var total: UILabel!
@@ -21,10 +21,34 @@ class DetailsOrderTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    var vendorProducts:OrderProductList!{
+        didSet{
+            bindModelToViews1()
+        }
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func bindModelToViews1(){
+        
+        if let name = vendorProducts?.name {
+            nameLabel.text = name
+        }
+        
+        if let name = vendorProducts?.price {
+            price.text = name
+        }
+        if let name = vendorProducts?.quantity {
+            quantity.text = name
+        }
+        if let name = vendorProducts?.total {
+            total.text = name
+        }
+        
     }
     
     @IBAction func cancelOrderButton(sender: AnyObject) {

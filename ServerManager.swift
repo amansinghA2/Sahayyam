@@ -10,11 +10,43 @@ import UIKit
 import Foundation
 import Alamofire
 
+//enum Router: URLRequestConvertible {
+//    static let baseUrlString = "someUrl"
+//    
+//    case Get(url: String)
+//    
+//    var URLRequest: NSMutableURLRequest {
+//        let path: String = {
+//            switch self {
+//            case .Get(let url):
+//                return "/\(url)"
+//            }
+//        }()
+//        
+//        let URL = NSURL(string: Router.baseUrlString)!
+//        let URLRequest = NSMutableURLRequest(URL:
+//            URL.URLByAppendingPathComponent(path))
+//
+//        // set header fields
+//        URLRequest.setValue("text/html",
+//                            forHTTPHeaderField: "Content-Type")
+//        URLRequest.setValue("text/html",
+//                            forHTTPHeaderField: "Accept")
+//        URLRequest.setValue("PHPSESSID=" + sessionID,
+//        forHTTPHeaderField: "Cookie")
+//        
+//        return URLRequest
+//    }
+//}
+
 class ServerManager: NSObject {
     
     let defaultManager: Alamofire.Manager! = {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        
+        configuration.HTTPAdditionalHeaders = [
+            "Content-Type": "application/graphql",
+            "Accept": "text/html" //Optional
+        ]
         return Alamofire.Manager(
 
         )
@@ -26,6 +58,8 @@ class ServerManager: NSObject {
         }
         return Static.sharedInstance
     }
+    
+   
     
     func requestUserLoginWithCredential(userName:String! , passWord:String!, completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: CustomerLoginData?) -> Void) {
         

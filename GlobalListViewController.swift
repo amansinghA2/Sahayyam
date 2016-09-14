@@ -26,6 +26,25 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        let params = [
+            "token":token,
+            "product_name":"",
+            "limit":"25",
+            "page":"1",
+            "device_id":"1234",
+            "global":"1",
+            "service_id":"51"
+        ]
+        
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                
+            }
+        }
+    }
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

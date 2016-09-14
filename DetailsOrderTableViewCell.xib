@@ -226,7 +226,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cancelOrderLabel" destination="xxZ-33-pCT" id="32x-NH-6iP"/>
-                <outlet property="name" destination="0l7-0b-9HR" id="5Vu-j5-o6g"/>
+                <outlet property="nameLabel" destination="0l7-0b-9HR" id="Sq4-rJ-eaU"/>
                 <outlet property="price" destination="oms-3R-9IF" id="ps8-9R-0fK"/>
                 <outlet property="quantity" destination="QtD-ag-LwJ" id="Zhl-YZ-WBS"/>
                 <outlet property="total" destination="nsi-7V-5JS" id="Yjh-Jx-PcR"/>

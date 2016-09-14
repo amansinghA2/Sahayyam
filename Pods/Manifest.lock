@@ -1,24 +1,30 @@
 PODS:
   - Alamofire (3.4.1)
+  - Dropper (2.6)
   - M13Checkbox (2.1.2)
   - PDTSimpleCalendar (0.9.1)
   - SwiftLoader (0.2.5)
+  - SwiftyJSON (2.3.2)
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
+  - Dropper
   - M13Checkbox
   - PDTSimpleCalendar
   - SwiftLoader
+  - SwiftyJSON
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  Dropper: e3055818a93e147794f1d6410876c7aa958b9441
   M13Checkbox: fbc53145e3ca8ecd1c444a76439bdc0ddb17b008
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
   SwiftLoader: 12d7a6f661f5e9a2c9a72003e7dd6162f4ff0cc4
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 162b12f513a68edbc1c5c372b548355e1a4f38ca
+PODFILE CHECKSUM: e27dc55bf2c4478b0324dcebab6f02281a290781
 
 COCOAPODS: 1.0.1

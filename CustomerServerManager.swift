@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 extension ServerManager {
 
@@ -320,15 +321,16 @@ extension ServerManager {
         ]
         
         defaultManager.request(.GET, customerOrdersUrl, parameters: params, encoding: .URL, headers: headers)
-            .responseJSON { response in
+            .responseData { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let dict = response.result.value {
-                            print(dict)
-                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict as! [String : AnyObject])
+                        if let data = response.result.value {
+                            let dict = JSON(data: data)
+                            let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
-                        }else{
+                        }
+                        else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):

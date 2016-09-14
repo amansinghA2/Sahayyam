@@ -32,6 +32,12 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
         }
     }
     
+    var vendorOrderList:CustomerOrderDetails!{
+        didSet{
+            bindModelToViews1()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -95,42 +101,65 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
         }
         
         
-//        var string1 = String()
-//        var string2 = String()
-//        var string3 = String()
-//        
-//        if let total = orderdetailList?.orderTotals {
-//            
-//            for i in total {
-//                if i.title != "" {
-//                string1 = string1.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
-//            }
-//            }
-//        }
-//        
-//        if let total = orderdetailList?.extraDeliveryTotals {
-//            
-//            for i in total {
-//                 if i.title != "" {
-//                string2 = string2.stringByAppendingString(i.title + "         " + i.text + "          " + i.appliedPrice + "\n")
-//                
-//            }
-//            }
-//            
-//        }
-//        
-//            if let total1 = orderdetailList?.extraOrderCosts{
-//                for i in total1 {
-//                    if i.title != "" {
-//                  string3 = string3.stringByAppendingString("Grand Total" + "            " + i.text + "          " + i.appliedPrice )
-//                }
-//              }
-//            }
+    }
+    
+    func bindModelToViews1(){
+        if let deliverCharges = vendorOrderList?.orderTotals {
+            
+            let offerPrice = deliverCharges[0]
+            let deliveryCharges = deliverCharges[1]
+            let subTotal = deliverCharges[2]
+            let total = deliverCharges[3]
+            
+            if offerPrice.title != "" {
+                offerPriceLabel.text = offerPrice.title
+            }
+            
+            if deliveryCharges.title != "" {
+                deliveryChargesLabel.text = deliveryCharges.title
+            }
+            
+            if deliveryCharges.title != "" {
+                subTotalLabel.text = subTotal.title
+            }
+            
+            if total.title != "" {
+                totalLabel.text = total.title
+            }
+            
+            if offerPrice.title != "" {
+                priceShowLabel.text = offerPrice.text
+            }
+            
+            if deliveryCharges.title != "" {
+                deliverychargesShowLabel.text = deliveryCharges.text
+            }
+            
+            if deliveryCharges.title != "" {
+                subTotalShowLabel.text = subTotal.text
+            }
+            
+            if total.title != "" {
+                totalShowLabel.text = total.text
+            }
+        }
         
+        if let total = vendorOrderList?.extraDeliveryTotals {
+            for i in total {
+                if i.title != "" {
+                    expressDeliveryLabel.text = "Express Delivery Cost"
+                    expressDeliveryShowLabel.text = i.text
+                }
+            }
+        }
         
-//        stringByTrimmingCharactersInSet(
-//            NSCharacterSet.whitespaceAndNewlineCharacterSet()
-       // grandTotalLabel.text = string1 + string2 + string3
+        if let total = vendorOrderList?.extraOrderCosts {
+            for i in total {
+                grandTotalLabel.text = "Grand Total"
+                grandTotalShowLabel.text = i.text
+            }
+        }
+        
         
     }
     

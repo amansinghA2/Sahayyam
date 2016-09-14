@@ -24,6 +24,12 @@ class TrackOrderTableViewCell: UITableViewCell {
         }
     }
     
+    var vendorLoadData:CustomerOrders!{
+        didSet{
+            bindModeltoViews1()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -40,13 +46,12 @@ class TrackOrderTableViewCell: UITableViewCell {
         
         if let saleOrder = trackLoadData?.status {
             self.orderreceivedStatus.text = saleOrder
-//            self.orderreceivedStatus.tintColor = UIColor.orangeColor()
         }
-        
+
         if let saleOrder = trackLoadData?.products {
             self.NoOFProductsLabel.text = String(saleOrder)
         }
-        
+
         if let saleOrder = trackLoadData?.total {
             self.productTotalPrice.text = String(saleOrder)
         }
@@ -55,7 +60,40 @@ class TrackOrderTableViewCell: UITableViewCell {
             self.saleOrderId.text = String(saleOrder)
         }
         
+        
     }
+    
+    func bindModeltoViews1() {
+        
+        
+        
+        if let saleOrder = vendorLoadData?.sales_order {
+            self.saleOrderId.text = String(saleOrder)
+        }
+        
+        if let saleOrder = vendorLoadData?.customerName {
+            self.orderNamelabel.text = String(saleOrder)
+        }
+        
+        if let saleOrder = vendorLoadData?.payment_method {
+                self.NoOFProductsLabel.text = String(saleOrder)
+        }
+        
+        
+        if let saleOrder = vendorLoadData?.total {
+            self.productTotalPrice.text = String(saleOrder)
+        }
+        
+        if let date = vendorLoadData?.date_added {
+            self.dateoutlet.text = date
+        }
+        
+        if let saleOrder = vendorLoadData?.suborder_status {
+            self.orderreceivedStatus.text = saleOrder
+        }
+        
+    }
+
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

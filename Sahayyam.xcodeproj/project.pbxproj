@@ -168,6 +168,13 @@
 		AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC328F11D6702D800EDEA4A /* ValidationMessages.swift */; };
 		AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC523D71D4B2AC7007864B9 /* UIViewController.swift */; };
 		AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC524201D4B3F84007864B9 /* CustomerServerManager.swift */; };
+		AFCD86641D89480000F10ABB /* MyProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD86621D89480000F10ABB /* MyProductsViewController.swift */; };
+		AFCD86651D89480000F10ABB /* MyProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFCD86631D89480000F10ABB /* MyProductsViewController.xib */; };
+		AFCD86671D895AE000F10ABB /* VendorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD86661D895AE000F10ABB /* VendorService.swift */; };
+		AFCD866A1D896CCE00F10ABB /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD86681D896CCE00F10ABB /* ProductDetailsViewController.swift */; };
+		AFCD866B1D896CCE00F10ABB /* ProductDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFCD86691D896CCE00F10ABB /* ProductDetailsViewController.xib */; };
+		AFCD866E1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD866C1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift */; };
+		AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */; };
 		AFCFCCBD1D55C2C200983327 /* ProductCollectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFCCBC1D55C2C200983327 /* ProductCollectionList.swift */; };
 		AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0BA331D6C1397006A6351 /* Validations.swift */; };
 		AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */; };
@@ -389,6 +396,13 @@
 		AFC328F11D6702D800EDEA4A /* ValidationMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationMessages.swift; sourceTree = "<group>"; };
 		AFC523D71D4B2AC7007864B9 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		AFC524201D4B3F84007864B9 /* CustomerServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServerManager.swift; sourceTree = "<group>"; };
+		AFCD86621D89480000F10ABB /* MyProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductsViewController.swift; sourceTree = "<group>"; };
+		AFCD86631D89480000F10ABB /* MyProductsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProductsViewController.xib; sourceTree = "<group>"; };
+		AFCD86661D895AE000F10ABB /* VendorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorService.swift; sourceTree = "<group>"; };
+		AFCD86681D896CCE00F10ABB /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		AFCD86691D896CCE00F10ABB /* ProductDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailsViewController.xib; sourceTree = "<group>"; };
+		AFCD866C1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProductDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AFCFCCBC1D55C2C200983327 /* ProductCollectionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionList.swift; sourceTree = "<group>"; };
 		AFD0BA331D6C1397006A6351 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImage.swift; sourceTree = "<group>"; };
@@ -653,6 +667,7 @@
 				AF5438C51D87DA4800CDCCD9 /* CustomerList.swift */,
 				AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */,
 				AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */,
+				AFCD86661D895AE000F10ABB /* VendorService.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -821,6 +836,12 @@
 				AF5438C81D87EED500CDCCD9 /* SubscriptionDetailsViewController.xib */,
 				AF5438CB1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift */,
 				AF5438CC1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib */,
+				AFCD86621D89480000F10ABB /* MyProductsViewController.swift */,
+				AFCD86631D89480000F10ABB /* MyProductsViewController.xib */,
+				AFCD866C1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift */,
+				AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */,
+				AFCD86681D896CCE00F10ABB /* ProductDetailsViewController.swift */,
+				AFCD86691D896CCE00F10ABB /* ProductDetailsViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1027,6 +1048,7 @@
 				AFC26FCB1D4F1E100003471B /* CustomerMenuDescriptionViewController.xib in Resources */,
 				AF5438CE1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib in Resources */,
 				AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */,
+				AFCD86651D89480000F10ABB /* MyProductsViewController.xib in Resources */,
 				AF5438C01D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib in Resources */,
 				AF6D18CB1D8666AB00F220FE /* CustomerListTableViewCell.xib in Resources */,
 				AF1F1FA51D4A0C4200E36DB0 /* SwitchUserViewController.xib in Resources */,
@@ -1058,6 +1080,7 @@
 				AF1F1FAF1D4A121C00E36DB0 /* MenuViewController.xib in Resources */,
 				AF5438B81D87BFFE00CDCCD9 /* VendorCategoryListViewController.xib in Resources */,
 				AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */,
+				AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */,
 				AF1F1F571D4A07E400E36DB0 /* LaunchScreen.storyboard in Resources */,
 				AF142BE11D7EC30A00273C06 /* VendorMenuTableViewCell.xib in Resources */,
 				AFB6A1F11D5DEE4000A9731B /* OrderDetailsViewController.xib in Resources */,
@@ -1072,6 +1095,7 @@
 				AFB6A1F51D5DEE5B00A9731B /* OrderDetailsTableViewCell.xib in Resources */,
 				AFBC27491D54B08B003ECBF6 /* CustomerBestDealsViewController.xib in Resources */,
 				AF5438A81D87B41400CDCCD9 /* GlobalListTableViewCell.xib in Resources */,
+				AFCD866B1D896CCE00F10ABB /* ProductDetailsViewController.xib in Resources */,
 				AFEB25571D50649F006B52C5 /* CustomerUpdateProfileViewController.xib in Resources */,
 				AF1F1F541D4A07E400E36DB0 /* Assets.xcassets in Resources */,
 				AFB6A1FD1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.xib in Resources */,
@@ -1230,6 +1254,7 @@
 				AF5438D21D88193D00CDCCD9 /* VendorPayment.swift in Sources */,
 				AF1685B41D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift in Sources */,
 				AFC26FC61D4F192E0003471B /* CommonJsonMapper.swift in Sources */,
+				AFCD86671D895AE000F10ABB /* VendorService.swift in Sources */,
 				AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */,
 				AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */,
 				AF6D18E31D86D07300F220FE /* VendorPromotionsViewController.swift in Sources */,
@@ -1238,6 +1263,7 @@
 				AF6D18CA1D8666AB00F220FE /* CustomerListTableViewCell.swift in Sources */,
 				AFBC27441D54A558003ECBF6 /* AboutUsViewController.swift in Sources */,
 				AF1F1FA01D4A0C2D00E36DB0 /* LoginViewController.swift in Sources */,
+				AFCD866E1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift in Sources */,
 				AF5438BF1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.swift in Sources */,
 				AFBC27521D54B3E2003ECBF6 /* WishLIstTableViewCell.swift in Sources */,
 				AF5438C91D87EED500CDCCD9 /* SubscriptionDetailsViewController.swift in Sources */,
@@ -1260,6 +1286,7 @@
 				AF1F1F9A1D4A0A5B00E36DB0 /* Button.swift in Sources */,
 				AFCFCCBD1D55C2C200983327 /* ProductCollectionList.swift in Sources */,
 				AF6A881F1D532C5D00986ECC /* VendorDeliverTiming.swift in Sources */,
+				AFCD866A1D896CCE00F10ABB /* ProductDetailsViewController.swift in Sources */,
 				AFB6A1ED1D5DC5C200A9731B /* ProductDetails.swift in Sources */,
 				0701434E1D7F43AA009E2F19 /* VendorEditPFViewController.swift in Sources */,
 				AF1F1FBF1D4A3B9200E36DB0 /* CustomerMenuItemsViewController.swift in Sources */,
@@ -1312,6 +1339,7 @@
 				AFBF2D321D5C889F007A8655 /* CheckoutViewController.swift in Sources */,
 				AFC26FBC1D4F06480003471B /* Reachability.swift in Sources */,
 				AF5438C31D87D75400CDCCD9 /* CustomerListDetailTableViewCell.swift in Sources */,
+				AFCD86641D89480000F10ABB /* MyProductsViewController.swift in Sources */,
 				AFBF9CB81D589C06007E17C3 /* CartListStaticTableViewCell.swift in Sources */,
 				AF5438B71D87BFFE00CDCCD9 /* VendorCategoryListViewController.swift in Sources */,
 				AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */,

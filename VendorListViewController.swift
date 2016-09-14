@@ -12,10 +12,12 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
 
     @IBOutlet weak var vendorLIstTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    var vendorOrderLists = [CustomerOrders]()
+    var vendorOrderData = CustomerOrders()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        vendorLIstTableView.delegate = self
-        vendorLIstTableView.dataSource = self
         
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
@@ -25,6 +27,25 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     override func viewWillAppear(animated: Bool) {
         slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self
+        
+        let params = [
+        "token":token ,
+        "device_id":"1234",
+        "iDisplayLength":"25",
+        "page":"1"
+        ]
+        
+        ServerManager.sharedInstance().viewVendorOrders(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+
+                self.vendorOrderLists = result!
+                self.vendorLIstTableView.delegate = self
+                self.vendorLIstTableView.dataSource = self
+                self.vendorLIstTableView.reloadData()
+            }else{
+                
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,20 +54,19 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     }
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return vendorOrderLists.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:TrackOrderTableViewCell = tableView.dequeueReusableCellWithIdentifier("trackOrderCell") as! TrackOrderTableViewCell
         
-//        trackLoadData = self.trackLoadDataList[indexPath.row]
-//        cell.trackLoadData = trackLoadData
+         cell.vendorLoadData = vendorOrderLists[indexPath.row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        self.vendorOrderData = self.vendorOrderLists[indexPath.row]
         self.performSegueWithIdentifier("gotoTrackDetails", sender: nil)
     }
 
@@ -76,6 +96,13 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "gotoTrackDetails" {
+           let vc = segue.destinationViewController as! VendorOrderDetailsViewController
+           vc.vendorListData = self.vendorOrderData
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

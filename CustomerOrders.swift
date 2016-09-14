@@ -20,5 +20,7 @@ class CustomerOrders: NSObject {
     var status = String()
     var total = String()
     var suborder_status = String()
+    var customerName = String()
+     var payment_method = String()
     
 }
