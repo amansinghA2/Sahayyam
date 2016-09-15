@@ -10,6 +10,8 @@
 		0701434E1D7F43AA009E2F19 /* VendorEditPFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701434C1D7F43AA009E2F19 /* VendorEditPFViewController.swift */; };
 		0701434F1D7F43AA009E2F19 /* VendorEditPFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0701434D1D7F43AA009E2F19 /* VendorEditPFViewController.xib */; };
 		07336BCA1D5FA70500A821AA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07336BC91D5FA70500A821AA /* Image.swift */; };
+		0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */; };
+		0754F9FD1D8B22CF005AB58A /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F9FB1D8B22CF005AB58A /* SSRadioButton.swift */; };
 		07F4426F1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4426D1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift */; };
 		07F442701D621E4300733E91 /* OrderProductDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F4426E1D621E4300733E91 /* OrderProductDetailsTableViewCell.xib */; };
 		07F442731D621E5D00733E91 /* CustomerDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F442711D621E5D00733E91 /* CustomerDetailsTableViewCell.swift */; };
@@ -229,6 +231,8 @@
 		0701434C1D7F43AA009E2F19 /* VendorEditPFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorEditPFViewController.swift; sourceTree = "<group>"; };
 		0701434D1D7F43AA009E2F19 /* VendorEditPFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorEditPFViewController.xib; sourceTree = "<group>"; };
 		07336BC91D5FA70500A821AA /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
+		0754F9FB1D8B22CF005AB58A /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
 		07F4426D1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		07F4426E1D621E4300733E91 /* OrderProductDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProductDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		07F442711D621E5D00733E91 /* CustomerDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 				AF3D71771D4C609F0025EF32 /* Sahayyam-Bridging-Header.h */,
 				AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */,
 				AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */,
+				0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */,
+				0754F9FB1D8B22CF005AB58A /* SSRadioButton.swift */,
 				AF1F1F991D4A0A5B00E36DB0 /* Button.swift */,
 				AF1F1F9B1D4A0A9F00E36DB0 /* TextField.swift */,
 				AFC26FB91D4F05D90003471B /* CheckBoxButton.swift */,
@@ -1298,6 +1304,7 @@
 				07F442731D621E5D00733E91 /* CustomerDetailsTableViewCell.swift in Sources */,
 				AF3D717A1D4C60A00025EF32 /* SWRevealViewController.m in Sources */,
 				AF6A881B1D532C3C00986ECC /* Products.swift in Sources */,
+				0754F9FD1D8B22CF005AB58A /* SSRadioButton.swift in Sources */,
 				AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */,
 				AF6A881D1D532C4900986ECC /* CartAmount.swift in Sources */,
 				AF5438CD1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift in Sources */,
@@ -1334,6 +1341,7 @@
 				AFA2A52A1D50CBA3006F1D41 /* Customer.swift in Sources */,
 				AFB6A1F41D5DEE5B00A9731B /* OrderDetailsTableViewCell.swift in Sources */,
 				AFC26FCA1D4F1E100003471B /* CustomerMenuDescriptionViewController.swift in Sources */,
+				0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */,
 				AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */,
 				AF1F1FAE1D4A121C00E36DB0 /* MenuViewController.swift in Sources */,
 				AFBF2D321D5C889F007A8655 /* CheckoutViewController.swift in Sources */,
