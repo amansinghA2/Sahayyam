@@ -120,8 +120,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
-        }
-    }
+           }
+     }
     
     func customerEditToCart(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
         

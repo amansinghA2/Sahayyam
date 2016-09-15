@@ -25,6 +25,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var pincodeTextfield: TextField!
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var confirmPassword: TextField!
+    var str = ""
     
     var isLogin = ""
     let imagePicker = UIImagePickerController()
@@ -95,21 +96,18 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "token":token,
                 "device_id":"1234"
             ]
-
-            print(params)
             
             dispatch_async(dispatch_get_main_queue(), {
                 ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
                     if isSuccessful{
                         self.hideHud()
                         if let imgStr = result!["img_dir"]{
-                            str = (imgStr as! String)
-                            
-                        }
-                    }
-                }
+                            self.str = (imgStr as! String)
+                         }
+                     }
+                 }
 
-            })
+             })
           }
         }else{
             AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
@@ -137,7 +135,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "address[0][zone_id]":stateTextField.text!,
                 "address[0][city]":cityTextField.text!,
                 "address[0][postcode]":pincodeTextfield.text!,
-                "image":str
+                "image":self.str
             ]
             
             print(params)

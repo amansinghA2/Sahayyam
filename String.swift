@@ -72,7 +72,7 @@ let editpromotionurl = BASE_URL+"index.php?route=api/promotion/editPromotion"
 let registerCustomerUrl = BASE_URL+"index.php?route=api/account-customer/register"
 let vendororderdetailsUrl = BASE_URL+"index.php?route=api/vendorOrder/viewOrder"
 let getProductdetailsUrl = BASE_URL + "index.php?route=api/vendor/getProducts"
-
+let addProductUrl = BASE_URL+"index.php?route=api/vendor/addProduct"
 
 extension String
 {
