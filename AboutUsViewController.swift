@@ -10,6 +10,7 @@ import UIKit
 
 class AboutUsViewController: UIViewController {
 
+    @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var addresstextField: UITextField!

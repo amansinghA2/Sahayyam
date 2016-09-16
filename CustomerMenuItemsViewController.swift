@@ -486,6 +486,8 @@ else{
                         "quantity":Int(field.text!)!
                     ]
             
+                    print(params)
+                    
                     ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
                         
                         if isSuccessful{

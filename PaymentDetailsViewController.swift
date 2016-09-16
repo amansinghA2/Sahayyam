@@ -10,12 +10,13 @@ import UIKit
 
 class PaymentDetailsViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
     
+    @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var paymentdetailsTableView: UITableView!
     var vendorPayments = [VendorPayment]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+slideMenuShow(slideMenuButton, viewcontroller: self)
         
         let nib1 = UINib(nibName: "PaymentDetailsTableViewCell", bundle: nil)
         self.paymentdetailsTableView.registerNib(nib1, forCellReuseIdentifier: "paymentdetailsIdentifier")

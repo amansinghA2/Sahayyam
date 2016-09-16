@@ -9,7 +9,7 @@
 import Foundation
 
 class ProductCollectionList: NSObject {
-    dynamic var product_id = Int()
+    dynamic var product_id = String()
     dynamic var offerPrice = String()
     dynamic var prodDesc = String()
     dynamic var image1 = String()

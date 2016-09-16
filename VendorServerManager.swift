@@ -231,7 +231,7 @@ extension ServerManager {
     
     func autocompleteCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
         
-        //token, service_id, service_id, filter_name
+        // token, service_id, service_id, filter_name
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -312,8 +312,6 @@ extension ServerManager {
     
     func addProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         
-        // token, device_id, manufacturer_id, manufacturer, product_category[], product_id, product_description[1][name], product_description[1][description], image, price, product_special[0][price], weight_class_id, weight, quantity, subtract, "status, product_description[1][meta_title], "model, service_id, product_special[0][customer_group_id], product_special[0][date_start], product_special[0][date_end], product_special[0][priority], ref_code
-        
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
@@ -325,7 +323,6 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            // let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
                             completionClosure(isSuccessful: true, error: nil, result: nil)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -336,7 +333,29 @@ extension ServerManager {
                 }
         }
     }
-
+    
+    func globalProductAdd(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, globalAddProductUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            completionClosure(isSuccessful: true, error: nil, result: nil)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                    }
+                }
+        }
+    }
     
     func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         

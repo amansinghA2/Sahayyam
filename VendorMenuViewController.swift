@@ -72,7 +72,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 4:
             self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
         case 5:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
         case 6:
             self.cellClickNavigation("Vendor" , identifier: "categoryListID")
         case 7:
@@ -82,11 +82,11 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 9:
             self.cellClickNavigation("Main" , identifier: "SwitchUVController")
         case 10:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
         case 11:
-            self.cellClickNavigation("Main" , identifier: "VendorUpdateID")
+            self.cellClickNavigation("Vendor" , identifier: "vendorUpdateID")
         case 12:
-            self.cellClickNavigation("Main" , identifier: "LoginVC")
+            self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
         case 13:
             alertControllerToLogout()
         default:

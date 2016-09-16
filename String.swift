@@ -16,11 +16,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-// let BASE_URL = "http://192.168.1.2/sahayyam/"
-// let image_base_url = "http://192.168.1.2/sahayyam/image/"
+ let BASE_URL = "http://192.168.1.2/sahayyam/"
+ let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
 // MARK: - Common Url
 
@@ -73,6 +73,7 @@ let registerCustomerUrl = BASE_URL+"index.php?route=api/account-customer/registe
 let vendororderdetailsUrl = BASE_URL+"index.php?route=api/vendorOrder/viewOrder"
 let getProductdetailsUrl = BASE_URL + "index.php?route=api/vendor/getProducts"
 let addProductUrl = BASE_URL+"index.php?route=api/vendor/addProduct"
+let globalAddProductUrl = BASE_URL+"index.php?route=api/vendor/ajaxSave"
 
 extension String
 {

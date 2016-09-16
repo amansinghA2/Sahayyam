@@ -13,11 +13,33 @@ class GlobalListTableViewCell: UITableViewCell {
     @IBOutlet weak var addButtonLabel: Button!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    
+    var getProductCollectionLists1:ProductCollectionList!{
+        didSet{
+            bindModeltoViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func bindModeltoViews(){
+        if let customerProductImage1 = getProductCollectionLists1?.image1 {
+            if customerProductImage1 != "" {
+                self.productImage.imageFromUrl(customerProductImage1)
+            } else {
+                self.productImage.image = UIImage(named: "v_no_image")
+            }
+        }
+        
+        if let customerProductName = getProductCollectionLists1?.name {
+            self.productName.text = customerProductName
+        }
+        
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

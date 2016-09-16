@@ -16,6 +16,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     var customreList = CustomerList()
     override func viewDidLoad() {
         super.viewDidLoad()
+                slideMenuShow(slideMenuButton, viewcontroller: self)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "CustomerListTableViewCell", bundle: nil)
         self.customerListTableView.registerNib(nib1, forCellReuseIdentifier: "customerLIstCell")

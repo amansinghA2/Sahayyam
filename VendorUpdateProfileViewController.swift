@@ -10,6 +10,7 @@ import UIKit
 
 class VendorUpdateProfileViewController: UIViewController {
 
+    @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var firstName: TextField!
     @IBOutlet weak var lastName: TextField!
     @IBOutlet weak var dobTextField: TextField!
@@ -21,7 +22,7 @@ class VendorUpdateProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        slideMenuShow(slidemenuButton, viewcontroller: self)
         dobTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         passwordtextfield.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
         confirmPasswordtextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)

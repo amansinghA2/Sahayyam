@@ -39,7 +39,7 @@ class ProductDetailsViewController: UIViewController {
             "product_id":getProductList.product_id,
             "width":"200",
             "height":"200",
-            ]
+        ]
         
         print(params)
         if Reachability.isConnectedToNetwork(){
@@ -102,8 +102,7 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func editProductAction(sender: AnyObject) {
-        
-        
+        self.performSegueWithIdentifier("goToEditSegue", sender: self)
         
     }
        /*

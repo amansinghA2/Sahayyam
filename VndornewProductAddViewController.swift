@@ -9,12 +9,13 @@
 import UIKit
 import Dropper
 
-class VndornewProductAddViewController: UIViewController , UITextFieldDelegate , DropperDelegate{
+class VndornewProductAddViewController: UIViewController , UITextFieldDelegate , DropperDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
     
      let dropper = Dropper(width: 131, height: 200)
     @IBOutlet weak var manufacturerLabel: UITextField!
     
+    @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var nameDropDown: UIButton!
     @IBOutlet weak var categoryDropDown: UIButton!
     @IBOutlet weak var serviceLabel: UITextField!
@@ -35,8 +36,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryLabel.delegate = self
-        nameLabel.delegate = self
+        slideMenuShow(slideMenuButton, viewcontroller: self)
+        imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -119,36 +120,65 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         })
     }
     
-    @IBAction func saveButton(sender: AnyObject){
-        
-        let params:[String:AnyObject] = [
-        "token":token,
-        "device_id":"1234",
-        "manufacturer":manufacturerLabel.text!,
-        "manufacturer_id":"0",
-        "product_category[]":categoryLabel.text!,
-        "product_description[1][name]":nameLabel.text!,
-        "product_description[1][description]":descriptionLabel.text!,
-        "image":str,
-        "price":priceLabel.text!,
-        "product_special[0][price]":offerPriceLabel,
-        "weight_class_id":unitValueLabel,
-        "weight":unitTypeLabel,
-        "quantity":quantityLabel,
-        "subtract":substractStockLabel,
-        "status":statusLabel,
-        "product_description[1][meta_title]":token,
-        "model":nameLabel.text!,
-        "service_id":serviceLabel,
-        "ref_code":referenceCodeLabel
-        ]
-        
-        ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-              print("Success")
-            }
+    func formValidation() -> Bool{
+        if (serviceLabel.text?.isBlank == true  || categoryLabel.text?.isBlank == true || nameLabel.text?.isBlank == true || descriptionLabel.text?.isBlank == true || offerPriceLabel.text?.isBlank == true || referenceCodeLabel.text?.isBlank == true || priceLabel.text?.isBlank == true ||  unitTypeLabel.text?.isBlank == true || unitValueLabel.text?.isBlank == true || quantityLabel.text?.isBlank == true ||  substractStockLabel.text?.isBlank == true || statusLabel.text?.isBlank == true){
+            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
         }
         
+//        if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
+//            AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+//        
+//        if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
+//            AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+        
+        
+        return true
+    }
+    
+    @IBAction func saveButton(sender: AnyObject){
+        
+        if Reachability.isConnectedToNetwork() {
+            if formValidation() {
+                let params:[String:AnyObject] = [
+                    "token":token,
+                    "device_id":"1234",
+                    "manufacturer":manufacturerLabel.text!,
+                    "manufacturer_id":"0",
+                    "product_category[]":categoryLabel.text!,
+                    "product_description[1][name]":nameLabel.text!,
+                    "product_description[1][description]":descriptionLabel.text!,
+                    "image":str,
+                    "price":priceLabel.text!,
+                    "product_special[0][price]":offerPriceLabel,
+                    "weight_class_id":unitValueLabel,
+                    "weight":unitTypeLabel,
+                    "quantity":quantityLabel,
+                    "subtract":substractStockLabel,
+                    "status":statusLabel,
+                    "product_description[1][meta_title]":token,
+                    "model":nameLabel.text!,
+                    "service_id":serviceLabel,
+                    "ref_code":referenceCodeLabel
+                ]
+                
+                ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
+                    if isSuccessful {
+                        print("Success")
+                    }
+                }        }
+        else{
+            self.hideHud()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+        }
+        
+      
+        
+    }
     }
 
     @IBAction func categoryAction(sender: AnyObject) {
@@ -194,56 +224,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 
 
 
-//    let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("sbPopUpID") as! PopUpViewController
-//    self.addChildViewController(popOverVC)
-//    popOverVC.view.frame = self.view.frame
-//    self.view.addSubview(popOverVC.view)
-//    popOverVC.didMoveToParentViewController(self)
 
-
-
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
-//
-//        self.showAnimate()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//    @IBAction func closePopUp(sender: AnyObject) {
-//        self.removeAnimate()
-//        //self.view.removeFromSuperview()
-//    }
-//
-//    func showAnimate()
-//    {
-//        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
-//        self.view.alpha = 0.0;
-//        UIView.animateWithDuration(0.25, animations: {
-//            self.view.alpha = 1.0
-//            self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
-//        });
-//    }
-//
-//    func removeAnimate()
-//    {
-//        UIView.animateWithDuration(0.25, animations: {
-//            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
-//            self.view.alpha = 0.0;
-//            }, completion:{(finished : Bool)  in
-//                if (finished)
-//                {
-//                    self.view.removeFromSuperview()
-//                }
-//        });
-//    }
 
 
 //LInk - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial

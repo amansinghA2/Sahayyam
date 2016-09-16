@@ -1,19 +1,18 @@
 //
-//  VendorEditPFViewController.swift
+//  CustomerRegistrationViewController.swift
 //  Sahayyam
 //
-//  Created by Aman on 9/7/16.
+//  Created by Sanjeev Jikamade on 16/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class VendorEditPFViewController: UIViewController {
+class CustomerRegistrationViewController: UIViewController {
 
-    @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        slideMenuShow(slideMenuButton, viewcontroller: self)
+
         // Do any additional setup after loading the view.
     }
 

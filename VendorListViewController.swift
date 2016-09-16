@@ -18,7 +18,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
         // Do any additional setup after loading the view.

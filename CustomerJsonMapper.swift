@@ -152,8 +152,14 @@ extension CommonJsonMapper {
             for (_,value) in dic.enumerate() {
                 let productList1 = ProductCollectionList()
                 
-                if let prodcuTid = value.valueForKey("product_id") {
-                    productList1.product_id = prodcuTid as! Int
+//                if let prodcuTid = value.valueForKey("product_id") {
+//                    productList1.product_id = prodcuTid as! Int
+//                }
+                let text:AnyObject = value.valueForKey("product_id")!
+                if text is String {
+                    productList1.product_id = text as! String
+                }else{
+                    productList1.product_id = String(text)
                 }
                 
                 if let offerPrice = value.valueForKey("offerPrice") {

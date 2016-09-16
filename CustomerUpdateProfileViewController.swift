@@ -9,9 +9,7 @@
 import UIKit
 
 class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    
-    
+
     @IBOutlet weak var customerImage: UIImageView!
     @IBOutlet weak var firstNameLabel: TextField!
     @IBOutlet weak var lastNameLabel: TextField!
@@ -119,6 +117,8 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
         self.showHud("Loading...")
         
+        
+        if Reachability.isConnectedToNetwork() {
         if formValidation() {
             let params:[String:AnyObject]? = [
                 "token":token,
@@ -149,6 +149,9 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
+        }else{
+            
+          }
         }
         else{
             self.hideHud()

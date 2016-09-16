@@ -106,6 +106,7 @@ extension ServerManager {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
+                            print(dict)
                             if let result = dict["success"]!{
                                 if result as! Bool {
                                     completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)

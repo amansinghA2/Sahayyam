@@ -10,6 +10,7 @@ import UIKit
 
 class MyProductsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate ,UISearchBarDelegate ,SWRevealViewControllerDelegate{
     
+    @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var myproductsCollectionView: UICollectionView!
     var searchBar:UISearchBar?
     var refreshControl:UIRefreshControl?
@@ -24,6 +25,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        slideMenuShow(slidemenuButton, viewcontroller: self)
         prepareUI()
         let nib = UINib(nibName: "MyProductDetailsTableViewCell", bundle: nil)
         myproductsCollectionView.registerNib(nib, forCellWithReuseIdentifier: "menuItemIdentifier1")
@@ -241,7 +243,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             getProductList = self.getProductCollectionList[indexPath.row]
             cell.getProductCollectionLists1 = getProductList
         }
-        //index.php?route=api/vendor/getProducts";
+        
+//        index.php?route=api/vendor/getProducts";
 //        String token = sm.getToken();
 //        String imei = sm.getImei();
 //        String cookie = sm.getCookie();

@@ -193,6 +193,10 @@
 		AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */; };
 		AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */; };
 		AFF1A40B1D63529E00B819C5 /* OrderProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */; };
+		AFFC5A921D8BB6610039CBD5 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC5A901D8BB6610039CBD5 /* AddProductViewController.swift */; };
+		AFFC5A931D8BB6610039CBD5 /* AddProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFC5A911D8BB6610039CBD5 /* AddProductViewController.xib */; };
+		AFFC5A961D8BCB210039CBD5 /* CustomerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC5A941D8BCB210039CBD5 /* CustomerRegistrationViewController.swift */; };
+		AFFC5A971D8BCB210039CBD5 /* CustomerRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFC5A951D8BCB210039CBD5 /* CustomerRegistrationViewController.xib */; };
 		BEEA9B6FBD021500C3164805 /* Pods_Sahayyam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B93071768787237F472CE4 /* Pods_Sahayyam.framework */; };
 /* End PBXBuildFile section */
 
@@ -423,6 +427,10 @@
 		AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHMainMenuViewController.swift; sourceTree = "<group>"; };
 		AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CHMainMenuViewController.xib; sourceTree = "<group>"; };
 		AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductList.swift; sourceTree = "<group>"; };
+		AFFC5A901D8BB6610039CBD5 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
+		AFFC5A911D8BB6610039CBD5 /* AddProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProductViewController.xib; sourceTree = "<group>"; };
+		AFFC5A941D8BCB210039CBD5 /* CustomerRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegistrationViewController.swift; sourceTree = "<group>"; };
+		AFFC5A951D8BCB210039CBD5 /* CustomerRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerRegistrationViewController.xib; sourceTree = "<group>"; };
 		B49491475D650865308633A3 /* Pods-SahayyamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SahayyamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.release.xcconfig"; sourceTree = "<group>"; };
 		B4B93071768787237F472CE4 /* Pods_Sahayyam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sahayyam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE2C592CE0716FAD25849DD /* Pods_SahayyamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -818,12 +826,6 @@
 				AF6D18D61D86901500F220FE /* DetailsOrderTableViewCell.xib */,
 				AF6D18DD1D86A10D00F220FE /* VndornewProductAddViewController.swift */,
 				AF6D18DE1D86A10D00F220FE /* VndornewProductAddViewController.xib */,
-				AF6D18E11D86D07300F220FE /* VendorPromotionsViewController.swift */,
-				AF6D18E21D86D07300F220FE /* VendorPromotionsViewController.xib */,
-				AF6D18E51D86D0AD00F220FE /* VendorPromotionTableViewCell.swift */,
-				AF6D18E61D86D0AD00F220FE /* VendorPromotionTableViewCell.xib */,
-				AF6D18E91D86D44F00F220FE /* PromotionTypeViewController.swift */,
-				AF6D18EA1D86D44F00F220FE /* PromotionTypeViewController.xib */,
 				AF5438A11D87B3F800CDCCD9 /* GlobalListViewController.swift */,
 				AF5438A21D87B3F800CDCCD9 /* GlobalListViewController.xib */,
 				AF5438A51D87B41400CDCCD9 /* GlobalListTableViewCell.swift */,
@@ -848,6 +850,16 @@
 				AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */,
 				AFCD86681D896CCE00F10ABB /* ProductDetailsViewController.swift */,
 				AFCD86691D896CCE00F10ABB /* ProductDetailsViewController.xib */,
+				AFFC5A901D8BB6610039CBD5 /* AddProductViewController.swift */,
+				AFFC5A911D8BB6610039CBD5 /* AddProductViewController.xib */,
+				AFFC5A941D8BCB210039CBD5 /* CustomerRegistrationViewController.swift */,
+				AFFC5A951D8BCB210039CBD5 /* CustomerRegistrationViewController.xib */,
+				AF6D18E11D86D07300F220FE /* VendorPromotionsViewController.swift */,
+				AF6D18E21D86D07300F220FE /* VendorPromotionsViewController.xib */,
+				AF6D18E51D86D0AD00F220FE /* VendorPromotionTableViewCell.swift */,
+				AF6D18E61D86D0AD00F220FE /* VendorPromotionTableViewCell.xib */,
+				AF6D18E91D86D44F00F220FE /* PromotionTypeViewController.swift */,
+				AF6D18EA1D86D44F00F220FE /* PromotionTypeViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1059,6 +1071,7 @@
 				AF6D18CB1D8666AB00F220FE /* CustomerListTableViewCell.xib in Resources */,
 				AF1F1FA51D4A0C4200E36DB0 /* SwitchUserViewController.xib in Resources */,
 				AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */,
+				AFFC5A971D8BCB210039CBD5 /* CustomerRegistrationViewController.xib in Resources */,
 				AF1F1FA11D4A0C2D00E36DB0 /* LoginViewController.xib in Resources */,
 				AF6D18E01D86A10D00F220FE /* VndornewProductAddViewController.xib in Resources */,
 				AF1F1FA71D4A106200E36DB0 /* Vendor.storyboard in Resources */,
@@ -1072,6 +1085,7 @@
 				AFB8BF1D1D5212AE00E815A7 /* CityHeadViewController.xib in Resources */,
 				AFBC274F1D54B3CA003ECBF6 /* WishListViewController.xib in Resources */,
 				AF8036B41D62EA4700422C54 /* VendorListTableViewCell.xib in Resources */,
+				AFFC5A931D8BB6610039CBD5 /* AddProductViewController.xib in Resources */,
 				AF5438C41D87D75400CDCCD9 /* CustomerListDetailTableViewCell.xib in Resources */,
 				AF6D18D31D8670FE00F220FE /* VendorListViewController.xib in Resources */,
 				AF5438CA1D87EED500CDCCD9 /* SubscriptionDetailsViewController.xib in Resources */,
@@ -1269,6 +1283,7 @@
 				AF6D18CA1D8666AB00F220FE /* CustomerListTableViewCell.swift in Sources */,
 				AFBC27441D54A558003ECBF6 /* AboutUsViewController.swift in Sources */,
 				AF1F1FA01D4A0C2D00E36DB0 /* LoginViewController.swift in Sources */,
+				AFFC5A921D8BB6610039CBD5 /* AddProductViewController.swift in Sources */,
 				AFCD866E1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift in Sources */,
 				AF5438BF1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.swift in Sources */,
 				AFBC27521D54B3E2003ECBF6 /* WishLIstTableViewCell.swift in Sources */,
@@ -1349,6 +1364,7 @@
 				AF5438C31D87D75400CDCCD9 /* CustomerListDetailTableViewCell.swift in Sources */,
 				AFCD86641D89480000F10ABB /* MyProductsViewController.swift in Sources */,
 				AFBF9CB81D589C06007E17C3 /* CartListStaticTableViewCell.swift in Sources */,
+				AFFC5A961D8BCB210039CBD5 /* CustomerRegistrationViewController.swift in Sources */,
 				AF5438B71D87BFFE00CDCCD9 /* VendorCategoryListViewController.swift in Sources */,
 				AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */,
 				AF1F1FC31D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift in Sources */,

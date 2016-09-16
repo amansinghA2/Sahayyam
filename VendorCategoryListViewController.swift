@@ -10,11 +10,13 @@ import UIKit
 
 class VendorCategoryListViewController: UIViewController  , UITableViewDelegate , UITableViewDataSource {
 
+    @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var vendorCategoryTableview: UITableView!
     var categoryLists = [CategoryList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
         self.vendorCategoryTableview.registerNib(nib1, forCellReuseIdentifier: "categoryListIdentifier")
         
