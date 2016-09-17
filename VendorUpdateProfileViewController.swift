@@ -75,11 +75,11 @@ class VendorUpdateProfileViewController: UIViewController {
         
         lastName.text = populateDataList.lastName
         
-        dobTextField.text = populateDataList.mobileNumber
+        dobTextField.text = populateDataList.dateOfBirth
         
-        emailID.text = populateDataList.dateOfBirth
+        emailID.text = populateDataList.emailId
         
-        mobileNumber.text = populateDataList.emailId
+        mobileNumber.text = populateDataList.mobileNumber
         
     }
     

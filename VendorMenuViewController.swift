@@ -72,7 +72,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 4:
             self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
         case 5:
-            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
+            self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
         case 6:
             self.cellClickNavigation("Vendor" , identifier: "categoryListID")
         case 7:

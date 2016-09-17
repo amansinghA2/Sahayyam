@@ -157,7 +157,55 @@ class VendorJSONMapper: NSObject {
         }
         return customerLists
     }
-    
-    
+
+
+    class func  getPromotionList(result:[String:AnyObject]) -> [VendorPromotionList]  {
+
+        var customerLists = [VendorPromotionList]()
+
+        if let customers = result["dispalyProduct"] as? NSArray{
+
+            for (_,value) in customers.enumerate(){
+                let customerList = VendorPromotionList()
+
+                if let subscription = value.valueForKey("name") as? String{
+                    customerList.name = subscription
+                }
+
+                if let customer = value.valueForKey("start_date_added") as? String{
+                    customerList.start_date_added = customer
+                }
+
+                if let Customercount = value.valueForKey("end_date_added") as? String{
+                    customerList.end_date_added = Customercount
+                }
+
+                if let status = value.valueForKey("description") as? String{
+                    customerList.promotionDescription = status
+                }
+
+                if let status = value.valueForKey("promo_name") as? String{
+                    customerList.promo_name = status
+                }
+
+                if let status = value.valueForKey("price") as? String{
+                    customerList.price = status
+                }
+
+                if let status = value.valueForKey("discountPrice") as? String{
+                    customerList.discount = status
+                }
+
+                if let status = value.valueForKey("quantity") as? String{
+                    customerList.quantity = status
+                }
+
+                customerLists.append(customerList)
+            }
+
+        }
+        return customerLists
+    }
+
   
 }

@@ -166,7 +166,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CartListTableViewCell.swift"
-                  timestampString = "495656482.067486"
+                  timestampString = "495816446.402391"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
@@ -181,7 +181,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CartListTableViewCell.swift"
-                  timestampString = "495656482.067675"
+                  timestampString = "495816446.40263"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "52"
@@ -381,38 +381,6 @@
             endingLineNumber = "92"
             landmarkName = "uploadImageAction(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.CustomerUpdateProfileViewController.uploadImageAction (Swift.AnyObject) -&gt; ()"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CustomerUpdateProfileViewController.swift"
-                  timestampString = "495656482.076993"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "420">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.CustomerUpdateProfileViewController.(uploadImageAction (Swift.AnyObject) -&gt; ()).(closure #1)"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CustomerUpdateProfileViewController.swift"
-                  timestampString = "495656482.077154"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -502,7 +470,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CustomerMenuItemsViewController.swift"
-                  timestampString = "495656482.081113"
+                  timestampString = "495816446.422151"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "141"
@@ -517,7 +485,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/CustomerMenuItemsViewController.swift"
-                  timestampString = "495656482.081269"
+                  timestampString = "495816446.422429"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "142"
@@ -539,7 +507,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "187"
             endingLineNumber = "187"
-            landmarkName = "DropperSelectedRow(_:contents:tag:)"
+            landmarkName = "categoryAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -555,7 +523,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "DropperSelectedRow(_:contents:tag:)"
+            landmarkName = "categoryAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -571,7 +539,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
             endingLineNumber = "191"
-            landmarkName = "DropperSelectedRow(_:contents:tag:)"
+            landmarkName = "categoryAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -587,40 +555,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
             endingLineNumber = "184"
-            landmarkName = "DropperSelectedRow(_:contents:tag:)"
+            landmarkName = "categoryAction(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.VndornewProductAddViewController.DropperSelectedRow (__ObjC.NSIndexPath, contents : Swift.String, tag : Swift.Int) -&gt; ()"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "495656482.084839"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "185"
-                  endingLineNumber = "185"
-                  offsetFromSymbolStart = "74">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "protocol witness for Dropper.DropperDelegate.DropperSelectedRow (__ObjC.NSIndexPath, contents : Swift.String, tag : Swift.Int) -&gt; () in conformance Sahayyam.VndornewProductAddViewController : Dropper.DropperDelegate in Sahayyam"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "495656482.085074"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PromotionTypeViewController.swift"
+            timestampString = "495817245.734093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "didSelectButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PromotionTypeViewController.swift"
+            timestampString = "495817245.734093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "didSelectButton(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

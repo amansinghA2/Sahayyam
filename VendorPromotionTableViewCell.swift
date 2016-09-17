@@ -10,6 +10,18 @@ import UIKit
 
 class VendorPromotionTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var startDate: UILabel!
+    @IBOutlet weak var endDate: UILabel!
+
+    var vendorPromotionList:VendorPromotionList!{
+        didSet{
+            bindModelToViews()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +31,37 @@ class VendorPromotionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+
+    func bindModelToViews() {
+
+        if let name = vendorPromotionList.name as? String{
+            nameLabel.text = name
+        }
+
+        if let name = vendorPromotionList.price as? String{
+            priceLabel.text = "On Price: INR. " + name + "/-"
+        }
+
+
+        if vendorPromotionList.discount != "" {
+        if let name = vendorPromotionList.discount as? String{
+            discountLabel.text = "Discount: INR. " + name + "/-"
+        }
+        }
+
+        if let name = vendorPromotionList.name as? String{
+            nameLabel.text = name
+        }
+
+        if let name = vendorPromotionList.start_date_added as? String{
+            startDate.text = "Start: " + name
+        }
+
+        if let name = vendorPromotionList.end_date_added as? String{
+            endDate.text = "End: " + name
+        }
+
     }
     
 }

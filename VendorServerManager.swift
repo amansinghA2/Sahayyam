@@ -173,8 +173,7 @@ extension ServerManager {
     // MARK: - Checkout
     
     func getVendorServices(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorService]?) -> Void) {
-        
-        
+
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
@@ -196,8 +195,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
-        }
-    }
+           }
+      }
     
     // MARK: Wish LIst
     
@@ -255,7 +254,7 @@ extension ServerManager {
         }
     }
     
-    func displayPromotionList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func displayPromotionList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorPromotionList]?) -> Void) {
         
         //token, device_id
         
@@ -270,7 +269,10 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+
+                            let arr = VendorJSONMapper.getPromotionList((dict as? [String:AnyObject])!)
+
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -358,7 +360,9 @@ extension ServerManager {
     }
     
     func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
-        
+
+
+
         // token, device_id, manufacturer_id, manufacturer, product_category[], product_id, product_description[1][name], product_description[1][description], image, price, product_special[0][price], weight_class_id, weight, quantity, subtract, "status, product_description[1][meta_title], "model, service_id, product_special[0][customer_group_id], product_special[0][date_start], product_special[0][date_end], product_special[0][priority], ref_code
         
         let headers = [
@@ -385,7 +389,8 @@ extension ServerManager {
     }
     
     func editPromotion(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: CustomerOrderDetails?) -> Void) {
-        
+
+
         //token, device_id, product[name], product[productQuantity], product[image], product[amount], product[productUnitId], product[description], product[fromDate], product[endDate], product[productDiscountType], product[amtDiscountType], product[productId], product[promotion_id]
         
         let headers = [
