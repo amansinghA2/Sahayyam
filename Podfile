@@ -12,6 +12,7 @@ pod ‘PDTSimpleCalendar’
 pod 'TPKeyboardAvoiding'
 pod 'SwiftyJSON'
 pod ‘Dropper’
+pod 'AFNetworking', '~> 3.0'
 
   target 'SahayyamTests' do
     inherit! :search_paths

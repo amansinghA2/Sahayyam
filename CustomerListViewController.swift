@@ -58,7 +58,11 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return (customerListArray[section].collapsed) ? 0 : 1
+        if customerListArray.count !=  0 {
+            return (customerListArray[section].collapsed) ? 0 : 1
+        }else{
+            return 0
+        }
     }
     
     

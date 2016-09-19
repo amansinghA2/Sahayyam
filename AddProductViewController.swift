@@ -70,7 +70,7 @@ class AddProductViewController: UIViewController {
         "status[0]":"0",
         "product_id":getproductCollectionList.product_id,
         "status":"0",
-        "service_id":"51"
+        "service_id":getproductCollectionList.service_id
         ]
 
         print(params)

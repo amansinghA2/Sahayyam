@@ -9,10 +9,10 @@
 import UIKit
 
 class VendorJSONMapper: NSObject {
-
-
+    
+    
     class func getCustomerListMapper(result:[String:AnyObject]) -> [CustomerList]  {
-       
+        
         var customerLists = [CustomerList]()
         
         if let customers = result["customers"] as? NSArray{
@@ -35,7 +35,7 @@ class VendorJSONMapper: NSObject {
                 if let address_1 = value.valueForKey("address_1") as? String{
                     customerList.address = address_1
                 }
-               customerLists.append(customerList)
+                customerLists.append(customerList)
             }
             
         }
@@ -78,7 +78,7 @@ class VendorJSONMapper: NSObject {
         return customerLists
     }
     
-
+    
     
     class func getSubscriptionDetailsMapper(result:[String:AnyObject]) -> [SubscriptionList]  {
         
@@ -157,55 +157,109 @@ class VendorJSONMapper: NSObject {
         }
         return customerLists
     }
-
-
+    
+    
     class func  getPromotionList(result:[String:AnyObject]) -> [VendorPromotionList]  {
-
+        
         var customerLists = [VendorPromotionList]()
-
+        
         if let customers = result["dispalyProduct"] as? NSArray{
-
+            
             for (_,value) in customers.enumerate(){
                 let customerList = VendorPromotionList()
-
+                
                 if let subscription = value.valueForKey("name") as? String{
                     customerList.name = subscription
                 }
-
+                
                 if let customer = value.valueForKey("start_date_added") as? String{
                     customerList.start_date_added = customer
                 }
-
+                
                 if let Customercount = value.valueForKey("end_date_added") as? String{
                     customerList.end_date_added = Customercount
                 }
-
+                
                 if let status = value.valueForKey("description") as? String{
                     customerList.promotionDescription = status
                 }
-
+                
                 if let status = value.valueForKey("promo_name") as? String{
                     customerList.promo_name = status
                 }
-
+                
                 if let status = value.valueForKey("price") as? String{
                     customerList.price = status
                 }
-
+                
                 if let status = value.valueForKey("discountPrice") as? String{
                     customerList.discount = status
                 }
-
+                
                 if let status = value.valueForKey("quantity") as? String{
                     customerList.quantity = status
                 }
-
+                
                 customerLists.append(customerList)
             }
-
+            
         }
         return customerLists
     }
-
-  
+    
+    
+    
+    class func  sellerPopulateDataMapper(result:[String:AnyObject]) -> SellerData  {
+        
+        let customerList = SellerData()
+        
+        if let customers = result["vendorData"]{
+            if let address = customers["address"]{
+                
+                if let addr = address!["address_1"] as? String{
+                    customerList.address_1 = addr
+                }
+                
+                if let addr = address!["address_2"] as? String{
+                    customerList.address_2 = addr
+                }
+                
+                if let addr = address!["city"] as? String{
+                    customerList.city = addr
+                }
+                if let addr = address!["country"] as? String{
+                    customerList.country = addr
+                }
+                
+                if let addr = address!["postcode"] as? String{
+                    customerList.postcode = addr
+                }
+                
+            }
+            
+            if let banner = customers["banner"] as? String{
+                customerList.bannerImageString = banner
+            }
+            
+            if let addr = customers["ms.avatar"] as? String{
+                customerList.avatar = addr
+            }
+            
+            if let addr = customers["name"] as? String{
+                customerList.name = addr
+            }
+            
+            if let addr = customers["ms.description"] as? String{
+                customerList.descriptionDetails = addr
+            }
+            
+            if let addr = customers["ms.company"] as? String{
+                customerList.companyName = addr
+            }
+            
+        }
+        return customerList
+    }
+    
+    
 }

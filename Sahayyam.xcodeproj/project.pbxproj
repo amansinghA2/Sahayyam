@@ -83,6 +83,11 @@
 		AF5438CE1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5438CC1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib */; };
 		AF5438D01D88021500CDCCD9 /* SubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */; };
 		AF5438D21D88193D00CDCCD9 /* VendorPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */; };
+		AF652C851D8F9CB3009852A3 /* SelectSevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C831D8F9CB3009852A3 /* SelectSevicesViewController.swift */; };
+		AF652C861D8F9CB3009852A3 /* SelectSevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */; };
+		AF652C891D8FA0D4009852A3 /* SelectServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */; };
+		AF652C8A1D8FA0D4009852A3 /* SelectServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */; };
+		AF652C8C1D8FFA6A009852A3 /* SellerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C8B1D8FFA6A009852A3 /* SellerData.swift */; };
 		AF6A88161D5306BE00986ECC /* CustomerJsonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A88151D5306BE00986ECC /* CustomerJsonMapper.swift */; };
 		AF6A88181D5325DB00986ECC /* CartProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A88171D5325DB00986ECC /* CartProductList.swift */; };
 		AF6A881B1D532C3C00986ECC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A881A1D532C3C00986ECC /* Products.swift */; };
@@ -320,6 +325,11 @@
 		AF5438CC1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionList.swift; sourceTree = "<group>"; };
 		AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorPayment.swift; sourceTree = "<group>"; };
+		AF652C831D8F9CB3009852A3 /* SelectSevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSevicesViewController.swift; sourceTree = "<group>"; };
+		AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSevicesViewController.xib; sourceTree = "<group>"; };
+		AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectServicesTableViewCell.swift; sourceTree = "<group>"; };
+		AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectServicesTableViewCell.xib; sourceTree = "<group>"; };
+		AF652C8B1D8FFA6A009852A3 /* SellerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerData.swift; sourceTree = "<group>"; };
 		AF6A88151D5306BE00986ECC /* CustomerJsonMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerJsonMapper.swift; sourceTree = "<group>"; };
 		AF6A88171D5325DB00986ECC /* CartProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartProductList.swift; sourceTree = "<group>"; };
 		AF6A881A1D532C3C00986ECC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -685,6 +695,7 @@
 				AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */,
 				AFCD86661D895AE000F10ABB /* VendorService.swift */,
 				0714D1731D8D4B9500CE928F /* VendorPromotionList.swift */,
+				AF652C8B1D8FFA6A009852A3 /* SellerData.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -863,6 +874,10 @@
 				AF6D18E61D86D0AD00F220FE /* VendorPromotionTableViewCell.xib */,
 				AF6D18E91D86D44F00F220FE /* PromotionTypeViewController.swift */,
 				AF6D18EA1D86D44F00F220FE /* PromotionTypeViewController.xib */,
+				AF652C831D8F9CB3009852A3 /* SelectSevicesViewController.swift */,
+				AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */,
+				AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */,
+				AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1102,10 +1117,12 @@
 				AF6D18DC1D86910400F220FE /* VendorOrderDetailsViewController.xib in Resources */,
 				AF1F1FAF1D4A121C00E36DB0 /* MenuViewController.xib in Resources */,
 				AF5438B81D87BFFE00CDCCD9 /* VendorCategoryListViewController.xib in Resources */,
+				AF652C8A1D8FA0D4009852A3 /* SelectServicesTableViewCell.xib in Resources */,
 				AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */,
 				AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */,
 				AF1F1F571D4A07E400E36DB0 /* LaunchScreen.storyboard in Resources */,
 				AF142BE11D7EC30A00273C06 /* VendorMenuTableViewCell.xib in Resources */,
+				AF652C861D8F9CB3009852A3 /* SelectSevicesViewController.xib in Resources */,
 				AFB6A1F11D5DEE4000A9731B /* OrderDetailsViewController.xib in Resources */,
 				07F442701D621E4300733E91 /* OrderProductDetailsTableViewCell.xib in Resources */,
 				AFB6A1F91D5DF05700A9731B /* OrderDetailHeaderTableViewCell.xib in Resources */,
@@ -1315,6 +1332,8 @@
 				0701434E1D7F43AA009E2F19 /* VendorEditPFViewController.swift in Sources */,
 				AF1F1FBF1D4A3B9200E36DB0 /* CustomerMenuItemsViewController.swift in Sources */,
 				AF4E78BF1D50857300E2FB20 /* TrackOrderViewController.swift in Sources */,
+				AF652C851D8F9CB3009852A3 /* SelectSevicesViewController.swift in Sources */,
+				AF652C891D8FA0D4009852A3 /* SelectServicesTableViewCell.swift in Sources */,
 				AF5438A71D87B41400CDCCD9 /* GlobalListTableViewCell.swift in Sources */,
 				AFF1A40B1D63529E00B819C5 /* OrderProductList.swift in Sources */,
 				AFBC274E1D54B3CA003ECBF6 /* WishListViewController.swift in Sources */,
@@ -1330,6 +1349,7 @@
 				AFBC274B1D54B179003ECBF6 /* RoundedView.swift in Sources */,
 				AF6D18E71D86D0AD00F220FE /* VendorPromotionTableViewCell.swift in Sources */,
 				AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */,
+				AF652C8C1D8FFA6A009852A3 /* SellerData.swift in Sources */,
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AFNetworking
 
 extension ServerManager {
     
@@ -269,7 +270,6 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-
                             let arr = VendorJSONMapper.getPromotionList((dict as? [String:AnyObject])!)
 
                             completionClosure(isSuccessful: true, error: nil, result: arr)
@@ -288,13 +288,14 @@ extension ServerManager {
     
     func addPromotion(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
         //token, device_id, product[name], product[productQuantity], product[image], product[amount], product[productUnitId], product[description], product[fromDate], product[endDate], product[productDiscountType], product[amtDiscountType], product[productId], product[product_id], product[promotion_id]
+        
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
         defaultManager.request(.POST, addpromotionUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
-                if let res = response.response {
+                if let _ = response.response {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
@@ -342,12 +343,39 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
+        
+    //    let manager = AFHTTPSessionManager()
+        
+//        manager.POST(globalAddProductUrl, parameters: params, success: { (task, result) in
+//            
+//            }) { (task, error) in
+//        
+//        }
+//        manager.requestSerializer.setValue("PHPSESSID=" + sessionID, forHTTPHeaderField: "Cookie")
+//        manager.POST( globalAddProductUrl,
+//                     parameters: params,
+//                     success: {
+//                        operation, responseObject in
+//                        let json = JSON(responseObject!)
+//                        print(json)
+//                        
+//            },
+//                     failure: {
+//                        operation, error in
+//                        
+//                        print("Error: " + error.localizedDescription)
+//        })
+//        
+//    }
+    
         defaultManager.request(.POST, globalAddProductUrl , parameters: params, encoding: .URL, headers: headers)
-            .responseJSON { response in
+            .responseData { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let dict = response.result.value {
+                        if let data = response.result.value {
+                            let dict = JSON(data: data)
+                            print(dict)
                             completionClosure(isSuccessful: true, error: nil, result: nil)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -358,7 +386,7 @@ extension ServerManager {
                 }
         }
     }
-    
+
     func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
 
 
@@ -473,6 +501,59 @@ extension ServerManager {
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
+        }
+    }
+    
+    func sellerInfoSave(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: CustomerOrderDetails?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, sellerInfoUrl , parameters: params, encoding: .JSON, headers: headers)
+            .validate()
+            .responseData { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let data = response.result.value {
+                            let dict = JSON(data: data)
+                            print(dict)
+                           // let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
+                            completionClosure(isSuccessful: true, error: nil, result: nil)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func sellerPopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, sellerPopulateUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+             }
         }
     }
     

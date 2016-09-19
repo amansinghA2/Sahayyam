@@ -39,11 +39,11 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         let params = [
         "token":token,
         "product_name":"",
-        "limit":"25",
+        "limit":"100",
         "page":"1",
         "device_id":"1234",
         "global":"0",
-        "service_id":"51"
+        "service_id":""
         ]
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
@@ -302,25 +302,37 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     
     @IBAction func vendorServiceAction(sender: AnyObject) {
     
-        let params = [
-        "token":token,
-        "device_id":"1234"
-        ]
+       // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
         
-        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-              self.vendorServices = result!
-              self.myproductsCollectionView.delegate = self
-              self.myproductsCollectionView.dataSource = self
-              self.myproductsCollectionView.reloadData()
-            }
-        }
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
+        // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        
+//        let params = [
+//        "token":token,
+//        "device_id":"1234"
+//        ]
+//        
+//        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
+//            if isSuccessful {
+//              self.vendorServices = result!
+//              self.myproductsCollectionView.delegate = self
+//              self.myproductsCollectionView.dataSource = self
+//              self.myproductsCollectionView.reloadData()
+//            }
+//        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "vendorProductDetailsSegue" {
             let vc = segue.destinationViewController as? ProductDetailsViewController
             vc!.getProductList = self.getSpecificProductList
+        }else if segue.identifier == "myproductSelectServices" {
+            
         }
     }
     

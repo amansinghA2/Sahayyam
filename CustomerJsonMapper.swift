@@ -200,6 +200,10 @@ extension CommonJsonMapper {
                     productList1.name = name1
                 }
                 
+                if let name1 = value.valueForKey("service_id") as? String {
+                    productList1.service_id = name1
+                }
+                
                 productLists.append(productList1)
                 print(productList1)
             }
