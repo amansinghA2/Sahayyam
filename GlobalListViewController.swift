@@ -69,7 +69,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             "page":"1",
             "device_id":"1234",
             "global":"1",
-            "service_id":""
+            "service_id":"51"
         ]
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
@@ -327,6 +327,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
        // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
         self.addChildViewController(popOverVC)
+        popOverVC.str = "1"
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)

@@ -148,6 +148,8 @@ extension CommonJsonMapper {
     class func productCollectionList(result:[String:AnyObject]) -> [ProductCollectionList]{
         var productLists = [ProductCollectionList]()
         
+        
+        
         if let dic = result["products"] as? NSArray{
             for (_,value) in dic.enumerate() {
                 let productList1 = ProductCollectionList()
@@ -679,6 +681,66 @@ extension CommonJsonMapper {
         
     }
     
+    
+    
+    class func customerPromotionOrdersMapper(result:[String:AnyObject]) -> [DisplayPromotionDetails] {
+        
+        var categoryLists = [DisplayPromotionDetails]()
+        
+        //        if let dict = result["customer"] {
+        //            if let name = dict["firstname"]{
+        //
+        //            }
+        //
+        //            if let name = dict["lastname"]{
+        //
+        //            }
+        //
+        //        }
+        //
+        //        if let dict = result["vendors"] {
+        //            if let is_default = dict["company"]{
+        //
+        //            }
+        //
+        //            if let is_default = dict["is_default"]{
+        //
+        //            }
+        //        }
+        
+        if let arr = result["dispalyPromotion"] as? NSArray{
+            
+            for (_, value) in arr.enumerate(){
+                let categoryList = DisplayPromotionDetails()
+                if let categoryID = value.valueForKey("name"){
+                    categoryList.name = categoryID as! String
+                }
+                
+                if let categoryName = value.valueForKey("price"){
+                    let str  = categoryName as! String
+                    let name = str.stringByReplacingOccurrencesOfString("&nbsp;", withString:"")
+                    categoryList.price = name
+                }
+                if let active = value.valueForKey("discountPrice"){
+                    categoryList.discountPrice = active as! String
+                }
+                
+                let level:AnyObject = value.valueForKey("description")!
+                if level is String {
+                    categoryList.promotionDescription = level as! String
+                }else{
+                    categoryList.promotionDescription = String(level)
+                }
+                
+                categoryLists.append(categoryList)
+            }
+            
+        }
+        
+        print(categoryLists)
+        return categoryLists
+        
+    }
 
     
  

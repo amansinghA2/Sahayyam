@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="loadMoreIdentifier" id="gTV-IL-0wX" customClass="LoadMoreCollectionViewCell" customModule="Sahayyam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="99" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="99" height="50"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSw-H3-whm" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                        <rect key="frame" x="13" y="10" width="73" height="30"/>
+                        <state key="normal" title="Load More"/>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="NSw-H3-whm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="0wI-oZ-xed"/>
+                <constraint firstAttribute="trailing" secondItem="NSw-H3-whm" secondAttribute="trailing" constant="13" id="Dgs-XJ-YHg"/>
+                <constraint firstItem="NSw-H3-whm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="NYm-Bf-7WK"/>
+                <constraint firstAttribute="bottom" secondItem="NSw-H3-whm" secondAttribute="bottom" constant="10" id="Q3p-IU-vOM"/>
+            </constraints>
+            <size key="customSize" width="99" height="50"/>
+            <connections>
+                <outlet property="loadMoreButton" destination="NSw-H3-whm" id="y3V-tz-NsU"/>
+            </connections>
+            <point key="canvasLocation" x="280.5" y="200"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -15,6 +15,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     var vendorService = VendorService()
     var getProductCollectionList = [ProductCollectionList]()
     let radiobutoonControler = SSRadioButtonsController()
+    var str = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,14 +68,15 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-       // self.vendorService = self.vendorServices[indexPath.row]
+     // self.vendorService = self.vendorServices[indexPath.row]
+        
         let params = [
             "token":token,
             "product_name":"",
             "limit":"25",
             "page":"1",
             "device_id":"1234",
-            "global":"1",
+            "global":str,
             "service_id":self.vendorServices[indexPath.row].id
         ]
         
@@ -95,6 +97,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     }
 
     func radioButtonClicked(sender:UIButton)  {
+        
         let cell = sender.superview?.superview as! SelectServicesTableViewCell
         let indexPath = selectServicesTableView.indexPathForCell(cell)
         
@@ -110,7 +113,6 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
             if isSuccessful {
-                
                 self.getProductCollectionList = result!
                 self.selectServicesTableView.delegate = self
                 self.selectServicesTableView.dataSource = self
@@ -119,13 +121,9 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
             }
         }
         
-       
-        
     }
     
-    
-    func showAnimate()
-    {
+    func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
         UIView.animateWithDuration(0.25, animations: {
@@ -134,8 +132,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         });
     }
     
-    func removeAnimate()
-    {
+    func removeAnimate() {
         UIView.animateWithDuration(0.25, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;

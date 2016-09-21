@@ -43,7 +43,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         "page":"1",
         "device_id":"1234",
         "global":"0",
-        "service_id":""
+        "service_id":"51"
         ]
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
@@ -307,6 +307,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
         // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
         self.addChildViewController(popOverVC)
+        popOverVC.str = "0"
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)

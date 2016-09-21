@@ -224,7 +224,8 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                     "seller[postcode]":pinccodeTextfield.text!,
                     "seller[taxnote]":"sdf",
                     "seller[taxnote_show]":"sdf",
-                    "seller[zone]":regionLabel.text!
+                    "seller[zone]":regionLabel.text!,
+                    "seller[description]":""
                 ]
                 
                 ServerManager.sharedInstance().sellerInfoSave(params) { (isSuccessful, error, result) in

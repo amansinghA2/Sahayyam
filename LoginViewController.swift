@@ -52,6 +52,15 @@ class LoginViewController: UIViewController {
                             if list.defaultVendorId == "1"{
                             defaultVendorName = list.nickname
                             NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
+                                
+                                telephone = list.tel
+                                NSUserDefaults.standardUserDefaults().setObject(telephone, forKey: "tel")
+                                
+                                vendorAddress = list.address_1
+                                NSUserDefaults.standardUserDefaults().setObject(vendorAddress, forKey: "vendorAddress")
+                                
+//                                defaultVendorName = list.nickname
+//                                NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
                           }
                       }
                     }

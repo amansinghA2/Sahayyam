@@ -65,7 +65,6 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         }
     }
     
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCellWithIdentifier("customerLIstCell") as! CustomerListTableViewCell
         
@@ -85,6 +84,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        
     }
     
     func toggleCollapse(sender: UIButton) {

@@ -144,22 +144,21 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
             }
         }
         
-        if let total = vendorOrderList?.extraDeliveryTotals {
-            for i in total {
-                if i.title != "" {
-                    expressDeliveryLabel.text = "Express Delivery Cost"
-                    expressDeliveryShowLabel.text = i.text
-                }
-            }
-        }
+//        if let total = vendorOrderList?.extraDeliveryTotals {
+//            for i in total {
+//                if i.title != "" {
+//                    expressDeliveryLabel.text = "Express Delivery Cost"
+//                    expressDeliveryShowLabel.text = i.text
+//                }
+//            }
+//        }
         
-        if let total = vendorOrderList?.extraOrderCosts {
-            for i in total {
-                grandTotalLabel.text = "Grand Total"
-                grandTotalShowLabel.text = i.text
-            }
-        }
-        
+//        if let total = vendorOrderList?.extraOrderCosts {
+//            for i in total {
+//                grandTotalLabel.text = "Grand Total"
+//                grandTotalShowLabel.text = i.text
+//            }
+//        }
         
     }
     

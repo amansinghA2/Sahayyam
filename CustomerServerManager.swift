@@ -15,7 +15,7 @@ extension ServerManager {
 
     // MARK: Customer Products List
 
-    func customerProducts(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ProductCollectionList]?) -> Void) {
+    func customerProducts(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ProductCollectionList]? , result1:[String:AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -29,12 +29,12 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr  = CommonJsonMapper.productCollectionList(dict as! [String : AnyObject])
-                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1: dict as? [String : AnyObject])
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1: nil)
                         }
                     case .Failure(let error):
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1: nil)
                     }
                 }
            }
@@ -289,7 +289,7 @@ extension ServerManager {
 
     // MARK: - Promotion
 
-    func customerPromotion (params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func customerPromotion (params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [DisplayPromotionDetails]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -301,7 +301,9 @@ extension ServerManager {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                            print(dict)
+                            let arr = CommonJsonMapper.customerPromotionOrdersMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -558,7 +560,33 @@ extension ServerManager {
         }
     }
     
+    // About Us
     
+    func customerAboutus(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[VendorInfoAboutUs]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, aboutUsUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = CommonJsonMapper.aboutUsVendorMapper((dict as? [String:AnyObject])!)
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+
     
 
 }

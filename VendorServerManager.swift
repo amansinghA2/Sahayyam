@@ -337,54 +337,36 @@ extension ServerManager {
         }
     }
     
-    func globalProductAdd(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+    func globalProductAdd(params:[String:AnyObject] , completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
+//        let params1 = [
+//        "username":"9029652955",
+//        "password":"edit",
+//        "device_id":"1234"
+//        ]
         
-    //    let manager = AFHTTPSessionManager()
-        
-//        manager.POST(globalAddProductUrl, parameters: params, success: { (task, result) in
-//            
-//            }) { (task, error) in
-//        
-//        }
-//        manager.requestSerializer.setValue("PHPSESSID=" + sessionID, forHTTPHeaderField: "Cookie")
-//        manager.POST( globalAddProductUrl,
-//                     parameters: params,
-//                     success: {
-//                        operation, responseObject in
-//                        let json = JSON(responseObject!)
-//                        print(json)
-//                        
-//            },
-//                     failure: {
-//                        operation, error in
-//                        
-//                        print("Error: " + error.localizedDescription)
-//        })
-//        
-//    }
-    
-        defaultManager.request(.POST, globalAddProductUrl , parameters: params, encoding: .URL, headers: headers)
-            .responseData { response in
+        defaultManager.request(.POST, globalAddProductUrl , parameters: params , encoding: .URL, headers: headers)
+            .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let data = response.result.value {
-                            let dict = JSON(data: data)
+                        if let dict = response.result.value {
+                           // let dict = JSON(data: data)
                             print(dict)
                             completionClosure(isSuccessful: true, error: nil, result: nil)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
-                    }
+                      }
                 }
-        }
+          }
     }
 
     func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
@@ -510,17 +492,15 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.POST, sellerInfoUrl , parameters: params, encoding: .JSON, headers: headers)
+        defaultManager.request(.POST, sellerInfoUrl , parameters: params, encoding: .URL, headers: headers)
             .validate()
-            .responseData { response in
+            .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let data = response.result.value {
-                            let dict = JSON(data: data)
-                            print(dict)
-                           // let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: nil)
+                        if let dict = response.result.value {
+                      //let dict = JSON(data: data)
+                        print(dict)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -528,7 +508,7 @@ extension ServerManager {
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
-        }
+          }
     }
     
     func sellerPopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {

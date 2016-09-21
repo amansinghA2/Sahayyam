@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fNV-3B-P41">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fNV-3B-P41">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -189,16 +189,16 @@
             </objects>
             <point key="canvasLocation" x="1628" y="-1350"/>
         </scene>
-        <!--About Us View Controller-->
+        <!--Customer About Us View Controller-->
         <scene sceneID="DbU-gd-frK">
             <objects>
-                <viewController id="8UB-zg-xTa" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8UB-zg-xTa" customClass="CustomerAboutUsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="no9-zQ-wkr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIA-X8-3JX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695" y="-687"/>
+            <point key="canvasLocation" x="1725" y="-653"/>
         </scene>
         <!--Track Order View Controller-->
         <scene sceneID="al3-8v-K3C">

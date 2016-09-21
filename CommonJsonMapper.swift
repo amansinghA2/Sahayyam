@@ -63,8 +63,26 @@ class CommonJsonMapper: NSObject {
         if let vendors = result["vendors"] as? NSArray{
             for (_,value) in vendors.enumerate() {
                 let vendorList = VendorList()
-                vendorList.defaultVendorId = value.valueForKey("is_default") as! String
-                vendorList.nickname = value.valueForKey("nickname") as! String
+                
+                if let profile = value.valueForKey("is_default") as? String {
+                    vendorList.defaultVendorId = profile
+                    
+                }
+                
+                if let profile = value.valueForKey("nickname") as? String{
+                    vendorList.nickname = profile
+                    
+                }
+                
+                if let profile = value.valueForKey("address_1") as? String {
+                    vendorList.address_1 = profile
+                    
+                }
+                
+                if let profile = value.valueForKey("tel") as? String {
+                    vendorList.tel = profile
+                    
+                }
                 loginData.vendorList.append(vendorList)
             }
         }
@@ -102,7 +120,45 @@ class CommonJsonMapper: NSObject {
         }
         return loginData
     }
+    
+    class func aboutUsVendorMapper(result:[String:AnyObject])  -> [VendorInfoAboutUs] {
+
+         var vendorInfos = [VendorInfoAboutUs]()
+        
+        if let getAddress = result["getAddress"] as? NSArray{
+        
+        for dict in getAddress {
+         let vendorInfo = VendorInfoAboutUs()
+        if let name = dict["address_1"] as? String{
+            vendorInfo.address = name
+        }
+        
+        if let name = dict["address_2"] as? String{
+            vendorInfo.address1 = name
+        }
+        
+        if let name = dict["city"] as? String{
+            vendorInfo.city = name
+        }
+        
+        if let name = dict["email"] as? String{
+            vendorInfo.emailId = name
+        }
+        
+        if let name = dict["postcode"] as? String{
+            vendorInfo.postCode = name
+        }
+        
+        if let name = dict["telephone"] as? String{
+            vendorInfo.telephone = name
+        }
+        
+         vendorInfos.append(vendorInfo)
+        }
+        
+        }
+        return vendorInfos
+    }
+
+
 }
-
-
-
