@@ -19,7 +19,7 @@ class CustomerAboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      setBackButtonForNavigation()
         let params = [
         "token":token,
         "device_id":"1234"
