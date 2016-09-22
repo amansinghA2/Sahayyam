@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TCQ-sB-waJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TCQ-sB-waJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -119,7 +119,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NZP-4v-eSf">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="Rue-jP-FOF"/>
                             </connections>
@@ -152,7 +152,7 @@
                 <viewController id="KSC-0X-Spb" customClass="ProductDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="LCn-Vh-iFJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Hwo-i9-U4F">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="editProductAction:" destination="KSC-0X-Spb" id="VTu-SL-N92"/>
                                 <segue destination="yGR-PT-E6s" kind="show" identifier="goToEditSegue" id="Ulb-JF-ziJ"/>

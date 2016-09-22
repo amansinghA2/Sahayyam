@@ -127,11 +127,11 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             }
             
             if subTotal.title != "" {
-                subTotalShowLabel.text = "Rs. " + subTotal.text + ".00"
+                subTotalShowLabel.text = "Rs. "  + CustomClass.roundOfDecimal(subTotal.text)
             }
             
             if total.title != "" {
-                totalShowLabel.text = "Rs. " + total.text + ".00"
+                totalShowLabel.text = "Rs. "  + CustomClass.roundOfDecimal(total.text)
             }
         }
     }
@@ -278,8 +278,8 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         ServerManager.sharedInstance().customerCheckout(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
-                
-                let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(result!["total"]!)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
+                let str =  CustomClass.roundOfDecimal(result!["total"]!)
+                let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(str)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
                       self.navigationController?.popToRootViewControllerAnimated(true)

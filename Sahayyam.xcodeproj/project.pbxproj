@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0701434E1D7F43AA009E2F19 /* VendorEditPFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701434C1D7F43AA009E2F19 /* VendorEditPFViewController.swift */; };
 		0701434F1D7F43AA009E2F19 /* VendorEditPFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0701434D1D7F43AA009E2F19 /* VendorEditPFViewController.xib */; };
+		070C14B81D943A27007AD580 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070C14B71D943A27007AD580 /* Double.swift */; };
 		0714D1741D8D4B9500CE928F /* VendorPromotionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0714D1731D8D4B9500CE928F /* VendorPromotionList.swift */; };
 		07336BCA1D5FA70500A821AA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07336BC91D5FA70500A821AA /* Image.swift */; };
 		0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */; };
@@ -244,6 +245,7 @@
 /* Begin PBXFileReference section */
 		0701434C1D7F43AA009E2F19 /* VendorEditPFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorEditPFViewController.swift; sourceTree = "<group>"; };
 		0701434D1D7F43AA009E2F19 /* VendorEditPFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorEditPFViewController.xib; sourceTree = "<group>"; };
+		070C14B71D943A27007AD580 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		0714D1731D8D4B9500CE928F /* VendorPromotionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorPromotionList.swift; sourceTree = "<group>"; };
 		07336BC91D5FA70500A821AA /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				AF8036AB1D62E19700422C54 /* AlertView.swift */,
 				AFD0BA331D6C1397006A6351 /* Validations.swift */,
 				AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */,
+				070C14B71D943A27007AD580 /* Double.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1360,6 +1363,7 @@
 				AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */,
 				0714D1741D8D4B9500CE928F /* VendorPromotionList.swift in Sources */,
 				AF6A881D1D532C4900986ECC /* CartAmount.swift in Sources */,
+				070C14B81D943A27007AD580 /* Double.swift in Sources */,
 				AF5438CD1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift in Sources */,
 				AFBC274B1D54B179003ECBF6 /* RoundedView.swift in Sources */,
 				AF6D18E71D86D0AD00F220FE /* VendorPromotionTableViewCell.swift in Sources */,

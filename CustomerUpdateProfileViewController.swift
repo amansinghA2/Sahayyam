@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import M13Checkbox
 
 class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var updateButtonOutlet: Button!
+    @IBOutlet weak var acceptCheckbox: M13Checkbox!
+    @IBOutlet weak var acceptLabel: UILabel!
     @IBOutlet weak var customerImage: UIImageView!
     @IBOutlet weak var firstNameLabel: TextField!
     @IBOutlet weak var lastNameLabel: TextField!
@@ -24,6 +28,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var confirmPassword: TextField!
     var str = ""
+    var isAccept = false
     
     var isLogin = ""
     let imagePicker = UIImagePickerController()
@@ -34,20 +39,21 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         super.viewDidLoad()
         
         tokenCheck()
-        
         if isLogin == "customerDropDown" {
             ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
                 if isSuccessful{
                     self.populateDataList  = result!
                     self.dataInTextField()
+                    self.acceptLabel.hidden = true
+                    self.acceptCheckbox.hidden = true
                     self.hideHud()
                 }
             })
         }else {
-            
+            self.acceptLabel.hidden = false
+            acceptCheckbox.hidden = false
         }
         
-        self.showHud("Loading...")
         setBackButtonForNavigation()
         //changeNavigationBarColor()
         
@@ -81,46 +87,21 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
-    @IBAction func uploadImageAction(sender: AnyObject) {
-        
-        //      print(convertImageToBase64(customerImage.image!))
-        if let image = self.customerImage.image {
-        self.showHud("Loading...")
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            let params:[String:AnyObject] = [
-                "file":self.convertImageToBase64(image),
-                "flag":1,
-                "token":token,
-                "device_id":"1234"
-            ]
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
-                    if isSuccessful{
-                        self.hideHud()
-                        if let imgStr = result!["img_dir"]{
-                            self.str = (imgStr as! String)
-                         }
-                     }
-                 }
 
-             })
-          }
-        }else{
-            AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
-        }
+    @IBAction func removeButtonAction(sender: AnyObject) {
+
+        self.customerImage.image = nil
     }
     
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
-        self.view.endEditing(true)
-    
-        self.showHud("Loading...")
-        
-        
-        if Reachability.isConnectedToNetwork() {
-        if formValidation() {
-            let params:[String:AnyObject]? = [
+
+        if isAccept == false {
+            AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
+        }
+
+        let params:[String:AnyObject]?
+        if isLogin == "customerDropDown" {
+            params = [
                 "token":token,
                 "device_id":"1234",
                 "action":"info",
@@ -137,9 +118,32 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "address[0][postcode]":pincodeTextfield.text!,
                 "image":self.str
             ]
-            
-            print(params)
-            
+        }else{
+           params = [
+                "token":token,
+                "device_id":"1234",
+                "action":"info",
+                "firstname":firstNameLabel.text!,
+                "lastname":lastNameLabel.text!,
+                "dob":dateOfBirthTextField.text!,
+                "email":emailIdTextField.text!,
+                "telephone":mobileNumberLabel.text!,
+                "password":passwordTextField.text!,
+                "confirm":confirmPassword.text!,
+                "address[0][address_1]":addressTextField.text!,
+                "address[0][zone_id]":stateTextField.text!,
+                "address[0][city]":cityTextField.text!,
+                "address[0][postcode]":pincodeTextfield.text!,
+                "image":self.str,
+                "tos":"on"
+            ]
+        }
+
+        self.view.endEditing(true)
+        self.showHud("Loading...")
+        print(params)
+        if Reachability.isConnectedToNetwork() {
+        if formValidation() {
             ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
                 self.hideHud()
                 
@@ -157,16 +161,14 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             self.hideHud()
             AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
         }
+
     }
     
     func convertImageToBase64(image: UIImage) -> String {
-        
         let image = customerImage.image!.resizeWith(80.0, height: 80.0)
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-        
         return base64String
-        
     }
     
     func convertBase64ToImage(base64String: String) -> UIImage {
@@ -180,7 +182,32 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.customerImage.image = image
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
+            if let image = self.customerImage.image {
+                self.showHud("Loading...")
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                    let params:[String:AnyObject] = [
+                        "file":self.convertImageToBase64(image),
+                        "flag":1,
+                        "token":token,
+                        "device_id":"1234"
+                    ]
+
+                    dispatch_async(dispatch_get_main_queue(), {
+                        ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
+                            if isSuccessful{
+                                self.hideHud()
+                                if let imgStr = result!["img_dir"]{
+                                    self.str = (imgStr as! String)
+                                }
+                            }
+                        }
+
+                    })
+                }
+            }else{
+                AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
+            }
+
         })
     }
     
@@ -196,16 +223,19 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
     func formValidation() -> Bool{
         if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true ||  cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
+            self.hideHud()
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
         
         if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
+            self.hideHud()
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
             return false
         }
         
         if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
+            self.hideHud()
             AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
             return false
         }
@@ -213,33 +243,40 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     }
     
     func dataInTextField(){
-        
+
         firstNameLabel.text = populateDataList.firstname
-        
         lastNameLabel.text = populateDataList.lastName
-        
         mobileNumberLabel.text = populateDataList.mobileNumber
-        
         dateOfBirthTextField.text = populateDataList.dateOfBirth
-        
         emailIdTextField.text = populateDataList.emailId
-        
         stateTextField.text = populateDataList.stateName
-        
         pincodeTextfield.text = populateDataList.pincode
-        
         countryTextField.text = populateDataList.country
-        
         cityTextField.text = populateDataList.cityName
-        
         addressTextField.text = populateDataList.address
-        
         dateOfBirthTextField.text = populateDataList.dateOfBirth
         
         if populateDataList.image1 != "" {
           let image = populateDataList.image1.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
               customerImage.imageFromUrl(image_base_url + image)
         }
-      }
+    }
+
+    func checkBoxState(){
+        if let state = self.acceptCheckbox?.checkState {
+            switch state {
+            case .Unchecked:
+                isChecked = false
+                isAccept = false
+            case .Checked:
+                isChecked = true
+                updateButtonOutlet.hidden = false
+                isAccept = true
+            case .Mixed:
+                print("")
+            }
+        }
+    }
+
 }
 

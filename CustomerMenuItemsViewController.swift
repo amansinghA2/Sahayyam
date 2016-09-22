@@ -41,10 +41,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var vendorList:VendorList!
     var favSetter = false
     var selectedCategoryLIst:CategoryList!
-    var emptyLabel:UILabel!
     var page = 1
     var totalPages:Int?
-    var limit = 5
+    var limit = 26
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -209,23 +208,22 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+//        emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
         if section == 0{
         if getProductCollectionListAdd.count == 0 {
-            emptyLabel.text = "No Products"
-            emptyLabel.textAlignment = NSTextAlignment.Center
-            self.collectionView.backgroundView = emptyLabel
-           // self.collectionView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+            self.collectionViewCustomLabel("No Products", collectionView: collectionView)
             return 0
         }else{
             if self.searchBarActive {
-                emptyLabel.text = ""
                 return self.dataSourceForSearchResult.count;
             }
-            emptyLabel.text = ""
             return getProductCollectionListAdd.count
         }
         }else {
+            if getProductCollectionListAdd.count == 0{
+                return 0
+            }
             if fromMenuToProductPage == "goToProductsPage"{
                 return 0
             }else{
@@ -667,7 +665,9 @@ else{
             vc.delegate = self
      }else if segue.identifier == "cartListSegue" {
             let vc = segue.destinationViewController as! CartListViewController
-            vc.getProductCollectionList = self.getProductList
+        if let product = self.getProductList {
+            vc.getProductCollectionList = product
+        }
      }
    }
     

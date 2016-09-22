@@ -51,10 +51,7 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
             return cartLists.count
         case 1:
             if cartLists.count == 0 {
-                let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                emptyLabel.text = "No Products Added to cart"
-                emptyLabel.textAlignment = NSTextAlignment.Center
-                self.cartListTableView.backgroundView = emptyLabel
+                self.tableViewCustomLabel("No Products in Cart", tableView: cartListTableView)
                 self.cartListTableView.separatorStyle = UITableViewCellSeparatorStyle.None
                 return 0
             }else{

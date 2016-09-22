@@ -86,9 +86,9 @@ class LoginViewController: UIViewController {
                     case true:
                         switch customerType{
                         case 1:   
-                            self.viewControllerPassing("Customer")
+                            self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
                         case 2:
-                            self.viewControllerPassing("Customer")
+                            self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
                         default:
                             print("")
                         }
@@ -105,7 +105,7 @@ class LoginViewController: UIViewController {
                                 print("")
                         }
                             case 1:
-                                self.self.viewControllerPassing("Customer")
+                                self.viewControllerPassing("Customer")
                             case 2:
                                 self.viewControllerPassing("Vendor")
                             case 3:

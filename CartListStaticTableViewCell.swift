@@ -72,25 +72,13 @@ class CartListStaticTableViewCell: UITableViewCell {
         }
         
         if subTotal.title != "" {
-            subTotalShowLabel.text = "Rs. " + subTotal.text + ".00"
+          subTotalShowLabel.text =  "Rs. "  + String(Double(subTotal.text)!.roundToPlaces(2))
         }
         
         if total.title != "" {
-            totalShowLabel.text = "Rs. " + total.text + ".00"
+            totalShowLabel.text = "Rs. "  + String(Double(total.text)!.roundToPlaces(2))
         }
-
-        }
-
-//
-//            var string1 = String()
-//            for i in deliverCharges {
-//                if i.title != "" {
-//                string1 = string1.stringByAppendingString(i.title + "         " + "Rs. " + i.text   + "          " + i.appliedPrice + "\n")
-//
-//          }
-//        }
-//            self.subTotal.text = string1
-//       }
+      }
     }
 
 

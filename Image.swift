@@ -17,11 +17,11 @@ extension UIImageView {
             Alamofire.request(.GET, url.absoluteString).response { (request, response, data, error) in
                 dispatch_async(dispatch_get_main_queue(), {
                                  self.image = UIImage(data: data!, scale:0)
-            });
-            }
+                 });
+              }
+           }
         }
-        }
-    }
+     }
 
 //    func imagefromUrl(convertedImageString:String) -> UIImage{
 //        let url = NSURL(string: convertedImageString)

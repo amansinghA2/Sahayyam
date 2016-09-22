@@ -142,4 +142,21 @@ extension UIViewController {
         }
     }
 
+    func collectionViewCustomLabel(labelString:String , collectionView:UICollectionView!) {
+        let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        emptyLabel.text = labelString
+        emptyLabel.textAlignment = NSTextAlignment.Center
+        collectionView.backgroundView = emptyLabel
+        emptyLabel.textColor = UIColor.grayColor()
+    }
+
+    func tableViewCustomLabel(labelString:String , tableView:UITableView!) {
+        let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        emptyLabel.text = labelString
+        emptyLabel.textAlignment = NSTextAlignment.Center
+        tableView.backgroundView = emptyLabel
+        emptyLabel.textColor = UIColor.grayColor()
+    }
+
+
 }

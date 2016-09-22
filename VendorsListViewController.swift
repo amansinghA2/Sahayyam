@@ -23,9 +23,8 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButtonForNavigation()
-//        self.navigationItem.hidesBackButton = true
+      //self.navigationItem.hidesBackButton = true
         tokenCheck()
-        
         self.showHud("Loading...")
         let nib1 = UINib(nibName: "VendorListTableViewCell", bundle: nil)
         self.vendorListTAbleView.registerNib(nib1, forCellReuseIdentifier: "vendorListIdentifier")
@@ -57,7 +56,6 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
             self.vendorListTAbleView.delegate = self
             self.vendorListTAbleView.reloadData()
         }
-        
     }
     else{
     self.hideHud()
@@ -67,6 +65,9 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if vendorsLists.count == 0 {
+            self.tableViewCustomLabel("Vendor Not Registers with this customer", tableView: vendorListTAbleView)
+        }
         return self.vendorsLists.count
     }
     

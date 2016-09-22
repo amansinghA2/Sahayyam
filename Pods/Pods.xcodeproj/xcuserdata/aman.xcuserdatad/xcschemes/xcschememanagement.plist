@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -116,7 +121,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1438379DA7BF4C558BA219DF5E0A45CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1B006392A6DC63E06AC81DE6F08803B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -136,7 +151,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>38BBA97A8DBA07E1A04DE9EC5367B8EA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3C4CFD9D7558A4E128038D2CB8AC471D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41338D7D0B28C1CF3B7B382D1611E61D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,6 +182,11 @@
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>823F96E32247EBB2E5CA342D2B2E5F07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
