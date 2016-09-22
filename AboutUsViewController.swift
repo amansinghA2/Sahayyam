@@ -19,7 +19,9 @@ class AboutUsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackButtonForNavigation()
+//        setBackButtonForNavigation()
+        
+        slideMenuShow(slidemenuButton, viewcontroller: self)
         // tokenCheck()
         // changeNavigationBarColor()
         // Do any additional setup after loading the view.

@@ -23,8 +23,7 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
 
     
     func setUp() {
-        navigationController!.navigationBar.topItem!.title = "Wish List"
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    
      self.showHud("Loading...")
         setBackButtonForNavigation()
         let nib = UINib(nibName: "WishLIstTableViewCell", bundle: nil)

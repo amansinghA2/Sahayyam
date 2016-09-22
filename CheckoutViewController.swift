@@ -127,11 +127,12 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             }
             
             if subTotal.title != "" {
-                subTotalShowLabel.text = "Rs. " + subTotal.text + ".00"
+                
+                subTotalShowLabel.text = CustomClass.roundString(subTotal.text)
             }
             
             if total.title != "" {
-                totalShowLabel.text = "Rs. " + total.text + ".00"
+              totalShowLabel.text = CustomClass.roundString(total.text)
             }
         }
     }
@@ -279,7 +280,28 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             if isSuccessful {
                 self.hideHud()
                 
-                let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(result!["total"]!)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
+                let str = CustomClass.roundString(result!["total"]!)
+                
+//                var finalTotal = String()
+//                var total = String()
+//                
+//                let text:AnyObject = result!["total"]!
+//                if text is String {
+//                    total = text as! String
+//                }else{
+//                    total = String(text)
+//                }
+//                
+//                let a:Double? = Double(total)
+//                let subto =  Double(round(100 * a!) / 100)
+//                let charset = NSCharacterSet(charactersInString: ".")
+//                if (total.lowercaseString.rangeOfCharacterFromSet(charset) != nil) {
+//                    finalTotal = "Rs. " + "\(subto)"
+//                }else{
+//                    finalTotal = "Rs. " + "\(total)" + ".00"
+//                }
+                
+                let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(str)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
                       self.navigationController?.popToRootViewControllerAnimated(true)
@@ -289,15 +311,16 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
                 self.presentViewController(refreshAlert, animated: true, completion: nil)
                 
             }else{
+                 self.hideHud()
                 AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
-                self.hideHud()
+               
             }
         }
     }
     else{
     self.hideHud()
     AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
-    }
+     }
     }
 
 

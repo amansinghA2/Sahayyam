@@ -49,7 +49,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-      }
+        self.collectionView.minimumZoomScale = 0.25
+        self.collectionView.maximumZoomScale = 4.0
+    }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
@@ -89,7 +91,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
         super.viewWillAppear(animated)
-        self.showHud("Loading...")
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
           if Reachability.isConnectedToNetwork(){
@@ -226,6 +227,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             return getProductCollectionListAdd.count
         }
         }else {
+            if getProductCollectionListAdd.count == 0 {
+                return 0
+            }
+            
             if fromMenuToProductPage == "goToProductsPage"{
                 return 0
             }else{

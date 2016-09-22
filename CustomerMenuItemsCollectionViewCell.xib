@@ -112,8 +112,8 @@
                 <outlet property="addToWishlist" destination="gDC-l2-UIF" id="eLx-bt-p0x"/>
                 <outlet property="customerProductImage" destination="Dgn-Qs-6i2" id="bqM-hz-pRO"/>
                 <outlet property="customerProductName" destination="7EJ-in-ZWr" id="uzU-xY-3Hj"/>
-                <outlet property="customerproductCost" destination="Al3-BS-Hjc" id="oS4-D4-AhB"/>
-                <outlet property="productOfferPrice" destination="VWb-0h-Sts" id="RUR-Xq-K67"/>
+                <outlet property="customerproductCost" destination="VWb-0h-Sts" id="CFS-IF-8vm"/>
+                <outlet property="productOfferPrice" destination="Al3-BS-Hjc" id="pHs-z1-eMJ"/>
                 <outlet property="wishListImage" destination="gDC-l2-UIF" id="OhV-jC-gEb"/>
             </connections>
             <point key="canvasLocation" x="333" y="225.5"/>

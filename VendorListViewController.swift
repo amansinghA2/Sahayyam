@@ -54,6 +54,10 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     }
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if vendorOrderLists.count == 0 {
+            
+        }
         return vendorOrderLists.count
     }
     

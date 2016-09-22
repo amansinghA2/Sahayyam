@@ -57,14 +57,17 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
         }
         
         if let customerproductCost = getProductCollectionLists?.price {
-            self.customerproductCost.text = customerproductCost
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: customerproductCost)
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+            self.customerproductCost.attributedText = attributeString
         }
         
         if let offerPrice = getProductCollectionLists?.offerPrice {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: offerPrice)
-            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
-            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
-            self.productOfferPrice.attributedText = attributeString
+//            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: offerPrice)
+//            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+//            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+            self.productOfferPrice.text = offerPrice
         }
     }
     

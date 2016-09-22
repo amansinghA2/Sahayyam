@@ -106,15 +106,16 @@
             </objects>
             <point key="canvasLocation" x="166" y="-1402"/>
         </scene>
-        <!--Wish List View Controller-->
+        <!--Wish List-->
         <scene sceneID="wtu-6O-apx">
             <objects>
                 <viewController id="4ba-8a-7Js" customClass="WishListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Wish List" id="BPe-dB-v2M"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2q-BG-cJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="-1938"/>
+            <point key="canvasLocation" x="846" y="-1949"/>
         </scene>
         <!--Product Details-->
         <scene sceneID="V2G-wJ-0iu">

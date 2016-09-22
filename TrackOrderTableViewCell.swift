@@ -59,8 +59,7 @@ class TrackOrderTableViewCell: UITableViewCell {
         if let saleOrder = trackLoadData?.sales_order {
             self.saleOrderId.text = String(saleOrder)
         }
-        
-        
+ 
     }
     
     func bindModeltoViews1() {
