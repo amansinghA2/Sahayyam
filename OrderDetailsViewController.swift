@@ -52,19 +52,16 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
            cell.orderNoLabel.text = self.orderDetailsList.sales_order
            cell.dateLabel.text = self.orderDetailsList.date_added
            cell.paymentLabel.text = self.orderDetailsList.payment_method
-           cell.backgroundColor = cell.contentView.backgroundColor
                return cell
             
         case 1:
            let cell = tableView.dequeueReusableCellWithIdentifier("customerDetailsIdentifier") as! CustomerDetailsTableViewCell
             cell.addressLabel.text = self.orderDetailsList.payment_address
-           cell.backgroundColor = cell.contentView.backgroundColor
             return cell
             
         case 2:
            let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsIdentifier") as! OrderDetailsTableViewCell
            let orderProduct = self.orderDetailsList.orderProducts[indexPath.row]
-           cell.backgroundColor = cell.contentView.backgroundColor
            cell.orderProducts = orderProduct
             return cell
         case 3:
@@ -73,7 +70,6 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-            cell.backgroundColor = cell.contentView.backgroundColor
             cell.orderdetailList = self.orderDetailsList
             return cell
 
@@ -85,13 +81,10 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
         let header = tableView.dequeueReusableCellWithIdentifier("orderDetailHeader") as! OrderDetailHeaderTableViewCell
         switch section {
         case 0:
-            header.backgroundColor = header.contentView.backgroundColor
             header.headerName.text = "Order Details"
         case 1:
-            header.backgroundColor = header.contentView.backgroundColor
             header.headerName.text = "Customer Details"
         case 2:
-            header.backgroundColor = header.contentView.backgroundColor
             header.headerName.text = "Products"
         default:
             print("No More Sections")
@@ -140,7 +133,6 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     
     func setUpView() {
         setBackButtonForNavigation()
-        
         self.showHud("Loading...")
         let nib1 = UINib(nibName: "OrderDetailsTableViewCell", bundle: nil)
         self.orderDetailsTableView.registerNib(nib1, forCellReuseIdentifier: "orderDetailsIdentifier")

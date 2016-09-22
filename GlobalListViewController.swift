@@ -345,7 +345,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 //                self.globalListTableView.reloadData()
 //            }
 //        }
-        
     }
     
         

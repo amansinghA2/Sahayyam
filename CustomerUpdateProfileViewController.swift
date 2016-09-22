@@ -80,8 +80,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         imagePicker.sourceType = .SavedPhotosAlbum
         
         presentViewController(imagePicker, animated: true, completion: nil)
-        
-     
     }
     
     @IBAction func uploadImageAction(sender: AnyObject) {
@@ -114,13 +112,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         }
     }
     
-    @IBAction func removeButtonAction(sender: AnyObject) {
-        
-        customerImage.image = nil
-        
-    }
-    
-    
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
         self.view.endEditing(true)
     
@@ -151,6 +142,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             
             ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
                 self.hideHud()
+                
                 let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
                     self.navigationController?.popViewControllerAnimated(true)
@@ -188,31 +180,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.customerImage.image = image
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            if let image = self.customerImage.image {
-                self.showHud("Loading...")
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    let params:[String:AnyObject] = [
-                        "file":self.convertImageToBase64(image),
-                        "flag":1,
-                        "token":token,
-                        "device_id":"1234"
-                    ]
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
-                            if isSuccessful{
-                                self.hideHud()
-                                if let imgStr = result!["img_dir"]{
-                                    self.str = (imgStr as! String)
-                                }
-                            }
-                        }
-                        
-                    })
-                }
-            }else{
-                AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
-            }
+            
         })
     }
     
@@ -228,7 +196,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
     func formValidation() -> Bool{
         if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true || addressTextField.text?.isBlank == true ||  cityTextField.text?.isBlank == true || pincodeTextfield.text?.isBlank == true){
-            self.hideHud()
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }

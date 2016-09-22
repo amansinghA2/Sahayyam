@@ -33,9 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-       
         
-        UITableViewCell.appearance().backgroundColor = UIColor.clearColor()
 //        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
 //        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
 //        

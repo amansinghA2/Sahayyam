@@ -72,28 +72,15 @@ class CartListStaticTableViewCell: UITableViewCell {
         }
         
         if subTotal.title != "" {
-            let a:Double? = Double(subTotal.text)
-            let subto =  Double(round(100 * a!) / 100)
-            let charset = NSCharacterSet(charactersInString: ".")
-            if (subTotal.text.lowercaseString.rangeOfCharacterFromSet(charset) != nil) {
-            subTotalShowLabel.text = "Rs. " + "\(subto)"
-            }else{
-            subTotalShowLabel.text = "Rs. " + "\(subTotal.text)" + ".00"
-            }
+            subTotalShowLabel.text = "Rs. " + subTotal.text + ".00"
         }
         
         if total.title != "" {
-            let a:Double? = Double(total.text)
-            let subto =  Double(round(100 * a!) / 100)
-            let charset = NSCharacterSet(charactersInString: ".")
-            if (subTotal.text.lowercaseString.rangeOfCharacterFromSet(charset) != nil) {
-                subTotalShowLabel.text = "Rs. " + "\(subto)"
-            }else{
-                subTotalShowLabel.text = "Rs. " + "\(total.text)" + ".00"
-            }
-
-          }
+            totalShowLabel.text = "Rs. " + total.text + ".00"
         }
+
+        }
+
 //
 //            var string1 = String()
 //            for i in deliverCharges {
