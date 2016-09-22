@@ -242,7 +242,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
             if (self.searchBarActive) {
-                getProductList = self.dataSourceForSearchResult[indexPath.row]
+                    getProductList = self.dataSourceForSearchResult[indexPath.row]
+
                 cell.getProductCollectionLists = getProductList
             }else{
                 getProductList = self.getProductCollectionListAdd[indexPath.row]
