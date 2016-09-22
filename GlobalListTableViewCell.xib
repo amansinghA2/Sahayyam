@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,9 +21,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1HW-is-Ek4" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                        <rect key="frame" x="264" y="27" width="34" height="30"/>
+                        <rect key="frame" x="252" y="27" width="60" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="34" id="zkw-DH-i16"/>
+                            <constraint firstAttribute="width" constant="60" id="zkw-DH-i16"/>
                         </constraints>
                         <state key="normal" title="Add">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.75067349137931039" colorSpace="calibratedRGB"/>
@@ -50,14 +50,14 @@
                 <constraints>
                     <constraint firstItem="Wdm-vo-S4H" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hjz-l0-E4A"/>
                     <constraint firstAttribute="bottom" secondItem="ivL-e4-f9s" secondAttribute="bottom" id="JJc-61-edh"/>
-                    <constraint firstItem="1HW-is-Ek4" firstAttribute="leading" secondItem="Wdm-vo-S4H" secondAttribute="trailing" constant="56" id="Kpc-oZ-8ob"/>
+                    <constraint firstItem="1HW-is-Ek4" firstAttribute="leading" secondItem="Wdm-vo-S4H" secondAttribute="trailing" priority="250" constant="44" id="Kpc-oZ-8ob"/>
                     <constraint firstItem="tYi-mQ-aSs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="LUl-p3-JKt"/>
                     <constraint firstItem="ivL-e4-f9s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ypf-vI-C60"/>
                     <constraint firstAttribute="trailing" secondItem="ivL-e4-f9s" secondAttribute="trailing" id="ZtT-kf-xpa"/>
                     <constraint firstItem="tYi-mQ-aSs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="fLb-rW-cXM"/>
                     <constraint firstItem="1HW-is-Ek4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hgZ-DI-XW8"/>
                     <constraint firstItem="Wdm-vo-S4H" firstAttribute="leading" secondItem="tYi-mQ-aSs" secondAttribute="trailing" constant="23" id="kYb-uM-nS1"/>
-                    <constraint firstAttribute="trailing" secondItem="1HW-is-Ek4" secondAttribute="trailing" constant="22" id="m2Q-du-YTV"/>
+                    <constraint firstAttribute="trailing" secondItem="1HW-is-Ek4" secondAttribute="trailing" constant="8" id="m2Q-du-YTV"/>
                     <constraint firstItem="ivL-e4-f9s" firstAttribute="top" secondItem="tYi-mQ-aSs" secondAttribute="bottom" constant="13" id="re6-HL-LcW"/>
                 </constraints>
             </tableViewCellContentView>

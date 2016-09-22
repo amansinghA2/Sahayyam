@@ -16,6 +16,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     var customreList = CustomerList()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
                 slideMenuShow(slideMenuButton, viewcontroller: self)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "CustomerListTableViewCell", bundle: nil)
@@ -27,7 +28,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     }
 
     override func viewWillAppear(animated: Bool) {
-        
+        self.showHud("Loading...")
         let params = [
         "token":token ,
         "device_id":"1234"
@@ -37,6 +38,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         
         ServerManager.sharedInstance().getCustomerList(params) { (isSuccessful, error, result) in
             if isSuccessful{
+                self.hideHud()
               self.customerListArray = result!
                 self.customerListTableView.delegate = self
                 self.customerListTableView.dataSource = self
@@ -71,7 +73,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         header.customerListButtonlabel.tag = section
         header.customerList = customerListArray[section]
         header.customerListButtonlabel.addTarget(self, action: #selector(MenuViewController.toggleCollapse), forControlEvents: .TouchUpInside)
-        
+       // self.customerListTableView.tableHeaderView = header
         return header.contentView
     }
 

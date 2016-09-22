@@ -460,7 +460,7 @@
                 <constraint firstItem="OCt-fs-iJR" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" priority="250" id="bfy-kJ-Qfw"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="315" y="-87"/>
+            <point key="canvasLocation" x="120" y="-106"/>
         </view>
     </objects>
 </document>

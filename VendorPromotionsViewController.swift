@@ -18,6 +18,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nibName = UINib(nibName: "VendorPromotionTableViewCell", bundle:nil)
         self.vendorPromotionTableView.registerNib(nibName, forCellReuseIdentifier: "promotioncellIdentifier")

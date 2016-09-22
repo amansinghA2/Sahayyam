@@ -18,6 +18,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
             slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
@@ -27,7 +28,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     override func viewWillAppear(animated: Bool) {
         slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self
-        
+        self.showHud("Loading...")
         let params = [
         "token":token ,
         "device_id":"1234",
@@ -37,7 +38,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         
         ServerManager.sharedInstance().viewVendorOrders(params) { (isSuccessful, error, result) in
             if isSuccessful {
-
+                self.hideHud()
                 self.vendorOrderLists = result!
                 self.vendorLIstTableView.delegate = self
                 self.vendorLIstTableView.dataSource = self

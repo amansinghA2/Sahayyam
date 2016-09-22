@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
                         case 1:   
                             self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
                         case 2:
-                            self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
+                            self.performSegueWithIdentifier("goToVendorUpdate", sender: nil)
                         default:
                             print("")
                         }

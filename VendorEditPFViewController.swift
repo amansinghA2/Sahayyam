@@ -44,7 +44,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         
         tokenCheck()
         imagePicker.delegate = self
-        
+        self.showHud("Loading...")
         let params = [
             "token":token ,
             "device_id":"1234"
@@ -52,6 +52,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         
         ServerManager.sharedInstance().sellerPopulateData(params, completionClosure: {(isSuccessful, error, result) in
             if isSuccessful{
+                self.hideHud()
                 self.sellerData  = result!
                 self.dataInTextField()
                 self.hideHud()

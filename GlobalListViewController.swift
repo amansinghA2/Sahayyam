@@ -28,6 +28,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
+        tokenCheck()
                 let nib1 = UINib(nibName: "GlobalListTableViewCell", bundle: nil)
                 self.globalListTableView.registerNib(nib1, forCellReuseIdentifier: "goToGlobalListCell")
        self.globalListTableView.contentInset = UIEdgeInsetsMake(self.searchBar!.frame.size.height, 0, 0, 0)

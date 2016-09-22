@@ -19,6 +19,7 @@ class SubscriptionDetailsViewController: UIViewController , UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
+        tokenCheck()
         let nib1 = UINib(nibName: "SubscriptionDetailsTableViewCell", bundle: nil)
         self.subscriptionDetailsTableView.registerNib(nib1, forCellReuseIdentifier: "subscriptionDetailsIdentifier")
         // Do any additional setup after loading the view.

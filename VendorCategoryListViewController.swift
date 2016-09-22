@@ -17,6 +17,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
+        tokenCheck()
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
         self.vendorCategoryTableview.registerNib(nib1, forCellReuseIdentifier: "categoryListIdentifier")
         // Do any additional setup after loading the view.

@@ -37,6 +37,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
+        tokenCheck()
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }

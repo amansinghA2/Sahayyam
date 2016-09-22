@@ -27,6 +27,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         super.viewDidLoad()
         slideMenuShow(slidemenuButton, viewcontroller: self)
         prepareUI()
+        tokenCheck()
         let nib = UINib(nibName: "MyProductDetailsTableViewCell", bundle: nil)
         myproductsCollectionView.registerNib(nib, forCellWithReuseIdentifier: "menuItemIdentifier1")
        // slideMenuShow(menuButton, viewcontroller: self)

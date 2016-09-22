@@ -22,6 +22,7 @@ class VendorUpdateProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
         slideMenuShow(slidemenuButton, viewcontroller: self)
         dobTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         passwordtextfield.setTextFieldStyle(TextFieldStyle.TextFieldPassword)

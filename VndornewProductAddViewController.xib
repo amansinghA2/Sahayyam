@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -57,9 +57,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1P-NJ-VcD">
-                                    <rect key="frame" x="44" y="75" width="55" height="85"/>
+                                    <rect key="frame" x="34" y="75" width="65" height="85"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="55" id="8TW-TE-ZgI"/>
+                                        <constraint firstAttribute="width" constant="65" id="8TW-TE-ZgI"/>
                                         <constraint firstAttribute="height" constant="85" id="MeT-pl-9qc"/>
                                     </constraints>
                                 </imageView>
@@ -301,7 +301,7 @@
                                 <constraint firstItem="5l0-wI-LHH" firstAttribute="centerY" secondItem="QLP-PT-S4q" secondAttribute="centerY" id="AHr-Tj-lhh"/>
                                 <constraint firstItem="841-38-jwr" firstAttribute="leading" secondItem="2K6-Pr-kok" secondAttribute="leading" constant="25" id="Au7-Zv-RL6"/>
                                 <constraint firstItem="w2d-bX-pqh" firstAttribute="leading" secondItem="2K6-Pr-kok" secondAttribute="leading" constant="22" id="B5R-dR-167"/>
-                                <constraint firstItem="c1P-NJ-VcD" firstAttribute="leading" secondItem="2K6-Pr-kok" secondAttribute="leading" constant="44" id="BGe-qC-rW2"/>
+                                <constraint firstItem="c1P-NJ-VcD" firstAttribute="leading" secondItem="2K6-Pr-kok" secondAttribute="leading" constant="34" id="BGe-qC-rW2"/>
                                 <constraint firstItem="zoH-di-Tuc" firstAttribute="top" secondItem="Zbq-Cb-Wzr" secondAttribute="bottom" constant="13" id="BrA-jr-UhF"/>
                                 <constraint firstAttribute="trailing" secondItem="iUt-qA-SPt" secondAttribute="trailing" constant="22" id="DjA-is-Roq"/>
                                 <constraint firstAttribute="trailing" secondItem="g8N-8I-Wgk" secondAttribute="trailing" constant="22" id="DwU-QZ-HHt"/>
@@ -386,7 +386,7 @@
                 <constraint firstItem="vRK-6m-uCP" firstAttribute="leading" secondItem="q1Y-9Z-OUh" secondAttribute="leading" id="yLN-Ad-Vu6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="717" y="91.5"/>
+            <point key="canvasLocation" x="948" y="80.5"/>
         </view>
     </objects>
     <resources>

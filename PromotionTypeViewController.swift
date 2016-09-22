@@ -46,6 +46,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
     override func viewDidLoad() {
        super.viewDidLoad()
+        tokenCheck()
         radioButtonController.setButtonsArray([amountRadioButton!,percentageRadioButton!])
         radioButtonController.delegate = self
         radioButtonController.shouldLetDeSelect = true
