@@ -95,9 +95,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
 
-        if isAccept == false {
-            AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
-        }
 
         let params:[String:AnyObject]?
         if isLogin == "customerDropDown" {
@@ -119,6 +116,10 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "image":self.str
             ]
         }else{
+            if isAccept == false {
+                AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
+            }
+            
            params = [
                 "token":token,
                 "device_id":"1234",
@@ -137,11 +138,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "image":self.str,
                 "tos":"on"
             ]
+
         }
 
         self.view.endEditing(true)
         self.showHud("Loading...")
-        print(params)
         if Reachability.isConnectedToNetwork() {
         if formValidation() {
             ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in

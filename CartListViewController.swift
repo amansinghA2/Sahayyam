@@ -20,10 +20,10 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(CartListViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        cartListTableView.addSubview(refreshControl)
+//        refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refreshControl.addTarget(self, action: #selector(CartListViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+//        cartListTableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
 
