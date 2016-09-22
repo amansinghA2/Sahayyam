@@ -245,6 +245,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             
             if (self.searchBarActive) {
                     getProductList = self.dataSourceForSearchResult[indexPath.row]
+
                 cell.getProductCollectionLists = getProductList
             }else{
                 getProductList = self.getProductCollectionListAdd[indexPath.row]
