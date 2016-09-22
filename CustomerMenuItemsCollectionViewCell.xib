@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -111,9 +111,9 @@
                 <outlet property="addToCart" destination="lhs-cl-Mzv" id="HV9-4K-XoN"/>
                 <outlet property="addToWishlist" destination="gDC-l2-UIF" id="eLx-bt-p0x"/>
                 <outlet property="customerProductImage" destination="Dgn-Qs-6i2" id="bqM-hz-pRO"/>
-                <outlet property="customerProductName" destination="7EJ-in-ZWr" id="uzU-xY-3Hj"/>
-                <outlet property="customerproductCost" destination="Al3-BS-Hjc" id="oS4-D4-AhB"/>
-                <outlet property="productOfferPrice" destination="VWb-0h-Sts" id="RUR-Xq-K67"/>
+                <outlet property="customerProductName" destination="7EJ-in-ZWr" id="wYI-me-Fgz"/>
+                <outlet property="customerproductCost" destination="VWb-0h-Sts" id="etC-1y-7bd"/>
+                <outlet property="productOfferPrice" destination="Al3-BS-Hjc" id="kDC-1g-dS4"/>
                 <outlet property="wishListImage" destination="gDC-l2-UIF" id="OhV-jC-gEb"/>
             </connections>
             <point key="canvasLocation" x="333" y="225.5"/>
