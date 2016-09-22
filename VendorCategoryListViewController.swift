@@ -19,8 +19,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
         self.vendorCategoryTableview.registerNib(nib1, forCellReuseIdentifier: "categoryListIdentifier")
-        
-      
         // Do any additional setup after loading the view.
     }
 
@@ -38,20 +36,17 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         
         ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result) in
             self.categoryLists = result!
-            print(self.categoryLists)
-//            let arr = CustomClass.DataFilter(self.categoryLists)
-//            print(arr)
         }
-  
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.categoryLists.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryListIdentifier") as! VendorCategoryListTableViewCell
         
+        cell.productName.text = String(self.categoryLists[indexPath.row])
         return cell
     }
     

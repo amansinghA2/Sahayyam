@@ -134,15 +134,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="azO-r6-VoI" secondAttribute="trailing" constant="22" id="2iC-ib-yBS"/>
                 <constraint firstItem="NhJ-Jz-c6P" firstAttribute="top" secondItem="MFd-Mb-N6u" secondAttribute="bottom" constant="17" id="6S9-zn-Qwn"/>
                 <constraint firstItem="jng-uC-yQd" firstAttribute="centerY" secondItem="MFd-Mb-N6u" secondAttribute="centerY" id="9r4-mP-HBN"/>
                 <constraint firstItem="MFd-Mb-N6u" firstAttribute="trailing" secondItem="SOy-5H-yzA" secondAttribute="trailing" id="Eu8-Ci-XZC"/>
                 <constraint firstItem="MFd-Mb-N6u" firstAttribute="leading" secondItem="jng-uC-yQd" secondAttribute="trailing" constant="17" id="GnF-MQ-Yc1"/>
                 <constraint firstItem="azO-r6-VoI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Igt-y1-IoJ"/>
-                <constraint firstAttribute="bottom" secondItem="azO-r6-VoI" secondAttribute="bottom" constant="158" id="RHp-wB-Yr8"/>
-                <constraint firstItem="azO-r6-VoI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="158" id="hdY-XH-VZt"/>
-                <constraint firstItem="azO-r6-VoI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="22" id="llW-EV-1SX"/>
                 <constraint firstItem="MFd-Mb-N6u" firstAttribute="top" secondItem="SOy-5H-yzA" secondAttribute="bottom" constant="20" id="oIj-La-GF4"/>
                 <constraint firstItem="azO-r6-VoI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pqr-2D-8th"/>
             </constraints>

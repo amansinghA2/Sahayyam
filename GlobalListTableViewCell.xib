@@ -39,16 +39,26 @@
                             <constraint firstAttribute="width" constant="43" id="O3Z-Xq-Ni7"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivL-e4-f9s">
+                        <rect key="frame" x="0.0" y="82" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="KFQ-NI-vEM"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Wdm-vo-S4H" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hjz-l0-E4A"/>
+                    <constraint firstAttribute="bottom" secondItem="ivL-e4-f9s" secondAttribute="bottom" id="JJc-61-edh"/>
                     <constraint firstItem="1HW-is-Ek4" firstAttribute="leading" secondItem="Wdm-vo-S4H" secondAttribute="trailing" constant="56" id="Kpc-oZ-8ob"/>
                     <constraint firstItem="tYi-mQ-aSs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="LUl-p3-JKt"/>
+                    <constraint firstItem="ivL-e4-f9s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ypf-vI-C60"/>
+                    <constraint firstAttribute="trailing" secondItem="ivL-e4-f9s" secondAttribute="trailing" id="ZtT-kf-xpa"/>
                     <constraint firstItem="tYi-mQ-aSs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="fLb-rW-cXM"/>
                     <constraint firstItem="1HW-is-Ek4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hgZ-DI-XW8"/>
                     <constraint firstItem="Wdm-vo-S4H" firstAttribute="leading" secondItem="tYi-mQ-aSs" secondAttribute="trailing" constant="23" id="kYb-uM-nS1"/>
                     <constraint firstAttribute="trailing" secondItem="1HW-is-Ek4" secondAttribute="trailing" constant="22" id="m2Q-du-YTV"/>
-                    <constraint firstAttribute="bottom" secondItem="tYi-mQ-aSs" secondAttribute="bottom" constant="14" id="vgc-WN-RSF"/>
+                    <constraint firstItem="ivL-e4-f9s" firstAttribute="top" secondItem="tYi-mQ-aSs" secondAttribute="bottom" constant="13" id="re6-HL-LcW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -56,7 +66,7 @@
                 <outlet property="productImage" destination="tYi-mQ-aSs" id="cQE-LG-IEC"/>
                 <outlet property="productName" destination="Wdm-vo-S4H" id="ScD-Tz-DAo"/>
             </connections>
-            <point key="canvasLocation" x="112" y="222"/>
+            <point key="canvasLocation" x="50" y="218"/>
         </tableViewCell>
     </objects>
 </document>

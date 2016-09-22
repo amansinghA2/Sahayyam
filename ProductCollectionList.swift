@@ -22,7 +22,8 @@ class ProductCollectionList: NSObject {
     dynamic var height = String()
     dynamic var key = String()
     dynamic var name = String()
-
+    dynamic var service_id = String()
+    
     dynamic var id = Int()
     
 }

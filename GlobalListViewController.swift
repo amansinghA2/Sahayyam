@@ -22,6 +22,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var getSpecificProductList:ProductCollectionList!
     var vendorServices = [VendorService]()
     var vendorService = VendorService()
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,30 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         self.revealViewController().delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    func tableViewSetup() {
+    
+//        let view1: UIView = moreOptionButton.valueForKey("view") as! UIView
+//        var x : CGFloat = 0.0
+//        x = view1.frame.origin.x;
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.reloadData()
+//        tableView.frame = CGRectMake(view.frame.origin.x , 24, 140, 350)
+//        self.tableView.layer.borderWidth = 1.0
+//        self.tableView.layer.borderColor = UIColor.lightGrayColor().CGColor
+//        self.tableView.scrollEnabled = false
+//        if tableView.hidden == true {
+//            let currentWindow = UIApplication.sharedApplication().keyWindow! as UIWindow
+//            currentWindow.addSubview(tableView)
+//            tableView.hidden = false
+//        }else {
+//            tableView.removeFromSuperview()
+//            tableView.hidden = true
+//        }
+        
+    }
+    
     
     override func viewWillAppear(animated: Bool) {
         
@@ -296,21 +321,33 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     @IBAction func vendorServiceAction(sender: AnyObject) {
         
-        let params = [
-            "token":token,
-            "device_id":"1234"
-        ]
         
-        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.vendorServices = result!
-                self.globalListTableView.delegate = self
-                self.globalListTableView.dataSource = self
-                self.globalListTableView.reloadData()
-            }
-        }
+//        self.performSegueWithIdentifier("globalListServices", sender: nil)
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
+       // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.str = "1"
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        
+//        let params = [
+//            "token":token,
+//            "device_id":"1234"
+//        ]
+//        
+//        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
+//            if isSuccessful {
+//                self.vendorServices = result!
+//                self.globalListTableView.delegate = self
+//                self.globalListTableView.dataSource = self
+//                self.globalListTableView.reloadData()
+//            }
+//        }
     }
     
+        
     /*
     // MARK: - Navigation
 

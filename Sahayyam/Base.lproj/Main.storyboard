@@ -58,35 +58,38 @@
             </objects>
             <point key="canvasLocation" x="1580" y="-130"/>
         </scene>
-        <!--Customer Update Profile View Controller-->
+        <!--Update Profile-->
         <scene sceneID="Cxc-k7-nc4">
             <objects>
                 <viewController storyboardIdentifier="CustomerUPViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I3v-bw-zW8" customClass="CustomerUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Update Profile" id="cYR-4U-iYH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6W-q6-20E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2018" y="-130"/>
         </scene>
-        <!--Switch User View Controller-->
+        <!--Switch User-->
         <scene sceneID="Cun-Q9-rU1">
             <objects>
                 <viewController storyboardIdentifier="SwitchUVController" id="CLi-om-8gC" customClass="SwitchUserViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Switch User" id="Zut-Sr-9nX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucn-fy-crc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="645"/>
+            <point key="canvasLocation" x="1898" y="603"/>
         </scene>
-        <!--Vendor Update Profile View Controller-->
+        <!--Update Profile-->
         <scene sceneID="2ou-jO-vnJ">
             <objects>
                 <viewController storyboardIdentifier="VendorUpdateID" id="Szc-c1-mAQ" customClass="VendorUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Update Profile" id="o70-ni-beC"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-il-EWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="645"/>
+            <point key="canvasLocation" x="1531" y="614"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUE-yv-Q9H">

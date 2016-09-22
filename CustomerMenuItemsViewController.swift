@@ -25,6 +25,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var fromMenuToProductPage = ""
     var delegate:CustomerMenuItemsViewControllerDelegate?
     var getProductCollectionList = [ProductCollectionList]()
+    var getProductCollectionListAdd = [ProductCollectionList]()
     var getProductList:ProductCollectionList!
     var getSpecificProductList:ProductCollectionList!
     var selectedIndexPath:NSIndexPath = NSIndexPath()
@@ -40,10 +41,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var vendorList:VendorList!
     var favSetter = false
     var selectedCategoryLIst:CategoryList!
-
+    var emptyLabel:UILabel!
+    var page = 1
+    var totalPages:Int?
+    var limit = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUpView()
       }
 
@@ -56,17 +60,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     }
     
-//    func receiveData(notification:NSNotification) {
-//       let dict = notification.object as! NSDictionary
-//        fromMenuToProductPage = dict["frommenuPage"] as! String
-//        selectedCategoryLIst = dict["selectedcatoryLIst"] as! CategoryList
-//        
-//        print(fromMenuToProductPage)
-//        print(selectedCategoryLIst)
-//    }
-    
     @IBAction func moreOptionAction(sender: AnyObject) {
-
         let view1: UIView = moreOptionButton.valueForKey("view") as! UIView
         var x : CGFloat = 0.0
         x = view1.frame.origin.x;
@@ -93,59 +87,49 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     override func viewWillAppear(animated: Bool) {
+        getProductCollectionListAdd.removeAll()
         super.viewWillAppear(animated)
         self.showHud("Loading...")
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
           if Reachability.isConnectedToNetwork(){
         if fromMenuToProductPage == "goToProductsPage"{
-            productFunction()
+            productFunction(selectedCategoryLIst.category_id , limit: "26" , page: "1" , filterName: "")
         }else{
-            let customerProductsParams:[String:AnyObject]? = [
-                "filter_category":"",
-                "token":token,
-                "device_id": "1234",
-                "filter_name":""
-            ]
-            
-            print(customerProductsParams)
-            
-            ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result) in
- 
-                if isSuccessful{
-                    self.hideHud()
-                    self.getProductCollectionList = result!
-                    self.collectionView.dataSource = self
-                    self.collectionView.delegate = self
-                    self.collectionView.reloadData()
-                }
-            }
+            productFunction("" , limit: "26" , page: "1" , filterName: "")
         }
         
     }
-    else{
+    else {
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
-    }
+       }
     }
 
-    func productFunction() {
+    func productFunction(filterCategory:String , limit:String , page:String , filterName:String) {
         let customerProductsParams:[String:AnyObject]? = [
-            "filter_category":selectedCategoryLIst.category_id,
+            "filter_category":filterCategory,
             "token":token,
             "device_id": "1234",
-            "filter_name":""
+            "filter_name":"",
+            "limit":limit,
+            "page":page
         ]
         
         print(customerProductsParams)
-        ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result , result1) in
             if isSuccessful{
                 self.hideHud()
+                if let totalPage = result1!["TotalPages"]{
+                    self.totalPages = Int(totalPage as! String)!
+                }
                 self.getProductCollectionList = result!
+                self.getProductCollectionListAdd += self.getProductCollectionList
                 self.collectionView.dataSource = self
                 self.collectionView.delegate = self
                 self.collectionView.reloadData()
             }
+            
 //            }else{
 //                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
 //                self.hideHud()
@@ -214,6 +198,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     }
 
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
     }
@@ -221,9 +209,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: - UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-        
-        if getProductCollectionList.count == 0 {
+        emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        if section == 0{
+        if getProductCollectionListAdd.count == 0 {
             emptyLabel.text = "No Products"
             emptyLabel.textAlignment = NSTextAlignment.Center
             self.collectionView.backgroundView = emptyLabel
@@ -235,36 +223,51 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 return self.dataSourceForSearchResult.count;
             }
             emptyLabel.text = ""
-            return getProductCollectionList.count
+            return getProductCollectionListAdd.count
+        }
+        }else {
+            if fromMenuToProductPage == "goToProductsPage"{
+                return 0
+            }else{
+                return 1
+            }
         }
     }
     
     // make a cell for each cell index path
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier",forIndexPath: indexPath) as! CustomerMenuItemsCollectionViewCell
-        cell.addToCart.tag = indexPath.row
-        cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-
-        if (self.searchBarActive) {
-            getProductList = self.dataSourceForSearchResult[indexPath.row]
-            cell.getProductCollectionLists = getProductList
-        }else{
-            getProductList = self.getProductCollectionList[indexPath.row]
-            cell.getProductCollectionLists = getProductList
+        
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier",forIndexPath: indexPath) as! CustomerMenuItemsCollectionViewCell
+            cell.addToCart.tag = indexPath.row
+            cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            
+            if (self.searchBarActive) {
+                    getProductList = self.dataSourceForSearchResult[indexPath.row]
+                cell.getProductCollectionLists = getProductList
+            }else{
+                getProductList = self.getProductCollectionListAdd[indexPath.row]
+                cell.getProductCollectionLists = getProductList
+            }
+            
+            //        cell.contentView.frame = cell.bounds;
+            //        cell.contentView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+            
+            cell.addToWishlist.tag = indexPath.row
+            cell.addToWishlist.addTarget(self, action: #selector(CustomerMenuItemsViewController.addToWishlistButtonClicked(_:)), forControlEvents:  UIControlEvents.TouchUpInside)
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreCollectionViewCell
+            cell.loadMoreButton.addTarget(self, action: #selector(CustomerMenuItemsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            return cell
         }
-
-//        cell.contentView.frame = cell.bounds;
-//        cell.contentView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-
-        cell.addToWishlist.tag = indexPath.row
-        cell.addToWishlist.addTarget(self, action: #selector(CustomerMenuItemsViewController.addToWishlistButtonClicked(_:)), forControlEvents:  UIControlEvents.TouchUpInside)
-
-        return cell
+        
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-       getSpecificProductList =
-        getProductCollectionList[indexPath.row]
+        getSpecificProductList =
+        getProductCollectionListAdd[indexPath.row]
        performSegueWithIdentifier("productDescSegue", sender: nil)
     }
     
@@ -279,8 +282,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     func collectionView (collectionView: UICollectionView,
                          layout collectionViewLayout: UICollectionViewLayout,
                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-       // let cellLeg = (collectionView.frame.size.width/2);
-        return CGSizeMake(160,175);
+       // let cellLeg = (collectionView.frame.size.width/2)
+        if indexPath.section == 1 {
+          return CGSizeMake(120,50)
+        }
+        return CGSizeMake(160,175)
     }
 
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
@@ -292,7 +298,10 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
-        self.dataSourceForSearchResult = self.getProductCollectionList.filter({ (text:ProductCollectionList) -> Bool in
+        self.dataSourceForSearchResult = self.getProductCollectionListAdd.filter({ (text:ProductCollectionList) -> Bool in
+            
+           // productFunction("", limit: "25", page: "1", filterName: searchText)
+            
             return text.prodnName.containsString(searchText)
         })
     }
@@ -303,6 +312,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             // search and reload data source
             self.searchBarActive    = true
             self.filterContentForSearchText(searchText)
+            print(searchText)
             self.collectionView?.reloadData()
         }else{
             // if text lenght == 0
@@ -377,22 +387,31 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: Custom Functions
 
     
+    func loadButtonClicked(sender:UIButton) {
+        
+    if fromMenuToProductPage == "goToProductsPage"{
+            page += 1
+            if page <= totalPages{
+                productFunction(selectedCategoryLIst.category_id , limit: "26" , page: "\(page)" , filterName: "")
+            }else{
+               
+            }
+    }else {
+            page += 1
+            if page <= totalPages{
+                productFunction("", limit: "26", page: "\(page)" , filterName: "")
+            }else{
+               self.toastViewForTextfield("No More Products")
+            }
+        }
+    }
+    
     func setUpView(){
         tokenCheck()
+        
         self.showHud("Loading...")
-       
         slideMenuShow(menuButton, viewcontroller: self)
-         self.revealViewController().delegate = self
-//        if self.revealViewController() != nil {
-//            menuButton.target = self.revealViewController()
-//            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-//            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-//            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-//           
-//        }
-//        
-//            self.revealViewController().rearViewRevealWidth = 235
-
+        self.revealViewController().delegate = self
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
         let nib = UINib(nibName: "CustomerMenuItemsCollectionViewCell", bundle: nil)
@@ -400,9 +419,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.dataSourceForSearchResult = [ProductCollectionList]()
         let nibName = UINib(nibName: "CustomerDropDownTableViewCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "dropDownCell")
-
+        let nibName1 = UINib(nibName: "LoadMoreCollectionViewCell", bundle:nil)
+        self.collectionView.registerNib(nibName1, forCellWithReuseIdentifier: "loadMoreIdentifier")
         self.changeNavigationBarColor()
-        
         vendorListTextfield.delegate = self
         vendorListTextfield.layer.cornerRadius = 5
         vendorListTextfield.layer.masksToBounds = true
@@ -444,21 +463,16 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             if let vendorName = self.vendorList.nickname as? String {
                 defaultVendorName = vendorName
                 NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
-             }
+               }
             }
-//            }else{
-//                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
-//                self.hideHud()
-//            }
-            
-        }
-}
+         }
+      }
 else{
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
-}
+           }
 
-    }
+       }
 
     func PoppingController(notification:NSNotification){
         self.navigationController?.popViewControllerAnimated(true)
@@ -478,7 +492,7 @@ else{
                 if field.text?.isPhoneNumber == true {
                 let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
                let indexPath = self.collectionView.indexPathForCell(cell)!
-            self.getProductList = self.getProductCollectionList[indexPath.row]
+            self.getProductList = self.getProductCollectionListAdd[indexPath.row]
                     let params:[String:AnyObject]? = [
                         "product_id":self.getProductList.product_id,
                         "device_id":"1234",
@@ -531,11 +545,12 @@ else{
             tableView.removeFromSuperview()
             tableView.hidden = true
         }
+    
         let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
         let indexPath = self.collectionView.indexPathForCell(cell)!
-
+        
             let params:[String:AnyObject]? = [
-                "product_id":self.getProductCollectionList[indexPath.row].product_id,
+                "product_id":self.getProductCollectionListAdd[indexPath.row].product_id,
                 "device_id":"1234",
                 "token":token,
             ]
@@ -666,6 +681,8 @@ else{
         
     }
     
+    
+  
     
     func alertControllerToLogout() {
         

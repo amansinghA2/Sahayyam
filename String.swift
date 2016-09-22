@@ -16,11 +16,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-// let BASE_URL = "http://192.168.1.2/sahayyam/"
-// let image_base_url = "http://192.168.1.2/sahayyam/image/"
+ let BASE_URL = "http://192.168.1.2/sahayyam/"
+ let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
 // MARK: - Common Url
 
@@ -32,6 +32,8 @@ let customerForgotPasswordUrl = BASE_URL+"index.php?route=api/forgetPassword/chk
 let customerPushNotificationUrl = BASE_URL+"index.php?route=api/mobileNotification"
 let loginLogoutUrl = BASE_URL+"index.php?route=api/login/logout"
 let checkTokenHealthUrl = BASE_URL+"index.php?route=api/login/getHealth"
+let aboutUsUrl = BASE_URL+"index.php?route=api/contactus/getVendorAddress"
+
 
 // MARK: - Customers Url
 
@@ -74,6 +76,8 @@ let vendororderdetailsUrl = BASE_URL+"index.php?route=api/vendorOrder/viewOrder"
 let getProductdetailsUrl = BASE_URL + "index.php?route=api/vendor/getProducts"
 let addProductUrl = BASE_URL+"index.php?route=api/vendor/addProduct"
 let globalAddProductUrl = BASE_URL+"index.php?route=api/vendor/ajaxSave"
+let sellerInfoUrl = BASE_URL+"index.php?route=api/vendor/jxSaveSellerInfo"
+let sellerPopulateUrl = BASE_URL+"index.php?route=api/customer/getDataSeller"
 
 extension String
 {

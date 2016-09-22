@@ -64,9 +64,7 @@ class TrackOrderTableViewCell: UITableViewCell {
     }
     
     func bindModeltoViews1() {
-        
-        
-        
+
         if let saleOrder = vendorLoadData?.sales_order {
             self.saleOrderId.text = String(saleOrder)
         }
@@ -78,7 +76,6 @@ class TrackOrderTableViewCell: UITableViewCell {
         if let saleOrder = vendorLoadData?.payment_method {
                 self.NoOFProductsLabel.text = String(saleOrder)
         }
-        
         
         if let saleOrder = vendorLoadData?.total {
             self.productTotalPrice.text = String(saleOrder)

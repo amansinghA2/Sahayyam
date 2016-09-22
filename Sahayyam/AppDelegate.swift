@@ -24,6 +24,8 @@ var defaultVendorID = String()
 var filteredArr = [CategoryList]()
 var address = String()
 var customerFullName = String()
+var telephone = String()
+var vendorAddress = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,6 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
         }
+        
+        if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("tel"){
+            telephone = defaultVendName as! String
+        }
+        
+        if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("vendorAddress"){
+            vendorAddress = defaultVendName as! String
+        }
+        
+//        if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
+//            defaultVendorName = defaultVendName as! String
+//        }
         
         if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
             customerFullName = customerFullName1 as! String

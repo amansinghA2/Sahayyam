@@ -63,14 +63,14 @@ class AddProductViewController: UIViewController {
         let params:[String:AnyObject] = [
         "token":token,
         "device_id":"1234",
-        "offerPrice[0]":offerPriceLabel.text!,
-        "price[0]":priceLabel.text!,
-        "quantity[0]":quantityLabel.text!,
+        "offerPrice[0]":String(offerPriceLabel.text!),
+        "price[0]":String(priceLabel.text!),
+        "quantity[0]":String(quantityLabel.text!),
         "selected[0]":getproductCollectionList.product_id,
         "status[0]":"0",
         "product_id":getproductCollectionList.product_id,
         "status":"0",
-        "service_id":"51"
+        "service_id":getproductCollectionList.service_id
         ]
 
         print(params)

@@ -22,8 +22,8 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setBackButtonForNavigation()
-        self.navigationItem.hidesBackButton = true
+        setBackButtonForNavigation()
+//        self.navigationItem.hidesBackButton = true
         tokenCheck()
         
         self.showHud("Loading...")
