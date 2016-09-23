@@ -123,38 +123,6 @@
             endingLineNumber = "117"
             landmarkName = "imagePickerController(_:didFinishPickingImage:editingInfo:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.VendorEditPFViewController.(imagePickerController (__ObjC.UIImagePickerController, didFinishPickingImage : __ObjC.UIImage, editingInfo : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;) -&gt; ()).(closure #1)"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorEditPFViewController.swift"
-                  timestampString = "496235912.776147"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "494">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.VendorEditPFViewController.(imagePickerController (__ObjC.UIImagePickerController, didFinishPickingImage : __ObjC.UIImage, editingInfo : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorEditPFViewController.swift"
-                  timestampString = "496235912.776263"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "30">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -196,11 +164,11 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorEditPFViewController.swift"
-                  timestampString = "496235912.777434"
+                  timestampString = "496299843.031069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "231"
-                  endingLineNumber = "231"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
                   offsetFromSymbolStart = "7201">
                </Location>
                <Location
@@ -211,11 +179,11 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorEditPFViewController.swift"
-                  timestampString = "496235912.777541"
+                  timestampString = "496299843.031183"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
+                  startingLineNumber = "233"
+                  endingLineNumber = "233"
                   offsetFromSymbolStart = "100">
                </Location>
             </Locations>
@@ -580,102 +548,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoginViewController.swift"
-            timestampString = "496227388.02263"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
-            timestampString = "496227388.558754"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
-            timestampString = "496228908.734406"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
-            timestampString = "496228909.782536"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
-            timestampString = "496228912.062584"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
-            timestampString = "496229097.357277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "loginbutton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LoginViewController.swift"
             timestampString = "496235516.117747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -788,75 +660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235557.790583"
+            timestampString = "496299000.126994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235559.230604"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235561.422641"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235562.294715"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235567.494502"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -873,22 +681,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235588.127254"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -948,140 +740,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235622.159958"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235624.887909"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235625.68789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235626.080073"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235730.018516"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "viewControllerPassing(_:identifier:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235730.442456"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "viewControllerPassing(_:identifier:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235730.786546"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "viewControllerPassing(_:identifier:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
-            timestampString = "496235731.202558"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "viewControllerPassing(_:identifier:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sahayyam/AppDelegate.swift"
             timestampString = "496235795.044302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerUpdateProfileViewController.swift"
+            timestampString = "496299763.251124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "checkBoxState()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerUpdateProfileViewController.swift"
+            timestampString = "496299763.251124"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "checkBoxState()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerUpdateProfileViewController.swift"
+            timestampString = "496299869.944309"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "checkBoxState()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.CustomerUpdateProfileViewController.checkBoxState () -&gt; ()"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerUpdateProfileViewController.swift"
+                  timestampString = "496299869.94675"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.CustomerUpdateProfileViewController.checkBoxState () -&gt; ()"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerUpdateProfileViewController.swift"
+                  timestampString = "496299869.946888"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "268"
+                  endingLineNumber = "268"
+                  offsetFromSymbolStart = "162">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerUpdateProfileViewController.swift"
+            timestampString = "496299877.20058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "uploadCustomerProfileAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

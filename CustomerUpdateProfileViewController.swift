@@ -95,7 +95,8 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
 
-
+        checkBoxState()
+        
         let params:[String:AnyObject]?
         if isLogin == "customerDropDown" {
             params = [

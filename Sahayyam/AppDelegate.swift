@@ -111,9 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case true:
                 switch customerType{
                 case 1:
-                    viewControllerPassing("Customer", identifier: "CustomerMenuItems")
+                    viewControllerPassing("Main", identifier: "CustomerUPViewController")
                 case 2:
-                    viewControllerPassing("Customer", identifier: "CustomerMenuItems")
+                    viewControllerPassing("Main", identifier: "CustomerUPViewController")
                 default:
                     print("")
                 }
