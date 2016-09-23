@@ -1,14 +1,14 @@
 //
-//  CityHeadViewController.swift
+//  SubsPaymentViewController.swift
 //  Sahayyam
 //
-//  Created by Sanjeev Jikamade on 03/08/16.
+//  Created by Sanjeev Jikamade on 23/09/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class CityHeadViewController: UIViewController {
+class SubsPaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

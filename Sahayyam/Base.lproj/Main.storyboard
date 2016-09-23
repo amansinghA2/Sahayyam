@@ -16,7 +16,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Hr-Gf-ZSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2043" y="-838"/>
+            <point key="canvasLocation" x="2529" y="-860"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="RIq-SZ-hqJ">
@@ -39,7 +39,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nm4-ha-19p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="-832"/>
+            <point key="canvasLocation" x="2110" y="-824"/>
+        </scene>
+        <!--City Head Profile View Controller-->
+        <scene sceneID="zxy-es-37i">
+            <objects>
+                <viewController id="yux-tF-6ux" customClass="CityHeadProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTe-r0-CYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="-758"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -52,11 +60,12 @@
                         <segue destination="I3v-bw-zW8" kind="show" identifier="goToCustomerUpdate" id="iKi-AB-otG"/>
                         <segue destination="Szc-c1-mAQ" kind="show" identifier="goToVendorUpdate" id="2gv-qB-AmP"/>
                         <segue destination="Ea3-yh-GP6" kind="show" identifier="goToForgotPassword" id="k41-hw-kvw"/>
+                        <segue destination="yux-tF-6ux" kind="show" identifier="goToCityHead" id="Uc2-GE-fQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1580" y="-130"/>
+            <point key="canvasLocation" x="1540" y="-64"/>
         </scene>
         <!--Update Profile-->
         <scene sceneID="Cxc-k7-nc4">
@@ -89,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-il-EWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531" y="614"/>
+            <point key="canvasLocation" x="1509" y="644"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUE-yv-Q9H">

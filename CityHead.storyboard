@@ -1,42 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9AC-yY-Hd6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eyg-DS-X9r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--City Head View Controller-->
+        <!--Main Menu View Controller-->
         <scene sceneID="L4w-od-oj1">
             <objects>
-                <viewController id="9AC-yY-Hd6" customClass="CityHeadViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mlK-HU-gNN"/>
-                        <viewControllerLayoutGuide type="bottom" id="RD1-6G-VF2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2M7-YV-1wQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Head" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7a-TF-acF">
-                                <rect key="frame" x="55" y="137" width="199" height="143"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="r7a-TF-acF" secondAttribute="trailing" constant="66" id="03S-0N-Wdf"/>
-                            <constraint firstItem="r7a-TF-acF" firstAttribute="top" secondItem="mlK-HU-gNN" secondAttribute="bottom" constant="117" id="4jY-ep-iov"/>
-                            <constraint firstItem="RD1-6G-VF2" firstAttribute="top" secondItem="r7a-TF-acF" secondAttribute="bottom" constant="288" id="FPA-0q-QfU"/>
-                            <constraint firstItem="r7a-TF-acF" firstAttribute="leading" secondItem="2M7-YV-1wQ" secondAttribute="leading" constant="55" id="FlJ-lW-DsA"/>
-                        </constraints>
-                    </view>
+                <viewController storyboardIdentifier="CHMainMenu" id="9AC-yY-Hd6" customClass="CHMainMenuViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zGh-yS-IeG"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="rFF-ms-cBH" kind="show" identifier="chprofileUpdateSegue" id="YMN-sS-VnA"/>
+                        <segue destination="eNZ-8V-uRZ" kind="show" identifier="addVendorSegue" id="YLU-TY-FIB"/>
+                        <segue destination="xTe-6K-goN" kind="show" identifier="vendorsCHSegue" id="3aS-df-dxU"/>
+                        <segue destination="9gp-oU-5ST" kind="show" identifier="changePasswordSegue" id="CJ6-bk-9oq"/>
+                        <segue destination="jv2-I1-gwG" kind="show" identifier="goToSubsPayment" id="6eD-3N-4mJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQI-Pg-VXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="441" y="253"/>
+            <point key="canvasLocation" x="254" y="223"/>
+        </scene>
+        <!--Subs Payment View Controller-->
+        <scene sceneID="LOh-dc-hlh">
+            <objects>
+                <viewController id="jv2-I1-gwG" customClass="SubsPaymentViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlS-Zf-J8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="982"/>
+        </scene>
+        <!--Vendor City Head View Controller-->
+        <scene sceneID="rgr-3c-TT7">
+            <objects>
+                <viewController id="xTe-6K-goN" customClass="VendorCityHeadViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zpy-YE-YXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="619" y="1115"/>
+        </scene>
+        <!--Add Vendor View Controller-->
+        <scene sceneID="HRf-XQ-jhm">
+            <objects>
+                <viewController id="eNZ-8V-uRZ" customClass="AddVendorViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGO-iA-155" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="448"/>
+        </scene>
+        <!--City Head Profile View Controller-->
+        <scene sceneID="o8s-54-rAp">
+            <objects>
+                <viewController id="rFF-ms-cBH" customClass="CityHeadProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsF-U2-513" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="639" y="-208"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ICo-ys-mjv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eyg-DS-X9r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DA6-S4-I1A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9AC-yY-Hd6" kind="relationship" relationship="rootViewController" id="s1J-Y5-Tg5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5J-sc-ttn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="239"/>
+        </scene>
+        <!--City HeadCP View Controller-->
+        <scene sceneID="6K8-OX-bz0">
+            <objects>
+                <viewController id="9gp-oU-5ST" customClass="CityHeadCPViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HGX-zZ-ktl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272" y="1064"/>
         </scene>
     </scenes>
 </document>

@@ -192,8 +192,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     func viewControllerPassing(storyBoard:String) {
         let sb = UIStoryboard(name: storyBoard, bundle: nil)
         let vc1 = sb.instantiateInitialViewController()! as UIViewController
-        //       vc1.modalPresentationStyle = UIModalPresentationStyle.FullScreen
-        // vc1.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         self.presentViewController(vc1, animated: false, completion:
             nil)
     }
