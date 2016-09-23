@@ -537,6 +537,32 @@ extension ServerManager {
         }
     }
     
+    // MARK: - Vendor ABout Us
     
+    func vendorAboutUs(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorAboutusUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
     
 }

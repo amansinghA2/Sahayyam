@@ -8,12 +8,14 @@
 
 import UIKit
 import M13Checkbox
+import TTTAttributedLabel
 
-class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate{
 
     @IBOutlet weak var updateButtonOutlet: Button!
     @IBOutlet weak var acceptCheckbox: M13Checkbox!
-    @IBOutlet weak var acceptLabel: UILabel!
+    
+    @IBOutlet weak var acceptLabel: TTTAttributedLabel!
     @IBOutlet weak var customerImage: UIImageView!
     @IBOutlet weak var firstNameLabel: TextField!
     @IBOutlet weak var lastNameLabel: TextField!
@@ -38,8 +40,17 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tokenCheck()
+      
+        
+        let str : NSString = "Accept the terms and conditions"
+        acceptLabel.delegate = self
+        acceptLabel.text = str as String
+        let range : NSRange = str.rangeOfString("Accept the terms and conditions")
+        acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
+        acceptLabel.textColor = UIColor.blueColor()
+        
         if isLogin == "customerDropDown" {
+            tokenCheck()
             ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
                 if isSuccessful{
                     self.populateDataList  = result!
@@ -68,6 +79,10 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         
         // dataInTextField()
         
+    }
+    
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        UIApplication.sharedApplication().openURL(url)
     }
     
     func bindModelToViews() {
@@ -117,9 +132,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "image":self.str
             ]
         }else{
-            if isAccept == false {
-                AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
-            }
+           
             
            params = [
                 "token":token,
@@ -230,6 +243,8 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             return false
         }
         
+        
+        
         if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
             self.hideHud()
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
@@ -241,6 +256,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
             return false
         }
+        
+        if isAccept == false {
+            AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
+        }
+        
         return true
     }
     

@@ -143,40 +143,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         }else{
-//            print("\(token)")
-//            print("\(customerType)")
-//            print("\(profileType)")
-//            print("\(profile)")
-//            print("\(isChecked)")
+            
         }
-
-
+        
         return true
     }
 
-//    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-//        
-////        let params = [
-////        "token":token,
-////        "messageText":""
-////        ]
-////        
-////     ServerManager.sharedInstance().customerPushNotifications(params) { (isSuccessful, error, result) in
-////        if isSuccessful {
-////            print("Success")
-////        }
-////        
-////        }
-//
-//    }
-    
-//    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-//        print(error)
-//    }
-//    
-//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-//        print(userInfo)
-//    }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

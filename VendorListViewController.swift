@@ -19,6 +19,8 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
+        self.showHud("Loading...")
+        
             slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
@@ -55,6 +57,11 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     }
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if vendorOrderLists.count == 0 {
+            self.tableViewCustomLabel("No Orders", tableView: vendorLIstTableView)
+        }
+        
         return vendorOrderLists.count
     }
     

@@ -78,6 +78,7 @@ let addProductUrl = BASE_URL+"index.php?route=api/vendor/addProduct"
 let globalAddProductUrl = BASE_URL+"index.php?route=api/vendor/ajaxSave"
 let sellerInfoUrl = BASE_URL+"index.php?route=api/vendor/jxSaveSellerInfo"
 let sellerPopulateUrl = BASE_URL+"index.php?route=api/customer/getDataSeller"
+let vendorAboutusUrl = BASE_URL + "index.php?route=api/contactus"
 
 extension String
 {

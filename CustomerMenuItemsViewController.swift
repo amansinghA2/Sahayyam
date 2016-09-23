@@ -129,10 +129,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 self.collectionView.reloadData()
             }
             
-//            }else{
-//                AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
-//                self.hideHud()
-//            }
         }
 
     }
@@ -167,34 +163,61 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        switch indexPath.row {
-        case 0:
-            self.performSegueWithIdentifier("wishListSegue", sender: nil)
-        case 1:
-            performSegueWithIdentifier("bestDealsSegue", sender: nil)
-        case 2:
-            performSegueWithIdentifier("switchProfileSegue", sender: nil)
-        case 3:
-            performSegueWithIdentifier("trackOrdersSegue", sender: nil)
-        case 4:
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+        if profileType == 0 && customerType == 1{
+            
+            switch indexPath.row {
+            case 0:
+                self.performSegueWithIdentifier("wishListSegue", sender: nil)
+            case 1:
+                performSegueWithIdentifier("bestDealsSegue", sender: nil)
+            case 2:
+                performSegueWithIdentifier("trackOrdersSegue", sender: nil)
+            case 3:
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+                }
+            case 4:
+                if tableView.hidden == false {
+                    tableView.removeFromSuperview()
+                    tableView.hidden = true
+                }
+                alertControllerToLogout()
+            case 5:
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
+                }
+            default:
+                print("Nothing")
             }
-        case 5:
-            if tableView.hidden == false {
-                tableView.removeFromSuperview()
-                tableView.hidden = true
-            }
-            alertControllerToLogout()
-        case 6:
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
-            }
-        default:
-            print("Nothing")
         }
-
+        else{
+            switch indexPath.row {
+            case 0:
+                self.performSegueWithIdentifier("wishListSegue", sender: nil)
+            case 1:
+                performSegueWithIdentifier("bestDealsSegue", sender: nil)
+            case 2:
+                performSegueWithIdentifier("switchProfileSegue", sender: nil)
+            case 3:
+                performSegueWithIdentifier("trackOrdersSegue", sender: nil)
+            case 4:
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.performSegueWithIdentifier("customerUpdateSegue", sender: nil)
+                }
+            case 5:
+                if tableView.hidden == false {
+                    tableView.removeFromSuperview()
+                    tableView.hidden = true
+                }
+                alertControllerToLogout()
+            case 6:
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
+                }
+            default:
+                print("Nothing")
+            }
+        }
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -211,7 +234,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 //        emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
         if section == 0{
         if getProductCollectionListAdd.count == 0 {
-
             self.collectionViewCustomLabel("No Products", collectionView: collectionView)
             return 0
         }else{
@@ -431,7 +453,12 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         imageView.image = image
         vendorListTextfield.rightView = imageView
         
+        if profileType == 0 && customerType == 1 {
+            menuArray = ["Wishlist" , "Promotion" , "Track Order" , "Update Profile" , "Logout" , "About Us"]
+        }
+        else{
         menuArray = ["Wishlist" , "Promotion" , "Switch Profile" , "Track Order" , "Update Profile" , "Logout" , "About Us"]
+        }
     }
     
     func passDefaultVendorLIst (viewcontroller:VendorsListViewController , vendorList:VendorList){

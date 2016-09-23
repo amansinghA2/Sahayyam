@@ -7,3 +7,4 @@
 #import <SendOTPFramework/SendOTP.h>
 #import <SendOTPFramework/AuthenticationViewController.h>
 #import <AFNetworking/AFNetworking.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>

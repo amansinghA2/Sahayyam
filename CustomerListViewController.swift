@@ -120,13 +120,11 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     }
     
     func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-        
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
         }else{
             self.view.userInteractionEnabled = false
         }
-        
     }
     
     /*

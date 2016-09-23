@@ -213,20 +213,14 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-        
+     
         if getProductCollectionList.count == 0 {
-            emptyLabel.text = "No Products"
-            emptyLabel.textAlignment = NSTextAlignment.Center
-            self.myproductsCollectionView.backgroundView = emptyLabel
-            // self.collectionView.separatorStyle = UITableViewCellSeparatorStyle.None
-            return 0
+            self.collectionViewCustomLabel("No Products", collectionView: myproductsCollectionView)
+            return 1
         }else{
             if self.searchBarActive {
-                emptyLabel.text = ""
                 return self.dataSourceForSearchResult.count;
             }
-            emptyLabel.text = ""
             return getProductCollectionList.count
         }
     }

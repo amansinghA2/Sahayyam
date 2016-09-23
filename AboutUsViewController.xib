@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
                 <outlet property="addresstextField" destination="zEp-Ck-3mM" id="hBn-5W-pJQ"/>
+                <outlet property="emailTextField" destination="Xqa-kO-oFB" id="Rbl-Zs-XuE"/>
                 <outlet property="messageTextField" destination="iPF-jh-fhb" id="Ll2-q2-pIa"/>
                 <outlet property="nameTextField" destination="l2a-r8-xqQ" id="tA7-7i-g4D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -124,8 +125,40 @@
                                         <constraint firstAttribute="bottom" secondItem="Bbk-kd-Kgs" secondAttribute="bottom" constant="13" id="ySa-BC-gyI"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak6-mt-rNQ" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="189" width="304" height="56"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-50-3G9">
+                                            <rect key="frame" x="8" y="4" width="51" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="ZrW-qR-udo"/>
+                                                <constraint firstAttribute="width" constant="51" id="loM-va-Lys"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJx-wz-Ztb">
+                                            <rect key="frame" x="78" y="18" width="148" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="7sU-B6-QwP"/>
+                                                <constraint firstAttribute="width" constant="148" id="tDK-bS-Uj5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Kpt-50-3G9" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="top" constant="4" id="3bj-nM-QIy"/>
+                                        <constraint firstAttribute="trailing" secondItem="jJx-wz-Ztb" secondAttribute="trailing" constant="78" id="Aqh-gl-4El"/>
+                                        <constraint firstAttribute="bottom" secondItem="jJx-wz-Ztb" secondAttribute="bottom" constant="17" id="L3M-R3-Bxv"/>
+                                        <constraint firstAttribute="bottom" secondItem="Kpt-50-3G9" secondAttribute="bottom" constant="2" id="clh-NY-Zjz"/>
+                                        <constraint firstItem="Kpt-50-3G9" firstAttribute="leading" secondItem="ak6-mt-rNQ" secondAttribute="leading" constant="8" id="g3i-Wu-VW5"/>
+                                        <constraint firstItem="jJx-wz-Ztb" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="top" constant="18" id="mNX-dZ-RrM"/>
+                                        <constraint firstItem="jJx-wz-Ztb" firstAttribute="leading" secondItem="Kpt-50-3G9" secondAttribute="trailing" constant="19" id="zpv-1d-pTF"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qw1-q7-Alp" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="254" width="304" height="455"/>
+                                    <rect key="frame" x="8" y="253" width="304" height="455"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEEL FREE TO CONTACT US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOe-Ax-h2s">
                                             <rect key="frame" x="8" y="13" width="219" height="21"/>
@@ -246,38 +279,6 @@
                                         <constraint firstAttribute="trailing" secondItem="zEp-Ck-3mM" secondAttribute="trailing" constant="8" id="neE-d5-sO6"/>
                                         <constraint firstItem="8oc-62-SGI" firstAttribute="centerX" secondItem="qw1-q7-Alp" secondAttribute="centerX" id="sBc-M8-3fK"/>
                                         <constraint firstItem="8oc-62-SGI" firstAttribute="top" secondItem="iPF-jh-fhb" secondAttribute="bottom" constant="21" id="wEx-mv-6cd"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ak6-mt-rNQ" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="189" width="304" height="56"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-50-3G9">
-                                            <rect key="frame" x="8" y="4" width="51" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="ZrW-qR-udo"/>
-                                                <constraint firstAttribute="width" constant="51" id="loM-va-Lys"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJx-wz-Ztb">
-                                            <rect key="frame" x="78" y="18" width="148" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="7sU-B6-QwP"/>
-                                                <constraint firstAttribute="width" constant="148" id="tDK-bS-Uj5"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="Kpt-50-3G9" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="top" constant="4" id="3bj-nM-QIy"/>
-                                        <constraint firstAttribute="trailing" secondItem="jJx-wz-Ztb" secondAttribute="trailing" constant="78" id="Aqh-gl-4El"/>
-                                        <constraint firstAttribute="bottom" secondItem="jJx-wz-Ztb" secondAttribute="bottom" constant="17" id="L3M-R3-Bxv"/>
-                                        <constraint firstAttribute="bottom" secondItem="Kpt-50-3G9" secondAttribute="bottom" constant="2" id="clh-NY-Zjz"/>
-                                        <constraint firstItem="Kpt-50-3G9" firstAttribute="leading" secondItem="ak6-mt-rNQ" secondAttribute="leading" constant="8" id="g3i-Wu-VW5"/>
-                                        <constraint firstItem="jJx-wz-Ztb" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="top" constant="18" id="mNX-dZ-RrM"/>
-                                        <constraint firstItem="jJx-wz-Ztb" firstAttribute="leading" secondItem="Kpt-50-3G9" secondAttribute="trailing" constant="19" id="zpv-1d-pTF"/>
                                     </constraints>
                                 </view>
                             </subviews>

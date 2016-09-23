@@ -35,6 +35,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
 //      self.gradientView.addSubview(customerName)
 //      self.gradientView.addSubview(vendorName)
 
+        
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
        listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]

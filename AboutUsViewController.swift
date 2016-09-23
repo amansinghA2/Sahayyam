@@ -15,12 +15,30 @@ class AboutUsViewController: UIViewController {
     
     @IBOutlet weak var addresstextField: UITextField!
     
+    @IBOutlet weak var emailTextField: UITextField!
+    
     @IBOutlet weak var messageTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackButtonForNavigation()
-        // tokenCheck()
+        tokenCheck()
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "name":nameTextField.text,
+        "email":addresstextField.text,
+        "email_subject":emailTextField.text,
+        "message":messageTextField.text
+        ]
+        
+        ServerManager.sharedInstance().vendorAboutUs(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                
+            }
+        }
+        
         // changeNavigationBarColor()
         // Do any additional setup after loading the view.
     }
