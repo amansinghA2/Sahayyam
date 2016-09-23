@@ -39,9 +39,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
-        
+
         let str : NSString = "Accept the terms and conditions"
         acceptLabel.delegate = self
         acceptLabel.text = str as String
@@ -51,7 +49,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         
         if isLogin == "customerDropDown" {
             tokenCheck()
-            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+         ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
                 if isSuccessful{
                     self.populateDataList  = result!
                     self.dataInTextField()
@@ -61,8 +59,17 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 }
             })
         }else {
+            profile = false
+//            customerType = 0
+//            profileType = 1
+//
+//            NSUserDefaults.standardUserDefaults().setInteger(customerType, forKey: "customerType")
+//            NSUserDefaults.standardUserDefaults().setInteger(profileType, forKey: "profileType")
+            NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
+            
             self.acceptLabel.hidden = false
             acceptCheckbox.hidden = false
+            
         }
         
         setBackButtonForNavigation()
@@ -132,8 +139,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "image":self.str
             ]
         }else{
-           
-            
            params = [
                 "token":token,
                 "device_id":"1234",
@@ -155,8 +160,9 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
 
         }
 
+        print(params)
+        
         self.view.endEditing(true)
-        self.showHud("Loading...")
         if Reachability.isConnectedToNetwork() {
         if formValidation() {
             ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
@@ -164,7 +170,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 
                 let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+                     if self.isLogin == "customerDropDown" {
                     self.navigationController?.popViewControllerAnimated(true)
+                     }else{
+                       self.viewControllerPassing("Customer")
+                     }
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
@@ -177,6 +187,15 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
         }
 
+    }
+    
+    func viewControllerPassing(storyBoard:String) {
+        let sb = UIStoryboard(name: storyBoard, bundle: nil)
+        let vc1 = sb.instantiateInitialViewController()! as UIViewController
+        //       vc1.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        // vc1.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        self.presentViewController(vc1, animated: false, completion:
+            nil)
     }
     
     func convertImageToBase64(image: UIImage) -> String {
@@ -257,11 +276,17 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             return false
         }
         
+        if isLogin == "customerDropDown" {
+            return true
+        }else{
         if isAccept == false {
             AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
-        }
         
-        return true
+            return false
+        }else{
+            return true
+        }
+      }
     }
     
     func dataInTextField(){

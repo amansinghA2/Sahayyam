@@ -11,9 +11,27 @@ import UIKit
 class ShowInvoiceViewController: UIViewController {
 
     @IBOutlet weak var invoiceView: UIWebView!
+    
+    var vendorPayment:VendorPayment!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        invoiceView.loadRequest(NSURLRequest(URL: NSURL(string: "ab")!))
+        setBackButtonForNavigation()
+        tokenCheck()
+        
+        let vendorInvoice = BASE_URL + "index.php?route=api/invoice/vendorInvoice&id=" + vendorPayment.orderID + "&device=mobile"
+        let subscriptionInvoice = BASE_URL + "index.php?route=api/invoice&id=" + vendorPayment.orderID + "&device=mobile"
+        
+        print(vendorInvoice)
+        print(subscriptionInvoice)
+        
+        if vendorPayment.invoiceType == "vendor" {
+          invoiceView.loadRequest(NSURLRequest(URL: NSURL(string: vendorInvoice)!))
+        }else{
+          invoiceView.loadRequest(NSURLRequest(URL: NSURL(string: subscriptionInvoice)!))
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }

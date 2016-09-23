@@ -24,21 +24,6 @@ class AboutUsViewController: UIViewController {
         setBackButtonForNavigation()
         tokenCheck()
         
-        let params = [
-        "token":token,
-        "device_id":"1234",
-        "name":nameTextField.text,
-        "email":addresstextField.text,
-        "email_subject":emailTextField.text,
-        "message":messageTextField.text
-        ]
-        
-        ServerManager.sharedInstance().vendorAboutUs(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                
-            }
-        }
-        
         // changeNavigationBarColor()
         // Do any additional setup after loading the view.
     }
@@ -58,5 +43,28 @@ class AboutUsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func sendEmailAction(sender: AnyObject) {
+        
+        self.showHud("Loading...")
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "name":nameTextField.text,
+            "email":addresstextField.text,
+            "email_subject":emailTextField.text,
+            "message":messageTextField.text
+        ]
+        
+        print(params)
+        
+        ServerManager.sharedInstance().vendorAboutUs(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }
+        }
+ 
+        
+    }
 
 }

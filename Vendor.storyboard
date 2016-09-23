@@ -337,11 +337,22 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="slideMenuButton" destination="fNG-pR-pMW" id="bMg-g8-esy"/>
+                        <segue destination="pf6-Nf-pJg" kind="show" identifier="showInvoiceSegue" id="FYL-Uj-kO9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cU4-4X-XDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="640" y="1754"/>
+            <point key="canvasLocation" x="588" y="1748"/>
+        </scene>
+        <!--Show Invoice View Controller-->
+        <scene sceneID="Koq-fG-WFn">
+            <objects>
+                <viewController id="pf6-Nf-pJg" customClass="ShowInvoiceViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Utt-GK-Ln2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969" y="1748"/>
         </scene>
         <!--Vendor EditPF View Controller-->
         <scene sceneID="v6W-me-5c2">
@@ -359,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPn-VY-ZhB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="1762"/>
+            <point key="canvasLocation" x="1316" y="1748"/>
         </scene>
         <!--Select Sevices View Controller-->
         <scene sceneID="QQk-q3-V7M">

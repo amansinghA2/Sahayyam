@@ -13,6 +13,8 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var paymentdetailsTableView: UITableView!
     var vendorPayments = [VendorPayment]()
+     var vendorPayment = VendorPayment()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,7 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         
         ServerManager.sharedInstance().getTransactionsHistory(params) { (isSuccessful, error, result) in
             if isSuccessful{
-              self.vendorPayments = result!
+                self.vendorPayments = result!
                 self.paymentdetailsTableView.delegate = self
                 self.paymentdetailsTableView.dataSource = self
                 self.paymentdetailsTableView.reloadData()
@@ -70,19 +72,22 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         let cell = sender.superview?.superview as! PaymentDetailsTableViewCell
         let indexPath = paymentdetailsTableView.indexPathForCell(cell)
         
+        self.vendorPayment = self.vendorPayments[(indexPath?.row)!]
         
+        self.performSegueWithIdentifier("showInvoiceSegue", sender: nil)
         
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showInvoiceSegue" {
+            let vc = segue.destinationViewController as! ShowInvoiceViewController
+            vc.vendorPayment = self.vendorPayment
+        }
     }
-    */
+
 
 }

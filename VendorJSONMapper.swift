@@ -71,6 +71,10 @@ class VendorJSONMapper: NSObject {
                     customerList.status = date
                 }
                 
+                if let date = value.valueForKey("invoiceType") as? String{
+                    customerList.invoiceType = date
+                }
+                
                 customerLists.append(customerList)
             }
             

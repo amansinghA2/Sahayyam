@@ -84,6 +84,18 @@
 		AF5438CE1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5438CC1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib */; };
 		AF5438D01D88021500CDCCD9 /* SubscriptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */; };
 		AF5438D21D88193D00CDCCD9 /* VendorPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */; };
+		AF6327CE1D9514580030F1C5 /* StoreProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327CC1D9514580030F1C5 /* StoreProfileViewController.swift */; };
+		AF6327CF1D9514580030F1C5 /* StoreProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327CD1D9514580030F1C5 /* StoreProfileViewController.xib */; };
+		AF6327D21D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327D01D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift */; };
+		AF6327D31D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327D11D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib */; };
+		AF6327D61D9533E30030F1C5 /* VendorCityHeadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327D41D9533E30030F1C5 /* VendorCityHeadViewController.swift */; };
+		AF6327D71D9533E30030F1C5 /* VendorCityHeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327D51D9533E30030F1C5 /* VendorCityHeadViewController.xib */; };
+		AF6327DA1D9534F80030F1C5 /* AllVendorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327D81D9534F80030F1C5 /* AllVendorsTableViewCell.swift */; };
+		AF6327DB1D9534F80030F1C5 /* AllVendorsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327D91D9534F80030F1C5 /* AllVendorsTableViewCell.xib */; };
+		AF6327E61D953A990030F1C5 /* VendorsFreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327E41D953A990030F1C5 /* VendorsFreeTableViewCell.swift */; };
+		AF6327E71D953A990030F1C5 /* VendorsFreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327E51D953A990030F1C5 /* VendorsFreeTableViewCell.xib */; };
+		AF6327EA1D953D2F0030F1C5 /* CityHeadCPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6327E81D953D2F0030F1C5 /* CityHeadCPViewController.swift */; };
+		AF6327EB1D953D2F0030F1C5 /* CityHeadCPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6327E91D953D2F0030F1C5 /* CityHeadCPViewController.xib */; };
 		AF652C851D8F9CB3009852A3 /* SelectSevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C831D8F9CB3009852A3 /* SelectSevicesViewController.swift */; };
 		AF652C861D8F9CB3009852A3 /* SelectSevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */; };
 		AF652C891D8FA0D4009852A3 /* SelectServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */; };
@@ -331,6 +343,18 @@
 		AF5438CC1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionList.swift; sourceTree = "<group>"; };
 		AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorPayment.swift; sourceTree = "<group>"; };
+		AF6327CC1D9514580030F1C5 /* StoreProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProfileViewController.swift; sourceTree = "<group>"; };
+		AF6327CD1D9514580030F1C5 /* StoreProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreProfileViewController.xib; sourceTree = "<group>"; };
+		AF6327D01D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProfileTimingTableViewCell.swift; sourceTree = "<group>"; };
+		AF6327D11D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreProfileTimingTableViewCell.xib; sourceTree = "<group>"; };
+		AF6327D41D9533E30030F1C5 /* VendorCityHeadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorCityHeadViewController.swift; sourceTree = "<group>"; };
+		AF6327D51D9533E30030F1C5 /* VendorCityHeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorCityHeadViewController.xib; sourceTree = "<group>"; };
+		AF6327D81D9534F80030F1C5 /* AllVendorsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVendorsTableViewCell.swift; sourceTree = "<group>"; };
+		AF6327D91D9534F80030F1C5 /* AllVendorsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllVendorsTableViewCell.xib; sourceTree = "<group>"; };
+		AF6327E41D953A990030F1C5 /* VendorsFreeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorsFreeTableViewCell.swift; sourceTree = "<group>"; };
+		AF6327E51D953A990030F1C5 /* VendorsFreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorsFreeTableViewCell.xib; sourceTree = "<group>"; };
+		AF6327E81D953D2F0030F1C5 /* CityHeadCPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityHeadCPViewController.swift; sourceTree = "<group>"; };
+		AF6327E91D953D2F0030F1C5 /* CityHeadCPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityHeadCPViewController.xib; sourceTree = "<group>"; };
 		AF652C831D8F9CB3009852A3 /* SelectSevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSevicesViewController.swift; sourceTree = "<group>"; };
 		AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectSevicesViewController.xib; sourceTree = "<group>"; };
 		AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectServicesTableViewCell.swift; sourceTree = "<group>"; };
@@ -893,6 +917,10 @@
 				AF652C841D8F9CB3009852A3 /* SelectSevicesViewController.xib */,
 				AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */,
 				AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */,
+				AF6327CC1D9514580030F1C5 /* StoreProfileViewController.swift */,
+				AF6327CD1D9514580030F1C5 /* StoreProfileViewController.xib */,
+				AF6327D01D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift */,
+				AF6327D11D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -913,6 +941,14 @@
 				AFB8BF1B1D5212AE00E815A7 /* CityHeadViewController.xib */,
 				AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */,
 				AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */,
+				AF6327D41D9533E30030F1C5 /* VendorCityHeadViewController.swift */,
+				AF6327D51D9533E30030F1C5 /* VendorCityHeadViewController.xib */,
+				AF6327D81D9534F80030F1C5 /* AllVendorsTableViewCell.swift */,
+				AF6327D91D9534F80030F1C5 /* AllVendorsTableViewCell.xib */,
+				AF6327E41D953A990030F1C5 /* VendorsFreeTableViewCell.swift */,
+				AF6327E51D953A990030F1C5 /* VendorsFreeTableViewCell.xib */,
+				AF6327E81D953D2F0030F1C5 /* CityHeadCPViewController.swift */,
+				AF6327E91D953D2F0030F1C5 /* CityHeadCPViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1089,6 +1125,7 @@
 				AF5438A41D87B3F800CDCCD9 /* GlobalListViewController.xib in Resources */,
 				AFBC27531D54B3E2003ECBF6 /* WishLIstTableViewCell.xib in Resources */,
 				AFD6F47A1D9273B200CBD0ED /* LoadMoreCollectionViewCell.xib in Resources */,
+				AF6327CF1D9514580030F1C5 /* StoreProfileViewController.xib in Resources */,
 				AF1685B51D840C57002EA5F4 /* CustomerDropDownTableViewCell.xib in Resources */,
 				AF5438AC1D87BB2F00CDCCD9 /* PaymentDetailsViewController.xib in Resources */,
 				AFBF9CB91D589C06007E17C3 /* CartListStaticTableViewCell.xib in Resources */,
@@ -1099,6 +1136,7 @@
 				AF8036B01D62E9AC00422C54 /* VendorsListViewController.xib in Resources */,
 				AFC26FCB1D4F1E100003471B /* CustomerMenuDescriptionViewController.xib in Resources */,
 				AF5438CE1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.xib in Resources */,
+				AF6327EB1D953D2F0030F1C5 /* CityHeadCPViewController.xib in Resources */,
 				AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */,
 				AFCD86651D89480000F10ABB /* MyProductsViewController.xib in Resources */,
 				AF5438C01D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib in Resources */,
@@ -1109,6 +1147,7 @@
 				AF1F1FA11D4A0C2D00E36DB0 /* LoginViewController.xib in Resources */,
 				AF6D18E01D86A10D00F220FE /* VndornewProductAddViewController.xib in Resources */,
 				AF1F1FA71D4A106200E36DB0 /* Vendor.storyboard in Resources */,
+				AF6327E71D953A990030F1C5 /* VendorsFreeTableViewCell.xib in Resources */,
 				AFE659511D81508200B632D6 /* OTPViewController.xib in Resources */,
 				AF6D18E81D86D0AD00F220FE /* VendorPromotionTableViewCell.xib in Resources */,
 				AF1F1FB31D4A122F00E36DB0 /* VendorMenuViewController.xib in Resources */,
@@ -1123,6 +1162,7 @@
 				AF5438C41D87D75400CDCCD9 /* CustomerListDetailTableViewCell.xib in Resources */,
 				AF6D18D31D8670FE00F220FE /* VendorListViewController.xib in Resources */,
 				AF5438CA1D87EED500CDCCD9 /* SubscriptionDetailsViewController.xib in Resources */,
+				AF6327D31D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib in Resources */,
 				AF6D18F01D86D82700F220FE /* CustomerAboutUsViewController.xib in Resources */,
 				AF5438B41D87BDFE00CDCCD9 /* ShowInvoiceViewController.xib in Resources */,
 				AFBF9CB51D58996B007E17C3 /* CartListTableViewCell.xib in Resources */,
@@ -1137,10 +1177,12 @@
 				AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */,
 				AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */,
 				AF1F1F571D4A07E400E36DB0 /* LaunchScreen.storyboard in Resources */,
+				AF6327D71D9533E30030F1C5 /* VendorCityHeadViewController.xib in Resources */,
 				AF142BE11D7EC30A00273C06 /* VendorMenuTableViewCell.xib in Resources */,
 				AF652C861D8F9CB3009852A3 /* SelectSevicesViewController.xib in Resources */,
 				AFB6A1F11D5DEE4000A9731B /* OrderDetailsViewController.xib in Resources */,
 				07F442701D621E4300733E91 /* OrderProductDetailsTableViewCell.xib in Resources */,
+				AF6327DB1D9534F80030F1C5 /* AllVendorsTableViewCell.xib in Resources */,
 				AFB6A1F91D5DF05700A9731B /* OrderDetailHeaderTableViewCell.xib in Resources */,
 				AFB6537A1D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib in Resources */,
 				AF1F1FAB1D4A107600E36DB0 /* CityHead.storyboard in Resources */,
@@ -1344,6 +1386,7 @@
 				AF1F1F9A1D4A0A5B00E36DB0 /* Button.swift in Sources */,
 				AFCFCCBD1D55C2C200983327 /* ProductCollectionList.swift in Sources */,
 				AF6A881F1D532C5D00986ECC /* VendorDeliverTiming.swift in Sources */,
+				AF6327D21D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift in Sources */,
 				AFCD866A1D896CCE00F10ABB /* ProductDetailsViewController.swift in Sources */,
 				AFD6F4761D92674800CBD0ED /* DisplayPromotionDetails.swift in Sources */,
 				AFB6A1ED1D5DC5C200A9731B /* ProductDetails.swift in Sources */,
@@ -1369,6 +1412,7 @@
 				AF6D18E71D86D0AD00F220FE /* VendorPromotionTableViewCell.swift in Sources */,
 				AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */,
 				AF652C8C1D8FFA6A009852A3 /* SellerData.swift in Sources */,
+				AF6327DA1D9534F80030F1C5 /* AllVendorsTableViewCell.swift in Sources */,
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,
@@ -1403,6 +1447,7 @@
 				AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */,
 				AF1F1FAE1D4A121C00E36DB0 /* MenuViewController.swift in Sources */,
 				AFBF2D321D5C889F007A8655 /* CheckoutViewController.swift in Sources */,
+				AF6327CE1D9514580030F1C5 /* StoreProfileViewController.swift in Sources */,
 				AFC26FBC1D4F06480003471B /* Reachability.swift in Sources */,
 				AF5438C31D87D75400CDCCD9 /* CustomerListDetailTableViewCell.swift in Sources */,
 				AFCD86641D89480000F10ABB /* MyProductsViewController.swift in Sources */,
@@ -1411,6 +1456,7 @@
 				AF5438B71D87BFFE00CDCCD9 /* VendorCategoryListViewController.swift in Sources */,
 				AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */,
 				AF1F1FC31D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift in Sources */,
+				AF6327E61D953A990030F1C5 /* VendorsFreeTableViewCell.swift in Sources */,
 				AF6D18C51D86636E00F220FE /* VendorServerManager.swift in Sources */,
 				AF8036AF1D62E9AC00422C54 /* VendorsListViewController.swift in Sources */,
 				AFD6F4741D925C8300CBD0ED /* VendorInfoAboutUs.swift in Sources */,
@@ -1420,6 +1466,8 @@
 				AFBF9CB41D58996B007E17C3 /* CartListTableViewCell.swift in Sources */,
 				AFB6A1FC1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.swift in Sources */,
 				AF6D18D21D8670FE00F220FE /* VendorListViewController.swift in Sources */,
+				AF6327D61D9533E30030F1C5 /* VendorCityHeadViewController.swift in Sources */,
+				AF6327EA1D953D2F0030F1C5 /* CityHeadCPViewController.swift in Sources */,
 				AFBC27481D54B08B003ECBF6 /* CustomerBestDealsViewController.swift in Sources */,
 				AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */,
 				AFBC27401D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.swift in Sources */,

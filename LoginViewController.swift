@@ -126,7 +126,7 @@ class LoginViewController: UIViewController {
             self.hideHud()
             AlertView.alertView("Alert", message: "Invalid username or password", alertTitle: "OK" , viewController: self)
             }
-        }
+            }
             else{
             self.hideHud()
             self.checkBoxState()

@@ -80,6 +80,8 @@ let sellerInfoUrl = BASE_URL+"index.php?route=api/vendor/jxSaveSellerInfo"
 let sellerPopulateUrl = BASE_URL+"index.php?route=api/customer/getDataSeller"
 let vendorAboutusUrl = BASE_URL + "index.php?route=api/contactus"
 
+
+
 extension String
 {
     var isBlank: Bool {

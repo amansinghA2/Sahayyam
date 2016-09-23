@@ -20,11 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="791"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nIc-Wt-XVO" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="722"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIc-Wt-XVO" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="791"/>
                     <subviews>
                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpI-xx-gFT">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="722"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="791"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smG-Fj-eIC" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
                                     <rect key="frame" x="8" y="13" width="304" height="93"/>
@@ -205,6 +205,9 @@
                                                 <constraint firstAttribute="width" constant="88" id="yCE-tF-dcH"/>
                                             </constraints>
                                             <state key="normal" title="SEND EMAIL"/>
+                                            <connections>
+                                                <action selector="sendEmailAction:" destination="-1" eventType="touchUpInside" id="zMa-Y0-heB"/>
+                                            </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l2a-r8-xqQ">
                                             <rect key="frame" x="8" y="76" width="288" height="30"/>
@@ -290,10 +293,10 @@
                                 <constraint firstAttribute="trailing" secondItem="qw1-q7-Alp" secondAttribute="trailing" constant="8" id="ZZj-x8-43c"/>
                                 <constraint firstItem="smG-Fj-eIC" firstAttribute="top" secondItem="fpI-xx-gFT" secondAttribute="top" constant="13" id="dNo-Qp-zWz"/>
                                 <constraint firstItem="smG-Fj-eIC" firstAttribute="leading" secondItem="fpI-xx-gFT" secondAttribute="leading" constant="8" id="fm2-2V-PcI"/>
-                                <constraint firstItem="qw1-q7-Alp" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="bottom" constant="9" id="mHI-0G-sad"/>
+                                <constraint firstItem="qw1-q7-Alp" firstAttribute="top" secondItem="ak6-mt-rNQ" secondAttribute="bottom" constant="8" id="mHI-0G-sad"/>
                                 <constraint firstAttribute="trailing" secondItem="ak6-mt-rNQ" secondAttribute="trailing" constant="8" id="mPy-5Y-bFJ"/>
                                 <constraint firstItem="Bww-MW-48J" firstAttribute="leading" secondItem="fpI-xx-gFT" secondAttribute="leading" constant="8" id="n94-iz-Vtf"/>
-                                <constraint firstAttribute="bottom" secondItem="qw1-q7-Alp" secondAttribute="bottom" constant="13" id="sNd-TZ-zmg"/>
+                                <constraint firstAttribute="bottom" secondItem="qw1-q7-Alp" secondAttribute="bottom" constant="83" id="sNd-TZ-zmg"/>
                                 <constraint firstItem="ak6-mt-rNQ" firstAttribute="leading" secondItem="fpI-xx-gFT" secondAttribute="leading" constant="8" id="txW-cB-Czy"/>
                                 <constraint firstItem="qw1-q7-Alp" firstAttribute="leading" secondItem="fpI-xx-gFT" secondAttribute="leading" constant="8" id="vOv-B9-pnC"/>
                                 <constraint firstAttribute="trailing" secondItem="smG-Fj-eIC" secondAttribute="trailing" constant="8" id="yCr-ke-QDc"/>
