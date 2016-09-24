@@ -57,10 +57,11 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
 //            
 //        }
         
-        
     }
     
     func vendorDetails() {
+        
+        
         
     }
     
