@@ -8,12 +8,20 @@
 
 import UIKit
 
-class VendorCityHeadViewController: UIViewController {
+class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    @IBOutlet weak var vendorSubsListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let nib1 = UINib(nibName: "AllVendorsTableViewCell", bundle: nil)
+        self.vendorSubsListTableView.registerNib(nib1, forCellReuseIdentifier: "allVendorsIdentifier")
+        
+        let nib2 = UINib(nibName: "VendorsFreeTableViewCell", bundle: nil)
+        self.vendorSubsListTableView.registerNib(nib2, forCellReuseIdentifier: "freeVendorsIdentifier")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +29,41 @@ class VendorCityHeadViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("")
+        
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     
+    }
 
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    @IBAction func segmentControlAction(sender: AnyObject) {
+        
+//        switch segmentControl.selectedSegmentIndex {
+//        case 0:
+//           
+//        default:
+//            
+//        }
+        
+        
+    }
+    
+    func vendorDetails() {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

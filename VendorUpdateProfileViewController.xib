@@ -7,13 +7,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="confirmPasswordtextField" destination="ogi-RD-sPc" id="9ZY-0g-RQ5"/>
-                <outlet property="dobTextField" destination="Pv0-Qa-Uoe" id="jW5-yy-hVg"/>
-                <outlet property="emailID" destination="F6c-Rs-2hH" id="1Tj-pZ-Ncq"/>
-                <outlet property="firstName" destination="oRp-4k-Kdi" id="tVy-5L-Clj"/>
-                <outlet property="lastName" destination="QfD-yn-bg8" id="PcE-f6-ZXF"/>
-                <outlet property="mobileNumber" destination="tFE-yv-i2h" id="1WD-dr-Sgi"/>
-                <outlet property="passwordtextfield" destination="vsr-6H-Xsv" id="JS1-T5-qCs"/>
+                <outlet property="acceptCheckbox" destination="us7-61-DuC" id="OPA-zg-xHl"/>
+                <outlet property="acceptLabel" destination="1BF-Da-Fav" id="pyk-51-QhD"/>
+                <outlet property="confirmPassword" destination="ogi-RD-sPc" id="Xrv-9y-n5v"/>
+                <outlet property="dateOfBirthTextField" destination="Pv0-Qa-Uoe" id="VOx-Mm-lOe"/>
+                <outlet property="emailIdTextField" destination="F6c-Rs-2hH" id="uY0-0q-2xA"/>
+                <outlet property="firstNameLabel" destination="oRp-4k-Kdi" id="eBt-ed-GfO"/>
+                <outlet property="lastNameLabel" destination="QfD-yn-bg8" id="aD6-uW-dQd"/>
+                <outlet property="mobileNumberLabel" destination="tFE-yv-i2h" id="ZQJ-kb-mFr"/>
+                <outlet property="passwordTextField" destination="vsr-6H-Xsv" id="2kx-qD-7XF"/>
                 <outlet property="view" destination="3Iz-mR-sLp" id="gnc-7Z-znl"/>
             </connections>
         </placeholder>
@@ -116,7 +118,50 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuW-87-4Vv">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ct-fI-eu7" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="482" width="304" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="yMX-jg-eWX"/>
+                                    </constraints>
+                                    <state key="normal" title="Update">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="uploadCustomerProfileAction:" destination="-1" eventType="touchUpInside" id="16q-NG-aaz"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept the terms and conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BF-Da-Fav" customClass="TTTAttributedLabel">
+                                    <rect key="frame" x="58" y="436" width="255" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="255" id="8pu-NW-1vU"/>
+                                        <constraint firstAttribute="height" constant="21" id="dqJ-9j-MfG"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75053879310000005" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="us7-61-DuC" customClass="M13Checkbox" customModule="M13Checkbox">
+                                    <rect key="frame" x="13" y="434" width="28" height="26"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="MfA-eW-Dao"/>
+                                        <constraint firstAttribute="height" constant="26" id="ffe-up-pnh"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="us7-61-DuC" firstAttribute="centerY" secondItem="1BF-Da-Fav" secondAttribute="centerY" id="6CH-Ef-DCM"/>
+                                <constraint firstAttribute="trailing" secondItem="1ct-fI-eu7" secondAttribute="trailing" constant="8" id="GKd-Gu-G38"/>
+                                <constraint firstItem="1BF-Da-Fav" firstAttribute="leading" secondItem="us7-61-DuC" secondAttribute="trailing" constant="17" id="KNJ-rV-Vhi"/>
+                                <constraint firstItem="1ct-fI-eu7" firstAttribute="leading" secondItem="NuW-87-4Vv" secondAttribute="leading" constant="8" id="Rd1-kp-pgS"/>
+                                <constraint firstItem="1ct-fI-eu7" firstAttribute="top" secondItem="1BF-Da-Fav" secondAttribute="bottom" constant="25" id="Yxp-vx-iQe"/>
+                                <constraint firstAttribute="bottom" secondItem="1ct-fI-eu7" secondAttribute="bottom" constant="56" id="qu7-Ce-H64"/>
+                            </constraints>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tFE-yv-i2h" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                             <rect key="frame" x="127" y="272" width="187" height="30"/>
@@ -142,18 +187,6 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ct-fI-eu7" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                            <rect key="frame" x="10" y="446" width="304" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="yMX-jg-eWX"/>
-                            </constraints>
-                            <state key="normal" title="Update">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="updateProfileAction:" destination="-1" eventType="touchUpInside" id="i3D-k5-HAS"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRd-9o-VZs">
                             <rect key="frame" x="13" y="379" width="114" height="21"/>
                             <constraints>
@@ -255,12 +288,12 @@
                     <constraints>
                         <constraint firstItem="Ytg-tI-XHC" firstAttribute="top" secondItem="WT0-FU-Z9A" secondAttribute="bottom" constant="31" id="0EK-WY-rWm"/>
                         <constraint firstItem="k5T-oi-3TB" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="0Le-V1-jiG"/>
-                        <constraint firstAttribute="bottom" secondItem="1ct-fI-eu7" secondAttribute="bottom" constant="92" id="0f4-cK-oUg"/>
                         <constraint firstItem="tFE-yv-i2h" firstAttribute="leading" secondItem="ujN-S2-Jaz" secondAttribute="trailing" constant="5" id="1yB-Gj-tPm"/>
                         <constraint firstItem="F6c-Rs-2hH" firstAttribute="leading" secondItem="k5T-oi-3TB" secondAttribute="trailing" constant="5" id="2zC-cG-iDh"/>
                         <constraint firstItem="ogi-RD-sPc" firstAttribute="top" secondItem="vsr-6H-Xsv" secondAttribute="bottom" constant="21" id="6Lh-Og-HPc"/>
                         <constraint firstAttribute="trailing" secondItem="oRp-4k-Kdi" secondAttribute="trailing" constant="6" id="6SN-K6-xEp"/>
                         <constraint firstAttribute="trailing" secondItem="F6c-Rs-2hH" secondAttribute="trailing" constant="6" id="84m-kr-EDp"/>
+                        <constraint firstItem="us7-61-DuC" firstAttribute="top" secondItem="ZRd-9o-VZs" secondAttribute="bottom" constant="34" id="8zv-gS-J4I"/>
                         <constraint firstItem="mcu-47-kXL" firstAttribute="centerY" secondItem="oRp-4k-Kdi" secondAttribute="centerY" id="EOX-qq-2NT"/>
                         <constraint firstAttribute="bottom" secondItem="NuW-87-4Vv" secondAttribute="bottom" id="FDe-Ix-MoQ"/>
                         <constraint firstAttribute="trailing" secondItem="ogi-RD-sPc" secondAttribute="trailing" constant="6" id="GnL-9E-epV"/>
@@ -268,8 +301,6 @@
                         <constraint firstItem="vsr-6H-Xsv" firstAttribute="leading" secondItem="jTR-Pm-Pg0" secondAttribute="trailing" constant="5" id="HtZ-wr-aMD"/>
                         <constraint firstItem="Pv0-Qa-Uoe" firstAttribute="leading" secondItem="Ytg-tI-XHC" secondAttribute="trailing" constant="5" id="Iaq-QO-5QB"/>
                         <constraint firstItem="Ytg-tI-XHC" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="JM7-Hy-Glg"/>
-                        <constraint firstItem="1ct-fI-eu7" firstAttribute="top" secondItem="ogi-RD-sPc" secondAttribute="bottom" constant="41" id="KFr-MK-sRL"/>
-                        <constraint firstAttribute="trailing" secondItem="1ct-fI-eu7" secondAttribute="trailing" constant="6" id="Khg-Rs-oRM"/>
                         <constraint firstItem="ZRd-9o-VZs" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="LD3-il-PSN"/>
                         <constraint firstAttribute="trailing" secondItem="NuW-87-4Vv" secondAttribute="trailing" id="MoB-dJ-9fq"/>
                         <constraint firstItem="QfD-yn-bg8" firstAttribute="leading" secondItem="WT0-FU-Z9A" secondAttribute="trailing" constant="5" id="MrR-rK-pML"/>
@@ -279,7 +310,6 @@
                         <constraint firstItem="Pv0-Qa-Uoe" firstAttribute="top" secondItem="QfD-yn-bg8" secondAttribute="bottom" constant="22" id="R5h-0v-dNp"/>
                         <constraint firstItem="ujN-S2-Jaz" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="RN0-6E-u2a"/>
                         <constraint firstItem="tFE-yv-i2h" firstAttribute="top" secondItem="F6c-Rs-2hH" secondAttribute="bottom" constant="22" id="V2M-Wr-7z9"/>
-                        <constraint firstItem="1ct-fI-eu7" firstAttribute="top" secondItem="ZRd-9o-VZs" secondAttribute="bottom" constant="46" id="VLU-9Z-Eg4"/>
                         <constraint firstAttribute="trailing" secondItem="Pv0-Qa-Uoe" secondAttribute="trailing" constant="6" id="XOa-Sq-gEN"/>
                         <constraint firstItem="4Xq-pU-lcw" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="XQu-Ts-gZB"/>
                         <constraint firstItem="F6c-Rs-2hH" firstAttribute="top" secondItem="Pv0-Qa-Uoe" secondAttribute="bottom" constant="21" id="caA-2A-Je2"/>
@@ -293,12 +323,13 @@
                         <constraint firstAttribute="trailing" secondItem="tFE-yv-i2h" secondAttribute="trailing" constant="6" id="i1I-jS-8Bt"/>
                         <constraint firstItem="jTR-Pm-Pg0" firstAttribute="top" secondItem="ujN-S2-Jaz" secondAttribute="bottom" constant="31" id="jm4-kB-uep"/>
                         <constraint firstItem="jTR-Pm-Pg0" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="k9B-qb-pYJ"/>
-                        <constraint firstItem="1ct-fI-eu7" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="10" id="l2n-qc-oPz"/>
                         <constraint firstAttribute="trailing" secondItem="QfD-yn-bg8" secondAttribute="trailing" constant="6" id="lz4-JL-PPm"/>
+                        <constraint firstItem="1BF-Da-Fav" firstAttribute="top" secondItem="ogi-RD-sPc" secondAttribute="bottom" constant="31" id="neW-ff-jAA"/>
                         <constraint firstAttribute="trailing" secondItem="vsr-6H-Xsv" secondAttribute="trailing" constant="6" id="nry-3C-ybH"/>
                         <constraint firstItem="oRp-4k-Kdi" firstAttribute="leading" secondItem="mcu-47-kXL" secondAttribute="trailing" constant="5" id="oAc-fr-7lm"/>
                         <constraint firstItem="oRp-4k-Kdi" firstAttribute="top" secondItem="4Xq-pU-lcw" secondAttribute="bottom" constant="28" id="qnl-kH-tmF"/>
                         <constraint firstItem="mcu-47-kXL" firstAttribute="leading" secondItem="inc-eG-KqZ" secondAttribute="leading" constant="13" id="sG7-MC-55d"/>
+                        <constraint firstItem="us7-61-DuC" firstAttribute="leading" secondItem="ZRd-9o-VZs" secondAttribute="leading" id="wwE-Ss-fFA"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="7cb-27-ZPw"/>

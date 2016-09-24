@@ -60,12 +60,12 @@ class AddProductViewController: UIViewController {
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
         
-        let params:[String:AnyObject] = [
+        let params = [
         "token":token,
         "device_id":"1234",
-        "offerPrice[0]":String(offerPriceLabel.text!),
-        "price[0]":String(priceLabel.text!),
-        "quantity[0]":String(quantityLabel.text!),
+        "offerPrice[0]":offerPriceLabel.text!,
+        "price[0]":priceLabel.text!,
+        "quantity[0]":quantityLabel.text!,
         "selected[0]":getproductCollectionList.product_id,
         "status[0]":"0",
         "product_id":getproductCollectionList.product_id,
@@ -73,8 +73,6 @@ class AddProductViewController: UIViewController {
         "service_id":getproductCollectionList.service_id
         ]
 
-        print(params)
-        
         ServerManager.sharedInstance().globalProductAdd(params) { (isSuccessful, error, result) in
             if isSuccessful{
                 

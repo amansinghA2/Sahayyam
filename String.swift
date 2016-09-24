@@ -81,6 +81,19 @@ let sellerPopulateUrl = BASE_URL+"index.php?route=api/customer/getDataSeller"
 let vendorAboutusUrl = BASE_URL + "index.php?route=api/contactus"
 
 
+// CityHead URl
+
+let changePasswordUrl = BASE_URL+"index.php?route=api/passwordChange"
+let subscriptionInfoUrl = BASE_URL+"index.php?route=api/subscription/subscriptionInfo"
+let freeSubscriptionUrl = BASE_URL + "index.php?route=api/subscription/update_subscription"
+let paidSubscriptionUrl = BASE_URL+"index.php?route=api/subscription/save_ms_seller"
+let addVendorPopulateDataUrl = BASE_URL+"index.php?route=api/cityHead/addVendor"
+let getCityWisePincodeUrl = BASE_URL+"index.php?route=api/cityHead/getCity"
+let getCategoriesUrl = BASE_URL+"index.php?route=api/cityHead/getBusAjax"
+let chAddNewVendorUrl = BASE_URL + "index.php?route=api/cityHead/addVendor"
+let storePormotionUrl = BASE_URL + "index.php?route=api/subscription/storeSubscription"
+let vendorListSubscriptionUrl = BASE_URL + "index.php?route=api/cityHead"
+let chAddNewVendor = BASE_URL + "index.php?route=api/cityHead/addVendor"
 
 extension String
 {

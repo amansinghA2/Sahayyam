@@ -57,7 +57,7 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                 self.viewControllerPassing("Vendor")
             case 2:
                 self.custTypeString = "cityhead"
-                self.viewControllerPassing("Vendor")
+                self.viewControllerPassing("CityHead")
             case 3:
                 self.custTypeString = "cityhead"
                 self.viewControllerPassing("CityHead")
@@ -80,7 +80,6 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
         ServerManager.sharedInstance().requestSwitchProfile(params) { (isSuccessful, error, result , dicResult) in
             if (isSuccessful){
             self.categoryLIsts = result!
-               
 //                        if let dict = dicResult!["customer"] {
 //                            if let firstname = dict["firstname"]{
 //                

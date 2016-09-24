@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6W-q6-20E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="-130"/>
+            <point key="canvasLocation" x="2030" y="-124"/>
         </scene>
         <!--Switch User-->
         <scene sceneID="Cun-Q9-rU1">
@@ -93,8 +93,17 @@
         <scene sceneID="2ou-jO-vnJ">
             <objects>
                 <viewController storyboardIdentifier="VendorUpdateID" id="Szc-c1-mAQ" customClass="VendorUpdateProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Update Profile" id="o70-ni-beC"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Update Profile" id="o70-ni-beC">
+                        <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Adr-pW-9wg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="slidemenuButton" destination="Adr-pW-9wg" id="Rz5-ox-BjH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-il-EWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,4 +130,7 @@
             <point key="canvasLocation" x="1196" y="-124"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="List Filled-35" width="35" height="35"/>
+    </resources>
 </document>

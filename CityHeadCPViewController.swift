@@ -9,10 +9,14 @@
 import UIKit
 
 class CityHeadCPViewController: UIViewController {
+    @IBOutlet weak var changePassword: TextField!
 
+    @IBOutlet weak var confirmPassword: TextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+   
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +26,22 @@ class CityHeadCPViewController: UIViewController {
     }
     
 
+    @IBAction func submitAction(sender: AnyObject) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "password":String(changePassword.text),
+            "confirm":String(confirmPassword.text)
+        ]
+        
+        ServerManager.sharedInstance().chPasswordChange(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                
+            }
+        }
+        
+    }
     /*
     // MARK: - Navigation
 

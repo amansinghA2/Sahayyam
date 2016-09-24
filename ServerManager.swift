@@ -16,7 +16,8 @@ class ServerManager: NSObject {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = [
             "Content-Type": "application/graphql",
-            "Accept": "text/html" //Optional
+            "Accept": "text/html"
+            //Optional
         ]
         return Alamofire.Manager(
 

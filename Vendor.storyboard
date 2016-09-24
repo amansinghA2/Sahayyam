@@ -23,7 +23,7 @@
                         <segue destination="dFM-rZ-mEn" kind="show" id="Px5-Vf-IhM"/>
                         <segue destination="WCA-64-M43" kind="show" id="4dj-83-PqM"/>
                         <segue destination="I1X-mS-5B6" kind="show" id="pQl-7J-0BL"/>
-                        <segue destination="nKZ-9m-3mt" kind="show" id="Tvr-Wf-sNw"/>
+                        <segue destination="nKZ-9m-3mt" kind="show" identifier="" id="Tvr-Wf-sNw"/>
                         <segue destination="hBy-7w-ip3" kind="show" id="HNS-mZ-0TM"/>
                     </connections>
                 </viewController>
@@ -393,7 +393,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="slidemenuButton" destination="hal-9S-rTF" id="lof-ZS-1Ep"/>
+                        <outlet property="slidemenuButton" destination="hal-9S-rTF" id="vhk-ML-2W4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3w-zQ-dCd" userLabel="First Responder" sceneMemberID="firstResponder"/>

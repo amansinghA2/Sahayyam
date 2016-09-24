@@ -443,6 +443,7 @@ extension ServerManager {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
+                            print(dict)
                             let arr = CommonJsonMapper.customerPopulateDataMapper((dict as? [String:AnyObject])!)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{

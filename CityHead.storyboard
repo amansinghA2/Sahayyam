@@ -5,6 +5,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--About Us View Controller-->
+        <scene sceneID="LQM-lZ-vHO">
+            <objects>
+                <viewController id="uE6-oY-47J" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="9AC-yY-Hd6" kind="show" identifier="aboutUs" id="roO-ka-hOj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofb-lH-lVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-40" y="-426"/>
+        </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="L4w-od-oj1">
             <objects>
@@ -17,11 +30,12 @@
                         <segue destination="xTe-6K-goN" kind="show" identifier="vendorsCHSegue" id="3aS-df-dxU"/>
                         <segue destination="9gp-oU-5ST" kind="show" identifier="changePasswordSegue" id="CJ6-bk-9oq"/>
                         <segue destination="jv2-I1-gwG" kind="show" identifier="goToSubsPayment" id="6eD-3N-4mJ"/>
+                        <segue destination="Imv-VF-13Z" kind="show" identifier="loginSegue" id="kSL-yd-gxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQI-Pg-VXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="223"/>
+            <point key="canvasLocation" x="-46" y="217"/>
         </scene>
         <!--Subs Payment View Controller-->
         <scene sceneID="LOh-dc-hlh">
@@ -61,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsF-U2-513" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="-208"/>
+            <point key="canvasLocation" x="465" y="-224"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ICo-ys-mjv">
@@ -71,6 +85,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DA6-S4-I1A">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -79,7 +94,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5J-sc-ttn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="239"/>
+            <point key="canvasLocation" x="-572" y="233"/>
         </scene>
         <!--City HeadCP View Controller-->
         <scene sceneID="6K8-OX-bz0">
@@ -91,5 +106,16 @@
             </objects>
             <point key="canvasLocation" x="272" y="1064"/>
         </scene>
+        <!--LoginVC-->
+        <scene sceneID="4rR-RB-NxT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="LoginVC" id="Imv-VF-13Z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dtc-jc-LLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235" y="-378"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="s1J-Y5-Tg5"/>
+    </inferredMetricsTieBreakers>
 </document>

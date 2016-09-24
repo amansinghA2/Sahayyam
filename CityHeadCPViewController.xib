@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityHeadCPViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="changePassword" destination="wtm-AO-3L4" id="4gS-DH-X8s"/>
+                <outlet property="confirmPassword" destination="maJ-7B-NmQ" id="zNF-Ov-oTm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,20 +17,65 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvn-zv-t3L">
-                    <rect key="frame" x="37" y="60" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maJ-7B-NmQ">
-                    <rect key="frame" x="112" y="56" width="200" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maJ-7B-NmQ" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="156" y="122" width="156" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVq-F3-ZSb">
+                    <rect key="frame" x="8" y="70" width="135" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="JzT-P9-o3b"/>
+                        <constraint firstAttribute="width" constant="135" id="dOP-Gb-VnO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75299030172413794" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wtm-AO-3L4" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="156" y="70" width="156" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-Ij-fAx" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="266" y="188" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8zs-yX-wnn"/>
+                        <constraint firstAttribute="width" constant="46" id="Qfl-yf-hp3"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="submitAction:" destination="-1" eventType="touchUpInside" id="5a3-Xm-5IT"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvn-zv-t3L">
+                    <rect key="frame" x="9" y="123" width="132" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="32U-Lm-UDd"/>
+                        <constraint firstAttribute="width" constant="132" id="R0M-Ji-VSz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75299030172413794" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="U3L-Ij-fAx" firstAttribute="top" secondItem="maJ-7B-NmQ" secondAttribute="bottom" constant="36" id="1Es-wR-bUI"/>
+                <constraint firstAttribute="trailing" secondItem="wtm-AO-3L4" secondAttribute="trailing" constant="8" id="5to-yg-HEu"/>
+                <constraint firstItem="YVq-F3-ZSb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="7Ef-87-TqI"/>
+                <constraint firstAttribute="trailing" secondItem="U3L-Ij-fAx" secondAttribute="trailing" constant="8" id="AVE-Qh-XsM"/>
+                <constraint firstItem="Gvn-zv-t3L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="Jxd-aC-mG9"/>
+                <constraint firstItem="wtm-AO-3L4" firstAttribute="leading" secondItem="YVq-F3-ZSb" secondAttribute="trailing" constant="13" id="NZR-lJ-KAM"/>
+                <constraint firstItem="wtm-AO-3L4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="NgD-gG-aiZ"/>
+                <constraint firstItem="Gvn-zv-t3L" firstAttribute="top" secondItem="YVq-F3-ZSb" secondAttribute="bottom" constant="32" id="bA5-my-7or"/>
+                <constraint firstItem="maJ-7B-NmQ" firstAttribute="top" secondItem="wtm-AO-3L4" secondAttribute="bottom" constant="22" id="hRY-Yx-tX6"/>
+                <constraint firstItem="maJ-7B-NmQ" firstAttribute="leading" secondItem="Gvn-zv-t3L" secondAttribute="trailing" constant="15" id="ilT-XD-bjh"/>
+                <constraint firstAttribute="trailing" secondItem="maJ-7B-NmQ" secondAttribute="trailing" constant="8" id="ivM-Nd-3gy"/>
+                <constraint firstItem="YVq-F3-ZSb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="naJ-Vz-v03"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="247" y="222"/>
         </view>
     </objects>
 </document>

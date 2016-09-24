@@ -45,26 +45,21 @@ class LoginViewController: UIViewController {
         
             ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
                 if (isSuccessful) {
-                    self.customerLoginData = result!
                     
+                    self.customerLoginData = result!
                     if let defaultVendor = self.customerLoginData?.vendorList{
                         for list in defaultVendor{
                             if list.defaultVendorId == "1"{
                             defaultVendorName = list.nickname
-                            NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
-                                
+                                NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
                                 telephone = list.tel
                                 NSUserDefaults.standardUserDefaults().setObject(telephone, forKey: "tel")
-                                
                                 vendorAddress = list.address_1
                                 NSUserDefaults.standardUserDefaults().setObject(vendorAddress, forKey: "vendorAddress")
-                                
-//                                defaultVendorName = list.nickname
-//                                NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
                           }
-                      }
+                       }
                     }
-                  
+                    
                     address = self.customerLoginData.address + " " + self.customerLoginData.country + " " + self.customerLoginData.postcode
                     NSUserDefaults.standardUserDefaults().setObject(address, forKey: "address")
                     print(address)
@@ -83,7 +78,7 @@ class LoginViewController: UIViewController {
                     self.checkBoxState()
                     self.hideHud()
                     switch profile{
-                    case true:
+                     case true:
                         switch customerType{
                         case 1:   
                             self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
@@ -92,7 +87,7 @@ class LoginViewController: UIViewController {
                         default:
                             print("")
                         }
-                    case false:
+                     case false:
                         switch customerType{
                             case 0:
                                 switch profileType{
@@ -118,8 +113,7 @@ class LoginViewController: UIViewController {
                     self.hideHud()
                     self.checkBoxState()
                     AlertView.alertView("Alert", message: "Incorrect Username or password ", alertTitle: "OK" , viewController: self)
-                    
-            }
+                }
             })
                 
             }else{

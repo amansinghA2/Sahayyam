@@ -19,7 +19,6 @@ class OTPViewController: UIViewController {
         super.viewDidLoad()
         
        otpTextField.setTextFieldStyle(TextFieldStyle.Pincode)
-        print(self.otpData)
         // Do any additional setup after loading the view.
     }
 

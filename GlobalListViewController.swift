@@ -321,12 +321,9 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 
     
     @IBAction func vendorServiceAction(sender: AnyObject) {
-        
-        
-//        self.performSegueWithIdentifier("globalListServices", sender: nil)
+//      self.performSegueWithIdentifier("globalListServices", sender: nil)
         
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
-       // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
         self.addChildViewController(popOverVC)
         popOverVC.str = "1"
         popOverVC.view.frame = self.view.frame

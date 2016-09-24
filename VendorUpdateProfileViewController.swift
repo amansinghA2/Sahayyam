@@ -1,5 +1,5 @@
 //
-//  VendorUpdateProfileViewController.swift
+//  CustomerUpdateProfileViewController.swift
 //  Sahayyam
 //
 //  Created by Sanjeev Jikamade on 02/08/16.
@@ -7,91 +7,228 @@
 //
 
 import UIKit
+import M13Checkbox
+import TTTAttributedLabel
 
-class VendorUpdateProfileViewController: UIViewController {
+class VendorUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate{
+    
+    
 
     @IBOutlet weak var slidemenuButton: UIBarButtonItem!
-    @IBOutlet weak var firstName: TextField!
-    @IBOutlet weak var lastName: TextField!
-    @IBOutlet weak var dobTextField: TextField!
-    @IBOutlet weak var emailID: TextField!
-    @IBOutlet weak var mobileNumber: TextField!
-    @IBOutlet weak var passwordtextfield: TextField!
-    @IBOutlet weak var confirmPasswordtextField: TextField!
+    @IBOutlet weak var updateButtonOutlet: Button!
+    @IBOutlet weak var acceptCheckbox: M13Checkbox!
+    
+    @IBOutlet weak var acceptLabel: TTTAttributedLabel!
+    @IBOutlet weak var firstNameLabel: TextField!
+    @IBOutlet weak var lastNameLabel: TextField!
+    @IBOutlet weak var mobileNumberLabel: TextField!
+    @IBOutlet weak var dateOfBirthTextField: TextField!
+    @IBOutlet weak var emailIdTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
+    @IBOutlet weak var confirmPassword: TextField!
+    var isAccept = false
+    
+    var isLogin = ""
+    
     var populateDataList = PopulateData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tokenCheck()
-        slideMenuShow(slidemenuButton, viewcontroller: self)
-        dobTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
-        passwordtextfield.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
-        confirmPasswordtextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
-        firstName.setTextFieldStyle(TextFieldStyle.TextfieldNames)
-        lastName.setTextFieldStyle(TextFieldStyle.TextfieldNames)
-        mobileNumber.setTextFieldStyle(TextFieldStyle.MobileNumber)
         
-        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
-            if isSuccessful{
-                self.populateDataList  = result!
-                self.dataInTextField()
-                self.hideHud()
-            }
-        })
-        // Do any additional setup after loading the view.
+        let str : NSString = "Accept the terms and conditions"
+        acceptLabel.delegate = self
+        acceptLabel.text = str as String
+        let range : NSRange = str.rangeOfString("Accept the terms and conditions")
+        acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
+        acceptLabel.textColor = UIColor.blueColor()
+
+        if isLogin == "customerDropDown" {
+            tokenCheck()
+            mobileNumberLabel.userInteractionEnabled = false
+            slideMenuShow(slidemenuButton, viewcontroller: self)
+            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+                if isSuccessful{
+                    self.populateDataList  = result!
+                    self.dataInTextField()
+                    self.acceptLabel.hidden = true
+                    self.acceptCheckbox.hidden = true
+                    self.hideHud()
+                }
+            })
+        }else {
+            profile = false
+            NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
+            self.acceptLabel.hidden = false
+            acceptCheckbox.hidden = false
+        }
+
+        dateOfBirthTextField.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+        passwordTextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
+        confirmPassword.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
+        firstNameLabel.setTextFieldStyle(TextFieldStyle.TextfieldNames)
+        lastNameLabel.setTextFieldStyle(TextFieldStyle.TextfieldNames)
+        mobileNumberLabel.setTextFieldStyle(TextFieldStyle.MobileNumber)
+        
+        // dataInTextField()
+        
+    }
+    
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        UIApplication.sharedApplication().openURL(url)
+    }
+    
+    func bindModelToViews() {
+        
+        //      dataInTextField()
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func updateProfileAction(sender: AnyObject) {
+
+    @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
         
+        checkBoxState()
         
+        let params:[String:AnyObject]?
+        if isLogin == "customerDropDown" {
+            params = [
+                "token":token,
+                "device_id":"1234",
+                "action":"info",
+                "firstname":firstNameLabel.text!,
+                "lastname":lastNameLabel.text!,
+                "dob":dateOfBirthTextField.text!,
+                "email":emailIdTextField.text!,
+                "telephone":mobileNumberLabel.text!,
+                "password":passwordTextField.text!,
+                "confirm":confirmPassword.text!,
+            ]
+        }else{
+            params = [
+                "token":token,
+                "device_id":"1234",
+                "action":"info",
+                "firstname":firstNameLabel.text!,
+                "lastname":lastNameLabel.text!,
+                "dob":dateOfBirthTextField.text!,
+                "email":emailIdTextField.text!,
+                "telephone":mobileNumberLabel.text!,
+                "password":passwordTextField.text!,
+                "confirm":confirmPassword.text!,
+                "tos":"on"
+            ]
+            
+        }
+        
+        print(params)
+        
+        self.view.endEditing(true)
+        if Reachability.isConnectedToNetwork() {
+            if formValidation() {
+                ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
+                    if isSuccessful {
+                    self.hideHud()
+                    
+                    let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+                        if self.isLogin == "customerDropDown" {
+                            self.viewControllerPassing("Vendor")
+                        }else{
+                            self.viewControllerPassing("Vendor")
+                        }
+                    }))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                }
+            }else{
+                
+            }
+        }
+        else{
+            self.hideHud()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+        }
         
     }
     
+    func viewControllerPassing(storyBoard:String) {
+        let sb = UIStoryboard(name: storyBoard, bundle: nil)
+        let vc1 = sb.instantiateInitialViewController()! as UIViewController
+        self.presentViewController(vc1, animated: false, completion:
+            nil)
+    }
+    
+    //  MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
+    
+    //    In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //    }
+    
     func formValidation() -> Bool{
-        if (firstName.text?.isBlank == true  || lastName.text?.isBlank == true || dobTextField.text?.isBlank == true || mobileNumber.text?.isBlank == true || passwordtextfield.text?.isBlank == true || confirmPasswordtextField.text?.isBlank == true){
+        if (firstNameLabel.text?.isBlank == true  || lastNameLabel.text?.isBlank == true || dateOfBirthTextField.text?.isBlank == true || mobileNumberLabel.text?.isBlank == true || passwordTextField.text?.isBlank == true || confirmPassword.text?.isBlank == true ){
+            self.hideHud()
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
         
-        if !(emailID.isValidEmail(emailID.text!)) && emailID.text != "" {
+        
+        
+        if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
+            self.hideHud()
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
             return false
         }
         
-        if !(Validations.isValidPassAndConfirmPassword(passwordtextfield.text! , confirmPassword: confirmPasswordtextField.text!)) {
+        if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
+            self.hideHud()
             AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
             return false
         }
-        return true
+        
+        if isLogin == "customerDropDown" {
+            return true
+        }else{
+            if isAccept == false {
+                AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
+                
+                return false
+            }else{
+                return true
+            }
+        }
     }
     
     func dataInTextField(){
-        
-        firstName.text = populateDataList.firstname
-        
-        lastName.text = populateDataList.lastName
-        
-        dobTextField.text = populateDataList.dateOfBirth
-        
-        emailID.text = populateDataList.emailId
-        
-        mobileNumber.text = populateDataList.mobileNumber
-        
+        firstNameLabel.text = populateDataList.firstname
+        lastNameLabel.text = populateDataList.lastName
+        mobileNumberLabel.text = populateDataList.mobileNumber
+        dateOfBirthTextField.text = populateDataList.dateOfBirth
+        emailIdTextField.text = populateDataList.emailId
+        dateOfBirthTextField.text = populateDataList.dateOfBirth
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func checkBoxState(){
+        if let state = self.acceptCheckbox?.checkState {
+            switch state {
+            case .Unchecked:
+                isChecked = false
+                isAccept = false
+            case .Checked:
+                isChecked = true
+                updateButtonOutlet.hidden = false
+                isAccept = true
+            case .Mixed:
+                print("")
+            }
+        }
     }
-    */
-
+    
 }
+

@@ -210,6 +210,7 @@ extension ServerManager {
         ]
         
         defaultManager.request(.GET, myproductsGlobalListUrl, parameters: params, encoding: .URL, headers: headers)
+            .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -337,25 +338,20 @@ extension ServerManager {
         }
     }
     
-    func globalProductAdd(params:[String:AnyObject] , completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+    func globalProductAdd(params:[String:AnyObject]? , completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
-        
-//        let params1 = [
-//        "username":"9029652955",
-//        "password":"edit",
-//        "device_id":"1234"
-//        ]
-        
+    
         defaultManager.request(.POST, globalAddProductUrl , parameters: params , encoding: .URL, headers: headers)
-            .responseJSON { response in
+            .validate()
+            .responseData { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let dict = response.result.value {
-                           // let dict = JSON(data: data)
+                        if let data = response.result.value {
+                            let dict = JSON(data: data)
                             print(dict)
                             completionClosure(isSuccessful: true, error: nil, result: nil)
                         }else{

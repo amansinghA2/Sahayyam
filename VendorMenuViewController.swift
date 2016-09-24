@@ -32,10 +32,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         gradientLayer.frame = self.gradientView.bounds
         
         self.gradientView.layer.addSublayer(gradientLayer)
-//      self.gradientView.addSubview(customerName)
-//      self.gradientView.addSubview(vendorName)
 
-        
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
        listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
@@ -86,7 +83,17 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 10:
             self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
         case 11:
-            self.cellClickNavigation("Vendor" , identifier: "vendorUpdateID")
+            
+            let sb = UIStoryboard(name: "Vendor", bundle: nil)
+            let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
+            vc1.isLogin = "customerDropDown"
+            let nc = UINavigationController(rootViewController: vc1)
+            nc.setViewControllers([vc1], animated: true)
+            nc.navigationBar.barTintColor = UIColor.orangeColor()
+            self.revealViewController().setFrontViewController(nc, animated: false)
+            self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+            self.revealViewController().revealToggleAnimated(true)
+            
         case 12:
             self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
         case 13:
@@ -116,7 +123,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
                     self.hideHud()
                     NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
                     NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
-                    self.cellClickNavigation("Main" , identifier: "LoginVC")
+                        self.cellClickNavigation("Main" , identifier: "LoginVC")
                 }
             }
         }))
@@ -127,7 +134,6 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     func cellClickNavigation(storyBoard:String ,identifier:String) {
         let sb = UIStoryboard(name: storyBoard, bundle: nil)
         let vc1 = sb.instantiateViewControllerWithIdentifier(identifier)
-        
         let nc = UINavigationController(rootViewController: vc1)
         nc.setViewControllers([vc1], animated: true)
         nc.navigationBar.barTintColor = UIColor.orangeColor()

@@ -50,11 +50,6 @@ class WishLIstTableViewCell: UITableViewCell {
         if let productStock = wishList?.stock1 {
             self.productStock.text =  "Stock remaining " + String(productStock)
         }
-        
-//        if let productImageLabel = wishList?.cartQuantity {
-//            print(productQuantity)
-//            self.productQuantity.text = String(productQuantity)
-//        }
 
         if wishList?.thumb != "" {
             if let customerProductImage1 = wishList?.thumb{

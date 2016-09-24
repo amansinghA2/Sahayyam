@@ -12,7 +12,6 @@ class CHMainMenuViewController: UIViewController {
 
     @IBOutlet weak var addVendorOutlet: UIImageView!
     
-    
     @IBOutlet weak var vendorsOutlet: UIImageView!
     
     @IBOutlet weak var subscriptionsPaymentOutlet: UIImageView!
@@ -94,8 +93,9 @@ class CHMainMenuViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        if segue.identifier == "" {
-            
+        if segue.identifier == "chprofileUpdateSegue" {
+            let vc = segue.destinationViewController as! CityHeadProfileViewController
+            vc.isLogin = "customerDropDown"
         }
     }
     

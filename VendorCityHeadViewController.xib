@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorCityHeadViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="segmentControl" destination="Pax-Lr-NEW" id="lit-tu-l2h"/>
+                <outlet property="vendorSubsListTableView" destination="UeZ-RC-xiq" id="8Vn-xN-h9w"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pax-Lr-NEW">
+                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pax-Lr-NEW">
                     <rect key="frame" x="0.0" y="42" width="320" height="29"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="S9g-Tk-u1g"/>
@@ -26,11 +28,27 @@
                         <segment title="UNPAID VENDORS"/>
                     </segments>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.74835668099999997" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="SX6-Qn-pii"/>
+                    </connections>
                 </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-RC-xiq">
+                    <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Pax-Lr-NEW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="42" id="6Dm-Nh-gjK"/>
+                <constraint firstItem="UeZ-RC-xiq" firstAttribute="top" secondItem="Pax-Lr-NEW" secondAttribute="bottom" constant="1" id="M6h-Zq-mBr"/>
+                <constraint firstAttribute="trailing" secondItem="UeZ-RC-xiq" secondAttribute="trailing" id="ZEg-g9-msp"/>
+                <constraint firstItem="Pax-Lr-NEW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="acb-w5-M7d"/>
+                <constraint firstAttribute="trailing" secondItem="Pax-Lr-NEW" secondAttribute="trailing" id="d5g-ZK-hZu"/>
+                <constraint firstAttribute="bottom" secondItem="UeZ-RC-xiq" secondAttribute="bottom" id="i3y-z3-Ry2"/>
+                <constraint firstItem="UeZ-RC-xiq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="syT-1f-r1R"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="186" y="186"/>
+            <point key="canvasLocation" x="103" y="179"/>
         </view>
     </objects>
 </document>
