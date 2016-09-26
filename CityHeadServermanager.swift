@@ -262,20 +262,20 @@ extension ServerManager {
     }
     
     
-    func chVendorListForSbbscription(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]? , dictResult:[String:AnyObject]?) -> Void) {
+    func chVendorListForSbbscription(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [SubsNameDetails]? , dictResult:[String:AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.POST, vendorListSubscriptionUrl, parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, vendorListSubscriptionUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if response.response != nil {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
+                            let arr = CommonJsonMapper.getSubsDetailsMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
                             
                         }

@@ -153,7 +153,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
     
     
     func setUpView() {
-        setBackButtonForNavigation()
+       // setBackButtonForNavigation()
         
         self.showHud("Loading...")
         let nib1 = UINib(nibName: "DetailsOrderTableViewCell", bundle: nil)

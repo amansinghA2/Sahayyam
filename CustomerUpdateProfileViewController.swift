@@ -52,6 +52,9 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
          ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
                 if isSuccessful{
                     self.populateDataList  = result!
+                    customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
+                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+                    
                     self.dataInTextField()
                     self.acceptLabel.hidden = true
                     self.acceptCheckbox.hidden = true
@@ -171,6 +174,15 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
                      if self.isLogin == "customerDropDown" {
+                        
+                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+                            if isSuccessful{
+                                self.populateDataList  = result!
+                                customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
+                                NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+                            }
+                        })
+   
                     self.navigationController?.popViewControllerAnimated(true)
                      }else{
                        self.viewControllerPassing("Customer")
@@ -231,12 +243,15 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                                 if let imgStr = result!["img_dir"]{
                                     self.str = (imgStr as! String)
                                 }
+                            }else{
+                              self.hideHud()
                             }
                         }
 
                     })
                 }
             }else{
+                self.hideHud()
                 AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
             }
 

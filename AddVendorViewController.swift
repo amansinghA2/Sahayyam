@@ -12,7 +12,34 @@ class AddVendorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "seller[address_1]":"",
+        "seller[address_2]":"",
+        "seller[dob]":"",
+        "seller[email]":"",
+        "seller[firstname]":"",
+        "seller[lastname]":"",
+        "seller[nickname]":"",
+        "seller[telephone]":"",
+        "seller[postcode]":"",
+        "seller[postcode_id]":"",
+        "seller[rest]":"",
+        "seller[zone_id]":"",
+        "seller[bus_type]":"",
+        "seller[city]":"",
+        "seller[city_id]":"",
+        "seller[city_name]":"",
+        "seller[country_id]":""
+        ]
+        
+        ServerManager.sharedInstance().addNewVendor(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                
+            }
+        }
         // Do any additional setup after loading the view.
     }
 

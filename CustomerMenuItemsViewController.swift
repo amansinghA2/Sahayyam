@@ -22,6 +22,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var moreOptionButton: UIBarButtonItem!
+    
     var fromMenuToProductPage = ""
     var delegate:CustomerMenuItemsViewControllerDelegate?
     var getProductCollectionList = [ProductCollectionList]()
@@ -41,9 +42,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var vendorList:VendorList!
     var favSetter = false
     var selectedCategoryLIst:CategoryList!
-    var page = 1
+    var page = 0
     var totalPages:Int?
-    var limit = 26
+    var limit = 25
+    var isDataSOurceREsultEmpty = false
+    var selectedIndexPath1 = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,15 +90,19 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
+//        if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
+//            customerFullName = customerFullName1 as! String
+//        }
         super.viewWillAppear(animated)
         self.showHud("Loading...")
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
+        NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
           if Reachability.isConnectedToNetwork(){
         if fromMenuToProductPage == "goToProductsPage"{
-            productFunction(selectedCategoryLIst.category_id , limit: "26" , page: "1" , filterName: "")
+            productFunction(selectedCategoryLIst.category_id , limit: "25" , page: "1" , filterName: "")
         }else{
-            productFunction("" , limit: "26" , page: "1" , filterName: "")
+            productFunction("" , limit: "25" , page: "1" , filterName: "")
         }
         
     }
@@ -106,11 +113,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
 
     func productFunction(filterCategory:String , limit:String , page:String , filterName:String) {
+
+        self.showHud("Loading...")
         let customerProductsParams:[String:AnyObject]? = [
             "filter_category":filterCategory,
             "token":token,
             "device_id": "1234",
-            "filter_name":"",
+            "filter_name":filterName,
             "limit":limit,
             "page":page
         ]
@@ -122,15 +131,18 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 if let totalPage = result1!["TotalPages"]{
                     self.totalPages = Int(totalPage as! String)!
                 }
+                self.dataSourceForSearchResult = result!
                 self.getProductCollectionList = result!
+                print(self.getProductCollectionList.count)
                 self.getProductCollectionListAdd += self.getProductCollectionList
                 self.collectionView.dataSource = self
                 self.collectionView.delegate = self
                 self.collectionView.reloadData()
+            }else{
+                self.hideHud()
             }
             
         }
-
     }
 
     deinit{
@@ -237,15 +249,26 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             self.collectionViewCustomLabel("No Products", collectionView: collectionView)
             return 0
         }else{
+            self.collectionViewCustomLabel("", collectionView: collectionView)
             if self.searchBarActive {
                 return self.dataSourceForSearchResult.count;
             }
             return getProductCollectionListAdd.count
         }
         }else {
-            if getProductCollectionListAdd.count == 0{
+            
+            if getProductCollectionListAdd.count < 25 || getProductCollectionListAdd.count == 0{
                 return 0
             }
+            
+            if isDataSOurceREsultEmpty == true {
+            if dataSourceForSearchResult.count == 0 {
+                return 0
+            }
+            }else{
+                return 1
+            }
+            
             if fromMenuToProductPage == "goToProductsPage"{
                 return 0
             }else{
@@ -287,6 +310,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        self.selectedIndexPath1 = indexPath
+        self.view.endEditing(true)
         getSpecificProductList =
         getProductCollectionListAdd[indexPath.row]
        performSegueWithIdentifier("productDescSegue", sender: nil)
@@ -319,33 +345,33 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
-        self.dataSourceForSearchResult = self.getProductCollectionListAdd.filter({ (text:ProductCollectionList) -> Bool in
-            
-           // productFunction("", limit: "25", page: "1", filterName: searchText)
-            
-            return text.prodnName.containsString(searchText)
-        })
+       
+//        self.dataSourceForSearchResult = self.getProductCollectionListAdd.filter({ (text:ProductCollectionList) -> Bool in
+//            return text.prodnName.containsString(searchText)
+//        })
+        
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        // user did type something, check our datasource for text that looks the same
+            // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
-            // search and reload data source
-            self.searchBarActive    = true
+            productFunction("", limit: "25", page: "", filterName: String(searchText))
+            self.searchBarActive = true
             self.filterContentForSearchText(searchText)
-            print(searchText)
             self.collectionView?.reloadData()
         }else{
-            // if text lenght == 0
-            // we will consider the searchbar is not active
+            getProductCollectionListAdd.removeAll()
+            productFunction("", limit: "25", page: "1", filterName:"")
             self.searchBarActive = false
             self.collectionView?.reloadData()
         }
         
     }
     
+    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         self.cancelSearching()
+        isDataSOurceREsultEmpty = false
         self.collectionView?.reloadData()
     }
     
@@ -356,10 +382,13 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        isDataSOurceREsultEmpty = true
         if tableView.hidden == false {
             tableView.removeFromSuperview()
             tableView.hidden = true
         }
+        
         // we used here to set self.searchBarActive = YES
         // but we'll not do that any more... it made problems
         // it's better to set self.searchBarActive = YES when user typed something
@@ -370,11 +399,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         // this method is being called when search btn in the keyboard tapped
         // we set searchBarActive = NO
         // but no need to reloadCollectionView
+        self.view.endEditing(true)
+        isDataSOurceREsultEmpty = false
         self.searchBarActive = false
         self.searchBar!.setShowsCancelButton(false, animated: false)
     }
     
     func cancelSearching(){
+        isDataSOurceREsultEmpty = false
         self.searchBarActive = false
         self.searchBar!.resignFirstResponder()
         self.searchBar!.text = ""
@@ -383,21 +415,22 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     // MARk:-  RevealView Controler Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
             vendorSelectBarButtonItem.enabled = true
         }else{
-            self.view.userInteractionEnabled = false
+           self.view.userInteractionEnabled = false
             vendorSelectBarButtonItem.enabled = false
+
         }
     }
 
     func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-
+        
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
             vendorSelectBarButtonItem.enabled = true
+
         }else{
             self.view.userInteractionEnabled = false
             vendorSelectBarButtonItem.enabled = false
@@ -413,14 +446,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     if fromMenuToProductPage == "goToProductsPage"{
             page += 1
             if page <= totalPages{
-                productFunction(selectedCategoryLIst.category_id , limit: "26" , page: "\(page)" , filterName: "")
+                productFunction(selectedCategoryLIst.category_id , limit: "25" , page: "\(page)" , filterName: "")
             }else{
                
             }
     }else {
             page += 1
             if page <= totalPages{
-                productFunction("", limit: "26", page: "\(page)" , filterName: "")
+                productFunction("", limit: "25", page: "\(page)" , filterName: "")
             }else{
                self.toastViewForTextfield("No More Products")
             }
@@ -473,7 +506,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         
         print(params)
         ServerManager.sharedInstance().customerSetDefaultVendor(params) { (isSuccessful, error, result) in
-            
+        
             if isSuccessful{
             self.categoryLIsts = result!
             
@@ -742,9 +775,12 @@ else{
     func textFieldDidBeginEditing(textField: UITextField) {
         fromMenuToProductPage = ""
         self.view.endEditing(true)
-  
         self.performSegueWithIdentifier("vendorListIdentifier", sender: nil)
         textField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.view.endEditing(true)
     }
     
     

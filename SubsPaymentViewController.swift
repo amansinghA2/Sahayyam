@@ -8,11 +8,18 @@
 
 import UIKit
 
-class SubsPaymentViewController: UIViewController {
+class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource {
 
+    @IBOutlet weak var subsTableView: UITableView!
+    
+    var subsDetails = [SubsNameDetails]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let nib = UINib(nibName: "SubsPaymentTableViewCell", bundle: nil)
+        self.subsTableView.registerNib(nib, forCellReuseIdentifier: "subPaymentIdentifier")
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +28,34 @@ class SubsPaymentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        let params = [
+        "token":token,
+        "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().chVendorListForSbbscription(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                self.subsDetails = result!
+                self.subsTableView.delegate = self
+                self.subsTableView.dataSource = self
+                self.subsTableView.reloadData()
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCellWithIdentifier("subPaymentIdentifier") as! SubsPaymentTableViewCell
+        
+        
+        
+       return cell
+    }
 
     /*
     // MARK: - Navigation

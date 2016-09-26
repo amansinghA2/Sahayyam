@@ -10,7 +10,6 @@ import Foundation
 
 // MARK: - Base Url
 
-
 // "http://192.168.1.2/sahayyam/image/"
 // "http://sahayyam.com/"
 // "http://192.168.1.2/sahayyam/"
@@ -22,7 +21,7 @@ import Foundation
 //let BASE_URL = "http://sahayyam.com/"
 //let image_base_url = "http://sahayyam.com/image/"
 
-// MARK: - Common Url
+    // MARK: - Common Url
 
 let urlString = BASE_URL+"index.php?route=api/login"
 let switchProfileUrl = BASE_URL+"index.php?route=api/switchprofile"
@@ -34,8 +33,7 @@ let loginLogoutUrl = BASE_URL+"index.php?route=api/login/logout"
 let checkTokenHealthUrl = BASE_URL+"index.php?route=api/login/getHealth"
 let aboutUsUrl = BASE_URL+"index.php?route=api/contactus/getVendorAddress"
 
-
-// MARK: - Customers Url
+    // MARK: - Customers Url
 
 let logoutUrl = BASE_URL+"index.php?route=api/login/logout"
 let customerCartProductListUrl = BASE_URL+"index.php?route=api/cart/products"
@@ -56,7 +54,7 @@ let customerAddToWishlist = BASE_URL+"index.php?route=api/wishlist/add"
 let customerRemoveFromWishListUrl = BASE_URL+"index.php?route=api/wishlist/remove"
 let customerUpdateProfilePopulateUrl = BASE_URL+"index.php?route=api/customer/getInfo"
 
-// MARK:- Vendors Url
+    // MARK:- Vendors Url
 
 let categoryUrl = BASE_URL+"index.php?route=api/category"
 let getCustomerUrl = BASE_URL+"index.php?route=api/vendor/getCustomer"

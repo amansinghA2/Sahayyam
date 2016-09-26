@@ -119,7 +119,7 @@ class CustomerMenuDescriptionViewController: UIViewController {
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
                 
                 if isSuccessful {
-                    AlertView.alertView("Alert", message: "Product is added to Wishlist", alertTitle: "OK", viewController: self)
+                    self.toastViewForTextfield("Product added to wishlist")
                 }else{
                     AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                     self.hideHud()
@@ -138,7 +138,7 @@ class CustomerMenuDescriptionViewController: UIViewController {
                                 "token":token,
                                 "quantity":Int(field.text!)!
                             ]
-                            print(params)
+                            
                             ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
                                 
                                 if isSuccessful{
@@ -178,8 +178,9 @@ class CustomerMenuDescriptionViewController: UIViewController {
     else{
     self.hideHud()
     AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+      }
     }
-    }
+    
     /*
     // MARK: - Navigation
 

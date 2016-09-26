@@ -25,22 +25,20 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
 //    self.navigationController?.navigationBarHidden = false
     self.navigationItem.hidesBackButton = true
      setUpView()
-        
-      
-    
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
   }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = false
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        self.navigationController?.navigationBarHidden = true
+//    }
+//    
+//    override func viewDidDisappear(animated: Bool) {
+//        self.navigationController?.navigationBarHidden = false
+//    }
     
     // MARK: Actions
 

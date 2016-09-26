@@ -350,7 +350,6 @@ extension ServerManager {
         ]
         
         defaultManager.request(.GET, customerOrderDetailsUrl, parameters: params, encoding: .URL, headers: headers)
-            .validate()
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -363,6 +362,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }

@@ -71,12 +71,19 @@ class CustomerBestDealsViewController: UIViewController {
             }
             
             if let name = promotionLIst.price as? String{
-                priceLabel.text = "On Price: INR " + name
+                
+                let str = CustomClass.roundOfDecimal(name)
+                if let name = promotionLIst.discountPrice as? String{
+                    if promotionLIst.discountType == "P"{
+                        priceLabel.text = "On Price: INR " + str  + "    " + "get " + name + " % off"
+                    }else{
+                        priceLabel.text = "On Price: INR " + str  + "    " + "SAVE Rs. : " + name
+                    }
+                }
+                
             }
             
-            if let name = promotionLIst.discountPrice as? String{
-                discountPriceLabel.text = "SAVE Rs. : " + name
-            }
+           
             
         }
         

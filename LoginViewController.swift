@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
                     address = self.customerLoginData.address + " " + self.customerLoginData.country + " " + self.customerLoginData.postcode
                     NSUserDefaults.standardUserDefaults().setObject(address, forKey: "address")
                     print(address)
-                    customerFullName = self.customerLoginData.firstName + " " + self.customerLoginData.lastName
-                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+//                    customerFullName = self.customerLoginData.firstName + " " + self.customerLoginData.lastName
+//                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                     token = self.customerLoginData.cookie
                     NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
                     print(token)

@@ -22,10 +22,10 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.endEditing(true)
         setBackButtonForNavigation()
       //self.navigationItem.hidesBackButton = true
         tokenCheck()
-        self.showHud("Loading...")
         let nib1 = UINib(nibName: "VendorListTableViewCell", bundle: nil)
         self.vendorListTAbleView.registerNib(nib1, forCellReuseIdentifier: "vendorListIdentifier")
 
@@ -86,6 +86,7 @@ class VendorsListViewController: UIViewController , UITableViewDataSource , UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       self.delegate?.passDefaultVendorLIst(self, vendorList: self.vendorsLists[indexPath.row])
+        self.hideHud()
       self.toastView("Vendor update successfully changed")
     }
     

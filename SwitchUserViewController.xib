@@ -62,10 +62,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2oo-H9-Iy5">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FT-Lu-OeA">
+                            <rect key="frame" x="111" y="32" width="98" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="jos-Cr-ZQB"/>
+                                <constraint firstAttribute="width" constant="98" id="vDY-Tt-OIA"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="NcZ-cb-hOu"/>
+                        <constraint firstAttribute="height" constant="64" id="NcZ-cb-hOu"/>
+                        <constraint firstItem="4FT-Lu-OeA" firstAttribute="top" secondItem="2oo-H9-Iy5" secondAttribute="top" constant="32" id="nPb-kc-8Bw"/>
                     </constraints>
                 </view>
             </subviews>
@@ -78,6 +91,7 @@
                 <constraint firstItem="2oo-H9-Iy5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NHz-fG-x3u"/>
                 <constraint firstItem="K7Q-2q-Sy3" firstAttribute="centerX" secondItem="5wc-th-w4V" secondAttribute="centerX" id="Nmz-hi-neO"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5wc-th-w4V" secondAttribute="trailing" constant="54" id="Qb2-7w-6Pk"/>
+                <constraint firstItem="4FT-Lu-OeA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TnJ-b2-q9y"/>
                 <constraint firstItem="JbQ-9w-VSt" firstAttribute="leading" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="120" id="VQE-JR-VMW"/>
                 <constraint firstItem="JbQ-9w-VSt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="dqF-6q-zJs"/>
                 <constraint firstItem="NmQ-pV-ADN" firstAttribute="centerX" secondItem="JbQ-9w-VSt" secondAttribute="centerX" id="ecx-ft-eW2"/>

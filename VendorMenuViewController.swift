@@ -4,7 +4,6 @@
 //
 //  Created by Sanjeev Jikamade on 28/07/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
-//
 
 import UIKit
 
@@ -15,6 +14,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var menuListTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        menuListTableView.delegate = self
@@ -83,7 +83,6 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 10:
             self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
         case 11:
-            
             let sb = UIStoryboard(name: "Vendor", bundle: nil)
             let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
             vc1.isLogin = "customerDropDown"
@@ -121,8 +120,8 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
+//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
+//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
                         self.cellClickNavigation("Main" , identifier: "LoginVC")
                 }
             }

@@ -15,5 +15,6 @@ class DisplayPromotionDetails: NSObject {
     dynamic var price = String()
     dynamic var promotionDescription = String()
     dynamic var discountPrice = String()
+    dynamic var discountType = String()
     
 }

@@ -54,12 +54,11 @@ class CHMainMenuViewController: UIViewController {
     }
     
     @IBAction func ChangePasswordAction(sender: AnyObject) {
-    self.performSegueWithIdentifier("changePasswordSegue", sender: nil)
+       self.performSegueWithIdentifier("changePasswordSegue", sender: nil)
     }
     
-    
     @IBAction func updateProfileAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("chprofileUpdateSegue", sender: nil)
+       self.performSegueWithIdentifier("chprofileUpdateSegue", sender: nil)
     }
     
     @IBAction func logoutAction(sender: AnyObject) {

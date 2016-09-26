@@ -725,6 +725,10 @@ extension CommonJsonMapper {
                     categoryList.discountPrice = active as! String
                 }
                 
+                if let active = value.valueForKey("discountType"){
+                    categoryList.discountType = active as! String
+                }
+                
                 let level:AnyObject = value.valueForKey("description")!
                 if level is String {
                     categoryList.promotionDescription = level as! String

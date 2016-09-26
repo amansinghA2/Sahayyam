@@ -107,6 +107,7 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
             
             ServerManager.sharedInstance().customerRemoveFromCart(params) { (isSuccessful, error, result) in
                 if isSuccessful {
+                    self.hideHud()
                     self.getCartLIst()
                 }else {
                     AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
@@ -116,9 +117,11 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
             }
             
             if self.cartLists.count == 1 {
+                self.hideHud()
                 self.cartLists.removeAll()
                  self.cartListTableView.reloadData()
             }else{
+                self.hideHud()
                 self.cartLists.removeAtIndex((indexPath?.row)!)
                 self.cartListTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                 self.cartListTableView.reloadData()
