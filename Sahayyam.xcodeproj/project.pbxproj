@@ -112,6 +112,8 @@
 		AF652C891D8FA0D4009852A3 /* SelectServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */; };
 		AF652C8A1D8FA0D4009852A3 /* SelectServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */; };
 		AF652C8C1D8FFA6A009852A3 /* SellerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF652C8B1D8FFA6A009852A3 /* SellerData.swift */; };
+		AF6710E91D9A271500AEB294 /* SubsPaymentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6710E71D9A271500AEB294 /* SubsPaymentInfoViewController.swift */; };
+		AF6710EA1D9A271500AEB294 /* SubsPaymentInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6710E81D9A271500AEB294 /* SubsPaymentInfoViewController.xib */; };
 		AF6A88161D5306BE00986ECC /* CustomerJsonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A88151D5306BE00986ECC /* CustomerJsonMapper.swift */; };
 		AF6A88181D5325DB00986ECC /* CartProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A88171D5325DB00986ECC /* CartProductList.swift */; };
 		AF6A881B1D532C3C00986ECC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A881A1D532C3C00986ECC /* Products.swift */; };
@@ -380,6 +382,8 @@
 		AF652C871D8FA0D4009852A3 /* SelectServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectServicesTableViewCell.swift; sourceTree = "<group>"; };
 		AF652C881D8FA0D4009852A3 /* SelectServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectServicesTableViewCell.xib; sourceTree = "<group>"; };
 		AF652C8B1D8FFA6A009852A3 /* SellerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerData.swift; sourceTree = "<group>"; };
+		AF6710E71D9A271500AEB294 /* SubsPaymentInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubsPaymentInfoViewController.swift; sourceTree = "<group>"; };
+		AF6710E81D9A271500AEB294 /* SubsPaymentInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubsPaymentInfoViewController.xib; sourceTree = "<group>"; };
 		AF6A88151D5306BE00986ECC /* CustomerJsonMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerJsonMapper.swift; sourceTree = "<group>"; };
 		AF6A88171D5325DB00986ECC /* CartProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartProductList.swift; sourceTree = "<group>"; };
 		AF6A881A1D532C3C00986ECC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
@@ -974,6 +978,8 @@
 				AF6327F91D955CA20030F1C5 /* SubsPaymentViewController.xib */,
 				AF5CB11C1D98EA6C007C0261 /* SubsPaymentTableViewCell.swift */,
 				AF5CB11D1D98EA6C007C0261 /* SubsPaymentTableViewCell.xib */,
+				AF6710E71D9A271500AEB294 /* SubsPaymentInfoViewController.swift */,
+				AF6710E81D9A271500AEB294 /* SubsPaymentInfoViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1218,6 +1224,7 @@
 				AF4E78C01D50857300E2FB20 /* TrackOrderViewController.xib in Resources */,
 				AF1F1FBC1D4A1D6200E36DB0 /* MenuTableViewCell.xib in Resources */,
 				AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */,
+				AF6710EA1D9A271500AEB294 /* SubsPaymentInfoViewController.xib in Resources */,
 				AF530B091D756DB7004A269F /* MenuDetailsHeaderTableViewCell.xib in Resources */,
 				AFB6A1F51D5DEE5B00A9731B /* OrderDetailsTableViewCell.xib in Resources */,
 				AFBC27491D54B08B003ECBF6 /* CustomerBestDealsViewController.xib in Resources */,
@@ -1408,6 +1415,7 @@
 				AF530B081D756DB7004A269F /* MenuDetailsHeaderTableViewCell.swift in Sources */,
 				AF6A88161D5306BE00986ECC /* CustomerJsonMapper.swift in Sources */,
 				AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */,
+				AF6710E91D9A271500AEB294 /* SubsPaymentInfoViewController.swift in Sources */,
 				AFB6537C1D6AE9A1003D242C /* CheckoutDeliveryTime.swift in Sources */,
 				AFBF9CB01D5898B0007E17C3 /* CartListViewController.swift in Sources */,
 				AFD6F4791D9273B200CBD0ED /* LoadMoreCollectionViewCell.swift in Sources */,

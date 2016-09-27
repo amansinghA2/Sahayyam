@@ -43,9 +43,8 @@ class LoginViewController: UIViewController {
           if Reachability.checkInternetConnectivity() {
        if (usernameTextField.text?.isPhoneNumber  == true && usernameTextField.text?.isBlank == false) && (passwordTextField.text?.isBlank == false){
         
-            ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
                 if (isSuccessful) {
-                    
                     self.customerLoginData = result!
                     if let defaultVendor = self.customerLoginData?.vendorList{
                         for list in defaultVendor{
@@ -63,8 +62,8 @@ class LoginViewController: UIViewController {
                     address = self.customerLoginData.address + " " + self.customerLoginData.country + " " + self.customerLoginData.postcode
                     NSUserDefaults.standardUserDefaults().setObject(address, forKey: "address")
                     print(address)
-//                    customerFullName = self.customerLoginData.firstName + " " + self.customerLoginData.lastName
-//                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+                    customerFullName = self.customerLoginData.firstName + " " + self.customerLoginData.lastName
+                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                     token = self.customerLoginData.cookie
                     NSUserDefaults.standardUserDefaults().setObject(token, forKey: "token")
                     print(token)

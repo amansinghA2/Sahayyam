@@ -65,7 +65,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func uploadImageAction(sender: AnyObject) {
         
-        //      print(convertImageToBase64(customerImage.image!))
         if let image = self.productImage.image {
             self.showHud("Loading...")
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -75,16 +74,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "token":token,
                     "device_id":"1234"
                 ]
-                
-                print(params)
-                
+
                 dispatch_async(dispatch_get_main_queue(), {
                     ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
                         if isSuccessful{
                             self.hideHud()
                             if let imgStr = result!["img_dir"]{
                                 self.str = (imgStr as! String)
-                                
                             }
                         }
                     }
@@ -97,27 +93,21 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     func convertImageToBase64(image: UIImage) -> String {
-        
         let image = productImage.image!.resizeWith(80.0, height: 80.0)
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-        
         return base64String
-        
     }
     
     func convertBase64ToImage(base64String: String) -> UIImage {
-        
         let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))
         let decodedimage = UIImage(data: decodedData!)
         return decodedimage!
-        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.productImage.image = image
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
         })
     }
     
@@ -126,23 +116,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
-        
-//        if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
-//            AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
-//            return false
-//        }
-//        
-//        if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
-//            AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
-//            return false
-//        }
-        
-        
         return true
     }
     
     @IBAction func saveButton(sender: AnyObject){
-        
         if Reachability.isConnectedToNetwork() {
             if formValidation() {
                 let params:[String:AnyObject] = [
@@ -176,10 +153,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             self.hideHud()
             AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
         }
-        
-      
-        
-    }
+      }
     }
 
     @IBAction func categoryAction(sender: AnyObject) {
@@ -196,6 +170,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
 
     }
+    
     @IBAction func nameButton(sender: AnyObject) {
 
         if dropper.status == .Hidden {

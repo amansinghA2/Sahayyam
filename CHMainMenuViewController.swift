@@ -78,8 +78,6 @@ class CHMainMenuViewController: UIViewController {
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
             }

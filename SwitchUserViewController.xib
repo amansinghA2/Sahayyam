@@ -84,21 +84,21 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="5wc-th-w4V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="2t8-uO-PZT"/>
+                <constraint firstItem="5wc-th-w4V" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="2l9-4f-vzr"/>
+                <constraint firstItem="JbQ-9w-VSt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="9EA-52-sSI"/>
                 <constraint firstItem="NmQ-pV-ADN" firstAttribute="top" secondItem="JbQ-9w-VSt" secondAttribute="bottom" constant="16" id="Fzc-7s-vaA"/>
                 <constraint firstAttribute="trailing" secondItem="2oo-H9-Iy5" secondAttribute="trailing" id="HS4-NB-nTx"/>
                 <constraint firstItem="5wc-th-w4V" firstAttribute="leading" secondItem="JbQ-9w-VSt" secondAttribute="trailing" priority="250" constant="112" id="I9Y-Pz-Inp"/>
                 <constraint firstItem="2oo-H9-Iy5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NHz-fG-x3u"/>
                 <constraint firstItem="K7Q-2q-Sy3" firstAttribute="centerX" secondItem="5wc-th-w4V" secondAttribute="centerX" id="Nmz-hi-neO"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5wc-th-w4V" secondAttribute="trailing" constant="54" id="Qb2-7w-6Pk"/>
                 <constraint firstItem="4FT-Lu-OeA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TnJ-b2-q9y"/>
-                <constraint firstItem="JbQ-9w-VSt" firstAttribute="leading" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="120" id="VQE-JR-VMW"/>
-                <constraint firstItem="JbQ-9w-VSt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="124" id="dqF-6q-zJs"/>
+                <constraint firstItem="JbQ-9w-VSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="54" id="bcc-Sb-QdF"/>
                 <constraint firstItem="NmQ-pV-ADN" firstAttribute="centerX" secondItem="JbQ-9w-VSt" secondAttribute="centerX" id="ecx-ft-eW2"/>
-                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="5wc-th-w4V" secondAttribute="trailing" constant="120" id="h1U-nD-dt0"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5wc-th-w4V" secondAttribute="trailing" constant="54" id="h1U-nD-dt0"/>
+                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="5wc-th-w4V" secondAttribute="trailing" constant="150" id="jbo-0r-WNz"/>
                 <constraint firstItem="2oo-H9-Iy5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k7N-QP-wUm"/>
                 <constraint firstItem="K7Q-2q-Sy3" firstAttribute="top" secondItem="5wc-th-w4V" secondAttribute="bottom" constant="16" id="p83-ZZ-6u3"/>
-                <constraint firstItem="JbQ-9w-VSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="54" id="q0d-VW-lum"/>
+                <constraint firstItem="JbQ-9w-VSt" firstAttribute="leading" relation="lessThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="150" id="q0d-VW-lum"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="303" y="30"/>

@@ -13,6 +13,7 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
     @IBOutlet weak var subsTableView: UITableView!
     
     var subsDetails = [SubsNameDetails]()
+    var customerId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,25 +47,38 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.subsDetails.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCellWithIdentifier("subPaymentIdentifier") as! SubsPaymentTableViewCell
         
+        cell.subsLabel.text = self.subsDetails[indexPath.row].firstname + " " + self.subsDetails[indexPath.row].lastname
         
+        cell.subsPaymentButton.addTarget(self, action: #selector(SubsPaymentViewController.subsButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
        return cell
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
-    */
+    
+    func subsButtonTapped(sender:UIButton){
+        let cell = sender.superview?.superview as! SubsPaymentTableViewCell
+        let indexPath = self.subsTableView.indexPathForCell(cell)
+        customerId = self.subsDetails[(indexPath?.row)!].customer_id
+        self.performSegueWithIdentifier("showPaymentInfoSegue", sender: nil)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showPaymentInfoSegue" {
+            let vc = segue.destinationViewController as! SubsPaymentInfoViewController
+            vc.customerId = self.customerId
+            print(self.customerId)
+        }
+    }
 
 }

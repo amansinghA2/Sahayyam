@@ -12,6 +12,7 @@ import M13Checkbox
 class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableViewDelegate , UITableViewDataSource {
     
     
+    @IBOutlet weak var addressCheckoutButton: M13Checkbox!
     @IBOutlet weak var totalShowLabel: UILabel!
     @IBOutlet weak var subTotalShowLabel: UILabel!
     @IBOutlet weak var deliverychargesShowLabel: UILabel!
@@ -53,8 +54,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.deliveryDateTextField.delegate = self
-      
-        
+        self.addressCheckoutButton.checkState = .Checked
         self.cashOnDeliveryButton.checkState = .Checked
         isCheck = false
         self.expressDeliveryCheckBox.checkState = .Unchecked

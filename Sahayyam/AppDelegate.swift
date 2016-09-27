@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import SwiftLoader
 
-
 var token = String()
 var customerType = Int()
 var profileType = Int()

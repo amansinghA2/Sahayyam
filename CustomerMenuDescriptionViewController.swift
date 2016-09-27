@@ -9,11 +9,13 @@
 import UIKit
 
 class CustomerMenuDescriptionViewController: UIViewController {
+    @IBOutlet weak var offerPriceConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var productDetailsImage: UIImageView!
     
     @IBOutlet weak var productName: UILabel!
     
+    @IBOutlet weak var productOfferPrice: UILabel!
     @IBOutlet weak var productSellingPrice: UILabel!
 
     @IBOutlet weak var productStocks: UILabel!
@@ -89,9 +91,38 @@ class CustomerMenuDescriptionViewController: UIViewController {
             self.productName.text = name
         }
         
-        if let price = self.getDetailsProducts.price as? String{
-            self.productSellingPrice.text = "Selling Price : " + price
+        
+        if let customerproduct = self.getDetailsProducts.price  as? String{
+            if getDetailsProducts?.offerPrice != "0"  && getDetailsProducts?.offerPrice != "0.00" && getDetailsProducts?.offerPrice != "" {
+                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. " + customerproduct)
+                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+                attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+                self.productSellingPrice.attributedText =  attributeString
+                self.offerPriceConstraint.constant = 21
+            }else{
+                self.offerPriceConstraint.constant = 0
+                self.productSellingPrice.text = "Rs. " + customerproduct
+            }
         }
+        
+        if let offerPrice = getDetailsProducts?.offerPrice {
+            if offerPrice != "0"  && offerPrice != "0.00" {
+                self.offerPriceConstraint.constant = 21
+                self.productOfferPrice.text = "Offer Price : " + "Rs. " + offerPrice
+                
+            }else{
+                self.offerPriceConstraint.constant = 0
+                self.productOfferPrice.text = ""
+            }
+        }
+        
+//        if let price = self.getDetailsProducts.price as? String{
+//            if getDetailsProducts?.offerPrice != "0"  && getDetailsProducts?.offerPrice != "0.00" && getDetailsProducts?.offerPrice != ""  {
+//                self.productSellingPrice.text = "Selling Price : " + self.getDetailsProducts.offerPrice
+//            }else{
+//             self.productSellingPrice.text = "Selling Price : " + price
+//            }
+//        }
         
         if let stock = self.getDetailsProducts.stock as? String{
             self.productStocks.text = stock + " units in stock"
@@ -103,14 +134,25 @@ class CustomerMenuDescriptionViewController: UIViewController {
         
     }
     
-    @IBAction func SegmentButtonAction(sender: AnyObject) {
-       segmentSelected()
+    @IBAction func SegmentButtonAction(sender: UISegmentedControl) {
+        segmentSelected()
+        
+        if (sender.selectedSegmentIndex == self.segmentControl.selectedSegmentIndex) {
+            sender.selectedSegmentIndex =  UISegmentedControlNoSegment;
+            self.segmentControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+        }
+        else {
+            self.segmentControl.selectedSegmentIndex = sender.selectedSegmentIndex;
+        }
+      
     }
 
     func segmentSelected() {
+        
            if Reachability.isConnectedToNetwork(){
         switch self.segmentControl.selectedSegmentIndex {
         case 0:
+        
             let params:[String:AnyObject]? = [
                 "product_id":self.getProductList.product_id,
                 "device_id":"1234",
@@ -119,7 +161,30 @@ class CustomerMenuDescriptionViewController: UIViewController {
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
                 
                 if isSuccessful {
-                    self.toastViewForTextfield("Product added to wishlist")
+                    if let isSuccess = result!["success"] as? Bool{
+                        if let total = result!["total"] as? Bool {
+                            if isSuccess == true && total == false{
+                                self.toastViewForTextfield("Product successfully added to wishlist")
+                            }
+                        }
+                    }
+                    
+                    if let isSuccess1 = result!["info"] as? Bool{
+                        if let total = result!["total"] as? Bool {
+                            if isSuccess1 == false && total == true{
+                                self.toastViewForTextfield("Product already added to wishlist")
+                            }
+                        }
+                    }
+                    
+                    if let isSuccess1 = result!["success"] as? Bool{
+                        if let total = result!["total"] as? Bool {
+                            if isSuccess1 == true && total == true{
+                                self.toastViewForTextfield("Product already added to wishlist")
+                            }
+                        }
+                    }
+                    
                 }else{
                     AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                     self.hideHud()

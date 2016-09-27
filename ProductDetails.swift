@@ -15,5 +15,6 @@ class ProductDetails: NSObject {
     dynamic var name = String()
     dynamic var stock = String()
     dynamic var price = String()
+    dynamic var offerPrice = String()
     
 }

@@ -236,9 +236,9 @@ extension CommonJsonMapper {
             productDetail.stock = quantity
         }
         
-        //        if let quantity = result["quantity"] as? String {
-        //            productDetail.stock = quantity
-        //        }
+        if let quantity = result["offerPrice"] as? String {
+            productDetail.offerPrice = quantity
+        }
         
         print("\(productDetail)")
         return productDetail

@@ -42,10 +42,21 @@
             <objects>
                 <viewController id="jv2-I1-gwG" customClass="SubsPaymentViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="icm-FN-ppj" kind="show" identifier="showPaymentInfoSegue" id="m5Q-zy-iuB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlS-Zf-J8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="982"/>
+            <point key="canvasLocation" x="-106" y="812"/>
+        </scene>
+        <!--Subs Payment Info View Controller-->
+        <scene sceneID="qe2-V6-BSr">
+            <objects>
+                <viewController id="icm-FN-ppj" customClass="SubsPaymentInfoViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pzt-uY-ohb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-190" y="1526"/>
         </scene>
         <!--Vendor City Head View Controller-->
         <scene sceneID="rgr-3c-TT7">

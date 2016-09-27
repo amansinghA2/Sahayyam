@@ -238,7 +238,7 @@ extension ServerManager {
         }
     }
 
-    func customerAddtoWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func customerAddtoWishlist(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [String : AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -251,7 +251,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                            
+                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject])
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }

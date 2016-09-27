@@ -144,12 +144,13 @@ extension ServerManager {
                         else{
                             completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
                         }
-                    case .Failure( _):
+                    case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
                     }
                 }
+            }
         }
-    }
 
     
     func cityWisePincodeLocation(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]? , dictResult:[String:AnyObject]?) -> Void) {
@@ -222,7 +223,6 @@ extension ServerManager {
                             print(dict)
                             let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
-                            
                         }
                         else{
                             completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
@@ -231,8 +231,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
                     }
                 }
-        }
-    }
+            }
+       }
     
     func chStorePromotionUrl(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]? , dictResult:[String:AnyObject]?) -> Void) {
         

@@ -9,10 +9,7 @@
 import UIKit
 
 class SubsNameDetails: NSObject {
-    
    dynamic var firstname = String()
    dynamic var lastname = String()
    dynamic var customer_id = String()
-    
-
 }

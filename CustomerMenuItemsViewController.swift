@@ -50,6 +50,12 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
+        {
+            vendorSelectBarButtonItem.width = 100
+        }else{
+            
+        }
         setUpView()
       }
 
@@ -89,6 +95,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     override func viewWillAppear(animated: Bool) {
+//        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
+//        {
+//        }else{
+//            
+//        }
         getProductCollectionListAdd.removeAll()
 //        if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
 //            customerFullName = customerFullName1 as! String
@@ -330,10 +341,20 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                          layout collectionViewLayout: UICollectionViewLayout,
                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
        // let cellLeg = (collectionView.frame.size.width/2)
-        if indexPath.section == 1 {
-          return CGSizeMake(120,50)
+        
+        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
+        {
+            if indexPath.section == 1 {
+                return CGSizeMake(120,50)
+            }
+            return CGSize(width: UIScreen.mainScreen().bounds.size.width/3, height: 225)
+        }else{
+            if indexPath.section == 1 {
+                return CGSizeMake(120,50)
+            }
+            return CGSize(width: UIScreen.mainScreen().bounds.size.width/2, height: 175)
         }
-        return CGSizeMake(160,175)
+
     }
 
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
@@ -355,6 +376,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
             // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
+            getProductCollectionListAdd.removeAll()
             productFunction("", limit: "25", page: "", filterName: String(searchText))
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
@@ -382,7 +404,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.view.endEditing(true)
         isDataSOurceREsultEmpty = true
         if tableView.hidden == false {
             tableView.removeFromSuperview()
@@ -399,7 +420,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         // this method is being called when search btn in the keyboard tapped
         // we set searchBarActive = NO
         // but no need to reloadCollectionView
-        self.view.endEditing(true)
+//        self.view.endEditing(true)
         isDataSOurceREsultEmpty = false
         self.searchBarActive = false
         self.searchBar!.setShowsCancelButton(false, animated: false)
@@ -412,7 +433,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.searchBar!.text = ""
     }
     
-    // MARk:-  RevealView Controler Delegate
+    // MARK:-  RevealView Controler Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
         if position == FrontViewPosition.Left{
@@ -615,10 +636,35 @@ else{
             ]
             
             print(params)
+
             ServerManager.sharedInstance().customerAddtoWishlist(params, completionClosure: { (isSuccessful, error, result) in
-
-                self.toastViewForTextfield("Product is added to wishlist")
-
+                print(result)
+                if let isSuccess = result!["success"] as? Bool{
+                    if let total = result!["total"] as? Bool {
+                    if isSuccess == true && total == false{
+                   self.toastViewForTextfield("Product successfully added to wishlist")
+                }
+                }
+                }
+                
+                if let isSuccess1 = result!["info"] as? Bool{
+                    if let total = result!["total"] as? Bool {
+                    if isSuccess1 == false && total == true{
+                        self.toastViewForTextfield("Product already added to wishlist")
+                    }
+                    }
+                }
+                
+                if let isSuccess1 = result!["success"] as? Bool{
+                    if let total = result!["total"] as? Bool {
+                        if isSuccess1 == true && total == true{
+                            self.toastViewForTextfield("Product already added to wishlist")
+                        }
+                    }
+                }
+                
+                
+                
 //                let alert = UIAlertController(title: "Alert", message: "Product is added to Wishlist", preferredStyle: UIAlertControllerStyle.Alert)
 //                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
 //                self.presentViewController(alert, animated: true, completion: nil)
@@ -758,8 +804,6 @@ else{
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
             }

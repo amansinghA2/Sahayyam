@@ -15,7 +15,9 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUp()
+        
         let nib1 = UINib(nibName: "AllVendorsTableViewCell", bundle: nil)
         self.vendorSubsListTableView.registerNib(nib1, forCellReuseIdentifier: "allVendorsIdentifier")
         
