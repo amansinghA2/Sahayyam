@@ -21,7 +21,6 @@ class StoreProfileViewController: UIViewController {
     @IBOutlet weak var toLabel2: TextField!
     @IBOutlet weak var toLabel3: TextField!
     
-    
     @IBOutlet weak var expressDeliveryButton: TextField!
     
     @IBOutlet weak var businessHolidayField: TextField!
@@ -45,7 +44,16 @@ class StoreProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        deliveryTimeTextField1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField4.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField5.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField6.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField7.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField8.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         // Do any additional setup after loading the view.
     }
 
@@ -55,10 +63,13 @@ class StoreProfileViewController: UIViewController {
     }
     
     @IBAction func deliveryTimeButton(sender: AnyObject) {
+        
     }
 
     @IBAction func businessTimeButton(sender: AnyObject) {
+        
     }
+    
     /*
     // MARK: - Navigation
 

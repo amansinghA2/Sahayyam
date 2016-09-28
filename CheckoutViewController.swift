@@ -214,7 +214,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             if deliveryDateTextField.text == "" {
                 AlertView.alertView("Alert", message: "DeliveryDate cannot be left blank", alertTitle: "OK", viewController: self)
                 self.hideHud()
-            }else{ 
+            }else{
              str = "1," + String(deliveryDateTextField.text!) + "," + String(deliveryTimeLabel.text!)
                 customerChekout()
             }

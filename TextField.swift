@@ -12,6 +12,7 @@ enum TextFieldStyle {
     case TextFieldUserName
     case TextFieldPassword
     case TextFieldDOB
+    case TextFieldTime
     case MobileNumber
     case EmailID
     case Pincode
@@ -51,6 +52,9 @@ class TextField: UITextField , UITextFieldDelegate {
         case .TextFieldDOB:
             self.delegate = self
             textFieldStyle = "TextFieldDOB"
+        case .TextFieldTime:
+            self.delegate = self
+            textFieldStyle = "TextFieldTime"
         case .MobileNumber:
             self.delegate = self
             textFieldStyle = "MobileNumber"
@@ -75,6 +79,8 @@ class TextField: UITextField , UITextFieldDelegate {
         switch textFieldStyle {
         case "TextFieldDOB":
             addDatePickerToTextField()
+        case "TextFieldTime":
+            timePickerToTextField()
         default:
             print("Nothing")
         }
@@ -100,6 +106,8 @@ class TextField: UITextField , UITextFieldDelegate {
             let newLength = text.utf16.count + string.utf16.count - range.length
             return newLength <= 15
         case "TextFieldDOB":
+            return false
+        case "TextFieldTime":
             return false
         case "MobileNumber":
             guard let text = textField.text else { return true }
@@ -127,6 +135,15 @@ class TextField: UITextField , UITextFieldDelegate {
                 self.text = dateFormatter.stringFromDate(date)
             }
         }
+        
+        if(textFieldStyle == "TextFieldTime"){
+            if self.text!.isEmpty{
+                let date = NSDate()
+                let dateFormatter = NSDateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.text = dateFormatter.stringFromDate(date)
+            }
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -136,6 +153,32 @@ class TextField: UITextField , UITextFieldDelegate {
     }
     
   // Mark: - Adding Date picker to textfield
+    
+
+    private func timePickerToTextField(){
+        
+        let datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.maximumDate = NSDate()
+        datePickerView.backgroundColor = UIColor.whiteColor()
+        self.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(TextField.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if !self.text!.isEmpty {
+            let currentDate = self.text
+            let date = dateFormatter.dateFromString(currentDate!)
+            datePickerView.setDate(date!, animated: false)
+        }
+    }
+    
+    func handleDatePicker1(sender: UIDatePicker) {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.timeStyle = .ShortStyle
+    self.text = dateFormatter.stringFromDate(sender.date)
+    }
     
     private func addDatePickerToTextField(){
         
