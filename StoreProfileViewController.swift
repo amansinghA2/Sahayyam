@@ -10,9 +10,40 @@ import UIKit
 
 class StoreProfileViewController: UIViewController {
 
+    
+    @IBOutlet weak var businessTimingView: UIView!
+    @IBOutlet weak var deliveryTimingView: UIView!
+    
+    @IBOutlet weak var fromLabel1: TextField!
+    @IBOutlet weak var fromLabel2: TextField!
+    @IBOutlet weak var fromLabel3: TextField!
+    @IBOutlet weak var toLabel1: TextField!
+    @IBOutlet weak var toLabel2: TextField!
+    @IBOutlet weak var toLabel3: TextField!
+    
+    
+    @IBOutlet weak var expressDeliveryButton: TextField!
+    
+    @IBOutlet weak var businessHolidayField: TextField!
+    
+    @IBOutlet weak var deliveryTimeTextField1: TextField!
+    @IBOutlet weak var deliveryTimeTextField2: TextField!
+    @IBOutlet weak var deliveryTimeTextField3: TextField!
+    @IBOutlet weak var deliveryTimeTextField4: TextField!
+    @IBOutlet weak var deliveryTimeTextField5: TextField!
+    @IBOutlet weak var deliveryTimeTextField6: TextField!
+    @IBOutlet weak var deliveryTimeTextField7: TextField!
+    @IBOutlet weak var deliveryTimeTextField8: TextField!
+    @IBOutlet weak var deliveryTimeTextField9: TextField!
+    @IBOutlet weak var deliveryTimeTextField10: TextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +52,11 @@ class StoreProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func deliveryTimeButton(sender: AnyObject) {
+    }
 
+    @IBAction func businessTimeButton(sender: AnyObject) {
+    }
     /*
     // MARK: - Navigation
 

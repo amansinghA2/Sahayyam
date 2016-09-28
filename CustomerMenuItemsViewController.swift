@@ -543,11 +543,11 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             if let vendorName = self.vendorList.nickname as? String {
                 defaultVendorName = vendorName
                 NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey: "defaultvendorName")
-               }
-            }
-         }
-      }
-else{
+                        }
+                    }
+                }
+           }
+           else{
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
            }

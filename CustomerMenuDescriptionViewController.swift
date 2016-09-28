@@ -152,7 +152,6 @@ class CustomerMenuDescriptionViewController: UIViewController {
            if Reachability.isConnectedToNetwork(){
         switch self.segmentControl.selectedSegmentIndex {
         case 0:
-        
             let params:[String:AnyObject]? = [
                 "product_id":self.getProductList.product_id,
                 "device_id":"1234",

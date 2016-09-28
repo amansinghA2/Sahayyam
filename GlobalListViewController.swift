@@ -144,8 +144,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             
             self.searchBar = UISearchBar(frame: CGRectMake(0,self.searchBarBoundsY!, UIScreen.mainScreen().bounds.size.width, 50))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
-            //            self.searchBar!.tintColor            = UIColor.whiteColor()
-            //            self.searchBar!.barTintColor         = UIColor.whiteColor()
             self.searchBar!.delegate             = self;
             self.searchBar!.placeholder          = "Search here"
             searchBar!.sizeToFit()
