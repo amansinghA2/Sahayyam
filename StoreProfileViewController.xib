@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoreProfileViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
                 <outlet property="businessHolidayField" destination="UTp-bF-MbE" id="6S9-ch-cf6"/>
+                <outlet property="businessTimeingViewContraint" destination="qSE-Q1-h79" id="nzn-iA-GPQ"/>
                 <outlet property="businessTimingView" destination="e1w-yt-J8t" id="L2M-in-EnS"/>
                 <outlet property="deliveryChargesTextField" destination="Wv8-uU-wIv" id="ydK-fq-oQd"/>
                 <outlet property="deliveryTimeTextField1" destination="hzz-mu-UB1" id="ZD0-wK-xni"/>
@@ -20,6 +21,7 @@
                 <outlet property="deliveryTimeTextField7" destination="Zsb-O7-xSh" id="csM-4V-MkU"/>
                 <outlet property="deliveryTimeTextField8" destination="ukd-eJ-lep" id="ags-vf-UNO"/>
                 <outlet property="deliveryTimeTextField9" destination="oIx-wQ-jUN" id="cn5-xK-tl3"/>
+                <outlet property="deliveryTimingContraint" destination="3yt-fX-AwP" id="kEa-73-IxI"/>
                 <outlet property="deliveryTimingView" destination="0Hf-h1-EPp" id="rLS-eB-fXM"/>
                 <outlet property="expressDeliveryButton" destination="1hT-ah-QVf" id="O6B-Sq-DBr"/>
                 <outlet property="fromLabel1" destination="Vz3-cN-Jhb" id="hso-gv-k6y"/>
@@ -652,7 +654,7 @@
                 <constraint firstItem="S8f-fy-jIR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vjd-iO-9G5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="118" y="505"/>
+            <point key="canvasLocation" x="10" y="499"/>
         </view>
     </objects>
 </document>

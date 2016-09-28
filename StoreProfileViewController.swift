@@ -10,6 +10,10 @@ import UIKit
 
 class StoreProfileViewController: UIViewController {
 
+    @IBOutlet weak var slideMenubButton: UIBarButtonItem!
+    
+    @IBOutlet weak var businessTimeingViewContraint: NSLayoutConstraint!
+    @IBOutlet weak var deliveryTimingContraint: NSLayoutConstraint!
     
     @IBOutlet weak var businessTimingView: UIView!
     @IBOutlet weak var deliveryTimingView: UIView!
@@ -41,9 +45,13 @@ class StoreProfileViewController: UIViewController {
  
     @IBOutlet weak var minOrderTExtfField: TextField!
     @IBOutlet weak var lessThanMinOrderTextField: TextField!
+    var i = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        slideMenuShow(slideMenubButton, viewcontroller: self)
+        
         deliveryTimeTextField1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         deliveryTimeTextField2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         deliveryTimeTextField3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
@@ -54,6 +62,13 @@ class StoreProfileViewController: UIViewController {
         deliveryTimeTextField8.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        
+        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         // Do any additional setup after loading the view.
     }
 
@@ -63,6 +78,9 @@ class StoreProfileViewController: UIViewController {
     }
     
     @IBAction func deliveryTimeButton(sender: AnyObject) {
+        i = i+1
+        
+        
         
     }
 

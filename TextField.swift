@@ -158,14 +158,14 @@ class TextField: UITextField , UITextFieldDelegate {
     private func timePickerToTextField(){
         
         let datePickerView  : UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Date
+        datePickerView.datePickerMode = UIDatePickerMode.Time
         datePickerView.maximumDate = NSDate()
         datePickerView.backgroundColor = UIColor.whiteColor()
         self.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(TextField.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         if !self.text!.isEmpty {
             let currentDate = self.text

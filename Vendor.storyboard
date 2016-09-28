@@ -25,6 +25,7 @@
                         <segue destination="I1X-mS-5B6" kind="show" id="pQl-7J-0BL"/>
                         <segue destination="nKZ-9m-3mt" kind="show" identifier="" id="Tvr-Wf-sNw"/>
                         <segue destination="hBy-7w-ip3" kind="show" id="HNS-mZ-0TM"/>
+                        <segue destination="QcU-eC-18v" kind="show" identifier="" id="BGR-c9-wU9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z3a-EO-Z6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3T-Qv-aP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="326"/>
+            <point key="canvasLocation" x="213" y="188"/>
         </scene>
         <!--Vendor Order Details View Controller-->
         <scene sceneID="VbA-WT-Ifw">
@@ -227,7 +228,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVH-l1-jbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="383" y="326"/>
+            <point key="canvasLocation" x="-143" y="188"/>
         </scene>
         <!--Customer List View Controller-->
         <scene sceneID="MdJ-nM-Mhc">
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNf-xc-wOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-807" y="2001"/>
+            <point key="canvasLocation" x="-1019" y="1837"/>
         </scene>
         <!--Add Product View Controller-->
         <scene sceneID="NTq-Uj-vjc">
@@ -301,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqn-Of-LDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-458" y="2001"/>
+            <point key="canvasLocation" x="-708" y="1845"/>
         </scene>
         <!--Vndornew Product Add View Controller-->
         <scene sceneID="w8w-PU-CTU">
@@ -491,6 +492,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFt-Qs-xBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-104" y="-666"/>
+        </scene>
+        <!--Store Profile View Controller-->
+        <scene sceneID="HSR-cA-sJ1">
+            <objects>
+                <viewController storyboardIdentifier="showStoreProfileSegue" id="QcU-eC-18v" customClass="StoreProfileViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FCS-Hf-nct">
+                        <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="zxa-gj-7AR">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="slideMenubButton" destination="zxa-gj-7AR" id="KT9-9v-9Cs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILm-Ml-D8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-378" y="1923"/>
         </scene>
     </scenes>
     <resources>

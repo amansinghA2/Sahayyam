@@ -22,7 +22,7 @@ class CustomerBestDealsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        bestDealsAction.hidden = true
         tokenCheck()
         self.showHud("Loading...")
         
@@ -36,11 +36,13 @@ class CustomerBestDealsViewController: UIViewController {
                 self.hideHud()
                 self.promotionLists = result!
                 if self.promotionLists.count != 0 {
+                    self.bestDealsAction.hidden = false
                     self.bestDealsAction.setTitle("SHOP NOW", forState: UIControlState.Normal)
                     self.viewContraint.constant = 108
                  self.bindModelToViews()
                 }else{
                     self.viewContraint.constant = 0
+                    self.bestDealsAction.hidden = false
                     self.nameLabel.text = "No Offers"
                   self.bestDealsAction.setTitle("CHECK FOR BEST DEALS", forState: UIControlState.Normal)
                 }

@@ -33,7 +33,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         
         self.gradientView.layer.addSublayer(gradientLayer)
 
-       listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
+       listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
        listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
         
@@ -71,18 +71,20 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         case 4:
             self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
         case 5:
-            self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
+            self.cellClickNavigation("Vendor" , identifier: "showStoreProfileSegue")
         case 6:
-            self.cellClickNavigation("Vendor" , identifier: "categoryListID")
+            self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
         case 7:
-            self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
+            self.cellClickNavigation("Vendor" , identifier: "categoryListID")
         case 8:
-            self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
+            self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
         case 9:
-            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
+            self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
         case 10:
-            self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
+            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
         case 11:
+            self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
+        case 12:
             let sb = UIStoryboard(name: "Vendor", bundle: nil)
             let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
             vc1.isLogin = "customerDropDown"

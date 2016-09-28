@@ -27,10 +27,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6L-DO-Z2X" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                    <rect key="frame" x="130" y="399" width="61" height="30"/>
+                    <rect key="frame" x="91" y="398" width="139" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="dPu-ab-uTt"/>
-                        <constraint firstAttribute="width" constant="61" id="hXY-cZ-0wH"/>
+                        <constraint firstAttribute="width" constant="139" id="hXY-cZ-0wH"/>
                     </constraints>
                     <state key="normal" title="Logout"/>
                     <connections>
@@ -42,7 +42,7 @@
             <constraints>
                 <constraint firstItem="0uN-2f-PS4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5Qr-uS-R0R"/>
                 <constraint firstItem="0uN-2f-PS4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7l2-He-rFP"/>
-                <constraint firstItem="w6L-DO-Z2X" firstAttribute="top" secondItem="0uN-2f-PS4" secondAttribute="bottom" constant="105" id="8fO-48-Vb1"/>
+                <constraint firstItem="w6L-DO-Z2X" firstAttribute="top" secondItem="0uN-2f-PS4" secondAttribute="bottom" constant="104" id="8fO-48-Vb1"/>
                 <constraint firstItem="w6L-DO-Z2X" firstAttribute="centerX" secondItem="0uN-2f-PS4" secondAttribute="centerX" id="ijW-7e-IPa"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
