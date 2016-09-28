@@ -16,7 +16,6 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.showHud("Loading...")
         tokenCheck()
         setUpView()
     }
@@ -160,6 +159,8 @@ class OrderDetailsViewController: UIViewController , UITableViewDelegate , UITab
                 self.orderDetailsTableView.delegate = self
                 self.orderDetailsTableView.dataSource = self
                 self.orderDetailsTableView.reloadData()
+            }else{
+                self.hideHud()
             }
         }
     }

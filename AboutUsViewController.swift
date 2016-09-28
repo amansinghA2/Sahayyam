@@ -61,6 +61,8 @@ class AboutUsViewController: UIViewController {
         ServerManager.sharedInstance().vendorAboutUs(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
+            }else{
+              self.hideHud()  
             }
         }
  

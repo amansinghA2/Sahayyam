@@ -64,7 +64,6 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
             
         }
         
-        self.showHud("Loading...")    
     }
     
     override func didReceiveMemoryWarning() {

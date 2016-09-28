@@ -25,6 +25,7 @@ var address = String()
 var customerFullName = String()
 var telephone = String()
 var vendorAddress = String()
+var vendorEntry = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

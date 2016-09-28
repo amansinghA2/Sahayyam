@@ -38,12 +38,14 @@ class StoreProfileViewController: UIViewController {
     @IBOutlet weak var deliveryTimeTextField10: TextField!
     
     
+    @IBOutlet weak var deliveryChargesTextField: TextField!
+ 
+    @IBOutlet weak var minOrderTExtfField: TextField!
+    @IBOutlet weak var lessThanMinOrderTextField: TextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         // Do any additional setup after loading the view.
     }
 
@@ -67,4 +69,10 @@ class StoreProfileViewController: UIViewController {
     }
     */
 
+    @IBAction func submitButtonClicked(sender: AnyObject) {
+        
+        
+        
+    }
+    
 }

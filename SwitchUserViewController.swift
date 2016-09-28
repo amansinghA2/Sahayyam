@@ -46,11 +46,13 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
         if Reachability.checkInternetConnectivity() {
         switch sender.tag {
         case 0:
+          
             self.custTypeString = "customer"
             self.viewControllerPassing("Customer")
         case 1:
             switch profileType{
             case 1:
+                  vendorEntry = "mutipleProfile"
                 self.custTypeString = "vendor"
                 self.viewControllerPassing("Vendor")
             case 2:
@@ -123,6 +125,7 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gotoSwitchUser"{
+            vendorEntry = "mutipleProfile"
             let vc = segue.destinationViewController as? SwitchUserViewController
             vc!.customerLoginData = self.customerLoginData
         }

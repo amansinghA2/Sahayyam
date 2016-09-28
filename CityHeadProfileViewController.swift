@@ -217,6 +217,9 @@ class CityHeadProfileViewController: UIViewController, UIImagePickerControllerDe
                                 if let imgStr = result!["img_dir"]{
                                     self.str = (imgStr as! String)
                                 }
+                            }else{
+                                self.hideHud()
+                                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
                             }
                         }
                         

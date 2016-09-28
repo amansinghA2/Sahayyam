@@ -24,7 +24,6 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
     
     func setUp() {
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.showHud("Loading...")
         setBackButtonForNavigation()
         let nib = UINib(nibName: "WishLIstTableViewCell", bundle: nil)
         self.wishListTableView.registerNib(nib, forCellReuseIdentifier: "wishListCell")
@@ -36,6 +35,7 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
     }
 
     override func viewWillAppear(animated: Bool) {
+        self.showHud("Loading...")
         if Reachability.isConnectedToNetwork(){
         let params:[String:AnyObject]? = [
             "token":token,
@@ -45,10 +45,14 @@ class WishListViewController: UIViewController , UITableViewDataSource , UITable
         ServerManager.sharedInstance().customerGetWishlistList(params) { (isSuccessful, error, result) in
             self.hideHud()
             if isSuccessful {
+                self.hideHud()
                 self.wislistList = result!
                 self.wishListTableView.dataSource = self
                 self.wishListTableView.delegate = self
                 self.wishListTableView.reloadData()
+            }else{
+                self.hideHud()
+                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
             }
         }
         

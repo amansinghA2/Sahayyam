@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="businessHolidayField" destination="UTp-bF-MbE" id="6S9-ch-cf6"/>
                 <outlet property="businessTimingView" destination="e1w-yt-J8t" id="L2M-in-EnS"/>
+                <outlet property="deliveryChargesTextField" destination="Wv8-uU-wIv" id="ydK-fq-oQd"/>
                 <outlet property="deliveryTimeTextField1" destination="hzz-mu-UB1" id="ZD0-wK-xni"/>
                 <outlet property="deliveryTimeTextField10" destination="HuY-Hb-uDF" id="vlX-ah-sdX"/>
                 <outlet property="deliveryTimeTextField2" destination="8Ri-3S-4n8" id="9Jk-Gg-9Fw"/>
@@ -24,6 +25,8 @@
                 <outlet property="fromLabel1" destination="Vz3-cN-Jhb" id="hso-gv-k6y"/>
                 <outlet property="fromLabel2" destination="KpJ-Wc-6sW" id="3ea-a1-GQo"/>
                 <outlet property="fromLabel3" destination="5g2-UT-3iR" id="0PV-Mw-J2E"/>
+                <outlet property="lessThanMinOrderTextField" destination="ir8-Rl-uKt" id="P75-IY-k56"/>
+                <outlet property="minOrderTExtfField" destination="tRv-WT-xDT" id="X2n-VP-JrR"/>
                 <outlet property="toLabel1" destination="xyw-zM-e8Y" id="MrI-G2-aDs"/>
                 <outlet property="toLabel2" destination="Brp-7E-FUr" id="9G3-8q-9cQ"/>
                 <outlet property="toLabel3" destination="nf9-49-AZw" id="NhG-v2-Jge"/>
@@ -436,7 +439,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzC-Ce-zNt">
                                     <rect key="frame" x="94" y="1009" width="115" height="36"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-uU-wIv">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-uU-wIv" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="3" width="78" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="78" id="1yv-TO-SH0"/>
@@ -498,7 +501,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75412176720000001" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRv-WT-xDT">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRv-WT-xDT" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                                             <rect key="frame" x="194" y="8" width="46" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -513,7 +516,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75412176720000001" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Rl-uKt">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Rl-uKt" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                                             <rect key="frame" x="11" y="70" width="46" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="9ps-Si-YMp"/>
@@ -572,6 +575,9 @@
                                     <state key="normal" title="Submit">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="2Up-ND-OWI"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,7 +652,7 @@
                 <constraint firstItem="S8f-fy-jIR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vjd-iO-9G5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="173" y="528"/>
+            <point key="canvasLocation" x="118" y="505"/>
         </view>
     </objects>
 </document>

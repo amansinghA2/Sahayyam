@@ -484,7 +484,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     func setUpView(){
         tokenCheck()
         
-        self.showHud("Loading...")
         slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self
         self.tableView.hidden = true

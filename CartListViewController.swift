@@ -112,7 +112,6 @@ class CartListViewController: UIViewController , UITableViewDataSource , UITable
                 }else {
                     AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                     self.hideHud()
-
                 }
             }
             
@@ -189,7 +188,7 @@ else{
                 self.cartListTableView.reloadData()
             }else{
                 self.hideHud()
-                AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+                AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
 
             }
         }

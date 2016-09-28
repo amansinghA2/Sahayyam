@@ -151,6 +151,8 @@
 		AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */; };
 		AFA2A52E1D50CF63006F1D41 /* VendorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */; };
 		AFA2A5301D50D2A9006F1D41 /* CustomerLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52F1D50D2A9006F1D41 /* CustomerLoginData.swift */; };
+		AFADBEA91D9BA5D800A3F0F1 /* UnderConstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADBEA71D9BA5D800A3F0F1 /* UnderConstructionViewController.swift */; };
+		AFADBEAA1D9BA5D800A3F0F1 /* UnderConstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFADBEA81D9BA5D800A3F0F1 /* UnderConstructionViewController.xib */; };
 		AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB653771D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift */; };
 		AFB6537A1D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB653781D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib */; };
 		AFB6537C1D6AE9A1003D242C /* CheckoutDeliveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6537B1D6AE9A1003D242C /* CheckoutDeliveryTime.swift */; };
@@ -421,6 +423,8 @@
 		AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCategory.swift; sourceTree = "<group>"; };
 		AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorsList.swift; sourceTree = "<group>"; };
 		AFA2A52F1D50D2A9006F1D41 /* CustomerLoginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLoginData.swift; sourceTree = "<group>"; };
+		AFADBEA71D9BA5D800A3F0F1 /* UnderConstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderConstructionViewController.swift; sourceTree = "<group>"; };
+		AFADBEA81D9BA5D800A3F0F1 /* UnderConstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderConstructionViewController.xib; sourceTree = "<group>"; };
 		AFB653771D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTimeTableViewCell.swift; sourceTree = "<group>"; };
 		AFB653781D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTimeTableViewCell.xib; sourceTree = "<group>"; };
 		AFB6537B1D6AE9A1003D242C /* CheckoutDeliveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutDeliveryTime.swift; sourceTree = "<group>"; };
@@ -864,6 +868,8 @@
 				AF6D18EE1D86D82700F220FE /* CustomerAboutUsViewController.xib */,
 				AFD6F4771D9273B200CBD0ED /* LoadMoreCollectionViewCell.swift */,
 				AFD6F4781D9273B200CBD0ED /* LoadMoreCollectionViewCell.xib */,
+				AFADBEA71D9BA5D800A3F0F1 /* UnderConstructionViewController.swift */,
+				AFADBEA81D9BA5D800A3F0F1 /* UnderConstructionViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1174,6 +1180,7 @@
 				AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */,
 				AFCD86651D89480000F10ABB /* MyProductsViewController.xib in Resources */,
 				AF5438C01D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib in Resources */,
+				AFADBEAA1D9BA5D800A3F0F1 /* UnderConstructionViewController.xib in Resources */,
 				AF6D18CB1D8666AB00F220FE /* CustomerListTableViewCell.xib in Resources */,
 				AF1F1FA51D4A0C4200E36DB0 /* SwitchUserViewController.xib in Resources */,
 				AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */,
@@ -1516,6 +1523,7 @@
 				AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */,
 				AFBC27401D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.swift in Sources */,
 				AF8036B31D62EA4700422C54 /* VendorListTableViewCell.swift in Sources */,
+				AFADBEA91D9BA5D800A3F0F1 /* UnderConstructionViewController.swift in Sources */,
 				AFA2A5301D50D2A9006F1D41 /* CustomerLoginData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

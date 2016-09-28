@@ -45,7 +45,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 self.customerListTableView.reloadData()
                 print("IsSuccess")
             }else{
-                
+                AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self) 
             }
         }
     }

@@ -44,6 +44,8 @@ class CustomerBestDealsViewController: UIViewController {
                     self.nameLabel.text = "No Offers"
                   self.bestDealsAction.setTitle("CHECK FOR BEST DEALS", forState: UIControlState.Normal)
                 }
+            }else{
+                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
             }
         }
         

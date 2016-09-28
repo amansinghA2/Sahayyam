@@ -209,6 +209,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         if isCheck == true {
             str = "2,Rs. " + cartList.urgent_delivery + ","  + cartList.totalOrder.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
             customerChekout()
+            self.hideHud()
         }
         else{
             if deliveryDateTextField.text == "" {
@@ -217,6 +218,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
             }else{
              str = "1," + String(deliveryDateTextField.text!) + "," + String(deliveryTimeLabel.text!)
                 customerChekout()
+                self.hideHud()
             }
           }
         }
