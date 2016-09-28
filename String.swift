@@ -31,6 +31,7 @@ let customerForgotPasswordUrl = BASE_URL+"index.php?route=api/forgetPassword/chk
 let customerPushNotificationUrl = BASE_URL+"index.php?route=api/mobileNotification"
 let loginLogoutUrl = BASE_URL+"index.php?route=api/login/logout"
 let checkTokenHealthUrl = BASE_URL+"index.php?route=api/login/getHealth"
+let passswrodCOnfirmPasswordUrl = BASE_URL+"index.php?route=api/passwordChange/changePassword"
 let aboutUsUrl = BASE_URL+"index.php?route=api/contactus/getVendorAddress"
 
     // MARK: - Customers Url

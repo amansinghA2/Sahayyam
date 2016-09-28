@@ -179,6 +179,35 @@ class ServerManager: NSObject {
                 }
         }
     }
+    
+    
+    func passwordChange(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[String : AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        print(params)
+        print(headers)
+        
+        defaultManager.request(.POST, passswrodCOnfirmPasswordUrl, parameters: params!, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                    }
+                }
+        }
+    }
+
+    
+    
 }
 
 
