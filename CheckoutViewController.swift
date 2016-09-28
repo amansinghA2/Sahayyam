@@ -209,16 +209,14 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
         if isCheck == true {
             str = "2,Rs. " + cartList.urgent_delivery + ","  + cartList.totalOrder.stringByReplacingOccurrencesOfString(",", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
             customerChekout()
-            self.hideHud()
         }
         else{
             if deliveryDateTextField.text == "" {
                 AlertView.alertView("Alert", message: "DeliveryDate cannot be left blank", alertTitle: "OK", viewController: self)
                 self.hideHud()
-            }else{
+            }else{ 
              str = "1," + String(deliveryDateTextField.text!) + "," + String(deliveryTimeLabel.text!)
                 customerChekout()
-                self.hideHud()
             }
           }
         }
@@ -268,6 +266,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
     }
     
     func customerChekout() {
+        self.showHud("Loading...")
            if Reachability.isConnectedToNetwork(){
         let params:[String:AnyObject] = [
             "token":token,

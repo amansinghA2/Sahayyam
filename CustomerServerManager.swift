@@ -197,7 +197,6 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                          
                             completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject])
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)

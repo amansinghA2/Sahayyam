@@ -29,6 +29,7 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     @IBAction func senOTPAction(sender: AnyObject){
+        self.showHud("Loading...")
         
         if Reachability.isConnectedToNetwork(){
         if  birthDatetextfield.text?.isBlank == false{
@@ -41,18 +42,26 @@ class ForgotPasswordViewController: UIViewController {
         ServerManager.sharedInstance().customerOTP(params, completionClosure: { (isSuccessful, error, result) in
             
             if isSuccessful {
+                self.hideHud()
                 self.optData = result!
+                
+                if let otpId1 = result!["ID"] {
+                  otpId = otpId1 as! String
+                  print(otpId)
+                }
                 self.performSegueWithIdentifier("goToOTPPage", sender: self)
             }else{
+                self.hideHud()
                 AlertView.alertView("Invalid", message: "Invalid Data", alertTitle: "OK", viewController: self)
             }
-            
         })
         }else{
+            self.hideHud()
                 AlertView.alertView("Invalid", message: "Invalid Mobile Number or the field is empty", alertTitle: "OK", viewController: self)
            }
         }
         else{
+            self.hideHud()
                 AlertView.alertView("Invalid", message: "Field is blank", alertTitle: "OK", viewController: self)
         }
     }

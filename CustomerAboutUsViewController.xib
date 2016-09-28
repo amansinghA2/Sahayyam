@@ -64,7 +64,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EL-m6-QH4" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
                     <rect key="frame" x="8" y="137" width="304" height="56"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v_ic_products" translatesAutoresizingMaskIntoConstraints="NO" id="rhd-Vj-X2E">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch_ic_vendor" translatesAutoresizingMaskIntoConstraints="NO" id="rhd-Vj-X2E">
                             <rect key="frame" x="8" y="8" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Bff-EE-hsu"/>
@@ -197,9 +197,9 @@
     </objects>
     <resources>
         <image name="call" width="64" height="64"/>
+        <image name="ch_ic_vendor" width="65" height="65"/>
         <image name="email" width="64" height="64"/>
         <image name="v_ic_login_icon" width="512" height="512"/>
-        <image name="v_ic_products" width="64" height="64"/>
         <image name="world_location" width="64" height="64"/>
     </resources>
 </document>

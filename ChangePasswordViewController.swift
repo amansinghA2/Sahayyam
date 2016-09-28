@@ -10,10 +10,13 @@ import UIKit
 
 class ChangePasswordViewController: UIViewController {
 
-    @IBOutlet weak var confirmpasswordTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmpasswordTextField: TextField!
+    @IBOutlet weak var passwordTextField: TextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
+        confirmpasswordTextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,19 +37,45 @@ class ChangePasswordViewController: UIViewController {
        self.showHud("Pleast Wait...")
         
         let params:[String:AnyObject] = [
-        "id":"",
+        "id":otpId,
         "password":passwordTextField.text!,
         "confirm":confirmpasswordTextField.text!
         ]
         
+        print(params)
+        if formValidation() {
         ServerManager.sharedInstance().passwordChange(params) { (isSuccessful, error, result) in
         if isSuccessful {
+//            self.hideHud()
+//            AlertView.alertView("Alert", message: "Password successfully changed", alertTitle: "OK", viewController: self)
+//            let refreshAlert = UIAlertController(title: "Alert", message: "Password successfully changed", preferredStyle: UIAlertControllerStyle.Alert)
+//            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+//                
+//                }
+//                ))
+//            
+//            self.presentViewController(refreshAlert, animated: true, completion: nil)
+            AlertView.alertViewToGoToLogin("Alert", message: "Password Successfully changed", alertTitle: "OK", viewController: self)
             self.hideHud()
-            
         }else{
             self.hideHud()
         }
-      }
+       }
+        }else{
+            
+        }
     }
+    
+    func formValidation() -> Bool{
+        
+        if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmpasswordTextField.text!)) {
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
+            return false
+        }
+        return true
+    }
+
+    
 
 }

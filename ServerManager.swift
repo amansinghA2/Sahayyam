@@ -197,6 +197,7 @@ class ServerManager: NSObject {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
+                            completionClosure(isSuccessful: true,error: nil,result: nil)
                         }
                     case .Failure(let error):
                         print(error)

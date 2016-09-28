@@ -19,7 +19,6 @@ class OTPViewController: UIViewController {
         super.viewDidLoad()
         
        otpTextField.setTextFieldStyle(TextFieldStyle.Pincode)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

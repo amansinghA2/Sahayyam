@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6h-sl-Ido">
-                    <rect key="frame" x="45" y="86" width="148" height="30"/>
+                    <rect key="frame" x="8" y="86" width="148" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2B1-kn-bND"/>
                     </constraints>
@@ -26,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eN9-yg-7jg" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
-                    <rect key="frame" x="45" y="149" width="161" height="30"/>
+                    <rect key="frame" x="8" y="144" width="161" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="bll-Y4-uBU"/>
                         <constraint firstAttribute="width" constant="161" id="uWX-KK-F8B"/>
@@ -35,12 +35,12 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSh-5N-9hx" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                    <rect key="frame" x="45" y="223" width="161" height="30"/>
+                    <rect key="frame" x="8" y="212" width="161" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="161" id="0Oi-iI-xRA"/>
                         <constraint firstAttribute="height" constant="30" id="lyG-Xr-SwM"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Validate"/>
                     <connections>
                         <action selector="optValidateButton:" destination="-1" eventType="touchUpInside" id="ehV-5t-9ou"/>
                     </connections>
@@ -48,13 +48,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="eN9-yg-7jg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="45" id="Bw9-vV-9eM"/>
-                <constraint firstItem="eN9-yg-7jg" firstAttribute="top" secondItem="p6h-sl-Ido" secondAttribute="bottom" constant="33" id="K1x-eI-aS4"/>
-                <constraint firstItem="p6h-sl-Ido" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="45" id="SL6-Ci-X5Z"/>
+                <constraint firstItem="eN9-yg-7jg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Bw9-vV-9eM"/>
+                <constraint firstItem="eN9-yg-7jg" firstAttribute="top" secondItem="p6h-sl-Ido" secondAttribute="bottom" constant="28" id="K1x-eI-aS4"/>
+                <constraint firstItem="p6h-sl-Ido" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="SL6-Ci-X5Z"/>
                 <constraint firstItem="p6h-sl-Ido" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="86" id="Z6Y-eI-sJP"/>
-                <constraint firstItem="ZSh-5N-9hx" firstAttribute="top" secondItem="eN9-yg-7jg" secondAttribute="bottom" constant="44" id="pAi-za-ncu"/>
-                <constraint firstAttribute="trailing" secondItem="p6h-sl-Ido" secondAttribute="trailing" constant="127" id="rfn-Wb-kaz"/>
-                <constraint firstItem="ZSh-5N-9hx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="45" id="v2P-1f-Ivm"/>
+                <constraint firstItem="ZSh-5N-9hx" firstAttribute="top" secondItem="eN9-yg-7jg" secondAttribute="bottom" constant="38" id="pAi-za-ncu"/>
+                <constraint firstAttribute="trailing" secondItem="p6h-sl-Ido" secondAttribute="trailing" constant="164" id="rfn-Wb-kaz"/>
+                <constraint firstItem="ZSh-5N-9hx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="v2P-1f-Ivm"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="225" y="218"/>

@@ -26,6 +26,7 @@ var customerFullName = String()
 var telephone = String()
 var vendorAddress = String()
 var vendorEntry = String()
+var otpId = String()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

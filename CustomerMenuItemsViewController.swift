@@ -105,7 +105,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 //            customerFullName = customerFullName1 as! String
 //        }
         super.viewWillAppear(animated)
-        self.showHud("Loading...")
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
