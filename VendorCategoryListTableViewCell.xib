@@ -36,15 +36,14 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="29R-QJ-rBd" secondAttribute="bottom" constant="11" id="CPE-aa-o9P"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KpV-Qi-jDq"/>
                     <constraint firstItem="29R-QJ-rBd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L1U-vR-mAj"/>
                     <constraint firstAttribute="trailing" secondItem="gFs-rj-lcb" secondAttribute="trailing" id="PDC-tC-50W"/>
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="leading" secondItem="29R-QJ-rBd" secondAttribute="trailing" constant="12" id="bXG-TU-IDQ"/>
-                    <constraint firstItem="29R-QJ-rBd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="bXa-BI-ukH"/>
                     <constraint firstAttribute="bottom" secondItem="gFs-rj-lcb" secondAttribute="bottom" id="f7d-w2-4LS"/>
                     <constraint firstAttribute="trailing" secondItem="C2j-JM-W4D" secondAttribute="trailing" constant="8" id="fLi-sk-Yhh"/>
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="hb0-0O-cYC"/>
+                    <constraint firstItem="29R-QJ-rBd" firstAttribute="centerY" secondItem="C2j-JM-W4D" secondAttribute="centerY" id="kMT-Me-wzf"/>
                     <constraint firstAttribute="bottom" secondItem="29R-QJ-rBd" secondAttribute="bottom" constant="12" id="kZd-rF-LbS"/>
                     <constraint firstAttribute="bottom" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="11" id="uba-X7-iEW"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="10" id="vcf-cN-qw9"/>
@@ -60,7 +59,7 @@
                 <outlet property="imageLeftConstraint" destination="L1U-vR-mAj" id="ekr-lJ-fVf"/>
                 <outlet property="productName" destination="C2j-JM-W4D" id="eXQ-6G-WeV"/>
             </connections>
-            <point key="canvasLocation" x="225" y="233"/>
+            <point key="canvasLocation" x="69" y="209"/>
         </tableViewCell>
     </objects>
     <resources>

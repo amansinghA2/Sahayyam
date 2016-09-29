@@ -40,11 +40,9 @@ class ForgotPasswordViewController: UIViewController {
             ]
             
         ServerManager.sharedInstance().customerOTP(params, completionClosure: { (isSuccessful, error, result) in
-            
             if isSuccessful {
                 self.hideHud()
                 self.optData = result!
-                
                 if let otpId1 = result!["ID"] {
                   otpId = otpId1 as! String
                   print(otpId)

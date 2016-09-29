@@ -53,14 +53,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("promotioncellIdentifier") as! VendorPromotionTableViewCell
-        
         cell.vendorPromotionList = self.vendorPromotionsLists[indexPath.row]
-        
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
         print(self.vendorPromotionsList)
         self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
@@ -70,7 +67,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         return UITableViewAutomaticDimension
     }
 
-    @IBAction func createPromotionAction(sender: AnyObject) {
+    @IBAction func createPromotionAction(sender: AnyObject){
         self.performSegueWithIdentifier("goToCreatePromotion", sender: nil)
     }
 
@@ -79,9 +76,8 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             let vc = segue.destinationViewController as? PromotionTypeViewController
             vc!.vendorPromotionList = self.vendorPromotionsList
             vc!.str = "fromEdit"
-            print(vc!.vendorPromotionList)
         }else{
-
+            
         }
     }
 

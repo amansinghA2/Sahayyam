@@ -13,6 +13,9 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var vendorCategoryTableview: UITableView!
     var categoryLists = [CategoryList]()
+    var parentArray = [CategoryList]()
+    var childArray = [CategoryList]()
+    var subChildArray = [CategoryList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.showHud("Loading...")
         
         let params = [
         "token":token,
@@ -36,24 +40,84 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         ]
         
         ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result) in
+            self.hideHud()
             self.categoryLists = result!
+            self.parentArray = self.categoryLists.filter({
+                if $0.level == "0" {
+                    return true
+                }
+                return false
+            })
+
+            self.childArray = self.categoryLists.filter({
+                if $0.level == "1" {
+                    return true
+                }
+                return false
+            })
+
+            self.vendorCategoryTableview.delegate = self
+            self.vendorCategoryTableview.dataSource = self
+            self.vendorCategoryTableview.reloadData()
         }
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return parentArray.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryLists.count
+        
+        subChildArray = childArray.filter({
+            if (parentArray[section].category_id == $0.parent_id) {
+                return true
+            }
+            return false
+        })
+        
+        return subChildArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryListIdentifier") as! VendorCategoryListTableViewCell
         
-        cell.productName.text = String(self.categoryLists[indexPath.row])
+        subChildArray = childArray.filter({
+            if (parentArray[indexPath.section].category_id == $0.parent_id) {
+                return true
+            }
+            return false
+        })
+        
+        if subChildArray.count > 0 {
+            let filterArr = subChildArray[indexPath.row]
+            cell.productName?.text = filterArr.name
+            cell.productName.textColor = UIColor.blueColor()
+            cell.imageLeftConstraint.constant = 20
+        }
+        
         return cell
     }
     
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        
-//    }
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+      {
+        let cell = tableView.dequeueReusableCellWithIdentifier("categoryListIdentifier") as! VendorCategoryListTableViewCell
+        if parentArray.count > 0 {
+            cell.productName.text = parentArray[section].name
+            cell.productName.textColor = UIColor.blackColor()
+            cell.imageLeftConstraint.constant = 8
+        } else {
+            print("No objects")
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension

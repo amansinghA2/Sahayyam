@@ -55,7 +55,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             self.amountpromotionOutlet.checkState = .Checked
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
-         bindModelToViews()
+            bindModelToViews()
         }else{
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
@@ -73,7 +73,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     }
     
     @IBAction func createPromotion(sender: AnyObject) {
-//token, device_id, product[name], product[productQuantity], product[image], product[amount], product[productUnitId], product[productUnitId], product[fromDate], product[endDate], product[productDiscountType], product[amtDiscountType], product[productId], product[product_id], product[promotion_id]
+
         let params:[String:AnyObject] = [
         	"product[name]":nameTextField.text!,
         	"product[productQuantity]":"",

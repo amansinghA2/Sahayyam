@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -422,7 +422,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="Delivery Charges">
-                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
@@ -479,7 +479,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="Free Delivery">
-                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
@@ -575,7 +575,7 @@
                                         <constraint firstAttribute="width" constant="77" id="xel-l8-UyK"/>
                                     </constraints>
                                     <state key="normal" title="Submit">
-                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="submitButtonClicked:" destination="-1" eventType="touchUpInside" id="2Up-ND-OWI"/>

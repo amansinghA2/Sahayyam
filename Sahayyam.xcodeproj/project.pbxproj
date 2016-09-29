@@ -214,6 +214,8 @@
 		AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */; };
 		AFD0CD991D65B73C00EC1F09 /* CheckoutOrderTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0CD981D65B73C00EC1F09 /* CheckoutOrderTotals.swift */; };
 		AFD0CD9B1D65CF0000EC1F09 /* PopulateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0CD9A1D65CF0000EC1F09 /* PopulateData.swift */; };
+		AFD3F1B01D9D106A0024014B /* VendorCategorySubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD3F1AE1D9D106A0024014B /* VendorCategorySubViewController.swift */; };
+		AFD3F1B11D9D106A0024014B /* VendorCategorySubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD3F1AF1D9D106A0024014B /* VendorCategorySubViewController.xib */; };
 		AFD6F4741D925C8300CBD0ED /* VendorInfoAboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6F4731D925C8300CBD0ED /* VendorInfoAboutUs.swift */; };
 		AFD6F4761D92674800CBD0ED /* DisplayPromotionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6F4751D92674800CBD0ED /* DisplayPromotionDetails.swift */; };
 		AFD6F4791D9273B200CBD0ED /* LoadMoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6F4771D9273B200CBD0ED /* LoadMoreCollectionViewCell.swift */; };
@@ -484,6 +486,8 @@
 		AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImage.swift; sourceTree = "<group>"; };
 		AFD0CD981D65B73C00EC1F09 /* CheckoutOrderTotals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutOrderTotals.swift; sourceTree = "<group>"; };
 		AFD0CD9A1D65CF0000EC1F09 /* PopulateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopulateData.swift; sourceTree = "<group>"; };
+		AFD3F1AE1D9D106A0024014B /* VendorCategorySubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorCategorySubViewController.swift; sourceTree = "<group>"; };
+		AFD3F1AF1D9D106A0024014B /* VendorCategorySubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorCategorySubViewController.xib; sourceTree = "<group>"; };
 		AFD6F4731D925C8300CBD0ED /* VendorInfoAboutUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorInfoAboutUs.swift; sourceTree = "<group>"; };
 		AFD6F4751D92674800CBD0ED /* DisplayPromotionDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayPromotionDetails.swift; sourceTree = "<group>"; };
 		AFD6F4771D9273B200CBD0ED /* LoadMoreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -920,6 +924,8 @@
 				AF5438B21D87BDFE00CDCCD9 /* ShowInvoiceViewController.xib */,
 				AF5438B51D87BFFE00CDCCD9 /* VendorCategoryListViewController.swift */,
 				AF5438B61D87BFFE00CDCCD9 /* VendorCategoryListViewController.xib */,
+				AFD3F1AE1D9D106A0024014B /* VendorCategorySubViewController.swift */,
+				AFD3F1AF1D9D106A0024014B /* VendorCategorySubViewController.xib */,
 				AF5438BD1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.swift */,
 				AF5438BE1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib */,
 				AF5438C71D87EED500CDCCD9 /* SubscriptionDetailsViewController.swift */,
@@ -1225,6 +1231,7 @@
 				AF6327DB1D9534F80030F1C5 /* AllVendorsTableViewCell.xib in Resources */,
 				AFB6A1F91D5DF05700A9731B /* OrderDetailHeaderTableViewCell.xib in Resources */,
 				AF5CB11F1D98EA6C007C0261 /* SubsPaymentTableViewCell.xib in Resources */,
+				AFD3F1B11D9D106A0024014B /* VendorCategorySubViewController.xib in Resources */,
 				AFB6537A1D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib in Resources */,
 				AF1F1FAB1D4A107600E36DB0 /* CityHead.storyboard in Resources */,
 				AF6327FB1D955CA20030F1C5 /* SubsPaymentViewController.xib in Resources */,
@@ -1490,6 +1497,7 @@
 				AFD0CD9B1D65CF0000EC1F09 /* PopulateData.swift in Sources */,
 				AF5438B31D87BDFE00CDCCD9 /* ShowInvoiceViewController.swift in Sources */,
 				AFBF2D2F1D5C642C007A8655 /* WishlistProductList.swift in Sources */,
+				AFD3F1B01D9D106A0024014B /* VendorCategorySubViewController.swift in Sources */,
 				AF5438D01D88021500CDCCD9 /* SubscriptionList.swift in Sources */,
 				AFA2A52A1D50CBA3006F1D41 /* Customer.swift in Sources */,
 				AFB6A1F41D5DEE5B00A9731B /* OrderDetailsTableViewCell.swift in Sources */,
