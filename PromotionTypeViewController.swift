@@ -109,7 +109,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             amountLabel.text = name
         }
 
-
         if vendorPromotionList.discount != "" {
             if let name = vendorPromotionList.discount as? String{
                 discountValue.text = name

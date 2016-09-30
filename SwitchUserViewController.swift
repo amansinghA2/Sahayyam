@@ -56,6 +56,7 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                 self.custTypeString = "vendor"
                 self.viewControllerPassing("Vendor")
             case 2:
+                 vendorEntry = "mutipleProfile"
                 self.custTypeString = "cityhead"
                 self.viewControllerPassing("CityHead")
             case 3:
@@ -108,13 +109,11 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
               
             if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
                     filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
-            }
-
-            }
+                }
+              }
             }
           }
           else{
-          
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
               self.hideHud()
         }
@@ -125,7 +124,6 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gotoSwitchUser"{
-            vendorEntry = "mutipleProfile"
             let vc = segue.destinationViewController as? SwitchUserViewController
             vc!.customerLoginData = self.customerLoginData
         }

@@ -104,6 +104,7 @@ class LoginViewController: UIViewController {
                                 vendorEntry = "onlyVendor"
                                 self.viewControllerPassing("Vendor")
                             case 3:
+                                vendorEntry = "onlyCityHead"
                                 self.viewControllerPassing("CityHead")
                             default:
                             print("")
