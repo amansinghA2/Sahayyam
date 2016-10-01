@@ -12,6 +12,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     var listArray = []
     var listImageArray = []
     
+    @IBOutlet weak var vendorName: UILabel!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var menuListTableView: UITableView!
     
@@ -30,9 +31,9 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         gradientLayer.colors = [ colorTop, colorBottom]
         gradientLayer.locations = [ 0.0, 1.0]
         gradientLayer.frame = self.gradientView.bounds
-        
         self.gradientView.layer.addSublayer(gradientLayer)
-
+        self.gradientView.addSubview(vendorName)
+        
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
        listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
@@ -45,6 +46,10 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        vendorName.text = customerFullName
+        print(vendorName.text)
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listArray.count
@@ -95,9 +100,9 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
             self.revealViewController().revealToggleAnimated(true)
             
-        case 12:
-            self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
         case 13:
+            self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
+        case 14:
             alertControllerToLogout()
         default:
             print("")

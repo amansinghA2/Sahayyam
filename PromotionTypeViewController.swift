@@ -22,8 +22,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
     @IBOutlet weak var amountpromotionOutlet: M13Checkbox!
     @IBOutlet weak var productPromotionOutlet: M13Checkbox!
-    @IBOutlet weak var amountCheckBox: M13Checkbox!
-    @IBOutlet weak var productCheckBox: M13Checkbox!
 
     @IBOutlet weak var nameTextField: TextField!
     @IBOutlet weak var desciptionLabel: TextField!

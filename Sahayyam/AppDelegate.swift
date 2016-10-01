@@ -114,7 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case 1:
                     viewControllerPassing("Main", identifier: "CustomerUPViewController")
                 case 2:
-                    viewControllerPassing("Main", identifier: "CHMainMenu")
+                    viewControllerPassing("Main", identifier: "VendorUpdateID")
                 default:
                     print("")
                 }

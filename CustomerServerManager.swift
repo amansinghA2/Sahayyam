@@ -474,7 +474,8 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
-                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                        print(error)
+                        completionClosure(isSuccessful: true, error: error.localizedDescription, result: nil)
                     }
              }
         }

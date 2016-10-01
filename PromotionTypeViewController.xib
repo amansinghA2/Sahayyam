@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PromotionTypeViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="amountCheckBox" destination="YzO-Di-AoU" id="Co4-3d-RGw"/>
                 <outlet property="amountLabel" destination="lwy-t8-RoD" id="gif-ts-5Be"/>
                 <outlet property="amountRadioButton" destination="t9n-B9-uqq" id="zWx-No-pYd"/>
                 <outlet property="amountpromotionOutlet" destination="YzO-Di-AoU" id="p9c-Be-DXv"/>
@@ -18,7 +16,6 @@
                 <outlet property="nameAndQuantityView" destination="JSD-Ew-nDu" id="S4u-Jq-rYf"/>
                 <outlet property="nameTextField" destination="Amu-Im-KYo" id="Hao-7O-R0q"/>
                 <outlet property="percentageRadioButton" destination="4ji-5S-dN8" id="rgN-ej-IwZ"/>
-                <outlet property="productCheckBox" destination="Tnb-Xh-z3R" id="cJj-QT-frL"/>
                 <outlet property="productName" destination="K4r-IQ-VBj" id="PzO-7Q-6Ne"/>
                 <outlet property="productPromotionOutlet" destination="Tnb-Xh-z3R" id="kbE-EA-JUI"/>
                 <outlet property="productnameQuantityConstraint" destination="kOs-FZ-2Yv" id="3Np-bH-rqn"/>

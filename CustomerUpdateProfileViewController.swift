@@ -46,11 +46,13 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         let range : NSRange = str.rangeOfString("Accept the terms and conditions")
         acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
         acceptLabel.textColor = UIColor.blueColor()
+        self.showHud("Loading...")
         
         if isLogin == "customerDropDown" {
             tokenCheck()
          ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
                 if isSuccessful{
+                    self.hideHud()
                     self.populateDataList  = result!
                     customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
                     NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
@@ -59,9 +61,12 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                     self.acceptLabel.hidden = true
                     self.acceptCheckbox.hidden = true
                     self.hideHud()
-                }
+                }else{
+                    self.hideHud()
+            }
             })
         }else {
+            self.hideHud()
             profile = false
 //            customerType = 0
 //            profileType = 1
@@ -317,6 +322,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         dateOfBirthTextField.text = populateDataList.dateOfBirth
         
         if populateDataList.image1 != "" {
+           self.str = populateDataList.image1
           let image = populateDataList.image1.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
               customerImage.imageFromUrl(image_base_url + image)
         }

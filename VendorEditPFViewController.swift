@@ -39,9 +39,31 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pinccodeTextfield.setTextFieldStyle(TextFieldStyle.Pincode)
+        
         slideMenuShow(slidemenuButton, viewcontroller: self)
         // Do any additional setup after loading the view.
+        address.layer.borderWidth = 1
+        address.layer.borderColor = UIColor.lightGrayColor().CGColor
+        address.layer.cornerRadius = 3
         
+        descriptionTextview.layer.borderWidth = 1
+        descriptionTextview.layer.borderColor = UIColor.lightGrayColor().CGColor
+        descriptionTextview.layer.cornerRadius = 3
+        
+        taxNameAndNoView.layer.borderWidth = 1
+        taxNameAndNoView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        taxNameAndNoView.layer.cornerRadius = 3
+        
+        address.layer.borderWidth = 1
+        address.layer.borderColor = UIColor.lightGrayColor().CGColor
+        address.layer.cornerRadius = 3
+        
+        address2.layer.borderWidth = 1
+        address2.layer.borderColor = UIColor.lightGrayColor().CGColor
+        address2.layer.cornerRadius = 3
+
         tokenCheck()
         imagePicker.delegate = self
         self.showHud("Loading...")
@@ -135,11 +157,10 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                     })
                 }
             }else{
+                self.hideHud()
                 AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
                 }
             }else{
-              
-                
                 if let image = self.bannerImage.image {
                     self.showHud("Loading...")
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -157,24 +178,33 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                                     if let imgStr = result!["img_dir"]{
                                         self.str1 = (imgStr as! String)
                                     }
+                                }else{
+                                    self.hideHud()
                                 }
                             }
                             
                         })
                     }
                 }else{
+                    self.hideHud()
                     AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
                 }
             }
         })
     }
     
-    
     func formValidation() -> Bool{
-//        if (displayName.text?.isBlank == true  || descriptionTextview.text?.isBlank == true || companyTextfield.text?.isBlank == true || taxNameAndNoView.text?.isBlank == true || address.text?.isBlank == true || address2.text?.isBlank == true || cityLabel.text?.isBlank == true ||  regionLabel.text?.isBlank == true || countryLabel.text?.isBlank == true || pinccodeTextfield.text?.isBlank == true) {
-//            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
-//            return false
-//        }
+        
+        if (address.text?.isBlank == true ) {
+            AlertView.alertView("Alert", message: "Address cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if ( address.text.characters.count <= 5 ) {
+            AlertView.alertView("Alert", message: "Address should be more than 5 characters in length", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         return true        
     }
     
@@ -192,10 +222,12 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         countryLabel.text = sellerData.country
         pinccodeTextfield.text = sellerData.postcode
         if sellerData.bannerImageString != "" {
+            str1 = sellerData.bannerImageString
             let image = sellerData.bannerImageString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             bannerImage.imageFromUrl(image_base_url + image)
         }
         if sellerData.avatar != "" {
+            str = sellerData.avatar
             let image = sellerData.avatar.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
             profileImage.imageFromUrl(image_base_url + image)
         }
@@ -227,6 +259,8 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                     "seller[zone]":regionLabel.text!,
                     "seller[description]":""
                 ]
+                
+                print(params)
                 
                 ServerManager.sharedInstance().sellerInfoSave(params) { (isSuccessful, error, result) in
                     if isSuccessful{

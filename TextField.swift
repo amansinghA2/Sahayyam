@@ -159,7 +159,6 @@ class TextField: UITextField , UITextFieldDelegate {
         
         let datePickerView  : UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.Time
-        datePickerView.maximumDate = NSDate()
         datePickerView.backgroundColor = UIColor.whiteColor()
         self.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(TextField.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)

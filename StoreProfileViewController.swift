@@ -8,8 +8,17 @@
 
 import UIKit
 
-class StoreProfileViewController: UIViewController {
+class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate{
 
+    @IBOutlet weak var deliveryChargesView: UIView!
+    @IBOutlet weak var freeDeliveryView: UIView!
+    
+    @IBOutlet weak var deliveryChargesContraint: NSLayoutConstraint!
+    @IBOutlet weak var freeDeliveryContraint: NSLayoutConstraint!
+    @IBOutlet weak var deliveryCharges: SSRadioButton!
+    
+    @IBOutlet weak var freeDelivery: SSRadioButton!
+    
     @IBOutlet weak var slideMenubButton: UIBarButtonItem!
     
     @IBOutlet weak var businessTimeingViewContraint: NSLayoutConstraint!
@@ -18,27 +27,27 @@ class StoreProfileViewController: UIViewController {
     @IBOutlet weak var businessTimingView: UIView!
     @IBOutlet weak var deliveryTimingView: UIView!
     
-    @IBOutlet weak var fromLabel1: TextField!
-    @IBOutlet weak var fromLabel2: TextField!
-    @IBOutlet weak var fromLabel3: TextField!
-    @IBOutlet weak var toLabel1: TextField!
-    @IBOutlet weak var toLabel2: TextField!
-    @IBOutlet weak var toLabel3: TextField!
+    @IBOutlet weak var fromLabel1: UITextField!
+    @IBOutlet weak var fromLabel2: UITextField!
+    @IBOutlet weak var fromLabel3: UITextField!
+    @IBOutlet weak var toLabel1: UITextField!
+    @IBOutlet weak var toLabel2: UITextField!
+    @IBOutlet weak var toLabel3: UITextField!
     
-    @IBOutlet weak var expressDeliveryButton: TextField!
+    @IBOutlet weak var expressDeliveryButton: UITextField!
     
-    @IBOutlet weak var businessHolidayField: TextField!
+    @IBOutlet weak var businessHolidayField: UITextField!
     
-    @IBOutlet weak var deliveryTimeTextField1: TextField!
-    @IBOutlet weak var deliveryTimeTextField2: TextField!
-    @IBOutlet weak var deliveryTimeTextField3: TextField!
-    @IBOutlet weak var deliveryTimeTextField4: TextField!
-    @IBOutlet weak var deliveryTimeTextField5: TextField!
-    @IBOutlet weak var deliveryTimeTextField6: TextField!
-    @IBOutlet weak var deliveryTimeTextField7: TextField!
-    @IBOutlet weak var deliveryTimeTextField8: TextField!
-    @IBOutlet weak var deliveryTimeTextField9: TextField!
-    @IBOutlet weak var deliveryTimeTextField10: TextField!
+    @IBOutlet weak var deliveryTimeTextField1: UITextField!
+    @IBOutlet weak var deliveryTimeTextField2: UITextField!
+    @IBOutlet weak var deliveryTimeTextField3: UITextField!
+    @IBOutlet weak var deliveryTimeTextField4: UITextField!
+    @IBOutlet weak var deliveryTimeTextField5: UITextField!
+    @IBOutlet weak var deliveryTimeTextField6: UITextField!
+    @IBOutlet weak var deliveryTimeTextField7: UITextField!
+    @IBOutlet weak var deliveryTimeTextField8: UITextField!
+    @IBOutlet weak var deliveryTimeTextField9: UITextField!
+    @IBOutlet weak var deliveryTimeTextField10: UITextField!
     
     
     @IBOutlet weak var deliveryChargesTextField: TextField!
@@ -46,29 +55,84 @@ class StoreProfileViewController: UIViewController {
     @IBOutlet weak var minOrderTExtfField: TextField!
     @IBOutlet weak var lessThanMinOrderTextField: TextField!
     var i = 0
+    let radioButtonController = SSRadioButtonsController()
     
+    var fromHour1 = ""
+    var fromMin1 = ""
+    var fromHour2 = ""
+    var fromMin2 = ""
+    var fromHour3 = ""
+    var fromMin3 = ""
+    
+    var toHour1 = ""
+    var toMin1 = ""
+    var toHour2 = ""
+    var toMin2 = ""
+    var toHour3 = ""
+    var toMin3 = ""
+    
+    var delHour = ""
+    var del02 = ""
+    var del03 = ""
+    var del04 = ""
+    var del05 = ""
+    var del06 = ""
+    var del07 = ""
+    var del08 = ""
+    var del09 = ""
+    var del10 = ""
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        radioButtonController.setButtonsArray([deliveryCharges , freeDelivery])
+        radioButtonController.delegate = self
+        radioButtonController.shouldLetDeSelect = true
+        deliveryChargesContraint.constant = 0
+        freeDeliveryContraint.constant = 0
+        
+        freeDeliveryView.hidden = true
+        deliveryChargesView.hidden = true
+        
         slideMenuShow(slideMenubButton, viewcontroller: self)
         
-        deliveryTimeTextField1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField4.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField5.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField6.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField7.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField8.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField4.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField5.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField6.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField7.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField8.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        
+//        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         
-        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        
+        deliveryTimeTextField1.delegate = self
+        deliveryTimeTextField2.delegate = self
+        deliveryTimeTextField3.delegate = self
+        deliveryTimeTextField4.delegate = self
+        deliveryTimeTextField5.delegate = self
+        deliveryTimeTextField6.delegate = self
+        deliveryTimeTextField7.delegate = self
+        deliveryTimeTextField8.delegate = self
+        deliveryTimeTextField9.delegate = self
+        deliveryTimeTextField10.delegate = self
+        
+        fromLabel1.delegate = self
+        fromLabel2.delegate = self
+        fromLabel3.delegate = self
+        toLabel1.delegate = self
+        toLabel2.delegate = self
+        toLabel3.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -98,10 +162,83 @@ class StoreProfileViewController: UIViewController {
     }
     */
 
+    func formValidation() -> Bool {
+        
+        
+        
+        return true
+    }
+    
+    func didSelectButton(aButton: UIButton?) {
+        if aButton == deliveryCharges {
+            deliveryChargesContraint.constant = 36
+            freeDeliveryContraint.constant = 0
+            freeDeliveryView.hidden = true
+            deliveryChargesView.hidden = false
+        }else{
+            freeDeliveryContraint.constant = 112
+            deliveryChargesContraint.constant = 0
+            freeDeliveryView.hidden = false
+            deliveryChargesView.hidden = true
+        }
+    }
+    
     @IBAction func submitButtonClicked(sender: AnyObject) {
         
-        
-        
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let datePickerView  : UIDatePicker = UIDatePicker()
+        datePickerView.datePickerMode = UIDatePickerMode.Time
+        datePickerView.backgroundColor = UIColor.whiteColor()
+        textField.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(StoreProfileViewController.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        let dateFormatter = NSDateFormatter()
+        //        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if textField.text!.isEmpty {
+            let currentDate = textField.text
+            let date = dateFormatter.dateFromString(currentDate!)
+            datePickerView.setDate(date!, animated: false)
+        }
+    }
+    
+    func handleDatePicker1(sender: UIDatePicker) {
+       print(getHourFromDatePicker(sender))
+       print(getMinFromDatePicker(sender))
+        //sender.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        switch textField {
+        case fromLabel1:
+            <#code#>
+        default:
+            <#code#>
+        }
+    }
+    
+    func getHourFromDatePicker(datePicker:UIDatePicker) -> String
+    {
+        let date = datePicker.date
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        
+        return "\(components.hour)"
+    }
+    
+    func getMinFromDatePicker(datePicker:UIDatePicker) -> String
+    {
+        let date = datePicker.date
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        
+        return "\(components.minute)"
+    }
+    
+    
     
 }
