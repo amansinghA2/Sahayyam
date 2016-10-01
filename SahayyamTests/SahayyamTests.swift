@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import Sahayyam
 
 class SahayyamTests: XCTestCase {
     

@@ -8,7 +8,6 @@
 
 import UIKit
 import M13Checkbox
-import SendOTPFramework
 
 class LoginViewController: UIViewController {
     

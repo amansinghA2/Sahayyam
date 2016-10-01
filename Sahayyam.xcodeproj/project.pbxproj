@@ -157,9 +157,6 @@
 		AFB6537A1D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB653781D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib */; };
 		AFB6537C1D6AE9A1003D242C /* CheckoutDeliveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6537B1D6AE9A1003D242C /* CheckoutDeliveryTime.swift */; };
 		AFB6A1E41D5DA1C500A9731B /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB6A1E31D5DA1C500A9731B /* M13Checkbox.framework */; };
-		AFB6A1E61D5DA4C700A9731B /* SendOTPFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB6A1E51D5DA4C700A9731B /* SendOTPFramework.framework */; };
-		AFB6A1E91D5DA53700A9731B /* SendOTPFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB6A1E51D5DA4C700A9731B /* SendOTPFramework.framework */; };
-		AFB6A1EA1D5DA53700A9731B /* SendOTPFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFB6A1E51D5DA4C700A9731B /* SendOTPFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AFB6A1ED1D5DC5C200A9731B /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6A1EC1D5DC5C200A9731B /* ProductDetails.swift */; };
 		AFB6A1F01D5DEE4000A9731B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB6A1EE1D5DEE4000A9731B /* OrderDetailsViewController.swift */; };
 		AFB6A1F11D5DEE4000A9731B /* OrderDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFB6A1EF1D5DEE4000A9731B /* OrderDetailsViewController.xib */; };
@@ -262,7 +259,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AFB6A1EA1D5DA53700A9731B /* SendOTPFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,7 +427,6 @@
 		AFB653781D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTimeTableViewCell.xib; sourceTree = "<group>"; };
 		AFB6537B1D6AE9A1003D242C /* CheckoutDeliveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutDeliveryTime.swift; sourceTree = "<group>"; };
 		AFB6A1E31D5DA1C500A9731B /* M13Checkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = M13Checkbox.framework; path = "../../../Library/Developer/Xcode/DerivedData/Sahayyam-fwzztaephgrjbmctgkjgtbmfwsyf/Build/Products/Debug-iphonesimulator/M13Checkbox/M13Checkbox.framework"; sourceTree = "<group>"; };
-		AFB6A1E51D5DA4C700A9731B /* SendOTPFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SendOTPFramework.framework; sourceTree = "<group>"; };
 		AFB6A1EC1D5DC5C200A9731B /* ProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
 		AFB6A1EE1D5DEE4000A9731B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		AFB6A1EF1D5DEE4000A9731B /* OrderDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailsViewController.xib; sourceTree = "<group>"; };
@@ -518,8 +513,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB6A1E61D5DA4C700A9731B /* SendOTPFramework.framework in Frameworks */,
-				AFB6A1E91D5DA53700A9731B /* SendOTPFramework.framework in Frameworks */,
 				AFB6A1E41D5DA1C500A9731B /* M13Checkbox.framework in Frameworks */,
 				BEEA9B6FBD021500C3164805 /* Pods_Sahayyam.framework in Frameworks */,
 			);
@@ -592,7 +585,6 @@
 		AF1F1F3D1D4A07E400E36DB0 = {
 			isa = PBXGroup;
 			children = (
-				AFB6A1E51D5DA4C700A9731B /* SendOTPFramework.framework */,
 				AFC26FBE1D4F126E0003471B /* Storyboards */,
 				AFC524221D4B6996007864B9 /* Model */,
 				AFC523D41D4B2988007864B9 /* Utility */,
@@ -1626,10 +1618,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "817557bb-ea61-4eeb-99e6-16ed7f500c7a";
+				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1668,9 +1660,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "817557bb-ea61-4eeb-99e6-16ed7f500c7a";
+				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1683,19 +1675,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sahayyam/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "817557bb-ea61-4eeb-99e6-16ed7f500c7a";
+				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1707,19 +1699,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sahayyam/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "817557bb-ea61-4eeb-99e6-16ed7f500c7a";
+				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";
 			};
 			name = Release;
