@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -144,9 +143,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxZ-33-pCT" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                        <rect key="frame" x="158" y="116" width="81" height="14"/>
+                        <rect key="frame" x="158" y="113" width="100" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="14" id="RSC-80-6SL"/>
+                            <constraint firstAttribute="height" constant="21" id="RSC-80-6SL"/>
+                            <constraint firstAttribute="width" constant="100" id="dIu-ws-NCc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="Cancel Order">
@@ -159,7 +159,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="kbU-Vy-sDn" firstAttribute="leading" secondItem="AVp-D5-wMh" secondAttribute="trailing" constant="26" id="094-qy-lJW"/>
-                    <constraint firstItem="xxZ-33-pCT" firstAttribute="top" secondItem="nsi-7V-5JS" secondAttribute="bottom" constant="7" id="1h6-AA-v8r"/>
+                    <constraint firstItem="xxZ-33-pCT" firstAttribute="top" secondItem="nsi-7V-5JS" secondAttribute="bottom" constant="4" id="1h6-AA-v8r"/>
                     <constraint firstAttribute="leadingMargin" secondItem="2AL-jV-5co" secondAttribute="leading" id="2c5-XN-WZ0"/>
                     <constraint firstItem="8p1-w7-b4J" firstAttribute="top" secondItem="AVp-D5-wMh" secondAttribute="bottom" constant="3" id="2l5-i4-uhO"/>
                     <constraint firstItem="oEk-3x-oFA" firstAttribute="leading" secondItem="0l7-0b-9HR" secondAttribute="trailing" constant="-2" id="30m-QO-nq2"/>
@@ -189,7 +189,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="oEk-3x-oFA" secondAttribute="bottom" id="St8-E7-5JR"/>
                     <constraint firstItem="TRy-fp-0G1" firstAttribute="top" secondItem="2tm-JM-nDy" secondAttribute="bottom" constant="1" id="T5t-mX-lj2"/>
                     <constraint firstAttribute="trailingMargin" secondItem="JP5-Vv-f0z" secondAttribute="trailing" constant="1" id="U0c-Pc-SF8"/>
-                    <constraint firstItem="oEk-3x-oFA" firstAttribute="leading" secondItem="xxZ-33-pCT" secondAttribute="trailing" constant="71" id="Ua5-zm-Gbm"/>
+                    <constraint firstItem="oEk-3x-oFA" firstAttribute="leading" secondItem="xxZ-33-pCT" secondAttribute="trailing" priority="250" constant="52" id="Ua5-zm-Gbm"/>
                     <constraint firstItem="oms-3R-9IF" firstAttribute="leading" secondItem="kbU-Vy-sDn" secondAttribute="trailing" constant="13" id="VST-HK-QSZ"/>
                     <constraint firstItem="kbU-Vy-sDn" firstAttribute="leading" secondItem="BEz-mj-Dpx" secondAttribute="trailing" constant="26" id="WM4-7e-8jk"/>
                     <constraint firstItem="8p1-w7-b4J" firstAttribute="trailing" secondItem="nsi-7V-5JS" secondAttribute="trailing" id="WNx-b4-RwZ"/>

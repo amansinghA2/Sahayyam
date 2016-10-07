@@ -197,8 +197,6 @@ self.showHud("Loading...")
             return false
         }
         
-        
-        
         if !(emailIdTextField.isValidEmail(emailIdTextField.text!)) && emailIdTextField.text != "" {
             self.hideHud()
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
@@ -216,7 +214,6 @@ self.showHud("Loading...")
         }else{
             if isAccept == false {
                 AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
-                
                 return false
             }else{
                 return true

@@ -13,6 +13,7 @@ class CustomerMenuDescriptionViewController: UIViewController {
 
     @IBOutlet weak var productDetailsImage: UIImageView!
     
+    @IBOutlet weak var staticSellingpriceLabel: UILabel!
     @IBOutlet weak var productName: UILabel!
     
     @IBOutlet weak var productOfferPrice: UILabel!
@@ -37,6 +38,9 @@ class CustomerMenuDescriptionViewController: UIViewController {
         tokenCheck()
         setBackButtonForNavigation()
         self.changeNavigationBarColor()
+        
+        self.showHud("Loading...")
+        
         let params:[String : AnyObject] = [
         "token":token,
         "device_id":"1234",
@@ -49,11 +53,14 @@ class CustomerMenuDescriptionViewController: UIViewController {
         if Reachability.isConnectedToNetwork(){
             ServerManager.sharedInstance().customerProductDetails(params) { (isSuccessful, error, result) in
             if isSuccessful{
+                self.hideHud()
+                self.staticSellingpriceLabel.text = "Selling Price: "
                 if result != nil {
                 self.getDetailsProducts = result!
                 print(self.getDetailsProducts)
              }
             }else{
+                self.hideHud()
                 AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                 self.hideHud()
             }

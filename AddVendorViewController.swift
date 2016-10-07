@@ -41,9 +41,7 @@ class AddVendorViewController: UIViewController , DropperDelegate{
     }
     
     @IBAction func selectCityAction(sender: AnyObject) {
-        
-        
-        
+
         if dropper.status == .Hidden {
             dropper.tag = 1
             dropper.items = ["Larger, Longer, Item 1", "Item 2", "Item 3", "Item 4"]

@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
           if Reachability.checkInternetConnectivity() {
        if (usernameTextField.text?.isPhoneNumber  == true && usernameTextField.text?.isBlank == false) && (passwordTextField.text?.isBlank == false){
-        
         ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
                 if (isSuccessful) {
                     self.customerLoginData = result!
@@ -112,10 +111,9 @@ class LoginViewController: UIViewController {
                 }else{
                     self.hideHud()
                     self.checkBoxState()
-                    AlertView.alertView("Alert", message: "Incorrect Username or password ", alertTitle: "OK" , viewController: self)
+                    AlertView.alertView("Alert", message: "Incorrect Username or password", alertTitle: "OK" , viewController: self)
                 }
             })
-                
             }else{
             self.hideHud()
             AlertView.alertView("Alert", message: "Invalid username or password", alertTitle: "OK" , viewController: self)

@@ -57,6 +57,10 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     var i = 0
     let radioButtonController = SSRadioButtonsController()
     
+    var getHour = String()
+    var getMinute = String()
+    var getAM = String()
+    
     var fromHour1 = ""
     var fromMin1 = ""
     var fromHour2 = ""
@@ -71,16 +75,38 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     var toHour3 = ""
     var toMin3 = ""
     
-    var delHour = ""
-    var del02 = ""
-    var del03 = ""
-    var del04 = ""
-    var del05 = ""
-    var del06 = ""
-    var del07 = ""
-    var del08 = ""
-    var del09 = ""
-    var del10 = ""
+    var delHour1 = ""
+    var delHour2 = ""
+    var delHour3 = ""
+    var delHour4 = ""
+    var delHour5 = ""
+    var delHour6 = ""
+    var delHour7 = ""
+    var delHour8 = ""
+    var delHour9 = ""
+    var delHour10 = ""
+    
+    var deltoMin1 = ""
+    var deltoMin2 = ""
+    var deltoMin3 = ""
+    var deltoMin4 = ""
+    var deltoMin5 = ""
+    var deltoMin6 = ""
+    var deltoMin7 = ""
+    var deltoMin8 = ""
+    var deltoMin9 = ""
+    var deltoMin10 = ""
+    
+    var delAmPm1 = ""
+    var delAmPm2 = ""
+    var delAmPm3 = ""
+    var delAmPm4 = ""
+    var delAmPm5 = ""
+    var delAmPm6 = ""
+    var delAmPm7 = ""
+    var delAmPm8 = ""
+    var delAmPm9 = ""
+    var delAmPm10 = ""
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +162,23 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.showHud("Loading...")
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+        ]
+        
+        ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -185,6 +228,37 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     @IBAction func submitButtonClicked(sender: AnyObject) {
         
+        self.showHud("Loading...")
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        "store[0][from_hour]":"",
+        "store[0][from_minute]":"",
+        
+        ]
+        
+        ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -195,27 +269,70 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         datePickerView.addTarget(self, action: #selector(StoreProfileViewController.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         let dateFormatter = NSDateFormatter()
-        //        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         if textField.text!.isEmpty {
             let currentDate = textField.text
             let date = dateFormatter.dateFromString(currentDate!)
             datePickerView.setDate(date!, animated: false)
         }
+        
+        dateFormatter.timeStyle = .ShortStyle
+        textField.text = dateFormatter.stringFromDate(datePickerView.date)
+        
     }
     
     func handleDatePicker1(sender: UIDatePicker) {
-       print(getHourFromDatePicker(sender))
-       print(getMinFromDatePicker(sender))
-        //sender.text = dateFormatter.stringFromDate(sender.date)
+     getHour = getHourFromDatePicker(sender)
+     getMinute = getMinFromDatePicker(sender)
+        
+    //sender.text = dateFormatter.stringFromDate(sender.date)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case fromLabel1:
-            <#code#>
+            fromHour1 = getHour
+            fromMin1 = getMinute
+        case fromLabel2:
+            fromHour2 = getHour
+            fromMin2 = getMinute
+        case fromLabel3:
+            fromHour3 = getHour
+            fromMin3 = getMinute
+        case toLabel1:
+            toHour1 = getHour
+            toMin1 = getMinute
+        case toLabel2:
+            toHour2 = getHour
+            toMin2 = getMinute
+        case toLabel3:
+            toHour3 = getHour
+            toMin3 = getMinute
+        case deliveryTimeTextField1:
+            ""
+//            delHour1
+//            deltoMin1
+//            delAmPm1
+        case deliveryTimeTextField2:
+            ""
+        case deliveryTimeTextField3:
+            ""
+        case deliveryTimeTextField4:
+            ""
+        case deliveryTimeTextField5:
+            ""
+        case deliveryTimeTextField6:
+            ""
+        case deliveryTimeTextField7:
+            ""
+        case deliveryTimeTextField8:
+            ""
+        case deliveryTimeTextField9:
+            ""
+        case deliveryTimeTextField10:
+            ""
         default:
-            <#code#>
+            ""
         }
     }
     

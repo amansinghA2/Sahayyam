@@ -126,7 +126,6 @@ extension CommonJsonMapper {
                             totalDetail.text = String(text)
                         }
                         
-                        
                         if let str = value.valueForKey("appliedPrice") {
                             totalDetail.appliedPrice = str as! String
                         }
@@ -438,6 +437,14 @@ extension CommonJsonMapper {
             productDetail.sales_order = sales_order as! String
         }
         
+        if let sales_order = result["suborder_id"] {
+            productDetail.suborder_id = sales_order as! String
+        }
+        
+        if let sales_order = result["suborder_status_id"] {
+            productDetail.suborder_status_id = sales_order as! String
+        }
+        
         if let date_added = result["date_added"] {
             productDetail.date_added = date_added as! String
         }
@@ -462,11 +469,22 @@ extension CommonJsonMapper {
                     productList.quantity = totalDetailTitle 
                 }
                 
+                let text2:AnyObject = value.valueForKey("order_status")!
+                if text2 is String {
+                    productList.order_status = text2 as! String
+                }else{
+                    productList.order_status = String(text2)
+                }
+                
                 let text:AnyObject = value.valueForKey("price")!
                 if text is String {
                     productList.price = text as! String
                 }else{
                     productList.price = String(text)
+                }
+                
+                if let totalDetailTitle = value.valueForKey("product_id") as? String{
+                    productList.productId = totalDetailTitle
                 }
                 
                 let text1:AnyObject = value.valueForKey("total")!
@@ -479,7 +497,23 @@ extension CommonJsonMapper {
               //productLists.append(productList)
                 productDetail.orderProducts.append(productList)
             }
-            
+        }
+        
+            if let arr = result["order_status"] as? NSArray {
+                for (_,value) in arr.enumerate(){
+                    let productList = OrderStatus()
+                    
+                    if let totalDetailTitle = value.valueForKey("name") as? String{
+                        productList.name = totalDetailTitle
+                    }
+                    
+                    if let totalDetailTitle = value.valueForKey("order_status_id") as? String{
+                        productList.orderStatusId = totalDetailTitle
+                    }
+                    
+                    //productLists.append(productList)
+                    productDetail.orderStatuses.append(productList)
+                } 
         }
         
         //        productDetail.orderProducts = productLists
@@ -645,6 +679,10 @@ extension CommonJsonMapper {
                 let categoryList = CategoryList()
                 if let categoryID = value.valueForKey("category_id"){
                     categoryList.category_id = categoryID as! String
+                }
+                
+                if let categoryID = value.valueForKey("service_name"){
+                    categoryList.serviceName = categoryID as! String
                 }
                 
                 if let categoryName = value.valueForKey("name"){

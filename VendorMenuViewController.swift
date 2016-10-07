@@ -59,12 +59,12 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! VendorMenuTableViewCell
         
         cell.listNames.text = self.listArray[indexPath.row] as? String
-        //cell.listImage.image = UIImage(named: [self.listImageArray[indexPath.row]])
+      //cell.listImage.image = UIImage(named: [self.listImageArray[indexPath.row]])
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        switch indexPath.row{
+        switch indexPath.row {
         case 0:
             self.cellClickNavigation("Vendor" , identifier: "VendorListID")
         case 1:
@@ -99,7 +99,6 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             self.revealViewController().setFrontViewController(nc, animated: false)
             self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
             self.revealViewController().revealToggleAnimated(true)
-            
         case 13:
             self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
         case 14:
@@ -113,12 +112,13 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         return 50
     }
     
-    
     func alertControllerToLogout() {
         
         let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            
+            self.showHud("Logging out please wait")
             let params = [
                 "token":token,
                 "device_id":"1234"
@@ -127,13 +127,13 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             ServerManager.sharedInstance().loginLogout(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     self.hideHud()
-//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorName")
-//                    NSUserDefaults.standardUserDefaults().removeObjectForKey("defaultvendorID")
-                        self.cellClickNavigation("Main" , identifier: "LoginVC")
-                }
+                    self.cellClickNavigation("Main" , identifier: "LoginVC")
+               }
             }
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+            self.hideHud()
+        }))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 

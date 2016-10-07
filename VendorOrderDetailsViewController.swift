@@ -15,6 +15,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
     var customerDetails = CustomerOrderDetails()
    // var orderDetailsList = CustomerOrderDetails()
     
+    @IBOutlet weak var orderStatusButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showHud("Loading...")
@@ -24,21 +25,22 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        self.showHud("Loading...")
         let params = [
         "order_id":vendorListData.order_id,
         "device_id":"1234",
         "token":token
         ]
-        
-        print(params)
-        
+
         ServerManager.sharedInstance().vendorOrderDetails(params) { (isSuccessful, error, result) in
             if isSuccessful {
-              self.customerDetails = result!
+                self.hideHud()
+               self.customerDetails = result!
                self.orderDetailsTableView.delegate = self
                self.orderDetailsTableView.dataSource = self
-                self.orderDetailsTableView.reloadData()
+               self.orderDetailsTableView.reloadData()
+            }else{
+                self.hideHud()
             }
         }
     }
@@ -84,6 +86,27 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier("orderDetailsIdentifier") as! DetailsOrderTableViewCell
             let orderProduct = self.customerDetails.orderProducts[indexPath.row]
+            
+            switch self.customerDetails.suborder_status_id {
+            case "7":
+                cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
+                cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+            default:
+                ""
+            }
+            
+            switch orderProduct.order_status {
+            case "7":
+                cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
+                cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+            default:
+                ""
+            }
+            
+            cell.cancelOrderLabel.tag = indexPath.row
+            cell.cancelOrderLabel.addTarget(self, action: #selector(VendorOrderDetailsViewController.cancelOrderAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             cell.vendorProducts = orderProduct
             return cell
         case 3:
@@ -112,6 +135,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         }
         return header
     }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 3:
@@ -121,31 +145,48 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         }
         return 44
     }
+
+    func cancelOrderAction(sender:UIButton) {
+        
+        let cell = sender.superview?.superview as! DetailsOrderTableViewCell
+        let indexPath = orderDetailsTableView.indexPathForCell(cell)
+        
+        self.showHud("Loading...")
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "order_id":self.customerDetails.order_id,
+        "product_id":self.customerDetails.orderProducts[indexPath!.row].productId
+        ]
+
+        ServerManager.sharedInstance().cancelOrder(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
+                cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+                self.hideHud()
+            }else{
+                self.hideHud()
+                AlertView.alertView("Alert", message: "Server Error", alertTitle: "OK", viewController: self)
+            }
+        }
+        
+      
+        
+    }
     
-    
-    //    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //        switch section {
-    //        case 2:
-    //            let footer = tableView.dequeueReusableCellWithIdentifier("orderDetailsFooter") as! OrderDetailsFotterTableViewCell
-    //
-    //            footer.orderdetailList = self.orderDetailsList
-    //
-    //            orderDetailsTableView.tableFooterView = footer
-    //             return footer
-    //        default:
-    //            print("No more footers")
-    //        }
-    //        return nil
-    //    }
-    
-    //    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //        switch section {
-    //        case 2:
-    //            return UITableViewAutomaticDimension
-    //        default:
-    //            return 0
-    //        }
-    //    }
+    @IBAction func orderStatusButtonAction(sender: AnyObject) {
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("orderStatusId") as! OrderStatusViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.customerDetails = self.customerDetails
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        
+       // self.performSegueWithIdentifier("orderStatusSegue", sender: nil)
+    }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension

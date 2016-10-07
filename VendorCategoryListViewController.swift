@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Dropper
 
-class VendorCategoryListViewController: UIViewController  , UITableViewDelegate , UITableViewDataSource {
+class VendorCategoryListViewController: UIViewController  , UITableViewDelegate , UITableViewDataSource , DropperDelegate{
 
+    let dropper = Dropper(width: 164, height: 100)
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var vendorCategoryTableview: UITableView!
+    
     var categoryLists = [CategoryList]()
+    var categoryList = CategoryList()
+    var serviceLists = [ServiceList]()
     var parentArray = [CategoryList]()
     var childArray = [CategoryList]()
     var subChildArray = [CategoryList]()
+    var subSubChildArray = [CategoryList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,9 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         tokenCheck()
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
         self.vendorCategoryTableview.registerNib(nib1, forCellReuseIdentifier: "categoryListIdentifier")
+        let nib2 = UINib(nibName: "VendorCategorySubListTableViewCell", bundle: nil)
+        self.vendorCategoryTableview.registerNib(nib2, forCellReuseIdentifier: "categorysubListIdentifier")
+        
         // Do any additional setup after loading the view.
     }
 
@@ -39,9 +48,11 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         "device_id":"1234"
         ]
         
-        ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result , result1) in
             self.hideHud()
             self.categoryLists = result!
+            self.serviceLists = result1!
+            
             self.parentArray = self.categoryLists.filter({
                 if $0.level == "0" {
                     return true
@@ -75,11 +86,18 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
             return false
         })
         
+        subSubChildArray = childArray.filter({
+            if $0.isglobel == "0" {
+                return true
+            }
+            return false
+        })
+        
         return subChildArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryListIdentifier") as! VendorCategoryListTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier") as! VendorCategorySubListTableViewCell
         
         subChildArray = childArray.filter({
             if (parentArray[indexPath.section].category_id == $0.parent_id) {
@@ -88,11 +106,14 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
             return false
         })
         
+        
+        cell.cellClickedButton.tag = indexPath.row
+        cell.cellClickedButton.addTarget(self, action: #selector(VendorCategoryListViewController.cellClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
         if subChildArray.count > 0 {
             let filterArr = subChildArray[indexPath.row]
             cell.productName?.text = filterArr.name
             cell.productName.textColor = UIColor.blueColor()
-            cell.imageLeftConstraint.constant = 20
         }
         
         return cell
@@ -108,6 +129,10 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         } else {
             print("No objects")
         }
+        
+        cell.cellClickedButton.tag = section
+        cell.cellClickedButton.addTarget(self, action: #selector(VendorCategoryListViewController.cellClicked1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
         return cell
     }
     
@@ -119,9 +144,49 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         return UITableViewAutomaticDimension
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
+    
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    
+    
+    
+    func cellClicked(sender:UIButton) {
+        
+        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
+        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
+        print(cell)
+        print(indexPath)
+
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
+        popOverVC.serviceLists = self.serviceLists
+        popOverVC.categoryList = self.categoryLists[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+    }
+    
+    func cellClicked1(sender:UIButton) {
+        let section = sender.tag
+        let cell = sender.superview?.superview as! VendorCategoryListTableViewCell
+        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
+        print(cell)
+        print(indexPath)
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
+        popOverVC.serviceLists = self.serviceLists
+        popOverVC.categoryList = self.categoryLists[section]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+    }
+    
     
     /*
     // MARK: - Navigation
@@ -132,5 +197,49 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        var sectionItems = self.sections[Int(indexPath.section)]
+//        var sectionHeaders = self.sectionHeaders[Int(indexPath.section)]
+//        var itemAndSubsectionIndex = self.computeItemAndSubsectionIndex(for: indexPath)
+//        var subsectionIndex = Int(itemAndSubsectionIndex.section)
+//        var itemIndex = itemAndSubsectionIndex.row
+//        if itemIndex < 0 {
+//            // Section header
+//            var cell = tableView.dequeueReusableCell(withIdentifier: "SECTION_HEADER_CELL", forIndexPath: indexPath)
+//            cell.textLabel!.text! = sectionHeaders[subsectionIndex]
+//            return cell
+//        }
+//        else {
+//            // Row Item
+//            var cell = tableView.dequeueReusableCell(withIdentifier: "ROW_CONTENT_CELL", forIndexPath: indexPath)
+//            cell.textLabel!.text! = sectionItems[subsectionIndex][itemIndex]
+//            return cell
+//        }
+//    }
+//    
+//   
+//        
+//        func computeItemAndSubsectionIndex(for indexPath: NSIndexPath) -> NSIndexPath {
+//            var sectionItems = self.subChildArray[Int(indexPath.section)]
+//            var itemIndex = indexPath.row
+//            var subsectionIndex = 0
+//            for i in 0..<subChildArray.count {
+//                // First row for each section item is header
+//                itemIndex -= 1
+//                // Check if the item index is within this subsection's items
+//                var subsectionItems = subChildArray[i]
+//                if itemIndex < Int(subsu.count) {
+//                    subsectionIndex = i
+//                }
+//                else {
+//                    itemIndex -= subsectionItems.count
+//                }
+//            }
+//            return NSIndexPath(forRow: itemIndex, inSection: subsectionIndex)
+//        }
+    
+
 
 }

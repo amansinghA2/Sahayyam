@@ -135,6 +135,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         ]
         
         print(customerProductsParams)
+        
         ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result , result1) in
             if isSuccessful{
                 self.hideHud()
@@ -298,11 +299,12 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             
             if (self.searchBarActive) {
                     getProductList = self.dataSourceForSearchResult[indexPath.row]
-
                 cell.getProductCollectionLists = getProductList
             }else{
-                getProductList = self.getProductCollectionListAdd[indexPath.row]
-                cell.getProductCollectionLists = getProductList
+                if self.getProductCollectionListAdd.count > 0 {
+                  getProductList = self.getProductCollectionListAdd[indexPath.row]
+                   cell.getProductCollectionLists = self.getProductList
+                }
             }
             
             //        cell.contentView.frame = cell.bounds;
@@ -561,6 +563,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             tableView.removeFromSuperview()
             tableView.hidden = true
         }
+        
+       
            if Reachability.isConnectedToNetwork(){
         let alertController = UIAlertController(title: "Items", message: "Quantity to be added to cart", preferredStyle: .Alert)
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (_) in
@@ -568,6 +572,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         if let field = alertController.textFields![0] as? UITextField {
             if field.text?.isBlank == false{
                 if field.text?.isPhoneNumber == true {
+                self.showHud("Loading...")
                 let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
                let indexPath = self.collectionView.indexPathForCell(cell)!
             self.getProductList = self.getProductCollectionListAdd[indexPath.row]
@@ -583,17 +588,20 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                     ServerManager.sharedInstance().customerAddToCart(params) { (isSuccessful, error, result) in
                         
                         if isSuccessful{
-                   self.toastViewForTextfield("Successfully added to cart")
+                            self.hideHud()
+                        self.toastViewForTextfield("Successfully added to cart")
                         }
-//                        }else{
-//                            AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
-//                            self.hideHud()
-//                        }
+                        else{
+                            AlertView.alertViewWithPopup("Alert", message: "Error Login", alertTitle: "OK", viewController: self)
+                            self.hideHud()
+                        }
                         }
             }else{
+                    self.hideHud()
                 self.toastViewForTextfield("Not a valid number to enter")
             }
             }else{
+                self.hideHud()
                 self.toastViewForTextfield("Cannot be left blank")
             }
           }
@@ -623,7 +631,7 @@ else{
             tableView.removeFromSuperview()
             tableView.hidden = true
         }
-    
+        
         let cell = sender.superview!.superview!.superview as! CustomerMenuItemsCollectionViewCell
         let indexPath = self.collectionView.indexPathForCell(cell)!
         
@@ -786,14 +794,13 @@ else{
         
     }
     
-    
-  
-    
     func alertControllerToLogout() {
+        
         
         let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            self.showHud("Logging out Please wait")
             let params = [
                 "token":token,
                 "device_id":"1234"
@@ -803,11 +810,15 @@ else{
                 if isSuccessful {
                     self.hideHud()
                     self.performSegueWithIdentifier("loginSegue", sender: nil)
+                }else{
+                    self.hideHud()
                 }
             }
         }))
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+            self.hideHud()
+        }))
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }

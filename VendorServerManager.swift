@@ -15,7 +15,7 @@ import AFNetworking
 extension ServerManager {
     
  
-    func vendorsCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CategoryList]?) -> Void) {
+    func vendorsCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CategoryList]? , result1:[ServiceList]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -29,19 +29,20 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
+                            let arr1 = VendorJSONMapper.getServiceList(dict as! [String : AnyObject])
                             print(arr)
-                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:arr1)
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
                         }
                     case .Failure(let error):
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1:nil)
                     }
                 }
         }
     }
     
-    func getCustomerList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerList]?) -> Void) {
+    func getCustomerList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerList]? , dict:[String:AnyObject]? ) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -55,13 +56,13 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let detail = VendorJSONMapper.getCustomerListMapper(dict as! [String : AnyObject])
-                            completionClosure(isSuccessful: true, error: nil, result:detail)
+                            completionClosure(isSuccessful: true, error: nil, result:detail , dict:dict as? [String : AnyObject])
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , dict:nil)
                         }
                     case .Failure(let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , dict:nil)
                     }
                 }
         }
@@ -135,6 +136,7 @@ extension ServerManager {
                     case .Success:
                         if let data = response.result.value {
                             let dict = JSON(data: data)
+                            print(dict)
                             let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
@@ -345,7 +347,6 @@ extension ServerManager {
         ]
     
         defaultManager.request(.POST, globalAddProductUrl , parameters: params , encoding: .URL, headers: headers)
-            .validate()
             .responseData { response in
                 if let _ = response.response {
                     switch response.result {
@@ -366,9 +367,7 @@ extension ServerManager {
     }
 
     func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
-
-
-
+        
         // token, device_id, manufacturer_id, manufacturer, product_category[], product_id, product_description[1][name], product_description[1][description], image, price, product_special[0][price], weight_class_id, weight, quantity, subtract, "status, product_description[1][meta_title], "model, service_id, product_special[0][customer_group_id], product_special[0][date_start], product_special[0][date_end], product_special[0][priority], ref_code
         
         let headers = [
@@ -453,7 +452,6 @@ extension ServerManager {
                 }
         }
     }
-    
     
     func vendorOrderDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: CustomerOrderDetails?) -> Void) {
         
@@ -560,5 +558,138 @@ extension ServerManager {
                 }
         }
     }
+    
+    
+    func cancelOrder(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, cancelLIneOrder , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func blockunblockCustomers(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, blockSalesExecutiveUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func blockMyProductsImage(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, blockMyProductsImageUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func overallOrderStatusChange(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, changeOrderStatusUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorStoreProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, storeProfileUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+
+    
     
 }

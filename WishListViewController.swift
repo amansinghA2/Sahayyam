@@ -167,9 +167,7 @@ else{
                 "device_id":"1234",
                 "remove":self.wislistList[(indexPath?.row)!].product_id
             ]
-            
-            print(params)
-            
+
             ServerManager.sharedInstance().customerRemovefromWishlist(params) { (isSuccessful, error, result) in
                 if isSuccessful{
                  
@@ -178,12 +176,10 @@ else{
             
             self.wislistList.removeAtIndex((indexPath?.row)!)
             self.wishListTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            
             self.wishListTableView.reloadData()
+            
             if self.wislistList.count == 0 {
-              
                 self.wishListTableView.reloadData()
-
             }
             
         }))

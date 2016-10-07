@@ -13,6 +13,10 @@ class CustomerListTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var customerListButtonlabel: UIButton!
+    
+    
+    @IBOutlet weak var blockUnblockButton: UIButton!
+    
     var customerList:CustomerList!{
         didSet{
             bindMOdelToViews()
@@ -37,6 +41,10 @@ class CustomerListTableViewCell: UITableViewCell {
     }
     
 
+    @IBAction func blockunblockButton(sender: AnyObject) {
+        
+        
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

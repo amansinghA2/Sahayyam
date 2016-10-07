@@ -72,7 +72,7 @@ class AddProductViewController: UIViewController {
         "status":"0",
         "service_id":getproductCollectionList.service_id
         ]
-
+        
         ServerManager.sharedInstance().globalProductAdd(params) { (isSuccessful, error, result) in
             if isSuccessful{
                 
@@ -103,6 +103,7 @@ class AddProductViewController: UIViewController {
                 }
         });
     }
+    
     /*
     // MARK: - Navigation
 

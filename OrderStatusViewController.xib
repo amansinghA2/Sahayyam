@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSevicesViewController" customModule="Sahayyam" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderStatusViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="selectServicesTableView" destination="W8n-i0-bvu" id="DJD-wW-3iJ"/>
+                <outlet property="orderStatusTableView" destination="NeW-ka-fW6" id="lzC-36-Pte"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,22 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W8n-i0-bvu">
-                    <rect key="frame" x="51" y="139" width="219" height="290"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NeW-ka-fW6">
+                    <rect key="frame" x="90" y="168" width="141" height="232"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="290" id="Eu3-Ky-A5B"/>
-                        <constraint firstAttribute="width" constant="219" id="cBC-8j-ZUG"/>
-                    </constraints>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6V6-BS-CTH"/>
-                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gDS-VU-aLK"/>
+                <constraint firstItem="NeW-ka-fW6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="168" id="Bor-fb-wvT"/>
+                <constraint firstItem="NeW-ka-fW6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="90" id="Hp6-48-Fc6"/>
+                <constraint firstAttribute="bottom" secondItem="NeW-ka-fW6" secondAttribute="bottom" constant="168" id="OHp-j2-eyK"/>
+                <constraint firstAttribute="trailing" secondItem="NeW-ka-fW6" secondAttribute="trailing" constant="89" id="aby-7Z-gg1"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="212" y="184"/>
+            <point key="canvasLocation" x="-91" y="188"/>
         </view>
     </objects>
 </document>

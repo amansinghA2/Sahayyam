@@ -18,6 +18,9 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var nameDropDown: UIButton!
     @IBOutlet weak var categoryDropDown: UIButton!
+    @IBOutlet weak var unitTypeButton: UIButton!
+    @IBOutlet weak var substractStockButton: UIButton!
+    @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var serviceLabel: UITextField!
     @IBOutlet weak var categoryLabel: UITextField!
     @IBOutlet weak var nameLabel: UITextField!
@@ -156,29 +159,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
       }
     }
 
-    @IBAction func categoryAction(sender: AnyObject) {
+    @IBAction func serviceAction(sender: AnyObject) {
 
         if dropper.status == .Hidden {
             dropper.tag = 1
-            dropper.items = ["Larger, Longer, Item 1", "Item 2", "Item 3", "Item 4"]
+            dropper.items = [""]
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
-            dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: categoryDropDown)
-        } else {
-            dropper.hideWithAnimation(0.1)
-        }
-
-    }
-    
-    @IBAction func nameButton(sender: AnyObject) {
-
-        if dropper.status == .Hidden {
-            dropper.tag = 2
-            dropper.items = ["Larger, Longer, Item 1", "Item 2", "Item 3", "Item 4"]
-            dropper.theme = Dropper.Themes.White
-            dropper.delegate = self
-            dropper.spacing = 0
             dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: nameDropDown)
         } else {
@@ -186,27 +173,89 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
 
     }
+    
+    @IBAction func categoryAction(sender: AnyObject) {
+
+        if dropper.status == .Hidden {
+            dropper.tag = 2
+            dropper.items = [""]
+            dropper.theme = Dropper.Themes.White
+            dropper.delegate = self
+            dropper.spacing = 0
+            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options:Dropper.Alignment.Center, button:categoryDropDown)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+
+    }
+    
+    @IBAction func unitTypeAction(sender: AnyObject) {
+        
+        if dropper.status == .Hidden {
+            dropper.tag = 3
+            dropper.items = ["Gram", "Milliliter", "Liter", "Kilogram", "Packets", "Pieces" , "Set" , "Quire"]
+            dropper.theme = Dropper.Themes.White
+            dropper.delegate = self
+            dropper.spacing = 0
+            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitTypeButton)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+        
+    }
+    
+    @IBAction func substractStockAction(sender: AnyObject) {
+        
+        if dropper.status == .Hidden {
+            dropper.tag = 4
+            dropper.items = ["Yes" , "No"]
+            dropper.theme = Dropper.Themes.White
+            dropper.delegate = self
+            dropper.spacing = 0
+            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: substractStockButton)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+        
+    }
+    
+    @IBAction func statusAction(sender: AnyObject) {
+        
+        if dropper.status == .Hidden {
+            dropper.tag = 5
+            dropper.items = ["Enabled" , "Disabled"]
+            dropper.theme = Dropper.Themes.White
+            dropper.delegate = self
+            dropper.spacing = 0
+            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: statusButton)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+        
+    }
 
     func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
         switch tag {
         case 1:
-            categoryLabel.text = "\(contents)"
+            serviceLabel.text = "\(contents)"
         case 2:
-            nameLabel.text = "\(contents)"
+            categoryLabel.text = "\(contents)"
+        case 3:
+            unitTypeLabel.text = "\(contents)"
+        case 4:
+            substractStockLabel.text = "\(contents)"
+        case 5:
+            statusLabel.text = "\(contents)"
         default:
             nameLabel.text = "\(contents)"
         }
     }
-
-
-
-
-
-
-//LInk - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial
-
-
-
+    
+//  Link - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial
 
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -227,6 +276,5 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 //            self.view.backgroundColor = UIColor.blueColor()
 //        }
 //    }
-
 
 }

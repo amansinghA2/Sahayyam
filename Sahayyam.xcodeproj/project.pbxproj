@@ -151,6 +151,11 @@
 		AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */; };
 		AFA2A52E1D50CF63006F1D41 /* VendorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */; };
 		AFA2A5301D50D2A9006F1D41 /* CustomerLoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52F1D50D2A9006F1D41 /* CustomerLoginData.swift */; };
+		AFA6C19B1DA61954008E0A01 /* ServiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA6C19A1DA61954008E0A01 /* ServiceList.swift */; };
+		AFA6C19E1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA6C19C1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift */; };
+		AFA6C19F1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA6C19D1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib */; };
+		AFA6C1A21DA66E06008E0A01 /* OrderStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA6C1A01DA66E06008E0A01 /* OrderStatusViewController.swift */; };
+		AFA6C1A31DA66E06008E0A01 /* OrderStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA6C1A11DA66E06008E0A01 /* OrderStatusViewController.xib */; };
 		AFADBEA91D9BA5D800A3F0F1 /* UnderConstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFADBEA71D9BA5D800A3F0F1 /* UnderConstructionViewController.swift */; };
 		AFADBEAA1D9BA5D800A3F0F1 /* UnderConstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFADBEA81D9BA5D800A3F0F1 /* UnderConstructionViewController.xib */; };
 		AFB653791D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB653771D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift */; };
@@ -228,6 +233,9 @@
 		AFEB25661D507446006B52C5 /* CHMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */; };
 		AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */; };
 		AFF1A40B1D63529E00B819C5 /* OrderProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */; };
+		AFFBDC3E1DA768B9006DDA28 /* OrderStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDC3C1DA768B9006DDA28 /* OrderStatusTableViewCell.swift */; };
+		AFFBDC3F1DA768B9006DDA28 /* OrderStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFBDC3D1DA768B9006DDA28 /* OrderStatusTableViewCell.xib */; };
+		AFFBDC411DA76AB7006DDA28 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */; };
 		AFFC5A921D8BB6610039CBD5 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC5A901D8BB6610039CBD5 /* AddProductViewController.swift */; };
 		AFFC5A931D8BB6610039CBD5 /* AddProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFFC5A911D8BB6610039CBD5 /* AddProductViewController.xib */; };
 		AFFC5A961D8BCB210039CBD5 /* CustomerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC5A941D8BCB210039CBD5 /* CustomerRegistrationViewController.swift */; };
@@ -421,6 +429,11 @@
 		AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCategory.swift; sourceTree = "<group>"; };
 		AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorsList.swift; sourceTree = "<group>"; };
 		AFA2A52F1D50D2A9006F1D41 /* CustomerLoginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLoginData.swift; sourceTree = "<group>"; };
+		AFA6C19A1DA61954008E0A01 /* ServiceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceList.swift; sourceTree = "<group>"; };
+		AFA6C19C1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorCategorySubListTableViewCell.swift; sourceTree = "<group>"; };
+		AFA6C19D1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorCategorySubListTableViewCell.xib; sourceTree = "<group>"; };
+		AFA6C1A01DA66E06008E0A01 /* OrderStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStatusViewController.swift; sourceTree = "<group>"; };
+		AFA6C1A11DA66E06008E0A01 /* OrderStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatusViewController.xib; sourceTree = "<group>"; };
 		AFADBEA71D9BA5D800A3F0F1 /* UnderConstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderConstructionViewController.swift; sourceTree = "<group>"; };
 		AFADBEA81D9BA5D800A3F0F1 /* UnderConstructionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnderConstructionViewController.xib; sourceTree = "<group>"; };
 		AFB653771D6AE6E9003D242C /* DeliveryTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -498,6 +511,9 @@
 		AFEB25641D507446006B52C5 /* CHMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHMainMenuViewController.swift; sourceTree = "<group>"; };
 		AFEB25651D507446006B52C5 /* CHMainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CHMainMenuViewController.xib; sourceTree = "<group>"; };
 		AFF1A40A1D63529E00B819C5 /* OrderProductList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductList.swift; sourceTree = "<group>"; };
+		AFFBDC3C1DA768B9006DDA28 /* OrderStatusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStatusTableViewCell.swift; sourceTree = "<group>"; };
+		AFFBDC3D1DA768B9006DDA28 /* OrderStatusTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatusTableViewCell.xib; sourceTree = "<group>"; };
+		AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		AFFC5A901D8BB6610039CBD5 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		AFFC5A911D8BB6610039CBD5 /* AddProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProductViewController.xib; sourceTree = "<group>"; };
 		AFFC5A941D8BCB210039CBD5 /* CustomerRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -754,6 +770,8 @@
 				AFCD86661D895AE000F10ABB /* VendorService.swift */,
 				0714D1731D8D4B9500CE928F /* VendorPromotionList.swift */,
 				AF652C8B1D8FFA6A009852A3 /* SellerData.swift */,
+				AFA6C19A1DA61954008E0A01 /* ServiceList.swift */,
+				AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -900,6 +918,10 @@
 				AF6D18D11D8670FE00F220FE /* VendorListViewController.xib */,
 				AF6D18D91D86910400F220FE /* VendorOrderDetailsViewController.swift */,
 				AF6D18DA1D86910400F220FE /* VendorOrderDetailsViewController.xib */,
+				AFA6C1A01DA66E06008E0A01 /* OrderStatusViewController.swift */,
+				AFA6C1A11DA66E06008E0A01 /* OrderStatusViewController.xib */,
+				AFFBDC3C1DA768B9006DDA28 /* OrderStatusTableViewCell.swift */,
+				AFFBDC3D1DA768B9006DDA28 /* OrderStatusTableViewCell.xib */,
 				AF6D18D51D86901500F220FE /* DetailsOrderTableViewCell.swift */,
 				AF6D18D61D86901500F220FE /* DetailsOrderTableViewCell.xib */,
 				AF6D18DD1D86A10D00F220FE /* VndornewProductAddViewController.swift */,
@@ -920,6 +942,8 @@
 				AFD3F1AF1D9D106A0024014B /* VendorCategorySubViewController.xib */,
 				AF5438BD1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.swift */,
 				AF5438BE1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib */,
+				AFA6C19C1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift */,
+				AFA6C19D1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib */,
 				AF5438C71D87EED500CDCCD9 /* SubscriptionDetailsViewController.swift */,
 				AF5438C81D87EED500CDCCD9 /* SubscriptionDetailsViewController.xib */,
 				AF5438CB1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift */,
@@ -1168,6 +1192,7 @@
 				AF6327EF1D954F7D0030F1C5 /* CityHeadProfileViewController.xib in Resources */,
 				AFBF9CB91D589C06007E17C3 /* CartListStaticTableViewCell.xib in Resources */,
 				AF5438B01D87BB4300CDCCD9 /* PaymentDetailsTableViewCell.xib in Resources */,
+				AFA6C1A31DA66E06008E0A01 /* OrderStatusViewController.xib in Resources */,
 				AFBC27451D54A558003ECBF6 /* AboutUsViewController.xib in Resources */,
 				07F442741D621E5D00733E91 /* CustomerDetailsTableViewCell.xib in Resources */,
 				AF6D18E41D86D07300F220FE /* VendorPromotionsViewController.xib in Resources */,
@@ -1192,6 +1217,7 @@
 				AF1F1FB31D4A122F00E36DB0 /* VendorMenuViewController.xib in Resources */,
 				AF6D18CF1D8666C600F220FE /* CustomerListViewController.xib in Resources */,
 				AF1F1FA91D4A106C00E36DB0 /* Customer.storyboard in Resources */,
+				AFA6C19F1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib in Resources */,
 				AF4E78C41D5085D900E2FB20 /* TrackOrderTableViewCell.xib in Resources */,
 				AF6D18EC1D86D44F00F220FE /* PromotionTypeViewController.xib in Resources */,
 				AFBC274F1D54B3CA003ECBF6 /* WishListViewController.xib in Resources */,
@@ -1228,6 +1254,7 @@
 				AF1F1FAB1D4A107600E36DB0 /* CityHead.storyboard in Resources */,
 				AF6327FB1D955CA20030F1C5 /* SubsPaymentViewController.xib in Resources */,
 				AF4E78C01D50857300E2FB20 /* TrackOrderViewController.xib in Resources */,
+				AFFBDC3F1DA768B9006DDA28 /* OrderStatusTableViewCell.xib in Resources */,
 				AF1F1FBC1D4A1D6200E36DB0 /* MenuTableViewCell.xib in Resources */,
 				AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */,
 				AF6710EA1D9A271500AEB294 /* SubsPaymentInfoViewController.xib in Resources */,
@@ -1391,6 +1418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB6A1F81D5DF05700A9731B /* OrderDetailHeaderTableViewCell.swift in Sources */,
+				AFA6C19B1DA61954008E0A01 /* ServiceList.swift in Sources */,
 				AF4E78C31D5085D900E2FB20 /* TrackOrderTableViewCell.swift in Sources */,
 				AF5438D21D88193D00CDCCD9 /* VendorPayment.swift in Sources */,
 				AF5CB11E1D98EA6C007C0261 /* SubsPaymentTableViewCell.swift in Sources */,
@@ -1432,6 +1460,7 @@
 				AFCFCCBD1D55C2C200983327 /* ProductCollectionList.swift in Sources */,
 				AF6A881F1D532C5D00986ECC /* VendorDeliverTiming.swift in Sources */,
 				AF6327D21D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift in Sources */,
+				AFFBDC3E1DA768B9006DDA28 /* OrderStatusTableViewCell.swift in Sources */,
 				AFCD866A1D896CCE00F10ABB /* ProductDetailsViewController.swift in Sources */,
 				AFD6F4761D92674800CBD0ED /* DisplayPromotionDetails.swift in Sources */,
 				AFB6A1ED1D5DC5C200A9731B /* ProductDetails.swift in Sources */,
@@ -1456,6 +1485,7 @@
 				AF6327F61D9559A30030F1C5 /* AddVendorViewController.swift in Sources */,
 				070C14B81D943A27007AD580 /* Double.swift in Sources */,
 				AF5438CD1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift in Sources */,
+				AFFBDC411DA76AB7006DDA28 /* OrderStatus.swift in Sources */,
 				AFBC274B1D54B179003ECBF6 /* RoundedView.swift in Sources */,
 				AF6D18E71D86D0AD00F220FE /* VendorPromotionTableViewCell.swift in Sources */,
 				AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */,
@@ -1464,6 +1494,7 @@
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,
+				AFA6C1A21DA66E06008E0A01 /* OrderStatusViewController.swift in Sources */,
 				AF6D18CE1D8666C600F220FE /* CustomerListViewController.swift in Sources */,
 				AF5438AF1D87BB4300CDCCD9 /* PaymentDetailsTableViewCell.swift in Sources */,
 				AF6D18DF1D86A10D00F220FE /* VndornewProductAddViewController.swift in Sources */,
@@ -1516,6 +1547,7 @@
 				AFBF2D371D5CA685007A8655 /* CustomerOrderDetails.swift in Sources */,
 				AFBF9CB41D58996B007E17C3 /* CartListTableViewCell.swift in Sources */,
 				AFB6A1FC1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.swift in Sources */,
+				AFA6C19E1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift in Sources */,
 				AF6D18D21D8670FE00F220FE /* VendorListViewController.swift in Sources */,
 				AF6327D61D9533E30030F1C5 /* VendorCityHeadViewController.swift in Sources */,
 				AF6327EA1D953D2F0030F1C5 /* CityHeadCPViewController.swift in Sources */,
@@ -1598,7 +1630,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Upadhyay (PUV3KCN469)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1621,7 +1653,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
+				PROVISIONING_PROFILE = "c227a62c-7c63-4c09-b21e-2be7bdc6e500";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1646,7 +1678,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Upadhyay (PUV3KCN469)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1662,7 +1694,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
+				PROVISIONING_PROFILE = "c227a62c-7c63-4c09-b21e-2be7bdc6e500";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1675,7 +1707,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Upadhyay (PUV3KCN469)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1687,7 +1719,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
+				PROVISIONING_PROFILE = "c227a62c-7c63-4c09-b21e-2be7bdc6e500";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1699,7 +1731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Upadhyay (PUV3KCN469)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1711,7 +1743,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.g4kIndia.Sahayam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66be8858-87a2-468c-ad4d-ddd4c8ecceeb";
+				PROVISIONING_PROFILE = "c227a62c-7c63-4c09-b21e-2be7bdc6e500";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sahayyam-Bridging-Header.h";
 			};
 			name = Release;

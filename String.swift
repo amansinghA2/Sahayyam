@@ -15,11 +15,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-// let BASE_URL = "http://192.168.1.2/sahayyam/"
-// let image_base_url = "http://192.168.1.2/sahayyam/image/"
+let BASE_URL = "http://192.168.1.2/sahayyam/"
+let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
     // MARK: - Common Url
 
@@ -54,6 +54,8 @@ let customerGetWishlistUrl = BASE_URL+"index.php?route=api/wishlist/products"
 let customerAddToWishlist = BASE_URL+"index.php?route=api/wishlist/add"
 let customerRemoveFromWishListUrl = BASE_URL+"index.php?route=api/wishlist/remove"
 let customerUpdateProfilePopulateUrl = BASE_URL+"index.php?route=api/customer/getInfo"
+let storeProfileUrl = BASE_URL+"index.php?route=api/storeProfile"
+
 
     // MARK:- Vendors Url
 
@@ -78,7 +80,10 @@ let globalAddProductUrl = BASE_URL+"index.php?route=api/vendor/ajaxSave"
 let sellerInfoUrl = BASE_URL+"index.php?route=api/vendor/jxSaveSellerInfo"
 let sellerPopulateUrl = BASE_URL+"index.php?route=api/customer/getDataSeller"
 let vendorAboutusUrl = BASE_URL + "index.php?route=api/contactus"
-
+let cancelLIneOrder = BASE_URL + "index.php?route=api/vendorOrder/cancelLineOrder"
+let blockSalesExecutiveUrl = BASE_URL + "index.php?route=api/vendor/customerGrant"
+let blockMyProductsImageUrl = BASE_URL + "index.php?route=api/vendor/noImage"
+let changeOrderStatusUrl = BASE_URL + "index.php?route=api/vendorOrder/changeOrderStatus"
 
 // CityHead URl
 

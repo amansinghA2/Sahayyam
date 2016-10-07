@@ -15,6 +15,9 @@ class CustomerList: NSObject {
     dynamic var emailId = String()
     dynamic var registerDate = String()
     dynamic var address = String()
+    dynamic var grant = String()
+    dynamic var customerId = String()
+    dynamic var blockCustomerImage = String()
     dynamic var collapsed = true
     
 }

@@ -23,22 +23,34 @@ class VendorJSONMapper: NSObject {
                 if let name = value.valueForKey("name") as? String{
                     customerList.name = name
                 }
+                
                 if let telephone = value.valueForKey("telephone") as? String{
                     customerList.mobileNumber = telephone
                 }
                 if let email = value.valueForKey("email") as? String{
                     customerList.emailId = email
                 }
+                
                 if let reg_date = value.valueForKey("reg_date") as? String{
                     customerList.registerDate = reg_date
                 }
+                
                 if let address_1 = value.valueForKey("address_1") as? String{
                     customerList.address = address_1
+                }
+                
+                if let address_1 = value.valueForKey("grant") as? String{
+                    customerList.grant = address_1
+                }
+                
+                if let address_1 = value.valueForKey("customer_id") as? String{
+                    customerList.customerId = address_1
                 }
                 customerLists.append(customerList)
             }
             
         }
+        print(customerLists)
         return customerLists
     }
     
@@ -264,6 +276,31 @@ class VendorJSONMapper: NSObject {
         }
         return customerList
     }
+    
+    
+    
+    class func  getServiceList(result:[String:AnyObject]) -> [ServiceList]  {
+        var serviceLists = [ServiceList]()
+      
+        
+        if let customers = result["service"] as? NSArray{
+            for (_,value) in customers.enumerate(){
+                let customerList = ServiceList()
+                
+                if let subscription = value.valueForKey("id") as? String{
+                    customerList.id = subscription
+                }
+                
+                if let customer = value.valueForKey("name") as? String{
+                    customerList.name = customer
+                }
+                serviceLists.append(customerList)
+            }
+        }
+        return serviceLists
+    }
+
+    
     
     
 }

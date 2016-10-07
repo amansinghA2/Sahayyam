@@ -14,6 +14,11 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     @IBOutlet weak var customerListTableView: UITableView!
     var customerListArray = [CustomerList]()
     var customreList = CustomerList()
+    var isActive = false
+    var balanceCredit = 5
+    
+    @IBOutlet weak var balanceCreditLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
@@ -33,17 +38,18 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         "token":token ,
         "device_id":"1234"
         ]
-       
-        print(params)
-        
-        ServerManager.sharedInstance().getCustomerList(params) { (isSuccessful, error, result) in
+
+        ServerManager.sharedInstance().getCustomerList(params) { (isSuccessful, error, result , dict) in
             if isSuccessful{
                 self.hideHud()
               self.customerListArray = result!
+                if let address_1 = dict!["balance_credit"] as? Int {
+                    self.balanceCredit = Int(address_1)
+                }
                 self.customerListTableView.delegate = self
                 self.customerListTableView.dataSource = self
                 self.customerListTableView.reloadData()
-                print("IsSuccess")
+                self.balanceCreditLabel.text = "BALANCE CREDIT : " + String(self.balanceCredit)
             }else{
                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self) 
             }
@@ -69,17 +75,27 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCellWithIdentifier("customerLIstCell") as! CustomerListTableViewCell
-        
         header.customerListButtonlabel.tag = section
         header.customerList = customerListArray[section]
+        
+        header.blockUnblockButton.tag = section
+        
+        if customerListArray[section].grant == "0" {
+            header.blockUnblockButton.setBackgroundImage(UIImage(named: "v_ic_blocked_user"), forState: .Normal)
+        }else{
+             header.blockUnblockButton.setBackgroundImage(UIImage(named: "v_ic_active_user"), forState: .Normal)
+        }
+        
+        header.blockUnblockButton.addTarget(self, action: #selector(CustomerListViewController.blockUnblockButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+
         header.customerListButtonlabel.addTarget(self, action: #selector(MenuViewController.toggleCollapse), forControlEvents: .TouchUpInside)
-       // self.customerListTableView.tableHeaderView = header
+        //self.customerListTableView.tableHeaderView = header
         return header.contentView
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:CustomerListDetailTableViewCell = tableView.dequeueReusableCellWithIdentifier("customerListDetailcell") as! CustomerListDetailTableViewCell
-    
+        
         cell.customerList = customreList
         
         return cell
@@ -109,7 +125,6 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         return 44
     }
     
-    
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
         
         if position == FrontViewPosition.Left{
@@ -125,6 +140,103 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         }else{
             self.view.userInteractionEnabled = false
         }
+    }
+    
+    func blockUnblockButton(sender:UIButton){
+        let section = sender.tag
+        
+        customreList = customerListArray[section]
+        
+        if self.balanceCredit == 0 {
+            if customreList.grant == "0" {
+                toastViewForTextfield("You do not have any running subscription")
+            }else{
+                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to block this customer", preferredStyle: .Alert)
+                
+                alertController.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (action) in
+                    let params = [
+                        "token":token,
+                        "device_id":"1234",
+                        "cId":self.customreList.customerId,
+                        "status":"0"
+                    ]
+                    
+                    ServerManager.sharedInstance().blockunblockCustomers(params) { (isSuccessful, error, result) in
+                        if isSuccessful{
+                            sender.setBackgroundImage(UIImage(named: "v_ic_blocked_user"), forState: .Normal)
+                        }else{
+                           AlertView.alertView("Alert", message: "Server Error", alertTitle: "OK", viewController: self)
+                        }
+                    }
+                }))
+                
+                alertController.addAction(UIAlertAction(title: "NO", style: .Default, handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+
+        }else{
+            if customreList.grant == "0" {
+                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to accept this customer", preferredStyle: .Alert)
+                
+                alertController.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (action) in
+                    let params = [
+                        "token":token,
+                        "device_id":"1234",
+                        "cId":self.customreList.customerId,
+                        "status":"1"
+                    ]
+                    
+                    ServerManager.sharedInstance().blockunblockCustomers(params) { (isSuccessful, error, result) in
+                        if isSuccessful{
+                            sender.setBackgroundImage(UIImage(named: "v_ic_active_user"), forState: .Normal)
+                        }else{
+                        AlertView.alertView("Alert", message: "Server Error", alertTitle: "OK", viewController: self)
+                        }
+                    }
+                }))
+                
+                alertController.addAction(UIAlertAction(title: "NO", style: .Default, handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }else{
+                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to block this customer", preferredStyle: .Alert)
+                
+                alertController.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (action) in
+                    let params = [
+                        "token":token,
+                        "device_id":"1234",
+                        "cId":self.customreList.customerId,
+                        "status":"0"
+                    ]
+                    
+                    ServerManager.sharedInstance().blockunblockCustomers(params) { (isSuccessful, error, result) in
+                        if isSuccessful{
+                            sender.setBackgroundImage(UIImage(named: "v_ic_blocked_user"), forState: .Normal)
+                        }else{
+                           AlertView.alertView("Alert", message: "Server Error ", alertTitle: "OK", viewController: self)
+                        }
+                     }
+                }))
+                
+                alertController.addAction(UIAlertAction(title: "NO", style: .Default, handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+            }
+
+        }
+        
+        
+//        isActive = !isActive
+//        
+//        if isActive {
+//       
+//        }else{
+//            
+//        }
+        
+        
+        
     }
     
     /*

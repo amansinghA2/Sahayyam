@@ -1,19 +1,18 @@
 //
-//  VendorCategoryListTableViewCell.swift
+//  VendorCategorySubListTableViewCell.swift
 //  Sahayyam
 //
-//  Created by Sanjeev Jikamade on 13/09/16.
+//  Created by Sanjeev Jikamade on 06/10/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
 //
 
 import UIKit
 
-class VendorCategoryListTableViewCell: UITableViewCell {
+class VendorCategorySubListTableViewCell: UITableViewCell {
+
     
     @IBOutlet weak var cellClickedButton: UIButton!
     @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var imageLeftConstraint: NSLayoutConstraint!
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

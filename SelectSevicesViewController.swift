@@ -89,7 +89,6 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
                 self.removeAnimate()
             }
         }
-        
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

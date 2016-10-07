@@ -34,6 +34,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil , result1: nil)
                         }
                     case .Failure(let error):
+                        
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1: nil)
                     }
                 }
@@ -421,8 +422,8 @@ extension ServerManager {
                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
+            }
         }
-    }
 
     // MARK: - Update Profile
 

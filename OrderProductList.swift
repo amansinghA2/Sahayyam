@@ -12,7 +12,9 @@ class OrderProductList: NSObject {
 
     dynamic var name = String()
     dynamic var quantity = String()
+    dynamic var order_status = String()
     dynamic var price = String()
     dynamic var total = String()
+    dynamic var productId = String()
     
 }

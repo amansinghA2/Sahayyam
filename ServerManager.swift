@@ -50,7 +50,6 @@ class ServerManager: NSObject {
                             print(dict)
                             if let isSuccess = dict["success"]! {
                                 if isSuccess as! Bool {
-                                    print(dict)
                                 let loginData = CommonJsonMapper.loginMapper(dict as! [String : AnyObject])
                                     completionClosure(isSuccessful: true, error: nil, result: loginData)
                                     self.getSessionID(response)
@@ -64,11 +63,10 @@ class ServerManager: NSObject {
                         completionClosure(isSuccessful: false,error: nil,result: nil)
                     }
                 }
+            }
         }
-    }
     
     func requestSwitchProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CategoryList]? , dictResult:[String:AnyObject]?) -> Void) {
-        
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID

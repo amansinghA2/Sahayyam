@@ -86,7 +86,6 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     // MARk:-  RevealView Controler Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
         }else{
@@ -95,7 +94,6 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-        
         if position == FrontViewPosition.Left{
             self.view.userInteractionEnabled = true
         }else{
