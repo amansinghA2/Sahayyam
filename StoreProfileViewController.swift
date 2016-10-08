@@ -38,6 +38,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     @IBOutlet weak var businessHolidayField: UITextField!
     
+    @IBOutlet weak var deliveryTimeTextField0: UITextField!
     @IBOutlet weak var deliveryTimeTextField1: UITextField!
     @IBOutlet weak var deliveryTimeTextField2: UITextField!
     @IBOutlet weak var deliveryTimeTextField3: UITextField!
@@ -47,15 +48,16 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBOutlet weak var deliveryTimeTextField7: UITextField!
     @IBOutlet weak var deliveryTimeTextField8: UITextField!
     @IBOutlet weak var deliveryTimeTextField9: UITextField!
-    @IBOutlet weak var deliveryTimeTextField10: UITextField!
     
     
     @IBOutlet weak var deliveryChargesTextField: TextField!
  
     @IBOutlet weak var minOrderTExtfField: TextField!
     @IBOutlet weak var lessThanMinOrderTextField: TextField!
-    var i = 0
     let radioButtonController = SSRadioButtonsController()
+    
+    var storeProfileData = StoreProfileData()
+    var textfieldArray = [UITextField]()
     
     var getHour = String()
     var getMinute = String()
@@ -110,6 +112,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        textfieldArray = [deliveryTimeTextField0 , deliveryTimeTextField1 , deliveryTimeTextField2 , deliveryTimeTextField3 , deliveryTimeTextField4 , deliveryTimeTextField5, deliveryTimeTextField6 , deliveryTimeTextField7, deliveryTimeTextField8 , deliveryTimeTextField9 ]
         
         radioButtonController.setButtonsArray([deliveryCharges , freeDelivery])
         radioButtonController.delegate = self
@@ -141,6 +144,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 //        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         
         
+        deliveryTimeTextField0.delegate = self
         deliveryTimeTextField1.delegate = self
         deliveryTimeTextField2.delegate = self
         deliveryTimeTextField3.delegate = self
@@ -150,7 +154,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         deliveryTimeTextField7.delegate = self
         deliveryTimeTextField8.delegate = self
         deliveryTimeTextField9.delegate = self
-        deliveryTimeTextField10.delegate = self
         
         fromLabel1.delegate = self
         fromLabel2.delegate = self
@@ -172,6 +175,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.storeProfileData = result!
                 self.hideHud()
             }else{
                 self.hideHud()
@@ -185,9 +189,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     }
     
     @IBAction func deliveryTimeButton(sender: AnyObject) {
-        i = i+1
-        
-        
         
     }
 
@@ -230,26 +231,63 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         self.showHud("Loading...")
         
+        
+        
         let params = [
         "token":token,
         "device_id":"1234",
         "store[0][from_hour]":"",
         "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
+        "store[0][from]":"",
+        "store[0][end_hour]":"",
+        "store[0][end_minute]":"",
+        "store[0][to]":"",
+        "store[1][from_hour]":"",
+        "store[1][from_minute]":"",
+        "store[1][from]":"",
+        "store[1][end_hour]":"",
+        "store[1][end_minute]":"",
+        "store[1][to]":"",
+        "store[2][from_hour]":"",
+        "store[2][from_minute]":"",
+        "store[2][from]":"",
+        "store[2][end_hour]":"",
+        "store[2][end_minute]":"",
+        "store[2][to]":"",
         
+        "store[0][del_hour]":"",
+        "store[0][del_min]":"",
+        "store[0][del]":"",
+        "store[1][del_hour]":"",
+        "store[1][del_min]":"",
+        "store[1][del]":"",
+        "store[2][del_hour]":"",
+        "store[2][del_min]":"",
+        "store[2][del]":"",
+        "store[3][del_hour]":"",
+        "store[3][del_min]":"",
+        "store[3][del]":"",
+        "store[4][del_hour]":"",
+        "store[4][del_min]":"",
+        "store[4][del]":"",
+        "store[5][del_hour]":"",
+        "store[5][del_min]":"",
+        "store[5][del]":"",
+        "store[6][del_hour]":"",
+        "store[6][del_min]":"",
+        "store[6][del]":"",
+        "store[7][del_hour]":"",
+        "store[7][del_min]":"",
+        "store[7][del]":"",
+        "store[8][del_hour]":"",
+        "store[8][del_min]":"",
+        "store[8][del]":"",
+        "store[9][del_hour]":"",
+        "store[9][del_min]":"",
+        "store[9][del]":"",
+        "store[10][del_hour]":"",
+        "store[10][del_min]":"",
+        "store[10][del]":"",
         ]
         
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
@@ -308,11 +346,10 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         case toLabel3:
             toHour3 = getHour
             toMin3 = getMinute
+        case deliveryTimeTextField0:
+            ""
         case deliveryTimeTextField1:
             ""
-//            delHour1
-//            deltoMin1
-//            delAmPm1
         case deliveryTimeTextField2:
             ""
         case deliveryTimeTextField3:
@@ -328,8 +365,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         case deliveryTimeTextField8:
             ""
         case deliveryTimeTextField9:
-            ""
-        case deliveryTimeTextField10:
             ""
         default:
             ""
@@ -354,6 +389,35 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
         
         return "\(components.minute)"
+    }
+    
+    
+    func storeProfileGetdata() {
+        
+        
+        for i in 0...2 {
+            self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + self.storeProfileData.deliveryTime[i].del_min + self.storeProfileData.deliveryTime[i].del
+        }
+        
+        self.fromLabel1.text = self.storeProfileData.startTime[0].from_hour + self.storeProfileData.startTime[0].from_minute + self.storeProfileData.startTime[0].from
+        
+        self.fromLabel2.text = self.storeProfileData.startTime[1].from_hour + self.storeProfileData.startTime[1].from_minute + self.storeProfileData.startTime[1].from
+        
+        self.fromLabel3.text = self.storeProfileData.startTime[2].from_hour + self.storeProfileData.startTime[2].from_minute + self.storeProfileData.startTime[2].from
+        
+        self.toLabel1.text = self.storeProfileData.endTime[0].end_hour + self.storeProfileData.endTime[0].end_minute + self.storeProfileData.endTime[0].to
+        
+        self.toLabel2.text = self.storeProfileData.endTime[1].end_hour + self.storeProfileData.endTime[1].end_minute + self.storeProfileData.endTime[1].to
+        
+        self.toLabel3.text = self.storeProfileData.endTime[2].end_hour + self.storeProfileData.endTime[2].end_minute + self.storeProfileData.endTime[2].to
+        
+        
+        
+        for i in 0...9 {
+            self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + self.storeProfileData.deliveryTime[i].del_min + self.storeProfileData.deliveryTime[i].del
+        }
+        
+        
     }
     
     

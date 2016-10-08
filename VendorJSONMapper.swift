@@ -299,6 +299,88 @@ class VendorJSONMapper: NSObject {
         }
         return serviceLists
     }
+    
+    class func  vendorStoreProfileMapper(result:[String:AnyObject]) -> StoreProfileData  {
+        let serviceList = StoreProfileData()
+        
+        if let businessHoliday = result["bussinessHoliday"] as? String {
+            serviceList.businessHoliday = businessHoliday
+        }
+        
+        if let businessHoliday = result["deliveryCharges"] as? String {
+            serviceList.deliveryCharges = businessHoliday
+        }
+        
+        if let businessHoliday = result["expressDelivery"] as? String {
+            serviceList.expressDelivery = businessHoliday
+        }
+        
+        if let businessHoliday = result["minimum_order"] as? String {
+            serviceList.minimum_order = businessHoliday
+        }
+        
+        if let customers = result["deliveryTime"] as? NSArray{
+            for (_,value) in customers.enumerate(){
+                let customerList = DeliveryTime()
+                
+                if let subscription = value.valueForKey("del") as? String{
+                    customerList.del = subscription
+                }
+                
+                if let subscription = value.valueForKey("del_hour") as? String{
+                    customerList.del_hour = subscription
+                }
+                
+                if let customer = value.valueForKey("del_min") as? String{
+                    customerList.del_min = customer
+                }
+                serviceList.deliveryTime.append(customerList)
+            }
+        }
+        
+        if let customers = result["endTime"] as? NSArray{
+            for (_,value) in customers.enumerate(){
+                let customerList = EndTime()
+                
+                if let subscription = value.valueForKey("end_hour") as? String{
+                    customerList.end_hour = subscription
+                }
+                
+                if let subscription = value.valueForKey("end_minute") as? String{
+                    customerList.end_minute = subscription
+                }
+                
+                if let customer = value.valueForKey("to") as? String{
+                    customerList.to = customer
+                }
+                serviceList.endTime.append(customerList)
+            }
+        }
+        
+        
+        if let customers = result["startTime"] as? NSArray{
+            for (_,value) in customers.enumerate(){
+                let customerList = StartTime()
+                
+                if let subscription = value.valueForKey("from") as? String{
+                    customerList.from = subscription
+                }
+                
+                if let subscription = value.valueForKey("from_hour") as? String{
+                    customerList.from_hour = subscription
+                }
+                
+                if let customer = value.valueForKey("from_minute") as? String{
+                    customerList.from_minute = customer
+                }
+                
+                serviceList.startTime.append(customerList)
+            }
+        }
+        
+        print(serviceList)
+        return serviceList
+    }
 
     
     

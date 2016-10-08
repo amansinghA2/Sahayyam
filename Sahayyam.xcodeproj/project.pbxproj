@@ -20,6 +20,10 @@
 		07F442741D621E5D00733E91 /* CustomerDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F442721D621E5D00733E91 /* CustomerDetailsTableViewCell.xib */; };
 		20F96C9EF1622C0F546F01AA /* Pods_SahayyamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE2C592CE0716FAD25849DD /* Pods_SahayyamUITests.framework */; };
 		8F069A2BE53A3C6EF6A95808 /* Pods_SahayyamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */; };
+		AF10062F1DA8B07D00E7C6F5 /* StoreProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10062E1DA8B07D00E7C6F5 /* StoreProfileData.swift */; };
+		AF1006321DA8B56500E7C6F5 /* StartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1006311DA8B56500E7C6F5 /* StartTime.swift */; };
+		AF1006341DA8B57100E7C6F5 /* EndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1006331DA8B57100E7C6F5 /* EndTime.swift */; };
+		AF1006361DA8B58100E7C6F5 /* DeliveryTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1006351DA8B58100E7C6F5 /* DeliveryTime.swift */; };
 		AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF142BDE1D7EC30A00273C06 /* VendorMenuTableViewCell.swift */; };
 		AF142BE11D7EC30A00273C06 /* VendorMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF142BDF1D7EC30A00273C06 /* VendorMenuTableViewCell.xib */; };
 		AF1685B41D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1685B21D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift */; };
@@ -290,6 +294,10 @@
 		3AB62797B327CC484FC0AB27 /* Pods-Sahayyam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sahayyam.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sahayyam/Pods-Sahayyam.release.xcconfig"; sourceTree = "<group>"; };
 		6282DB582AB0656C70F50BDC /* Pods-SahayyamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SahayyamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF10062E1DA8B07D00E7C6F5 /* StoreProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProfileData.swift; sourceTree = "<group>"; };
+		AF1006311DA8B56500E7C6F5 /* StartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTime.swift; sourceTree = "<group>"; };
+		AF1006331DA8B57100E7C6F5 /* EndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTime.swift; sourceTree = "<group>"; };
+		AF1006351DA8B58100E7C6F5 /* DeliveryTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTime.swift; sourceTree = "<group>"; };
 		AF142BDE1D7EC30A00273C06 /* VendorMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AF142BDF1D7EC30A00273C06 /* VendorMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorMenuTableViewCell.xib; sourceTree = "<group>"; };
 		AF1685B21D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDropDownTableViewCell.swift; sourceTree = "<group>"; };
@@ -598,6 +606,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AF1006301DA8B54000E7C6F5 /* Store Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AF10062E1DA8B07D00E7C6F5 /* StoreProfileData.swift */,
+				AF1006311DA8B56500E7C6F5 /* StartTime.swift */,
+				AF1006331DA8B57100E7C6F5 /* EndTime.swift */,
+				AF1006351DA8B58100E7C6F5 /* DeliveryTime.swift */,
+			);
+			name = "Store Profile";
+			sourceTree = "<group>";
+		};
 		AF1F1F3D1D4A07E400E36DB0 = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +783,7 @@
 		AFC26FC11D4F18A10003471B /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AF1006301DA8B54000E7C6F5 /* Store Profile */,
 				AF5438C51D87DA4800CDCCD9 /* CustomerList.swift */,
 				AF5438CF1D88021500CDCCD9 /* SubscriptionList.swift */,
 				AF5438D11D88193D00CDCCD9 /* VendorPayment.swift */,
@@ -1449,6 +1469,7 @@
 				AF530B081D756DB7004A269F /* MenuDetailsHeaderTableViewCell.swift in Sources */,
 				AF6A88161D5306BE00986ECC /* CustomerJsonMapper.swift in Sources */,
 				AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */,
+				AF1006361DA8B58100E7C6F5 /* DeliveryTime.swift in Sources */,
 				AF6710E91D9A271500AEB294 /* SubsPaymentInfoViewController.swift in Sources */,
 				AFB6537C1D6AE9A1003D242C /* CheckoutDeliveryTime.swift in Sources */,
 				AFBF9CB01D5898B0007E17C3 /* CartListViewController.swift in Sources */,
@@ -1495,6 +1516,7 @@
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,
 				AFA6C1A21DA66E06008E0A01 /* OrderStatusViewController.swift in Sources */,
+				AF1006341DA8B57100E7C6F5 /* EndTime.swift in Sources */,
 				AF6D18CE1D8666C600F220FE /* CustomerListViewController.swift in Sources */,
 				AF5438AF1D87BB4300CDCCD9 /* PaymentDetailsTableViewCell.swift in Sources */,
 				AF6D18DF1D86A10D00F220FE /* VndornewProductAddViewController.swift in Sources */,
@@ -1523,6 +1545,7 @@
 				AFD3F1B01D9D106A0024014B /* VendorCategorySubViewController.swift in Sources */,
 				AF5438D01D88021500CDCCD9 /* SubscriptionList.swift in Sources */,
 				AFA2A52A1D50CBA3006F1D41 /* Customer.swift in Sources */,
+				AF10062F1DA8B07D00E7C6F5 /* StoreProfileData.swift in Sources */,
 				AFB6A1F41D5DEE5B00A9731B /* OrderDetailsTableViewCell.swift in Sources */,
 				AFC26FCA1D4F1E100003471B /* CustomerMenuDescriptionViewController.swift in Sources */,
 				0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */,
@@ -1549,6 +1572,7 @@
 				AFB6A1FC1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.swift in Sources */,
 				AFA6C19E1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift in Sources */,
 				AF6D18D21D8670FE00F220FE /* VendorListViewController.swift in Sources */,
+				AF1006321DA8B56500E7C6F5 /* StartTime.swift in Sources */,
 				AF6327D61D9533E30030F1C5 /* VendorCityHeadViewController.swift in Sources */,
 				AF6327EA1D953D2F0030F1C5 /* CityHeadCPViewController.swift in Sources */,
 				AFBC27481D54B08B003ECBF6 /* CustomerBestDealsViewController.swift in Sources */,

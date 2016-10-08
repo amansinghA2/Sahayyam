@@ -69,7 +69,6 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         if dropper.status == .Hidden {
             dropper.tag = 1
             dropper.items = [""]
-
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
             dropper.cornerRadius = 2

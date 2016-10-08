@@ -187,7 +187,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if profileType == 0 && customerType == 1{
-            
             switch indexPath.row {
             case 0:
                 self.performSegueWithIdentifier("wishListSegue", sender: nil)

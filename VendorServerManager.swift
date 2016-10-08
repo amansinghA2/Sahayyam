@@ -1,3 +1,4 @@
+
 //
 //  VendorServerManager.swift
 //  Sahayyam
@@ -158,7 +159,7 @@ extension ServerManager {
         
         defaultManager.request(.GET, getProductdetailsUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
-                if let res = response.response {
+                if response.response != nil {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
@@ -340,27 +341,24 @@ extension ServerManager {
         }
     }
     
-    func globalProductAdd(params:[String:AnyObject]? , completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+    func globalProductAdd(params:[String:AnyObject]? , completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]? , result1:[String:AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
         ]
     
         defaultManager.request(.POST, globalAddProductUrl , parameters: params , encoding: .URL, headers: headers)
-            .responseData { response in
+
+            .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
-                        if let data = response.result.value {
-                            let dict = JSON(data: data)
+                        if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: nil)
-                        }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: true,error: nil,result: nil , result1:dict as? [String:AnyObject])
                         }
-                    case .Failure(let error):
-                        print(error)
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                    case .Failure(_):
+                        completionClosure(isSuccessful: false,error:nil,result: nil , result1:nil)
                       }
                 }
           }
@@ -664,7 +662,7 @@ extension ServerManager {
         }
     }
     
-    func vendorStoreProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: SellerData?) -> Void) {
+    func vendorStoreProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -677,7 +675,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = VendorJSONMapper.sellerPopulateDataMapper(dict as! [String : AnyObject])
+                            let arr = VendorJSONMapper.vendorStoreProfileMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)

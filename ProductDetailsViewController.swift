@@ -33,6 +33,9 @@ class ProductDetailsViewController: UIViewController {
         tokenCheck()
         setBackButtonForNavigation()
         self.changeNavigationBarColor()
+        
+        self.showHud("Loading...")
+        
         let params:[String : AnyObject] = [
             "token":token,
             "device_id":"1234",
@@ -45,13 +48,15 @@ class ProductDetailsViewController: UIViewController {
         if Reachability.isConnectedToNetwork(){
             ServerManager.sharedInstance().customerProductDetails(params) { (isSuccessful, error, result) in
                 if isSuccessful{
+                    self.hideHud()
                     if result != nil {
+                        self.hideHud()
                         self.getDetailsProducts = result!
                         print(self.getDetailsProducts)
                     }
                 }else{
-                    AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                     self.hideHud()
+                    AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
                 }
             }
         }

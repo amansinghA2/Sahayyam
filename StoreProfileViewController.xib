@@ -13,16 +13,16 @@
                 <outlet property="deliveryChargesContraint" destination="ASq-Ex-g83" id="12G-Zg-z72"/>
                 <outlet property="deliveryChargesTextField" destination="Wv8-uU-wIv" id="ydK-fq-oQd"/>
                 <outlet property="deliveryChargesView" destination="TzC-Ce-zNt" id="DVf-Lj-4Id"/>
-                <outlet property="deliveryTimeTextField1" destination="hzz-mu-UB1" id="ZD0-wK-xni"/>
-                <outlet property="deliveryTimeTextField10" destination="HuY-Hb-uDF" id="vlX-ah-sdX"/>
-                <outlet property="deliveryTimeTextField2" destination="8Ri-3S-4n8" id="9Jk-Gg-9Fw"/>
-                <outlet property="deliveryTimeTextField3" destination="lsA-Bc-Rnl" id="a8H-u6-7k9"/>
-                <outlet property="deliveryTimeTextField4" destination="ocV-qB-KsK" id="GKf-hH-Ett"/>
-                <outlet property="deliveryTimeTextField5" destination="pS1-pg-oMI" id="FDi-ki-c88"/>
-                <outlet property="deliveryTimeTextField6" destination="SEG-oh-1Uw" id="fVe-OO-JmJ"/>
-                <outlet property="deliveryTimeTextField7" destination="Zsb-O7-xSh" id="csM-4V-MkU"/>
-                <outlet property="deliveryTimeTextField8" destination="ukd-eJ-lep" id="ags-vf-UNO"/>
-                <outlet property="deliveryTimeTextField9" destination="oIx-wQ-jUN" id="cn5-xK-tl3"/>
+                <outlet property="deliveryTimeTextField0" destination="hzz-mu-UB1" id="BP6-nl-GP9"/>
+                <outlet property="deliveryTimeTextField1" destination="8Ri-3S-4n8" id="85u-Uq-1Tu"/>
+                <outlet property="deliveryTimeTextField2" destination="lsA-Bc-Rnl" id="xZk-N4-lch"/>
+                <outlet property="deliveryTimeTextField3" destination="ocV-qB-KsK" id="5Kt-O5-3yr"/>
+                <outlet property="deliveryTimeTextField4" destination="pS1-pg-oMI" id="pMK-Lf-bEl"/>
+                <outlet property="deliveryTimeTextField5" destination="SEG-oh-1Uw" id="h4s-Dp-ufd"/>
+                <outlet property="deliveryTimeTextField6" destination="Zsb-O7-xSh" id="KAi-3Q-yYO"/>
+                <outlet property="deliveryTimeTextField7" destination="ukd-eJ-lep" id="e0j-WC-Diw"/>
+                <outlet property="deliveryTimeTextField8" destination="oIx-wQ-jUN" id="o03-N4-V9C"/>
+                <outlet property="deliveryTimeTextField9" destination="HuY-Hb-uDF" id="euD-ag-ec3"/>
                 <outlet property="deliveryTimingContraint" destination="3yt-fX-AwP" id="kEa-73-IxI"/>
                 <outlet property="deliveryTimingView" destination="0Hf-h1-EPp" id="rLS-eB-fXM"/>
                 <outlet property="expressDeliveryButton" destination="1hT-ah-QVf" id="O6B-Sq-DBr"/>
@@ -122,11 +122,6 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74835668099999997" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocV-qB-KsK">
-                                            <rect key="frame" x="156" y="139" width="93" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery Time 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcG-hj-eUJ">
                                             <rect key="frame" x="37" y="98" width="89" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -201,6 +196,11 @@
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HuY-Hb-uDF">
                                             <rect key="frame" x="156" y="400" width="93" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ocV-qB-KsK">
+                                            <rect key="frame" x="156" y="139" width="93" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>

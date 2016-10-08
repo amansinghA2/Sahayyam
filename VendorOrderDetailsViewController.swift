@@ -148,31 +148,39 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
 
     func cancelOrderAction(sender:UIButton) {
         
-        let cell = sender.superview?.superview as! DetailsOrderTableViewCell
-        let indexPath = orderDetailsTableView.indexPathForCell(cell)
+        let alertController = UIAlertController(title: "Alert", message: "Do you want to cancel the order" , preferredStyle: .Alert)
         
-        self.showHud("Loading...")
-        
-        let params = [
-        "token":token,
-        "device_id":"1234",
-        "order_id":self.customerDetails.order_id,
-        "product_id":self.customerDetails.orderProducts[indexPath!.row].productId
-        ]
 
-        ServerManager.sharedInstance().cancelOrder(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
-                cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
-                self.hideHud()
-            }else{
-                self.hideHud()
-                AlertView.alertView("Alert", message: "Server Error", alertTitle: "OK", viewController: self)
-            }
-        }
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            self.showHud("Loading...")
+            
+            let cell = sender.superview?.superview as! DetailsOrderTableViewCell
+            let indexPath = self.orderDetailsTableView.indexPathForCell(cell)
         
-      
+            let params = [
+                "token":token,
+                "device_id":"1234",
+                "order_id":self.customerDetails.order_id,
+                "product_id":self.customerDetails.orderProducts[indexPath!.row].productId
+            ]
+            
+            ServerManager.sharedInstance().cancelOrder(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                    cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
+                    cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                    cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+                    self.hideHud()
+                }else{
+                    self.hideHud()
+                    AlertView.alertView("Alert", message: "Server Error", alertTitle: "OK", viewController: self)
+                }
+            }
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+            self.hideHud()
+        }))
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     
@@ -207,29 +215,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         self.orderDetailsTableView.registerNib(nib4, forCellReuseIdentifier: "oderproductDetailsIdentifier")
         let nib5 = UINib(nibName: "CustomerDetailsTableViewCell", bundle: nil)
         self.orderDetailsTableView.registerNib(nib5, forCellReuseIdentifier: "customerDetailsIdentifier")
-//        if Reachability.isConnectedToNetwork(){
-//            let params:[String : AnyObject] = [
-//                "token":token,
-//                "device_id":"1234",
-//                "order_id": trackLoadData.order_id
-//            ]
-//            
-//            print(params)
-//            
-//            ServerManager.sharedInstance().customerOrderDetails(params) { (isSuccessful, error, result) in
-//                if isSuccessful {
-//                    self.hideHud()
-//                    self.orderDetailsList = result!
-//                    self.orderDetailsTableView.delegate = self
-//                    self.orderDetailsTableView.dataSource = self
-//                    self.orderDetailsTableView.reloadData()
-//                }
-//            }
-//        }
-//        else{
-//            self.hideHud()
-//            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
-//        }
+
     }
 
     /*

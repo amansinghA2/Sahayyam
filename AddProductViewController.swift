@@ -59,7 +59,8 @@ class AddProductViewController: UIViewController {
     }
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
-        
+        self.removeAnimate()
+        self.showHud("Loading...")
         let params = [
         "token":token,
         "device_id":"1234",
@@ -69,16 +70,27 @@ class AddProductViewController: UIViewController {
         "selected[0]":getproductCollectionList.product_id,
         "status[0]":"0",
         "product_id":getproductCollectionList.product_id,
-        "status":"0",
+        "status":"",
         "service_id":getproductCollectionList.service_id
         ]
-        
-        ServerManager.sharedInstance().globalProductAdd(params) { (isSuccessful, error, result) in
+
+        ServerManager.sharedInstance().globalProductAdd(params) { (isSuccessful, error, result , result1) in
             if isSuccessful{
+                self.hideHud()
+                if let _ = result1!["success"] {
+                    self.hideHud()
+                    
+                    AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
+                }else{
+                    self.hideHud()
+                    AlertView.alertView("Alert", message: "Offer price cannot be more than the product price", alertTitle: "OK", viewController: self)
+                }
                 
+            }else{
+                self.hideHud()
             }
         }
-        self.removeAnimate()
+        
     }
     
     func showAnimate()

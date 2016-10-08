@@ -63,6 +63,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     override func viewWillAppear(animated: Bool) {
         
+        self.showHud("Loading...")
         let params = [
             "token":token,
             "product_name":"",
@@ -75,10 +76,13 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.hideHud()
                 self.getProductCollectionList = result!
                 self.globalListTableView.delegate = self
                 self.globalListTableView.dataSource = self
                 self.globalListTableView.reloadData()
+            }else{
+                self.hideHud()
             }
         }
     }
@@ -341,6 +345,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 //                self.globalListTableView.reloadData()
 //            }
 //        }
+        
     }
     
         

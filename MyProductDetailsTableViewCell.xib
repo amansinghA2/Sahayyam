@@ -80,8 +80,8 @@
             <connections>
                 <outlet property="customerProductImage" destination="z4Z-7G-E2E" id="F8q-Mq-WOj"/>
                 <outlet property="customerProductName" destination="g6V-Oc-kU4" id="ibD-pX-sae"/>
-                <outlet property="customerproductCost" destination="9cW-I1-0gF" id="DBo-9a-9mH"/>
-                <outlet property="productOfferPrice" destination="1Gw-y1-dnJ" id="SZr-3h-Swk"/>
+                <outlet property="customerproductCost" destination="1Gw-y1-dnJ" id="ot2-A6-Ezx"/>
+                <outlet property="productOfferPrice" destination="9cW-I1-0gF" id="ZPc-R8-4xk"/>
             </connections>
             <point key="canvasLocation" x="114" y="208.5"/>
         </collectionViewCell>
