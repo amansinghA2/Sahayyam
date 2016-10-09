@@ -147,7 +147,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NZP-4v-eSf">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="Rue-jP-FOF"/>
+                                <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="bVc-Vp-typ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -199,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGM-PO-Agf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="334"/>
+            <point key="canvasLocation" x="1399" y="334"/>
         </scene>
         <!--Vndornew Product Add View Controller-->
         <scene sceneID="WTK-Lv-v2Z">
@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxR-SI-MYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-99" y="1776"/>
+            <point key="canvasLocation" x="-33" y="1888"/>
         </scene>
         <!--Vendor Category List View Controller-->
         <scene sceneID="7QI-gf-hI0">

@@ -204,7 +204,7 @@ extension ServerManager {
     
     // MARK: Wish LIst
     
-    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[ProductCollectionList]?) -> Void) {
+    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[ProductCollectionList]? , result1:[String:AnyObject]?) -> Void) {
         
         //token, product_name,  limit, page, device_id, global=0, service_id
         
@@ -222,12 +222,12 @@ extension ServerManager {
                             print(dict)
                             let arr  =  CommonJsonMapper.productCollectionList(dict as! [String : AnyObject])
                             print(arr)
-                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            completionClosure(isSuccessful: true, error: nil, result: arr ,result1:dict as? [String:AnyObject] )
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
                         }
                     case .Failure( let error):
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1:nil)
                     }
                 }
         }

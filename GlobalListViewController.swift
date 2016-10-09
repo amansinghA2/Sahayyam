@@ -74,7 +74,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             "service_id":"51"
         ]
         
-        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
                 self.hideHud()
                 self.getProductCollectionList = result!

@@ -421,20 +421,12 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     override func viewWillAppear(animated: Bool) {
-        //        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
-        //        {
-        //        }else{
-        //
-        //        }
         getProductCollectionListAdd.removeAll()
-        //        if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
-        //            customerFullName = customerFullName1 as! String
-        //        }
         super.viewWillAppear(animated)
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-                productFunction("" , limit: "25" , page: "1" , filterName: "")
+                productFunction("25" , page: "1" )
         }
         else {
             self.hideHud()
@@ -442,22 +434,21 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         }
     }
 
-    func productFunction(filterCategory:String , limit:String , page:String , filterName:String) {
+    func productFunction(limit:String , page:String ) {
 
         self.showHud("Loading...")
-        let customerProductsParams:[String:AnyObject]? = [
-            "filter_category":filterCategory,
+        let params = [
             "token":token,
-            "device_id": "1234",
-            "filter_name":filterName,
+            "product_name":"",
             "limit":limit,
-            "page":page
+            "page":page,
+            "device_id":"1234",
+            "global":"0",
+            "service_id":"51"
         ]
 
-        print(customerProductsParams)
-
-        ServerManager.sharedInstance().customerProducts(customerProductsParams) { (isSuccessful, error, result , result1) in
-            if isSuccessful{
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
+            if isSuccessful {
                 self.hideHud()
                 if let totalPage = result1!["TotalPages"]{
                     self.totalPages = Int(totalPage as! String)!
@@ -472,7 +463,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }else{
                 self.hideHud()
             }
-
         }
     }
 
@@ -553,25 +543,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier",forIndexPath: indexPath) as! CustomerMenuItemsCollectionViewCell
-            cell.addToCart.tag = indexPath.row
-            cell.addToCart.addTarget(self, action: #selector(CustomerMenuItemsViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier1",forIndexPath: indexPath) as! MyProductDetailsTableViewCell
 
             if (self.searchBarActive) {
                 getProductList = self.dataSourceForSearchResult[indexPath.row]
-                cell.getProductCollectionLists = getProductList
+                cell.getProductCollectionLists1 = getProductList
             }else{
                 if self.getProductCollectionListAdd.count > 0 {
                     getProductList = self.getProductCollectionListAdd[indexPath.row]
-                    cell.getProductCollectionLists = self.getProductList
+                    cell.getProductCollectionLists1 = self.getProductList
                 }
             }
-
-            //        cell.contentView.frame = cell.bounds;
-            //        cell.contentView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
-
-            cell.addToWishlist.tag = indexPath.row
-            cell.addToWishlist.addTarget(self, action: #selector(CustomerMenuItemsViewController.addToWishlistButtonClicked(_:)), forControlEvents:  UIControlEvents.TouchUpInside)
             return cell
         default:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreCollectionViewCell
@@ -582,12 +564,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
-        self.selectedIndexPath1 = indexPath
-        self.view.endEditing(true)
-        getSpecificProductList =
-            getProductCollectionListAdd[indexPath.row]
-        performSegueWithIdentifier("productDescSegue", sender: nil)
+        getSpecificProductList = getProductCollectionList[indexPath.row]
+        performSegueWithIdentifier("vendorProductDetailsSegue", sender: nil)
     }
 
     // MARK: <UICollectionViewDelegateFlowLayout>
@@ -638,13 +616,13 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("", limit: "25", page: "", filterName: String(searchText))
+            productFunction("25", page: "1")
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
             self.myproductsCollectionView?.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
-            productFunction("", limit: "25", page: "1", filterName:"")
+            productFunction("25", page: "1")
             self.searchBarActive = false
             self.myproductsCollectionView?.reloadData()
         }
@@ -726,7 +704,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func loadButtonClicked(sender:UIButton) {
             page += 1
             if page <= totalPages{
-                productFunction("", limit: "25", page: "\(page)" , filterName: "")
+                productFunction("25", page: "\(page)"	)
             }else{
                 self.toastViewForTextfield("No More Products")
             }
@@ -739,8 +717,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.revealViewController().delegate = self
         self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
-        let nib = UINib(nibName: "CustomerMenuItemsCollectionViewCell", bundle: nil)
-        myproductsCollectionView.registerNib(nib, forCellWithReuseIdentifier: "menuItemIdentifier")
+        let nib = UINib(nibName: "MyProductDetailsTableViewCell", bundle: nil)
+        myproductsCollectionView.registerNib(nib, forCellWithReuseIdentifier: "menuItemIdentifier1")
         self.dataSourceForSearchResult = [ProductCollectionList]()
         let nibName = UINib(nibName: "CustomerDropDownTableViewCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "dropDownCell")
@@ -763,8 +741,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
             self.searchBar = UISearchBar(frame: CGRectMake(0,self.searchBarBoundsY!, UIScreen.mainScreen().bounds.size.width, 50))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
-            //            self.searchBar!.tintColor            = UIColor.whiteColor()
-            //            self.searchBar!.barTintColor         = UIColor.whiteColor()
             self.searchBar!.delegate             = self;
             self.searchBar!.placeholder          = "Search here";
             self.addObservers()
@@ -826,33 +802,46 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         return UIModalPresentationStyle.None
     }
 
+        @IBAction func vendorServiceAction(sender: AnyObject) {
+    
+           // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
+    
+            let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
+            // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
+            self.addChildViewController(popOverVC)
+            popOverVC.str = "0"
+            popOverVC.view.frame = self.view.frame
+            self.view.addSubview(popOverVC.view)
+            popOverVC.didMoveToParentViewController(self)
+    
+            let params = [
+            "token":token,
+            "device_id":"1234"
+            ]
+    
+            ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                  self.vendorServices = result!
+                  self.myproductsCollectionView.delegate = self
+                  self.myproductsCollectionView.dataSource = self
+                  self.myproductsCollectionView.reloadData()
+                }
+            }
+
+        }
+
+
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if tableView.hidden == false {
-            tableView.removeFromSuperview()
-            tableView.hidden = true
-        }
-
-        if segue.identifier == "popoverSegue" {
-            let popoverViewController = segue.destinationViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            let screen = UIScreen.mainScreen().bounds
-            popoverViewController.preferredContentSize = CGSize(width: screen.width * 0.5 - 25, height: screen.height * 0.5 - 50)
-            popoverViewController.popoverPresentationController!.delegate = self
-        } else if segue.identifier == "productDescSegue" {
-            let vc = segue.destinationViewController as? CustomerMenuDescriptionViewController
-            vc!.getProductList = self.getSpecificProductList
-        } else if segue.identifier == "customerUpdateSegue" {
-            let vc = segue.destinationViewController as? CustomerUpdateProfileViewController
-            vc!.isLogin = "customerDropDown"
-        } else if segue.identifier == "cartListSegue" {
-            let vc = segue.destinationViewController as! CartListViewController
-            if let product = self.getProductList {
-                vc.getProductCollectionList = product
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "vendorProductDetailsSegue" {
+                let vc = segue.destinationViewController as? ProductDetailsViewController
+                vc!.getProductList = self.getSpecificProductList
+                print(vc!.getProductList)
+            }else if segue.identifier == "myproductSelectServices" {
+    
             }
         }
-    }
 
     
     

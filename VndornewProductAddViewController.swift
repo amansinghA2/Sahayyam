@@ -36,11 +36,20 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var productImage: UIImageView!
     let imagePicker = UIImagePickerController()
     var str = ""
-    
+    var fromDesc = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        slideMenuShow(slideMenuButton, viewcontroller: self)
-        tokenCheck()
+
+        if fromDesc == "fromDescriptionPage"{
+             tokenCheck()
+            setBackButtonForNavigation()
+        }else{
+             tokenCheck()
+            slideMenuShow(slideMenuButton, viewcontroller: self)
+        }
+
+
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -254,7 +263,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             nameLabel.text = "\(contents)"
         }
     }
-    
+
+    func editOrAddDetails() {
+
+    }
+
 //  Link - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial
 
 //    override func viewDidLoad() {

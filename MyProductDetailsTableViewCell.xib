@@ -79,11 +79,11 @@
             <size key="customSize" width="60" height="147"/>
             <connections>
                 <outlet property="customerProductImage" destination="z4Z-7G-E2E" id="F8q-Mq-WOj"/>
-                <outlet property="customerProductName" destination="g6V-Oc-kU4" id="ibD-pX-sae"/>
-                <outlet property="customerproductCost" destination="1Gw-y1-dnJ" id="ot2-A6-Ezx"/>
-                <outlet property="productOfferPrice" destination="9cW-I1-0gF" id="ZPc-R8-4xk"/>
+                <outlet property="customerProductName" destination="g6V-Oc-kU4" id="gpE-Yr-awW"/>
+                <outlet property="customerproductCost" destination="1Gw-y1-dnJ" id="25g-Uf-URd"/>
+                <outlet property="productOfferPrice" destination="9cW-I1-0gF" id="EAg-PL-sLI"/>
             </connections>
-            <point key="canvasLocation" x="114" y="208.5"/>
+            <point key="canvasLocation" x="257" y="201.5"/>
         </collectionViewCell>
     </objects>
 </document>

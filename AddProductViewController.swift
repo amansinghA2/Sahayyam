@@ -79,7 +79,6 @@ class AddProductViewController: UIViewController {
                 self.hideHud()
                 if let _ = result1!["success"] {
                     self.hideHud()
-                    
                     AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
                 }else{
                     self.hideHud()

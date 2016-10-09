@@ -80,7 +80,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
             "service_id":self.vendorServices[indexPath.row].id
         ]
         
-        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
                 self.getProductCollectionList = result!
                 self.selectServicesTableView.delegate = self
@@ -110,7 +110,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
             "service_id":self.vendorServices[indexPath!.row].id
         ]
         
-        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
                 self.getProductCollectionList = result!
                 self.selectServicesTableView.delegate = self
