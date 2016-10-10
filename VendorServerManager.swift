@@ -233,7 +233,7 @@ extension ServerManager {
         }
     }
     
-    func autocompleteCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: Dictionary<String,String>?) -> Void) {
+    func autocompleteCategoryList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ProductCategoryList]?) -> Void) {
         
         // token, service_id, service_id, filter_name
         
@@ -248,7 +248,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                            let arr = VendorJSONMapper.categoryDropDownListMapper(dict as! [String:AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr  )
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }

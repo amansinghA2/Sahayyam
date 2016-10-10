@@ -214,8 +214,73 @@ extension CommonJsonMapper {
     
     class func getproductDetails(result:[String:AnyObject]) -> ProductDetails {
         let productDetail = ProductDetails()
+        
+        if let description = result["categoryName"] as? String {
+            productDetail.productDescription = description
+        }
+        
         if let description = result["description"] as? String {
             productDetail.productDescription = description
+        }
+        
+        if let description = result["image"] as? String {
+            productDetail.image = description
+        }
+        
+        if let description = result["manufacturer"] as? Int {
+            productDetail.manufacturer = description
+        }
+        
+        if let description = result["manufacturer_id"] as? Int {
+            productDetail.manufacturer_id = description
+        }
+        
+        if let description = result["model"] as? String {
+            productDetail.model = description
+        }
+        
+        if let description = result["priority"] as? String {
+            productDetail.priority = description
+        }
+        
+        if let description = result["productCategories"] as? String {
+            productDetail.productCategories = description
+        }
+        
+        if let description = result["product_id"] as? String {
+            productDetail.product_id = description
+        }
+        
+        if let description = result["quantity"] as? String {
+            productDetail.quantity = description
+        }
+        
+        if let description = result["ref_code"] as? String {
+            productDetail.ref_code = description
+        }
+        
+        if let description = result["service_id"] as? String {
+            productDetail.service_id = description
+        }
+        
+        if let description = result["status"] as? String {
+            productDetail.status = description
+        }
+        
+        if let description = result["subtract"] as? String {
+            productDetail.subtract = description
+        }
+        
+        if let description = result["unit"] as? Int {
+            productDetail.unit = description
+        }
+        
+        if let description = result["weight"] as? String {
+            productDetail.weight = description
+        }
+        
+        if let description = result["weight_class_id"] as? String {
+            productDetail.weight_class_id = description
         }
         
         if let name = result["name"] as? String {

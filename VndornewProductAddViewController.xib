@@ -443,7 +443,7 @@
                 <constraint firstItem="vRK-6m-uCP" firstAttribute="leading" secondItem="q1Y-9Z-OUh" secondAttribute="leading" id="yLN-Ad-Vu6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="808" y="69.5"/>
+            <point key="canvasLocation" x="624" y="258.5"/>
         </view>
     </objects>
     <resources>

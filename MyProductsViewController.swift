@@ -400,7 +400,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     var limit = 25
     var isDataSOurceREsultEmpty = false
     var selectedIndexPath1 = NSIndexPath()
-
+    var noImage = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -453,6 +454,11 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 if let totalPage = result1!["TotalPages"]{
                     self.totalPages = Int(totalPage as! String)!
                 }
+                
+                if let noImage = result1!["no_image"] as? String{
+                    self.noImage = noImage
+                }
+                
                 self.dataSourceForSearchResult = result!
                 self.getProductCollectionList = result!
                 print(self.getProductCollectionList.count)
@@ -522,19 +528,18 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 return getProductCollectionListAdd.count
             }
         }else {
-
             if getProductCollectionListAdd.count < 25 || getProductCollectionListAdd.count == 0{
-                return 0
+                return 1
             }
 
             if isDataSOurceREsultEmpty == true {
                 if dataSourceForSearchResult.count == 0 {
-                    return 0
+                    return 1
                 }
             }else{
-                return 1
+                return 2
             }
-            return 1
+            return 2
         }
     }
 
@@ -556,8 +561,25 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
             return cell
         default:
+            
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreCollectionViewCell
             cell.loadMoreButton.addTarget(self, action: #selector(CustomerMenuItemsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            
+            if indexPath.row == 0 {
+                cell.loadMoreButton.setTitle("Load More", forState: .Normal)
+              cell.loadMoreButton.tag = 0
+            }else{
+                if noImage == "1" {
+                    cell.loadMoreButton.setTitle("Unblock Images", forState: .Normal)
+                    cell.loadMoreButton.tag = 1
+                    //self.blockUnblockImages("")
+                }else{
+                    cell.loadMoreButton.setTitle("Block Images", forState: .Normal)
+                    cell.loadMoreButton.tag = 1
+                    //self.blockUnblockImages("1")
+                }
+            }
+           
             return cell
         }
 
@@ -702,14 +724,43 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
 
     func loadButtonClicked(sender:UIButton) {
+        
+        if sender.tag == 0 {
             page += 1
             if page <= totalPages{
                 productFunction("25", page: "\(page)"	)
             }else{
                 self.toastViewForTextfield("No More Products")
             }
-        }
+        }else{
+            if self.noImage == "1" {
+                getProductCollectionListAdd.removeAll()
+                sender.setTitle("Unblock Images", forState: .Normal)
+                blockUnblockImages("")
+                productFunction("25", page: "")
+            }else{
+                getProductCollectionListAdd.removeAll()
+                sender.setTitle("Block Images", forState: .Normal)
+              blockUnblockImages("1")
+              productFunction("25", page: "")
+            }
+          }
+       }
+    
+    func blockUnblockImages(postData:String) {
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "postData":postData
+        ]
+        
+        ServerManager.sharedInstance().blockMyProductsImage(params, completionClosure: { (isSuccessful, error, result) in
+            
+        })
+    }
 
+    
+    
     func setUpView(){
         tokenCheck()
 

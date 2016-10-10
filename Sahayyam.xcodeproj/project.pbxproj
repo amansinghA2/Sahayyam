@@ -20,6 +20,7 @@
 		07F442741D621E5D00733E91 /* CustomerDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F442721D621E5D00733E91 /* CustomerDetailsTableViewCell.xib */; };
 		20F96C9EF1622C0F546F01AA /* Pods_SahayyamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE2C592CE0716FAD25849DD /* Pods_SahayyamUITests.framework */; };
 		8F069A2BE53A3C6EF6A95808 /* Pods_SahayyamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */; };
+		AF0A91B31DABA9EB00A2160D /* ProductCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A91B21DABA9EB00A2160D /* ProductCategoryList.swift */; };
 		AF10062F1DA8B07D00E7C6F5 /* StoreProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10062E1DA8B07D00E7C6F5 /* StoreProfileData.swift */; };
 		AF1006321DA8B56500E7C6F5 /* StartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1006311DA8B56500E7C6F5 /* StartTime.swift */; };
 		AF1006341DA8B57100E7C6F5 /* EndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1006331DA8B57100E7C6F5 /* EndTime.swift */; };
@@ -294,6 +295,7 @@
 		3AB62797B327CC484FC0AB27 /* Pods-Sahayyam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sahayyam.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sahayyam/Pods-Sahayyam.release.xcconfig"; sourceTree = "<group>"; };
 		6282DB582AB0656C70F50BDC /* Pods-SahayyamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SahayyamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SahayyamTests/Pods-SahayyamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A723D171FAA91A2234B60F2F /* Pods_SahayyamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SahayyamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF0A91B21DABA9EB00A2160D /* ProductCategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCategoryList.swift; sourceTree = "<group>"; };
 		AF10062E1DA8B07D00E7C6F5 /* StoreProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProfileData.swift; sourceTree = "<group>"; };
 		AF1006311DA8B56500E7C6F5 /* StartTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTime.swift; sourceTree = "<group>"; };
 		AF1006331DA8B57100E7C6F5 /* EndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTime.swift; sourceTree = "<group>"; };
@@ -792,6 +794,7 @@
 				AF652C8B1D8FFA6A009852A3 /* SellerData.swift */,
 				AFA6C19A1DA61954008E0A01 /* ServiceList.swift */,
 				AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */,
+				AF0A91B21DABA9EB00A2160D /* ProductCategoryList.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -1501,6 +1504,7 @@
 				AF6A881B1D532C3C00986ECC /* Products.swift in Sources */,
 				0754F9FD1D8B22CF005AB58A /* SSRadioButton.swift in Sources */,
 				AF142BE01D7EC30A00273C06 /* VendorMenuTableViewCell.swift in Sources */,
+				AF0A91B31DABA9EB00A2160D /* ProductCategoryList.swift in Sources */,
 				0714D1741D8D4B9500CE928F /* VendorPromotionList.swift in Sources */,
 				AF6A881D1D532C4900986ECC /* CartAmount.swift in Sources */,
 				AF6327F61D9559A30030F1C5 /* AddVendorViewController.swift in Sources */,

@@ -37,13 +37,18 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     let imagePicker = UIImagePickerController()
     var str = ""
     var fromDesc = ""
-
+    var getProductDetails:ProductDetails!
+    var statusString = String()
+    var serviceLists = [VendorService]()
+    var stockLabelString = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
             setBackButtonForNavigation()
+            bindModelToViews()
+            print(self.getProductDetails)
         }else{
              tokenCheck()
             slideMenuShow(slideMenuButton, viewcontroller: self)
@@ -58,6 +63,106 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "service_id":"",
+            "filter_name":""
+            ]
+        
+        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                    
+            }
+        }
+        
+        let params1 = [
+        "token":token,
+        "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.serviceLists = result!
+            }else{
+                self.hideHud()
+            }
+        }
+        
+    }
+    
+    func bindModelToViews() {
+        
+        if let name = getProductDetails.name as? String{
+            nameLabel.text = name
+        }
+        
+        if let name = getProductDetails.manufacturer_id as? Int{
+            manufacturerLabel.text = String(name)
+        }
+        
+        if let name = getProductDetails.productCategories as? String{
+            categoryLabel.text = name
+        }
+        
+        if let name = getProductDetails.productDescription as? String{
+            descriptionLabel.text = name
+        }
+        
+        if let name = getProductDetails.price as? String{
+            priceLabel.text = name
+        }
+        
+        if let name = getProductDetails.offerPrice as? String{
+            offerPriceLabel.text = name
+        }
+        
+        if let name = getProductDetails.unit as? Int{
+            unitTypeLabel.text = String(name)
+        }
+        
+        if let name = getProductDetails.service_id as? String{
+            serviceLabel.text = name
+        }
+        
+        if let name = getProductDetails.status as? String{
+            
+            if name == "0" {
+             statusLabel.text = "Disabled"
+            }else{
+             statusLabel.text = "Enabled"
+            }
+        }
+        
+        if let name = getProductDetails.quantity as? String{
+            quantityLabel.text = name
+        }
+        
+//        if let name = getProductDetails.name as? String{
+//            unitTypeLabel.text = name
+//        }
+        
+        if let name = getProductDetails.image as? String{
+            if name == "" {
+            productImage.image = UIImage(named: "v_no_image")
+            }else{
+            productImage.image = UIImage(named: "name")
+            }
+        }
+        
+        if let name = getProductDetails.subtract as? String{
+            substractStockLabel.text = name
+        }
+        
+        if let name = getProductDetails.ref_code as? String{
+            referenceCodeLabel.text = name
+        }
+        
+    }
+    
     
     /*
     // MARK: - Navigation
@@ -132,47 +237,73 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     @IBAction func saveButton(sender: AnyObject){
-        if Reachability.isConnectedToNetwork() {
-            if formValidation() {
-                let params:[String:AnyObject] = [
-                    "token":token,
-                    "device_id":"1234",
-                    "manufacturer":manufacturerLabel.text!,
-                    "manufacturer_id":"0",
-                    "product_category[]":categoryLabel.text!,
-                    "product_description[1][name]":nameLabel.text!,
-                    "product_description[1][description]":descriptionLabel.text!,
-                    "image":str,
-                    "price":priceLabel.text!,
-                    "product_special[0][price]":offerPriceLabel,
-                    "weight_class_id":unitValueLabel,
-                    "weight":unitTypeLabel,
-                    "quantity":quantityLabel,
-                    "subtract":substractStockLabel,
-                    "status":statusLabel,
-                    "product_description[1][meta_title]":token,
-                    "model":nameLabel.text!,
-                    "service_id":serviceLabel,
-                    "ref_code":referenceCodeLabel
-                ]
-                
-                ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
-                    if isSuccessful {
-                        print("Success")
+        
+        if self.fromDesc == "fromDescriptionPage" {
+            
+            if Reachability.isConnectedToNetwork() {
+                if formValidation() {
+                    let params: [String:AnyObject] = [
+                        "token":token,
+                        "device_id":"1234",
+                        "manufacturer":manufacturerLabel.text!,
+                        "manufacturer_id":"0",
+                        "product_category[]":categoryLabel.text!,
+                        "product_id":getProductDetails!.product_id,
+                        "product_description[1][name]":nameLabel.text!,
+                        "product_description[1][description]": descriptionLabel.text!,
+                        "image":str,
+                        "price":priceLabel.text!,
+                        "product_special[0][price]":offerPriceLabel.text!,
+                        "weight_class_id":getProductDetails!.weight_class_id,
+                        "weight":getProductDetails!.weight,
+                        "quantity":quantityLabel.text!,
+                        "subtract":substractStockLabel.text!,
+                        "status":getProductDetails!.status,
+                        "name":nameLabel.text!,
+                        "product_description[1][tag]":"",
+                        "product_description[1][meta_title]":nameLabel.text!,
+                        "product_description[1][meta_description]":"",
+                        "product_description[1][meta_keyword]":"",
+                        "model":nameLabel.text!,
+                        "service_id":serviceLabel.text!,
+                        "product_special[0][customer_group_id]":"1",
+                        "product_special[0][date_start]":"0000-00-00",
+                        "product_special[0][date_end]":"0000-00-00",
+                        "product_special[0][priority]":"1",
+                        "ref_code":referenceCodeLabel.text!
+                    ]
+                    
+                    print(params)
+                    
+                    ServerManager.sharedInstance().editProduct(params) { (isSuccessful, error, result) in
+                        if isSuccessful {
+                            print("Success")
+                        }
                     }
-                }        }
-        else{
-            self.hideHud()
-            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+                }
+                else{
+                    self.hideHud()
+                    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+                }
+            }
+ 
         }
-      }
-    }
+        else{
+            editOrAddDetails()
+         }
+   }
 
     @IBAction func serviceAction(sender: AnyObject) {
 
+        var serviceName = [String]()
+        
+        for serviceList in serviceLists {
+            serviceName.append(serviceList.desc)
+        }
+        
         if dropper.status == .Hidden {
             dropper.tag = 1
-            dropper.items = [""]
+            dropper.items = serviceName
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
             dropper.cornerRadius = 3
@@ -185,6 +316,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func categoryAction(sender: AnyObject) {
 
+        
         if dropper.status == .Hidden {
             dropper.tag = 2
             dropper.items = [""]
@@ -257,15 +389,58 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             unitTypeLabel.text = "\(contents)"
         case 4:
             substractStockLabel.text = "\(contents)"
+            if contents == "Yes"{
+                stockLabelString = "1"
+            }else{
+                stockLabelString = "0"
+            }
         case 5:
             statusLabel.text = "\(contents)"
+            if contents == "Enabled"{
+               statusString = "1"
+            }else{
+               statusString = "0"
+            }
         default:
             nameLabel.text = "\(contents)"
         }
     }
-
+    
     func editOrAddDetails() {
-
+        if Reachability.isConnectedToNetwork() {
+            if formValidation() {
+                let params:[String:AnyObject] = [
+                    "token":token,
+                    "device_id":"1234",
+                    "manufacturer":manufacturerLabel.text!,
+                    "manufacturer_id":"0",
+                    "product_category[]":categoryLabel.text!,
+                    "product_description[1][name]":nameLabel.text!,
+                    "product_description[1][description]":descriptionLabel.text!,
+                    "image":str,
+                    "price":priceLabel.text!,
+                    "product_special[0][price]":offerPriceLabel.text!,
+                    "weight_class_id":unitValueLabel.text!,
+                    "weight":unitTypeLabel.text!,
+                    "quantity":quantityLabel.text!,
+                    "subtract":substractStockLabel.text!,
+                    "status":statusString,
+                    "product_description[1][meta_title]":nameLabel.text!,
+                    "model":nameLabel.text!,
+                    "service_id":serviceLabel.text!,
+                    "ref_code":referenceCodeLabel.text!
+                ]
+                
+                ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
+                    if isSuccessful {
+                        print("Success")
+                    }
+                }        }
+            else{
+                self.hideHud()
+                AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+            }
+        }
     }
 
 //  Link - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial

@@ -147,6 +147,7 @@ class ProductDetailsViewController: UIViewController {
         if segue.identifier == "goToEditSegue" {
             let vc = segue.destinationViewController as! VndornewProductAddViewController
             vc.fromDesc = "fromDescriptionPage"
+            vc.getProductDetails = self.getDetailsProducts
         }
 
      }

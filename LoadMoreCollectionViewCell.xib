@@ -13,15 +13,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="99" height="50"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSw-H3-whm" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                        <rect key="frame" x="13" y="10" width="73" height="30"/>
+                        <rect key="frame" x="0.0" y="10" width="99" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="Load More"/>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="NSw-H3-whm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="0wI-oZ-xed"/>
-                <constraint firstAttribute="trailing" secondItem="NSw-H3-whm" secondAttribute="trailing" constant="13" id="Dgs-XJ-YHg"/>
+                <constraint firstItem="NSw-H3-whm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0wI-oZ-xed"/>
+                <constraint firstAttribute="trailing" secondItem="NSw-H3-whm" secondAttribute="trailing" id="Dgs-XJ-YHg"/>
                 <constraint firstItem="NSw-H3-whm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="NYm-Bf-7WK"/>
                 <constraint firstAttribute="bottom" secondItem="NSw-H3-whm" secondAttribute="bottom" constant="10" id="Q3p-IU-vOM"/>
             </constraints>
