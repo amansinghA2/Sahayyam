@@ -36,7 +36,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
-       listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order"]
+       listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order", "v_ic_order"]
         
         // Do any additional setup after loading the view.
     }
@@ -59,7 +59,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         let cell = tableView.dequeueReusableCellWithIdentifier("menuCell") as! VendorMenuTableViewCell
         
         cell.listNames.text = self.listArray[indexPath.row] as? String
-      //cell.listImage.image = UIImage(named: [self.listImageArray[indexPath.row]])
+        cell.listImage.image = UIImage(named: self.listImageArray[indexPath.row] as! String)
         return cell
     }
     

@@ -378,13 +378,9 @@ class VendorJSONMapper: NSObject {
             }
         }
         
-        print(serviceList)
         return serviceList
     }
 
-    
-    
-    
     class func  categoryDropDownListMapper(result:[AnyObject]) -> [ProductCategoryList] {
         var serviceLists = [ProductCategoryList]()
 
@@ -405,9 +401,10 @@ class VendorJSONMapper: NSObject {
             serviceLists.append(serviceList)
 
         }
-        print(serviceLists)
+        
         return serviceLists
-       }
+    }
+    
 }
     
     

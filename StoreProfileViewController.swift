@@ -12,32 +12,23 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 
     @IBOutlet weak var deliveryChargesView: UIView!
     @IBOutlet weak var freeDeliveryView: UIView!
-    
     @IBOutlet weak var deliveryChargesContraint: NSLayoutConstraint!
     @IBOutlet weak var freeDeliveryContraint: NSLayoutConstraint!
     @IBOutlet weak var deliveryCharges: SSRadioButton!
-    
     @IBOutlet weak var freeDelivery: SSRadioButton!
-    
     @IBOutlet weak var slideMenubButton: UIBarButtonItem!
-    
     @IBOutlet weak var businessTimeingViewContraint: NSLayoutConstraint!
     @IBOutlet weak var deliveryTimingContraint: NSLayoutConstraint!
-    
     @IBOutlet weak var businessTimingView: UIView!
     @IBOutlet weak var deliveryTimingView: UIView!
-    
-    @IBOutlet weak var fromLabel1: UITextField!
-    @IBOutlet weak var fromLabel2: UITextField!
-    @IBOutlet weak var fromLabel3: UITextField!
-    @IBOutlet weak var toLabel1: UITextField!
-    @IBOutlet weak var toLabel2: UITextField!
-    @IBOutlet weak var toLabel3: UITextField!
-    
+    @IBOutlet weak var fromLabel1: TextField!
+    @IBOutlet weak var fromLabel2: TextField!
+    @IBOutlet weak var fromLabel3: TextField!
+    @IBOutlet weak var toLabel1: TextField!
+    @IBOutlet weak var toLabel2: TextField!
+    @IBOutlet weak var toLabel3: TextField!
     @IBOutlet weak var expressDeliveryButton: UITextField!
-    
     @IBOutlet weak var businessHolidayField: UITextField!
-    
     @IBOutlet weak var deliveryTimeTextField0: UITextField!
     @IBOutlet weak var deliveryTimeTextField1: UITextField!
     @IBOutlet weak var deliveryTimeTextField2: UITextField!
@@ -58,9 +49,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     var storeProfileData = StoreProfileData()
     var textfieldArray = [UITextField]()
-    
-    var getHour = String()
-    var getMinute = String()
+    var someGlobalNSInteger = Int()
+//    var getHour = String()
+//    var getMinute = String()
     var getAM = String()
     
     var fromHour1 = ""
@@ -135,32 +126,32 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 //        deliveryTimeTextField8.setTextFieldStyle(TextFieldStyle.TextFieldTime)
 //        deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
 //        deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        
-//        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        
+        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         
         
-        deliveryTimeTextField0.delegate = self
-        deliveryTimeTextField1.delegate = self
-        deliveryTimeTextField2.delegate = self
-        deliveryTimeTextField3.delegate = self
-        deliveryTimeTextField4.delegate = self
-        deliveryTimeTextField5.delegate = self
-        deliveryTimeTextField6.delegate = self
-        deliveryTimeTextField7.delegate = self
-        deliveryTimeTextField8.delegate = self
-        deliveryTimeTextField9.delegate = self
-        
-        fromLabel1.delegate = self
-        fromLabel2.delegate = self
-        fromLabel3.delegate = self
-        toLabel1.delegate = self
-        toLabel2.delegate = self
-        toLabel3.delegate = self
+//        deliveryTimeTextField0.delegate = self
+//        deliveryTimeTextField1.delegate = self
+//        deliveryTimeTextField2.delegate = self
+//        deliveryTimeTextField3.delegate = self
+//        deliveryTimeTextField4.delegate = self
+//        deliveryTimeTextField5.delegate = self
+//        deliveryTimeTextField6.delegate = self
+//        deliveryTimeTextField7.delegate = self
+//        deliveryTimeTextField8.delegate = self
+//        deliveryTimeTextField9.delegate = self
+//
+//        fromLabel1.delegate = self
+//        fromLabel2.delegate = self
+//        fromLabel3.delegate = self
+//        toLabel1.delegate = self
+//        toLabel2.delegate = self
+//        toLabel3.delegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -208,8 +199,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 
     func formValidation() -> Bool {
         
-        
-        
         return true
     }
     
@@ -230,8 +219,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBAction func submitButtonClicked(sender: AnyObject) {
         
         self.showHud("Loading...")
-        
-        
         
         let params = [
         "token":token,
@@ -254,7 +241,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         "store[2][end_hour]":"",
         "store[2][end_minute]":"",
         "store[2][to]":"",
-        
         "store[0][del_hour]":"",
         "store[0][del_min]":"",
         "store[0][del]":"",
@@ -299,34 +285,42 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        let datePickerView  : UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePickerMode.Time
-        datePickerView.backgroundColor = UIColor.whiteColor()
-        textField.inputView = datePickerView
-        datePickerView.addTarget(self, action: #selector(StoreProfileViewController.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        
-        let dateFormatter = NSDateFormatter()
-        
-        if textField.text!.isEmpty {
-            let currentDate = textField.text
-            let date = dateFormatter.dateFromString(currentDate!)
-            datePickerView.setDate(date!, animated: false)
-        }
-        
-        dateFormatter.timeStyle = .ShortStyle
-        textField.text = dateFormatter.stringFromDate(datePickerView.date)
-        
-    }
+//    func pickUpDate(textField : UITextField){
+//        
+//        // DatePicker
+//        let datePickerView  : UIDatePicker = UIDatePicker()
+//        datePickerView.datePickerMode = UIDatePickerMode.Time
+//        datePickerView.backgroundColor = UIColor.whiteColor()
+//        textField.inputView = datePickerView
+//        datePickerView.addTarget(self, action: #selector(StoreProfileViewController.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
+//        
+//        let dateFormatter = NSDateFormatter()
+//        
+//        if textField.text!.isEmpty {
+//            let currentDate = textField.text
+//            let date = dateFormatter.dateFromString(currentDate!)
+//            datePickerView.setDate(date!, animated: false)
+//        }
+//        
+//        dateFormatter.timeStyle = .ShortStyle
+//        textField.text = dateFormatter.stringFromDate(datePickerView.date)
+//        
+//    }
+//    
+//    func textFieldDidBeginEditing(textField: UITextField) {
+//        someGlobalNSInteger = textField.tag
+//  
+//        pickUpDate(textField)
+//    }
     
     func handleDatePicker1(sender: UIDatePicker) {
-     getHour = getHourFromDatePicker(sender)
-     getMinute = getMinFromDatePicker(sender)
+//     getHour = getHourFromDatePicker(sender)
+//     getMinute = getMinFromDatePicker(sender)
         
-    //sender.text = dateFormatter.stringFromDate(sender.date)
+//     sender.text = dateFormatter.stringFromDate(sender.date)
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+     func textFieldDidEndEditing(textField: UITextField) {
         switch textField {
         case fromLabel1:
             fromHour1 = getHour
@@ -369,31 +363,31 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         default:
             ""
         }
+        
     }
     
-    func getHourFromDatePicker(datePicker:UIDatePicker) -> String
-    {
-        let date = datePicker.date
-        
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
-        
-        return "\(components.hour)"
-    }
+//    func getHourFromDatePicker(datePicker:UIDatePicker) -> String
+//    {
+//        let date = datePicker.date
+//        
+//        let calendar = NSCalendar.currentCalendar()
+//        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+//        
+//        return "\(components.hour)"
+//    }
     
-    func getMinFromDatePicker(datePicker:UIDatePicker) -> String
-    {
-        let date = datePicker.date
-        
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
-        
-        return "\(components.minute)"
-    }
+//    func getMinFromDatePicker(datePicker:UIDatePicker) -> String
+//    {
+//        let date = datePicker.date
+//        
+//        let calendar = NSCalendar.currentCalendar()
+//        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+//        
+//        return "\(components.minute)"
+//    }
     
     
     func storeProfileGetdata() {
-        
         
         for i in 0...2 {
             self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + self.storeProfileData.deliveryTime[i].del_min + self.storeProfileData.deliveryTime[i].del

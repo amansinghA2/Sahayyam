@@ -164,7 +164,7 @@ class TextField: UITextField , UITextFieldDelegate {
         datePickerView.addTarget(self, action: #selector(TextField.handleDatePicker1(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//      dateFormatter.dateFormat = "yyyy-MM-dd"
         
         if !self.text!.isEmpty {
             let currentDate = self.text
@@ -176,8 +176,12 @@ class TextField: UITextField , UITextFieldDelegate {
     func handleDatePicker1(sender: UIDatePicker) {
     let dateFormatter = NSDateFormatter()
     dateFormatter.timeStyle = .ShortStyle
+        
+    getHour = getHourFromDatePicker(sender)
+    getMinute = getHourFromDatePicker(sender)
+
     self.text = dateFormatter.stringFromDate(sender.date)
-    }
+  }
     
     private func addDatePickerToTextField(){
         
@@ -198,12 +202,12 @@ class TextField: UITextField , UITextFieldDelegate {
         }
     }
     
+    
     func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.text = dateFormatter.stringFromDate(sender.date)
     }
-    
     
     func isValidEmail(emailString: String) -> Bool {
         
@@ -219,6 +223,28 @@ class TextField: UITextField , UITextFieldDelegate {
         
         return result
     }
+    
+    
+    func getHourFromDatePicker(datePicker:UIDatePicker) -> String
+    {
+        let date = datePicker.date
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        
+        return "\(components.hour)"
+    }
+    
+    func getMinFromDatePicker(datePicker:UIDatePicker) -> String
+    {
+        let date = datePicker.date
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        
+        return "\(components.minute)"
+    }
+    
     
 //    private func setupDOBtextField(){
 //        let calendarImage = UIImage(named: kWhiteCalenderIcon)

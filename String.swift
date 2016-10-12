@@ -15,11 +15,11 @@ import Foundation
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-//let BASE_URL = "http://192.168.1.2/sahayyam/"
-//let image_base_url = "http://192.168.1.2/sahayyam/image/"
+let BASE_URL = "http://192.168.1.2/sahayyam/"
+let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
     // MARK: - Common Url
 
@@ -98,6 +98,9 @@ let chAddNewVendorUrl = BASE_URL + "index.php?route=api/cityHead/addVendor"
 let storePormotionUrl = BASE_URL + "index.php?route=api/subscription/storeSubscription"
 let vendorListSubscriptionUrl = BASE_URL + "index.php?route=api/cityHead"
 let chAddNewVendor = BASE_URL + "index.php?route=api/cityHead/addVendor"
+
+var getHour = String()
+var getMinute = String()
 
 extension String
 {

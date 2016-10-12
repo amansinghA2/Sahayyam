@@ -74,49 +74,144 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return parentArray.count
+        return self.parentArray.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        subChildArray = childArray.filter({
+        self.subChildArray = childArray.filter({
             if (parentArray[section].category_id == $0.parent_id) {
                 return true
             }
             return false
         })
         
-        subSubChildArray = childArray.filter({
-            if $0.isglobel == "0" {
-                return true
-            }
-            return false
-        })
-        
-        return subChildArray.count
+        var sectionItems = self.parentArray[Int(section)]
+        let numberOfRows = subChildArray.count
+        // For second level section headers
+//        for rowItems in sectionItems {
+//            numberOfRows += rowItems.count
+//            // For actual table rows
+//        }
+        return numberOfRows
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier") as! VendorCategorySubListTableViewCell
+    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return parentArray.count
+//    }
+    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        subChildArray = childArray.filter({
+//            if (parentArray[section].category_id == $0.parent_id) {
+//                return true
+//            }
+//            return false
+//        })
+//        
+//        subSubChildArray = childArray.filter({
+//            if $0.isglobel == "0" {
+//                return true
+//            }
+//            return false
+//        })
+//        
+//        return subChildArray.count
+//    }
+    
+    
+    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier") as! VendorCategorySubListTableViewCell
+//        
+//        subChildArray = childArray.filter({
+//            if (parentArray[indexPath.section].category_id == $0.parent_id) {
+//                return true
+//            }
+//            return false
+//        })
+//        
+//        
+//        cell.cellClickedButton.tag = indexPath.row
+//        cell.cellClickedButton.addTarget(self, action: #selector(VendorCategoryListViewController.cellClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        if subChildArray.count > 0 {
+//            let filterArr = subChildArray[indexPath.row]
+//            cell.productName?.text = filterArr.name
+//            cell.productName.textColor = UIColor.blueColor()
+//        }
+//        
+//        return cell
+  
+  //  }
+    
+    
+    
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        subChildArray = childArray.filter({
+//        self.subChildArray = childArray.filter({
+//            if (parentArray[indexPath.section].category_id == $0.parent_id) {
+//                return true
+//            }
+//            return false
+//        })
+        
+//      var sectionItems = self.parentArray[Int(indexPath.section)]
+//      var sectionHeaders = self.subChildArray[Int(indexPath.section)]
+        
+        let itemAndSubsectionIndex = self.computeItemAndSubsectionIndexForIndexPath(indexPath)
+        let subsectionIndex = Int(itemAndSubsectionIndex.section)
+        let itemIndex = itemAndSubsectionIndex.row
+        
+        if itemIndex < 0 {
+            // Section header
+            print(subsectionIndex)
+                let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
+            let subChildList = subChildArray[subsectionIndex]
+            cell.productName.text = subChildList.name
+            cell.productName.textColor = UIColor.redColor()
+            return cell
+        }
+        else {
+            // Row Item
+            let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
+//            cell.productName.textColor = UIColor.blueColor()
+//            cell.productName.text = subChildArray[itemIndex].name
+            return cell
+        }
+            let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
+            return cell
+            
+    }
+    
+    func computeItemAndSubsectionIndexForIndexPath(indexPath: NSIndexPath) -> NSIndexPath {
+       // var sectionItems = self.parentArray[Int(indexPath.section)]
+        
+        self.subChildArray = childArray.filter({
             if (parentArray[indexPath.section].category_id == $0.parent_id) {
                 return true
             }
             return false
         })
+
         
+        var itemIndex = indexPath.row
+        var subsectionIndex = 0
         
-        cell.cellClickedButton.tag = indexPath.row
-        cell.cellClickedButton.addTarget(self, action: #selector(VendorCategoryListViewController.cellClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        
-        if subChildArray.count > 0 {
-            let filterArr = subChildArray[indexPath.row]
-            cell.productName?.text = filterArr.name
-            cell.productName.textColor = UIColor.blueColor()
+        for i in 0..<subChildArray.count {
+            // First row for each section item is header
+            itemIndex -= 1
+            // Check if the item index is within this subsection's items
+            //var subsectionItems = childArray[i]
+            if itemIndex < Int(subChildArray.count) {
+                subsectionIndex = i
+            }
+            else {
+                itemIndex -= subChildArray.count
+            }
         }
-        
-        return cell
+        return NSIndexPath(forRow: itemIndex, inSection: subsectionIndex)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
@@ -151,9 +246,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
-    
-    
     
     func cellClicked(sender:UIButton) {
         
