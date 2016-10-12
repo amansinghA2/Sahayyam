@@ -41,7 +41,9 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var statusString = String()
     var serviceLists = [VendorService]()
     var stockLabelString = String()
-    
+    var categoryLists = [ProductCategoryList]()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if fromDesc == "fromDescriptionPage"{
@@ -54,7 +56,33 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             slideMenuShow(slideMenuButton, viewcontroller: self)
         }
 
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "service_id":"",
+            "filter_name":""
+        ]
 
+        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.categoryLists = result!
+            }else{
+                self.hideHud()
+            }
+        }
+
+        let params1 = [
+            "token":token,
+            "device_id":"1234"
+        ]
+
+        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.serviceLists = result!
+            }else{
+                self.hideHud()
+            }
+        }
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -66,31 +94,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     override func viewWillAppear(animated: Bool) {
         
-        let params = [
-            "token":token,
-            "device_id":"1234",
-            "service_id":"",
-            "filter_name":""
-            ]
-        
-        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                    
-            }
-        }
-        
-        let params1 = [
-        "token":token,
-        "device_id":"1234"
-        ]
-        
-        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.serviceLists = result!
-            }else{
-                self.hideHud()
-            }
-        }
+
         
     }
     
@@ -129,7 +133,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.status as? String{
-            
+            statusString = name
             if name == "0" {
              statusLabel.text = "Disabled"
             }else{
@@ -154,6 +158,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.subtract as? String{
+            stockLabelString = name
             substractStockLabel.text = name
         }
         
@@ -229,10 +234,22 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     func formValidation() -> Bool{
-        if (serviceLabel.text?.isBlank == true  || categoryLabel.text?.isBlank == true || nameLabel.text?.isBlank == true || descriptionLabel.text?.isBlank == true || offerPriceLabel.text?.isBlank == true || referenceCodeLabel.text?.isBlank == true || priceLabel.text?.isBlank == true ||  unitTypeLabel.text?.isBlank == true || unitValueLabel.text?.isBlank == true || quantityLabel.text?.isBlank == true ||  substractStockLabel.text?.isBlank == true || statusLabel.text?.isBlank == true){
+
+        if nameLabel.text?.characters.count <= 3 && nameLabel.text?.characters.count >= 255 {
+            AlertView.alertView("Alert", message: "Title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
+            return false
+        }
+
+        if priceLabel.text?.characters.count <= 1 {
+            AlertView.alertView("Alert", message: "Price must be entered", alertTitle: "OK", viewController: self)
+            return false
+        }
+
+        if (priceLabel.text?.isBlank == true){
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
+        
         return true
     }
     
@@ -257,8 +274,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         "weight_class_id":getProductDetails!.weight_class_id,
                         "weight":getProductDetails!.weight,
                         "quantity":quantityLabel.text!,
-                        "subtract":substractStockLabel.text!,
-                        "status":getProductDetails!.status,
+                        "subtract":stockLabelString,
+                        "status":statusString,
                         "name":nameLabel.text!,
                         "product_description[1][tag]":"",
                         "product_description[1][meta_title]":nameLabel.text!,
@@ -316,10 +333,15 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func categoryAction(sender: AnyObject) {
 
+        var categoryListArray = [String]()
+
+        for categoryLIst in categoryLists {
+            categoryListArray.append(categoryLIst.name)
+        }
         
         if dropper.status == .Hidden {
             dropper.tag = 2
-            dropper.items = [""]
+            dropper.items = categoryListArray
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
             dropper.spacing = 0
@@ -423,14 +445,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "weight_class_id":unitValueLabel.text!,
                     "weight":unitTypeLabel.text!,
                     "quantity":quantityLabel.text!,
-                    "subtract":substractStockLabel.text!,
+                    "subtract":stockLabelString,
                     "status":statusString,
                     "product_description[1][meta_title]":nameLabel.text!,
                     "model":nameLabel.text!,
                     "service_id":serviceLabel.text!,
                     "ref_code":referenceCodeLabel.text!
                 ]
-                
+
                 ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
                     if isSuccessful {
                         print("Success")

@@ -385,32 +385,30 @@ class VendorJSONMapper: NSObject {
     
     
     
-    class func  categoryDropDownListMapper(result:[String:AnyObject]) -> [ProductCategoryList]  {
-        let serviceList = [ProductCategoryList]()
-        
-//        if let arr = result[0] as? NSArray {
-//            
-//            
-//            
-//        }
-//        
-//        for res in result {
-//        
-//        if let businessHoliday = result["active"] as? String {
-//            res.active = businessHoliday
-//        }
-//        
-//        if let businessHoliday = result["category_id"] as? String {
-//            serviceList.category_id = businessHoliday
-//        }
-//        
-//        if let businessHoliday = result["name"] as? String {
-//            serviceList.name = businessHoliday
-//        }
-        
-        return serviceList
-    }
-    }
+    class func  categoryDropDownListMapper(result:[AnyObject]) -> [ProductCategoryList] {
+        var serviceLists = [ProductCategoryList]()
+
+        for dict in result {
+            let serviceList = ProductCategoryList()
+            if let active = dict.valueForKey("active") as? String{
+                serviceList.active = active
+            }
+
+            if let active = dict.valueForKey("category_id") as? String{
+                serviceList.category_id = active
+            }
+
+            if let active = dict.valueForKey("name") as? String{
+                serviceList.name = active
+            }
+
+            serviceLists.append(serviceList)
+
+        }
+        print(serviceLists)
+        return serviceLists
+       }
+}
     
     
 

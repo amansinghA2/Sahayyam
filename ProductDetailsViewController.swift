@@ -137,7 +137,6 @@ class ProductDetailsViewController: UIViewController {
         if let detailsDescription = self.getDetailsProducts.productDescription as? String{
             self.detailsDescription.text = "Details: " + detailsDescription
         }
-        
     }
 
      // MARK: - Navigation

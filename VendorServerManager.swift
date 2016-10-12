@@ -248,8 +248,8 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            let arr = VendorJSONMapper.categoryDropDownListMapper(dict as! [String:AnyObject])
-                            completionClosure(isSuccessful: true, error: nil, result: arr  )
+                            let arr = VendorJSONMapper.categoryDropDownListMapper(dict as! [AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr )
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }

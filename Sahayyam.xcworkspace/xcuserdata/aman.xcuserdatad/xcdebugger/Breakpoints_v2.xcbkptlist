@@ -187,6 +187,38 @@
             endingLineNumber = "841"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.MyProductsViewController.observeValueForKeyPath (Swift.Optional&lt;Swift.String&gt;, ofObject : Swift.Optional&lt;Swift.AnyObject&gt;, change : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, context : Swift.UnsafeMutablePointer&lt;()&gt;) -&gt; ()"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/MyProductsViewController.swift"
+                  timestampString = "497863089.462447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "841"
+                  endingLineNumber = "841"
+                  offsetFromSymbolStart = "528">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.MyProductsViewController.observeValueForKeyPath (Swift.Optional&lt;Swift.String&gt;, ofObject : Swift.Optional&lt;Swift.AnyObject&gt;, change : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, context : Swift.UnsafeMutablePointer&lt;()&gt;) -&gt; ()"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aman/Documents/Git%20Sahayyam/Sahayyam/MyProductsViewController.swift"
+                  timestampString = "497863089.462728"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "841"
+                  endingLineNumber = "841"
+                  offsetFromSymbolStart = "707">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -202,6 +234,22 @@
             startingLineNumber = "842"
             endingLineNumber = "842"
             landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorJSONMapper.swift"
+            timestampString = "497862412.508444"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "categoryDropDownListMapper(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
