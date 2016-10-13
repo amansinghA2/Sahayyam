@@ -342,17 +342,20 @@ class VendorJSONMapper: NSObject {
             for (_,value) in customers.enumerate(){
                 let customerList = EndTime()
                 
-                if let subscription = value.valueForKey("end_hour") as? String{
-                    customerList.end_hour = subscription
+                if let customer = value.valueForKey("to") as? String{
+                    customerList.to = customer
                 }
                 
                 if let subscription = value.valueForKey("end_minute") as? String{
                     customerList.end_minute = subscription
                 }
                 
-                if let customer = value.valueForKey("to") as? String{
-                    customerList.to = customer
+                if let subscription = value.valueForKey("end_hour") as? String{
+                    customerList.end_hour = subscription
+                }else{
+                   customerList.end_hour = "12"
                 }
+                
                 serviceList.endTime.append(customerList)
             }
         }
@@ -377,7 +380,7 @@ class VendorJSONMapper: NSObject {
                 serviceList.startTime.append(customerList)
             }
         }
-        
+        print(serviceList)
         return serviceList
     }
 

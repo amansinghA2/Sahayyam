@@ -31,10 +31,13 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainCategoryTextField.userInteractionEnabled = false
-        serviceButtonOutlet.userInteractionEnabled = false
+//      mainCategoryTextField.userInteractionEnabled = false
+//      serviceButtonOutlet.userInteractionEnabled = false
         count = serviceLists.count
+        
         mainCategoryTextField.text = categoryList.name
+//        mainCategoryTextField.text = categoryList.serviceName
+        
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         showAnimate()
         radioButtonController.setButtonsArray([mainCategorycheckBox , subCategoryCheckBox])

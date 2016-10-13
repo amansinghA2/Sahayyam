@@ -13,13 +13,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v_ic_globe" translatesAutoresizingMaskIntoConstraints="NO" id="29R-QJ-rBd">
-                        <rect key="frame" x="8" y="13" width="18" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="CIj-lq-2Xc"/>
-                            <constraint firstAttribute="width" constant="18" id="lex-FT-xx8"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2j-JM-W4D">
                         <rect key="frame" x="38" y="11" width="274" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -33,40 +26,46 @@
                             <constraint firstAttribute="height" constant="1" id="qcE-3o-UKa"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIG-3f-xzz">
+                        <rect key="frame" x="8" y="10" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="I95-X4-1id"/>
+                            <constraint firstAttribute="height" constant="22" id="uzh-03-4hI"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="v_ic_globe"/>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-Rt-tir">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                        <rect key="frame" x="38" y="1" width="282" height="39"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aYq-Rt-tir" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1VO-VI-pKs"/>
-                    <constraint firstItem="aYq-Rt-tir" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7zy-3q-Fgz"/>
+                    <constraint firstItem="C2j-JM-W4D" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="4q4-o3-YDR"/>
+                    <constraint firstItem="aYq-Rt-tir" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="6fr-58-1CF"/>
+                    <constraint firstItem="aYq-Rt-tir" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="7zy-3q-Fgz"/>
                     <constraint firstAttribute="trailing" secondItem="aYq-Rt-tir" secondAttribute="trailing" id="JlM-Uv-jwm"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KpV-Qi-jDq"/>
-                    <constraint firstItem="29R-QJ-rBd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="L1U-vR-mAj"/>
                     <constraint firstAttribute="trailing" secondItem="gFs-rj-lcb" secondAttribute="trailing" id="PDC-tC-50W"/>
-                    <constraint firstItem="C2j-JM-W4D" firstAttribute="leading" secondItem="29R-QJ-rBd" secondAttribute="trailing" constant="12" id="bXG-TU-IDQ"/>
+                    <constraint firstItem="BIG-3f-xzz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VFw-RI-DFT"/>
                     <constraint firstAttribute="bottom" secondItem="gFs-rj-lcb" secondAttribute="bottom" id="f7d-w2-4LS"/>
                     <constraint firstAttribute="trailing" secondItem="C2j-JM-W4D" secondAttribute="trailing" constant="8" id="fLi-sk-Yhh"/>
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="hb0-0O-cYC"/>
-                    <constraint firstItem="29R-QJ-rBd" firstAttribute="centerY" secondItem="C2j-JM-W4D" secondAttribute="centerY" id="kMT-Me-wzf"/>
-                    <constraint firstAttribute="bottom" secondItem="29R-QJ-rBd" secondAttribute="bottom" constant="12" id="kZd-rF-LbS"/>
+                    <constraint firstItem="BIG-3f-xzz" firstAttribute="centerY" secondItem="aYq-Rt-tir" secondAttribute="centerY" constant="0.5" id="oZv-e8-roR"/>
                     <constraint firstAttribute="bottom" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="11" id="uba-X7-iEW"/>
-                    <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="aYq-Rt-tir" secondAttribute="bottom" constant="3" id="vBm-zR-LdH"/>
+                    <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="aYq-Rt-tir" secondAttribute="bottom" constant="2" id="vBm-zR-LdH"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="10" id="vcf-cN-qw9"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="kZd-rF-LbS"/>
                         <exclude reference="uba-X7-iEW"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cellClickedButton" destination="aYq-Rt-tir" id="n2R-9t-LoJ"/>
-                <outlet property="imageLeftConstraint" destination="L1U-vR-mAj" id="ekr-lJ-fVf"/>
+                <outlet property="globalEditbutton" destination="BIG-3f-xzz" id="JRm-e6-KJo"/>
                 <outlet property="productName" destination="C2j-JM-W4D" id="eXQ-6G-WeV"/>
             </connections>
-            <point key="canvasLocation" x="138" y="142"/>
+            <point key="canvasLocation" x="-29" y="142"/>
         </tableViewCell>
     </objects>
     <resources>
