@@ -57,7 +57,7 @@ class VendorJSONMapper: NSObject {
     class func getTransactionsHistoryMapper(result:[String:AnyObject]) -> [VendorPayment]  {
         
         var customerLists = [VendorPayment]()
-        
+
         if let customers = result["success"] as? NSArray{
             
             for (_,value) in customers.enumerate(){
@@ -85,6 +85,10 @@ class VendorJSONMapper: NSObject {
                 
                 if let date = value.valueForKey("invoiceType") as? String{
                     customerList.invoiceType = date
+                }
+                
+                if let date = value.valueForKey("payStatus") as? String{
+                    customerList.payStatus = date
                 }
                 
                 customerLists.append(customerList)

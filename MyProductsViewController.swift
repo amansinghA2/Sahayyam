@@ -436,7 +436,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func productFunction(limit:String , page:String ) {
-
+        
         self.showHud("Loading...")
         let params = [
             "token":token,
@@ -529,12 +529,12 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
         }else {
             if getProductCollectionListAdd.count < 25 || getProductCollectionListAdd.count == 0{
-                return 1
+                return 2
             }
 
             if isDataSOurceREsultEmpty == true {
                 if dataSourceForSearchResult.count == 0 {
-                    return 1
+                    return 2
                 }
             }else{
                 return 2

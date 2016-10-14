@@ -11,6 +11,7 @@ import UIKit
 class VendorCategorySubListTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var globalEditButton: UIButton!
     @IBOutlet weak var cellClickedButton: UIButton!
     @IBOutlet weak var productName: UILabel!

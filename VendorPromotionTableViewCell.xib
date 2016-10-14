@@ -127,9 +127,12 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.99465144230769231" green="0.99465144230769231" blue="0.99465144230769231" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="deactivateButton" destination="efP-Tb-MOp" id="W9q-KR-Uiw"/>
+                <outlet property="deleteButton" destination="ZPo-Jv-vM2" id="TQ2-mN-lrF"/>
                 <outlet property="discountLabel" destination="oVG-9S-3kr" id="yoP-Tz-9bz"/>
                 <outlet property="endDate" destination="GJp-Ee-EEh" id="gtR-x4-SUk"/>
                 <outlet property="nameLabel" destination="y9k-re-iS7" id="usg-B7-0YX"/>
+                <outlet property="notifyButton" destination="d1Q-gU-8j4" id="uBy-ca-v7o"/>
                 <outlet property="priceLabel" destination="W3v-9n-n9o" id="poW-Yd-x3T"/>
                 <outlet property="startDate" destination="Yb8-ft-uEu" id="ftf-ud-QuL"/>
             </connections>

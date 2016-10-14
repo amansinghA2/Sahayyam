@@ -84,6 +84,10 @@ let cancelLIneOrder = BASE_URL + "index.php?route=api/vendorOrder/cancelLineOrde
 let blockSalesExecutiveUrl = BASE_URL + "index.php?route=api/vendor/customerGrant"
 let blockMyProductsImageUrl = BASE_URL + "index.php?route=api/vendor/noImage"
 let changeOrderStatusUrl = BASE_URL + "index.php?route=api/vendorOrder/changeOrderStatus"
+let vendorCategoryAddUrl = BASE_URL + "index.php?route=api/category/addCat"
+let vendorEditCategoryUrl = BASE_URL + "index.php?route=api/category/editCat"
+let vendorDeleteCategoryUrl = BASE_URL + "index.php?route=api/category/deleteCat"
+
 
     // CityHead URl
 

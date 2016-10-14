@@ -447,6 +447,6 @@
         </view>
     </objects>
     <resources>
-        <image name="v_ic_save" width="16" height="16"/>
+        <image name="v_ic_save" width="50" height="50"/>
     </resources>
 </document>

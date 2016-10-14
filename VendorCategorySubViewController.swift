@@ -28,21 +28,19 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     var radioButtonController = SSRadioButtonsController()
     var str = String()
     var count = Int()
+    var categoryParentIDString = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//      mainCategoryTextField.userInteractionEnabled = false
-//      serviceButtonOutlet.userInteractionEnabled = false
+        
         count = serviceLists.count
-        
         mainCategoryTextField.text = categoryList.name
-//        mainCategoryTextField.text = categoryList.serviceName
-        
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         showAnimate()
         radioButtonController.setButtonsArray([mainCategorycheckBox , subCategoryCheckBox])
         radioButtonController.delegate = self
         subCategoryCheckBox.selected = true
+        categoryParentIDString = categoryList.parent_id
         // Do any additional setup after loading the view.
     }
 
@@ -52,7 +50,9 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         // Dispose of any resources that can be recreated.
     }
     
-
+//    override func viewDidDisappear(animated: Bool) {
+//
+//    }
     /*
     // MARK: - Navigation
 
@@ -87,7 +87,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: serviceButtonOutlet)
         } else {
             dropper.hideWithAnimation(0.1)
-           }
+        }
 
     }
     
@@ -98,12 +98,14 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     
     func didSelectButton(aButton: UIButton?) {
         if aButton == mainCategorycheckBox{
+            categoryParentIDString = "0"
             mainCategoryLabel.text = "Service"
             serviceButtonOutlet.userInteractionEnabled = true
             mainCategoryTextField.userInteractionEnabled = true
             mainCategoryTextField.text = categoryList.serviceName
             subCategoryLabel.text = "Enter category Name"
         }else{
+            categoryParentIDString = categoryList.parent_id
             dropper.hide()
             mainCategoryLabel.text = "Main Category"
             serviceButtonOutlet.userInteractionEnabled = false
@@ -114,6 +116,28 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     }
     
     @IBAction func saveButton(sender: AnyObject){
+        
+        let params:[String:AnyObject] = [
+        "token":token,
+        "device_id":"1234",
+        "parent_id":categoryParentIDString,
+        "category_name":subCategoryTextField.text!,
+        "service_id":categoryList.service_id,
+        "sort_order":"0",
+        "image":""
+        ]
+        
+        print(params)
+        
+        ServerManager.sharedInstance().vendorAddCategory(params) { (isSuccessful, error, result) in
+            if isSuccessful{
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+        
+        
         removeAnimate()
     }
     

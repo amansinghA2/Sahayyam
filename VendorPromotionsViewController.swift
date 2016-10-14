@@ -54,6 +54,9 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("promotioncellIdentifier") as! VendorPromotionTableViewCell
         cell.vendorPromotionList = self.vendorPromotionsLists[indexPath.row]
+        cell.deactivateButton.addTarget(self, action: #selector(VendorPromotionsViewController.deactivateButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(VendorPromotionsViewController.deleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.notifyButton.addTarget(self, action: #selector(VendorPromotionsViewController.notifyButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
 
@@ -80,6 +83,29 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             
         }
     }
+    
+    // MARK: - Custom Functions
+    
+    func deactivateButtonClicked(sender:UIButton) {
+        
+        let cell = sender.superview?.superview as! VendorPromotionTableViewCell
+        let indexPath = vendorPromotionTableView.indexPathForCell(cell)
+        
+    }
+    
+    func deleteButtonClicked(sender:UIButton){
+        let cell = sender.superview?.superview as! VendorPromotionTableViewCell
+        let indexPath = vendorPromotionTableView.indexPathForCell(cell)
+        
+    }
+    
+    func notifyButtonClicked(sender:UIButton){
+        let cell = sender.superview?.superview as! VendorPromotionTableViewCell
+        let indexPath = vendorPromotionTableView.indexPathForCell(cell)
+        
+        
+    }
+    
 
     /*
     // MARK: - Navigation

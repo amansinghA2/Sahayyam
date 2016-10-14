@@ -41,10 +41,14 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     var isCheck = false
     var str = ""
     var radioButtonController = SSRadioButtonsController()
-
+    var discountType = String()
+    
     override func viewDidLoad() {
        super.viewDidLoad()
         tokenCheck()
+        
+        fromLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+        toLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         radioButtonController.setButtonsArray([amountRadioButton!,percentageRadioButton!])
         radioButtonController.delegate = self
         radioButtonController.shouldLetDeSelect = true
@@ -72,29 +76,52 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     @IBAction func createPromotion(sender: AnyObject) {
 
-        let params:[String:AnyObject] = [
-        	"product[name]":nameTextField.text!,
-        	"product[productQuantity]":"",
-        	"product[image]":"",
-        	"product[amount]":amountLabel.text!,
-        	"product[productUnitId]":"",
-        	"product[fromDate]":"",
-        	"product[endDate]":"",
-        	"product[productDiscountType]":"",
-        	"product[amtDiscountType]":"",
-        	"product[productId]":"",
-        	"product[productDiscountType]":"",
-        	"product[product_id]":"",
-        	"token":token,
-        	"device_id":"1234"
-        ]
-
-        ServerManager.sharedInstance().addPromotion(params) { (isSuccessful, error, result) in
-            if isSuccessful{
-                                                                        
+         if str == "fromEdit"{
+            let params:[String:AnyObject] = [
+                "product[name]":nameTextField.text!,
+                "product[productQuantity]":quantityLabel.text!,
+                "product[image]":"",
+                "product[amount]":amountLabel.text!,
+                "product[productUnitId]":"",
+                "product[fromDate]":fromLabel.text!,
+                "product[endDate]":toLabel.text!,
+                "product[productDiscountType]":discountType,
+                "product[amtDiscountType]":"",
+                "product[productId]":"",
+                "token":token,
+                "device_id":"1234"
+            ]
+            
+            ServerManager.sharedInstance().editPromotion(params) { (isSuccessful, error, result) in
+                if isSuccessful{
+                    
+                }
             }
-        }
+         }else{
+            let params:[String:AnyObject] = [
+                "product[name]":nameTextField.text!,
+                "product[productQuantity]":quantityLabel.text!,
+                "product[image]":"",
+                "product[amount]":amountLabel.text!,
+                "product[productUnitId]":"",
+                "product[fromDate]":fromLabel.text!,
+                "product[endDate]":toLabel.text!,
+                "product[productDiscountType]":discountType,
+                "product[amtDiscountType]":"",
+                "product[productId]":"",
+                "token":token,
+                "device_id":"1234"
+            ]
+            
+            ServerManager.sharedInstance().addPromotion(params) { (isSuccessful, error, result) in
+                if isSuccessful{
+                    
+                }
+            }
 
+        }
+        
+        
     }
 
     func bindModelToViews() {
@@ -135,7 +162,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     }
 
     @IBAction func amountPromotionAction(sender: AnyObject) {
-
+        
         if self.amountpromotionOutlet.checkState == .Unchecked{
              discounttypeConstraint.constant  = 0
             typeandValueView.hidden = true
@@ -148,7 +175,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     }
 
     @IBAction func productDescriptionAction(sender: AnyObject) {
-
+        
         if self.productPromotionOutlet.checkState == .Unchecked{
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
@@ -164,9 +191,9 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
     func didSelectButton(aButton: UIButton?) {
         if aButton == percentageRadioButton {
-
+            discountType = "P"
         }else{
-
+            discountType = ""
         }
     }
 

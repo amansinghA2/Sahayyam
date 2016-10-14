@@ -14,7 +14,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2j-JM-W4D">
-                        <rect key="frame" x="38" y="11" width="274" height="21"/>
+                        <rect key="frame" x="38" y="11" width="236" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="236" id="Gbq-wb-IVd"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75409482758620694" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -32,22 +35,29 @@
                             <constraint firstAttribute="width" constant="22" id="I95-X4-1id"/>
                             <constraint firstAttribute="height" constant="22" id="uzh-03-4hI"/>
                         </constraints>
-                        <state key="normal" backgroundImage="v_ic_globe"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-Rt-tir">
-                        <rect key="frame" x="38" y="1" width="282" height="39"/>
+                        <rect key="frame" x="38" y="1" width="236" height="39"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEP-zw-usm">
+                        <rect key="frame" x="288" y="11" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="8cZ-Au-2Wz"/>
+                            <constraint firstAttribute="width" constant="22" id="TxD-HJ-XY0"/>
+                        </constraints>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="4q4-o3-YDR"/>
                     <constraint firstItem="aYq-Rt-tir" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="6fr-58-1CF"/>
                     <constraint firstItem="aYq-Rt-tir" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="7zy-3q-Fgz"/>
-                    <constraint firstAttribute="trailing" secondItem="aYq-Rt-tir" secondAttribute="trailing" id="JlM-Uv-jwm"/>
+                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="C2j-JM-W4D" secondAttribute="trailing" constant="14" id="Efv-kx-gBv"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KpV-Qi-jDq"/>
                     <constraint firstAttribute="trailing" secondItem="gFs-rj-lcb" secondAttribute="trailing" id="PDC-tC-50W"/>
+                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="aYq-Rt-tir" secondAttribute="trailing" constant="14" id="Trc-L2-A0g"/>
                     <constraint firstItem="BIG-3f-xzz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VFw-RI-DFT"/>
+                    <constraint firstItem="dEP-zw-usm" firstAttribute="centerY" secondItem="aYq-Rt-tir" secondAttribute="centerY" constant="1.5" id="Yoz-9i-iAo"/>
                     <constraint firstAttribute="bottom" secondItem="gFs-rj-lcb" secondAttribute="bottom" id="f7d-w2-4LS"/>
-                    <constraint firstAttribute="trailing" secondItem="C2j-JM-W4D" secondAttribute="trailing" constant="8" id="fLi-sk-Yhh"/>
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="hb0-0O-cYC"/>
                     <constraint firstItem="BIG-3f-xzz" firstAttribute="centerY" secondItem="aYq-Rt-tir" secondAttribute="centerY" constant="0.5" id="oZv-e8-roR"/>
                     <constraint firstAttribute="bottom" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="11" id="uba-X7-iEW"/>
@@ -62,13 +72,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cellClickedButton" destination="aYq-Rt-tir" id="n2R-9t-LoJ"/>
+                <outlet property="deleteButton" destination="dEP-zw-usm" id="KxH-zB-SU6"/>
                 <outlet property="globalEditbutton" destination="BIG-3f-xzz" id="JRm-e6-KJo"/>
                 <outlet property="productName" destination="C2j-JM-W4D" id="eXQ-6G-WeV"/>
             </connections>
             <point key="canvasLocation" x="-29" y="142"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="v_ic_globe" width="16" height="16"/>
-    </resources>
 </document>

@@ -118,7 +118,6 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
             cell.vendorOrderList = self.customerDetails
             return cell
         }
-        
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

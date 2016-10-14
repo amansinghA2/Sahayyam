@@ -77,62 +77,73 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     var startLabelArray = [UILabel]()
     var endLabelArray = [UILabel]()
     var labelArray = [UILabel]()
+    
+//    var fromHourArray = [String]()
+//    var toHourArray = [String]()
+//    var fromMinArray = [UILabel]()
+//    var toMinArray = [UILabel]()
     var deliveryTimeLabelArray = [UILabel]()
+//    var deliveryTimeLabelArray = [UILabel]()
+//    var deliveryTimeLabelArray = [UILabel]()
+//    var deliveryTimeLabelArray = [UILabel]()
+//    var deliveryTimeLabelArray = [UILabel]()
+//    var deliveryTimeLabelArray = [UILabel]()
+    
     var someGlobalNSInteger = Int()
     var i = Int()
     var getAM = String()
-    var fromHour1 = ""
-    var fromMin1 = ""
-    var fromAmPm1 = ""
-    var fromHour2 = ""
-    var fromMin2 = ""
-    var fromAmPm2 = ""
-    var fromHour3 = ""
-    var fromMin3 = ""
-    var fromAmPm3 = ""
+    var fromHour1 = "00"
+    var fromMin1 = "00"
+    var fromAmPm1 = "00"
+    var fromHour2 = "00"
+    var fromMin2 = "00"
+    var fromAmPm2 = "00"
+    var fromHour3 = "00"
+    var fromMin3 = "00"
+    var fromAmPm3 = "00"
     
-    var toHour1 = ""
-    var toMin1 = ""
-    var toAmPm1 = ""
-    var toHour2 = ""
-    var toMin2 = ""
-    var toAmPm2 = ""
-    var toHour3 = ""
-    var toMin3 = ""
-    var toAmPm3 = ""
+    var toHour1 = "00"
+    var toMin1 = "00"
+    var toAmPm1 = "00"
+    var toHour2 = "00"
+    var toMin2 = "00"
+    var toAmPm2 = "00"
+    var toHour3 = "00"
+    var toMin3 = "00"
+    var toAmPm3 = "00"
     
-    var delHour1 = ""
-    var delHour2 = ""
-    var delHour3 = ""
-    var delHour4 = ""
-    var delHour5 = ""
-    var delHour6 = ""
-    var delHour7 = ""
-    var delHour8 = ""
-    var delHour9 = ""
-    var delHour10 = ""
+    var delHour1 = "00"
+    var delHour2 = "00"
+    var delHour3 = "00"
+    var delHour4 = "00"
+    var delHour5 = "00"
+    var delHour6 = "00"
+    var delHour7 = "00"
+    var delHour8 = "00"
+    var delHour9 = "00"
+    var delHour10 = "00"
     
-    var deltoMin1 = ""
-    var deltoMin2 = ""
-    var deltoMin3 = ""
-    var deltoMin4 = ""
-    var deltoMin5 = ""
-    var deltoMin6 = ""
-    var deltoMin7 = ""
-    var deltoMin8 = ""
-    var deltoMin9 = ""
-    var deltoMin10 = ""
+    var deltoMin1 = "00"
+    var deltoMin2 = "00"
+    var deltoMin3 = "00"
+    var deltoMin4 = "00"
+    var deltoMin5 = "00"
+    var deltoMin6 = "00"
+    var deltoMin7 = "00"
+    var deltoMin8 = "00"
+    var deltoMin9 = "00"
+    var deltoMin10 = "00"
     
-    var delAmPm1 = ""
-    var delAmPm2 = ""
-    var delAmPm3 = ""
-    var delAmPm4 = ""
-    var delAmPm5 = ""
-    var delAmPm6 = ""
-    var delAmPm7 = ""
-    var delAmPm8 = ""
-    var delAmPm9 = ""
-    var delAmPm10 = ""
+    var delAmPm1 = "00"
+    var delAmPm2 = "00"
+    var delAmPm3 = "00"
+    var delAmPm4 = "00"
+    var delAmPm5 = "00"
+    var delAmPm6 = "00"
+    var delAmPm7 = "00"
+    var delAmPm8 = "00"
+    var delAmPm9 = "00"
+    var delAmPm10 = "00"
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,7 +155,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         deliveryTimeLabelArray = [deliveryTime0 , deliveryTime1 , deliveryTime2 , deliveryTime3 , deliveryTime4 , deliveryTime5 , deliveryTime6 , deliveryTime7 , deliveryTime8 , deliveryTime9]
         startLabelArray = [from1 , from2 , from3]
         endLabelArray = [to1 , to2 , to3]
-        labelArray = []
+        
        // businessTimingView.removeFromSuperview()
         radioButtonController.setButtonsArray([deliveryCharges , freeDelivery])
         radioButtonController.delegate = self
@@ -235,6 +246,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     }
 
     @IBAction func businessTimeButton(sender: AnyObject) {
+        
         businessTimeingViewContraint.constant += businessViewConstant
     }
     
@@ -274,58 +286,57 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         let params = [
         "token":token,
         "device_id":"1234",
-        "store[0][from_hour]":"",
-        "store[0][from_minute]":"",
-        "store[0][from]":"",
-        "store[0][end_hour]":"",
-        "store[0][end_minute]":"",
-        "store[0][to]":"",
-        "store[1][from_hour]":"",
-        "store[1][from_minute]":"",
-        "store[1][from]":"",
-        "store[1][end_hour]":"",
-        "store[1][end_minute]":"",
-        "store[1][to]":"",
-        "store[2][from_hour]":"",
-        "store[2][from_minute]":"",
-        "store[2][from]":"",
-        "store[2][end_hour]":"",
-        "store[2][end_minute]":"",
-        "store[2][to]":"",
-        "store[0][del_hour]":"",
-        "store[0][del_min]":"",
-        "store[0][del]":"",
-        "store[1][del_hour]":"",
-        "store[1][del_min]":"",
-        "store[1][del]":"",
-        "store[2][del_hour]":"",
-        "store[2][del_min]":"",
-        "store[2][del]":"",
-        "store[3][del_hour]":"",
-        "store[3][del_min]":"",
-        "store[3][del]":"",
-        "store[4][del_hour]":"",
-        "store[4][del_min]":"",
-        "store[4][del]":"",
-        "store[5][del_hour]":"",
-        "store[5][del_min]":"",
-        "store[5][del]":"",
-        "store[6][del_hour]":"",
-        "store[6][del_min]":"",
-        "store[6][del]":"",
-        "store[7][del_hour]":"",
-        "store[7][del_min]":"",
-        "store[7][del]":"",
-        "store[8][del_hour]":"",
-        "store[8][del_min]":"",
-        "store[8][del]":"",
-        "store[9][del_hour]":"",
-        "store[9][del_min]":"",
-        "store[9][del]":"",
-        "store[10][del_hour]":"",
-        "store[10][del_min]":"",
-        "store[10][del]":"",
+        "store[0][from_hour]":fromHour1,
+        "store[0][from_minute]":fromMin2,
+        "store[0][from]":fromAmPm2,
+        "store[0][end_hour]":toHour1,
+        "store[0][end_minute]":toMin1,
+        "store[0][to]":toAmPm1,
+        "store[1][from_hour]":fromHour2,
+        "store[1][from_minute]":fromMin2,
+        "store[1][from]":fromAmPm2,
+        "store[1][end_hour]":toHour2,
+        "store[1][end_minute]":toMin2,
+        "store[1][to]":toAmPm2,
+        "store[2][from_hour]":fromHour3,
+        "store[2][from_minute]":fromMin3,
+        "store[2][from]":fromAmPm3,
+        "store[2][end_hour]":toHour3,
+        "store[2][end_minute]":toMin3,
+        "store[2][to]":toAmPm3,
+        "store[0][del_hour]":delHour1,
+        "store[0][del_min]":deltoMin1,
+        "store[0][del]":delAmPm1,
+        "store[1][del_hour]":delHour2,
+        "store[1][del_min]":deltoMin2,
+        "store[1][del]":delAmPm2,
+        "store[2][del_hour]":delHour3,
+        "store[2][del_min]":deltoMin3,
+        "store[2][del]":delAmPm3,
+        "store[3][del_hour]":delHour4,
+        "store[3][del_min]":deltoMin4,
+        "store[3][del]":delAmPm4,
+        "store[4][del_hour]":delHour5,
+        "store[4][del_min]":deltoMin5,
+        "store[4][del]":delAmPm5,
+        "store[5][del_hour]":delHour6,
+        "store[5][del_min]":deltoMin6,
+        "store[5][del]":delAmPm6,
+        "store[6][del_hour]":delHour7,
+        "store[6][del_min]":deltoMin7,
+        "store[6][del]":delAmPm7,
+        "store[7][del_hour]":delHour8,
+        "store[7][del_min]":deltoMin8,
+        "store[7][del]":delAmPm8,
+        "store[8][del_hour]":delHour9,
+        "store[8][del_min]":deltoMin9,
+        "store[8][del]":delAmPm9,
+        "store[9][del_hour]":delHour10,
+        "store[9][del_min]":deltoMin10,
+        "store[9][del]":delAmPm10
         ]
+        
+        print(params)
         
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
             if isSuccessful {
@@ -356,10 +367,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
        
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "HH:mm"
-//    let locale = NSLocale(localeIdentifier: "NL")
-//    sender.locale = locale
-        
-   // dateFormatter.timeStyle = .ShortStyle
     
         switch someGlobalNSInteger {
         case 0:
@@ -367,71 +374,84 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
            fromMin1 = getMinFromDatePicker(sender)
            (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
            print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
-           fromLabel1.text =  fromHour1 + " : " + fromMin1 + " " + fromAmPm1   //dateFormatter.stringFromDate(sender.date)
+           fromLabel1.text =  fromHour1 + " : " + fromMin1 + " " + fromAmPm1
         case 1:
             toHour1 = getHourFromDatePicker(sender)
             toMin1 = getMinFromDatePicker(sender)
             (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
             print("\(toHour1) + \(toMin1) + \(toAmPm1)")
-            toLabel1.text = dateFormatter.stringFromDate(sender.date)
+            toLabel1.text = toHour1 + " : " + toMin1 + " " + toAmPm1
         case 2:
             fromHour2 = getHourFromDatePicker(sender)
             fromMin2 = getMinFromDatePicker(sender)
-            (fromHour2 , fromMin2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
+            (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
             print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
-            fromLabel2.text = dateFormatter.stringFromDate(sender.date)
+            fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
         case 3:
             toHour2 = getHourFromDatePicker(sender)
             toMin2 = getMinFromDatePicker(sender)
-            toLabel2.text = dateFormatter.stringFromDate(sender.date)
+            (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
+            toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
         case 4:
             fromHour3 = getHourFromDatePicker(sender)
             fromMin3 = getMinFromDatePicker(sender)
-            fromLabel3.text = dateFormatter.stringFromDate(sender.date)
+            (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
+            fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
         case 5:
             toHour3 = getHourFromDatePicker(sender)
             toMin3 = getMinFromDatePicker(sender)
-            toLabel3.text = dateFormatter.stringFromDate(sender.date)
+            (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
+            toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
         case 6:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField0.text = dateFormatter.stringFromDate(sender.date)
+            delHour1 = getHourFromDatePicker(sender)
+            deltoMin1 = getMinFromDatePicker(sender)
+            (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
+            deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
         case 7:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField1.text = dateFormatter.stringFromDate(sender.date)
+            delHour2 = getHourFromDatePicker(sender)
+            deltoMin2 = getMinFromDatePicker(sender)
+            (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
+            deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
         case 8:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField2.text = dateFormatter.stringFromDate(sender.date)
+            delHour3 = getHourFromDatePicker(sender)
+            deltoMin3 = getMinFromDatePicker(sender)
+            (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
+            deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
         case 9:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField3.text = dateFormatter.stringFromDate(sender.date)
+            delHour4 = getHourFromDatePicker(sender)
+            deltoMin4 = getMinFromDatePicker(sender)
+            (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
+            deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
         case 10:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField4.text = dateFormatter.stringFromDate(sender.date)
+            delHour5 = getHourFromDatePicker(sender)
+            deltoMin5 = getMinFromDatePicker(sender)
+            (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
+            deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
         case 11:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField5.text = dateFormatter.stringFromDate(sender.date)
+            delHour6 = getHourFromDatePicker(sender)
+            deltoMin6 = getMinFromDatePicker(sender)
+            (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
+            deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
         case 12:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField6.text = dateFormatter.stringFromDate(sender.date)
+            delHour7 = getHourFromDatePicker(sender)
+            deltoMin7 = getMinFromDatePicker(sender)
+            (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
+            deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
         case 13:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField7.text = dateFormatter.stringFromDate(sender.date)
+            delHour8 = getHourFromDatePicker(sender)
+            deltoMin8 = getMinFromDatePicker(sender)
+            (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
+            deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
         case 14:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField8.text = dateFormatter.stringFromDate(sender.date)
+            delHour9 = getHourFromDatePicker(sender)
+            deltoMin9 = getMinFromDatePicker(sender)
+            (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
+            deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
         case 15:
-            toHour1 = getHourFromDatePicker(sender)
-            toMin1 = getMinFromDatePicker(sender)
-            deliveryTimeTextField9.text = dateFormatter.stringFromDate(sender.date)
+            delHour10 = getHourFromDatePicker(sender)
+            deltoMin10 = getMinFromDatePicker(sender)
+            (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
+            deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
         default:
             ""
         }
@@ -442,7 +462,13 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             var amOrPm = ""
             var fromHour1 = Int()
             var fromHour2 = String()
-            
+//            var fromMin1 = String()
+        
+//        if fromHour == "" && fromMin == "" {
+//            fromHour1 == 00
+//            //fromMin1 = "00"
+//        }
+    
             if a > 12 {
                 fromHour1 = a! - 12
                 amOrPm = "PM"
@@ -492,11 +518,13 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         for i in 0...2 {
             if !(self.storeProfileData.startTime[i].from_hour == "00" && self.storeProfileData.startTime[i].from_minute == "00") {
             self.startTextFieldArray[i].text = self.storeProfileData.startTime[i].from_hour + " : " + self.storeProfileData.startTime[i].from_minute + " " + self.storeProfileData.startTime[i].from
-                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+                
+                
+               // businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
-                self.startTextFieldArray[i].removeFromSuperview()
-                self.startLabelArray[i].removeFromSuperview()
-                businessTimeingViewContraint.constant = businessViewConstant
+//                self.startTextFieldArray[i].removeFromSuperview()
+//                self.startLabelArray[i].removeFromSuperview()
+//                businessTimeingViewContraint.constant = businessViewConstant
             }
         }
         
@@ -504,11 +532,11 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             
             if !(self.storeProfileData.endTime[i].end_hour == "00" && self.storeProfileData.endTime[i].end_minute == "00"){
             self.endTextFieldArray[i].text = self.storeProfileData.endTime[i].end_hour + " : " + self.storeProfileData.endTime[i].end_minute + " " + self.storeProfileData.endTime[i].to
-                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+              //  businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
-               self.endTextFieldArray[i].removeFromSuperview()
-               self.endLabelArray[i].removeFromSuperview()
-                businessTimeingViewContraint.constant = businessViewConstant
+//               self.endTextFieldArray[i].removeFromSuperview()
+//               self.endLabelArray[i].removeFromSuperview()
+//               businessTimeingViewContraint.constant = businessViewConstant
             }
         }
         
@@ -516,11 +544,11 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             
             if !(self.storeProfileData.deliveryTime[i].del_hour == "00" && self.storeProfileData.deliveryTime[i].del_min == "00"){
             self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + " : " + self.storeProfileData.deliveryTime[i].del_min + " " + self.storeProfileData.deliveryTime[i].del
-               businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+              // businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
-                self.textfieldArray[i].removeFromSuperview()
-                self.deliveryTimeLabelArray[i].removeFromSuperview()
-               businessTimeingViewContraint.constant = businessViewConstant
+//                self.textfieldArray[i].removeFromSuperview()
+//                self.deliveryTimeLabelArray[i].removeFromSuperview()
+//               businessTimeingViewContraint.constant = businessViewConstant
             }
         }
         

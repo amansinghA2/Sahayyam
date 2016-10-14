@@ -17,6 +17,6 @@ class VendorPayment: NSObject {
     dynamic var paymentMethod = String()
     dynamic var status = String()
     dynamic var invoiceType = String()
-    
-    
+    dynamic var payStatus = String()
+ 
 }

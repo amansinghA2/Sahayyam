@@ -247,7 +247,8 @@ extension CommonJsonMapper {
             productDetail.productCategories = description
         }
         
-        if let description = result["product_id"] as? String {
+        if let description = result["product_id"] as? Int {
+            print(description)
             productDetail.product_id = description
         }
         
@@ -772,6 +773,14 @@ extension CommonJsonMapper {
                 
                 if let parentId = value.valueForKey("parent_id"){
                     categoryList.parent_id = parentId as! String
+                }
+                
+                if let parentId = value.valueForKey("service_id"){
+                    categoryList.service_id = parentId as! String
+                }
+                
+                if let parentId = value.valueForKey("isglobel"){
+                    categoryList.isglobel = parentId as! String
                 }
                 
                 categoryLists.append(categoryList)

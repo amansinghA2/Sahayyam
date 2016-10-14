@@ -15,6 +15,7 @@ class VendorCategoryListTableViewCell: UITableViewCell {
     @IBOutlet weak var imageLeftConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var globalEditbutton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

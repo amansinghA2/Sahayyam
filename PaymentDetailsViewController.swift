@@ -14,7 +14,7 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
     @IBOutlet weak var paymentdetailsTableView: UITableView!
     var vendorPayments = [VendorPayment]()
      var vendorPayment = VendorPayment()
-    
+    var vendor_type = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,14 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         "device_id":"1234"
         ]
         
-        ServerManager.sharedInstance().getTransactionsHistory(params) { (isSuccessful, error, result) in
+        ServerManager.sharedInstance().getTransactionsHistory(params) { (isSuccessful, error, result , result1) in
             if isSuccessful{
                 self.vendorPayments = result!
+                
+                if let vendorType = result1!["vendor_type"] as? String {
+                   self.vendor_type = vendorType
+                }
+                
                 self.paymentdetailsTableView.delegate = self
                 self.paymentdetailsTableView.dataSource = self
                 self.paymentdetailsTableView.reloadData()
@@ -57,6 +62,18 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         let cell = tableView.dequeueReusableCellWithIdentifier("paymentdetailsIdentifier") as! PaymentDetailsTableViewCell
         
         cell.vendorPayment = vendorPayments[indexPath.row]
+        
+        if vendorPayments[indexPath.row].payStatus == "1" {
+            cell.viewInvoiceButtonLabel.hidden = false
+        }else{
+            cell.viewInvoiceButtonLabel.hidden = true
+        }
+        
+        if vendor_type == "2" && vendorPayments[indexPath.row].payStatus == "1" {
+            cell.viewInvoiceButtonLabel.setTitle("Make Payment", forState: .Normal)
+            cell.viewInvoiceButtonLabel.hidden = true
+        }
+        
         cell.viewInvoiceButtonLabel.addTarget(self, action: #selector(PaymentDetailsViewController.viewInvoice(_:)), forControlEvents: .TouchUpInside)
         return cell
     }
@@ -72,9 +89,12 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         let cell = sender.superview?.superview as! PaymentDetailsTableViewCell
         let indexPath = paymentdetailsTableView.indexPathForCell(cell)
         
-        self.vendorPayment = self.vendorPayments[(indexPath?.row)!]
-        
-        self.performSegueWithIdentifier("showInvoiceSegue", sender: nil)
+        if vendor_type == "2" && vendorPayments[indexPath!.row].payStatus == "1" {
+            
+        }else{
+            self.vendorPayment = self.vendorPayments[(indexPath?.row)!]
+            self.performSegueWithIdentifier("showInvoiceSegue", sender: nil)
+        }
         
     }
     

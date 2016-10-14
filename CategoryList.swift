@@ -24,6 +24,7 @@ class CategoryList: NSObject {
 //    dynamic var sort_order = String()
     dynamic var products = String()
     dynamic var serviceName = String()
+    dynamic var service_id = String()
 //    dynamic var firstName = String()
 //    dynamic var lastName = String()
 //    dynamic var company = String()

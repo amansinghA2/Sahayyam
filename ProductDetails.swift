@@ -24,7 +24,7 @@ class ProductDetails: NSObject {
     dynamic var model = String()
     dynamic var priority = String()
     dynamic var productCategories = String()
-    dynamic var product_id = String()
+    dynamic var product_id = Int()
     dynamic var quantity = String()
     dynamic var ref_code = String()
     dynamic var service_id = String()

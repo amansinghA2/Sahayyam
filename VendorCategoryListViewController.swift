@@ -108,9 +108,9 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
                 return true
             }
             
-            if $0.isglobel == "0" {
-                return true
-            }
+//            if $0.isglobel == "0" {
+//                return true
+//            }
             
             return false
         })
@@ -134,9 +134,9 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
                 return true
             }
             
-            if $0.isglobel == "0" {
-                return true
-            }
+//            if $0.isglobel == "0" {
+//                return true
+//            }
             
             return false
         })
@@ -148,16 +148,18 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         if subChildArray.count > 0 {
             let filterArr = subChildArray[indexPath.row]
             if filterArr.isglobel == "0" {
+                 cell.globalEditButton.userInteractionEnabled = true
+                cell.globalEditButton.addTarget(self, action: #selector(VendorCategoryListViewController.localEditButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                cell.deleteButton.addTarget(self, action: #selector(VendorCategoryListViewController.localDeleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.globalEditButton.setImage(UIImage(named: "v_ic_edit_cat"), forState: .Normal)
-                cell.globalEditButton.userInteractionEnabled = true
-                cell.productName?.text = filterArr.name
                 cell.productName.textColor = UIColor.blueColor()
             }else{
+                 cell.globalEditButton.userInteractionEnabled = false
                 cell.globalEditButton.setImage(UIImage(named: "v_ic_globe"), forState: .Normal)
-                cell.globalEditButton.userInteractionEnabled = false
-                cell.productName?.text = filterArr.name
-                cell.productName.textColor = UIColor.blueColor()
+                cell.productName.textColor = UIColor.redColor()
             }
+           
+            cell.productName?.text = filterArr.name
             
         }
         
@@ -165,84 +167,108 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
   
     }
     
+   // Mark : - Custom Actions
     
-//    
-//     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        
-////        self.subChildArray = childArray.filter({
-////            if (parentArray[indexPath.section].category_id == $0.parent_id) {
-////                return true
-////            }
-////            return false
-////        })
-//        
-////      var sectionItems = self.parentArray[Int(indexPath.section)]
-////      var sectionHeaders = self.subChildArray[Int(indexPath.section)]
-//        
-//        let itemAndSubsectionIndex = self.computeItemAndSubsectionIndexForIndexPath(indexPath)
-//        let subsectionIndex = Int(itemAndSubsectionIndex.section)
-//        let itemIndex = itemAndSubsectionIndex.row
-//        
-//        if itemIndex < 0 {
-//            // Section header
-//            print(subsectionIndex)
-//                let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
-//            
-//            for i in 0...subsectionIndex {
-//            cell.productName.text = subChildArray[i].name
-//            cell.productName.textColor = UIColor.redColor()
-//            }
-//
-//            return cell
-//        }
-//        else {
-//            // Row Item
-//            let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
-////            cell.productName.textColor = UIColor.blueColor()
-////            cell.productName.text = subChildArray[itemIndex].name
-//            return cell
-//        }
-//            let cell = tableView.dequeueReusableCellWithIdentifier("categorysubListIdentifier", forIndexPath: indexPath) as! VendorCategorySubListTableViewCell
-//            return cell
-//            
-//    }
-//    
-//    func computeItemAndSubsectionIndexForIndexPath(indexPath: NSIndexPath) -> NSIndexPath {
-//       // var sectionItems = self.parentArray[Int(indexPath.section)]
-//        
-//        self.subChildArray = childArray.filter({
-//            if (parentArray[indexPath.section].category_id == $0.parent_id) {
-//                return true
-//            }
-//            return false
-//        })
-//
-//        
-//        var itemIndex = indexPath.row
-//        var subsectionIndex = 0
-//        
-//        for i in 0..<subChildArray.count {
-//            // First row for each section item is header
-//            itemIndex -= 1
-//            // Check if the item index is within this subsection's items
-//            //var subsectionItems = childArray[i]
-//            if itemIndex < Int(subChildArray.count) {
-//                subsectionIndex = i
-//            }
-//            else {
-//                itemIndex -= subChildArray.count
-//            }
-//        }
-//        return NSIndexPath(forRow: itemIndex, inSection: subsectionIndex)
-//    }
+    func localEditButtonClicked(sender:UIButton) {
+        
+        
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "parent_id":"",
+            "category_name":"",
+            "category_id":"",
+            "sort_order":"0",
+            "status":"",
+            "image":""
+            ]
+        
+        ServerManager.sharedInstance().vendorEditcategory(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                
+            }else{
+                self.hideHud()
+            }
+            
+        }
+    }
+    
+    func globalEditButtonClicked(sender:UIButton) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "parent_id":"",
+            "category_name":"",
+            "category_id":"",
+            "sort_order":"0",
+            "status":"",
+            "image":""
+        ]
+        
+        ServerManager.sharedInstance().vendorEditcategory(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                
+            }else{
+                self.hideHud()
+            }
+            
+        }
+    }
+    
+    func localDeleteButtonClicked(sender:UIButton) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "category_id":""
+        ]
+        
+        ServerManager.sharedInstance().vendorDeletCategory(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
+    
+    func globalDeleteButtonClicked(sender:UIButton) {
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "category_id":""
+            ]
+        
+        ServerManager.sharedInstance().vendorDeletCategory(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
       {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryListIdentifier") as! VendorCategoryListTableViewCell
+        
         if parentArray.count > 0 {
+            let filterArr = parentArray[section]
+            if filterArr.isglobel == "0" {
+                 cell.globalEditbutton.userInteractionEnabled = true
+                cell.globalEditbutton.addTarget(self, action: #selector(VendorCategoryListViewController.globalEditButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                 cell.deleteButton.addTarget(self, action: #selector(VendorCategoryListViewController.globalDeleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                cell.globalEditbutton.setImage(UIImage(named: "v_ic_edit_cat"), forState: .Normal)
+                cell.productName.textColor = UIColor.blueColor()
+            }else{
+                 cell.globalEditbutton.userInteractionEnabled = false
+                cell.globalEditbutton.setImage(UIImage(named: "v_ic_globe"), forState: .Normal)
+                cell.productName.textColor = UIColor.redColor()
+            }
             cell.productName.text = parentArray[section].name
             cell.productName.textColor = UIColor.blackColor()
-           // cell.imageLeftConstraint.constant = 8
         } else {
             print("No objects")
         }

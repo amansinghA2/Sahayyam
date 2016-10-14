@@ -34,6 +34,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var substractStockLabel: UITextField!
     @IBOutlet weak var statusLabel: UITextField!
     @IBOutlet weak var productImage: UIImageView!
+    
+    
     let imagePicker = UIImagePickerController()
     var str = ""
     var fromDesc = ""
@@ -42,6 +44,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var serviceLists = [VendorService]()
     var stockLabelString = String()
     var categoryLists = [ProductCategoryList]()
+    var servicelabelString = String()
+    var categorylabelString = String()
 
 
     override func viewDidLoad() {
@@ -149,11 +153,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 //            unitTypeLabel.text = name
 //        }
         
+       
         if let name = getProductDetails.image as? String{
             if name == "" {
             productImage.image = UIImage(named: "v_no_image")
             }else{
-            productImage.image = UIImage(named: "name")
+                str = name
+                productImage.imageFromUrl(name)
             }
         }
         
@@ -294,6 +300,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     
                     ServerManager.sharedInstance().editProduct(params) { (isSuccessful, error, result) in
                         if isSuccessful {
+                            self.navigationController?.popToRootViewControllerAnimated(true)
                             print("Success")
                         }
                     }
@@ -453,6 +460,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "ref_code":referenceCodeLabel.text!
                 ]
 
+                print(params)
+                
                 ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
                     if isSuccessful {
                         print("Success")
