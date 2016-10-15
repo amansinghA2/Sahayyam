@@ -725,7 +725,7 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.GET, vendorEditCategoryUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.POST, vendorEditCategoryUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -751,7 +751,7 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.GET, vendorDeleteCategoryUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.POST, vendorDeleteCategoryUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

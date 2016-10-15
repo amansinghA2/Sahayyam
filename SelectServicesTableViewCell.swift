@@ -13,6 +13,7 @@ class SelectServicesTableViewCell: UITableViewCell {
     @IBOutlet weak var serviceType: UILabel!
 
     @IBOutlet weak var serviceRadioButton: SSRadioButton!
+    
     var vendorService:VendorService!{
         didSet{
             bindModelToViews()

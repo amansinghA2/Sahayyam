@@ -466,7 +466,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     if isSuccessful {
                         print("Success")
                     }
-                }        }
+                }
+            }
             else{
                 self.hideHud()
                 AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)

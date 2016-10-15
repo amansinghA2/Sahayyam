@@ -60,6 +60,10 @@
 		AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3844BA1D7415E100E4F2B4 /* CustomClass.swift */; };
 		AF3D717A1D4C60A00025EF32 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */; };
 		AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4680C51D71C7EF005BF406 /* CategoryList.swift */; };
+		AF4D7EEE1DB2398500C9BCB3 /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D7EEC1DB2398500C9BCB3 /* CategoryEditViewController.swift */; };
+		AF4D7EEF1DB2398500C9BCB3 /* CategoryEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D7EED1DB2398500C9BCB3 /* CategoryEditViewController.xib */; };
+		AF4D928D1DB1EAF10027E992 /* LoadMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D928B1DB1EAF10027E992 /* LoadMoreTableViewCell.swift */; };
+		AF4D928E1DB1EAF10027E992 /* LoadMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D928C1DB1EAF10027E992 /* LoadMoreTableViewCell.xib */; };
 		AF4E78BF1D50857300E2FB20 /* TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E78BD1D50857300E2FB20 /* TrackOrderViewController.swift */; };
 		AF4E78C01D50857300E2FB20 /* TrackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4E78BE1D50857300E2FB20 /* TrackOrderViewController.xib */; };
 		AF4E78C31D5085D900E2FB20 /* TrackOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E78C11D5085D900E2FB20 /* TrackOrderTableViewCell.swift */; };
@@ -343,6 +347,10 @@
 		AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		AF4680C51D71C7EF005BF406 /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		AF4D7EEC1DB2398500C9BCB3 /* CategoryEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
+		AF4D7EED1DB2398500C9BCB3 /* CategoryEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryEditViewController.xib; sourceTree = "<group>"; };
+		AF4D928B1DB1EAF10027E992 /* LoadMoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreTableViewCell.swift; sourceTree = "<group>"; };
+		AF4D928C1DB1EAF10027E992 /* LoadMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreTableViewCell.xib; sourceTree = "<group>"; };
 		AF4E78BD1D50857300E2FB20 /* TrackOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackOrderViewController.swift; sourceTree = "<group>"; };
 		AF4E78BE1D50857300E2FB20 /* TrackOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackOrderViewController.xib; sourceTree = "<group>"; };
 		AF4E78C11D5085D900E2FB20 /* TrackOrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackOrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -963,6 +971,8 @@
 				AF5438B61D87BFFE00CDCCD9 /* VendorCategoryListViewController.xib */,
 				AFD3F1AE1D9D106A0024014B /* VendorCategorySubViewController.swift */,
 				AFD3F1AF1D9D106A0024014B /* VendorCategorySubViewController.xib */,
+				AF4D7EEC1DB2398500C9BCB3 /* CategoryEditViewController.swift */,
+				AF4D7EED1DB2398500C9BCB3 /* CategoryEditViewController.xib */,
 				AF5438BD1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.swift */,
 				AF5438BE1D87C66F00CDCCD9 /* VendorCategoryListTableViewCell.xib */,
 				AFA6C19C1DA64033008E0A01 /* VendorCategorySubListTableViewCell.swift */,
@@ -995,6 +1005,8 @@
 				AF6327CD1D9514580030F1C5 /* StoreProfileViewController.xib */,
 				AF6327D01D951A550030F1C5 /* StoreProfileTimingTableViewCell.swift */,
 				AF6327D11D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib */,
+				AF4D928B1DB1EAF10027E992 /* LoadMoreTableViewCell.swift */,
+				AF4D928C1DB1EAF10027E992 /* LoadMoreTableViewCell.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1261,6 +1273,7 @@
 				AF1F1FAF1D4A121C00E36DB0 /* MenuViewController.xib in Resources */,
 				AF5438B81D87BFFE00CDCCD9 /* VendorCategoryListViewController.xib in Resources */,
 				AF652C8A1D8FA0D4009852A3 /* SelectServicesTableViewCell.xib in Resources */,
+				AF4D7EEF1DB2398500C9BCB3 /* CategoryEditViewController.xib in Resources */,
 				AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */,
 				AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */,
 				AF1F1F571D4A07E400E36DB0 /* LaunchScreen.storyboard in Resources */,
@@ -1273,6 +1286,7 @@
 				AFB6A1F91D5DF05700A9731B /* OrderDetailHeaderTableViewCell.xib in Resources */,
 				AF5CB11F1D98EA6C007C0261 /* SubsPaymentTableViewCell.xib in Resources */,
 				AFD3F1B11D9D106A0024014B /* VendorCategorySubViewController.xib in Resources */,
+				AF4D928E1DB1EAF10027E992 /* LoadMoreTableViewCell.xib in Resources */,
 				AFB6537A1D6AE6E9003D242C /* DeliveryTimeTableViewCell.xib in Resources */,
 				AF1F1FAB1D4A107600E36DB0 /* CityHead.storyboard in Resources */,
 				AF6327FB1D955CA20030F1C5 /* SubsPaymentViewController.xib in Resources */,
@@ -1510,6 +1524,7 @@
 				AF6327F61D9559A30030F1C5 /* AddVendorViewController.swift in Sources */,
 				070C14B81D943A27007AD580 /* Double.swift in Sources */,
 				AF5438CD1D87EEFE00CDCCD9 /* SubscriptionDetailsTableViewCell.swift in Sources */,
+				AF4D7EEE1DB2398500C9BCB3 /* CategoryEditViewController.swift in Sources */,
 				AFFBDC411DA76AB7006DDA28 /* OrderStatus.swift in Sources */,
 				AFBC274B1D54B179003ECBF6 /* RoundedView.swift in Sources */,
 				AF6D18E71D86D0AD00F220FE /* VendorPromotionTableViewCell.swift in Sources */,
@@ -1552,6 +1567,7 @@
 				AF10062F1DA8B07D00E7C6F5 /* StoreProfileData.swift in Sources */,
 				AFB6A1F41D5DEE5B00A9731B /* OrderDetailsTableViewCell.swift in Sources */,
 				AFC26FCA1D4F1E100003471B /* CustomerMenuDescriptionViewController.swift in Sources */,
+				AF4D928D1DB1EAF10027E992 /* LoadMoreTableViewCell.swift in Sources */,
 				0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */,
 				AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */,
 				AF1F1FAE1D4A121C00E36DB0 /* MenuViewController.swift in Sources */,

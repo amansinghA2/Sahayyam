@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAz-Zk-gMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65" y="966"/>
+            <point key="canvasLocation" x="-64" y="1072"/>
         </scene>
         <!--Under Construction View Controller-->
         <scene sceneID="8mD-an-3SJ">
@@ -356,6 +356,7 @@
                     <connections>
                         <outlet property="slideMenuButton" destination="Fuo-69-3Rq" id="CgO-Mp-H7d"/>
                         <segue destination="XoG-m9-QKl" kind="show" id="jD8-SN-Hsa"/>
+                        <segue destination="UQ6-L0-cg7" kind="show" id="Zkv-xf-PrK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDr-92-Kc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,7 +543,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4G0-Bj-fZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="2446"/>
+            <point key="canvasLocation" x="250" y="2532"/>
+        </scene>
+        <!--Category Edit View Controller-->
+        <scene sceneID="aZh-UL-NtH">
+            <objects>
+                <viewController storyboardIdentifier="categoryEditIdentifier" id="UQ6-L0-cg7" customClass="CategoryEditViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzk-A1-9qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="2532"/>
         </scene>
     </scenes>
     <resources>

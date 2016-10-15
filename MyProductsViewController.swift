@@ -371,8 +371,9 @@ import UIKit
 //    optional func collapseSidePanels()
 //}
 
-class MyProductsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate  , UITableViewDataSource , UITableViewDelegate , SWRevealViewControllerDelegate{
+class MyProductsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate , SWRevealViewControllerDelegate , UITableViewDelegate , UITableViewDataSource{
 
+    @IBOutlet weak var myProductsTableView: UITableView!
         @IBOutlet weak var slidemenuButton: UIBarButtonItem!
         @IBOutlet weak var myproductsCollectionView: UICollectionView!
         var vendorServices = [VendorService]()
@@ -427,7 +428,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-                productFunction("25" , page: "1" )
+                productFunction("25" , page: "1" , filterName: "")
         }
         else {
             self.hideHud()
@@ -435,19 +436,22 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         }
     }
 
-    func productFunction(limit:String , page:String ) {
+    func productFunction(limit:String , page:String , filterName:String) {
         
         self.showHud("Loading...")
         let params = [
             "token":token,
-            "product_name":"",
+            "product_name":filterName,
             "limit":limit,
+            "filter_name":"",
             "page":page,
             "device_id":"1234",
             "global":"0",
             "service_id":"51"
         ]
 
+        print(params)
+        
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
                 self.hideHud()
@@ -463,9 +467,20 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 self.getProductCollectionList = result!
                 print(self.getProductCollectionList.count)
                 self.getProductCollectionListAdd += self.getProductCollectionList
-                self.myproductsCollectionView.dataSource = self
-                self.myproductsCollectionView.delegate = self
-                self.myproductsCollectionView.reloadData()
+                
+                if self.noImage == "1" {
+                    self.myproductsCollectionView.hidden = true
+                    self.myProductsTableView.hidden = false
+                    self.myProductsTableView.dataSource = self
+                    self.myProductsTableView.delegate = self
+                    self.myProductsTableView.reloadData()
+                }else{
+                    self.myProductsTableView.hidden = true
+                    self.myproductsCollectionView.hidden = false
+                    self.myproductsCollectionView.dataSource = self
+                    self.myproductsCollectionView.delegate = self
+                    self.myproductsCollectionView.reloadData()
+                }
             }else{
                 self.hideHud()
             }
@@ -484,24 +499,109 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             // stop refreshing after 2 seconds
             self.myproductsCollectionView?.reloadData()
+            self.myProductsTableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
     }
 
     // Mark: - TableView Methods
 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuArray.count
+        if section == 0{
+            if getProductCollectionListAdd.count == 0 {
+                self.tableViewCustomLabel("No Products", tableView: myProductsTableView)
+                return 0
+            }else{
+                self.tableViewCustomLabel("", tableView: myProductsTableView)
+                if self.searchBarActive {
+                    return self.dataSourceForSearchResult.count;
+                }
+                return getProductCollectionListAdd.count
+            }
+        }else {
+            if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
+                return 1
+            }
+            
+            if getProductCollectionListAdd.count  == 0 {
+                return 0
+            }
+            
+            if isDataSOurceREsultEmpty == true {
+                if dataSourceForSearchResult.count == 0 {
+                    return 1
+                }
+            }else{
+                return 2
+            }
+            return 2
+        }
+
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dropDownCell") as! CustomerDropDownTableViewCell
-        cell.listLabel.text = menuArray[indexPath.row] as? String
-
-        return cell
+        
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("goToGlobalListCell",forIndexPath: indexPath) as! GlobalListTableViewCell
+            cell.addButtonLabel.hidden = true
+            if (self.searchBarActive) {
+                getProductList = self.dataSourceForSearchResult[indexPath.row]
+                cell.getProductCollectionLists1 = getProductList
+            }else{
+                if self.getProductCollectionListAdd.count > 0 {
+                    getProductList = self.getProductCollectionListAdd[indexPath.row]
+                    cell.getProductCollectionLists1 = self.getProductList
+                }
+            }
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreIdentifier", forIndexPath: indexPath) as! LoadMoreTableViewCell
+            
+            cell.loadMoreButton.addTarget(self, action: #selector(MyProductsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            
+            if indexPath.row == 0 {
+                if noImage == "1" {
+                    cell.loadMoreButton.setTitle("Unblock Images", forState: .Normal)
+                    cell.loadMoreButton.tag = 1
+                    //self.blockUnblockImages("")
+                }else{
+                    cell.loadMoreButton.setTitle("Block Images", forState: .Normal)
+                    cell.loadMoreButton.tag = 1
+                    //self.blockUnblockImages("1")
+                }
+            }else{
+                cell.loadMoreButton.setTitle("Load More", forState: .Normal)
+                cell.loadMoreButton.tag = 0
+            }
+            return cell
+        }
+//        
+//        let cell = tableView.dequeueReusableCellWithIdentifier("goToGlobalListCell") as! GlobalListTableViewCell
+//        cell.addButtonLabel.hidden = true
+//        if (self.searchBarActive) {
+//            getProductList = self.dataSourceForSearchResult[indexPath.row]
+//            cell.getProductCollectionLists1 = getProductList
+//        }else{
+//            if self.getProductCollectionListAdd.count > 0 {
+//                getProductList = self.getProductCollectionListAdd[indexPath.row]
+//                cell.getProductCollectionLists1 = self.getProductList
+//            }
+//        }
+//   return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        getSpecificProductList = getProductCollectionList[indexPath.row]
+        performSegueWithIdentifier("vendorProductDetailsSegue", sender: nil)
     }
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -511,7 +611,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
     }
-
+    
     // MARK: - UICollectionViewDelegate
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -563,8 +663,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         default:
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreCollectionViewCell
-            cell.loadMoreButton.addTarget(self, action: #selector(CustomerMenuItemsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            
+            cell.loadMoreButton.addTarget(self, action: #selector(MyProductsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             if indexPath.row == 0 {
                 cell.loadMoreButton.setTitle("Load More", forState: .Normal)
               cell.loadMoreButton.tag = 0
@@ -597,7 +696,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                                 insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(self.searchBar!.frame.size.height, 0, 0, 0);
     }
-
+    
     func collectionView (collectionView: UICollectionView,
                          layout collectionViewLayout: UICollectionViewLayout,
                                 sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
@@ -638,17 +737,18 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1")
+            productFunction("25", page: "1" , filterName: String(searchText))
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
             self.myproductsCollectionView?.reloadData()
+            self.myProductsTableView.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1")
+            productFunction("25", page: "" , filterName:"")
             self.searchBarActive = false
             self.myproductsCollectionView?.reloadData()
+            self.myProductsTableView.reloadData()
         }
-
     }
 
 
@@ -656,6 +756,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.cancelSearching()
         isDataSOurceREsultEmpty = false
         self.myproductsCollectionView?.reloadData()
+       // self.myProductsTableView.reloadData()
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -717,18 +818,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 //            self.view.userInteractionEnabled = false
 //            vendorSelectBarButtonItem.enabled = false
 //        }
-//
 //    }
 
     // MARK: Custom Functions
 
 
     func loadButtonClicked(sender:UIButton) {
-        
+        self.prepareUI()
         if sender.tag == 0 {
             page += 1
-            if page <= totalPages{
-                productFunction("25", page: "\(page)"	)
+            if page < totalPages{
+                productFunction("25", page: "\(page)" , filterName: "")
             }else{
                 self.toastViewForTextfield("No More Products")
             }
@@ -737,17 +837,18 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 getProductCollectionListAdd.removeAll()
                 sender.setTitle("Unblock Images", forState: .Normal)
                 blockUnblockImages("")
-                productFunction("25", page: "")
+                productFunction("25", page: "" , filterName: "")
             }else{
-                getProductCollectionListAdd.removeAll()
-                sender.setTitle("Block Images", forState: .Normal)
+              getProductCollectionListAdd.removeAll()
+              sender.setTitle("Block Images", forState: .Normal)
               blockUnblockImages("1")
-              productFunction("25", page: "")
+              productFunction("25", page: "" , filterName: "")
             }
           }
        }
     
     func blockUnblockImages(postData:String) {
+        self.showHud("Loading...")
         let params = [
             "token":token,
             "device_id":"1234",
@@ -755,19 +856,22 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         ]
         
         ServerManager.sharedInstance().blockMyProductsImage(params, completionClosure: { (isSuccessful, error, result) in
-            
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
         })
     }
 
-    
-    
     func setUpView(){
         tokenCheck()
-
+        prepareUI()
         slideMenuShow(slidemenuButton, viewcontroller: self)
         self.revealViewController().delegate = self
-        self.tableView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.PoppingController(_:)), name: "PopController", object: nil)
+        let nib2 = UINib(nibName: "GlobalListTableViewCell", bundle: nil)
+        self.myProductsTableView.registerNib(nib2, forCellReuseIdentifier: "goToGlobalListCell")
         let nib = UINib(nibName: "MyProductDetailsTableViewCell", bundle: nil)
         myproductsCollectionView.registerNib(nib, forCellWithReuseIdentifier: "menuItemIdentifier1")
         self.dataSourceForSearchResult = [ProductCollectionList]()
@@ -775,8 +879,12 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "dropDownCell")
         let nibName1 = UINib(nibName: "LoadMoreCollectionViewCell", bundle:nil)
         self.myproductsCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: "loadMoreIdentifier")
+        let nib3 = UINib(nibName: "LoadMoreTableViewCell", bundle: nil)
+        self.myProductsTableView.registerNib(nib3, forCellReuseIdentifier: "loadMoreIdentifier")
+        
+        self.myProductsTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
         self.changeNavigationBarColor()
-
     }
 
     // MARK: - Search Bar UI
@@ -788,9 +896,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     func addSearchBar(){
         if self.searchBar == nil{
-            self.searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.size.height
+            self.searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)!
 
-            self.searchBar = UISearchBar(frame: CGRectMake(0,self.searchBarBoundsY!, UIScreen.mainScreen().bounds.size.width, 50))
+            self.searchBar = UISearchBar(frame: CGRectMake(0,64, UIScreen.mainScreen().bounds.size.width, 50))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
             self.searchBar!.delegate             = self;
             self.searchBar!.placeholder          = "Search here";
@@ -808,10 +916,13 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         if (self.refreshControl == nil) {
             self.refreshControl            = UIRefreshControl()
             self.refreshControl?.tintColor = UIColor.whiteColor()
-            self.refreshControl?.addTarget(self, action: #selector(CustomerMenuItemsViewController.refreashControlAction), forControlEvents: UIControlEvents.ValueChanged)
+            self.refreshControl?.addTarget(self, action: #selector(MyProductsViewController.refreashControlAction), forControlEvents: UIControlEvents.ValueChanged)
         }
         if !self.refreshControl!.isDescendantOfView(self.myproductsCollectionView!) {
             self.myproductsCollectionView!.addSubview(self.refreshControl!)
+        }
+        if !self.refreshControl!.isDescendantOfView(self.myProductsTableView!) {
+            self.myProductsTableView!.addSubview(self.refreshControl!)
         }
     }
 
@@ -827,10 +938,12 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func addObservers(){
         let context = UnsafeMutablePointer<UInt8>(bitPattern: 1)
         self.myproductsCollectionView?.addObserver(self, forKeyPath: "contentOffset", options: [.New,.Old], context: context)
+        self.myProductsTableView?.addObserver(self, forKeyPath: "contentOffset", options: [.New,.Old], context: context)
     }
 
     func removeObservers(){
         self.myproductsCollectionView?.removeObserver(self, forKeyPath: "contentOffset")
+        self.myProductsTableView?.removeObserver(self, forKeyPath: "contentOffset")
     }
 
     override func observeValueForKeyPath(keyPath: String?,
@@ -847,6 +960,18 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 )
             }
         }
+        
+        if keyPath! == "contentOffset" {
+            if let collectionV:UITableView = object as? UITableView {
+                self.searchBar?.frame = CGRectMake(
+                    self.searchBar!.frame.origin.x,
+                    self.searchBarBoundsY! + ( (-1 * collectionV.contentOffset.y) - self.searchBarBoundsY!),
+                    self.searchBar!.frame.size.width,
+                    self.searchBar!.frame.size.height
+                )
+            }
+        }
+        
     }
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -882,6 +1007,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         }
 
 
+    
+    
+    
     // MARK: - Navigation
 
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -894,10 +1022,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
         }
 
-    
-    
-    
-    
 }
 
 

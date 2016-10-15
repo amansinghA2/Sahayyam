@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProductsViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="myProductsTableView" destination="cR3-fr-Hlg" id="jOE-zz-oYr"/>
                 <outlet property="myproductsCollectionView" destination="tGc-bl-NR4" id="Q9i-pk-QaV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,16 +26,24 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cR3-fr-Hlg">
+                    <rect key="frame" x="0.0" y="40" width="320" height="528"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tGc-bl-NR4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4za-3a-s4W"/>
+                <constraint firstAttribute="bottom" secondItem="cR3-fr-Hlg" secondAttribute="bottom" id="Hee-uc-NHy"/>
                 <constraint firstItem="tGc-bl-NR4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KaB-sL-Jao"/>
+                <constraint firstAttribute="trailing" secondItem="cR3-fr-Hlg" secondAttribute="trailing" id="LYn-if-6sm"/>
+                <constraint firstItem="cR3-fr-Hlg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="b1N-0D-f03"/>
                 <constraint firstAttribute="bottom" secondItem="tGc-bl-NR4" secondAttribute="bottom" id="jhy-Ca-d7N"/>
+                <constraint firstItem="cR3-fr-Hlg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k5n-UJ-qlJ"/>
                 <constraint firstAttribute="trailing" secondItem="tGc-bl-NR4" secondAttribute="trailing" id="ma5-oI-CBn"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="208" y="204"/>
+            <point key="canvasLocation" x="74" y="177"/>
         </view>
     </objects>
 </document>

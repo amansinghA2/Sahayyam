@@ -23,6 +23,12 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var vendorServices = [VendorService]()
     var vendorService = VendorService()
     var tableView = UITableView()
+    var getProductCollectionListAdd = [ProductCollectionList]()
+    var page = 0
+    var totalPages:Int?
+    var limit = 25
+    var isDataSOurceREsultEmpty = false
+    var fromMenuToProductPage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +37,8 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         tokenCheck()
                 let nib1 = UINib(nibName: "GlobalListTableViewCell", bundle: nil)
                 self.globalListTableView.registerNib(nib1, forCellReuseIdentifier: "goToGlobalListCell")
+        let nib2 = UINib(nibName: "LoadMoreTableViewCell", bundle: nil)
+        self.globalListTableView.registerNib(nib2, forCellReuseIdentifier: "loadMoreIdentifier")
        self.globalListTableView.contentInset = UIEdgeInsetsMake(self.searchBar!.frame.size.height, 0, 0, 0)
         // slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self
@@ -61,23 +69,28 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     }
     
     
-    override func viewWillAppear(animated: Bool) {
-        
+    func productFunction(limit:String , page:String , filterName:String) {
         self.showHud("Loading...")
         let params = [
             "token":token,
-            "product_name":"",
-            "limit":"25",
-            "page":"1",
+            "product_name":filterName,
+            "filter_name":"",
+            "limit":limit,
+            "page":page,
             "device_id":"1234",
-            "global":"1",
+            "global":"0",
             "service_id":"51"
         ]
+        
+        print(params)
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
                 self.hideHud()
+                self.dataSourceForSearchResult = result!
                 self.getProductCollectionList = result!
+                print(self.getProductCollectionList.count)
+                self.getProductCollectionListAdd += self.getProductCollectionList
                 self.globalListTableView.delegate = self
                 self.globalListTableView.dataSource = self
                 self.globalListTableView.reloadData()
@@ -85,6 +98,20 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                 self.hideHud()
             }
         }
+
+    
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        getProductCollectionListAdd.removeAll()
+        if Reachability.isConnectedToNetwork(){
+            productFunction("25" , page: "" , filterName:"")
+        }
+        else {
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,19 +122,22 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
-        self.dataSourceForSearchResult = self.getProductCollectionList.filter({ (text:ProductCollectionList) -> Bool in
-            return text.name.containsString(searchText)
-        })
+//        self.dataSourceForSearchResult = self.getProductCollectionList.filter({ (text:ProductCollectionList) -> Bool in
+//            return text.name.containsString(searchText)
+//        })
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
+            getProductCollectionListAdd.removeAll()
+            productFunction("25", page: "1" , filterName: String(searchText))
             // search and reload data source
             self.searchBarActive    = true
-            self.filterContentForSearchText(searchText)
             self.globalListTableView?.reloadData()
         }else{
+            getProductCollectionListAdd.removeAll()
+            productFunction("25", page: "0" , filterName: "")
             // if text lenght == 0
             // we will consider the searchbar is not active
             self.searchBarActive = false
@@ -144,9 +174,9 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     func addSearchBar(){
         if self.searchBar == nil{
-            self.searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.size.height
+            self.searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)!
             
-            self.searchBar = UISearchBar(frame: CGRectMake(0,self.searchBarBoundsY!, UIScreen.mainScreen().bounds.size.width, 50))
+            self.searchBar = UISearchBar(frame: CGRectMake(0,0, UIScreen.mainScreen().bounds.size.width, 50))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
             self.searchBar!.delegate             = self;
             self.searchBar!.placeholder          = "Search here"
@@ -198,10 +228,10 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                                                   change: [String : AnyObject]?,
                                                   context: UnsafeMutablePointer<Void>){
         if keyPath! == "contentOffset" {
-            if let collectionV:UICollectionView = object as? UICollectionView {
+            if let _:UITableView = object as? UITableView {
                 self.searchBar?.frame = CGRectMake(
                     self.searchBar!.frame.origin.x,
-                    self.searchBarBoundsY! + ( (-1 * collectionV.contentOffset.y) - self.searchBarBoundsY!),
+                    64,
                     self.searchBar!.frame.size.width,
                     self.searchBar!.frame.size.height
                 )
@@ -244,42 +274,97 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     }
     
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
     
         func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
             
-            if getProductCollectionList.count == 0 {
-                emptyLabel.text = "No Products"
-                emptyLabel.textAlignment = NSTextAlignment.Center
-                self.globalListTableView.backgroundView = emptyLabel
-                // self.collectionView.separatorStyle = UITableViewCellSeparatorStyle.None
-                return 0
-            }else{
-                if self.searchBarActive {
-                    emptyLabel.text = ""
-                    return self.dataSourceForSearchResult.count;
+            if section == 0{
+                if getProductCollectionListAdd.count == 0 {
+                    tableViewCustomLabel("No More products", tableView: globalListTableView)
+                    return 0
+                }else{
+                    tableViewCustomLabel("", tableView: globalListTableView)
+                    if self.searchBarActive {
+                        return self.dataSourceForSearchResult.count;
+                    }
+                    return getProductCollectionListAdd.count
                 }
-                emptyLabel.text = ""
-                return getProductCollectionList.count
+            }else {
+                if getProductCollectionListAdd.count < 25 || getProductCollectionListAdd.count == 0{
+                    return 0
+                }
+                
+                if isDataSOurceREsultEmpty == true {
+                    if dataSourceForSearchResult.count == 0 {
+                        return 0
+                    }
+                }else{
+                    return 1
+                }
+                
+                if fromMenuToProductPage == "goToProductsPage"{
+                    return 0
+                }else{
+                    return 1
+                }
+                
             }
-        }
+    }
+
+//
+//            let emptyLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+//            
+//            if getProductCollectionList.count == 0 {
+//                emptyLabel.text = "No Products"
+//                emptyLabel.textAlignment = NSTextAlignment.Center
+//                self.globalListTableView.backgroundView = emptyLabel
+//                // self.collectionView.separatorStyle = UITableViewCellSeparatorStyle.None
+//                return 0
+//            }else{
+//                if self.searchBarActive {
+//                    emptyLabel.text = ""
+//                    return self.dataSourceForSearchResult.count;
+//                }
+//                emptyLabel.text = ""
+//                return getProductCollectionList.count
+//            }
     
         func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("goToGlobalListCell") as! GlobalListTableViewCell
-    
-            if (self.searchBarActive) {
-                getProductList = self.dataSourceForSearchResult[indexPath.row]
-                cell.getProductCollectionLists1 = getProductList
-            }else{
-                getProductList = self.getProductCollectionList[indexPath.row]
-                cell.getProductCollectionLists1 = getProductList
-            }
             
-            cell.addButtonLabel.addTarget(self, action: #selector(GlobalListViewController.addProductAction), forControlEvents: UIControlEvents.TouchUpInside)
-    
-            return cell
-    
-        }
+            
+            switch indexPath.section {
+            case 0:
+                let cell = tableView.dequeueReusableCellWithIdentifier("goToGlobalListCell",forIndexPath: indexPath) as! GlobalListTableViewCell
+                
+                if (self.searchBarActive) {
+                    getProductList = self.dataSourceForSearchResult[indexPath.row]
+                    cell.getProductCollectionLists1 = getProductList
+                }else{
+                    if self.getProductCollectionListAdd.count > 0 {
+                        getProductList = self.getProductCollectionListAdd[indexPath.row]
+                        cell.getProductCollectionLists1 = self.getProductList
+                    }
+                }
+                
+                cell.addButtonLabel.addTarget(self, action: #selector(GlobalListViewController.addProductAction), forControlEvents: UIControlEvents.TouchUpInside)
+                
+                //        cell.contentView.frame = cell.bounds;
+                //        cell.contentView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight]
+                
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreTableViewCell
+                cell.loadMoreButton.addTarget(self, action: #selector(GlobalListViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreTableViewCell
+                cell.loadMoreButton.addTarget(self, action: #selector(GlobalListViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                return cell
+            }
+
+    }
 
         func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return UITableViewAutomaticDimension
@@ -321,6 +406,16 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             
     }
 
+    func loadButtonClicked(sender:UIButton) {
+            page += 1
+            if page <= totalPages{
+                productFunction("25", page: "\(page)" , filterName: "")
+            }else{
+                self.toastViewForTextfield("No More Products")
+            }
+
+    }
+    
     
     @IBAction func vendorServiceAction(sender: AnyObject) {
 //      self.performSegueWithIdentifier("globalListServices", sender: nil)

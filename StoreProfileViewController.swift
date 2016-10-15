@@ -173,7 +173,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         slideMenuShow(slideMenubButton, viewcontroller: self)
         
-        //businessTimeingViewContraint.constant = 43
+//        businessTimeingViewContraint.constant = 43
         
 //        deliveryTimeTextField1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
 //        deliveryTimeTextField2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
@@ -186,12 +186,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 //        deliveryTimeTextField9.setTextFieldStyle(TextFieldStyle.TextFieldTime)
 //        deliveryTimeTextField10.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         
-//      fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//      fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//      fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//      toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//      toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-//      toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        fromLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        fromLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        fromLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
+//        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         
         
         deliveryTimeTextField0.delegate = self

@@ -48,7 +48,6 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     
     override func viewWillAppear(animated: Bool) {
         vendorName.text = customerFullName
-        print(vendorName.text)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -147,6 +146,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
         self.revealViewController().revealToggleAnimated(true)
     }
+    
     /*
     // MARK: - Navigation
 
