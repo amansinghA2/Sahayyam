@@ -193,7 +193,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         if aButton == percentageRadioButton {
             discountType = "P"
         }else{
-            discountType = ""
+            discountType = " "
         }
     }
 

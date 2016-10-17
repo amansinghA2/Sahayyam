@@ -42,6 +42,24 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBOutlet weak var deliveryTimeTextField8: UITextField!
     @IBOutlet weak var deliveryTimeTextField9: UITextField!
 
+    // NS Dates
+    
+    var date1 = NSDate()
+    var date2 = NSDate()
+    var date3 = NSDate()
+    var date4 = NSDate()
+    var date5 = NSDate()
+    var date6 = NSDate()
+    var date7 = NSDate()
+    var date8 = NSDate()
+    var date9 = NSDate()
+    var date10 = NSDate()
+    var date11 = NSDate()
+    var date12 = NSDate()
+    var date13 = NSDate()
+    var date14 = NSDate()
+    var date15 = NSDate()
+    var date16 = NSDate()
     // Labels
     
     @IBOutlet weak var from1: UILabel!
@@ -50,6 +68,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBOutlet weak var to1: UILabel!
     @IBOutlet weak var to2: UILabel!
     @IBOutlet weak var to3: UILabel!
+    
+    
     
     
     @IBOutlet weak var deliveryTime0: UILabel!
@@ -227,8 +247,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.storeProfileData = result!
-                print(self.storeProfileData)
-                self.storeProfileGetdata()
+               if !(self.storeProfileData.startingTime == "0"){
+                    self.storeProfileGetdata()
+                }
                 self.hideHud()
             }else{
                 self.hideHud()
@@ -333,7 +354,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         "store[8][del]":delAmPm9,
         "store[9][del_hour]":delHour10,
         "store[9][del_min]":deltoMin10,
-        "store[9][del]":delAmPm10
+        "store[9][del]":delAmPm10,
+        "store[delchargesD]":deliveryCharges,
+        "store[delchargesF]":deltoMin10,
+        "store[minimumOrders]":minOrderTExtfField.text,
+        "store[BusinessHolidays]":businessHolidayField.text,
+        "store[urgentDelivery]":expressDeliveryButton.text
         ]
         
         print(params)
@@ -364,94 +390,256 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     func handleDatePicker1(sender: UIDatePicker) {
      getHour = getHourFromDatePicker(sender)
      getMinute = getMinFromDatePicker(sender)
-       
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
+        
+     let dateFormatter = NSDateFormatter()
+     dateFormatter.dateFormat = "HH:mm"
     
         switch someGlobalNSInteger {
         case 0:
            fromHour1 = getHourFromDatePicker(sender)
            fromMin1 = getMinFromDatePicker(sender)
+           date1 = sender.date
+           if date1.compare(sender.date) == .OrderedDescending {
+            
+           }
+           
            (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
            print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
            fromLabel1.text =  fromHour1 + " : " + fromMin1 + " " + fromAmPm1
         case 1:
+            date2 = sender.date
+            
+            if fromLabel1.text == nil {
+                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
+                toLabel1.text = ""
+            }
+            
+            if date1.compare(sender.date) == .OrderedDescending {
+              AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel1.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel1.text = ""
+            }else{
             toHour1 = getHourFromDatePicker(sender)
             toMin1 = getMinFromDatePicker(sender)
             (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
             print("\(toHour1) + \(toMin1) + \(toAmPm1)")
             toLabel1.text = toHour1 + " : " + toMin1 + " " + toAmPm1
+            }
         case 2:
             fromHour2 = getHourFromDatePicker(sender)
             fromMin2 = getMinFromDatePicker(sender)
+            
+            
+            
+            date2 = sender.date
+            if date2.compare(sender.date) == .OrderedDescending {
+               
+            }
+            
             (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
             print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
             fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
         case 3:
+            date3 = sender.date
+            
+            if fromLabel2.text == nil {
+                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
+                toLabel2.text = ""
+            }
+            
+            if date2.compare(sender.date) == .OrderedDescending {
+               AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel2.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel2.text = ""
+            }else{
             toHour2 = getHourFromDatePicker(sender)
             toMin2 = getMinFromDatePicker(sender)
             (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
             toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
+            }
         case 4:
             fromHour3 = getHourFromDatePicker(sender)
             fromMin3 = getMinFromDatePicker(sender)
+            
+            date4 = sender.date
+            if date3.compare(sender.date) == .OrderedDescending {
+               
+            }
+            
             (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
             fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
         case 5:
-            toHour3 = getHourFromDatePicker(sender)
-            toMin3 = getMinFromDatePicker(sender)
-            (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
-            toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
+            date5 = sender.date
+            
+            if fromLabel3.text == nil {
+                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
+                toLabel3.text = ""
+            }
+            
+            
+            if date4.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel3.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                toLabel3.text = ""
+            }else{
+                toHour3 = getHourFromDatePicker(sender)
+                toMin3 = getMinFromDatePicker(sender)
+                (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
+                toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
+            }
         case 6:
+            date6 = sender.date
             delHour1 = getHourFromDatePicker(sender)
             deltoMin1 = getMinFromDatePicker(sender)
             (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
             deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
+
         case 7:
-            delHour2 = getHourFromDatePicker(sender)
-            deltoMin2 = getMinFromDatePicker(sender)
+            date7 = sender.date
+            if date6.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField1.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField1.text = ""
+            }else{
+                delHour2 = getHourFromDatePicker(sender)
+                deltoMin2 = getMinFromDatePicker(sender)
             (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
             deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
+            }
         case 8:
+            date8 = sender.date
+            if date7.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField2.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField2.text = ""
+            }else{
             delHour3 = getHourFromDatePicker(sender)
             deltoMin3 = getMinFromDatePicker(sender)
             (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
             deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
+            }
         case 9:
-            delHour4 = getHourFromDatePicker(sender)
-            deltoMin4 = getMinFromDatePicker(sender)
+
+            date9 = sender.date
+            if date8.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField3.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField3.text = ""
+            }else{
+                delHour4 = getHourFromDatePicker(sender)
+                deltoMin4 = getMinFromDatePicker(sender)
             (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
             deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
+            }
         case 10:
+           
+            
+            date10 = sender.date
+            if date9.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField4.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField4.text = ""
+            }else{
             delHour5 = getHourFromDatePicker(sender)
             deltoMin5 = getMinFromDatePicker(sender)
             (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
             deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
+            }
         case 11:
-            delHour6 = getHourFromDatePicker(sender)
-            deltoMin6 = getMinFromDatePicker(sender)
+         
+            
+            date11 = sender.date
+            if date10.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField5.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField5.text = ""
+            }else{
+                delHour6 = getHourFromDatePicker(sender)
+                deltoMin6 = getMinFromDatePicker(sender)
             (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
             deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
+            }
         case 12:
-            delHour7 = getHourFromDatePicker(sender)
-            deltoMin7 = getMinFromDatePicker(sender)
+            
+            
+            date12 = sender.date
+            if date11.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField6.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField6.text = ""
+            }else{
+                delHour7 = getHourFromDatePicker(sender)
+                deltoMin7 = getMinFromDatePicker(sender)
             (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
             deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
+            }
         case 13:
-            delHour8 = getHourFromDatePicker(sender)
-            deltoMin8 = getMinFromDatePicker(sender)
+            
+            
+            date13 = sender.date
+            if date12.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField7.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField7.text = ""
+            }else{
+                delHour8 = getHourFromDatePicker(sender)
+                deltoMin8 = getMinFromDatePicker(sender)
             (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
             deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
+            }
         case 14:
-            delHour9 = getHourFromDatePicker(sender)
-            deltoMin9 = getMinFromDatePicker(sender)
+            
+            
+            date14 = sender.date
+            if date13.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField8.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField8.text = ""
+            }else{
+            
+                delHour9 = getHourFromDatePicker(sender)
+                deltoMin9 = getMinFromDatePicker(sender)
             (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
             deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
+            }
         case 15:
-            delHour10 = getHourFromDatePicker(sender)
-            deltoMin10 = getMinFromDatePicker(sender)
+            
+            
+            date15 = sender.date
+            if date14.compare(sender.date) == .OrderedDescending {
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField9.text = ""
+            }else if date1.compare(sender.date) == .OrderedSame{
+                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
+                deliveryTimeTextField9.text = ""
+            }else{
+                delHour10 = getHourFromDatePicker(sender)
+                deltoMin10 = getMinFromDatePicker(sender)
             (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
             deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
+            }
         default:
             ""
         }
@@ -462,7 +650,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             var amOrPm = ""
             var fromHour1 = Int()
             var fromHour2 = String()
-//            var fromMin1 = String()
+        
+//        var fromMin1 = String()
         
 //        if fromHour == "" && fromMin == "" {
 //            fromHour1 == 00
@@ -515,12 +704,26 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     func storeProfileGetdata() {
         
+        if let businesHoliday = self.storeProfileData.businessHoliday as? String {
+            businessHolidayField.text = businesHoliday
+        }
+        
+        if let businesHoliday = self.storeProfileData.expressDelivery as? String {
+            expressDeliveryButton.text = businesHoliday
+        }
+        
+        if let businesHoliday = self.storeProfileData.deliveryCharges as? String {
+            deliveryChargesTextField.text = businesHoliday
+        }
+        
+        if let businesHoliday = self.storeProfileData.minimum_order as? String {
+            minOrderTExtfField.text = businesHoliday
+        }
+        
         for i in 0...2 {
             if !(self.storeProfileData.startTime[i].from_hour == "00" && self.storeProfileData.startTime[i].from_minute == "00") {
             self.startTextFieldArray[i].text = self.storeProfileData.startTime[i].from_hour + " : " + self.storeProfileData.startTime[i].from_minute + " " + self.storeProfileData.startTime[i].from
-                
-                
-               // businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+//                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
 //                self.startTextFieldArray[i].removeFromSuperview()
 //                self.startLabelArray[i].removeFromSuperview()
@@ -532,7 +735,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             
             if !(self.storeProfileData.endTime[i].end_hour == "00" && self.storeProfileData.endTime[i].end_minute == "00"){
             self.endTextFieldArray[i].text = self.storeProfileData.endTime[i].end_hour + " : " + self.storeProfileData.endTime[i].end_minute + " " + self.storeProfileData.endTime[i].to
-              //  businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+//               businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
 //               self.endTextFieldArray[i].removeFromSuperview()
 //               self.endLabelArray[i].removeFromSuperview()
@@ -551,7 +754,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
 //               businessTimeingViewContraint.constant = businessViewConstant
             }
         }
-        
         
     }
     

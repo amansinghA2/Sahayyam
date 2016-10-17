@@ -46,10 +46,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var categoryLists = [ProductCategoryList]()
     var servicelabelString = String()
     var categorylabelString = String()
-
-
+    var service_id = String()
+    var serviceList = ServiceList()
+    var categoryListIds = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
             setBackButtonForNavigation()
@@ -97,9 +100,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-
-        
     }
     
     func bindModelToViews() {
@@ -211,8 +211,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                                 self.str = (imgStr as! String)
                             }
                         }
-                    }
-                    
+                    } 
                 })
             }
         }else{
@@ -245,7 +244,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             AlertView.alertView("Alert", message: "Title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
             return false
         }
-
+        
+        for category in categoryLists {
+            if category.name == nameLabel.text {
+                AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
+                return false
+            }
+        }
+        
         if priceLabel.text?.characters.count <= 1 {
             AlertView.alertView("Alert", message: "Price must be entered", alertTitle: "OK", viewController: self)
             return false
@@ -270,7 +276,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         "device_id":"1234",
                         "manufacturer":manufacturerLabel.text!,
                         "manufacturer_id":"0",
-                        "product_category[]":categoryLabel.text!,
+                        "product_category[]":categoryListIds,
                         "product_id":getProductDetails!.product_id,
                         "product_description[1][name]":nameLabel.text!,
                         "product_description[1][description]": descriptionLabel.text!,
@@ -288,7 +294,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         "product_description[1][meta_description]":"",
                         "product_description[1][meta_keyword]":"",
                         "model":nameLabel.text!,
-                        "service_id":serviceLabel.text!,
+                        "service_id":service_id,
                         "product_special[0][customer_group_id]":"1",
                         "product_special[0][date_start]":"0000-00-00",
                         "product_special[0][date_end]":"0000-00-00",
@@ -412,8 +418,18 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         switch tag {
         case 1:
             serviceLabel.text = "\(contents)"
+            for serviceList in serviceLists {
+                if contents == serviceList.desc {
+                    service_id = serviceList.id
+                }
+            }
         case 2:
             categoryLabel.text = "\(contents)"
+            for categoryList in categoryLists {
+                if contents == categoryList.name {
+                    categoryListIds = categoryList.name
+                }
+            }
         case 3:
             unitTypeLabel.text = "\(contents)"
         case 4:
@@ -443,7 +459,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "device_id":"1234",
                     "manufacturer":manufacturerLabel.text!,
                     "manufacturer_id":"0",
-                    "product_category[]":categoryLabel.text!,
+                    "product_category[]":categoryListIds,
                     "product_description[1][name]":nameLabel.text!,
                     "product_description[1][description]":descriptionLabel.text!,
                     "image":str,
@@ -456,7 +472,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "status":statusString,
                     "product_description[1][meta_title]":nameLabel.text!,
                     "model":nameLabel.text!,
-                    "service_id":serviceLabel.text!,
+                    "service_id":service_id,
                     "ref_code":referenceCodeLabel.text!
                 ]
 

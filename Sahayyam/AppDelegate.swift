@@ -35,19 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-//        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
-//        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-//        
-//        application.registerUserNotificationSettings(pushNotificationSettings)
-//        application.registerForRemoteNotifications()
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         
-//        if let launchOptions = launchOptions {
-//            let userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject]
-//            let aps = userInfo!["aps"] as? [NSObject: AnyObject]
-//            let alert1 = aps!["alerts"] as? String
-//            let link1 = aps!["links"] as? String
-//            print(userInfo)
-//        }
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
+        
+        if let launchOptions = launchOptions {
+            let userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject]
+            let aps = userInfo!["aps"] as? [NSObject: AnyObject]
+            let alert1 = aps!["alerts"] as? String
+            let link1 = aps!["links"] as? String
+            print(userInfo)
+        }
         
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
@@ -150,6 +150,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("DEVICE TOKEN = \(deviceToken)")
+    }
+    
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print(userInfo)
+    }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

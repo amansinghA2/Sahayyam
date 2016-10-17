@@ -111,7 +111,7 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr = VendorJSONMapper.getTransactionsHistoryMapper(dict as! [String : AnyObject])
-                            completionClosure(isSuccessful: true, error: nil, result: arr , result1: dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1: dict as? [String : AnyObject])
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil , result1: nil)
                         }
@@ -661,8 +661,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
+            }
         }
-    }
     
     func vendorStoreProfile(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
         
@@ -752,6 +752,87 @@ extension ServerManager {
         ]
         
         defaultManager.request(.POST, vendorDeleteCategoryUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorStoreProfileMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+          }
+    }
+    
+    // MARK :- Promotion
+    
+    
+    func vendorNotifcation(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendormobileNotificationUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorStoreProfileMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorDeactivatePromotion(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorDeactivatePromotionUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorStoreProfileMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorDeletePromotion(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorDeletePromotionUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

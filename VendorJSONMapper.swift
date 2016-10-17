@@ -364,6 +364,9 @@ class VendorJSONMapper: NSObject {
             }
         }
         
+        if let businessHoliday = result["startTime"] as? String {
+            serviceList.startingTime = "0"
+        }
         
         if let customers = result["startTime"] as? NSArray{
             for (_,value) in customers.enumerate(){

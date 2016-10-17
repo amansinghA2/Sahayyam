@@ -91,11 +91,41 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "promotion_id":"",
+            "status":""
+        ]
+        
+        ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+        
     }
     
     func deleteButtonClicked(sender:UIButton){
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "promotion_id":""
+        ]
+        
+        ServerManager.sharedInstance().vendorDeletePromotion(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+        
         
     }
     
@@ -103,6 +133,19 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "messageText":""
+        ]
+        
+        ServerManager.sharedInstance().vendorNotifcation(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
         
     }
     
