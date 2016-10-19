@@ -276,7 +276,6 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr = VendorJSONMapper.getPromotionList((dict as? [String:AnyObject])!)
-
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -776,11 +775,11 @@ extension ServerManager {
     
     func vendorNotifcation(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
         
-        let headers = [
-            "Cookie":"PHPSESSID=" + sessionID
-        ]
+//        let headers = [
+//            "Cookie":"PHPSESSID=" + sessionID
+//        ]
         
-        defaultManager.request(.POST, vendormobileNotificationUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, vendormobileNotificationUrl , parameters: params, encoding: .URL, headers: nil)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -806,7 +805,7 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.POST, vendorDeactivatePromotionUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, vendorDeactivatePromotionUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -823,8 +822,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
+            }
         }
-    }
     
     func vendorDeletePromotion(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
         
@@ -832,7 +831,7 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.POST, vendorDeletePromotionUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, vendorDeletePromotionUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

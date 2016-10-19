@@ -16,9 +16,9 @@ class VendorPromotionTableViewCell: UITableViewCell {
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var endDate: UILabel!
     
-    @IBOutlet weak var deactivateButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var notifyButton: UIButton!
+    @IBOutlet weak var deactivateButton: Button!
+    @IBOutlet weak var deleteButton: Button!
+    @IBOutlet weak var notifyButton: Button!
 
     var vendorPromotionList:VendorPromotionList!{
         didSet{

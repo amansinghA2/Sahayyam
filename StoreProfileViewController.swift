@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate{
+class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate {
     
     
     var businessViewConstant = CGFloat(43)
@@ -68,10 +68,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBOutlet weak var to1: UILabel!
     @IBOutlet weak var to2: UILabel!
     @IBOutlet weak var to3: UILabel!
-    
-    
-    
-    
+
     @IBOutlet weak var deliveryTime0: UILabel!
     @IBOutlet weak var deliveryTime1: UILabel!
     @IBOutlet weak var deliveryTime2: UILabel!
@@ -304,7 +301,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         self.showHud("Loading...")
         
-        let params = [
+        let params:[String:AnyObject] = [
         "token":token,
         "device_id":"1234",
         "store[0][from_hour]":fromHour1,
@@ -355,15 +352,13 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         "store[9][del_hour]":delHour10,
         "store[9][del_min]":deltoMin10,
         "store[9][del]":delAmPm10,
-        "store[delchargesD]":deliveryCharges,
-        "store[delchargesF]":deltoMin10,
-        "store[minimumOrders]":minOrderTExtfField.text,
-        "store[BusinessHolidays]":businessHolidayField.text,
-        "store[urgentDelivery]":expressDeliveryButton.text
+        "store[delchargesD]":"",
+        "store[delchargesF]":"",
+        "store[minimumOrders]":minOrderTExtfField.text!,
+        "store[BusinessHolidays]":businessHolidayField.text!,
+        "store[urgentDelivery]":expressDeliveryButton.text!
         ]
-        
-        print(params)
-        
+
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
@@ -545,7 +540,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             }
         case 10:
            
-            
             date10 = sender.date
             if date9.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
@@ -608,8 +602,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
             }
         case 14:
-            
-            
             date14 = sender.date
             if date13.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
@@ -625,8 +617,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
             }
         case 15:
-            
-            
             date15 = sender.date
             if date14.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
@@ -756,6 +746,10 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
         
     }
+    
+    
+    
+    
     
     
     

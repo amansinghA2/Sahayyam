@@ -216,6 +216,14 @@ class VendorJSONMapper: NSObject {
                     customerList.discount = status
                 }
                 
+                if let status = value.valueForKey("product_id") as? String{
+                    customerList.product_id = status
+                }
+                
+                if let status = value.valueForKey("status") as? String{
+                    customerList.status = status
+                }
+                
                 if let status = value.valueForKey("quantity") as? String{
                     customerList.quantity = status
                 }

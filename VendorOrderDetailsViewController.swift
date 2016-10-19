@@ -149,7 +149,6 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
         
         let alertController = UIAlertController(title: "Alert", message: "Do you want to cancel the order" , preferredStyle: .Alert)
         
-
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
             self.showHud("Loading...")
             

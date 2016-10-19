@@ -9,7 +9,7 @@
 import UIKit
 import M13Checkbox
 
-class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDelegate{
+class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate{
 
 
     var vendorPromotionList:VendorPromotionList!
@@ -47,8 +47,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
        super.viewDidLoad()
         tokenCheck()
         
-        fromLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
-        toLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+//      fromLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+//      toLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+        fromLabel.delegate = self
+        toLabel.delegate = self
+        
         radioButtonController.setButtonsArray([amountRadioButton!,percentageRadioButton!])
         radioButtonController.delegate = self
         radioButtonController.shouldLetDeSelect = true
@@ -197,6 +200,60 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         }
     }
 
+    
+    // Mark :- Date Picker
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        addDatePickerToTextField()
+        return true
+    }
+    
+    
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        self.view.endEditing(true)
+//        if deliveryDateTextField.text!.isEmpty{
+//            let date = NSDate()
+//            let dateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+//            deliveryDateTextField.text = dateFormatter.stringFromDate(date)
+//        }
+//        if isCheck == true {
+//            deliveryDateTextField.text = ""
+//        }
+//        
+//    }
+//    
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        return false
+//    }
+//    
+//    private func addDatePickerToTextField(){
+//        
+//        let datePickerView  : UIDatePicker = UIDatePicker()
+//        datePickerView.datePickerMode = UIDatePickerMode.Date
+//        datePickerView.minimumDate = NSDate()
+//        datePickerView.backgroundColor = UIColor.whiteColor()
+//        deliveryDateTextField.inputView = datePickerView
+//        datePickerView.addTarget(self, action: #selector(CheckoutViewController.handleDatePicker(_:)), forControlEvents: UIControlEvents.ValueChanged)
+//        
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        
+//        if !deliveryDateTextField.text!.isEmpty {
+//            let currentDate = deliveryDateTextField.text
+//            let date = dateFormatter.dateFromString(currentDate!)
+//            datePickerView.setDate(date!, animated: false)
+//        }
+//    }
+//    
+//    func handleDatePicker(sender: UIDatePicker) {
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        deliveryDateTextField.text = dateFormatter.stringFromDate(sender.date)
+//    }
+
+    
+    
     /*
     // MARK: - Navigation
 

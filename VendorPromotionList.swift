@@ -17,4 +17,7 @@ class VendorPromotionList: NSObject {
     dynamic var promotionDescription = String()
     dynamic var quantity = String()
     dynamic var promo_name = String()
+    dynamic var status = String()
+    dynamic var product_id = String()
+    
 }

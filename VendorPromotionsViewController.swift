@@ -54,6 +54,19 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("promotioncellIdentifier") as! VendorPromotionTableViewCell
         cell.vendorPromotionList = self.vendorPromotionsLists[indexPath.row]
+        
+        if self.vendorPromotionsLists[indexPath.row].status == "1" {
+            cell.deactivateButton.setTitle("Activate", forState: .Normal)
+        }else{
+            cell.deactivateButton.setTitle("Deactivate", forState: .Normal)
+        }
+        
+//        if self.vendorPromotionsLists[indexPath.row].status = "1" {
+////            cell.deactivateButton.setTitle = "Activate"
+//        }else{
+////            cell.deactivateButton.setTitle = "Deactivate"
+//        }
+        
         cell.deactivateButton.addTarget(self, action: #selector(VendorPromotionsViewController.deactivateButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(VendorPromotionsViewController.deleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.notifyButton.addTarget(self, action: #selector(VendorPromotionsViewController.notifyButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -91,53 +104,72 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
-        let params = [
-            "token":token,
-            "device_id":"1234",
-            "promotion_id":"",
-            "status":""
-        ]
-        
-        ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.hideHud()
-            }else{
-                self.hideHud()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
+        print(self.vendorPromotionsLists[(indexPath?.row)!].end_date_added)
+        let date = dateFormatter.dateFromString(self.vendorPromotionsLists[(indexPath?.row)!].end_date_added)
+        print(date)
+        let date1 = NSDate()
+        print(date1)
+
+        if date?.compare(date1) == .OrderedAscending {
+            AlertView.alertView("Alert", message: "Cannot be activated or deactived as the promotion has expired", alertTitle: "OK", viewController: self)
+        }else{
+            let params = [
+                "token":token,
+                "device_id":"1234",
+                "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
+                "status":self.vendorPromotionsLists[(indexPath?.row)!].status
+            ]
+            
+            ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                    self.hideHud()
+                }else{
+                    self.hideHud()
+                }
             }
         }
-        
     }
     
     func deleteButtonClicked(sender:UIButton){
+        
+        self.showHud("Loading...")
+        
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
         let params = [
         "token":token,
         "device_id":"1234",
-        "promotion_id":""
+        "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id
         ]
         
         ServerManager.sharedInstance().vendorDeletePromotion(params) { (isSuccessful, error, result) in
             if isSuccessful {
-                self.hideHud()
+                    self.hideHud()
+                    self.vendorPromotionsLists.removeAtIndex((indexPath?.row)!)
+                    self.vendorPromotionTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                    self.vendorPromotionTableView.reloadData()
             }else{
-                self.hideHud()
+                    self.hideHud()
             }
-        }
-        
-        
+        }  
     }
     
     func notifyButtonClicked(sender:UIButton){
+        
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
-        
+
         let params = [
         "token":token,
         "device_id":"1234",
-        "messageText":""
+        "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + "on Price : INR" + self.vendorPromotionsLists[(indexPath?.row)!].discount
         ]
+        
+        print(params)
         
         ServerManager.sharedInstance().vendorNotifcation(params) { (isSuccessful, error, result) in
             if isSuccessful {
@@ -146,7 +178,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                 self.hideHud()
             }
         }
-        
     }
     
 
