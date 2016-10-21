@@ -294,11 +294,12 @@ extension ServerManager {
         //token, device_id, product[name], product[productQuantity], product[image], product[amount], product[productUnitId], product[description], product[fromDate], product[endDate], product[productDiscountType], product[amtDiscountType], product[productId], product[product_id], product[promotion_id]
         
         let headers = [
-            "Cookie":"PHPSESSID=" + sessionID
+            "Cookie":"PHPSESSID=" + sessionID,
+            "Content-Length": "500"
         ]
         
         defaultManager.request(.POST, addpromotionUrl, parameters: params, encoding: .URL, headers: headers)
-            .responseJSON { response in
+             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
                     case .Success:
@@ -309,6 +310,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
@@ -318,7 +320,7 @@ extension ServerManager {
     
     // MARK: Track Orders
     
-    func addProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+    func addProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]? , result1:[String:AnyObject]?) -> Void) {
         
         let headers = [
             "Cookie":"PHPSESSID=" + sessionID
@@ -331,12 +333,12 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: nil)
+                            completionClosure(isSuccessful: true, error: nil, result: nil , result1: dict as? [String : AnyObject])
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1: nil)
                         }
                     case .Failure(let error):
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1: nil)
                     }
                 }
         }
@@ -365,7 +367,7 @@ extension ServerManager {
           }
     }
 
-    func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]?) -> Void) {
+    func editProduct(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [CustomerOrders]? , result1:[String:AnyObject]?) -> Void) {
         
         // token, device_id, manufacturer_id, manufacturer, product_category[], product_id, product_description[1][name], product_description[1][description], image, price, product_special[0][price], weight_class_id, weight, quantity, subtract, "status, product_description[1][meta_title], "model, service_id, product_special[0][customer_group_id], product_special[0][date_start], product_special[0][date_end], product_special[0][priority], ref_code
         
@@ -381,12 +383,12 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                            // let arr = CommonJsonMapper.customerProductsOrdersMapper(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: nil)
+                            completionClosure(isSuccessful: true, error: nil, result: nil , result1: dict as? [String:AnyObject])
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
                         }
                     case .Failure(let error):
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1:nil)
                     }
                 }
         }
@@ -402,7 +404,6 @@ extension ServerManager {
         ]
         
         defaultManager.request(.POST, editpromotionurl, parameters: params, encoding: .URL, headers: headers)
-            .validate()
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
@@ -415,6 +416,7 @@ extension ServerManager {
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
                     case .Failure(let error):
+                        print(error)
                         completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
                     }
                 }
@@ -422,7 +424,6 @@ extension ServerManager {
     }
     
     // MARK: - Vendors List and Default vendor
-    
     
     func registerCustomer(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorList]?) -> Void) {
         

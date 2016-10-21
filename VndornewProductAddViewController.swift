@@ -240,25 +240,30 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     func formValidation() -> Bool{
 
-        if nameLabel.text?.characters.count <= 3 && nameLabel.text?.characters.count >= 255 {
+        if nameLabel.text?.characters.count <= 3 || nameLabel.text?.characters.count >= 255 {
             AlertView.alertView("Alert", message: "Title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
             return false
         }
         
-        for category in categoryLists {
-            if category.name == nameLabel.text {
-                AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
-                return false
-            }
+//        if categoryLists.contains(nameLabel.text!){
+//            AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+        
+//        for category in categoryLists {
+//            if category.name.containsString(nameLabel.text!) {
+//                AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
+//                return false
+//            }
+//        }
+        
+        if (priceLabel.text?.isBlank == true  || nameLabel.text?.isBlank == true){
+            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
         }
         
         if priceLabel.text?.characters.count <= 1 {
             AlertView.alertView("Alert", message: "Price must be entered", alertTitle: "OK", viewController: self)
-            return false
-        }
-
-        if (priceLabel.text?.isBlank == true){
-            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
         
@@ -304,8 +309,17 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     
                     print(params)
                     
-                    ServerManager.sharedInstance().editProduct(params) { (isSuccessful, error, result) in
+                    ServerManager.sharedInstance().editProduct(params) { (isSuccessful, error, result , result1) in
                         if isSuccessful {
+                            
+                            if let error = result1!["error"] as? [String:AnyObject]{
+                                if let errorName = error["error_name"] as? [String:AnyObject]{
+                                    if let nameError = errorName["1"] {
+                                        AlertView.alertView("Alert", message:nameError as! String, alertTitle: "OK", viewController: self)
+                                    }
+                                }
+                            }
+                            
                             self.navigationController?.popToRootViewControllerAnimated(true)
                             print("Success")
                         }
@@ -316,7 +330,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
                 }
             }
- 
         }
         else{
             editOrAddDetails()
@@ -453,6 +466,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     func editOrAddDetails() {
         if Reachability.isConnectedToNetwork() {
+            self.showHud("Loading...")
             if formValidation() {
                 let params:[String:AnyObject] = [
                     "token":token,
@@ -478,9 +492,19 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 
                 print(params)
                 
-                ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result) in
+                ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result , result1) in
                     if isSuccessful {
-                        print("Success")
+                        
+                        if let error = result1!["error"] as? [String:AnyObject]{
+                            if let errorName = error["error_name"] as? [String:AnyObject]{
+                                if let nameError = errorName["1"] {
+                                  AlertView.alertView("Alert", message:nameError as! String, alertTitle: "OK", viewController: self)
+                                }
+                            }
+                        }
+                        self.hideHud()
+                    }else{
+                        self.hideHud()
                     }
                 }
             }

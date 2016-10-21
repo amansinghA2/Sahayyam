@@ -359,6 +359,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         "store[urgentDelivery]":expressDeliveryButton.text!
         ]
 
+        print(params)
+        
         ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
@@ -459,7 +461,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         case 4:
             fromHour3 = getHourFromDatePicker(sender)
             fromMin3 = getMinFromDatePicker(sender)
-            
             date4 = sender.date
             if date3.compare(sender.date) == .OrderedDescending {
                
@@ -570,8 +571,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
             }
         case 12:
-            
-            
+
             date12 = sender.date
             if date11.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
@@ -586,8 +586,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
             }
         case 13:
-            
-            
             date13 = sender.date
             if date12.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
@@ -710,7 +708,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             minOrderTExtfField.text = businesHoliday
         }
         
-        for i in 0...2 {
+        for i in 0..<self.storeProfileData.startTime.count {
             if !(self.storeProfileData.startTime[i].from_hour == "00" && self.storeProfileData.startTime[i].from_minute == "00") {
             self.startTextFieldArray[i].text = self.storeProfileData.startTime[i].from_hour + " : " + self.storeProfileData.startTime[i].from_minute + " " + self.storeProfileData.startTime[i].from
 //                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
@@ -721,27 +719,25 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             }
         }
         
-        for i in 0...2 {
-            
+        for i in 0..<self.storeProfileData.endTime.count {
             if !(self.storeProfileData.endTime[i].end_hour == "00" && self.storeProfileData.endTime[i].end_minute == "00"){
             self.endTextFieldArray[i].text = self.storeProfileData.endTime[i].end_hour + " : " + self.storeProfileData.endTime[i].end_minute + " " + self.storeProfileData.endTime[i].to
-//               businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+//                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
-//               self.endTextFieldArray[i].removeFromSuperview()
-//               self.endLabelArray[i].removeFromSuperview()
-//               businessTimeingViewContraint.constant = businessViewConstant
+//                self.endTextFieldArray[i].removeFromSuperview()
+//                self.endLabelArray[i].removeFromSuperview()
+//                businessTimeingViewContraint.constant = businessViewConstant
             }
         }
         
-        for i in 0...9 {
-            
+        for i in 0..<self.storeProfileData.deliveryTime.count {
             if !(self.storeProfileData.deliveryTime[i].del_hour == "00" && self.storeProfileData.deliveryTime[i].del_min == "00"){
             self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + " : " + self.storeProfileData.deliveryTime[i].del_min + " " + self.storeProfileData.deliveryTime[i].del
-              // businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+//                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
             }else{
 //                self.textfieldArray[i].removeFromSuperview()
 //                self.deliveryTimeLabelArray[i].removeFromSuperview()
-//               businessTimeingViewContraint.constant = businessViewConstant
+//                businessTimeingViewContraint.constant = businessViewConstant
             }
         }
         

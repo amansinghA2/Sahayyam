@@ -74,8 +74,8 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
-        print(self.vendorPromotionsList)
         self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
     }
 
@@ -181,14 +181,18 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if segue.identifier == "goToEditPromotion" {
+//            let vc = segue.destinationViewController as! PromotionTypeViewController
+//            vc
+//        }
+//        
+//    }
+ 
 
 }

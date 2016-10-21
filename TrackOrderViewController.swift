@@ -23,10 +23,11 @@ class TrackOrderViewController: UIViewController , UITableViewDataSource , UITab
         
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         trackOrderTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
-            if Reachability.isConnectedToNetwork(){   
+            if Reachability.isConnectedToNetwork(){
+                
         let params:[String:AnyObject]? = [
             "token":token,
-            "device_id":"1234",
+            "device_id":"1234"
         ]
         
         ServerManager.sharedInstance().customerOrders(params) { (isSuccessful, error, result) in
@@ -35,12 +36,12 @@ class TrackOrderViewController: UIViewController , UITableViewDataSource , UITab
             self.trackOrderTableView.delegate = self
             self.trackOrderTableView.reloadData()
             self.hideHud()
-        }
-    }
-    else{
-    self.hideHud()
-    AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
-    }
+         }
+     }
+     else {
+            self.hideHud()
+            AlertView.alertView("Alert", message: "No internet connection", alertTitle: "OK" , viewController: self)
+      }
         // Do any additional setup after loading the view.
     }
 

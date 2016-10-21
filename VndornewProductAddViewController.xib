@@ -60,7 +60,7 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75177801724137927" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1P-NJ-VcD">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v_no_image" translatesAutoresizingMaskIntoConstraints="NO" id="c1P-NJ-VcD">
                                     <rect key="frame" x="34" y="75" width="65" height="85"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="65" id="8TW-TE-ZgI"/>
@@ -448,5 +448,6 @@
     </objects>
     <resources>
         <image name="v_ic_save" width="50" height="50"/>
+        <image name="v_no_image" width="100" height="100"/>
     </resources>
 </document>

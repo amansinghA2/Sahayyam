@@ -813,7 +813,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     // MARK: Custom Functions
 
-
     func loadButtonClicked(sender:UIButton) {
         self.prepareUI()
         if sender.tag == 0 {
@@ -923,7 +922,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         }
     }
 
-
     // MARK: - Observers
 
     func addObservers(){
@@ -969,7 +967,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         return UIModalPresentationStyle.None
     }
 
-        @IBAction func vendorServiceAction(sender: AnyObject) {
+    @IBAction func vendorServiceAction(sender: AnyObject) {
     
            // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
     
