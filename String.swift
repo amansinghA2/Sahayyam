@@ -8,18 +8,18 @@
 
 import Foundation
 
-// MARK: - Base Url
+    // MARK: - Base Url
 
 // "http://192.168.1.2/sahayyam/image/"
 // "http://sahayyam.com/"
 // "http://192.168.1.2/sahayyam/"
 // "http://sahayyam.com/image/"
 
-//let BASE_URL = "http://192.168.1.2/sahayyam/"
-//let image_base_url = "http://192.168.1.2/sahayyam/image/"
+let BASE_URL = "http://192.168.1.2/sahayyam/"
+let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
     // MARK: - Common Url
 
@@ -119,9 +119,9 @@ extension String
     }
     
     var isPhoneNumber: Bool {
-        let charcter  = NSCharacterSet(charactersInString: "+0123456789").invertedSet
+        let character  = NSCharacterSet(charactersInString: "+0123456789").invertedSet
         var filtered:NSString!
-        let inputString:NSArray = self.componentsSeparatedByCharactersInSet(charcter)
+        let inputString:NSArray = self.componentsSeparatedByCharactersInSet(character)
         filtered = inputString.componentsJoinedByString("")
         return  self == filtered
         

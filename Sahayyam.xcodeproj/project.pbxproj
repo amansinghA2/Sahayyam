@@ -57,6 +57,7 @@
 		AF1F1FC01D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1F1FBE1D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib */; };
 		AF1F1FC31D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1F1FC11D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift */; };
 		AF1F1FC41D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF1F1FC21D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib */; };
+		AF302DB41DBB581D00A9BF71 /* CustomNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF302DB31DBB581D00A9BF71 /* CustomNSDate.swift */; };
 		AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3844BA1D7415E100E4F2B4 /* CustomClass.swift */; };
 		AF3D717A1D4C60A00025EF32 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */; };
 		AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4680C51D71C7EF005BF406 /* CategoryList.swift */; };
@@ -342,6 +343,7 @@
 		AF1F1FBE1D4A3B9200E36DB0 /* CustomerMenuItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerMenuItemsViewController.xib; sourceTree = "<group>"; };
 		AF1F1FC11D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerMenuItemsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF1F1FC21D4A3CF000E36DB0 /* CustomerMenuItemsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerMenuItemsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AF302DB31DBB581D00A9BF71 /* CustomNSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNSDate.swift; sourceTree = "<group>"; };
 		AF3844BA1D7415E100E4F2B4 /* CustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
 		AF3D71771D4C609F0025EF32 /* Sahayyam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sahayyam-Bridging-Header.h"; sourceTree = "<group>"; };
 		AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 				AFD0BA331D6C1397006A6351 /* Validations.swift */,
 				AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */,
 				070C14B71D943A27007AD580 /* Double.swift */,
+				AF302DB31DBB581D00A9BF71 /* CustomNSDate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1533,6 +1536,7 @@
 				AF6327DA1D9534F80030F1C5 /* AllVendorsTableViewCell.swift in Sources */,
 				AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */,
 				AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */,
+				AF302DB41DBB581D00A9BF71 /* CustomNSDate.swift in Sources */,
 				AF1F1FA41D4A0C4200E36DB0 /* SwitchUserViewController.swift in Sources */,
 				AFA6C1A21DA66E06008E0A01 /* OrderStatusViewController.swift in Sources */,
 				AF1006341DA8B57100E7C6F5 /* EndTime.swift in Sources */,

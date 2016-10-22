@@ -76,19 +76,23 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
             "limit":"25",
             "page":"1",
             "device_id":"1234",
-            "global":str,
+            "global":"1",
             "service_id":self.vendorServices[indexPath.row].id
         ]
         
-        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
-            if isSuccessful {
-                self.getProductCollectionList = result!
-                self.selectServicesTableView.delegate = self
-                self.selectServicesTableView.dataSource = self
-                self.selectServicesTableView.reloadData()
-                self.removeAnimate()
-            }
-        }
+        NSNotificationCenter.defaultCenter().postNotificationName("refresh", object: params)
+//        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
+//            if isSuccessful {
+//                self.getProductCollectionList = result!
+//                self.selectServicesTableView.delegate = self
+//                self.selectServicesTableView.dataSource = self
+//                self.selectServicesTableView.reloadData()
+//                self.removeAnimate()
+//            }
+//        }
+        
+        self.removeAnimate()
+        
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -100,6 +104,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         let cell = sender.superview?.superview as! SelectServicesTableViewCell
         let indexPath = selectServicesTableView.indexPathForCell(cell)
         
+        
         let params = [
             "token":token,
             "product_name":"",
@@ -110,15 +115,22 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
             "service_id":self.vendorServices[indexPath!.row].id
         ]
         
-        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
-            if isSuccessful {
-                self.getProductCollectionList = result!
-                self.selectServicesTableView.delegate = self
-                self.selectServicesTableView.dataSource = self
-                self.selectServicesTableView.reloadData()
-                self.removeAnimate()
-            }
-        }
+//      let myDict: [String:AnyObject] = [ "myInt": 1, "myText": "text"]
+        NSNotificationCenter.defaultCenter().postNotificationName("refresh", object: params)
+        
+        self.removeAnimate()
+        //    you need to add an observer at your view controller                   vvv you need to add ":" here to pass the NSNotification object
+       
+        
+//        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
+//            if isSuccessful {
+//                self.getProductCollectionList = result!
+//                self.selectServicesTableView.delegate = self
+//                self.selectServicesTableView.dataSource = self
+//                self.selectServicesTableView.reloadData()
+//                self.removeAnimate()
+//            }
+//        }
         
     }
     
