@@ -72,14 +72,12 @@ class OrderStatusViewController: UIViewController , UITableViewDelegate , UITabl
         ServerManager.sharedInstance().overallOrderStatusChange(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.navigationController?.popToRootViewControllerAnimated(true)
+                NSNotificationCenter.defaultCenter().postNotificationName("toastViewShow", object: self.customerDetails.orderStatuses[indexPath.row].name)
                self.removeAnimate()
             }else{
                 
             }
         }
-        
-        
-       
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

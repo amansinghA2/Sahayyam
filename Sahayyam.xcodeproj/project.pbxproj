@@ -212,6 +212,8 @@
 		AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFC26FCE1D4F33320003471B /* ForgotPasswordViewController.xib */; };
 		AFC2B78B1D641C3600BF8E3C /* OrderProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC2B78A1D641C3600BF8E3C /* OrderProductDetails.swift */; };
 		AFC328F21D6702D800EDEA4A /* ValidationMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC328F11D6702D800EDEA4A /* ValidationMessages.swift */; };
+		AFC42ADC1DBF7C2500B30651 /* FBTwitterWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC42ADA1DBF7C2500B30651 /* FBTwitterWebViewController.swift */; };
+		AFC42ADD1DBF7C2500B30651 /* FBTwitterWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFC42ADB1DBF7C2500B30651 /* FBTwitterWebViewController.xib */; };
 		AFC523D81D4B2AC7007864B9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC523D71D4B2AC7007864B9 /* UIViewController.swift */; };
 		AFC524211D4B3F84007864B9 /* CustomerServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC524201D4B3F84007864B9 /* CustomerServerManager.swift */; };
 		AFCD86641D89480000F10ABB /* MyProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD86621D89480000F10ABB /* MyProductsViewController.swift */; };
@@ -500,6 +502,8 @@
 		AFC26FCE1D4F33320003471B /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		AFC2B78A1D641C3600BF8E3C /* OrderProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductDetails.swift; sourceTree = "<group>"; };
 		AFC328F11D6702D800EDEA4A /* ValidationMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationMessages.swift; sourceTree = "<group>"; };
+		AFC42ADA1DBF7C2500B30651 /* FBTwitterWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBTwitterWebViewController.swift; sourceTree = "<group>"; };
+		AFC42ADB1DBF7C2500B30651 /* FBTwitterWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBTwitterWebViewController.xib; sourceTree = "<group>"; };
 		AFC523D71D4B2AC7007864B9 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		AFC524201D4B3F84007864B9 /* CustomerServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServerManager.swift; sourceTree = "<group>"; };
 		AFCD86621D89480000F10ABB /* MyProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductsViewController.swift; sourceTree = "<group>"; };
@@ -854,6 +858,8 @@
 				AFE6594F1D81508200B632D6 /* OTPViewController.xib */,
 				AFE659521D81509300B632D6 /* ChangePasswordViewController.swift */,
 				AFE659531D81509300B632D6 /* ChangePasswordViewController.xib */,
+				AFC42ADA1DBF7C2500B30651 /* FBTwitterWebViewController.swift */,
+				AFC42ADB1DBF7C2500B30651 /* FBTwitterWebViewController.xib */,
 			);
 			name = "ViewController&XIbs";
 			sourceTree = "<group>";
@@ -1294,6 +1300,7 @@
 				AF1F1FAB1D4A107600E36DB0 /* CityHead.storyboard in Resources */,
 				AF6327FB1D955CA20030F1C5 /* SubsPaymentViewController.xib in Resources */,
 				AF4E78C01D50857300E2FB20 /* TrackOrderViewController.xib in Resources */,
+				AFC42ADD1DBF7C2500B30651 /* FBTwitterWebViewController.xib in Resources */,
 				AFFBDC3F1DA768B9006DDA28 /* OrderStatusTableViewCell.xib in Resources */,
 				AF1F1FBC1D4A1D6200E36DB0 /* MenuTableViewCell.xib in Resources */,
 				AFEB25671D507446006B52C5 /* CHMainMenuViewController.xib in Resources */,
@@ -1486,6 +1493,7 @@
 				AFE659541D81509300B632D6 /* ChangePasswordViewController.swift in Sources */,
 				AFC2B78B1D641C3600BF8E3C /* OrderProductDetails.swift in Sources */,
 				AF1F1F981D4A09B000E36DB0 /* String.swift in Sources */,
+				AFC42ADC1DBF7C2500B30651 /* FBTwitterWebViewController.swift in Sources */,
 				AF530B081D756DB7004A269F /* MenuDetailsHeaderTableViewCell.swift in Sources */,
 				AF6A88161D5306BE00986ECC /* CustomerJsonMapper.swift in Sources */,
 				AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */,

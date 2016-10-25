@@ -46,7 +46,6 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
         if Reachability.checkInternetConnectivity() {
         switch sender.tag {
         case 0:
-          
             self.custTypeString = "customer"
             self.viewControllerPassing("Customer")
         case 1:

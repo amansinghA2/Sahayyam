@@ -393,6 +393,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     var isDataSOurceREsultEmpty = false
     var selectedIndexPath1 = NSIndexPath()
     var noImage = String()
+    var serviceString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -419,7 +420,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-                productFunction("25" , page: "1" , filterName: "" , service_id: "")
+                productFunction("25" , page: "1" , filterName: "" , service_id: serviceString)
         }
         else {
             self.hideHud()
@@ -438,7 +439,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             "page":page,
             "device_id":"1234",
             "global":"0",
-            "service_id":service_id
+            "service":service_id
         ]
 
         print(params)
@@ -619,10 +620,14 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 return getProductCollectionListAdd.count
             }
         }else {
-            if getProductCollectionListAdd.count < 25 || getProductCollectionListAdd.count == 0{
+            if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
                 return 2
             }
 
+            if  getProductCollectionListAdd.count == 0 {
+                return 0
+            }
+            
             if isDataSOurceREsultEmpty == true {
                 if dataSourceForSearchResult.count == 0 {
                     return 2
@@ -728,14 +733,14 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1" , filterName: String(searchText) , service_id: "")
+            productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
             self.myproductsCollectionView?.reloadData()
             self.myProductsTableView.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "" , filterName:"" , service_id: "")
+            productFunction("25", page: "" , filterName:"" , service_id: serviceString)
             self.searchBarActive = false
             self.myproductsCollectionView?.reloadData()
             self.myProductsTableView.reloadData()
@@ -818,7 +823,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         if sender.tag == 0 {
             page += 1
             if page < totalPages{
-                productFunction("25", page: "\(page)" , filterName: "" , service_id: "")
+                productFunction("25", page: "\(page)" , filterName: "" , service_id: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
             }
@@ -856,44 +861,68 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     func refreshList(notification: NSNotification) {
         
-        getProductCollectionListAdd.removeAll()
         
-        if let myDict = notification.object as? [String:AnyObject] {
-            print(myDict)
-            ServerManager.sharedInstance().vendorMyProductsList(myDict) { (isSuccessful, error, result , result1) in
-                if isSuccessful {
-                    self.hideHud()
-                    if let totalPage = result1!["TotalPages"]{
-                        self.totalPages = Int(totalPage as! String)!
-                    }
-                    
-                    if let noImage = result1!["no_image"] as? String{
-                        self.noImage = noImage
-                    }
-                    
-                    self.dataSourceForSearchResult = result!
-                    self.getProductCollectionList = result!
-                    print(self.getProductCollectionList.count)
-                    self.getProductCollectionListAdd += self.getProductCollectionList
-                    
-                    if self.noImage == "1" {
-                        self.myproductsCollectionView.hidden = true
-                        self.myProductsTableView.hidden = false
-                        self.myProductsTableView.dataSource = self
-                        self.myProductsTableView.delegate = self
-                        self.myProductsTableView.reloadData()
-                    }else{
-                        self.myProductsTableView.hidden = true
-                        self.myproductsCollectionView.hidden = false
-                        self.myproductsCollectionView.dataSource = self
-                        self.myproductsCollectionView.delegate = self
-                        self.myproductsCollectionView.reloadData()
-                    }
-                }else{
-                    self.hideHud()
-                }
-            } 
+        
+        if let myString = notification.object as? String {
+            serviceString = myString
+            self.showHud("Loading...")
+            self.getProductCollectionListAdd.removeAll()
+            
+            productFunction("25", page: "1", filterName: "", service_id: serviceString)
+            
+//            ServerManager.sharedInstance().vendorMyProductsList(myDict) { (isSuccessful, error, result , result1) in
+//                if isSuccessful {
+//                    
+//                    self.hideHud()
+//                    if let totalPage = result1!["TotalPages"]{
+//                        self.totalPages = Int(totalPage as! String)!
+//                    }
+//                    
+//                    if let noImage = result1!["no_image"] as? String{
+//                        self.noImage = noImage
+//                    }
+//                    
+//                    self.dataSourceForSearchResult = result!
+//                    self.getProductCollectionList = result!
+//                    print(self.getProductCollectionList.count)
+//                    self.getProductCollectionListAdd += self.getProductCollectionList
+//                    
+//                    if self.noImage == "1" {
+//                        self.hideHud()
+//                        self.myproductsCollectionView.hidden = true
+//                        self.myProductsTableView.hidden = false
+//                        self.myProductsTableView.dataSource = self
+//                        self.myProductsTableView.delegate = self
+//                        self.myProductsTableView.reloadData()
+//                    }else{
+//                        self.hideHud()
+//                        self.myProductsTableView.hidden = true
+//                        self.myproductsCollectionView.hidden = false
+//                        self.myproductsCollectionView.dataSource = self
+//                        self.myproductsCollectionView.delegate = self
+//                        self.myproductsCollectionView.reloadData()
+//                    }
+//                }else{
+//                    if self.noImage == "1" {
+//                        self.hideHud()
+//                        self.myproductsCollectionView.hidden = true
+//                        self.myProductsTableView.hidden = false
+//                        self.myProductsTableView.dataSource = self
+//                        self.myProductsTableView.delegate = self
+//                        self.myProductsTableView.reloadData()
+//                    }else{
+//                        self.hideHud()
+//                        self.myProductsTableView.hidden = true
+//                        self.myproductsCollectionView.hidden = false
+//                        self.myproductsCollectionView.dataSource = self
+//                        self.myproductsCollectionView.delegate = self
+//                        self.myproductsCollectionView.reloadData()
+//                    }
+//                    self.hideHud()
+//                }
+//            } 
         }
+        
     }
     
     func setUpView(){
@@ -930,7 +959,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func addSearchBar(){
         if self.searchBar == nil{
             self.searchBarBoundsY = (self.navigationController?.navigationBar.frame.size.height)!
-
             self.searchBar = UISearchBar(frame: CGRectMake(0,64, UIScreen.mainScreen().bounds.size.width, 50))
             self.searchBar!.searchBarStyle       = UISearchBarStyle.Minimal
             self.searchBar!.delegate             = self;
@@ -1012,40 +1040,33 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     @IBAction func vendorServiceAction(sender: AnyObject) {
         
-           // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
-    
-            let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
-            // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
-            self.addChildViewController(popOverVC)
-            popOverVC.str = "0"
-            popOverVC.view.frame = self.view.frame
-            self.view.addSubview(popOverVC.view)
-            popOverVC.didMoveToParentViewController(self)
-    
+        // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
         
-       
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
+        // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.str = "0"
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
         
-            let params = [
+        let params = [
             "token":token,
             "device_id":"1234"
-            ]
-    
-            ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
-                if isSuccessful {
-                  self.vendorServices = result!
-//                productFunction("25", page: "1", filterName: "", service_id: )
-                  self.myproductsCollectionView.delegate = self
-                  self.myproductsCollectionView.dataSource = self
-                  self.myproductsCollectionView.reloadData()
-                }
+        ]
+        
+        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.vendorServices = result!
+                //                productFunction("25", page: "1", filterName: "", service_id: )
+                self.myproductsCollectionView.delegate = self
+                self.myproductsCollectionView.dataSource = self
+                self.myproductsCollectionView.reloadData()
             }
+        }
 
         }
 
-
-    
-    
-    
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

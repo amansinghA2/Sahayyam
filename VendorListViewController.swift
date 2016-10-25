@@ -20,7 +20,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
         tokenCheck()
         self.showHud("Loading...")
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorListViewController.toastViewShowing(_:)), name: "toastViewShow", object: nil)
             slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
@@ -102,6 +102,13 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         
     }
 
+    
+    func toastViewShowing(notification:NSNotification) {
+        if let obj = notification.object as? String {
+            self.toastViewForTextfield(" Order Successfully \(obj)")
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "gotoTrackDetails" {
            let vc = segue.destinationViewController as! VendorOrderDetailsViewController

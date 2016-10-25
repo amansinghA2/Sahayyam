@@ -29,12 +29,15 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var limit = 25
     var isDataSOurceREsultEmpty = false
     var fromMenuToProductPage = ""
-    
+    var serviceString = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
         tokenCheck()
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.refreshList1(_:)), name: "refresh1", object: nil)
+        
                 let nib1 = UINib(nibName: "GlobalListTableViewCell", bundle: nil)
                 self.globalListTableView.registerNib(nib1, forCellReuseIdentifier: "goToGlobalListCell")
         let nib2 = UINib(nibName: "LoadMoreTableViewCell", bundle: nil)
@@ -69,7 +72,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     }
     
     
-    func productFunction(limit:String , page:String , filterName:String) {
+    func productFunction(limit:String , page:String , filterName:String , serviceName:String) {
         self.showHud("Loading...")
         let params = [
             "token":token,
@@ -78,8 +81,8 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             "limit":limit,
             "page":page,
             "device_id":"1234",
-            "global":"0",
-            "service_id":"51"
+            "global":"1",
+            "service":serviceName
         ]
         
         print(params)
@@ -105,7 +108,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
         if Reachability.isConnectedToNetwork(){
-            productFunction("25" , page: "" , filterName:"")
+            productFunction("25" , page: "" , filterName:"" , serviceName: serviceString)
         }
         else {
             self.hideHud()
@@ -131,13 +134,13 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1" , filterName: String(searchText))
+            productFunction("25", page: "1" , filterName: String(searchText) , serviceName: serviceString)
             // search and reload data source
             self.searchBarActive    = true
             self.globalListTableView?.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "0" , filterName: "")
+            productFunction("25", page: "0" , filterName: "" , serviceName: serviceString)
             // if text lenght == 0
             // we will consider the searchbar is not active
             self.searchBarActive = false
@@ -190,7 +193,41 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     }
     
     
-  
+    func refreshList1(notification: NSNotification) {
+        
+        if let myString = notification.object as? String {
+            serviceString = myString
+            print(serviceString)
+            self.showHud("Loading...")
+            self.getProductCollectionListAdd.removeAll()
+            
+            productFunction("25", page: "1", filterName: "", serviceName: serviceString)
+            
+//            ServerManager.sharedInstance().vendorMyProductsList(myDict) { (isSuccessful, error, result , result1) in
+//                if isSuccessful {
+//                    
+//                    self.hideHud()
+//                    if let totalPage = result1!["TotalPages"]{
+//                        self.totalPages = Int(totalPage as! String)!
+//                    }
+//                    
+//                    self.dataSourceForSearchResult = result!
+//                    self.getProductCollectionList = result!
+//                    print(self.getProductCollectionList.count)
+//                    self.getProductCollectionListAdd += self.getProductCollectionList
+//                    
+//                        self.globalListTableView.dataSource = self
+//                        self.globalListTableView.delegate = self
+//                        self.globalListTableView.reloadData()
+//                }else{
+//                        self.hideHud()
+//                    self.globalListTableView.dataSource = self
+//                    self.globalListTableView.delegate = self
+//                    self.globalListTableView.reloadData()
+//                }
+//            }
+        }
+    }
     
     // MARK: - Refresh Control
     
@@ -409,7 +446,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     func loadButtonClicked(sender:UIButton) {
             page += 1
             if page <= totalPages{
-                productFunction("25", page: "\(page)" , filterName: "")
+                productFunction("25", page: "\(page)" , filterName: "" , serviceName: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
             }

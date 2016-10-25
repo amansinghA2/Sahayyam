@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowInvoiceViewController" customModule="Sahayyam" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FBTwitterWebViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="invoiceView" destination="eo7-rR-Oab" id="2xF-6o-Xn5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="p8x-wD-VcH" id="Z4h-oW-dZS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,20 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eo7-rR-Oab">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8x-wD-VcH">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="eo7-rR-Oab" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Osb-Lh-edh"/>
-                <constraint firstAttribute="bottom" secondItem="eo7-rR-Oab" secondAttribute="bottom" id="hIL-3W-Z2w"/>
-                <constraint firstItem="eo7-rR-Oab" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qco-gB-aqe"/>
-                <constraint firstAttribute="trailing" secondItem="eo7-rR-Oab" secondAttribute="trailing" id="te7-sc-rmc"/>
+                <constraint firstItem="p8x-wD-VcH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="N5C-i3-Kx5"/>
+                <constraint firstAttribute="trailing" secondItem="p8x-wD-VcH" secondAttribute="trailing" id="a56-et-fej"/>
+                <constraint firstItem="p8x-wD-VcH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dAa-aX-zDI"/>
+                <constraint firstAttribute="bottom" secondItem="p8x-wD-VcH" secondAttribute="bottom" id="hWo-mK-pVj"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="200" y="229"/>
+            <point key="canvasLocation" x="208" y="222"/>
         </view>
     </objects>
 </document>
