@@ -142,6 +142,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 if let totalPage = result1!["TotalPages"]{
                     self.totalPages = Int(totalPage as! String)!
                 }
+                self.vendorListTextfield.text = defaultVendorName
                 self.dataSourceForSearchResult = result!
                 self.getProductCollectionList = result!
                 print(self.getProductCollectionList.count)

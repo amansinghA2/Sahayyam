@@ -157,6 +157,7 @@
 		AF8036B31D62EA4700422C54 /* VendorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036B11D62EA4700422C54 /* VendorListTableViewCell.swift */; };
 		AF8036B41D62EA4700422C54 /* VendorListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8036B21D62EA4700422C54 /* VendorListTableViewCell.xib */; };
 		AF8036B61D62F38900422C54 /* VendorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036B51D62F38900422C54 /* VendorList.swift */; };
+		AF868EA31DC0D2D0006A6BF0 /* UnitGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */; };
 		AFA2A52A1D50CBA3006F1D41 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A5291D50CBA3006F1D41 /* Customer.swift */; };
 		AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */; };
 		AFA2A52E1D50CF63006F1D41 /* VendorsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */; };
@@ -447,6 +448,7 @@
 		AF8036B11D62EA4700422C54 /* VendorListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorListTableViewCell.swift; sourceTree = "<group>"; };
 		AF8036B21D62EA4700422C54 /* VendorListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorListTableViewCell.xib; sourceTree = "<group>"; };
 		AF8036B51D62F38900422C54 /* VendorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorList.swift; sourceTree = "<group>"; };
+		AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitGram.swift; sourceTree = "<group>"; };
 		AFA2A5291D50CBA3006F1D41 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCategory.swift; sourceTree = "<group>"; };
 		AFA2A52D1D50CF63006F1D41 /* VendorsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorsList.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				AFA6C19A1DA61954008E0A01 /* ServiceList.swift */,
 				AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */,
 				AF0A91B21DABA9EB00A2160D /* ProductCategoryList.swift */,
+				AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -1582,6 +1585,7 @@
 				AF4D928D1DB1EAF10027E992 /* LoadMoreTableViewCell.swift in Sources */,
 				0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */,
 				AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */,
+				AF868EA31DC0D2D0006A6BF0 /* UnitGram.swift in Sources */,
 				AF1F1FAE1D4A121C00E36DB0 /* MenuViewController.swift in Sources */,
 				AFBF2D321D5C889F007A8655 /* CheckoutViewController.swift in Sources */,
 				AF6327CE1D9514580030F1C5 /* StoreProfileViewController.swift in Sources */,

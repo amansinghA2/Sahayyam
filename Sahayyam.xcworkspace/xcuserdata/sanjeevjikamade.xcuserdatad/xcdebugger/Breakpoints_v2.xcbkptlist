@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomerJsonMapper.swift"
-            timestampString = "498122754.476403"
+            timestampString = "499167022.717313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "getproductDetails(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomerJsonMapper.swift"
-            timestampString = "498122621.990332"
+            timestampString = "499167022.717313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "getproductDetails(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498378275.171288"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "uploadImageAction(_:)"
             landmarkType = "5">
             <Locations>
@@ -196,11 +196,11 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "499090394.319201"
+                  timestampString = "499178565.308791"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
                   offsetFromSymbolStart = "423">
                </Location>
                <Location
@@ -211,11 +211,11 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "499090394.319311"
+                  timestampString = "499178565.308917"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "199"
-                  endingLineNumber = "199"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
                   offsetFromSymbolStart = "30">
                </Location>
             </Locations>
@@ -228,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498378275.171288"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "bindModelToViews()"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498378275.171288"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "bindModelToViews()"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498378275.171288"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "bindModelToViews()"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,7 +292,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerListViewController.swift"
-                  timestampString = "499090394.321962"
+                  timestampString = "499178565.311275"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "42"
@@ -307,7 +307,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerListViewController.swift"
-                  timestampString = "499090394.322071"
+                  timestampString = "499178565.311383"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -340,7 +340,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerListViewController.swift"
-                  timestampString = "499090394.322783"
+                  timestampString = "499178565.31214"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
@@ -355,7 +355,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerListViewController.swift"
-                  timestampString = "499090394.322885"
+                  timestampString = "499178565.312249"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
@@ -516,7 +516,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/GlobalListViewController.swift"
-                  timestampString = "499090394.327972"
+                  timestampString = "499178565.317354"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
@@ -531,7 +531,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/GlobalListViewController.swift"
-                  timestampString = "499090394.328073"
+                  timestampString = "499178565.317463"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
@@ -692,11 +692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498745577.780152"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "editOrAddDetails()"
             landmarkType = "5">
          </BreakpointContent>
@@ -708,11 +708,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VndornewProductAddViewController.swift"
-            timestampString = "498384378.216738"
+            timestampString = "499178564.024081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "uploadImageAction(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -756,23 +756,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "deleteButtonClicked(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
@@ -788,7 +772,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -804,11 +788,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "deleteButtonClicked(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorPromotionsViewController.swift"
+            timestampString = "499149759.4736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "deactivateButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -820,11 +820,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "deactivateButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -836,11 +836,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "deactivateButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -852,11 +852,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VendorPromotionsViewController.swift"
-            timestampString = "498567726.380946"
+            timestampString = "499149759.4736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "deactivateButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1012,7 +1012,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.344853"
+                  timestampString = "499178565.334006"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "318"
@@ -1027,7 +1027,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.344961"
+                  timestampString = "499178565.33412"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "318"
@@ -1140,7 +1140,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.347904"
+                  timestampString = "499178565.337115"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "303"
@@ -1155,7 +1155,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.348009"
+                  timestampString = "499178565.337224"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "304"
@@ -1188,7 +1188,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.348639"
+                  timestampString = "499178565.338421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "303"
@@ -1203,7 +1203,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VendorServerManager.swift"
-                  timestampString = "499090394.348753"
+                  timestampString = "499178565.338532"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "304"
@@ -1236,7 +1236,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/MyProductsViewController.swift"
-                  timestampString = "499090394.349397"
+                  timestampString = "499178565.339173"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "866"
@@ -1251,7 +1251,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/MyProductsViewController.swift"
-                  timestampString = "499090394.349506"
+                  timestampString = "499178565.339285"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "866"
@@ -1332,7 +1332,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/MyProductsViewController.swift"
-                  timestampString = "499090394.351695"
+                  timestampString = "499178565.341269"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "866"
@@ -1347,7 +1347,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/MyProductsViewController.swift"
-                  timestampString = "499090394.351796"
+                  timestampString = "499178565.341379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "866"
@@ -1412,7 +1412,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/GlobalListViewController.swift"
-                  timestampString = "499090394.353333"
+                  timestampString = "499178565.342915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "198"
@@ -1427,7 +1427,7 @@
                   moduleName = "Sahayyam"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/GlobalListViewController.swift"
-                  timestampString = "499090394.353427"
+                  timestampString = "499178565.343015"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "198"
@@ -1547,6 +1547,358 @@
             endingLineNumber = "109"
             landmarkName = "toastViewShowing(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerRegistrationViewController.swift"
+            timestampString = "499164882.100876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "contactPicker(_:didSelectContactProperty:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerServerManager.swift"
+            timestampString = "499165243.552903"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "customerProducts(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerServerManager.swift"
+            timestampString = "499165243.936686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "customerProducts(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166534.839493"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166535.359525"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerServerManager.swift"
+            timestampString = "499166636.550201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "customerProducts(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166643.916543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Sahayyam.CommonJsonMapper.productCollectionList (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; Swift.Array&lt;Sahayyam.ProductCollectionList&gt;"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerJsonMapper.swift"
+                  timestampString = "499178565.35075"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Sahayyam.CommonJsonMapper.productCollectionList (Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; Swift.Array&lt;Sahayyam.ProductCollectionList&gt;"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/CustomerJsonMapper.swift"
+                  timestampString = "499178565.35086"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "383">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166673.381891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166691.046652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166752.74532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomerJsonMapper.swift"
+            timestampString = "499166800.619525"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "productCollectionList(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorServerManager.swift"
+            timestampString = "499175378.675439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
+            landmarkName = "vendorUnitGram(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorServerManager.swift"
+            timestampString = "499175379.771215"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "894"
+            endingLineNumber = "894"
+            landmarkName = "vendorUnitGram(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorServerManager.swift"
+            timestampString = "499175949.231784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "887"
+            endingLineNumber = "887"
+            landmarkName = "vendorUnitGram(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorServerManager.swift"
+            timestampString = "499175950.720007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "901"
+            endingLineNumber = "901"
+            landmarkName = "vendorUnitGram(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VendorServerManager.swift"
+            timestampString = "499175956.048027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "883"
+            endingLineNumber = "883"
+            landmarkName = "vendorUnitGram(_:completionClosure:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VndornewProductAddViewController.swift"
+            timestampString = "499178564.024081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
+            landmarkName = "unitGramAction(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.VndornewProductAddViewController.unitGramAction (Swift.String) -&gt; ()"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
+                  timestampString = "499178565.355743"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "578"
+                  endingLineNumber = "578"
+                  offsetFromSymbolStart = "299">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sahayyam.VndornewProductAddViewController.(unitGramAction (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Sahayyam"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
+                  timestampString = "499178565.355852"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "579"
+                  endingLineNumber = "579"
+                  offsetFromSymbolStart = "154">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ProductDetailsViewController.swift"
+            timestampString = "499177848.548143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "ProductDetailsViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

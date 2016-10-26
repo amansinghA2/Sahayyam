@@ -184,7 +184,7 @@ extension ServerManager {
         
         defaultManager.request(.GET, getVendorServicesUrl, parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
-                if let res = response.response {
+                if response.response != nil {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
@@ -866,6 +866,32 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr = VendorJSONMapper.vendorStoreProfileMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorUnitGram(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [UnitGram]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorUnitGramUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.unitGramMapper(dict as! [String : AnyObject])
                             completionClosure(isSuccessful: true, error: nil, result: arr)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)

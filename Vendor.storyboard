@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3T-Qv-aP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="169"/>
+            <point key="canvasLocation" x="197" y="188"/>
         </scene>
         <!--Order Details-->
         <scene sceneID="VbA-WT-Ifw">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFt-zD-pO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528" y="169"/>
+            <point key="canvasLocation" x="526" y="188"/>
         </scene>
         <!--My Products View Controller-->
         <scene sceneID="7KX-7i-dzz">
@@ -180,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaS-1K-Voz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="169"/>
+            <point key="canvasLocation" x="900" y="188"/>
         </scene>
         <!--Product Details View Controller-->
         <scene sceneID="gBX-bh-bHy">
@@ -251,6 +251,16 @@
             </objects>
             <point key="canvasLocation" x="-143" y="188"/>
         </scene>
+        <!--Customer Registration View Controller-->
+        <scene sceneID="d8A-T4-yo5">
+            <objects>
+                <viewController storyboardIdentifier="customerRegistrationID" id="rry-Rj-Mbt" customClass="CustomerRegistrationViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcW-va-hsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="813"/>
+        </scene>
         <!--Customer List View Controller-->
         <scene sceneID="MdJ-nM-Mhc">
             <objects>
@@ -260,16 +270,22 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Dzz-53-bHX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="acG-RU-ygU">
+                            <connections>
+                                <action selector="addContacts:" destination="K3q-Qo-7OE" id="BpY-Hy-NVm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="slideMenuButton" destination="Dzz-53-bHX" id="dTf-Gv-z8z"/>
+                        <segue destination="rry-Rj-Mbt" kind="show" id="6U6-W0-QCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPf-bW-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="1072"/>
+            <point key="canvasLocation" x="297" y="1424"/>
         </scene>
         <!--Subscription Details View Controller-->
         <scene sceneID="HA8-wW-KTk">

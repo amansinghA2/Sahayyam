@@ -79,7 +79,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNB-a0-k5y">
                                     <rect key="frame" x="166" y="522" width="133" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx1-sx-c99" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
@@ -108,7 +108,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-Hq-Qes">
                                     <rect key="frame" x="165" y="264" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521551724141" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsp-K4-V7R">
@@ -162,7 +162,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1D7-8Y-hLu">
                                     <rect key="frame" x="166" y="432" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="232" misplaced="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7c-Pi-cJD">
@@ -186,7 +186,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phT-dw-UJg">
                                     <rect key="frame" x="166" y="476" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="240" misplaced="YES" text="Offer Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgo-u8-LVe">
@@ -201,7 +201,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLP-PT-S4q">
                                     <rect key="frame" x="166" y="610" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Unit Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5l0-wI-LHH">
@@ -216,7 +216,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iUt-qA-SPt">
                                     <rect key="frame" x="166" y="566" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tLg-1g-BAd">
@@ -228,7 +228,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zbq-Cb-Wzr">
                                     <rect key="frame" x="166" y="699" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgg-El-Pis">
@@ -264,7 +264,7 @@
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRc-o7-OiF">
                                     <rect key="frame" x="165" y="390" width="132" height="30"/>
                                     <color key="textColor" white="0.0" alpha="0.74722521549999998" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BP-PD-jJg" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
@@ -292,32 +292,37 @@
                                 </label>
                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr9-Ax-vaj">
                                     <rect key="frame" x="166" y="786" width="131" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <connections>
                                         <action selector="statusAction:" destination="-1" eventType="touchUpInside" id="y4B-SY-Gas"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-mq-h72">
                                     <rect key="frame" x="167" y="742" width="131" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <connections>
                                         <action selector="substractStockAction:" destination="-1" eventType="touchUpInside" id="hOI-zc-zQ1"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kw2-Tn-3Nc">
                                     <rect key="frame" x="167" y="655" width="131" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <connections>
                                         <action selector="unitTypeAction:" destination="-1" eventType="touchUpInside" id="d8e-yQ-zpO"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBo-w2-Zuc">
-                                    <rect key="frame" x="167" y="346" width="131" height="30"/>
-                                    <connections>
-                                        <action selector="categoryAction:" destination="-1" eventType="touchUpInside" id="Ajv-SY-mKk"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twr-VY-ePm">
                                     <rect key="frame" x="165" y="305" width="131" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <connections>
                                         <action selector="serviceAction:" destination="-1" eventType="touchUpInside" id="9CF-e6-8gf"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBo-w2-Zuc">
+                                    <rect key="frame" x="167" y="346" width="131" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <connections>
+                                        <action selector="categoryAction:" destination="-1" eventType="touchUpInside" id="Ajv-SY-mKk"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -443,7 +448,7 @@
                 <constraint firstItem="vRK-6m-uCP" firstAttribute="leading" secondItem="q1Y-9Z-OUh" secondAttribute="leading" id="yLN-Ad-Vu6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="624" y="258.5"/>
+            <point key="canvasLocation" x="253" y="236.5"/>
         </view>
     </objects>
     <resources>

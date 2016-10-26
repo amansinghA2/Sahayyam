@@ -62,7 +62,7 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        if let customerProductName = getProductCollectionLists?.prodnName {
+        if let customerProductName = getProductCollectionLists?.name {
             self.customerProductName.text = customerProductName
         }
         
@@ -96,7 +96,7 @@ class CustomerMenuItemsCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        if let customerProductName = getProductCollectionLists1?.prodnName {
+        if let customerProductName = getProductCollectionLists1?.name {
             self.customerProductName.text = customerProductName
         }
         

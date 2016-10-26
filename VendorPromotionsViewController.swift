@@ -59,6 +59,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             cell.deactivateButton.setTitle("Activate", forState: .Normal)
         }else{
             cell.deactivateButton.setTitle("Deactivate", forState: .Normal)
+            cell.notifyButton.hidden = true
         }
         
 //        if self.vendorPromotionsLists[indexPath.row].status = "1" {

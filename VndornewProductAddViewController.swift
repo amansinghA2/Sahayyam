@@ -35,6 +35,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var statusLabel: UITextField!
     @IBOutlet weak var productImage: UIImageView!
     
+    var unitGrams = [UnitGram]()
     
     let imagePicker = UIImagePickerController()
     var str = ""
@@ -49,6 +50,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var service_id = String()
     var serviceList = ServiceList()
     var categoryListIds = String()
+    var weightClassID = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,39 +59,19 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
              tokenCheck()
             setBackButtonForNavigation()
             bindModelToViews()
-            print(self.getProductDetails)
+            unitGramAction(getProductDetails.weight_class_id)
+            serviceListAction(getProductDetails.service_id)
+            autoCompleteCategoryAction(getProductDetails.service_id)
         }else{
+            serviceListAction("")
+            autoCompleteCategoryAction("")
+            unitGramAction("")
              tokenCheck()
             slideMenuShow(slideMenuButton, viewcontroller: self)
         }
 
-        let params = [
-            "token":token,
-            "device_id":"1234",
-            "service_id":"",
-            "filter_name":""
-        ]
-
-        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.categoryLists = result!
-            }else{
-                self.hideHud()
-            }
-        }
-
-        let params1 = [
-            "token":token,
-            "device_id":"1234"
-        ]
-
-        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.serviceLists = result!
-            }else{
-                self.hideHud()
-            }
-        }
+        
+      
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -241,7 +223,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     func formValidation() -> Bool{
 
         if nameLabel.text?.characters.count <= 3 || nameLabel.text?.characters.count >= 255 {
-            AlertView.alertView("Alert", message: "Title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
+            AlertView.alertView("Alert", message: "Name title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
             return false
         }
         
@@ -257,16 +239,21 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 //            }
 //        }
         
-        if (priceLabel.text?.isBlank == true  || nameLabel.text?.isBlank == true){
-            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
+        if unitValueLabel.text?.characters.count == 0  {
+            AlertView.alertView("Alert", message: "Unit Value cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
         
-        if priceLabel.text?.characters.count <= 1 {
+        if nameLabel.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Name field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if (priceLabel.text?.characters.count == 0){
             AlertView.alertView("Alert", message: "Price must be entered", alertTitle: "OK", viewController: self)
             return false
         }
-        
+
         return true
     }
     
@@ -276,6 +263,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             
             if Reachability.isConnectedToNetwork() {
                 if formValidation() {
+                    self.showHud("Loading...")
+                    
+                    let newString = nameLabel.text!.stringByTrimmingCharactersInSet(NSCharacterSet.init(charactersInString: "la t, \n \" ':"))
+                    
                     let params: [String:AnyObject] = [
                         "token":token,
                         "device_id":"1234",
@@ -293,7 +284,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         "quantity":quantityLabel.text!,
                         "subtract":stockLabelString,
                         "status":statusString,
-                        "name":nameLabel.text!,
+                        "name":newString,
                         "product_description[1][tag]":"",
                         "product_description[1][meta_title]":nameLabel.text!,
                         "product_description[1][meta_description]":"",
@@ -311,17 +302,19 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     
                     ServerManager.sharedInstance().editProduct(params) { (isSuccessful, error, result , result1) in
                         if isSuccessful {
-                            
+                            self.hideHud()
                             if let error = result1!["error"] as? [String:AnyObject]{
                                 if let errorName = error["error_name"] as? [String:AnyObject]{
                                     if let nameError = errorName["1"] {
                                         AlertView.alertView("Alert", message:nameError as! String, alertTitle: "OK", viewController: self)
                                     }
                                 }
+                            }else{
+                                self.navigationController?.popToRootViewControllerAnimated(true)
+                                print("Success")
                             }
-                            
-                            self.navigationController?.popToRootViewControllerAnimated(true)
-                            print("Success")
+                        }else{
+                           self.hideHud()
                         }
                     }
                 }
@@ -332,8 +325,9 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             }
         }
         else{
+            self.hideHud()
             editOrAddDetails()
-         }
+        }
    }
 
     @IBAction func serviceAction(sender: AnyObject) {
@@ -381,9 +375,15 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func unitTypeAction(sender: AnyObject) {
         
+        var unitGramArray = [String]()
+        
+        for unitGram in unitGrams {
+            unitGramArray.append(unitGram.title)
+        }
+        
         if dropper.status == .Hidden {
             dropper.tag = 3
-            dropper.items = ["Gram", "Milliliter", "Liter", "Kilogram", "Packets", "Pieces" , "Set" , "Quire"]
+            dropper.items = unitGramArray
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
             dropper.spacing = 0
@@ -436,15 +436,23 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     service_id = serviceList.id
                 }
             }
+           serviceListAction(service_id)
+           autoCompleteCategoryAction(service_id)
         case 2:
             categoryLabel.text = "\(contents)"
             for categoryList in categoryLists {
                 if contents == categoryList.name {
-                    categoryListIds = categoryList.name
+                    categoryListIds = categoryList.category_id
                 }
             }
         case 3:
             unitTypeLabel.text = "\(contents)"
+            for unitGram in unitGrams {
+                if contents == unitGram.title {
+                    weightClassID = unitGram.weight_class_id
+                }
+            }
+            
         case 4:
             substractStockLabel.text = "\(contents)"
             if contents == "Yes"{
@@ -468,6 +476,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         if Reachability.isConnectedToNetwork() {
             self.showHud("Loading...")
             if formValidation() {
+                
+                let newString = nameLabel.text!.stringByTrimmingCharactersInSet(NSCharacterSet.init(charactersInString: "la t, \n \" ':"))
                 let params:[String:AnyObject] = [
                     "token":token,
                     "device_id":"1234",
@@ -485,7 +495,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "subtract":stockLabelString,
                     "status":statusString,
                     "product_description[1][meta_title]":nameLabel.text!,
-                    "model":nameLabel.text!,
+                    "model":newString,
                     "service_id":service_id,
                     "ref_code":referenceCodeLabel.text!
                 ]
@@ -494,13 +504,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                 
                 ServerManager.sharedInstance().addProduct(params) { (isSuccessful, error, result , result1) in
                     if isSuccessful {
-                        
                         if let error = result1!["error"] as? [String:AnyObject]{
                             if let errorName = error["error_name"] as? [String:AnyObject]{
                                 if let nameError = errorName["1"] {
                                   AlertView.alertView("Alert", message:nameError as! String, alertTitle: "OK", viewController: self)
                                 }
                             }
+                        }else{
+                          self.navigationController?.popToRootViewControllerAnimated(true)
                         }
                         self.hideHud()
                     }else{
@@ -514,27 +525,70 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             }
         }
     }
+    
+    func autoCompleteCategoryAction(service_id:String) {
+    
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "service_id":service_id,
+            "filter_name":""
+        ]
+        
+        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.categoryLists = result!
+            }else{
+                self.hideHud()
+            }
+        }
+        
+    }
+    
+    
+    func serviceListAction(getProductDetailsServiceId:String) {
+        
+        let params1 = [
+            "token":token,
+            "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.serviceLists = result!
+                for serviceList in self.serviceLists {
+                    if getProductDetailsServiceId == serviceList.id {
+                        self.serviceLabel.text = serviceList.desc
+                    }
+                }
+            }else{
+                self.hideHud()
+            }
+        }
+  
+    }
+    
+    func unitGramAction(unitTypeString:String) {
 
-//  Link - https://github.com/awseeley/Swift-Pop-Up-View-Tutorial
-
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        radioButtonController = SSRadioButtonsController(buttons: button1, button2, button3)
-//        radioButtonController!.delegate = self
-//        radioButtonController!.shouldLetDeSelect = true
-//
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
-//
-//    func didSelectButton(aButton: UIButton?) {
-//        if aButton == button1 {
-//            self.view.backgroundColor = UIColor.orangeColor()
-//        }else if aButton == button2{
-//            self.view.backgroundColor = UIColor.redColor()
-//        }else{
-//            self.view.backgroundColor = UIColor.blueColor()
-//        }
-//    }
+        let params = [
+        "token":token,
+        "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().vendorUnitGram(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.unitGrams = result!
+                for unitGram in self.unitGrams {
+                    if unitTypeString == unitGram.weight_class_id {
+                        self.unitTypeLabel.text = unitGram.title
+                    }
+                }
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
+    
 
 }

@@ -179,7 +179,6 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
             self.hideHud()
         }))
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
     
     @IBAction func orderStatusButtonAction(sender: AnyObject) {

@@ -90,7 +90,7 @@ let vendorDeleteCategoryUrl = BASE_URL + "index.php?route=api/category/deleteCat
 let vendormobileNotificationUrl = BASE_URL + "index.php?route=api/mobileNotification"
 let vendorDeactivatePromotionUrl = BASE_URL + "index.php?route=api/promotion/deactivatePromotion"
 let vendorDeletePromotionUrl = BASE_URL + "index.php?route=api/promotion/delPromotion"
-
+let vendorUnitGramUrl = BASE_URL + "index.php?route=api/appUtility/getWeightClass"
 
     // CityHead URl
 

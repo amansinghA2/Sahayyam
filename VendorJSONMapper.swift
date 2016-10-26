@@ -423,6 +423,40 @@ class VendorJSONMapper: NSObject {
         return serviceLists
     }
     
+    
+    class func  unitGramMapper(result:[String:AnyObject]) -> [UnitGram] {
+        var unitGrams = [UnitGram]()
+        
+        if let arr = result["weight_classes"] as? NSArray {
+            for (_, value) in arr.enumerate() {
+                let unitGram = UnitGram()
+                if let languageId = value.valueForKey("language_id") as? String{
+                 unitGram.language_id = languageId
+                }
+                
+                if let languageId = value.valueForKey("title") as? String{
+                    unitGram.title = languageId
+                }
+                
+                if let languageId = value.valueForKey("unit") as? String{
+                   unitGram.unit = languageId
+                }
+                
+                if let languageId = value.valueForKey("value") as? String{
+                   unitGram.value = languageId
+                }
+                
+                if let languageId = value.valueForKey("weight_class_id") as? String{
+                  unitGram.weight_class_id = languageId
+                }
+                unitGrams.append(unitGram)
+            }
+        }
+        return unitGrams
+    }
+
+
+    
 }
     
     

@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerRegistrationViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="cancelRegistration" destination="KyR-kf-0Xd" id="4U1-GW-Pj8"/>
+                <outlet property="contactTextField" destination="7NG-ga-WgP" id="YbY-SN-tHN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,16 +16,19 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mqS-GS-31N">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqS-GS-31N">
                     <rect key="frame" x="36" y="189" width="223" height="189"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-AG-LUA">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-AG-LUA">
                             <rect key="frame" x="37" y="37" width="166" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="xBo-4P-GrL"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75177801724137927" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NG-ga-WgP">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NG-ga-WgP">
                             <rect key="frame" x="17" y="76" width="154" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="fff-aa-DMm"/>
@@ -32,34 +37,86 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-sb-eqW">
-                            <rect key="frame" x="169" y="139" width="46" height="30"/>
-                            <state key="normal" title="Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4e-sb-eqW">
+                            <rect key="frame" x="175" y="139" width="34" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Abx-AM-cwP"/>
+                                <constraint firstAttribute="width" constant="34" id="PNt-7J-56T"/>
+                            </constraints>
+                            <state key="normal" title="Save">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="saveRegistration:" destination="-1" eventType="touchUpInside" id="0wM-Hq-NxE"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUp-2N-wz3">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUp-2N-wz3">
                             <rect key="frame" x="8" y="8" width="171" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="7im-3j-EgJ"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75067349137931039" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-zH-WKy">
-                            <rect key="frame" x="179" y="76" width="34" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxc-zH-WKy">
+                            <rect key="frame" x="179" y="81" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="pys-7M-fPw"/>
+                                <constraint firstAttribute="width" constant="30" id="vUr-r2-cEs"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="ic_phonebook"/>
+                            <connections>
+                                <action selector="contactsPageOpen:" destination="-1" eventType="touchUpInside" id="tJf-wL-BRr"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyR-kf-0Xd">
-                            <rect key="frame" x="92" y="139" width="57" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyR-kf-0Xd">
+                            <rect key="frame" x="110" y="139" width="57" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="AeW-xz-1Z8"/>
+                                <constraint firstAttribute="width" constant="57" id="c5N-X2-P2x"/>
+                            </constraints>
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="cancelRegistrationAction:" destination="-1" eventType="touchUpInside" id="Uc5-Gv-hvD"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qi2-AG-LUA" firstAttribute="leading" secondItem="mqS-GS-31N" secondAttribute="leading" constant="37" id="0PD-ya-fC7"/>
+                        <constraint firstItem="KyR-kf-0Xd" firstAttribute="top" secondItem="7NG-ga-WgP" secondAttribute="bottom" constant="23" id="3gc-oy-I4L"/>
+                        <constraint firstAttribute="trailing" secondItem="e4e-sb-eqW" secondAttribute="trailing" constant="14" id="6BO-UT-dx3"/>
+                        <constraint firstItem="hUp-2N-wz3" firstAttribute="leading" secondItem="mqS-GS-31N" secondAttribute="leading" constant="8" id="6jG-GL-KmC"/>
+                        <constraint firstItem="e4e-sb-eqW" firstAttribute="top" secondItem="xxc-zH-WKy" secondAttribute="bottom" constant="28" id="7UB-QT-Pts"/>
+                        <constraint firstAttribute="bottom" secondItem="e4e-sb-eqW" secondAttribute="bottom" constant="20" id="IDN-mw-lg6"/>
+                        <constraint firstAttribute="trailing" secondItem="qi2-AG-LUA" secondAttribute="trailing" constant="20" id="TgV-PL-dOp"/>
+                        <constraint firstItem="xxc-zH-WKy" firstAttribute="leading" secondItem="7NG-ga-WgP" secondAttribute="trailing" constant="8" id="XEh-My-TXo"/>
+                        <constraint firstAttribute="bottom" secondItem="KyR-kf-0Xd" secondAttribute="bottom" constant="20" id="YZN-BM-bPM"/>
+                        <constraint firstItem="e4e-sb-eqW" firstAttribute="leading" secondItem="KyR-kf-0Xd" secondAttribute="trailing" constant="8" id="YcT-N8-so0"/>
+                        <constraint firstItem="7NG-ga-WgP" firstAttribute="leading" secondItem="mqS-GS-31N" secondAttribute="leading" constant="17" id="Yxd-C9-qyO"/>
+                        <constraint firstItem="qi2-AG-LUA" firstAttribute="top" secondItem="hUp-2N-wz3" secondAttribute="bottom" constant="8" id="axa-Kt-imO"/>
+                        <constraint firstItem="xxc-zH-WKy" firstAttribute="top" secondItem="qi2-AG-LUA" secondAttribute="bottom" constant="23" id="dF1-cc-j1x"/>
+                        <constraint firstAttribute="trailing" secondItem="hUp-2N-wz3" secondAttribute="trailing" constant="44" id="jIc-67-53U"/>
+                        <constraint firstItem="hUp-2N-wz3" firstAttribute="top" secondItem="mqS-GS-31N" secondAttribute="top" constant="8" id="llC-Ih-jHE"/>
+                        <constraint firstAttribute="trailing" secondItem="xxc-zH-WKy" secondAttribute="trailing" constant="14" id="u5m-a1-whC"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mqS-GS-31N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="36" id="Bmc-ki-iXX"/>
+                <constraint firstItem="mqS-GS-31N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="189" id="Bz0-bF-vyV"/>
+                <constraint firstAttribute="bottom" secondItem="mqS-GS-31N" secondAttribute="bottom" constant="190" id="FB9-FQ-ELC"/>
+                <constraint firstAttribute="trailing" secondItem="mqS-GS-31N" secondAttribute="trailing" constant="61" id="pqf-Ye-yGl"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="199" y="226"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_phonebook" width="64" height="64"/>
+    </resources>
 </document>

@@ -36,7 +36,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         
        listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
         
-       listImageArray = ["v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_order", "v_ic_order"]
+       listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_promotion" , "v_ic_order" , "v_ic_order" , "v_ic_order" , "v_ic_new_product" , "v_ic_order" , "v_ic_subscription" , "v_ic_order" , "v_ic_category" , "v_ic_update" , "v_ic_store_profile", "v_ic_order"]
         
         // Do any additional setup after loading the view.
     }

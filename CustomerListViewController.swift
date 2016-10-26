@@ -31,7 +31,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         self.customerListTableView.registerNib(nib2, forCellReuseIdentifier: "customerListDetailcell")
         
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         self.showHud("Loading...")
         let params = [
@@ -238,6 +238,30 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         
         
     }
+    
+    
+    @IBAction func addContacts(sender: AnyObject) {
+        
+//        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
+//        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
+//        
+//        subChildArray = childArray.filter({
+//            if (parentArray[indexPath!.section].category_id == $0.parent_id) {
+//                return true
+//            }
+//            return false
+//        })
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("customerRegistrationID") as! CustomerRegistrationViewController
+        //popOverVC.serviceLists = self.serviceLists
+        //popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -156,6 +156,7 @@ extension CommonJsonMapper {
 //                if let prodcuTid = value.valueForKey("product_id") {
 //                    productList1.product_id = prodcuTid as! Int
 //                }
+                
                 let text:AnyObject = value.valueForKey("product_id")!
                 if text is String {
                     productList1.product_id = text as! String
@@ -209,6 +210,9 @@ extension CommonJsonMapper {
                 print(productList1)
             }
         }
+        
+        print(productLists)
+        
         return productLists
     }
     
