@@ -15,6 +15,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
     var vendorPromotionList:VendorPromotionList!
 
+    @IBOutlet weak var createPromotionButtonOutlet: Button!
     @IBOutlet weak var productnameQuantityConstraint: NSLayoutConstraint!
     @IBOutlet weak var discounttypeConstraint: NSLayoutConstraint!
 
@@ -70,11 +71,13 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
         if str == "fromEdit"{
             discountType = "A"
+            createPromotionButtonOutlet.setTitle("Edit promotion", forState: .Normal)
             self.amountpromotionOutlet.checkState = .Checked
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
             bindModelToViews()
         }else{
+            createPromotionButtonOutlet.setTitle("Create Promotion", forState: .Normal)
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
             discounttypeConstraint.constant = 0
@@ -94,37 +97,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
 
        // let dateFormatter = NSDateFormatter()
         
-//        let date = dateFormatter.dateFromString(fromLabel.text!)
-//        let date1 = dateFormatter.dateFromString(toLabel.text!)
-        
-     
-
          if str == "fromEdit"{
-//            let params:[String:AnyObject] = [
-//                "product[name]":nameTextField.text!,
-//                "product[productQuantity]":quantityLabel.text!,
-//                "product[image]":"",
-//                "product[amount]":amountLabel.text!,
-//                "product[productUnitId]":"Gram",
-//                "product[fromDate]":fromLabel.text!,
-//                "product[endDate]":toLabel.text!,
-//                "product[productDiscountType]":discountType,
-//                "product[amtDiscountType]":discountValue.text!,
-//                "product[productId]":productNameString,
-//                "product[description]":desciptionLabel.text!,
-//                "product[promotion_id]":vendorPromotionList.product_id,
-//                "token":token,
-//                "device_id":"1234"
-//            ]
-//            
-//            print(params)
-//            
-//            ServerManager.sharedInstance().editPromotion(params) { (isSuccessful, error, result) in
-//                if isSuccessful{
-//                   
-//                }
-//            }
-            
             self.promotionAddService(vendorPromotionList.product_id)
          }else{
             promotionAddService("")
@@ -267,6 +240,57 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         return false
     }
     
+    func formValidation() -> Bool{
+        
+   
+        
+        
+        //        if categoryLists.contains(nameLabel.text!){
+        //            AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
+        //            return false
+        //        }
+        
+        //        for category in categoryLists {
+        //            if category.name.containsString(nameLabel.text!) {
+        //                AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
+        //                return false
+        //            }
+        //        }
+        
+        let a:Int? = Int(discountValue.text!)
+        
+        if discountType == "P" {
+        if a > 100 {
+            AlertView.alertView("Alert", message: "Discount value cannot be more than 100", alertTitle: "OK", viewController: self)
+            return false
+         }
+        }
+        
+        if nameTextField.text?.characters.count == 0  {
+            AlertView.alertView("Alert", message: "Name Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if amountLabel.text?.characters.count == 0  {
+            AlertView.alertView("Alert", message: "Amount cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if fromLabel.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "From field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if (toLabel.text?.characters.count == 0){
+            AlertView.alertView("Alert", message: "To Field must be entered", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        return true
+    }
+
+    
+    
     private func addDatePickerToTextField(textfield:UITextField){
         
         let datePickerView  : UIDatePicker = UIDatePicker()
@@ -318,7 +342,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     func promotionAddService(promotionID:String) {
         
         self.showHud("Loading...")
-        
+        if formValidation() {
         let params:[String:AnyObject] = [
             "product[name]":nameTextField.text!,
             "product[productQuantity]":quantityLabel.text!,
@@ -345,6 +369,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
                 self.hideHud()
             }
         }
+        }else{
+           self.hideHud()
+        }
+        
+        
     }
     
     

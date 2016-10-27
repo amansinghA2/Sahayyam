@@ -42,7 +42,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     var vendorList:VendorList!
     var favSetter = false
     var selectedCategoryLIst:CategoryList!
-    var page = 0
+    var page = 1
     var totalPages:Int?
     var limit = 25
     var isDataSOurceREsultEmpty = false
@@ -95,6 +95,9 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+//        NSNotificationCenter.defaultCenter().addObserver("", selector: "noQueries", name: "fromDescription", object: nil)
+        
 //        if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
 //        {
 //        }else{
@@ -108,13 +111,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.prepareUI()
         self.vendorListTextfield.text = defaultVendorName
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
-          if Reachability.isConnectedToNetwork(){
+        if Reachability.isConnectedToNetwork(){
         if fromMenuToProductPage == "goToProductsPage"{
+            page = 1
             productFunction(selectedCategoryLIst.category_id , limit: "25" , page: "1" , filterName: "")
         }else{
+            page = 1
             productFunction("" , limit: "25" , page: "1" , filterName: "")
         }
-        
     }
     else {
             self.hideHud()
@@ -378,12 +382,14 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("", limit: "25", page: "", filterName: String(searchText))
+            page = 1
+            productFunction("", limit: "25", page: "1", filterName: String(searchText))
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
             self.collectionView?.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
+            page = 1
             productFunction("", limit: "25", page: "1", filterName:"")
             self.searchBarActive = false
             self.collectionView?.reloadData()
@@ -470,7 +476,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             if page <= totalPages{
                 productFunction(selectedCategoryLIst.category_id , limit: "25" , page: "\(page)" , filterName: "")
             }else{
-               
+               self.toastViewForTextfield("No More Products")
+                sender.hidden = true
             }
     }else {
             page += 1
@@ -478,6 +485,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 productFunction("", limit: "25", page: "\(page)" , filterName: "")
             }else{
                self.toastViewForTextfield("No More Products")
+                sender.hidden = true
             }
         }
     }

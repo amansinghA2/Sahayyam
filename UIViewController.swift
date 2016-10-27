@@ -25,6 +25,7 @@ extension UIViewController {
     }
     
     func popCurrentViewController() {
+        NSNotificationCenter.defaultCenter().postNotificationName("fromDescription", object: nil)
         self.navigationController?.popViewControllerAnimated(true)
     }
     

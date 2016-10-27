@@ -9,6 +9,7 @@
                 <outlet property="amountLabel" destination="lwy-t8-RoD" id="gif-ts-5Be"/>
                 <outlet property="amountRadioButton" destination="t9n-B9-uqq" id="zWx-No-pYd"/>
                 <outlet property="amountpromotionOutlet" destination="YzO-Di-AoU" id="p9c-Be-DXv"/>
+                <outlet property="createPromotionButtonOutlet" destination="MOV-CL-CzR" id="WBH-lM-yfh"/>
                 <outlet property="desciptionLabel" destination="oPh-gE-i19" id="YE1-vh-mm6"/>
                 <outlet property="discountValue" destination="ry7-1L-7y0" id="oLZ-h0-fx9"/>
                 <outlet property="discounttypeConstraint" destination="hDQ-Z5-mI8" id="CdV-JR-qry"/>

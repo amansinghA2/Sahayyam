@@ -239,6 +239,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 //            }
 //        }
         
+        let a:Int? = Int(priceLabel.text!)
+        let b:Int? = Int(offerPriceLabel.text!)
+        
+        if a < b {
+            AlertView.alertView("Alert", message: "Offer Price should be less than the product price", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         if unitValueLabel.text?.characters.count == 0  {
             AlertView.alertView("Alert", message: "Unit Value cannot be left blank", alertTitle: "OK", viewController: self)
             return false
@@ -310,6 +318,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                                     }
                                 }
                             }else{
+                                NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: nil)
                                 self.navigationController?.popToRootViewControllerAnimated(true)
                                 print("Success")
                             }
@@ -511,6 +520,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                                 }
                             }
                         }else{
+                          self.toastViewForTextfield("New product successfully created")
                           self.navigationController?.popToRootViewControllerAnimated(true)
                         }
                         self.hideHud()

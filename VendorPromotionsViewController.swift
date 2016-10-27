@@ -31,7 +31,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        self.showHud("Loading...")
         let params = [
         "token":token,
         "device_id":"1234"
@@ -39,10 +39,16 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         
         ServerManager.sharedInstance().displayPromotionList(params) { (isSuccessful, error, result) in
             if isSuccessful {
+              self.hideHud()
               self.vendorPromotionsLists = result!
               self.vendorPromotionTableView.delegate = self
               self.vendorPromotionTableView.dataSource = self
               self.vendorPromotionTableView.reloadData()
+            }else{
+               self.hideHud()
+                if error != nil {
+                 self.tableViewCustomLabel(error!, tableView:self.vendorPromotionTableView)
+                }
             }
         }
     }
@@ -167,7 +173,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let params = [
         "token":token,
         "device_id":"1234",
-        "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + "on Price : INR" + self.vendorPromotionsLists[(indexPath?.row)!].discount
+        "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + " on Price : INR " + self.vendorPromotionsLists[(indexPath?.row)!].discount
         ]
         
         print(params)

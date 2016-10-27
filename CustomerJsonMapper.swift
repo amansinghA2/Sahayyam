@@ -198,7 +198,7 @@ extension CommonJsonMapper {
                     }
                 }
                 
-                if let name1 = value.valueForKey("name") as? String {
+                if let name1 = value.valueForKey("model") as? String {
                     productList1.name = name1
                 }
                 
@@ -212,7 +212,6 @@ extension CommonJsonMapper {
         }
         
         print(productLists)
-        
         return productLists
     }
     

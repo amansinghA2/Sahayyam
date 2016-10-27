@@ -276,8 +276,12 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
+                            if let error = dict["error"] as? String {
+                                completionClosure(isSuccessful: false, error: error, result: nil)
+                            }else{
                             let arr = VendorJSONMapper.getPromotionList((dict as? [String:AnyObject])!)
                             completionClosure(isSuccessful: true, error: nil, result: arr)
+                            }
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
@@ -802,11 +806,11 @@ extension ServerManager {
     
     func vendorNotifcation(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: StoreProfileData?) -> Void) {
         
-//        let headers = [
-//            "Cookie":"PHPSESSID=" + sessionID
-//        ]
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
         
-        defaultManager.request(.GET, vendormobileNotificationUrl , parameters: params, encoding: .URL, headers: nil)
+        defaultManager.request(.GET, vendormobileNotificationUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

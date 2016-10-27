@@ -38,8 +38,11 @@ class ServerManager: NSObject {
         let params = [
             "username":userName,
             "password":passWord,
-            "device_id":"1234"
+            "device_id":"1234",
+            "gcm_id":devicetoken
         ]
+        
+        print(params)
         
         defaultManager.request(.POST, urlString, parameters: params, encoding: .URL, headers: nil)
             .responseJSON { response in
