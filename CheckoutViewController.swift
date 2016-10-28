@@ -283,6 +283,7 @@ class CheckoutViewController: UIViewController , UITextFieldDelegate , UITableVi
                 let refreshAlert = UIAlertController(title: "Order Confirmation", message: "Thank you for shopping at \(result!["store_name"]!) , your Order Id \(result!["sales_order"]!) , Order value Rs. \(str)/- dated \(result!["date_added"]!)  has been successfully placed.", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                    NSNotificationCenter.defaultCenter().postNotificationName("getBasicProducts", object: nil)
                       self.navigationController?.popToRootViewControllerAnimated(true)
                     }
                 ))

@@ -460,26 +460,45 @@ extension CommonJsonMapper {
                 if let arr = value.valueForKey("from_date") as? NSArray{
                     for (_, value) in arr.enumerate(){
                         
-                        let fromHour = value.valueForKey("from_hour")
-                        let from_minute = value.valueForKey("from_minute")
-                        let from = value.valueForKey("from")
+                        let fromHour = value.valueForKey("from_hour") as! String
+                        let from_minute = value.valueForKey("from_minute") as! String
+                        let from = value.valueForKey("from") as! String
                         
-                        vendorlist.from_date = (String(fromHour) + ":" + String(from_minute) + String(from))
+                        if fromHour == "00" && from_minute == "00" && from == "am" {
+                            vendorlist.fromToDate = "Timing Not Mentioned"
+                        }else{
+                            vendorlist.from_date = fromHour + ":" + from_minute + from
+                        }
                     }
+                }else{
+                    vendorlist.from_date = ""
                 }
                 
                 if let arr = value.valueForKey("to_date") as? NSArray{
                     for (_, value) in arr.enumerate(){
-                        let fromHour = value.valueForKey("end_hour")
-                        let from_minute = value.valueForKey("end_minute")
-                        let from = value.valueForKey("to")
+                        let fromHour = value.valueForKey("end_hour") as! String
+                        let from_minute = value.valueForKey("end_minute") as! String
+                        let from = value.valueForKey("to") as! String
                         
-                        vendorlist.to_date = (String(fromHour) + ":" + String(from_minute) + String(from))
+                        if fromHour == "00" && from_minute == "00" && from == "am" {
+                            vendorlist.fromToDate = "Timing Not Mentioned"
+                        }else{
+                            vendorlist.to_date = fromHour + ":" + from_minute + from
+                        }
+                        
                     }
                     
+                }else{
+                    vendorlist.to_date = ""
                 }
                 
-                vendorlist.fromToDate = vendorlist.from_date + " To " + vendorlist.to_date ?? "Timing Not Mentioned"
+                
+                if vendorlist.from_date == "" && vendorlist.to_date == "" {
+                   vendorlist.fromToDate = "Timing Not Mentioned"
+                }
+                else{
+                vendorlist.fromToDate = (vendorlist.from_date + " To " + vendorlist.to_date) 
+                }
                 
                 vendorLists.append(vendorlist)
                 

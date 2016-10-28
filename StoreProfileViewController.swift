@@ -317,6 +317,88 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
      */
     
     func formValidation() -> Bool {
+        
+        if !(earlierAndAfterDate(fromDate1, to: toDate1, dateString: "")) {
+            fromLabel1.text = ""
+            toLabel1.text = ""
+            AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !(earlierAndAfterDate(fromDate2, to: toDate2, dateString: "")) {
+            toLabel2.text = ""
+            fromLabel2.text = ""
+            AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !(earlierAndAfterDate(fromDate3, to: toDate3, dateString: "")) {
+            toLabel3.text = ""
+            fromLabel3.text = ""
+            AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField0.text!){
+            deliveryTimeTextField0.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField1
+            .text!){
+            deliveryTimeTextField1.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField2.text!){
+            deliveryTimeTextField2.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField3.text!){
+            deliveryTimeTextField3.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField4.text!){
+            deliveryTimeTextField4.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField5.text!){
+            deliveryTimeTextField5.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField6.text!){
+            deliveryTimeTextField6.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField7.text!){
+            deliveryTimeTextField7.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField8.text!){
+            deliveryTimeTextField8.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !checkDeliveryTime(deliveryTimeTextField9.text!){
+            deliveryTimeTextField9.text = ""
+            AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         return true
     }
     
@@ -339,9 +421,120 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBAction func submitButtonClicked(sender: AnyObject) {
         
         self.showHud("Loading...")
+        if let fromLabel = fromLabel1.text {
+        fromHour1 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = fromLabel2.text {
+            fromHour2 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = fromLabel3.text {
+            fromHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel1.text {
+            toHour1 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel2.text {
+            toHour2 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+//        fromHour2 = getHourFromDatePicker(fromLabel2.text!)
+//        fromHour3 = getHourFromDatePicker(fromLabel3.text!)
+//        toHour1 = getHourFromDatePicker(toLabel1.text!)
+//        toHour2 = getHourFromDatePicker(toLabel2.text!)
+//        toHour3 = getHourFromDatePicker(toLabel3.text!)
+        
+        if let fromLabel = toLabel3.text {
+            delHour1 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            deltoMin1 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        if let fromLabel = toLabel3.text {
+            toHour3 = getHourFromDatePicker(fromLabel)
+        }
+        
+        delHour1 = getHourFromDatePicker(deliveryTimeTextField0.text!)
+        deltoMin1 = getHourFromDatePicker(deliveryTimeTextField0.text!)
+        delHour2 = getHourFromDatePicker(deliveryTimeTextField1.text!)
+        deltoMin2 = getHourFromDatePicker(deliveryTimeTextField1.text!)
+        delHour3 = getHourFromDatePicker(deliveryTimeTextField2.text!)
+        deltoMin3 = getHourFromDatePicker(deliveryTimeTextField2.text!)
+        delHour4 = getHourFromDatePicker(deliveryTimeTextField3.text!)
+        deltoMin4 = getHourFromDatePicker(deliveryTimeTextField3.text!)
+        delHour5 = getHourFromDatePicker(deliveryTimeTextField4.text!)
+        deltoMin5 = getHourFromDatePicker(deliveryTimeTextField4.text!)
+        delHour6 = getHourFromDatePicker(deliveryTimeTextField5.text!)
+        deltoMin6 = getHourFromDatePicker(deliveryTimeTextField5.text!)
+        delHour7 = getHourFromDatePicker(deliveryTimeTextField6.text!)
+        deltoMin7 = getHourFromDatePicker(deliveryTimeTextField6.text!)
+        delHour8 = getHourFromDatePicker(deliveryTimeTextField7.text!)
+        deltoMin8 = getHourFromDatePicker(deliveryTimeTextField7.text!)
+        delHour9 = getHourFromDatePicker(deliveryTimeTextField8.text!)
+        deltoMin9 = getHourFromDatePicker(deliveryTimeTextField8.text!)
+        delHour10 = getHourFromDatePicker(deliveryTimeTextField9.text!)
+        deltoMin10 = getHourFromDatePicker(deliveryTimeTextField9.text!)
+        
+        (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
+        (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
+        (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
+        (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
+        (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
+        (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
+        (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
+        (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
+        (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
+        (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
+        (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
+        (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
+        (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
+        (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
+        (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
+        (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
         
         var params = [String:AnyObject]()
-        
+        if formValidation() {
         if delOrFreeCharges == "F" {
             params = [
                 "token":token,
@@ -468,6 +661,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
                 self.hideHud()
             }
         }
+        }else{
+          self.hideHud()
+        }
     }
     
     func pickUpDate(textField : UITextField){
@@ -487,498 +683,245 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     func handleDatePicker1(sender: UIDatePicker) {
         
-        getHour = getHourFromDatePicker(sender)
-        
-        getMinute = getMinFromDatePicker(sender)
-        
         let dateFormatter = NSDateFormatter()
         
         dateFormatter.dateFormat = "hh:mm a"
         
         switch someGlobalNSInteger {
-            
         case 0:
             
-            fromHour1 = getHourFromDatePicker(sender)
+//            (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
+//            
+//            print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
             
-            fromMin1 = getMinFromDatePicker(sender)
+            fromLabel1.text =   dateFormatter.stringFromDate(sender.date) //fromHour1 + " : " + fromMin1 + " " + fromAmPm1
             
-            (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
-            
-            print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
-            
-            fromLabel1.text =  fromHour1 + " : " + fromMin1 + " " + fromAmPm1
-            
-            fromDate1 = fromLabel1.text!
-            
-            
+            //fromDate1 = fromLabel1.text!
+
         case 1:
+//            
+//            (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
+//            
+//            print("\(toHour1) + \(toMin1) + \(toAmPm1)")
+//            
+//            print("toDate =\(toDate1) fromDate = \(sender.date) ")
             
-            toHour1 = getHourFromDatePicker(sender)
+            toLabel1.text = dateFormatter.stringFromDate(sender.date)  //toHour1 + " : " + toMin1 + " " + toAmPm1
             
-            toMin1 = getMinFromDatePicker(sender)
+            //toDate1 = toLabel1.text!
             
-            (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
-            
-            print("\(toHour1) + \(toMin1) + \(toAmPm1)")
-            
-            print("toDate =\(toDate1) fromDate = \(sender.date) ")
-            
-            toLabel1.text = toHour1 + " : " + toMin1 + " " + toAmPm1
-            
-            toDate1 = toLabel1.text!
-            
-            if (earlierAndAfterDate(fromDate1, to: toDate1, dateString: "")) {
-                
-            }else{
-                toLabel1.text = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            }
+//            if (earlierAndAfterDate(fromDate1, to: toDate1, dateString: "")) {
+//                
+//            }else{
+//                toLabel1.text = ""
+//                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+//            }
             
         case 2:
             
-            fromHour2 = getHourFromDatePicker(sender)
+            fromLabel2
+                .text = dateFormatter.stringFromDate(sender.date)
             
-            fromMin2 = getMinFromDatePicker(sender)
-            
-            (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
-            
-            print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
-            
-            fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
-            
-            fromDate2 = fromLabel2.text!
+//            (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
+//            
+//            print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
+//            
+//            fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
+//            
+//            fromDate2 = fromLabel2.text!
             
         case 3:
             
-            toHour2 = getHourFromDatePicker(sender)
+            toLabel2.text = dateFormatter.stringFromDate(sender.date)
             
-            toMin2 = getMinFromDatePicker(sender)
-            
-            toDate2 = toHour2 + " : " + toMin2 + " " + toAmPm2
+           // toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
 
-            (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
+//            (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
+//            
+//            toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
+//            
+//            toDate2 = toLabel2.text!
             
-            toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
-            
-            toDate2 = toLabel2.text!
-            
-            if (earlierAndAfterDate(fromDate2, to: toDate2, dateString: "")) {
-                
-            }else{
-                toLabel2.text = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            }
+//            if (earlierAndAfterDate(fromDate2, to: toDate2, dateString: "")) {
+//                
+//            }else{
+//                toLabel2.text = ""
+//                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+//            }
             
         case 4:
             
-            fromHour3 = getHourFromDatePicker(sender)
-            
-            fromMin3 = getMinFromDatePicker(sender)
-            
-            (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
-            
-            fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
-            
-            fromDate3 = fromLabel3.text!
+            fromLabel3.text = dateFormatter.stringFromDate(sender.date)
+
+//            (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
+//            
+//            fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
+//            
+//            fromDate3 = fromLabel3.text!
             
         case 5:
             
-            toHour3 = getHourFromDatePicker(sender)
+            toLabel3.text = dateFormatter.stringFromDate(sender.date)
             
-            toMin3 = getMinFromDatePicker(sender)
+//            (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
+//            
+//            toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
+//            
+//            toDate3 = toLabel3.text!
             
-            (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
-            
-            toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
-            
-            toDate3 = toLabel3.text!
-            
-            if (earlierAndAfterDate(fromDate3, to: toDate3, dateString: "")) {
-                
-            }else{
-                toLabel3.text = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            }
+//            if (earlierAndAfterDate(fromDate3, to: toDate3, dateString: "")) {
+//                
+//            }else{
+//                toLabel3.text = ""
+//                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+//            }
             
         case 6:
             
-            delHour1 = getHourFromDatePicker(sender)
+            deliveryTimeTextField0.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin1 = getMinFromDatePicker(sender)
             
-            (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
+//            (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
+//            
+//            deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
             
-            deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
-            
-            checkDeliveryTime(deliveryTimeTextField0.text!)
+           // checkDeliveryTime(deliveryTimeTextField0.text!)
             
         case 7:
             
-            delHour2 = getHourFromDatePicker(sender)
+            deliveryTimeTextField1.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin2 = getMinFromDatePicker(sender)
+//            (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
+//            
+//            deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
             
-            (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
-            
-            deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
-            
-            checkDeliveryTime(deliveryTimeTextField1.text!)
+            //checkDeliveryTime(deliveryTimeTextField1.text!)
             
         case 8:
             
-            delHour3 = getHourFromDatePicker(sender)
+            deliveryTimeTextField2.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin3 = getMinFromDatePicker(sender)
+//            (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
+//            
+//            deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
             
-            (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
-            
-            deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
-            
-            checkDeliveryTime(deliveryTimeTextField2.text!)
+           // checkDeliveryTime(deliveryTimeTextField2.text!)
             
         case 9:
             
-            delHour4 = getHourFromDatePicker(sender)
+            deliveryTimeTextField3.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin4 = getMinFromDatePicker(sender)
             
-            (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
+//            delHour4 = getHourFromDatePicker(sender)
+//            
+//            deltoMin4 = getMinFromDatePicker(sender)
+//            
+//            (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
+//            
+//            deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
             
-            deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
-            
-            checkDeliveryTime(deliveryTimeTextField3.text!)
+          //  checkDeliveryTime(deliveryTimeTextField3.text!)
             
         case 10:
+          
+            deliveryTimeTextField4.text = dateFormatter.stringFromDate(sender.date)
             
-            delHour5 = getHourFromDatePicker(sender)
+//            (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
+//            
+//            deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
             
-            deltoMin5 = getMinFromDatePicker(sender)
-            
-            (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
-            
-            deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
-            
-            checkDeliveryTime(deliveryTimeTextField4.text!)
+          //  checkDeliveryTime(deliveryTimeTextField4.text!)
             
         case 11:
             
-            delHour6 = getHourFromDatePicker(sender)
+            deliveryTimeTextField5.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin6 = getMinFromDatePicker(sender)
+//            delHour6 = getHourFromDatePicker(sender)
+//            
+//            deltoMin6 = getMinFromDatePicker(sender)
+//            
+//            (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
+//            
+//            deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
             
-            (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
-            
-            deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
-            
-            checkDeliveryTime(deliveryTimeTextField5.text!)
+          //  checkDeliveryTime(deliveryTimeTextField5.text!)
             
         case 12:
             
-            delHour7 = getHourFromDatePicker(sender)
+            deliveryTimeTextField6.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin7 = getMinFromDatePicker(sender)
             
-            (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
+//            delHour7 = getHourFromDatePicker(sender)
+//            
+//            deltoMin7 = getMinFromDatePicker(sender)
+//            
+//            (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
+//            
+//            deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
             
-            deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
-            
-            checkDeliveryTime(deliveryTimeTextField6.text!)
+          //  checkDeliveryTime(deliveryTimeTextField6.text!)
             
         case 13:
             
-            delHour8 = getHourFromDatePicker(sender)
+            deliveryTimeTextField7.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin8 = getMinFromDatePicker(sender)
+//            delHour8 = getHourFromDatePicker(sender)
+//            
+//            deltoMin8 = getMinFromDatePicker(sender)
+//            
+//            (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
+//            
+//            deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
             
-            (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
-            
-            deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
-            
-            checkDeliveryTime(deliveryTimeTextField7.text!)
+          //  checkDeliveryTime(deliveryTimeTextField7.text!)
             
         case 14:
             
-            delHour9 = getHourFromDatePicker(sender)
+            deliveryTimeTextField8.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin9 = getMinFromDatePicker(sender)
+//            delHour9 = getHourFromDatePicker(sender)
+//            
+//            deltoMin9 = getMinFromDatePicker(sender)
+//            
+//            (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
+//            
+//            deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
             
-            (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
-            
-            deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
-            
-            checkDeliveryTime(deliveryTimeTextField8.text!)
+         //  checkDeliveryTime(deliveryTimeTextField8.text!)
             
         case 15:
             
-            delHour10 = getHourFromDatePicker(sender)
+            deliveryTimeTextField9.text = dateFormatter.stringFromDate(sender.date)
             
-            deltoMin10 = getMinFromDatePicker(sender)
+//            delHour10 = getHourFromDatePicker(sender)
+//            
+//            deltoMin10 = getMinFromDatePicker(sender)
+//            
+//            (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
+//            
+//            deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
             
-            (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
-            
-            deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
-            
-            checkDeliveryTime(deliveryTimeTextField9.text!)
+          //  checkDeliveryTime(deliveryTimeTextField9.text!)
             
         default:
             ""
         }
     }
     
-    //    func handleDatePicker1(sender: UIDatePicker) {
-    //     getHour = getHourFromDatePicker(sender)
-    //     getMinute = getMinFromDatePicker(sender)
-    //
-    //     let dateFormatter = NSDateFormatter()
-    //     dateFormatter.dateFormat = "HH:mm"
-    //
-    //        switch someGlobalNSInteger {
-    //        case 0:
-    //           fromHour1 = getHourFromDatePicker(sender)
-    //           fromMin1 = getMinFromDatePicker(sender)
-    //           date1 = sender.date
-    //           if date1.compare(sender.date) == .OrderedDescending {
-    //
-    //           }
-    //           (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
-    //           print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
-    //           fromLabel1.text =  fromHour1 + " : " + fromMin1 + " " + fromAmPm1
-    //        case 1:
-    //            date2 = sender.date
-    //            if fromLabel1.text == nil {
-    //                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
-    //                toLabel1.text = ""
-    //            }
-    //            if date1.compare(sender.date) == .OrderedDescending {
-    //              AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel1.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel1.text = ""
-    //            }else{
-    //            toHour1 = getHourFromDatePicker(sender)
-    //            toMin1 = getMinFromDatePicker(sender)
-    //            (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
-    //            print("\(toHour1) + \(toMin1) + \(toAmPm1)")
-    //            toLabel1.text = toHour1 + " : " + toMin1 + " " + toAmPm1
-    //            }
-    //        case 2:
-    //            fromHour2 = getHourFromDatePicker(sender)
-    //            fromMin2 = getMinFromDatePicker(sender)
-    //
-    //            date2 = sender.date
-    //            if date2.compare(sender.date) == .OrderedDescending {
-    //
-    //            }
-    //
-    //            (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
-    //            print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
-    //            fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
-    //        case 3:
-    //            date3 = sender.date
-    //
-    //            if fromLabel2.text == nil {
-    //                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
-    //                toLabel2.text = ""
-    //            }
-    //
-    //            if date2.compare(sender.date) == .OrderedDescending {
-    //               AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel2.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel2.text = ""
-    //            }else{
-    //            toHour2 = getHourFromDatePicker(sender)
-    //            toMin2 = getMinFromDatePicker(sender)
-    //            (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
-    //            toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
-    //            }
-    //        case 4:
-    //            fromHour3 = getHourFromDatePicker(sender)
-    //            fromMin3 = getMinFromDatePicker(sender)
-    //            date4 = sender.date
-    //            if date3.compare(sender.date) == .OrderedDescending {
-    //
-    //            }
-    //            (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
-    //            fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
-    //        case 5:
-    //            date5 = sender.date
-    //
-    //            if fromLabel3.text == nil {
-    //                AlertView.alertView("Alert", message: "First Enter the From Field", alertTitle: "OK", viewController: self)
-    //                toLabel3.text = ""
-    //            }
-    //
-    //            if date4.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel3.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                toLabel3.text = ""
-    //            }else{
-    //                toHour3 = getHourFromDatePicker(sender)
-    //                toMin3 = getMinFromDatePicker(sender)
-    //                (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
-    //                toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
-    //            }
-    //        case 6:
-    //
-    //            date6 = sender.date
-    //
-    //            if sender.date.isBetweeen(date: date1, andDate: date2) || sender.date.isBetweeen(date: date3, andDate: date4) || sender.date.isBetweeen(date: date5, andDate: date6){
-    //                delHour1 = getHourFromDatePicker(sender)
-    //                deltoMin1 = getMinFromDatePicker(sender)
-    //                (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
-    //                deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
-    //            }
-    //            else{
-    //               AlertView.alertView("Alert", message: "not between the provided dates", alertTitle: "OK", viewController: self)
-    //            }
-    //
-    //        case 7:
-    //            date7 = sender.date
-    ////            if date6.compare(sender.date) == .OrderedDescending {
-    ////                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    ////                deliveryTimeTextField1.text = ""
-    ////            }else if date1.compare(sender.date) == .OrderedSame{
-    ////                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    ////                deliveryTimeTextField1.text = ""
-    ////            }else{
-    //                delHour2 = getHourFromDatePicker(sender)
-    //                deltoMin2 = getMinFromDatePicker(sender)
-    //            (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
-    //            deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
-    ////            }
-    //        case 8:
-    //            date8 = sender.date
-    ////            if date7.compare(sender.date) == .OrderedDescending {
-    ////                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    ////                deliveryTimeTextField2.text = ""
-    ////            }else if date1.compare(sender.date) == .OrderedSame{
-    ////                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    ////                deliveryTimeTextField2.text = ""
-    ////            }else{
-    //            delHour3 = getHourFromDatePicker(sender)
-    //            deltoMin3 = getMinFromDatePicker(sender)
-    //            (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
-    //            deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
-    ////            }
-    //        case 9:
-    //            date9 = sender.date
-    //            if date8.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField3.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField3.text = ""
-    //            }else{
-    //                delHour4 = getHourFromDatePicker(sender)
-    //                deltoMin4 = getMinFromDatePicker(sender)
-    //            (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
-    //            deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
-    //            }
-    //        case 10:
-    //            date10 = sender.date
-    //            if date9.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField4.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField4.text = ""
-    //            }else{
-    //            delHour5 = getHourFromDatePicker(sender)
-    //            deltoMin5 = getMinFromDatePicker(sender)
-    //            (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
-    //            deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
-    //            }
-    //        case 11:
-    //            date11 = sender.date
-    //            if date10.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField5.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField5.text = ""
-    //            }else{
-    //                delHour6 = getHourFromDatePicker(sender)
-    //                deltoMin6 = getMinFromDatePicker(sender)
-    //            (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
-    //            deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
-    //            }
-    //        case 12:
-    //            date12 = sender.date
-    //            if date11.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField6.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField6.text = ""
-    //            }else{
-    //                delHour7 = getHourFromDatePicker(sender)
-    //                deltoMin7 = getMinFromDatePicker(sender)
-    //            (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
-    //            deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
-    //            }
-    //        case 13:
-    //            date13 = sender.date
-    //            if date12.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField7.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField7.text = ""
-    //            }else{
-    //                delHour8 = getHourFromDatePicker(sender)
-    //                deltoMin8 = getMinFromDatePicker(sender)
-    //            (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
-    //            deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
-    //            }
-    //        case 14:
-    //            date14 = sender.date
-    //            if date13.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField8.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField8.text = ""
-    //            }else{
-    //
-    //                delHour9 = getHourFromDatePicker(sender)
-    //                deltoMin9 = getMinFromDatePicker(sender)
-    //            (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
-    //            deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
-    //            }
-    //        case 15:
-    //            date15 = sender.date
-    //            if date14.compare(sender.date) == .OrderedDescending {
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField9.text = ""
-    //            }else if date1.compare(sender.date) == .OrderedSame{
-    //                AlertView.alertView("Alert", message: "From is earlier than To", alertTitle: "OK", viewController: self)
-    //                deliveryTimeTextField9.text = ""
-    //            }else{
-    //                delHour10 = getHourFromDatePicker(sender)
-    //                deltoMin10 = getMinFromDatePicker(sender)
-    //            (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
-    //            deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
-    //            }
-    //        default:
-    //            ""
-    //        }
-    //    }
     
     
-    func  checkDeliveryTime(dateString: String) {
+    func  checkDeliveryTime(dateString: String) -> Bool{
         
         if (isBetweenMyTwoDates(fromDate1, to: toDate1, dateString: dateString) || isBetweenMyTwoDates(fromDate2, to: toDate2, dateString: dateString) ||  isBetweenMyTwoDates(fromDate3, to: toDate3, dateString: dateString)) {
             print("delivery time is in the range of from and to")
         } else {
             AlertView.alertView("Alert", message: "delivery time is  not in the range of from and to", alertTitle: "OK", viewController: self)
-            print("delivery time is  not in the range of from and to")
+             print("delivery time is  not in the range of from and to")
+             return false
         }
+        
+        return true
+        
     }
     
     func earlierAndAfterDate(from:String , to:String , dateString: String) -> Bool {
@@ -1055,27 +998,34 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
         
         fromHour2 = String(fromHour1)
-        
         return (fromHour2,amOrPm)
         
     }
     
-    func getHourFromDatePicker(datePicker:UIDatePicker) -> String
+    func getHourFromDatePicker(labelString:String) -> String
     {
-        let date = datePicker.date
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat = "hh:mm a"
+        
+        let date = dateFormatter.dateFromString(labelString)
         
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date!)
         
         return "\(components.hour)"
     }
     
-    func getMinFromDatePicker(datePicker:UIDatePicker) -> String
+    func getMinFromDatePicker(labelString:String) -> String
     {
-        let date = datePicker.date
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat = "hh:mm a"
+        
+        let date = dateFormatter.dateFromString(labelString)
         
         let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date)
+        let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date!)
         
         return "\(components.minute)"
     }

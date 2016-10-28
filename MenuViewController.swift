@@ -32,6 +32,8 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
     var childArray = [CategoryList]()
     var subChildArray = [CategoryList]()
     var selectedCategoryLIst = CategoryList()
+    var selectedCategoryId = String()
+    
     @IBOutlet weak var gradientView: UIView!
     
     @IBOutlet weak var customerName: UILabel!
@@ -177,11 +179,13 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
     //let vc = Cust omerMenuItemsViewController()
     
     func toggleCollapse(sender: UIButton) {
+        
         let section = sender.tag
         let collapsed = parentArray[section].collapsed
         
         // Toggle collapse
       parentArray[section].collapsed = !collapsed
+     
         
         subChildArray = childArray.filter({
             if (parentArray[section].category_id == $0.parent_id) {
@@ -190,11 +194,12 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
             return false
         })
         
-//        let sb = UIStoryboard(name: "Customer", bundle: nil)
-//        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
-//
-//        vc1.fromMenuToProductPage = "goToProductsPage"
-//        vc1.selectedCategoryLIst = parentArray[section]
+        let sb = UIStoryboard(name: "Customer", bundle: nil)
+        let vc1 = sb.instantiateViewControllerWithIdentifier("CustomerMenuItems") as! CustomerMenuItemsViewController
+
+        vc1.fromMenuToProductPage = "goToProductsPage"
+        vc1.selectedCategoryLIst = parentArray[section]
+        
 //        let nc = UINavigationController(rootViewController: vc1)
 //        nc.setViewControllers([vc1], animated: true)
 //        nc.navigationBar.barTintColor = UIColor.orangeColor()
@@ -202,7 +207,10 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
 //        self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
 //        self.revealViewController().revealToggleAnimated(true)
 
-        // Reload section
+         //Reload section
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("populateData", object: parentArray[section].category_id)
+        
         self.menuTableView.reloadSections(NSIndexSet(index: section), withRowAnimation: .Automatic)
     }
     
@@ -213,6 +221,8 @@ class MenuViewController: UIViewController , UITableViewDataSource , UITableView
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
+    
+    
     
     
     // MARK: - Navigation

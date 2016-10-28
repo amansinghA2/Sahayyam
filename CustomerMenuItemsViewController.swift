@@ -362,20 +362,25 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
 
     }
 
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
-//    {
-//        return CGSizeMake((UIScreen.mainScreen().bounds.width)/2,175); //use height whatever you wants.
-//    }
-
-
     // MARK: Search Bar Delegates
     
     func filterContentForSearchText(searchText:String){
-       
-//        self.dataSourceForSearchResult = self.getProductCollectionListAdd.filter({ (text:ProductCollectionList) -> Bool in
-//            return text.prodnName.containsString(searchText)
-//        })
         
+    }
+
+    func refreshPage(notification:NSNotification) {
+
+        if let str = notification.object as? String {
+        getProductCollectionListAdd.removeAll()
+        page = 1
+        productFunction(str , limit: "25" , page: "1" , filterName: "")
+        }
+    }
+    
+    func refreshBasicProducts(notification:NSNotification) {
+//        getProductCollectionListAdd.removeAll()
+//        page = 1
+//        productFunction("" , limit: "25" , page: "1" , filterName: "")
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -394,10 +399,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
             self.searchBarActive = false
             self.collectionView?.reloadData()
         }
-        
     }
-    
-    
+
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         self.cancelSearching()
         isDataSOurceREsultEmpty = false
@@ -440,7 +443,7 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
         self.searchBar!.text = ""
     }
     
-    // MARK:-  RevealView Controler Delegate
+    // MARK:-  RevealView Controller Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
         if position == FrontViewPosition.Left{
@@ -477,7 +480,6 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 productFunction(selectedCategoryLIst.category_id , limit: "25" , page: "\(page)" , filterName: "")
             }else{
                self.toastViewForTextfield("No More Products")
-                sender.hidden = true
             }
     }else {
             page += 1
@@ -485,13 +487,17 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
                 productFunction("", limit: "25", page: "\(page)" , filterName: "")
             }else{
                self.toastViewForTextfield("No More Products")
-                sender.hidden = true
             }
         }
     }
     
     func setUpView(){
         tokenCheck()
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.refreshPage(_:)), name: "populateData", object: nil)
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.refreshBasicProducts(_:)), name: "getBasicProducts", object: nil)
         
         slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self

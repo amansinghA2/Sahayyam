@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqS-GS-31N">
-                    <rect key="frame" x="36" y="189" width="223" height="189"/>
+                    <rect key="frame" x="49" y="189" width="223" height="189"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qi2-AG-LUA">
                             <rect key="frame" x="37" y="37" width="166" height="21"/>
@@ -102,15 +102,14 @@
                         <constraint firstAttribute="trailing" secondItem="hUp-2N-wz3" secondAttribute="trailing" constant="44" id="jIc-67-53U"/>
                         <constraint firstItem="hUp-2N-wz3" firstAttribute="top" secondItem="mqS-GS-31N" secondAttribute="top" constant="8" id="llC-Ih-jHE"/>
                         <constraint firstAttribute="trailing" secondItem="xxc-zH-WKy" secondAttribute="trailing" constant="14" id="u5m-a1-whC"/>
+                        <constraint firstItem="xxc-zH-WKy" firstAttribute="centerY" secondItem="7NG-ga-WgP" secondAttribute="centerY" id="unn-j5-lXU"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="mqS-GS-31N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="36" id="Bmc-ki-iXX"/>
-                <constraint firstItem="mqS-GS-31N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="189" id="Bz0-bF-vyV"/>
-                <constraint firstAttribute="bottom" secondItem="mqS-GS-31N" secondAttribute="bottom" constant="190" id="FB9-FQ-ELC"/>
-                <constraint firstAttribute="trailing" secondItem="mqS-GS-31N" secondAttribute="trailing" constant="61" id="pqf-Ye-yGl"/>
+                <constraint firstItem="mqS-GS-31N" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="0.5" id="YaD-HO-JT6"/>
+                <constraint firstItem="mqS-GS-31N" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="f0b-Um-9Z2"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="199" y="226"/>

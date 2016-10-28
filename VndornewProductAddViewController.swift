@@ -54,6 +54,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusString = "1"
+        stockLabelString = "0"
+        statusLabel.text = "Enabled"
+        substractStockLabel.text = "No"
         
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
@@ -118,14 +122,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             serviceLabel.text = name
         }
         
-        if let name = getProductDetails.status as? String{
-            statusString = name
-            if name == "0" {
-             statusLabel.text = "Disabled"
-            }else{
-             statusLabel.text = "Enabled"
-            }
-        }
+//        if let name = getProductDetails.status as? String{
+//            statusString = name
+//            if name == "0" {
+//             statusLabel.text = "Disabled"
+//            }else{
+//             statusLabel.text = "Enabled"
+//            }
+//        }
         
         if let name = getProductDetails.quantity as? String{
             quantityLabel.text = name
@@ -266,9 +270,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     @IBAction func saveButton(sender: AnyObject){
-        
+        self.view.endEditing(true)
         if self.fromDesc == "fromDescriptionPage" {
-            
             if Reachability.isConnectedToNetwork() {
                 if formValidation() {
                     self.showHud("Loading...")
@@ -318,7 +321,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                                     }
                                 }
                             }else{
-                                NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: nil)
+                            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: nil)
                                 self.navigationController?.popToRootViewControllerAnimated(true)
                                 print("Success")
                             }

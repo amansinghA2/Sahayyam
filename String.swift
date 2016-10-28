@@ -10,19 +10,14 @@ import Foundation
 
     // MARK: - Base Url
 
-// "http://192.168.1.2/sahayyam/image/"
-// "http://sahayyam.com/"
-// "http://192.168.1.2/sahayyam/"
-// "http://sahayyam.com/image/"
-
-//let BASE_URL = "http://192.168.1.2/sahayyam/"
-//let image_base_url = "http://192.168.1.2/sahayyam/image/"
+let BASE_URL = "http://192.168.1.2/sahayyam/"
+let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
 //let BASE_URL = "http://45.118.180.96/"
 //let image_base_url = "http://45.118.180.96/image/"
 
-let BASE_URL = "http://sahayyam.com/"
-let image_base_url = "http://sahayyam.com/image/"
+//let BASE_URL = "http://sahayyam.com/"
+//let image_base_url = "http://sahayyam.com/image/"
 
     // MARK: - Common Url
 

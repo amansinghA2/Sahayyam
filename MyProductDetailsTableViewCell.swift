@@ -12,8 +12,7 @@ class MyProductDetailsTableViewCell: UICollectionViewCell {
     @IBOutlet weak var productOfferPrice: UILabel!
     var quanitityCount = Int()
     var str = ""
-    
-    
+
     var getProductCollectionLists1:ProductCollectionList!{
         didSet{
             bindModeltoViews1()
@@ -64,7 +63,6 @@ class MyProductDetailsTableViewCell: UICollectionViewCell {
         
     }
     
-    
-    
+  
 }
 

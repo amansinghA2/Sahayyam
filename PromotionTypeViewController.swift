@@ -241,10 +241,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     }
     
     func formValidation() -> Bool{
-        
-   
-        
-        
+
         //        if categoryLists.contains(nameLabel.text!){
         //            AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
         //            return false
@@ -372,7 +369,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         }else{
            self.hideHud()
         }
-        
         
     }
     

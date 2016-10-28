@@ -54,6 +54,12 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        if vendorPromotionsLists.count == 0 {
+            self.tableViewCustomLabel("No Promotions Available", tableView:self.vendorPromotionTableView)
+        }else{
+            self.tableViewCustomLabel("", tableView:self.vendorPromotionTableView)
+        }
         return vendorPromotionsLists.count
     }
     
@@ -63,16 +69,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         
         if self.vendorPromotionsLists[indexPath.row].status == "1" {
             cell.deactivateButton.setTitle("Activate", forState: .Normal)
+            cell.notifyButton.hidden = false
         }else{
             cell.deactivateButton.setTitle("Deactivate", forState: .Normal)
             cell.notifyButton.hidden = true
         }
-        
-//        if self.vendorPromotionsLists[indexPath.row].status = "1" {
-////            cell.deactivateButton.setTitle = "Activate"
-//        }else{
-////            cell.deactivateButton.setTitle = "Deactivate"
-//        }
         
         cell.deactivateButton.addTarget(self, action: #selector(VendorPromotionsViewController.deactivateButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(VendorPromotionsViewController.deleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -116,10 +117,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
         print(self.vendorPromotionsLists[(indexPath?.row)!].end_date_added)
         let date = dateFormatter.dateFromString(self.vendorPromotionsLists[(indexPath?.row)!].end_date_added)
-        print(date)
         let date1 = NSDate()
-        print(date1)
-
         if date?.compare(date1) == .OrderedAscending {
             AlertView.alertView("Alert", message: "Cannot be activated or deactived as the promotion has expired", alertTitle: "OK", viewController: self)
         }else{
