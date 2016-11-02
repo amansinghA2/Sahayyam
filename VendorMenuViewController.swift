@@ -127,12 +127,16 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
                 if isSuccessful {
                     self.hideHud()
                     self.cellClickNavigation("Main" , identifier: "LoginVC")
-               }
+                }else{
+                    
+                }
             }
         }))
+        
         alertController.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
             self.hideHud()
         }))
+        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 

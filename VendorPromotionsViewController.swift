@@ -15,10 +15,12 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
 
     var vendorPromotionsLists = [VendorPromotionList]()
     var vendorPromotionsList:VendorPromotionList!
-
+    var isBoolActivate = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorPromotionsViewController.showToastView(_:)), name: "showtoast", object: nil)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nibName = UINib(nibName: "VendorPromotionTableViewCell", bundle:nil)
         self.vendorPromotionTableView.registerNib(nibName, forCellReuseIdentifier: "promotioncellIdentifier")
@@ -53,6 +55,19 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         }
     }
     
+    
+    func showToastView(notification:NSNotification) {
+        
+        if let object1 = notification.object as? String {
+            if object1 == "Promotion created successfully" {
+               self.toastView(object1)
+            }else{
+               self.toastViewForTextfield("Product edited successfully")
+            }
+        }
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if vendorPromotionsLists.count == 0 {
@@ -68,10 +83,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         cell.vendorPromotionList = self.vendorPromotionsLists[indexPath.row]
         
         if self.vendorPromotionsLists[indexPath.row].status == "1" {
-            cell.deactivateButton.setTitle("Activate", forState: .Normal)
+            cell.deactivateButton.setTitle("Activated", forState: .Normal)
+            isBoolActivate = true
             cell.notifyButton.hidden = false
         }else{
-            cell.deactivateButton.setTitle("Deactivate", forState: .Normal)
+            cell.deactivateButton.setTitle("Deactivated", forState: .Normal)
             cell.notifyButton.hidden = true
         }
         
@@ -82,7 +98,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
         self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
     }
@@ -92,7 +107,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
 
     @IBAction func createPromotionAction(sender: AnyObject){
+        if isBoolActivate ==  true {
+           toastViewForTextfield("Please deactivate active promotion to add new one.")
+        }else{
         self.performSegueWithIdentifier("goToCreatePromotion", sender: nil)
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -111,7 +130,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
-        
+
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
@@ -121,21 +140,53 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         if date?.compare(date1) == .OrderedAscending {
             AlertView.alertView("Alert", message: "Cannot be activated or deactived as the promotion has expired", alertTitle: "OK", viewController: self)
         }else{
-            let params = [
-                "token":token,
-                "device_id":"1234",
-                "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
-                "status":self.vendorPromotionsLists[(indexPath?.row)!].status
-            ]
-            
-            ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
-                if isSuccessful {
-                    self.hideHud()
-                }else{
-                    self.hideHud()
+             if self.vendorPromotionsLists[(indexPath?.row)!].status == "1" {
+             let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to deactivate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
+             refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+               
+                    let params = [
+                        "token":token,
+                        "device_id":"1234",
+                        "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
+                        "status":"0"
+                    ]
+                    ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
+                        if isSuccessful {
+                            self.hideHud()
+                        }else{
+                            self.hideHud()
+                        }
+                    }
+                }))
+                refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+                    print("Handle Cancel Logic here")
+                }))
+                presentViewController(refreshAlert, animated: true, completion: nil)
+             }
+             else{
+                let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to activate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
+                refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                    
+                    let params = [
+                        "token":token,
+                        "device_id":"1234",
+                        "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
+                        "status":"1"
+                    ]
+                    ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
+                        if isSuccessful {
+                            self.hideHud()
+                        }else{
+                            self.hideHud()
+                        }
+                    }
+                }))
+                refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+                    print("Handle Cancel Logic here")
+                }))
+                presentViewController(refreshAlert, animated: true, completion: nil)
                 }
-            }
-        }
+           }
     }
     
     func deleteButtonClicked(sender:UIButton){
@@ -145,22 +196,37 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let cell = sender.superview?.superview as! VendorPromotionTableViewCell
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
-        let params = [
-        "token":token,
-        "device_id":"1234",
-        "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id
-        ]
         
-        ServerManager.sharedInstance().vendorDeletePromotion(params) { (isSuccessful, error, result) in
-            if isSuccessful {
+        let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to remove data from wislist", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            let params = [
+                "token":token,
+                "device_id":"1234",
+                "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id
+            ]
+            
+            ServerManager.sharedInstance().vendorDeletePromotion(params) { (isSuccessful, error, result) in
+                if isSuccessful {
                     self.hideHud()
                     self.vendorPromotionsLists.removeAtIndex((indexPath?.row)!)
                     self.vendorPromotionTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
                     self.vendorPromotionTableView.reloadData()
-            }else{
+                }else{
                     self.hideHud()
+                }
             }
-        }  
+            
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel Logic here")
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+
+        
+
     }
     
     func notifyButtonClicked(sender:UIButton){

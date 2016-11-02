@@ -309,7 +309,16 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                            if let sucess = dict["success"] as? Bool {
+                                if sucess == true {
+                                  completionClosure(isSuccessful: true, error: nil, result: dict as? Dictionary<String, String>)
+                                }else{
+                                    if let error = dict["error"] as? String {
+                                       completionClosure(isSuccessful: false, error: error, result: dict as? Dictionary<String, String>)
+                                    }
+                                }
+                            }
+                            
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
                         }
