@@ -420,7 +420,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         } else {
             dropper.hideWithAnimation(0.1)
         }
-        
     }
     
     @IBAction func statusAction(sender: AnyObject) {
