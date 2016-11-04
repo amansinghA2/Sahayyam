@@ -225,6 +225,7 @@
 		AFCD866E1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD866C1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift */; };
 		AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */; };
 		AFCFCCBD1D55C2C200983327 /* ProductCollectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCFCCBC1D55C2C200983327 /* ProductCollectionList.swift */; };
+		AFCFF02B1DCC46A800D2767F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFCFF02A1DCC46A800D2767F /* GoogleService-Info.plist */; };
 		AFD0BA341D6C1397006A6351 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0BA331D6C1397006A6351 /* Validations.swift */; };
 		AFD0BA361D6C3BDB006A6351 /* SingleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */; };
 		AFD0CD991D65B73C00EC1F09 /* CheckoutOrderTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD0CD981D65B73C00EC1F09 /* CheckoutOrderTotals.swift */; };
@@ -516,6 +517,7 @@
 		AFCD866C1D897CCB00F10ABB /* MyProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		AFCD866D1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProductDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AFCFCCBC1D55C2C200983327 /* ProductCollectionList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionList.swift; sourceTree = "<group>"; };
+		AFCFF02A1DCC46A800D2767F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD0BA331D6C1397006A6351 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		AFD0BA351D6C3BDB006A6351 /* SingleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImage.swift; sourceTree = "<group>"; };
 		AFD0CD981D65B73C00EC1F09 /* CheckoutOrderTotals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutOrderTotals.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				AF1F1F531D4A07E400E36DB0 /* Assets.xcassets */,
 				AF1F1F551D4A07E400E36DB0 /* LaunchScreen.storyboard */,
 				AF1F1F581D4A07E400E36DB0 /* Info.plist */,
+				AFCFF02A1DCC46A800D2767F /* GoogleService-Info.plist */,
 				AF1F1F501D4A07E400E36DB0 /* Sahayyam.xcdatamodeld */,
 			);
 			path = Sahayyam;
@@ -1164,6 +1167,7 @@
 				AF1F1F651D4A07E400E36DB0 /* Frameworks */,
 				AF1F1F661D4A07E400E36DB0 /* Resources */,
 				638841C7B3B2D7DE8753FF7C /* [CP] Copy Pods Resources */,
+				80155893E6C7E14C071E5604 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1294,6 +1298,7 @@
 				AF652C861D8F9CB3009852A3 /* SelectSevicesViewController.xib in Resources */,
 				AFB6A1F11D5DEE4000A9731B /* OrderDetailsViewController.xib in Resources */,
 				07F442701D621E4300733E91 /* OrderProductDetailsTableViewCell.xib in Resources */,
+				AFCFF02B1DCC46A800D2767F /* GoogleService-Info.plist in Resources */,
 				AF6327DB1D9534F80030F1C5 /* AllVendorsTableViewCell.xib in Resources */,
 				AFB6A1F91D5DF05700A9731B /* OrderDetailHeaderTableViewCell.xib in Resources */,
 				AF5CB11F1D98EA6C007C0261 /* SubsPaymentTableViewCell.xib in Resources */,
@@ -1352,7 +1357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3ED0FFE8F87A71B657441847 /* [CP] Copy Pods Resources */ = {
@@ -1382,7 +1387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		638841C7B3B2D7DE8753FF7C /* [CP] Copy Pods Resources */ = {
@@ -1415,6 +1420,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sahayyam/Pods-Sahayyam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		80155893E6C7E14C071E5604 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SahayyamUITests/Pods-SahayyamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B94750E2EA6F50367526E929 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1427,7 +1447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CC0580119AB9574C8F2FB5EC /* [CP] Embed Pods Frameworks */ = {
@@ -1767,7 +1787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1791,7 +1811,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: G4K SOLUTIONS PRIVATE LIMITED (J5Z84QAH77)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -20,7 +20,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorPromotionsViewController.showToastView(_:)), name: "showtoast", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorPromotionsViewController.showToastView(_:)), name: "showtoast", object: nil)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nibName = UINib(nibName: "VendorPromotionTableViewCell", bundle:nil)
         self.vendorPromotionTableView.registerNib(nibName, forCellReuseIdentifier: "promotioncellIdentifier")
@@ -32,27 +32,31 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    func displayPromotionList() {
         self.showHud("Loading...")
         let params = [
-        "token":token,
-        "device_id":"1234"
+            "token":token,
+            "device_id":"1234"
         ]
         
         ServerManager.sharedInstance().displayPromotionList(params) { (isSuccessful, error, result) in
             if isSuccessful {
-              self.hideHud()
-              self.vendorPromotionsLists = result!
-              self.vendorPromotionTableView.delegate = self
-              self.vendorPromotionTableView.dataSource = self
-              self.vendorPromotionTableView.reloadData()
+                self.hideHud()
+                self.vendorPromotionsLists = result!
+                self.vendorPromotionTableView.delegate = self
+                self.vendorPromotionTableView.dataSource = self
+                self.vendorPromotionTableView.reloadData()
             }else{
-               self.hideHud()
+                self.hideHud()
                 if error != nil {
-                 self.tableViewCustomLabel(error!, tableView:self.vendorPromotionTableView)
+                    self.tableViewCustomLabel(error!, tableView:self.vendorPromotionTableView)
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+     displayPromotionList()
     }
     
     
@@ -61,8 +65,10 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         if let object1 = notification.object as? String {
             if object1 == "Promotion created successfully" {
                self.toastView(object1)
+                displayPromotionList()
             }else{
                self.toastViewForTextfield("Product edited successfully")
+                displayPromotionList()
             }
         }
         
@@ -71,6 +77,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if vendorPromotionsLists.count == 0 {
+            isBoolActivate =  false
             self.tableViewCustomLabel("No Promotions Available", tableView:self.vendorPromotionTableView)
         }else{
             self.tableViewCustomLabel("", tableView:self.vendorPromotionTableView)
@@ -88,6 +95,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             cell.notifyButton.hidden = false
         }else{
             cell.deactivateButton.setTitle("Deactivated", forState: .Normal)
+            isBoolActivate = false
             cell.notifyButton.hidden = true
         }
         
@@ -99,7 +107,13 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
-        self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
+        
+        if isBoolActivate ==  true {
+            toastViewForTextfield("Please deactivate active promotion to add new one.")
+        }else{
+           self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
+        }
+  
     }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -141,18 +155,27 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             AlertView.alertView("Alert", message: "Cannot be activated or deactived as the promotion has expired", alertTitle: "OK", viewController: self)
         }else{
              if self.vendorPromotionsLists[(indexPath?.row)!].status == "1" {
+               
              let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to deactivate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
              refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-               
+ 
                     let params = [
                         "token":token,
                         "device_id":"1234",
                         "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
                         "status":"0"
                     ]
+                
+                    print(params)
+                
                     ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
                         if isSuccessful {
                             self.hideHud()
+                            self.isBoolActivate = false
+                            sender.setTitle("Deactivated", forState: .Normal)
+//                            self.vendorPromotionTableView.delegate = self
+//                            self.vendorPromotionTableView.dataSource = self
+//                            self.vendorPromotionTableView.reloadData()
                         }else{
                             self.hideHud()
                         }
@@ -166,6 +189,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
              else{
                 let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to activate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
                 refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+                   
                     
                     let params = [
                         "token":token,
@@ -176,6 +200,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                     ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
                         if isSuccessful {
                             self.hideHud()
+                            self.isBoolActivate = true
+                            sender.setTitle("Activated", forState: .Normal)
+//                            self.vendorPromotionTableView.delegate = self
+//                            self.vendorPromotionTableView.dataSource = self
+//                            self.vendorPromotionTableView.reloadData()
                         }else{
                             self.hideHud()
                         }
@@ -197,7 +226,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         let indexPath = vendorPromotionTableView.indexPathForCell(cell)
         
         
-        let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to remove data from wislist", preferredStyle: UIAlertControllerStyle.Alert)
+        let refreshAlert = UIAlertController(title: "Alert", message: "Are you sure you want to remove this promotion", preferredStyle: UIAlertControllerStyle.Alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             let params = [
@@ -224,9 +253,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         }))
         
         presentViewController(refreshAlert, animated: true, completion: nil)
-
-        
-
     }
     
     func notifyButtonClicked(sender:UIButton){
@@ -240,7 +266,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + " on Price : INR " + self.vendorPromotionsLists[(indexPath?.row)!].discount
         ]
         
-        print(params)
+        print(params) 
         
         ServerManager.sharedInstance().vendorNotifcation(params) { (isSuccessful, error, result) in
             if isSuccessful {

@@ -121,7 +121,8 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         }
         
         if let name = vendorPromotionList.price as? String{
-            amountLabel.text = name
+            let price = CustomClass.roundOfDecimal(name)
+            amountLabel.text = price
         }
         
         if vendorPromotionList.discount != "" {
@@ -283,6 +284,14 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             if a > 100 {
                 AlertView.alertView("Alert", message: "Discount value cannot be more than 100", alertTitle: "OK", viewController: self)
                 return false
+            }else if a <= 0 {
+                AlertView.alertView("Alert", message: "Invalid discount value", alertTitle: "OK", viewController: self)
+                return false
+            }
+        }else {
+            if a <= 0  {
+                AlertView.alertView("Alert", message: "Invalid amount value", alertTitle: "OK", viewController: self)
+                return false
             }
         }
         
@@ -293,6 +302,13 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         
         if amountLabel.text?.characters.count == 0  {
             AlertView.alertView("Alert", message: "Amount cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        let b:Int? = Int(amountLabel.text!)
+        
+        if b <= 0  {
+            AlertView.alertView("Alert", message: "Invalid amount entered", alertTitle: "OK", viewController: self)
             return false
         }
         

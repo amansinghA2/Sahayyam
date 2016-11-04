@@ -39,7 +39,7 @@ class ServerManager: NSObject {
             "username":userName,
             "password":passWord,
             "device_id":"1234",
-            "gcm_id":devicetoken
+            "gcm_id": gcmSenderID
         ]
         
         print(params)

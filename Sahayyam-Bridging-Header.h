@@ -6,3 +6,4 @@
 #import "SWRevealViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import <Google/CloudMessaging.h>

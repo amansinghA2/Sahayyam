@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 ## Alamofire
 
-Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014–2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -69,6 +69,42 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+## GGLInstanceID
+
+Copyright 2015 Google Inc.
+
+## Google
+
+Copyright 2015 Google Inc.
+
+## GoogleCloudMessaging
+
+Copyright 2015 Google Inc.
+
+## GoogleIPhoneUtilities
+
+Copyright 2015 Google Inc.
+
+## GoogleInterchangeUtilities
+
+Copyright 2016 Google
+
+## GoogleMobileAds
+
+Copyright 2011 Google Inc. All Rights Reserved.
+
+## GoogleNetworkingUtilities
+
+Copyright 2016 Google
+
+## GoogleSymbolUtilities
+
+Copyright 2016 Google
+
+## GoogleUtilities
+
+Copyright 2016 Google
 
 ## M13Checkbox
 
