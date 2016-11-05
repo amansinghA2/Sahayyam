@@ -357,16 +357,14 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         let section = sender.tag
         let cell = sender.superview?.superview as! VendorCategoryListTableViewCell
         let indexPath = vendorCategoryTableview.indexPathForCell(cell)
-        print(cell)
-        print(indexPath)
         
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
         popOverVC.serviceLists = self.serviceLists
         popOverVC.categoryList = self.parentArray[section]
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMoveToParentViewController(self)
+//        self.addChildViewController(popOverVC)
+//        popOverVC.view.frame = self.view.frame
+//        self.view.addSubview(popOverVC.view)
+//        popOverVC.didMoveToParentViewController(self)
     }
     
     

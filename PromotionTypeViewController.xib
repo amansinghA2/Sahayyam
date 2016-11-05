@@ -139,7 +139,6 @@
                                     <rect key="frame" x="50" y="211" width="104" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="20n-mv-inm"/>
-                                        <constraint firstAttribute="width" constant="104" id="shm-ub-Oq5"/>
                                     </constraints>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.7508351293103448" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -147,9 +146,6 @@
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-gl-Zrr">
                                     <rect key="frame" x="185" y="211" width="127" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="127" id="fkM-hd-0Sa"/>
-                                    </constraints>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.7508351293103448" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -371,7 +367,6 @@
                                         <constraint firstItem="1hy-wO-ieq" firstAttribute="centerY" secondItem="Bbz-V8-DHz" secondAttribute="centerY" id="DgK-3y-vLG"/>
                                         <constraint firstItem="S6l-Cj-Vad" firstAttribute="centerY" secondItem="u0x-jO-dy0" secondAttribute="centerY" id="E1B-A4-IsH"/>
                                         <constraint firstAttribute="trailing" secondItem="K4r-IQ-VBj" secondAttribute="trailing" id="EZ3-Wp-dcS"/>
-                                        <constraint firstAttribute="bottom" secondItem="Bbz-V8-DHz" secondAttribute="bottom" constant="12" id="EoZ-8g-fkN"/>
                                         <constraint firstItem="Bbz-V8-DHz" firstAttribute="top" secondItem="u0x-jO-dy0" secondAttribute="bottom" constant="3" id="LWG-eu-Ww7"/>
                                         <constraint firstItem="A9y-lb-9c1" firstAttribute="leading" secondItem="JSD-Ew-nDu" secondAttribute="leading" id="OBO-Qh-SGo"/>
                                         <constraint firstItem="K4r-IQ-VBj" firstAttribute="leading" secondItem="A9y-lb-9c1" secondAttribute="trailing" constant="41" id="Rh3-pO-HGi"/>
@@ -381,6 +376,7 @@
                                         <constraint firstItem="Bbz-V8-DHz" firstAttribute="top" secondItem="u0x-jO-dy0" secondAttribute="bottom" constant="3" id="dGK-Bc-sgf"/>
                                         <constraint firstItem="Bbz-V8-DHz" firstAttribute="leading" secondItem="1hy-wO-ieq" secondAttribute="trailing" constant="41" id="ete-L6-fzk"/>
                                         <constraint firstAttribute="height" constant="108" id="kOs-FZ-2Yv"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bbz-V8-DHz" secondAttribute="bottom" constant="12" id="lJE-5a-2sD"/>
                                         <constraint firstItem="A9y-lb-9c1" firstAttribute="centerY" secondItem="K4r-IQ-VBj" secondAttribute="centerY" id="nCU-Ly-4gm"/>
                                         <constraint firstItem="1hy-wO-ieq" firstAttribute="leading" secondItem="JSD-Ew-nDu" secondAttribute="leading" id="yQo-Hw-Omq"/>
                                     </constraints>
@@ -415,6 +411,7 @@
                                 <constraint firstItem="oPh-gE-i19" firstAttribute="top" secondItem="Amu-Im-KYo" secondAttribute="bottom" constant="2" id="Zru-mO-Sq2"/>
                                 <constraint firstItem="fix-MV-oBF" firstAttribute="leading" secondItem="OCt-fs-iJR" secondAttribute="leading" constant="8" id="a4I-eN-MS5"/>
                                 <constraint firstAttribute="trailing" secondItem="fHr-Zg-sJw" secondAttribute="trailing" constant="8" id="b6d-Wi-Grf"/>
+                                <constraint firstItem="aTC-gl-Zrr" firstAttribute="width" secondItem="PCF-Kw-Ulf" secondAttribute="width" constant="23" id="bY7-w1-OvG"/>
                                 <constraint firstAttribute="trailing" secondItem="Amu-Im-KYo" secondAttribute="trailing" constant="8" id="boX-FZ-m1w"/>
                                 <constraint firstItem="fHr-Zg-sJw" firstAttribute="leading" secondItem="OCt-fs-iJR" secondAttribute="leading" constant="8" id="cHW-55-Y9Z"/>
                                 <constraint firstItem="8ww-KA-2KQ" firstAttribute="top" secondItem="k1Z-dY-q6P" secondAttribute="bottom" constant="31" id="cvt-UP-DeF"/>
@@ -463,7 +460,7 @@
                 <constraint firstItem="OCt-fs-iJR" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" priority="250" id="bfy-kJ-Qfw"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="9" y="-149"/>
+            <point key="canvasLocation" x="84" y="-186"/>
         </view>
     </objects>
 </document>

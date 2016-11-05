@@ -196,7 +196,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             dropper.items = unitGramArray
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
-            dropper.spacing = 100
+            dropper.spacing = 1
             dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitDropDownButton)
         } else {
@@ -302,7 +302,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             return false
         }
         
-        let b:Int? = Int(amountLabel.text!)
+        let b:Double? = Double(amountLabel.text!)
         
         if b <= 0  {
             AlertView.alertView("Alert", message: "Invalid amount entered", alertTitle: "OK", viewController: self)
