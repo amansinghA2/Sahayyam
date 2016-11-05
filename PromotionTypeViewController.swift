@@ -123,6 +123,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         if let name = vendorPromotionList.price as? String{
             let price = CustomClass.roundOfDecimal(name)
             amountLabel.text = price
+            
         }
         
         if vendorPromotionList.discount != "" {
@@ -168,7 +169,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     }
     
     @IBAction func productDescriptionAction(sender: AnyObject) {
-        
         if self.productPromotionOutlet.checkState == .Unchecked{
             productNameString = vendorPromotionList.promo_name
             productnameQuantityConstraint.constant  = 0
@@ -180,13 +180,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             productnameQuantityConstraint.constant  = 106
             nameAndQuantityView.hidden = false
         }
-        
     }
     
     @IBAction func unitTypeAction(sender: AnyObject) {
         
         var unitGramArray = [String]()
-        
         for unitGram in unitGrams {
             unitGramArray.append(unitGram.title)
         }
@@ -198,7 +196,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             dropper.items = unitGramArray
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
-            dropper.spacing = 0
+            dropper.spacing = 100
             dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitDropDownButton)
         } else {
@@ -219,7 +217,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         
     }
     
-    
     func didSelectButton(aButton: UIButton?) {
         if aButton == percentageRadioButton {
             discountType = "P"
@@ -236,7 +233,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         addDatePickerToTextField(textField)
     }
     
-    
     //    func textFieldDidEndEditing(textField: UITextField) {
     //        self.view.endEditing(true)
     //        if fromLabel.text!.isEmpty{
@@ -245,6 +241,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     //            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
     //            fromLabel.text = dateFormatter.stringFromDate(date)
     //        }
+    //
     //        if isCheck == true {
     //            fromLabel.text = ""
     //        }
@@ -361,7 +358,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             fromLabel.text = dateFormatter.stringFromDate(sender.date)
         case 2:
             date1 = sender.date
-            
             if date.compare(sender.date) == .OrderedDescending {
                 AlertView.alertView("Alert", message: "From is earlier than to", alertTitle: "OK", viewController: self)
                 toLabel.text = ""
@@ -437,6 +433,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             }
         }
     }
+    
     /*
      // MARK: - Navigation
      

@@ -492,8 +492,8 @@ class CustomerMenuItemsViewController: UIViewController , UICollectionViewDataSo
     }
     
     func setUpView(){
-        tokenCheck()
         
+        tokenCheck()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerMenuItemsViewController.refreshPage(_:)), name: "populateData", object: nil)
         
@@ -809,8 +809,7 @@ else{
     }
     
     func alertControllerToLogout() {
-        
-        
+
         let alertController = UIAlertController(title: "Alert", message: "Do You wish to logout", preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
@@ -849,8 +848,5 @@ else{
     func textFieldDidEndEditing(textField: UITextField) {
         self.view.endEditing(true)
     }
-    
-    
-    
-    
+ 
 }

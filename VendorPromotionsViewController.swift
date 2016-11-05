@@ -61,14 +61,12 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     
     
     func showToastView(notification:NSNotification) {
-        
+         displayPromotionList()
         if let object1 = notification.object as? String {
             if object1 == "Promotion created successfully" {
-               self.toastView(object1)
-                displayPromotionList()
+               self.toastViewForTextfield(object1)
             }else{
                self.toastViewForTextfield("Product edited successfully")
-                displayPromotionList()
             }
         }
         
@@ -163,16 +161,15 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                         "token":token,
                         "device_id":"1234",
                         "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
-                        "status":"0"
+                        "status":self.vendorPromotionsLists[(indexPath?.row)!].status
                     ]
-                
-                    print(params)
-                
+
                     ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
                         if isSuccessful {
                             self.hideHud()
                             self.isBoolActivate = false
-                            sender.setTitle("Deactivated", forState: .Normal)
+                           // sender.setTitle("Deactivated", forState: .Normal)
+                            self.displayPromotionList()
 //                            self.vendorPromotionTableView.delegate = self
 //                            self.vendorPromotionTableView.dataSource = self
 //                            self.vendorPromotionTableView.reloadData()
@@ -195,13 +192,14 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                         "token":token,
                         "device_id":"1234",
                         "promotion_id":self.vendorPromotionsLists[(indexPath?.row)!].product_id,
-                        "status":"1"
+                        "status":self.vendorPromotionsLists[(indexPath?.row)!].status
                     ]
                     ServerManager.sharedInstance().vendorDeactivatePromotion(params) { (isSuccessful, error, result) in
                         if isSuccessful {
                             self.hideHud()
                             self.isBoolActivate = true
-                            sender.setTitle("Activated", forState: .Normal)
+                           // sender.setTitle("Activated", forState: .Normal)
+                            self.displayPromotionList()
 //                            self.vendorPromotionTableView.delegate = self
 //                            self.vendorPromotionTableView.dataSource = self
 //                            self.vendorPromotionTableView.reloadData()
@@ -249,6 +247,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in
+            self.hideHud()
             print("Handle Cancel Logic here")
         }))
         

@@ -44,7 +44,8 @@ class VendorPromotionTableViewCell: UITableViewCell {
         }
 
         if let name = vendorPromotionList.price as? String{
-            priceLabel.text = "On Price: INR. " + name + "/-"
+            let n = CustomClass.roundOfDecimal(name)
+            priceLabel.text = "On Price: INR. " + n + "/-"
         }
 
 
