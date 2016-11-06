@@ -338,11 +338,16 @@ class VendorJSONMapper: NSObject {
                 if let subscription = value.valueForKey("del") as? String{
                     customerList.del = subscription
                 }
-                
-                if let subscription = value.valueForKey("del_hour") as? String{
-                    customerList.del_hour = subscription
+
+
+                if let text:AnyObject = value.valueForKey("del_hour"){
+                    if text is String {
+                        customerList.del_hour = text as! String
+                    }else{
+                        customerList.del_hour = String(text)
+                    }
                 }
-                
+
                 if let customer = value.valueForKey("del_min") as? String{
                     customerList.del_min = customer
                 }
