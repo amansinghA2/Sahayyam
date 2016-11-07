@@ -73,7 +73,54 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-                productFunction("25" , page: "1" , filterName: "" , service_id: serviceString)
+            self.showHud("Loading...")
+            let params = [
+                "token":token,
+                "product_name":"",
+                "limit":limit,
+                "filter_name":"",
+                "page":page,
+                "device_id":"1234",
+                "global":"0",
+                "service_id":""
+            ]
+            
+            print(params)
+            
+            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
+                if isSuccessful {
+                    self.hideHud()
+                    if let totalPage = result1!["TotalPages"]{
+                        self.totalPages = Int(totalPage as! String)!
+                    }
+                    
+                    if let noImage = result1!["no_image"] as? String{
+                        self.noImage = noImage
+                    }
+                    
+                    self.dataSourceForSearchResult = result!
+                    self.getProductCollectionList = result!
+                    print(self.getProductCollectionList.count)
+                    self.getProductCollectionListAdd += self.getProductCollectionList
+                    
+                    if self.noImage == "1" {
+                        self.myproductsCollectionView.hidden = true
+                        self.myProductsTableView.hidden = false
+                        self.myProductsTableView.dataSource = self
+                        self.myProductsTableView.delegate = self
+                        self.myProductsTableView.reloadData()
+                    }else{
+                        self.myProductsTableView.hidden = true
+                        self.myproductsCollectionView.hidden = false
+                        self.myproductsCollectionView.dataSource = self
+                        self.myproductsCollectionView.delegate = self
+                        self.myproductsCollectionView.reloadData()
+                    }
+                }else{
+                    self.hideHud()
+                }
+            }
+
         }
         else {
             self.hideHud()

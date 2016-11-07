@@ -356,7 +356,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     func cellClicked1(sender:UIButton) {
         let section = sender.tag
         let cell = sender.superview?.superview as! VendorCategoryListTableViewCell
-        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
+        _ = vendorCategoryTableview.indexPathForCell(cell)
         
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
         popOverVC.serviceLists = self.serviceLists
@@ -366,7 +366,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
 //        self.view.addSubview(popOverVC.view)
 //        popOverVC.didMoveToParentViewController(self)
     }
-    
     
     /*
     // MARK: - Navigation

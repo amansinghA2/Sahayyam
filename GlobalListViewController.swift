@@ -108,7 +108,36 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
         if Reachability.isConnectedToNetwork(){
-            productFunction("25" , page: "" , filterName:"" , serviceName: serviceString)
+            self.showHud("Loading...")
+            let params = [
+                "token":token,
+                "product_name":"",
+                "filter_name":"",
+                "limit":limit,
+                "page":page,
+                "device_id":"1234",
+                "global":"1",
+                "service_id":""
+            ]
+            
+            print(params)
+            
+            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
+                if isSuccessful {
+                    self.hideHud()
+                    self.dataSourceForSearchResult = result!
+                    self.getProductCollectionList = result!
+                    print(self.getProductCollectionList.count)
+                    self.getProductCollectionListAdd += self.getProductCollectionList
+                    self.globalListTableView.delegate = self
+                    self.globalListTableView.dataSource = self
+                    self.globalListTableView.reloadData()
+                }else{
+                    self.hideHud()
+                }
+            }
+            
+
         }
         else {
             self.hideHud()

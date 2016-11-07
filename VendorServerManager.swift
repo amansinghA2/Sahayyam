@@ -212,7 +212,6 @@ extension ServerManager {
         ]
         
         defaultManager.request(.GET, myproductsGlobalListUrl, parameters: params, encoding: .URL, headers: headers)
-            .validate(contentType: ["application/json"])
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {
