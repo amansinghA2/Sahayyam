@@ -28,7 +28,7 @@
                 <constraint firstItem="Pst-Mf-wGb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tbr-JW-744"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="86" y="140"/>
+            <point key="canvasLocation" x="314" y="127"/>
         </view>
     </objects>
 </document>

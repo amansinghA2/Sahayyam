@@ -13,7 +13,7 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var addresstextField: UITextField!
+    @IBOutlet weak var addresstextField: TextField!
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -23,6 +23,8 @@ class AboutUsViewController: UIViewController {
         super.viewDidLoad()
         
         slideMenuShow(slidemenuButton, viewcontroller: self)
+        
+        addresstextField.setTextFieldStyle(TextFieldStyle.EmailID)
         
        // setBackButtonForNavigation()
         tokenCheck()
@@ -49,7 +51,7 @@ class AboutUsViewController: UIViewController {
     @IBAction func sendEmailAction(sender: AnyObject) {
         
         self.showHud("Loading...")
-        
+        if formValidation() {
         let params = [
             "token":token,
             "device_id":"1234",
@@ -68,8 +70,43 @@ class AboutUsViewController: UIViewController {
               self.hideHud()  
             }
         }
- 
+        } else {
+          self.hideHud()
+        }
         
     }
+    
+    func formValidation() -> Bool {
+        
+        if nameTextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Name field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if addresstextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Email Id field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+//        if emailTextField.text?.characters.count == 0 {
+//            AlertView.alertView("Alert", message: "email Field cannot be left blank", alertTitle: "OK", viewController: self)
+//            return false
+//        }.
+        
+        if messageTextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Message field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if !(addresstextField.isValidEmail(addresstextField.text!)) {
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        
+       return true
+    }
+    
 
 }

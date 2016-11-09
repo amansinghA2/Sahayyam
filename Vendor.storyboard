@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TCQ-sB-waJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Vendor Menu View Controller-->
@@ -367,6 +368,18 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Fuo-69-3Rq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="yEU-az-KS6">
+                                <connections>
+                                    <action selector="categoryAddAction:" destination="2pf-qB-exL" id="Lop-vU-kyX"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="n57-ee-btb">
+                                <connections>
+                                    <action selector="searchServiceButton:" destination="2pf-qB-exL" id="fvW-U9-CQN"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -377,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDr-92-Kc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="1771"/>
+            <point key="canvasLocation" x="259" y="2042"/>
         </scene>
         <!--Payment Details View Controller-->
         <scene sceneID="0Ei-Ys-BvY">

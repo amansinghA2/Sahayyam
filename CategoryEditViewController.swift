@@ -135,7 +135,7 @@ class CategoryEditViewController: UIViewController , DropperDelegate {
         if contents == "Enabled" {
            statusString = "1"
         }else{
-            statusString = "0"
+           statusString = "0"
         }
     }
     

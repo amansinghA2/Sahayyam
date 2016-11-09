@@ -138,7 +138,28 @@ extension UIViewController {
         UIView.animateWithDuration(4.0, delay: 0.1, options: .CurveEaseOut, animations: {
             toastLabel.alpha = 0.0
         }) { (completion) in
-
+            
+        }
+    }
+    
+    func toastViewWithNavigation(text:String , identifierString:String) {
+        let toastLabel = UILabel(frame: CGRectMake(self.view.frame.size.width/2 - 150, self.view.frame.size.height-100, 300, 25))
+        toastLabel.backgroundColor = UIColor.orangeColor()
+        toastLabel.textColor = UIColor.blackColor()
+        toastLabel.textAlignment = NSTextAlignment.Center;
+        toastLabel.font = UIFont (name: "HelveticaNeue-Bold", size: 15)
+        self.view.addSubview(toastLabel)
+        toastLabel.text = text
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 5;
+        toastLabel.clipsToBounds  =  true
+        
+        UIView.animateWithDuration(3.0, delay: 0.1, options: .CurveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }) { (completion) in
+            let mapViewControllerObj = self.storyboard?.instantiateViewControllerWithIdentifier(identifierString)
+            //                    self.presentViewController(mapViewControllerObj!, animated: true, completion: nil)
+            self.navigationController?.pushViewController(mapViewControllerObj!, animated: true)
         }
     }
 

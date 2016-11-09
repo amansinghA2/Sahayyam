@@ -227,8 +227,8 @@ extension ServerManager {
                     case .Failure( let error):
                         print(error)
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1:nil)
-                    }
                 }
+            }
         }
     }
     

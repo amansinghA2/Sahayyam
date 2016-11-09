@@ -38,13 +38,15 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var unitGrams = [UnitGram]()
     
     let imagePicker = UIImagePickerController()
+    
+    var categoryLists = [ProductCategoryList]()
     var str = ""
     var fromDesc = ""
     var getProductDetails:ProductDetails!
     var statusString = String()
     var serviceLists = [VendorService]()
     var stockLabelString = String()
-    var categoryLists = [ProductCategoryList]()
+
     var servicelabelString = String()
     var categorylabelString = String()
     var service_id = String()
@@ -159,7 +161,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
     }
-    
     
     /*
     // MARK: - Navigation

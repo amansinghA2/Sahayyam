@@ -16,6 +16,6 @@ class VendorInfoAboutUs: NSObject {
      dynamic var address1 = String()
      dynamic var emailId = String()
      dynamic var postCode = String()
-    dynamic var city = String()
+     dynamic var city = String()
     
 }

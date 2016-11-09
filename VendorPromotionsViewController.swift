@@ -243,7 +243,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                     self.hideHud()
                 }
             }
-            
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action: UIAlertAction!) in

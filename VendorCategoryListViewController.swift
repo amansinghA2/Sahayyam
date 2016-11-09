@@ -22,9 +22,16 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     var childArray = [CategoryList]()
     var subChildArray = [CategoryList]()
     var subSubChildArray = [CategoryList]()
+    var serviceString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.refreshList1(_:)), name: "refresh1", object: nil)
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.addMainProduct1(_:)), name: "addMainProduct", object: nil)
+        
         slideMenuShow(slideMenuButton, viewcontroller: self)
         tokenCheck()
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
@@ -40,12 +47,13 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    
+    func productFunction() {
         self.showHud("Loading...")
-        
+     
         let params = [
-        "token":token,
-        "device_id":"1234"
+            "token":token,
+            "device_id":"1234"
         ]
         
         ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result , result1) in
@@ -59,18 +67,22 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
                 }
                 return false
             })
-
+            
             self.childArray = self.categoryLists.filter({
                 if $0.level == "1" {
                     return true
                 }
                 return false
             })
-
+            
             self.vendorCategoryTableview.delegate = self
             self.vendorCategoryTableview.dataSource = self
             self.vendorCategoryTableview.reloadData()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        productFunction()
     }
     
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -231,8 +243,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)
-        
-        
+
 //        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
 //        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
 //        
@@ -347,10 +358,10 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
         popOverVC.serviceLists = self.serviceLists
         popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMoveToParentViewController(self)
+//        self.addChildViewController(popOverVC)
+//        popOverVC.view.frame = self.view.frame
+//        self.view.addSubview(popOverVC.view)
+//        popOverVC.didMoveToParentViewController(self)
     }
     
     func cellClicked1(sender:UIButton) {
@@ -361,11 +372,58 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
         popOverVC.serviceLists = self.serviceLists
         popOverVC.categoryList = self.parentArray[section]
-//        self.addChildViewController(popOverVC)
-//        popOverVC.view.frame = self.view.frame
-//        self.view.addSubview(popOverVC.view)
-//        popOverVC.didMoveToParentViewController(self)
+        popOverVC.str1 = "fromCell"
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
     }
+    
+    @IBAction func categoryAddAction(sender: AnyObject) {
+//        let section = sender.tag
+//        let cell = sender.superview?!.superview as! VendorCategoryListTableViewCell
+//        _ = vendorCategoryTableview.indexPathForCell(cell)
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
+        popOverVC.serviceLists = self.serviceLists
+        //popOverVC.categoryList = self.parentArray[section]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+    }
+    
+    
+    @IBAction func searchServiceButton(sender: AnyObject) {
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.str = "1"
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+    }
+    
+    func addMainProduct1(notification: NSNotification){
+         self.toastViewForTextfield("Product added successfully")
+        productFunction()
+    }
+    
+    func refreshList1(notification: NSNotification) {
+        self.toastViewForTextfield("Service has been updated")
+        productFunction()
+
+//        if let myString = notification.object as? String {
+//            serviceString = myString
+//            print(serviceString)
+//            
+////          self.showHud("Loading...")
+////          self.getProductCollectionListAdd.removeAll()
+////            
+////          productFunction("25", page: "1", filterName: "", serviceName: serviceString)
+//        }
+        
+    }
+
     
     /*
     // MARK: - Navigation

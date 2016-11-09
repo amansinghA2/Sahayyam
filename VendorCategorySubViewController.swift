@@ -11,35 +11,63 @@ import Dropper
 
 class VendorCategorySubViewController: UIViewController , SSRadioButtonControllerDelegate , DropperDelegate{
     
-    let dropper = Dropper(width: 100, height: 200)
+    let dropper = Dropper(width: 100, height: 100)
     
     @IBOutlet weak var serviceButtonOutlet: UIButton!
-
     @IBOutlet weak var subCategoryTextField: UITextField!
     @IBOutlet weak var mainCategoryTextField: UITextField!
     @IBOutlet weak var mainCategoryLabel: UILabel!
     @IBOutlet weak var subCategoryLabel: UILabel!
+    var categoryListIds = String()
     
     @IBOutlet weak var mainCategorycheckBox: SSRadioButton!
     @IBOutlet weak var subCategoryCheckBox: SSRadioButton!
     var categoryList = CategoryList()
     var serviceLists = [ServiceList]()
+    var serviceLists1 = [VendorService]()
+    var service_id = String()
     var serviceList = ServiceList()
     var radioButtonController = SSRadioButtonsController()
-    var str = String()
+    var str1 = String()
     var count = Int()
     var categoryParentIDString = String()
+    var categoryLists = [ProductCategoryList]()
+    
+    @IBOutlet weak var mainCategoryHesightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var subCtategoryHeightContraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         serviceListAction("")
+        if str1 == "fromCell" {
+            mainCategoryTextField.text = categoryList.name
+            serviceButtonOutlet.userInteractionEnabled = false
+            mainCategoryHesightConstraint.constant = 0
+            mainCategorycheckBox.hidden = true
+            subCategoryCheckBox.hidden = false
+            subCategoryCheckBox.selected = true
+            //autoCompleteCategoryAction(categoryList.service_id)
+            serviceListAction("")
+           // categoryListIds = categoryList.service_id
+        }else{
+            serviceButtonOutlet.userInteractionEnabled = true
+            subCtategoryHeightContraint.constant = 0
+            subCategoryCheckBox.hidden = true
+            mainCategorycheckBox.hidden = false
+            mainCategorycheckBox.selected = true
+            //autoCompleteCategoryAction(categoryList.service_id)
+            serviceListAction("")
+        }
+        
         count = serviceLists.count
-        mainCategoryTextField.text = categoryList.name
+//        mainCategoryTextField.text = categoryList.name
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         showAnimate()
         radioButtonController.setButtonsArray([mainCategorycheckBox , subCategoryCheckBox])
         radioButtonController.delegate = self
-        subCategoryCheckBox.selected = true
+        //subCategoryCheckBox.selected = true
         categoryParentIDString = categoryList.parent_id
         // Do any additional setup after loading the view.
     }
@@ -84,6 +112,9 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             dropper.theme = Dropper.Themes.White
             dropper.delegate = self
             dropper.cornerRadius = 2
+            dropper.spacing = 1
+            dropper.cellTextSize = 12
+            dropper.maxHeight = 100
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: serviceButtonOutlet)
         } else {
             dropper.hideWithAnimation(0.1)
@@ -92,9 +123,48 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     }
     
     func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
-       // categoryLabel.text = "\(contents)"
+        
+        mainCategoryTextField.text = "\(contents)"
+        for serviceList in serviceLists1 {
+            if contents == serviceList.desc {
+                service_id = serviceList.id
+            }
+        }
+//        serviceListAction(service_id)
+//        autoCompleteCategoryAction(service_id)
+        
+//        mainCategoryTextField.text = "\(contents)"
+//        for categoryList in categoryLists {
+//            if contents == categoryList.name {
+//                categoryListIds = categoryList.category_id
+//            }
+//        }
+        
+       // mainCategoryTextField.text = "\(contents)"
     }
     
+    
+    func serviceListAction(getProductDetailsServiceId:String) {
+        
+        let params1 = [
+            "token":token,
+            "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.serviceLists1 = result!
+//                for serviceList in self.serviceLists1 {
+//                    if getProductDetailsServiceId == serviceList.id {
+//                        self.mainCategoryTextField.text = serviceList.desc
+//                    }
+//                }
+            }else{
+                self.hideHud()
+            }
+        }
+        
+    }
     
     func didSelectButton(aButton: UIButton?) {
         if aButton == mainCategorycheckBox{
@@ -117,12 +187,22 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     
     @IBAction func saveButton(sender: AnyObject){
         
+        if str1 == "fromCell" {
+            categoryParentIDString = categoryList.parent_id
+            service_id = categoryList.service_id
+        }else{
+            categoryParentIDString = "0"
+//          categoryListIds = categoryList.service_id
+           // service_id = categoryList.service_id
+        }
+
+        self.showHud("")
         let params:[String:AnyObject] = [
         "token":token,
         "device_id":"1234",
         "parent_id":categoryParentIDString,
         "category_name":subCategoryTextField.text!,
-        "service_id":categoryList.service_id,
+        "service_id":service_id,
         "sort_order":"0",
         "image":""
         ]
@@ -131,6 +211,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         
         ServerManager.sharedInstance().vendorAddCategory(params) { (isSuccessful, error, result) in
             if isSuccessful{
+            NSNotificationCenter.defaultCenter().postNotificationName("addMainProduct", object: nil)
                 self.hideHud()
             }else{
                 self.hideHud()
@@ -139,6 +220,26 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         
         
         removeAnimate()
+    }
+    
+    
+    func autoCompleteCategoryAction(service_id:String) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "service_id":service_id,
+            "filter_name":""
+        ]
+        
+        ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                self.categoryLists = result!
+            }else{
+                self.hideHud()
+            }
+        }
+        
     }
     
     @IBAction func cancelButton(sender: AnyObject) {

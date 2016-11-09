@@ -108,9 +108,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
 //                self.removeAnimate()
 //            }
 //        }
-        
         self.removeAnimate()
-        
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -121,8 +119,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         
         let cell = sender.superview?.superview as! SelectServicesTableViewCell
         let indexPath = selectServicesTableView.indexPathForCell(cell)
-        
-        
+
 //        let params = [
 //            "token":token,
 //            "product_name":"",

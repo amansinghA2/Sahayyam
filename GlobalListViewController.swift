@@ -101,8 +101,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                 self.hideHud()
             }
         }
-
-    
     }
     
     override func viewWillAppear(animated: Bool) {

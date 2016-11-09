@@ -41,7 +41,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         let range : NSRange = str.rangeOfString("Accept the terms and conditions")
         acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
         acceptLabel.textColor = UIColor.blueColor()
-self.showHud("Loading...")
+        self.showHud("Loading...")
         if isLogin == "customerDropDown" {
             tokenCheck()
             self.acceptLabel.hidden = true
@@ -55,7 +55,6 @@ self.showHud("Loading...")
                     customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
                     NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                     self.dataInTextField()
-                
                     self.hideHud()
                 }else{
                     self.hideHud()

@@ -43,7 +43,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     var toastString = String()
     var someGlobalNSInteger = Int()
-    let dropper = Dropper(width: 131, height: 400)
+    let dropper = Dropper(width: 131, height: 100)
     var date = NSDate()
     var date1 = NSDate()
     var unitGrams = [UnitGram]()
@@ -198,10 +198,14 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             dropper.delegate = self
             dropper.spacing = 1
             dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitDropDownButton)
+            dropper.maxHeight = 100
+            dropper.cellTextSize = 12
+            dropper.show(Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitDropDownButton)
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitDropDownButton)
         } else {
             dropper.hideWithAnimation(0.1)
         }
+        
         
     }
     
@@ -214,7 +218,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
                 weightClassID = unitGram.weight_class_id
             }
         }
-        
     }
     
     func didSelectButton(aButton: UIButton?) {

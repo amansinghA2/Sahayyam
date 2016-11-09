@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="addresstextField" destination="zEp-Ck-3mM" id="hBn-5W-pJQ"/>
-                <outlet property="emailTextField" destination="Xqa-kO-oFB" id="Rbl-Zs-XuE"/>
+                <outlet property="addresstextField" destination="zEp-Ck-3mM" id="B2E-x9-elu"/>
+                <outlet property="emailTextField" destination="Xqa-kO-oFB" id="hci-G3-GZp"/>
                 <outlet property="messageTextField" destination="iPF-jh-fhb" id="Ll2-q2-pIa"/>
                 <outlet property="nameTextField" destination="l2a-r8-xqQ" id="tA7-7i-g4D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,7 +22,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIc-Wt-XVO" customClass="TPKeyboardAvoidingScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="791"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpI-xx-gFT">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpI-xx-gFT">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="791"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smG-Fj-eIC" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
@@ -152,7 +152,7 @@
                                         <constraint firstItem="jJx-wz-Ztb" firstAttribute="leading" secondItem="Kpt-50-3G9" secondAttribute="trailing" constant="16" id="zpv-1d-pTF"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qw1-q7-Alp" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw1-q7-Alp" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
                                     <rect key="frame" x="8" y="328" width="304" height="455"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEEL FREE TO CONTACT US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOe-Ax-h2s">
@@ -193,7 +193,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-62-SGI">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oc-62-SGI">
                                             <rect key="frame" x="108" y="403" width="88" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="sZ3-JG-wRg"/>
@@ -212,7 +212,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEp-Ck-3mM">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEp-Ck-3mM" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                                             <rect key="frame" x="8" y="146" width="288" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="0RT-X9-Jqw"/>
@@ -223,7 +223,6 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xqa-kO-oFB">
                                             <rect key="frame" x="8" y="205" width="288" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="288" id="3iu-IO-21l"/>
                                                 <constraint firstAttribute="height" constant="30" id="6PN-kC-hYB"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -238,9 +237,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iPF-jh-fhb">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iPF-jh-fhb">
                                             <rect key="frame" x="9" y="273" width="287" height="109"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="109" id="ti9-GH-Ylh"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>

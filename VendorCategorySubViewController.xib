@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorCategorySubViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="mainCategoryHesightConstraint" destination="W7n-gl-F4T" id="DiJ-kc-A8c"/>
                 <outlet property="mainCategoryLabel" destination="ECR-gG-PCL" id="udV-wZ-nDA"/>
                 <outlet property="mainCategoryTextField" destination="zLj-lO-o7N" id="iZd-3B-pgu"/>
                 <outlet property="mainCategorycheckBox" destination="nay-tN-xxY" id="qtx-vu-tj6"/>
@@ -13,6 +14,7 @@
                 <outlet property="subCategoryCheckBox" destination="xVV-m8-iao" id="Cu7-YA-3wl"/>
                 <outlet property="subCategoryLabel" destination="cpY-pa-Kuq" id="I86-Us-Msh"/>
                 <outlet property="subCategoryTextField" destination="Y6K-tK-yTp" id="4tv-KT-hN6"/>
+                <outlet property="subCtategoryHeightContraint" destination="TVP-A7-9B6" id="WzR-kd-8gb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -93,6 +95,9 @@
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6K-tK-yTp">
                             <rect key="frame" x="126" y="134" width="119" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="eUu-Uv-Fyl"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -104,6 +109,9 @@
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLj-lO-o7N">
                             <rect key="frame" x="126" y="96" width="119" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="k96-jU-14M"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -129,6 +137,15 @@
                                 <action selector="saveButton:" destination="-1" eventType="touchUpInside" id="0f4-mU-2A6"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD2-RV-4YX">
+                            <rect key="frame" x="126" y="98" width="116" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="27" id="Ieq-ZM-N0s"/>
+                            </constraints>
+                            <connections>
+                                <action selector="categoryAction:" destination="-1" eventType="touchUpInside" id="1IE-u4-pnr"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -148,25 +165,23 @@
                         <constraint firstItem="nay-tN-xxY" firstAttribute="top" secondItem="53c-1J-bYI" secondAttribute="top" constant="40" id="Mu2-X6-juT"/>
                         <constraint firstAttribute="width" constant="250" id="Ng3-2l-abC"/>
                         <constraint firstItem="Y6K-tK-yTp" firstAttribute="top" secondItem="zLj-lO-o7N" secondAttribute="bottom" constant="8" id="O4t-E6-TL9"/>
+                        <constraint firstItem="GD2-RV-4YX" firstAttribute="top" secondItem="xVV-m8-iao" secondAttribute="bottom" priority="750" constant="10" id="YQG-Xp-zMr"/>
                         <constraint firstItem="Y6K-tK-yTp" firstAttribute="leading" secondItem="cpY-pa-Kuq" secondAttribute="trailing" constant="2" id="YzW-Je-7jm"/>
                         <constraint firstItem="C5v-91-y0l" firstAttribute="top" secondItem="Y6K-tK-yTp" secondAttribute="bottom" constant="15" id="Z3P-Ub-e3K"/>
                         <constraint firstItem="A4x-KZ-sPs" firstAttribute="leading" secondItem="53c-1J-bYI" secondAttribute="leading" constant="5" id="ZYc-jh-HWV"/>
                         <constraint firstAttribute="trailing" secondItem="zLj-lO-o7N" secondAttribute="trailing" constant="5" id="ZoA-vD-cog"/>
+                        <constraint firstAttribute="trailing" secondItem="GD2-RV-4YX" secondAttribute="trailing" constant="8" id="dNj-qD-OZh"/>
                         <constraint firstAttribute="bottom" secondItem="lgl-jS-fOX" secondAttribute="bottom" constant="13" id="e2c-M1-UqW"/>
                         <constraint firstItem="4X6-1J-ZMZ" firstAttribute="top" secondItem="53c-1J-bYI" secondAttribute="top" constant="5" id="f6R-Bl-z2o"/>
+                        <constraint firstItem="GD2-RV-4YX" firstAttribute="leading" secondItem="ECR-gG-PCL" secondAttribute="trailing" constant="22" id="fPl-2c-wrj"/>
+                        <constraint firstItem="Y6K-tK-yTp" firstAttribute="top" secondItem="GD2-RV-4YX" secondAttribute="bottom" constant="9" id="oGB-1g-oHN"/>
                         <constraint firstItem="xVV-m8-iao" firstAttribute="top" secondItem="nay-tN-xxY" secondAttribute="bottom" constant="6" id="sQv-aW-ZzY"/>
                         <constraint firstItem="lgl-jS-fOX" firstAttribute="top" secondItem="Y6K-tK-yTp" secondAttribute="bottom" constant="15" id="sVG-lP-vT7"/>
                         <constraint firstAttribute="trailing" secondItem="xVV-m8-iao" secondAttribute="trailing" constant="5" id="tF7-z3-hHA"/>
-                        <constraint firstItem="zLj-lO-o7N" firstAttribute="top" secondItem="xVV-m8-iao" secondAttribute="bottom" constant="8" id="v7f-iO-vh7"/>
+                        <constraint firstItem="zLj-lO-o7N" firstAttribute="top" secondItem="xVV-m8-iao" secondAttribute="bottom" priority="750" constant="8" id="v7f-iO-vh7"/>
                         <constraint firstItem="zLj-lO-o7N" firstAttribute="leading" secondItem="ECR-gG-PCL" secondAttribute="trailing" constant="22" id="x5n-33-cc0"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD2-RV-4YX">
-                    <rect key="frame" x="163" y="269" width="114" height="30"/>
-                    <connections>
-                        <action selector="categoryAction:" destination="-1" eventType="touchUpInside" id="1IE-u4-pnr"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -174,7 +189,7 @@
                 <constraint firstItem="53c-1J-bYI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wDg-Qh-fLs"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="208" y="62"/>
+            <point key="canvasLocation" x="313" y="33"/>
         </view>
     </objects>
 </document>
