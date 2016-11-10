@@ -61,6 +61,10 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         tokenCheck()
         //      fromLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         //      toLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
+        
+        discountValue.keyboardType = .NumberPad
+        amountLabel.keyboardType = .NumberPad
+        
         fromLabel.delegate = self
         toLabel.delegate = self
         productNameString = ""

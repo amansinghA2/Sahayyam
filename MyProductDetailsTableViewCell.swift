@@ -39,7 +39,7 @@ class MyProductDetailsTableViewCell: UICollectionViewCell {
             }
         }
         
-        if let customerProductName = getProductCollectionLists1?.name {
+        if let customerProductName = getProductCollectionLists1?.vendorName {
             self.customerProductName.text = customerProductName
         }
         

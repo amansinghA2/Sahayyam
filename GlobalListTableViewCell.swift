@@ -34,7 +34,7 @@ class GlobalListTableViewCell: UITableViewCell {
             }
         }
         
-        if let customerProductName = getProductCollectionLists1?.name {
+        if let customerProductName = getProductCollectionLists1?.vendorName {
             self.productName.text = customerProductName
         }
         

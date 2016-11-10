@@ -23,6 +23,8 @@ class ProductCollectionList: NSObject {
     dynamic var key = String()
     dynamic var name = String()
     dynamic var service_id = String()
+    dynamic var vendorName = String()
+    
     
     dynamic var id = Int()
     

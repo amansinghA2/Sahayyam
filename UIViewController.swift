@@ -68,12 +68,13 @@ extension UIViewController {
     // MARK: - ALERT View
 
     func slideMenuShow(menuButton:UIBarButtonItem , viewcontroller:UIViewController){
-        
         if self.revealViewController() != nil {
             self.view.endEditing(true)
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }else{
+            self.view.endEditing(true)
         }
           self.revealViewController().rearViewRevealWidth = 225
     }

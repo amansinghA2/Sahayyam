@@ -202,6 +202,19 @@ extension CommonJsonMapper {
                     productList1.name = name1
                 }
                 
+                
+                if let text:AnyObject = value.valueForKey("name") {
+                    if text is String {
+                        productList1.vendorName = text as! String
+                    }else{
+                       productList1.vendorName = String(text)
+                    }
+                }
+                
+//                if let name1 = value.valueForKey("name") as? String {
+//                    productList1.vendorName = name1
+//                }
+                
                 if let name1 = value.valueForKey("service_id") as? String {
                     productList1.service_id = name1
                 }

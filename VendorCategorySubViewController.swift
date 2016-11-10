@@ -48,11 +48,13 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             mainCategorycheckBox.hidden = true
             subCategoryCheckBox.hidden = false
             subCategoryCheckBox.selected = true
+            mainCategoryTextField.userInteractionEnabled = false
             //autoCompleteCategoryAction(categoryList.service_id)
             serviceListAction("")
            // categoryListIds = categoryList.service_id
         }else{
             serviceButtonOutlet.userInteractionEnabled = true
+            mainCategoryTextField.userInteractionEnabled = true
             subCtategoryHeightContraint.constant = 0
             subCategoryCheckBox.hidden = true
             mainCategorycheckBox.hidden = false
@@ -68,7 +70,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         radioButtonController.setButtonsArray([mainCategorycheckBox , subCategoryCheckBox])
         radioButtonController.delegate = self
         //subCategoryCheckBox.selected = true
-        categoryParentIDString = categoryList.parent_id
+        categoryParentIDString = categoryList.category_id
         // Do any additional setup after loading the view.
     }
 
@@ -175,7 +177,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             mainCategoryTextField.text = categoryList.serviceName
             subCategoryLabel.text = "Enter category Name"
         }else{
-            categoryParentIDString = categoryList.parent_id
+            categoryParentIDString = categoryList.category_id
             dropper.hide()
             mainCategoryLabel.text = "Main Category"
             serviceButtonOutlet.userInteractionEnabled = false
@@ -188,7 +190,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     @IBAction func saveButton(sender: AnyObject){
         
         if str1 == "fromCell" {
-            categoryParentIDString = categoryList.parent_id
+            categoryParentIDString = categoryList.category_id
             service_id = categoryList.service_id
         }else{
             categoryParentIDString = "0"
@@ -196,7 +198,8 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
            // service_id = categoryList.service_id
         }
 
-        self.showHud("")
+        self.showHud("Loading...")
+        
         let params:[String:AnyObject] = [
         "token":token,
         "device_id":"1234",
@@ -224,7 +227,6 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     
     
     func autoCompleteCategoryAction(service_id:String) {
-        
         let params = [
             "token":token,
             "device_id":"1234",
@@ -239,7 +241,6 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
                 self.hideHud()
             }
         }
-        
     }
     
     @IBAction func cancelButton(sender: AnyObject) {

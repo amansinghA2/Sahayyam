@@ -67,41 +67,119 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         // Dispose of any resources that can be recreated.
     }
 
+    
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
         super.viewWillAppear(animated)
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-            self.showHud("Loading...")
-            let params = [
-                "token":token,
-                "product_name":"",
-                "limit":limit,
-                "filter_name":"",
-                "page":page,
-                "device_id":"1234",
-                "global":"0",
-                "service_id":""
-            ]
             
-            print(params)
+            productFunction("25", page: "1", filterName: "", service_id: "")
             
-            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
-                if isSuccessful {
-                    self.hideHud()
-                    if let totalPage = result1!["TotalPages"]{
-                        self.totalPages = Int(totalPage as! String)!
-                    }
-                    
-                    if let noImage = result1!["no_image"] as? String{
-                        self.noImage = noImage
-                    }
-                    
-                    self.dataSourceForSearchResult = result!
-                    self.getProductCollectionList = result!
-                    print(self.getProductCollectionList.count)
-                    self.getProductCollectionListAdd += self.getProductCollectionList
+//            self.showHud("Loading...")
+//            let params = [
+//                "token":token,
+//                "product_name":"",
+//                "limit":limit,
+//                "filter_name":"",
+//                "page":page,
+//                "device_id":"1234",
+//                "global":"0",
+//                "service_id":""
+//            ]
+//            
+//            print(params)
+//            
+//            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
+//                if isSuccessful {
+//                    self.hideHud()
+//                    if let totalPage = result1!["TotalPages"]{
+//                        self.totalPages = Int(totalPage as! String)!
+//                    }
+//                    
+//                    if let noImage = result1!["no_image"] as? String{
+//                        self.noImage = noImage
+//                    }
+//                    
+//                    self.dataSourceForSearchResult = result!
+//                    self.getProductCollectionList = result!
+//                    print(self.getProductCollectionList.count)
+//                    self.getProductCollectionListAdd += self.getProductCollectionList
+//                    
+//                    if self.noImage == "1" {
+//                        self.myproductsCollectionView.hidden = true
+//                        self.myProductsTableView.hidden = false
+//                        self.myProductsTableView.dataSource = self
+//                        self.myProductsTableView.delegate = self
+//                        self.myProductsTableView.reloadData()
+//                    }else{
+//                        self.myProductsTableView.hidden = true
+//                        self.myproductsCollectionView.hidden = false
+//                        self.myproductsCollectionView.dataSource = self
+//                        self.myproductsCollectionView.delegate = self
+//                        self.myproductsCollectionView.reloadData()
+//                    }
+//                }else{
+//                    self.hideHud()
+//                }
+//            }
+
+        }
+        else {
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+        }
+    }
+
+    
+    func serviceProductFunction(limit:String , page:String , filterName:String , service_id:String) {
+        self.showHud("Loading...")
+        let params = [
+            "token":token,
+            "product_name":filterName,
+            "limit":limit,
+            "filter_name":"",
+            "page":page,
+            "device_id":"1234",
+            "global":"0",
+            "service":service_id
+        ]
+        
+        print(params)
+        
+        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
+            if isSuccessful {
+                self.hideHud()
+                if let totalPage = result1!["TotalPages"]{
+                    self.totalPages = Int(totalPage as! String)!
+                }
+                
+                if let noImage = result1!["no_image"] as? String{
+                    self.noImage = noImage
+                }
+                
+                self.dataSourceForSearchResult = result!
+                self.getProductCollectionList = result!
+                print(self.getProductCollectionList.count)
+                self.getProductCollectionListAdd += self.getProductCollectionList
+                
+                if self.noImage == "1" {
+                    self.myproductsCollectionView.hidden = true
+                    self.myProductsTableView.hidden = false
+                    self.myProductsTableView.dataSource = self
+                    self.myProductsTableView.delegate = self
+                    self.myProductsTableView.reloadData()
+                }else{
+                    self.myProductsTableView.hidden = true
+                    self.myproductsCollectionView.hidden = false
+                    self.myproductsCollectionView.dataSource = self
+                    self.myproductsCollectionView.delegate = self
+                    self.myproductsCollectionView.reloadData()
+                }
+            }else{
+                if (error != nil) {
+                    self.getProductCollectionListAdd.removeAll()
                     
                     if self.noImage == "1" {
                         self.myproductsCollectionView.hidden = true
@@ -116,18 +194,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                         self.myproductsCollectionView.delegate = self
                         self.myproductsCollectionView.reloadData()
                     }
-                }else{
+                    self.tableViewCustomLabel("No Products", tableView: self.myProductsTableView)
+                    self.collectionViewCustomLabel("No Products", collectionView: self.myproductsCollectionView)
                     self.hideHud()
+                    
                 }
+                
+                self.hideHud()
             }
-
-        }
-        else {
-            self.hideHud()
-            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
         }
     }
-
+    
     func productFunction(limit:String , page:String , filterName:String , service_id:String) {
         
         self.showHud("Loading...")
@@ -139,7 +216,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             "page":page,
             "device_id":"1234",
             "global":"0",
-            "service":service_id
+            "service_id":service_id
         ]
 
         print(params)
@@ -534,10 +611,10 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 blockUnblockImages("")
                 productFunction("25", page: "" , filterName: "", service_id: "")
             }else{
-              getProductCollectionListAdd.removeAll()
-              sender.setTitle("Block Images", forState: .Normal)
-              blockUnblockImages("1")
-              productFunction("25", page: "" , filterName: "", service_id: "")
+                getProductCollectionListAdd.removeAll()
+                sender.setTitle("Block Images", forState: .Normal)
+                blockUnblockImages("1")
+                productFunction("25", page: "" , filterName: "", service_id: "")
             }
           }
        }
@@ -550,6 +627,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             "postData":postData
         ]
         
+        print(params)
+        
         ServerManager.sharedInstance().blockMyProductsImage(params, completionClosure: { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
@@ -560,17 +639,13 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func refreshList(notification: NSNotification) {
-
         if let myString = notification.object as? String {
             serviceString = myString
             self.showHud("Loading...")
             self.getProductCollectionListAdd.removeAll()
             
-            productFunction("25", page: "1", filterName: "", service_id: serviceString)
-            
-
+            serviceProductFunction("25", page: "1", filterName: "", service_id: serviceString)
         }
-        
     }
     
     func setUpView(){

@@ -60,7 +60,9 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         stockLabelString = "0"
         statusLabel.text = "Enabled"
         substractStockLabel.text = "No"
-        
+        priceLabel.keyboardType = .PhonePad
+        offerPriceLabel.keyboardType = .PhonePad
+     
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
             setBackButtonForNavigation()
@@ -76,8 +78,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             slideMenuShow(slideMenuButton, viewcontroller: self)
         }
 
-        
-      
         imagePicker.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -109,11 +109,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.price as? String{
-            priceLabel.text = name
+            priceLabel.text = CustomClass.roundOfDecimal(name)
         }
         
         if let name = getProductDetails.offerPrice as? String{
-            offerPriceLabel.text = name
+            offerPriceLabel.text = CustomClass.roundOfDecimal(name)
         }
         
         if let name = getProductDetails.unit as? Int{
@@ -365,7 +365,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     @IBAction func categoryAction(sender: AnyObject) {
-
+        self.view.endEditing(true)
         var categoryListArray = [String]()
 
         for categoryLIst in categoryLists {
@@ -387,7 +387,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     @IBAction func unitTypeAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
         var unitGramArray = [String]()
         
         for unitGram in unitGrams {
@@ -405,11 +405,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         } else {
             dropper.hideWithAnimation(0.1)
         }
-        
     }
     
     @IBAction func substractStockAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
         if dropper.status == .Hidden {
             dropper.tag = 4
             dropper.items = ["Yes" , "No"]
@@ -417,7 +416,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             dropper.delegate = self
             dropper.spacing = 0
             dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: substractStockButton)
+//            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: substractStockButton)
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: substractStockButton)
         } else {
             dropper.hideWithAnimation(0.1)
         }
@@ -425,7 +425,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     @IBAction func statusAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
         if dropper.status == .Hidden {
             dropper.tag = 5
             dropper.items = ["Enabled" , "Disabled"]
@@ -433,11 +433,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             dropper.delegate = self
             dropper.spacing = 0
             dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: statusButton)
+             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: statusButton)
+//            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: statusButton)
         } else {
             dropper.hideWithAnimation(0.1)
         }
-        
     }
 
     func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
@@ -582,6 +582,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
   
     }
     
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func unitGramAction(unitTypeString:String) {
 
         let params = [
@@ -604,5 +609,4 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
     }
     
-
 }

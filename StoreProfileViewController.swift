@@ -187,6 +187,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         super.viewDidLoad()
         textfieldArray = [deliveryTimeTextField0 , deliveryTimeTextField1 , deliveryTimeTextField2 , deliveryTimeTextField3 , deliveryTimeTextField4 , deliveryTimeTextField5, deliveryTimeTextField6 , deliveryTimeTextField7, deliveryTimeTextField8 , deliveryTimeTextField9 ]
         
+        
+        deliveryChargesTextField.keyboardType = .DecimalPad
+        expressDeliveryButton.keyboardType = .DecimalPad
+        minOrderTExtfField.keyboardType = .DecimalPad
+        lessThanMinOrderTextField.keyboardType = .DecimalPad
+        
         startTextFieldArray = [fromLabel1 , fromLabel2 , fromLabel3]
         endTextFieldArray = [toLabel1 , toLabel2 , toLabel3]
         
@@ -325,6 +331,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             if !(earlierAndAfterDate(fromLabel1.text!, to: toLabel1.text!, dateString: "")){
                 fromLabel1.text = ""
                 toLabel1.text = ""
+                fromHour1 = ""
+                fromMin1 = ""
+                fromAmPm1 = ""
+                toHour1 = ""
+                toMin1 = ""
+                toAmPm1 = ""
                 AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -335,6 +347,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             if !(earlierAndAfterDate(fromLabel2.text!, to: toLabel2.text!, dateString: "")) {
                 toLabel2.text = ""
                 fromLabel2.text = ""
+                fromHour2 = ""
+                fromMin2 = ""
+                fromAmPm2 = ""
+                toHour2 = ""
+                toMin2 = ""
+                toAmPm2 = ""
                 AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -345,6 +363,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             if !(earlierAndAfterDate(fromLabel3.text!, to: toLabel3.text!, dateString: "")) {
                 toLabel3.text = ""
                 fromLabel3.text = ""
+                fromHour3 = ""
+                fromMin3 = ""
+                fromAmPm3 = ""
+                toHour3 = ""
+                toMin3 = ""
+                toAmPm3 = ""
                 AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
             }
         }
@@ -353,6 +377,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField0.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField0.text!){
                 deliveryTimeTextField0.text = ""
+                delHour1 = ""
+                deltoMin1 = ""
+                delAmPm1 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -363,6 +390,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             if !checkDeliveryTime(deliveryTimeTextField1
                 .text!){
                 deliveryTimeTextField1.text = ""
+                delHour2 = ""
+                deltoMin2 = ""
+                delAmPm2 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -372,6 +402,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField2.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField2.text!){
                 deliveryTimeTextField2.text = ""
+                delHour3 = ""
+                deltoMin3 = ""
+                delAmPm3 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -381,6 +414,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField3.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField3.text!){
                 deliveryTimeTextField3.text = ""
+                delHour4 = ""
+                deltoMin4 = ""
+                delAmPm4 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -389,6 +425,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField4.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField4.text!){
                 deliveryTimeTextField4.text = ""
+                delHour5 = ""
+                deltoMin5 = ""
+                delAmPm5 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -397,6 +436,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField5.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField5.text!){
                 deliveryTimeTextField5.text = ""
+                delHour6 = ""
+                deltoMin6 = ""
+                delAmPm6 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -406,6 +448,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField6.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField6.text!){
                 deliveryTimeTextField6.text = ""
+                delHour7 = ""
+                deltoMin7 = ""
+                delAmPm7 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -414,6 +459,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField7.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField7.text!){
                 deliveryTimeTextField7.text = ""
+                delHour8 = ""
+                deltoMin8 = ""
+                delAmPm8 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -422,6 +470,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField8.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField8.text!){
                 deliveryTimeTextField8.text = ""
+                delHour9 = ""
+                deltoMin9 = ""
+                delAmPm9 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -431,6 +482,9 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField9.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField9.text!){
                 deliveryTimeTextField9.text = ""
+                delHour10 = ""
+                deltoMin10 = ""
+                delAmPm10 = ""
                 AlertView.alertView("Alert", message: "Delivery Time is not in range", alertTitle: "OK", viewController: self)
                 return false
             }
@@ -455,10 +509,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
     }
     
-    @IBAction func submitButtonClicked(sender: AnyObject) {
-        
-        self.showHud("Loading...")
-        
+    
+    func hourMinAndSec() {
         if let fromLabel = fromLabel1.text where !fromLabel.isEmpty{
             fromHour1 = getHourFromDatePicker(fromLabel)
             fromMin1 = getMinFromDatePicker(fromLabel)
@@ -556,6 +608,13 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             deltoMin10 = getMinFromDatePicker(fromLabel)
             (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
         }
+    }
+    
+    @IBAction func submitButtonClicked(sender: AnyObject) {
+        self.view.endEditing(true)
+        self.showHud("Loading...")
+        
+        hourMinAndSec()
         
         //        delHour1 = getHourFromDatePicker(deliveryTimeTextField0.text!)
         //        deltoMin1 = getHourFromDatePicker(deliveryTimeTextField0.text!)
@@ -715,7 +774,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             }
             
             print(params)
-            
+            self.showHud("Loading...")
             ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
                 if isSuccessful {
                     
@@ -759,218 +818,78 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         switch someGlobalNSInteger {
         case 0:
-            
-            //            (fromHour1 , fromAmPm1) = conversionAmPm(fromHour1 , fromMin: fromMin1)
-            //
-            //            print("\(fromHour1) + \(fromMin1) + \(fromAmPm1)")
-            
-            fromLabel1.text =   dateFormatter.stringFromDate(sender.date) //fromHour1 + " : " + fromMin1 + " " + fromAmPm1
-            
-            //fromDate1 = fromLabel1.text!
+
+            fromLabel1.text =   dateFormatter.stringFromDate(sender.date)
             
         case 1:
-            //
-            //            (toHour1 , toAmPm1) = conversionAmPm(toHour1 , fromMin: toMin1)
-            //
-            //            print("\(toHour1) + \(toMin1) + \(toAmPm1)")
-            //
-            //            print("toDate =\(toDate1) fromDate = \(sender.date) ")
             
-            toLabel1.text = dateFormatter.stringFromDate(sender.date)  //toHour1 + " : " + toMin1 + " " + toAmPm1
-            
-            //toDate1 = toLabel1.text!
-            
-            //            if (earlierAndAfterDate(fromDate1, to: toDate1, dateString: "")) {
-            //
-            //            }else{
-            //                toLabel1.text = ""
-            //                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            //            }
+            toLabel1.text = dateFormatter.stringFromDate(sender.date)
             
         case 2:
             
             fromLabel2
                 .text = dateFormatter.stringFromDate(sender.date)
             
-            //            (fromHour2 , fromAmPm2) = conversionAmPm(fromHour2 , fromMin: fromMin2)
-            //
-            //            print("\(fromHour3) + \(fromMin3) + \(fromAmPm3)")
-            //
-            //            fromLabel2.text = fromHour2 + " : " + fromMin2 + " " + fromAmPm2
-            //
-            //            fromDate2 = fromLabel2.text!
-            
         case 3:
             
             toLabel2.text = dateFormatter.stringFromDate(sender.date)
-            
-            // toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
-            
-            //            (toHour2 , toAmPm2) = conversionAmPm(toHour2 , fromMin: toMin2)
-            //
-            //            toLabel2.text = toHour2 + " : " + toMin2 + " " + toAmPm2
-            //
-            //            toDate2 = toLabel2.text!
-            
-            //            if (earlierAndAfterDate(fromDate2, to: toDate2, dateString: "")) {
-            //
-            //            }else{
-            //                toLabel2.text = ""
-            //                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            //            }
             
         case 4:
             
             fromLabel3.text = dateFormatter.stringFromDate(sender.date)
             
-            //            (fromHour3 , fromAmPm3) = conversionAmPm(fromHour3 , fromMin: fromMin3)
-            //
-            //            fromLabel3.text = fromHour3 + " : " + fromMin3 + " " + fromAmPm3
-            //
-            //            fromDate3 = fromLabel3.text!
-            
         case 5:
             
             toLabel3.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            (toHour3 , toAmPm3) = conversionAmPm(toHour3 , fromMin: toMin3)
-            //
-            //            toLabel3.text = toHour3 + " : " + toMin3 + " " + toAmPm3
-            //
-            //            toDate3 = toLabel3.text!
-            
-            //            if (earlierAndAfterDate(fromDate3, to: toDate3, dateString: "")) {
-            //
-            //            }else{
-            //                toLabel3.text = ""
-            //                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
-            //            }
             
         case 6:
             
             deliveryTimeTextField0.text = dateFormatter.stringFromDate(sender.date)
             
-            //            (delHour1 , delAmPm1) = conversionAmPm(delHour1 , fromMin: deltoMin1)
-            //
-            //            deliveryTimeTextField0.text = delHour1 + " : " + deltoMin1 + " " + delAmPm1
-            
-            // checkDeliveryTime(deliveryTimeTextField0.text!)
-            
         case 7:
             
             deliveryTimeTextField1.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            (delHour2 , delAmPm2) = conversionAmPm(delHour2 , fromMin: deltoMin2)
-            //
-            //            deliveryTimeTextField1.text = delHour2 + " : " + deltoMin2 + " " + delAmPm2
-            
-            //checkDeliveryTime(deliveryTimeTextField1.text!)
+
             
         case 8:
             
             deliveryTimeTextField2.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            (delHour3 , delAmPm3) = conversionAmPm(delHour3 , fromMin: deltoMin3)
-            //
-            //            deliveryTimeTextField2.text = delHour3 + " : " + deltoMin3 + " " + delAmPm3
-            
-            // checkDeliveryTime(deliveryTimeTextField2.text!)
+
             
         case 9:
             
             deliveryTimeTextField3.text = dateFormatter.stringFromDate(sender.date)
-            
-            
-            //            delHour4 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin4 = getMinFromDatePicker(sender)
-            //
-            //            (delHour4 , delAmPm4) = conversionAmPm(delHour4 , fromMin: deltoMin4)
-            //
-            //            deliveryTimeTextField3.text = delHour4 + " : " + deltoMin4 + " " + delAmPm4
-            
-            //  checkDeliveryTime(deliveryTimeTextField3.text!)
+
             
         case 10:
             
             deliveryTimeTextField4.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            (delHour5 , delAmPm5) = conversionAmPm(delHour5 , fromMin: deltoMin5)
-            //
-            //            deliveryTimeTextField4.text = delHour5 + " : " + deltoMin5 + " " + delAmPm5
-            
-            //  checkDeliveryTime(deliveryTimeTextField4.text!)
+
             
         case 11:
             
             deliveryTimeTextField5.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            delHour6 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin6 = getMinFromDatePicker(sender)
-            //
-            //            (delHour6 , delAmPm6) = conversionAmPm(delHour6 , fromMin: deltoMin6)
-            //
-            //            deliveryTimeTextField5.text = delHour6 + " : " + deltoMin6 + " " + delAmPm6
-            
-            //  checkDeliveryTime(deliveryTimeTextField5.text!)
+
             
         case 12:
             
             deliveryTimeTextField6.text = dateFormatter.stringFromDate(sender.date)
-            
-            
-            //            delHour7 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin7 = getMinFromDatePicker(sender)
-            //
-            //            (delHour7 , delAmPm7) = conversionAmPm(delHour7 , fromMin: deltoMin7)
-            //
-            //            deliveryTimeTextField6.text = delHour7 + " : " + deltoMin7 + " " + delAmPm7
-            
-            //  checkDeliveryTime(deliveryTimeTextField6.text!)
+
             
         case 13:
             
             deliveryTimeTextField7.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            delHour8 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin8 = getMinFromDatePicker(sender)
-            //
-            //            (delHour8 , delAmPm8) = conversionAmPm(delHour8 , fromMin: deltoMin8)
-            //
-            //            deliveryTimeTextField7.text = delHour8 + " : " + deltoMin8 + " " + delAmPm8
-            
-            //  checkDeliveryTime(deliveryTimeTextField7.text!)
+
             
         case 14:
             
             deliveryTimeTextField8.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            delHour9 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin9 = getMinFromDatePicker(sender)
-            //
-            //            (delHour9 , delAmPm9) = conversionAmPm(delHour9 , fromMin: deltoMin9)
-            //
-            //            deliveryTimeTextField8.text = delHour9 + " : " + deltoMin9 + " " + delAmPm9
-            
-            //  checkDeliveryTime(deliveryTimeTextField8.text!)
+ 
             
         case 15:
             
             deliveryTimeTextField9.text = dateFormatter.stringFromDate(sender.date)
-            
-            //            delHour10 = getHourFromDatePicker(sender)
-            //
-            //            deltoMin10 = getMinFromDatePicker(sender)
-            //
-            //            (delHour10 , delAmPm10) = conversionAmPm(delHour10 , fromMin: deltoMin10)
-            //
-            //            deliveryTimeTextField9.text = delHour10 + " : " + deltoMin10 + " " + delAmPm10
-            
-            //  checkDeliveryTime(deliveryTimeTextField9.text!)
+
             
         default:
             ""
@@ -1043,10 +962,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             return true
         }
         
-        if from == "" && to == "" {
-            return true
-        }
-        
         return false
     }
     
@@ -1077,14 +992,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     func getHourFromDatePicker(labelString:String) -> String
     {
-        
-        //        let dateFormatter = NSDateFormatter()
-        //        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm:ss a"
-        //        let date = dateFormatter.dateFromString(labelString)
-        ////        var dfTime = NSDateFormatter()
-        ////        dfTime.dateFormat = "hh:mm a"
-        ////        var time = dfTime.stringfrom
-        
         let dateFormatter = NSDateFormatter()
         print(labelString)
         dateFormatter.dateFormat = "hh:mm a"
@@ -1124,7 +1031,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             dropper.cornerRadius = 3
             dropper.maxHeight = 100
             dropper.cellTextSize = 12
-            dropper.show(Dropper.Alignment.Center, position: Dropper.Position.Top, button:businessHolidayButton)
+//            dropper.show(Dropper.Alignment.Center, position: Dropper.Position.Top, button:businessHolidayButton)
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: businessHolidayButton)
         } else {
             dropper.hideWithAnimation(0.1)
@@ -1145,61 +1052,52 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
         
         if let businesHoliday = self.storeProfileData.expressDelivery as? String {
-            expressDeliveryButton.text = businesHoliday
+            
+            if businesHoliday != "" {
+            expressDeliveryButton.text = CustomClass.roundOfDecimal(businesHoliday)
+            }
         }
         
         if let businesHoliday = self.storeProfileData.deliveryCharges as? String {
-            deliveryChargesTextField.text = businesHoliday
+            if businesHoliday != "" {
+            deliveryChargesTextField.text = CustomClass.roundOfDecimal(businesHoliday)
+            }
         }
         
         if let businesHoliday = self.storeProfileData.minimum_order as? String {
-            minOrderTExtfField.text = businesHoliday
+            if businesHoliday != "" {
+            minOrderTExtfField.text = CustomClass.roundOfDecimal(businesHoliday)
+            }
         }
         
         for i in 0..<self.storeProfileData.startTime.count {
             if !(self.storeProfileData.startTime[i].from_hour == "00" && self.storeProfileData.startTime[i].from_minute == "00") {
                 self.startTextFieldArray[i].text = self.storeProfileData.startTime[i].from_hour + " : " + self.storeProfileData.startTime[i].from_minute + " " + self.storeProfileData.startTime[i].from
-                //                fromHourArray[i] = self.storeProfileData.startTime[i].from_hour
-                //                fromMinArray[i] =  self.storeProfileData.startTime[i].from_minute
-                //                fromAmPmArray[i] =  self.storeProfileData.startTime[i].from
                 
                 if self.storeProfileData.startTime[i].from_hour == "12" && storeProfileData.startTime[i].from == "PM" {
                     
                 }
-                //                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+
             }else{
-                //                self.startTextFieldArray[i].removeFromSuperview()
-                //                self.startLabelArray[i].removeFromSuperview()
-                //                businessTimeingViewContraint.constant = businessViewConstant
+
             }
         }
         
         for i in 0..<self.storeProfileData.endTime.count {
             if !(self.storeProfileData.endTime[i].end_hour == "00" && self.storeProfileData.endTime[i].end_minute == "00"){
                 self.endTextFieldArray[i].text = self.storeProfileData.endTime[i].end_hour + " : " + self.storeProfileData.endTime[i].end_minute + " " + self.storeProfileData.endTime[i].to
-                //
-                //                toHourArray[i] = self.storeProfileData.endTime[i].end_hour
-                //                toMinArray[i] =  self.storeProfileData.endTime[i].end_minute
-                //                toAmPmArray[i] =  self.storeProfileData.endTime[i].to
-                //                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+
             }else{
-                //                self.endTextFieldArray[i].removeFromSuperview()
-                //                self.endLabelArray[i].removeFromSuperview()
-                //                businessTimeingViewContraint.constant = businessViewConstant
+
             }
         }
         
         for i in 0..<self.storeProfileData.deliveryTime.count {
             if !(self.storeProfileData.deliveryTime[i].del_hour == "00" && self.storeProfileData.deliveryTime[i].del_min == "00"){
                 self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + " : " + self.storeProfileData.deliveryTime[i].del_min + " " + self.storeProfileData.deliveryTime[i].del
-                //                delHourArray[i] = self.storeProfileData.deliveryTime[i].del_hour
-                //                delMinArray[i] =  self.storeProfileData.deliveryTime[i].del_min
-                //                delAmPmArray[i] = self.storeProfileData.deliveryTime[i].del
-                //                businessTimeingViewContraint.constant = businessViewConstant * CGFloat(i)
+      
             }else{
-                //                self.textfieldArray[i].removeFromSuperview()
-                //                self.deliveryTimeLabelArray[i].removeFromSuperview()
-                //                businessTimeingViewContraint.constant = businessViewConstant
+              
             }
         }
     }

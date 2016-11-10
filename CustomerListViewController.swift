@@ -177,7 +177,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
 
         }else{
             if customreList.grant == "0" {
-                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to accept this customer", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Alert", message: "Are you sure you want to unblock this customer", preferredStyle: .Alert)
                 
                 alertController.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (action) in
                     let params = [
@@ -252,14 +252,17 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
 //            return false
 //        })
         
-        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("customerRegistrationID") as! CustomerRegistrationViewController
-        //popOverVC.serviceLists = self.serviceLists
-        //popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
-        self.addChildViewController(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMoveToParentViewController(self)
-        
+            if self.balanceCredit == 0 {
+                toastViewForTextfield("You do not have any running subscription")
+            }else{
+                let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("customerRegistrationID") as! CustomerRegistrationViewController
+                //popOverVC.serviceLists = self.serviceLists
+                //popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
+                self.addChildViewController(popOverVC)
+                popOverVC.view.frame = self.view.frame
+                self.view.addSubview(popOverVC.view)
+                popOverVC.didMoveToParentViewController(self)
+            }
     }
     
     

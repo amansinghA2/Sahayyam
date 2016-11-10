@@ -48,12 +48,13 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     
-    func productFunction() {
+    func productFunction(serviceId:String) {
         self.showHud("Loading...")
      
         let params = [
             "token":token,
-            "device_id":"1234"
+            "device_id":"1234",
+            "service_id":serviceId
         ]
         
         ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result , result1) in
@@ -82,7 +83,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     override func viewWillAppear(animated: Bool) {
-        productFunction()
+        productFunction("")
     }
     
 //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -141,7 +142,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
             if (parentArray[indexPath.section].category_id == $0.parent_id) {
                 return true
             }
-            
             return false
         })
         
@@ -153,7 +153,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
             let filterArr = subChildArray[indexPath.row]
             if filterArr.isglobel == "0" {
                  cell.globalEditButton.userInteractionEnabled = true
-//                cell.globalEditButton.addTarget(self, action: #selector(VendorCategoryListViewController.localEditButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+//               cell.globalEditButton.addTarget(self, action: #selector(VendorCategoryListViewController.localEditButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.deleteButton.addTarget(self, action: #selector(VendorCategoryListViewController.localDeleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.globalEditButton.setImage(UIImage(named: "v_ic_edit_cat"), forState: .Normal)
                 cell.deleteButton.setImage(UIImage(named: "garbage"), forState: .Normal)
@@ -163,7 +163,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
                 cell.globalEditButton.setImage(UIImage(named: "v_ic_globe"), forState: .Normal)
                 cell.productName.textColor = UIColor.redColor()
             }
-            cell.productName?.text = filterArr.name
+                cell.productName?.text = filterArr.name
         }
         return cell
     }
@@ -405,13 +405,24 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     
     func addMainProduct1(notification: NSNotification){
          self.toastViewForTextfield("Product added successfully")
-        productFunction()
+         productFunction("")
     }
     
     func refreshList1(notification: NSNotification) {
-        self.toastViewForTextfield("Service has been updated")
-        productFunction()
 
+        if let myString = notification.object as? String {
+            serviceString = myString
+            print(serviceString)
+//          self.showHud("Loading...")
+            self.toastViewForTextfield("Service has been updated")
+            productFunction(serviceString)
+//          self.getProductCollectionListAdd.removeAll()
+            
+//          productFunction("25", page: "1", filterName: "", serviceName: serviceString)
+        }
+
+        
+        
 //        if let myString = notification.object as? String {
 //            serviceString = myString
 //            print(serviceString)
