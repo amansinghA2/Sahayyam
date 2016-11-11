@@ -127,7 +127,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         if let name = vendorPromotionList.price as? String{
             let price = CustomClass.roundOfDecimal(name)
             amountLabel.text = price
-            
         }
         
         if vendorPromotionList.discount != "" {
@@ -151,14 +150,13 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         if let name = vendorPromotionList.quantity as? String{
             quantityLabel.text = name
         }
+        
         if let name = vendorPromotionList.promo_name as? String{
             productName.text =  name
         }
-        
     }
     
     @IBAction func amountPromotionAction(sender: AnyObject) {
-        
         if self.amountpromotionOutlet.checkState == .Unchecked{
             productNameString = ""
             discounttypeConstraint.constant  = 0

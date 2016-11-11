@@ -1,23 +1,17 @@
-//
 //  CustomerUpdateProfileViewController.swift
 //  Sahayyam
-//
 //  Created by Sanjeev Jikamade on 02/08/16.
 //  Copyright © 2016 Sanjeev Jikamade. All rights reserved.
-//
 
 import UIKit
 import M13Checkbox
 import TTTAttributedLabel
 
 class VendorUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate{
-    
-    
 
     @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var updateButtonOutlet: Button!
     @IBOutlet weak var acceptCheckbox: M13Checkbox!
-    
     @IBOutlet weak var acceptLabel: TTTAttributedLabel!
     @IBOutlet weak var firstNameLabel: TextField!
     @IBOutlet weak var lastNameLabel: TextField!

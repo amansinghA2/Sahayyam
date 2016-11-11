@@ -40,6 +40,9 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
+        
+        
          serviceListAction("")
         if str1 == "fromCell" {
             mainCategoryTextField.text = categoryList.name
@@ -51,7 +54,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             mainCategoryTextField.userInteractionEnabled = false
             //autoCompleteCategoryAction(categoryList.service_id)
             serviceListAction("")
-           // categoryListIds = categoryList.service_id
+            //categoryListIds = categoryList.service_id
         }else{
             serviceButtonOutlet.userInteractionEnabled = true
             mainCategoryTextField.userInteractionEnabled = true
@@ -80,9 +83,6 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         // Dispose of any resources that can be recreated.
     }
     
-//    override func viewDidDisappear(animated: Bool) {
-//
-//    }
     /*
     // MARK: - Navigation
 
@@ -187,8 +187,27 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         }
     }
     
+    func formValidation() -> Bool {
+        
+        if mainCategoryTextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Category Field cannot be left blank", alertTitle: "OK", viewController: self)
+           return false
+        }
+        
+        if subCategoryTextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Sub category Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        return true
+        
+    }
+    
     @IBAction func saveButton(sender: AnyObject){
         
+        
+        if formValidation() {
+      NSNotificationCenter.defaultCenter().postNotificationName("enableCategoryNavigation1", object: nil)
         if str1 == "fromCell" {
             categoryParentIDString = categoryList.category_id
             service_id = categoryList.service_id
@@ -220,9 +239,10 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
                 self.hideHud()
             }
         }
-        
-        
-        removeAnimate()
+            removeAnimate()
+        }else{
+            self.hideHud()
+        }
     }
     
     
@@ -244,6 +264,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     }
     
     @IBAction func cancelButton(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("enableCategoryNavigation1", object: nil)
         removeAnimate()
     }
     

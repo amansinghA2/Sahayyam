@@ -92,6 +92,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     func bindModelToViews() {
         
+        
+        for categoryList in categoryLists {
+            if getProductDetails.productCategories == categoryList.category_id {
+                categoryListIds = categoryList.category_id
+            }
+        }
+        
         if let name = getProductDetails.name as? String{
             nameLabel.text = name
         }
@@ -100,7 +107,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             manufacturerLabel.text = String(name)
         }
         
-        if let name = getProductDetails.productCategories as? String{
+        if let name = getProductDetails.categoryName as? String{
             categoryLabel.text = name
         }
         
@@ -121,6 +128,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.service_id as? String{
+            service_id = name
             serviceLabel.text = name
         }
         

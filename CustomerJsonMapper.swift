@@ -232,7 +232,7 @@ extension CommonJsonMapper {
         let productDetail = ProductDetails()
         
         if let description = result["categoryName"] as? String {
-            productDetail.productDescription = description
+            productDetail.categoryName = description
         }
         
         if let description = result["description"] as? String {

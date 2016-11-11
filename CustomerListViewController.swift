@@ -21,6 +21,10 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.navigationDisableAction(_:)), name: "disableNavigation", object: nil)
         tokenCheck()
                 slideMenuShow(slideMenuButton, viewcontroller: self)
         slideMenuShow(slideMenuButton, viewcontroller: self)
@@ -32,17 +36,39 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    func navigationDisableAction(notification:NSNotification) {
+        self.navigationItem.leftBarButtonItem!.enabled = false
+        self.navigationItem.rightBarButtonItem!.enabled = false
+    }
+    
+    func showToastForRegister(notification:NSNotification) {
+       if let object = notification.object as? String {
+        if object == "cancel" {
+            self.navigationItem.leftBarButtonItem!.enabled = true
+            self.navigationItem.rightBarButtonItem!.enabled = true
+        }else{
+            self.navigationItem.leftBarButtonItem!.enabled = true
+            self.navigationItem.rightBarButtonItem!.enabled = true
+            getCustomerListFunction()
+            self.toastViewForTextfield(object)
+        }
+      }
+    }
+    
+    
+    func getCustomerListFunction() {
+   
+        //self.view.window!.userInteractionEnabled = true
         self.showHud("Loading...")
         let params = [
-        "token":token ,
-        "device_id":"1234"
+            "token":token ,
+            "device_id":"1234"
         ]
-
+        
         ServerManager.sharedInstance().getCustomerList(params) { (isSuccessful, error, result , dict) in
             if isSuccessful{
                 self.hideHud()
-              self.customerListArray = result!
+                self.customerListArray = result!
                 if let address_1 = dict!["balance_credit"] as? Int {
                     self.balanceCredit = Int(address_1)
                 }
@@ -51,9 +77,14 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 self.customerListTableView.reloadData()
                 self.balanceCreditLabel.text = "BALANCE CREDIT : " + String(self.balanceCredit)
             }else{
-                AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self) 
+                AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
             }
         }
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        getCustomerListFunction()
     }
     
     override func didReceiveMemoryWarning() {
@@ -223,23 +254,9 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
-
         }
-        
-        
-//        isActive = !isActive
-//        
-//        if isActive {
-//       
-//        }else{
-//            
-//        }
-        
-        
-        
     }
-    
-    
+
     @IBAction func addContacts(sender: AnyObject) {
         
 //        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
@@ -252,9 +269,9 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
 //            return false
 //        })
         
-            if self.balanceCredit == 0 {
-                toastViewForTextfield("You do not have any running subscription")
-            }else{
+//            if self.balanceCredit == 0 {
+//                toastViewForTextfield("You do not have any running subscription")
+//            }else{
                 let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("customerRegistrationID") as! CustomerRegistrationViewController
                 //popOverVC.serviceLists = self.serviceLists
                 //popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
@@ -262,7 +279,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 popOverVC.view.frame = self.view.frame
                 self.view.addSubview(popOverVC.view)
                 popOverVC.didMoveToParentViewController(self)
-            }
+//            }
     }
     
     

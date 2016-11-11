@@ -63,7 +63,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         address2.layer.borderWidth = 1
         address2.layer.borderColor = UIColor.lightGrayColor().CGColor
         address2.layer.cornerRadius = 3
-
+        
         tokenCheck()
         imagePicker.delegate = self
         self.showHud("Loading...")
@@ -72,6 +72,9 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
             "device_id":"1234"
         ]
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VendorEditPFViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         ServerManager.sharedInstance().sellerPopulateData(params, completionClosure: {(isSuccessful, error, result) in
             if isSuccessful{
                 self.hideHud()
@@ -82,10 +85,14 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         })
         
         if isLogin == "customerDropDown" {
-        }else {
+        } else {
             
         }
         
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,15 +102,20 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
     @IBAction func choosImageAction(sender: AnyObject) {
         
         if sender.tag == 0 {
-           imageSelected = 1
+            imageSelected = 1
         }else{
-           imageSelected = 2
+            imageSelected = 2
         }
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .SavedPhotosAlbum
         
         presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     @IBAction func uploadImageAction(sender: AnyObject) {
@@ -128,37 +140,37 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         if imageSelected == 1 {
             self.profileImage.image = image
         }else{
-           self.bannerImage.image = image
+            self.bannerImage.image = image
         }
         
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
             
             if self.imageSelected == 1 {
-            if let image = self.profileImage.image {
-                self.showHud("Loading...")
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    let params:[String:AnyObject] = [
-                        "file":self.convertImageToBase64(image),
-                        "flag":1,
-                        "token":token,
-                        "device_id":"1234"
-                    ]
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
-                            if isSuccessful{
-                                self.hideHud()
-                                if let imgStr = result!["img_dir"]{
-                                    self.str = (imgStr as! String)
+                if let image = self.profileImage.image {
+                    self.showHud("Loading...")
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        let params:[String:AnyObject] = [
+                            "file":self.convertImageToBase64(image),
+                            "flag":1,
+                            "token":token,
+                            "device_id":"1234"
+                        ]
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
+                                if isSuccessful{
+                                    self.hideHud()
+                                    if let imgStr = result!["img_dir"]{
+                                        self.str = (imgStr as! String)
+                                    }
                                 }
                             }
-                        }
-                        
-                    })
-                }
-            }else{
-                self.hideHud()
-                AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
+                            
+                        })
+                    }
+                }else{
+                    self.hideHud()
+                    AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
                 }
             }else{
                 if let image = self.bannerImage.image {
@@ -205,12 +217,12 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
             return false
         }
         
-        return true        
+        return true
     }
     
     
     func dataInTextField(){
-    
+        
         displayName.text = sellerData.name
         descriptionTextview.text = sellerData.descriptionDetails
         companyTextfield.text = sellerData.companyName
@@ -232,7 +244,6 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
             profileImage.imageFromUrl(image_base_url + image)
         }
     }
-    
     
     @IBAction func saveProfileAction(sender: AnyObject) {
         self.view.endEditing(true)
@@ -265,11 +276,12 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                 ServerManager.sharedInstance().sellerInfoSave(params) { (isSuccessful, error, result) in
                     if isSuccessful{
                         self.hideHud()
-                        let alertController = UIAlertController(title: "Alert", message: "Profile Saved", preferredStyle: .Alert)
-                        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-                            
-                        }))
-                        self.presentViewController(alertController, animated: true, completion: nil)
+                        self.toastViewWithNavigation("Profile Saved", identifierString: "VendorListID")
+                        //                        let alertController = UIAlertController(title: "Alert", message: "Profile Saved", preferredStyle: .Alert)
+                        //                        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+                        //
+                        //                        }))
+                        //                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                     else{
                         

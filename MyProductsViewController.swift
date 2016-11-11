@@ -74,57 +74,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.prepareUI()
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
         if Reachability.isConnectedToNetwork(){
-            
             productFunction("25", page: "1", filterName: "", service_id: "")
-            
-//            self.showHud("Loading...")
-//            let params = [
-//                "token":token,
-//                "product_name":"",
-//                "limit":limit,
-//                "filter_name":"",
-//                "page":page,
-//                "device_id":"1234",
-//                "global":"0",
-//                "service_id":""
-//            ]
-//            
-//            print(params)
-//            
-//            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
-//                if isSuccessful {
-//                    self.hideHud()
-//                    if let totalPage = result1!["TotalPages"]{
-//                        self.totalPages = Int(totalPage as! String)!
-//                    }
-//                    
-//                    if let noImage = result1!["no_image"] as? String{
-//                        self.noImage = noImage
-//                    }
-//                    
-//                    self.dataSourceForSearchResult = result!
-//                    self.getProductCollectionList = result!
-//                    print(self.getProductCollectionList.count)
-//                    self.getProductCollectionListAdd += self.getProductCollectionList
-//                    
-//                    if self.noImage == "1" {
-//                        self.myproductsCollectionView.hidden = true
-//                        self.myProductsTableView.hidden = false
-//                        self.myProductsTableView.dataSource = self
-//                        self.myProductsTableView.delegate = self
-//                        self.myProductsTableView.reloadData()
-//                    }else{
-//                        self.myProductsTableView.hidden = true
-//                        self.myproductsCollectionView.hidden = false
-//                        self.myproductsCollectionView.dataSource = self
-//                        self.myproductsCollectionView.delegate = self
-//                        self.myproductsCollectionView.reloadData()
-//                    }
-//                }else{
-//                    self.hideHud()
-//                }
-//            }
-
         }
         else {
             self.hideHud()
@@ -296,24 +246,24 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 return getProductCollectionListAdd.count
             }
         }else {
-            if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
+            
+            if getProductCollectionListAdd.count <= 25 && getProductCollectionListAdd.count > 0{
                 return 1
             }
             
-            if getProductCollectionListAdd.count  == 0 {
+            if getProductCollectionListAdd.count == 0 {
                 return 0
             }
             
             if isDataSOurceREsultEmpty == true {
                 if dataSourceForSearchResult.count == 0 {
-                    return 1
-                }
+                return 1
+              }
             }else{
                 return 2
             }
             return 2
         }
-
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -333,6 +283,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
             return cell
         default:
+
             let cell = tableView.dequeueReusableCellWithIdentifier("loadMoreIdentifier", forIndexPath: indexPath) as! LoadMoreTableViewCell
             
             cell.loadMoreButton.addTarget(self, action: #selector(MyProductsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -400,6 +351,10 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
                 return 2
             }
+            
+//            if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
+//                return 1
+//            }
 
             if  getProductCollectionListAdd.count == 0 {
                 return 0
@@ -434,22 +389,22 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
             return cell
         default:
-            
+
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("loadMoreIdentifier",forIndexPath: indexPath) as! LoadMoreCollectionViewCell
             cell.loadMoreButton.addTarget(self, action: #selector(MyProductsViewController.loadButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             if indexPath.row == 0 {
-                cell.loadMoreButton.setTitle("Load More", forState: .Normal)
-              cell.loadMoreButton.tag = 0
-            }else{
                 if noImage == "1" {
                     cell.loadMoreButton.setTitle("Unblock Images", forState: .Normal)
-                    cell.loadMoreButton.tag = 1
+                    cell.loadMoreButton.tag = 0
                     //self.blockUnblockImages("")
                 }else{
                     cell.loadMoreButton.setTitle("Block Images", forState: .Normal)
-                    cell.loadMoreButton.tag = 1
+                    cell.loadMoreButton.tag = 0
                     //self.blockUnblockImages("1")
                 }
+            }else{
+                cell.loadMoreButton.setTitle("Load More", forState: .Normal)
+                cell.loadMoreButton.tag = 1
             }
            
             return cell
@@ -510,14 +465,18 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         // user did type something, check our datasource for text that looks the same
         if searchText.characters.count > 0 {
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+            
+            serviceProductFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+//             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+            
             self.searchBarActive = true
             self.filterContentForSearchText(searchText)
             self.myproductsCollectionView?.reloadData()
             self.myProductsTableView.reloadData()
         }else{
             getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "" , filterName:"" , service_id: serviceString)
+             serviceProductFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+//          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
             self.searchBarActive = false
             self.myproductsCollectionView?.reloadData()
             self.myProductsTableView.reloadData()
@@ -598,23 +557,24 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func loadButtonClicked(sender:UIButton) {
         self.prepareUI()
         if sender.tag == 0 {
-            page += 1
-            if page < totalPages{
-                productFunction("25", page: "\(page)" , filterName: "" , service_id: serviceString)
-            }else{
-                self.toastViewForTextfield("No More Products")
-            }
-        }else{
             if self.noImage == "1" {
                 getProductCollectionListAdd.removeAll()
                 sender.setTitle("Unblock Images", forState: .Normal)
                 blockUnblockImages("")
-                productFunction("25", page: "" , filterName: "", service_id: "")
+                serviceProductFunction("25", page: "\(page)" , filterName: "" , service_id: serviceString)
             }else{
                 getProductCollectionListAdd.removeAll()
                 sender.setTitle("Block Images", forState: .Normal)
                 blockUnblockImages("1")
-                productFunction("25", page: "" , filterName: "", service_id: "")
+                serviceProductFunction("25", page: "\(page)" , filterName: "" , service_id: serviceString)
+            }
+        }else{
+            page += 1
+            if page < totalPages{
+                serviceProductFunction("25", page: "\(page)" , filterName: "" , service_id: serviceString)
+            }else{
+                self.toastViewForTextfield("No More Products")
+                sender.hidden = true
             }
           }
        }

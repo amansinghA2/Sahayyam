@@ -26,14 +26,17 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.refreshList1(_:)), name: "refresh1", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.mainUpdate(_:)), name: "updateProduct", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.addMainProduct1(_:)), name: "addMainProduct", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.navigationEnableAction(_:)), name: "enableCategoryNavigation1", object: nil)
         
         slideMenuShow(slideMenuButton, viewcontroller: self)
-        tokenCheck()
         let nib1 = UINib(nibName: "VendorCategoryListTableViewCell", bundle: nil)
         self.vendorCategoryTableview.registerNib(nib1, forCellReuseIdentifier: "categoryListIdentifier")
         let nib2 = UINib(nibName: "VendorCategorySubListTableViewCell", bundle: nil)
@@ -42,6 +45,21 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         // Do any additional setup after loading the view.
     }
 
+    func mainUpdate(notification:NSNotification) {
+        productFunction("")
+    }
+    
+    func navigationDisableAction(notification:NSNotification) {
+        
+        navigationController?.navigationBar.userInteractionEnabled = false
+        navigationController?.navigationBar.tintColor = UIColor.lightGrayColor()
+        
+    }
+    
+    func navigationEnableAction(notification:NSNotification) {
+        navigationController?.navigationBar.userInteractionEnabled = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -322,6 +340,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         }
         
         cell.cellClickedButton.tag = section
+        
         cell.cellClickedButton.addTarget(self, action: #selector(VendorCategoryListViewController.cellClicked1(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell
@@ -409,30 +428,13 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     func refreshList1(notification: NSNotification) {
-
+        navigationController?.navigationBar.userInteractionEnabled = true
         if let myString = notification.object as? String {
             serviceString = myString
             print(serviceString)
-//          self.showHud("Loading...")
             self.toastViewForTextfield("Service has been updated")
             productFunction(serviceString)
-//          self.getProductCollectionListAdd.removeAll()
-            
-//          productFunction("25", page: "1", filterName: "", serviceName: serviceString)
         }
-
-        
-        
-//        if let myString = notification.object as? String {
-//            serviceString = myString
-//            print(serviceString)
-//            
-////          self.showHud("Loading...")
-////          self.getProductCollectionListAdd.removeAll()
-////            
-////          productFunction("25", page: "1", filterName: "", serviceName: serviceString)
-//        }
-        
     }
 
     

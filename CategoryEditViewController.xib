@@ -151,10 +151,8 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="SQd-h8-naH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="48" id="F6e-Xp-UTU"/>
-                <constraint firstAttribute="bottom" secondItem="SQd-h8-naH" secondAttribute="bottom" constant="185" id="aDd-TH-2Lc"/>
-                <constraint firstItem="SQd-h8-naH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="185" id="jry-I8-r2X"/>
-                <constraint firstAttribute="trailing" secondItem="SQd-h8-naH" secondAttribute="trailing" constant="48" id="yEl-Dc-EuR"/>
+                <constraint firstItem="SQd-h8-naH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4Rl-8p-MTd"/>
+                <constraint firstItem="SQd-h8-naH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vCk-In-6Fn"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="194" y="213"/>

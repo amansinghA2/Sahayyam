@@ -32,16 +32,17 @@
             </objects>
             <point key="canvasLocation" x="-413" y="1072"/>
         </scene>
-        <!--Global List View Controller-->
+        <!--Global List-->
         <scene sceneID="agA-Ea-BFA">
             <objects>
                 <viewController storyboardIdentifier="GlobalLIstId" id="Mwi-eg-ZKH" customClass="GlobalListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="nHZ-xe-nDA">
+                    <navigationItem key="navigationItem" title="Global List" id="nHZ-xe-nDA">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="tQw-AS-NYB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cNO-3s-sUa">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="vendorServiceAction:" destination="Mwi-eg-ZKH" id="41q-KF-Tkn"/>
                             </connections>
@@ -57,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAz-Zk-gMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-64" y="1072"/>
+            <point key="canvasLocation" x="-74" y="1072"/>
         </scene>
         <!--Under Construction View Controller-->
         <scene sceneID="8mD-an-3SJ">
@@ -96,11 +97,11 @@
             </objects>
             <point key="canvasLocation" x="-525" y="188"/>
         </scene>
-        <!--Vendor List View Controller-->
+        <!--Orders-->
         <scene sceneID="fuw-dh-swg">
             <objects>
                 <viewController storyboardIdentifier="VendorListID" id="peY-dw-R73" customClass="VendorListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="U08-dW-dEz">
+                    <navigationItem key="navigationItem" title="Orders" id="U08-dW-dEz">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="wxw-Vd-T68">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -137,11 +138,11 @@
             </objects>
             <point key="canvasLocation" x="526" y="188"/>
         </scene>
-        <!--My Products View Controller-->
+        <!--My Products-->
         <scene sceneID="7KX-7i-dzz">
             <objects>
                 <viewController storyboardIdentifier="MyProductsViewID" id="lwM-zS-L8R" customClass="MyProductsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="2xP-eB-eb2">
+                    <navigationItem key="navigationItem" title="My Products" id="2xP-eB-eb2">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="oVg-ad-d2p">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -171,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6u-If-FO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1433" y="1072"/>
+            <point key="canvasLocation" x="1399" y="1004"/>
         </scene>
         <!--Order Status View Controller-->
         <scene sceneID="SRx-4B-Ka8">
@@ -262,16 +263,17 @@
             </objects>
             <point key="canvasLocation" x="297" y="813"/>
         </scene>
-        <!--Customer List View Controller-->
+        <!--Customers-->
         <scene sceneID="MdJ-nM-Mhc">
             <objects>
                 <viewController storyboardIdentifier="CustomerListID" id="K3q-Qo-7OE" customClass="CustomerListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="96T-Pd-Vu1">
+                    <navigationItem key="navigationItem" title="Customers" id="96T-Pd-Vu1">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Dzz-53-bHX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="acG-RU-ygU">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="addContacts:" destination="K3q-Qo-7OE" id="BpY-Hy-NVm"/>
                             </connections>
@@ -342,11 +344,11 @@
             </objects>
             <point key="canvasLocation" x="-708" y="2007"/>
         </scene>
-        <!--Vndornew Product Add View Controller-->
+        <!--New Product-->
         <scene sceneID="w8w-PU-CTU">
             <objects>
                 <viewController storyboardIdentifier="ProductAddID" id="dFM-rZ-mEn" customClass="VndornewProductAddViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Re0-3V-VEz">
+                    <navigationItem key="navigationItem" title="New Product" id="Re0-3V-VEz">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="EZg-WV-hdk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -358,23 +360,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MxR-SI-MYW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-33" y="1888"/>
+            <point key="canvasLocation" x="-31" y="2047"/>
         </scene>
-        <!--Vendor Category List View Controller-->
+        <!--Categories-->
         <scene sceneID="7QI-gf-hI0">
             <objects>
                 <viewController storyboardIdentifier="categoryListID" id="2pf-qB-exL" customClass="VendorCategoryListViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="tyU-zv-Nlq">
+                    <navigationItem key="navigationItem" title="Categories" id="tyU-zv-Nlq">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Fuo-69-3Rq">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="yEU-az-KS6">
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <action selector="categoryAddAction:" destination="2pf-qB-exL" id="Lop-vU-kyX"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="n57-ee-btb">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="searchServiceButton:" destination="2pf-qB-exL" id="fvW-U9-CQN"/>
                                 </connections>
@@ -390,13 +394,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDr-92-Kc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="2042"/>
+            <point key="canvasLocation" x="297" y="2047"/>
         </scene>
-        <!--Payment Details View Controller-->
+        <!--Payments-->
         <scene sceneID="0Ei-Ys-BvY">
             <objects>
                 <viewController storyboardIdentifier="PaymentDetailsID" id="g05-se-aBk" customClass="PaymentDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Tn7-7S-8w5">
+                    <navigationItem key="navigationItem" title="Payments" id="Tn7-7S-8w5">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="fNG-pR-pMW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -419,13 +423,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Utt-GK-Ln2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="1748"/>
+            <point key="canvasLocation" x="931" y="1748"/>
         </scene>
-        <!--Vendor EditPF View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="v6W-me-5c2">
             <objects>
                 <viewController storyboardIdentifier="vendorEFID" id="WCA-64-M43" customClass="VendorEditPFViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QYr-VA-uOa">
+                    <navigationItem key="navigationItem" title="Edit Profile" id="QYr-VA-uOa">
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="e1k-u7-ct4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
@@ -437,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPn-VY-ZhB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1316" y="1748"/>
+            <point key="canvasLocation" x="1279" y="1748"/>
         </scene>
         <!--Select Sevices View Controller-->
         <scene sceneID="QQk-q3-V7M">
@@ -447,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVZ-YI-VH8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="1748"/>
+            <point key="canvasLocation" x="1619" y="1748"/>
         </scene>
         <!--Vendor Update Profile View Controller-->
         <scene sceneID="Etl-qz-YZa">
@@ -476,6 +480,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ug8-7m-qtG">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="createPromotionAction:" destination="hBy-7w-ip3" id="QFS-79-a98"/>
                             </connections>
@@ -580,7 +585,7 @@
                 <viewController storyboardIdentifier="categoryEditIdentifier" id="UQ6-L0-cg7" customClass="CategoryEditViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzk-A1-9qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="2532"/>
+            <point key="canvasLocation" x="652" y="2379"/>
         </scene>
     </scenes>
     <resources>

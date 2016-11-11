@@ -20,16 +20,17 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
        self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
-        let nibName = UINib(nibName: "SelectServicesTableViewCell", bundle:nil)
-        self.selectServicesTableView.registerNib(nibName, forCellReuseIdentifier: "servicesCell")
+       let nibName = UINib(nibName: "SelectServicesTableViewCell", bundle:nil)
+       self.selectServicesTableView.registerNib(nibName, forCellReuseIdentifier: "servicesCell")
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
-         showAnimate()
+        showAnimate()
         // Dispose of any resources that can be recreated.
     }
     

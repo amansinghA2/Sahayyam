@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerRegistrationViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
                 <outlet property="cancelRegistration" destination="KyR-kf-0Xd" id="4U1-GW-Pj8"/>
-                <outlet property="contactTextField" destination="7NG-ga-WgP" id="YbY-SN-tHN"/>
+                <outlet property="contactTextField" destination="7NG-ga-WgP" id="KH8-fM-Xf1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,7 +28,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75177801724137927" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NG-ga-WgP">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7NG-ga-WgP" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                             <rect key="frame" x="17" y="76" width="154" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="fff-aa-DMm"/>

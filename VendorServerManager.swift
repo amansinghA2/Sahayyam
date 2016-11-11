@@ -506,6 +506,7 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                       //let dict = JSON(data: data)
+                        completionClosure(isSuccessful: true, error: nil, result: nil)
                         print(dict)
                         }else{
                             completionClosure(isSuccessful: false, error: nil, result: nil)
@@ -915,6 +916,45 @@ extension ServerManager {
         }
     }
     
+    func vendorRegistration(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [UnitGram]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorRegistrationUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            if let dict1 = dict["success"] as? [String:AnyObject]{
+                                if let _ = dict1["registered_no"] {
+                                    completionClosure(isSuccessful: true, error: "Success", result: nil)
+                                }
+                            }
+                            
+                            if let dict1 = dict["error"] as? [String:AnyObject]{
+                                if let str = dict1["regular_msg"] {
+                                    completionClosure(isSuccessful: true, error: str as? String, result: nil)
+                                }
+                                
+                                if let str = dict1["number_already_registered"] {
+                                    completionClosure(isSuccessful: true, error: "number_already_registered " +  (str as! String), result: nil)
+                                }
+                            }
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
     
     
 }

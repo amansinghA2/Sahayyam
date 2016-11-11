@@ -10,11 +10,11 @@ import Foundation
 
     // MARK: - Base Url
 
-let BASE_URL = "http://192.168.1.2/sahayyam/"
-let image_base_url = "http://192.168.1.2/sahayyam/image/"
+//let BASE_URL = "http://192.168.1.2/sahayyam/"
+//let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
-//let BASE_URL = "http://45.118.180.96/"
-//let image_base_url = "http://45.118.180.96/image/"
+let BASE_URL = "http://45.118.180.96/"
+let image_base_url = "http://45.118.180.96/image/"
 
 //let BASE_URL = "http://sahayyam.com/"
 //let image_base_url = "http://sahayyam.com/image/"
@@ -89,6 +89,7 @@ let vendormobileNotificationUrl = BASE_URL + "index.php?route=api/mobileNotifica
 let vendorDeactivatePromotionUrl = BASE_URL + "index.php?route=api/promotion/deactivatePromotion"
 let vendorDeletePromotionUrl = BASE_URL + "index.php?route=api/promotion/delPromotion"
 let vendorUnitGramUrl = BASE_URL + "index.php?route=api/appUtility/getWeightClass"
+let vendorRegistrationUrl = BASE_URL + "index.php?route=api/account-customer/register"
 
     // CityHead URl
 

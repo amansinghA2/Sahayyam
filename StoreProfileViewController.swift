@@ -814,7 +814,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         let dateFormatter = NSDateFormatter()
         
         dateFormatter.dateFormat = "hh:mm a"
-        // dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
+     // dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
         
         switch someGlobalNSInteger {
         case 0:
@@ -1052,7 +1052,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         }
         
         if let businesHoliday = self.storeProfileData.expressDelivery as? String {
-            
             if businesHoliday != "" {
             expressDeliveryButton.text = CustomClass.roundOfDecimal(businesHoliday)
             }
@@ -1074,10 +1073,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             if !(self.storeProfileData.startTime[i].from_hour == "00" && self.storeProfileData.startTime[i].from_minute == "00") {
                 self.startTextFieldArray[i].text = self.storeProfileData.startTime[i].from_hour + " : " + self.storeProfileData.startTime[i].from_minute + " " + self.storeProfileData.startTime[i].from
                 
-                if self.storeProfileData.startTime[i].from_hour == "12" && storeProfileData.startTime[i].from == "PM" {
-                    
+                if self.storeProfileData.startTime[i].from_hour == "12" && storeProfileData.startTime[i].from == "PM" {                    
                 }
-
             }else{
 
             }
@@ -1086,7 +1083,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         for i in 0..<self.storeProfileData.endTime.count {
             if !(self.storeProfileData.endTime[i].end_hour == "00" && self.storeProfileData.endTime[i].end_minute == "00"){
                 self.endTextFieldArray[i].text = self.storeProfileData.endTime[i].end_hour + " : " + self.storeProfileData.endTime[i].end_minute + " " + self.storeProfileData.endTime[i].to
-
             }else{
 
             }
@@ -1095,7 +1091,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         for i in 0..<self.storeProfileData.deliveryTime.count {
             if !(self.storeProfileData.deliveryTime[i].del_hour == "00" && self.storeProfileData.deliveryTime[i].del_min == "00"){
                 self.textfieldArray[i].text = self.storeProfileData.deliveryTime[i].del_hour + " : " + self.storeProfileData.deliveryTime[i].del_min + " " + self.storeProfileData.deliveryTime[i].del
-      
             }else{
               
             }

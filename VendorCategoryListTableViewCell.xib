@@ -51,10 +51,10 @@
                     <constraint firstItem="C2j-JM-W4D" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="4q4-o3-YDR"/>
                     <constraint firstItem="aYq-Rt-tir" firstAttribute="leading" secondItem="BIG-3f-xzz" secondAttribute="trailing" constant="8" id="6fr-58-1CF"/>
                     <constraint firstItem="aYq-Rt-tir" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="7zy-3q-Fgz"/>
-                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="C2j-JM-W4D" secondAttribute="trailing" constant="14" id="Efv-kx-gBv"/>
+                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="C2j-JM-W4D" secondAttribute="trailing" priority="750" constant="14" id="Efv-kx-gBv"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KpV-Qi-jDq"/>
                     <constraint firstAttribute="trailing" secondItem="gFs-rj-lcb" secondAttribute="trailing" id="PDC-tC-50W"/>
-                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="aYq-Rt-tir" secondAttribute="trailing" constant="14" id="Trc-L2-A0g"/>
+                    <constraint firstItem="dEP-zw-usm" firstAttribute="leading" secondItem="aYq-Rt-tir" secondAttribute="trailing" priority="750" constant="14" id="Trc-L2-A0g"/>
                     <constraint firstItem="BIG-3f-xzz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VFw-RI-DFT"/>
                     <constraint firstItem="dEP-zw-usm" firstAttribute="centerY" secondItem="aYq-Rt-tir" secondAttribute="centerY" constant="1.5" id="Yoz-9i-iAo"/>
                     <constraint firstAttribute="bottom" secondItem="gFs-rj-lcb" secondAttribute="bottom" id="f7d-w2-4LS"/>
@@ -63,6 +63,7 @@
                     <constraint firstAttribute="bottom" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="11" id="uba-X7-iEW"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="aYq-Rt-tir" secondAttribute="bottom" constant="2" id="vBm-zR-LdH"/>
                     <constraint firstItem="gFs-rj-lcb" firstAttribute="top" secondItem="C2j-JM-W4D" secondAttribute="bottom" constant="10" id="vcf-cN-qw9"/>
+                    <constraint firstAttribute="trailing" secondItem="dEP-zw-usm" secondAttribute="trailing" constant="10" id="xNx-e5-sum"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

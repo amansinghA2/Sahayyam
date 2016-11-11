@@ -12,7 +12,7 @@ import ContactsUI
 
 class CustomerRegistrationViewController: UIViewController  , CNContactPickerDelegate{
 
-    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet weak var contactTextField: TextField!
     private var store: CNContactStore!
     
     override func viewDidLoad() {
@@ -20,7 +20,12 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         showAnimate()
         store = CNContactStore()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("disableNavigation", object: nil)
+        
         checkContactsAccess()
+        contactTextField.keyboardType = .PhonePad
+        contactTextField.setTextFieldStyle(TextFieldStyle.MobileNumber)
         // Do any additional setup after loading the view.
     }
 
@@ -84,19 +89,52 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         // Display only a person's phone, email, and birthdate
         let displayedItems = [CNContactPhoneNumbersKey, CNContactEmailAddressesKey, CNContactBirthdayKey]
         picker.displayedPropertyKeys = displayedItems
-        
         // Show the picker
         self.presentViewController(picker, animated: true, completion: nil)
     }
     
     @IBAction func saveRegistration(sender: AnyObject) {
-        removeAnimate()
+        
+        let params:[String:AnyObject] = [
+        "token":token,
+        "device_id":"1234",
+        "telephone":contactTextField.text!
+        ]
+        
+        ServerManager.sharedInstance().vendorRegistration(params) { (isSuccessful, error, result) in
+            if isSuccessful {
+                
+                if error != nil {
+//                    AlertView.alertView("Alert", message: "\(error)", alertTitle: "OK", viewController: self)
+                   // self.toastViewForTextfield("\(error)")
+               NSNotificationCenter.defaultCenter().postNotificationName("vendorRegisterStatus", object: error)
+                    self.removeAnimate()
+                    self.hideHud()
+                }
+                
+                if error == "Success" {
+                    let message = "Customer registration successful"
+                    NSNotificationCenter.defaultCenter().postNotificationName("vendorRegisterStatus", object: message)
+                    self.hideHud()
+                    self.removeAnimate()
+                    //                    AlertView.alertView("Alert", message: "Customer registration successful", alertTitle: "OK", viewController: self)
+                    //                    self.toastViewForTextfield("Customer registration successful")
+                }
+                
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+        
+   
     }
     
     @IBOutlet weak var cancelRegistration: UIButton!
     
     
     @IBAction func cancelRegistrationAction(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("vendorRegisterStatus", object: "cancel")
         removeAnimate()
     }
     
@@ -114,8 +152,7 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;
             }, completion:{(finished : Bool)  in
-                if (finished)
-                {
+                if (finished){
                     self.view.removeFromSuperview()
                 }
         });
@@ -133,10 +170,8 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         contactTextField.text = String(contact.phoneNumbers)
         
         for phoneNo in contact.phoneNumbers {
-            
 //            if phoneNo.label == CNLabelPhoneNumberMobile {
                 contactTextField.text = (phoneNo.value as! CNPhoneNumber).valueForKey("digits") as? String
-                
 //            }
         }
        // contactTextField.text = String(contact)
@@ -167,7 +202,16 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         return true
     }
     
-    
+//    String url = Constants.BASE_URL
+//    + "index.php?route=api/account-customer/register";
+//    List<NameValuePair> param = new ArrayList<NameValuePair>();
+//    String token = sm.getToken();
+//    String imei = sm.getImei();
+//    String cookie = sm.getCookie();
+//    
+//    param.add(new BasicNameValuePair("token", "" + token));
+//    param.add(new BasicNameValuePair("device_id", sm.getImei()));
+//    param.add(new BasicNameValuePair("telephone", mContacts));
     /*
     // MARK: - Navigation
 
