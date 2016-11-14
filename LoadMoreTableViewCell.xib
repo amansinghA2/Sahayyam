@@ -19,14 +19,13 @@
                             <constraint firstAttribute="width" constant="124" id="7Ta-eX-Iwh"/>
                             <constraint firstAttribute="height" constant="30" id="Khj-6P-80C"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="Load More"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oLb-hh-hE6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="I9i-MA-E8H"/>
-                    <constraint firstAttribute="bottom" secondItem="oLb-hh-hE6" secondAttribute="bottom" constant="6" id="IFv-WP-rd2"/>
-                    <constraint firstItem="oLb-hh-hE6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="bNN-GM-lOq"/>
-                    <constraint firstAttribute="trailing" secondItem="oLb-hh-hE6" secondAttribute="trailing" constant="8" id="zao-4Y-h3U"/>
+                    <constraint firstItem="oLb-hh-hE6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GPz-EN-rP8"/>
+                    <constraint firstItem="oLb-hh-hE6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KBD-Ky-aFb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

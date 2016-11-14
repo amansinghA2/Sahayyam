@@ -605,7 +605,7 @@ extension ServerManager {
             "Cookie":"PHPSESSID=" + sessionID
         ]
         
-        defaultManager.request(.POST, blockSalesExecutiveUrl , parameters: params, encoding: .URL, headers: headers)
+        defaultManager.request(.GET, blockSalesExecutiveUrl , parameters: params, encoding: .URL, headers: headers)
             .responseJSON { response in
                 if let _ = response.response {
                     switch response.result {

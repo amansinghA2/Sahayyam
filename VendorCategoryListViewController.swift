@@ -32,6 +32,9 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.mainUpdate(_:)), name: "updateProduct", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.addMainProduct1(_:)), name: "addMainProduct", object: nil)
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.navigationEnableAction(_:)), name: "enableCategoryNavigation1", object: nil)
@@ -46,7 +49,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
 
     func mainUpdate(notification:NSNotification) {
-        productFunction("")
+        productFunction(serviceString)
     }
     
     func navigationDisableAction(notification:NSNotification) {
@@ -402,7 +405,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
 //        let section = sender.tag
 //        let cell = sender.superview?!.superview as! VendorCategoryListTableViewCell
 //        _ = vendorCategoryTableview.indexPathForCell(cell)
-        
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("categorySubID") as! VendorCategorySubViewController
         popOverVC.serviceLists = self.serviceLists
         //popOverVC.categoryList = self.parentArray[section]
@@ -424,7 +426,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     
     func addMainProduct1(notification: NSNotification){
          self.toastViewForTextfield("Product added successfully")
-         productFunction("")
+         productFunction(serviceString)
     }
     
     func refreshList1(notification: NSNotification) {

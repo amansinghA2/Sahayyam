@@ -36,7 +36,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var productImage: UIImageView!
     
     var unitGrams = [UnitGram]()
-    
+    var clickedField = false
     let imagePicker = UIImagePickerController()
     
     var categoryLists = [ProductCategoryList]()
@@ -62,11 +62,12 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         substractStockLabel.text = "No"
         priceLabel.keyboardType = .PhonePad
         offerPriceLabel.keyboardType = .PhonePad
-     
+        
+      
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
+           // bindModelToViews()
             setBackButtonForNavigation()
-            bindModelToViews()
             unitGramAction(getProductDetails.weight_class_id)
             serviceListAction(getProductDetails.service_id)
             autoCompleteCategoryAction(getProductDetails.service_id)
@@ -88,10 +89,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     override func viewWillAppear(animated: Bool) {
+        
     }
     
     func bindModelToViews() {
-        
         
         for categoryList in categoryLists {
             if getProductDetails.productCategories == categoryList.category_id {
@@ -129,7 +130,18 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         
         if let name = getProductDetails.service_id as? String{
             service_id = name
-            serviceLabel.text = name
+            for serviceList in serviceLists {
+                if name == serviceList.id {
+                    serviceLabel.text = serviceList.desc
+                }
+            }
+            
+//            if contents == serviceList.desc {
+//                service_id = serviceList.id
+//            }
+//            
+//            service_id = name
+//            serviceLabel.text = name
         }
         
 //        if let name = getProductDetails.status as? String{
@@ -352,13 +364,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
    }
 
     @IBAction func serviceAction(sender: AnyObject) {
-
         var serviceName = [String]()
-        
         for serviceList in serviceLists {
             serviceName.append(serviceList.desc)
         }
-        
         if dropper.status == .Hidden {
             dropper.tag = 1
             dropper.items = serviceName
@@ -369,7 +378,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         } else {
             dropper.hideWithAnimation(0.1)
         }
-
     }
     
     @IBAction func categoryAction(sender: AnyObject) {
@@ -452,13 +460,16 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         switch tag {
         case 1:
             serviceLabel.text = "\(contents)"
+            clickedField = true
             for serviceList in serviceLists {
                 if contents == serviceList.desc {
                     service_id = serviceList.id
                 }
             }
+            
            serviceListAction(service_id)
            autoCompleteCategoryAction(service_id)
+            
         case 2:
             categoryLabel.text = "\(contents)"
             for categoryList in categoryLists {
@@ -560,6 +571,23 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.categoryLists = result!
+                if self.fromDesc == "fromDescriptionPage"{
+                    if self.clickedField == false {
+                        self.bindModelToViews()
+                    }
+                }else{
+                    
+                }
+                
+                if service_id != "" {
+                    self.categoryLabel.text = self.categoryLists[0].name
+                }else{
+                if self.fromDesc == "fromDescriptionPage"{
+                    
+                }else{
+                    self.categoryLabel.text = self.categoryLists[0].name
+                }
+                }
             }else{
                 self.hideHud()
             }
@@ -578,10 +606,28 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.serviceLists = result!
-                for serviceList in self.serviceLists {
-                    if getProductDetailsServiceId == serviceList.id {
-                        self.serviceLabel.text = serviceList.desc
+                
+                if self.fromDesc == "fromDescriptionPage"{
+                    if self.clickedField == false {
+                    self.bindModelToViews()
                     }
+                }else{
+                    
+                }
+                
+                if getProductDetailsServiceId != "" {
+                    
+                }else{
+                if self.fromDesc == "fromDescriptionPage"{
+                    for serviceList in self.serviceLists {
+                        if getProductDetailsServiceId == serviceList.id {
+                            self.serviceLabel.text = serviceList.desc
+                        }
+                    }
+                }else{
+                    self.serviceLabel.text = self.serviceLists[0].desc
+                    self.service_id = self.serviceLists[0].id
+                }
                 }
             }else{
                 self.hideHud()
@@ -589,7 +635,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
   
     }
-    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)

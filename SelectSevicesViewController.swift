@@ -16,11 +16,15 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     var getProductCollectionList = [ProductCollectionList]()
     let radiobutoonControler = SSRadioButtonsController()
     var str = ""
+    var selectIndexpath = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
+   NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
+        
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "radioButtonClicked1:", name: "", object: <#T##AnyObject?#>)
+        
        self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
        let nibName = UINib(nibName: "SelectServicesTableViewCell", bundle:nil)
        self.selectServicesTableView.registerNib(nibName, forCellReuseIdentifier: "servicesCell")
@@ -73,8 +77,15 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
      // self.vendorService = self.vendorServices[indexPath.row]
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("buttonSelected", object: indexPath)
+        
+        let cell = selectServicesTableView.cellForRowAtIndexPath(indexPath) as! SelectServicesTableViewCell
+        
+        cell.serviceRadioButton.selected = true
+        
+//      let cell = selectServicesTableView.cellForRowAtIndexPath(indexPath) as!
         
 //        let params = [
 //            "token":token,
@@ -95,11 +106,13 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
 //            "global":"1",
 //            "service":self.vendorServices[indexPath.row].id
 //        ]
+        
         let serviceString = self.vendorServices[indexPath.row].id
         let serviceString1 = self.vendorServices[indexPath.row].id
         
         NSNotificationCenter.defaultCenter().postNotificationName("refresh", object: serviceString)
         NSNotificationCenter.defaultCenter().postNotificationName("refresh1", object: serviceString1)
+        
 //        ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
 //            if isSuccessful {
 //                self.getProductCollectionList = result!
@@ -120,7 +133,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         
         let cell = sender.superview?.superview as! SelectServicesTableViewCell
         let indexPath = selectServicesTableView.indexPathForCell(cell)
-
+        
 //        let params = [
 //            "token":token,
 //            "product_name":"",
@@ -128,7 +141,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
 //            "page":"1",
 //            "device_id":"1234",
 //            "global":"0",
-//            "service":self.vendorServices[indexPath!.row].id
+//            "service":self.vesndorServices[indexPath!.row].id
 //        ]
 //        
 //        let params1 = [

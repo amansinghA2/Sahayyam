@@ -41,12 +41,20 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="tQw-AS-NYB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cNO-3s-sUa">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <connections>
-                                <action selector="vendorServiceAction:" destination="Mwi-eg-ZKH" id="41q-KF-Tkn"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="cNO-3s-sUa">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addContacts:" destination="Mwi-eg-ZKH" id="lIo-HY-PG3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="ERB-3a-dyz">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="vendorServiceAction:" destination="Mwi-eg-ZKH" id="DrM-MO-VGJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -146,12 +154,20 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="oVg-ad-d2p">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NZP-4v-eSf">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="bVc-Vp-typ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="add" id="NZP-4v-eSf">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="addContacts:" destination="lwM-zS-L8R" id="3FJ-Fq-KGh"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="OSM-4J-IWr">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="VYB-yZ-U8O"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -162,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iaw-sM-2nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="1066"/>
+            <point key="canvasLocation" x="1000" y="1004"/>
         </scene>
         <!--Select Sevices View Controller-->
         <scene sceneID="6t0-sj-CHq">
@@ -261,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcW-va-hsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="297" y="813"/>
+            <point key="canvasLocation" x="286" y="1072"/>
         </scene>
         <!--Customers-->
         <scene sceneID="MdJ-nM-Mhc">
@@ -273,7 +289,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="acG-RU-ygU">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addContacts:" destination="K3q-Qo-7OE" id="BpY-Hy-NVm"/>
                             </connections>
@@ -372,7 +388,7 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="yEU-az-KS6">
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="categoryAddAction:" destination="2pf-qB-exL" id="Lop-vU-kyX"/>
                                 </connections>
@@ -480,7 +496,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ug8-7m-qtG">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createPromotionAction:" destination="hBy-7w-ip3" id="QFS-79-a98"/>
                             </connections>
@@ -548,7 +564,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFt-Qs-xBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="-660"/>
+            <point key="canvasLocation" x="-345" y="-595"/>
         </scene>
         <!--Store Profile View Controller-->
         <scene sceneID="HSR-cA-sJ1">

@@ -20,7 +20,7 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         showAnimate()
         store = CNContactStore()
-        
+    NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName("disableNavigation", object: nil)
         
         checkContactsAccess()

@@ -30,13 +30,23 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var isDataSOurceREsultEmpty = false
     var fromMenuToProductPage = ""
     var serviceString = ""
+    var servicesShown = false
+    var isServicesSelected = false
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
         tokenCheck()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
+        
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.refreshList1(_:)), name: "refresh1", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.navigationEnableAction(_:)), name: "enableCategoryNavigation1", object: nil)
         
                 let nib1 = UINib(nibName: "GlobalListTableViewCell", bundle: nil)
                 self.globalListTableView.registerNib(nib1, forCellReuseIdentifier: "goToGlobalListCell")
@@ -46,6 +56,29 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         // slideMenuShow(menuButton, viewcontroller: self)
         self.revealViewController().delegate = self
         // Do any additional setup after loading the view.
+    }
+    
+    func showToastForRegister(notification:NSNotification) {
+        if let object = notification.object as? String {
+            if object == "cancel" {
+                navigationController?.navigationBar.userInteractionEnabled = true
+//                self.navigationItem.leftBarButtonItem!.enabled = true
+//                self.navigationItem.rightBarButtonItem!.enabled = true
+            }else{
+                navigationController?.navigationBar.userInteractionEnabled = true
+//                self.navigationItem.leftBarButtonItem!.enabled = true
+//                self.navigationItem.rightBarButtonItem!.enabled = true
+               // getCustomerListFunction()
+                self.toastViewForTextfield(object)
+            }
+        }
+    }
+    
+    func navigationDisableAction(notification:NSNotification) {
+        
+        navigationController?.navigationBar.userInteractionEnabled = false
+        navigationController?.navigationBar.tintColor = UIColor.lightGrayColor()
+        
     }
     
     func tableViewSetup() {
@@ -103,24 +136,23 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        getProductCollectionListAdd.removeAll()
+    func productMainFunction(limit:String , page:String , filterName:String ) {
+        
         if Reachability.isConnectedToNetwork(){
             self.showHud("Loading...")
             let params = [
                 "token":token,
-                "product_name":"",
+                "product_name":filterName,
                 "filter_name":"",
                 "limit":limit,
                 "page":page,
                 "device_id":"1234",
-                "global":"1",
-                "service_id":""
+                "global":"1"
             ]
             
             print(params)
             
-            ServerManager.sharedInstance().vendorMyProductsList(params as? [String : AnyObject]) { (isSuccessful, error, result , result1) in
+            ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
                 if isSuccessful {
                     self.hideHud()
                     self.dataSourceForSearchResult = result!
@@ -135,12 +167,18 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                 }
             }
             
-
+            
         }
         else {
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
         }
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        getProductCollectionListAdd.removeAll()
+        productMainFunction("25", page: "1", filterName: "")
         
     }
     
@@ -159,20 +197,56 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // user did type something, check our datasource for text that looks the same
-        if searchText.characters.count > 0 {
-            getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "1" , filterName: String(searchText) , serviceName: serviceString)
-            // search and reload data source
-            self.searchBarActive    = true
-            self.globalListTableView?.reloadData()
+//        if searchText.characters.count > 0 {
+//            getProductCollectionListAdd.removeAll()
+//            productFunction("25", page: "1" , filterName: String(searchText) , serviceName: serviceString)
+//            // search and reload data source
+//            self.searchBarActive    = true
+//            self.globalListTableView?.reloadData()
+//        }else{
+//            getProductCollectionListAdd.removeAll()
+//            productFunction("25", page: "0" , filterName: "" , serviceName: serviceString)
+//            // if text lenght == 0
+//            // we will consider the searchbar is not active
+//            self.searchBarActive = false
+//            self.globalListTableView?.reloadData()
+//        }
+        
+        getProductCollectionListAdd.removeAll()
+        if isServicesSelected == false {
+            if searchText.characters.count > 0 {
+                getProductCollectionListAdd.removeAll()
+                productMainFunction("25", page: "1" , filterName: String(searchText))
+                //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+                
+                self.searchBarActive = true
+                self.filterContentForSearchText(searchText)
+                self.globalListTableView?.reloadData()
+            }else{
+                getProductCollectionListAdd.removeAll()
+                productMainFunction("25", page: "1", filterName: "")
+                //                productFunction("25", page: "1" , filterName: "" , service_id: serviceString)
+                //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
+                self.searchBarActive = false
+                self.globalListTableView?.reloadData()
+            }
         }else{
-            getProductCollectionListAdd.removeAll()
-            productFunction("25", page: "0" , filterName: "" , serviceName: serviceString)
-            // if text lenght == 0
-            // we will consider the searchbar is not active
-            self.searchBarActive = false
-            self.globalListTableView?.reloadData()
+            if searchText.characters.count > 0 {
+                getProductCollectionListAdd.removeAll()
+                productFunction("25", page: "1" , filterName: String(searchText) , serviceName: serviceString)
+                //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+                self.searchBarActive = true
+                self.filterContentForSearchText(searchText)
+                self.globalListTableView?.reloadData()
+            }else{
+                getProductCollectionListAdd.removeAll()
+                productFunction("25", page: "1" , filterName: "" , serviceName: serviceString)
+                //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
+                self.searchBarActive = false
+                self.globalListTableView?.reloadData()
+            }
         }
+
         
     }
     
@@ -221,7 +295,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     
     func refreshList1(notification: NSNotification) {
-        
+        navigationController?.navigationBar.userInteractionEnabled = true
         if let myString = notification.object as? String {
             serviceString = myString
             print(serviceString)
@@ -483,7 +557,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     @IBAction func vendorServiceAction(sender: AnyObject) {
 //      self.performSegueWithIdentifier("globalListServices", sender: nil)
-        
+        isServicesSelected == true
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
         self.addChildViewController(popOverVC)
         popOverVC.str = "1"
@@ -505,6 +579,31 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 //            }
 //        }
         
+    }
+   
+    @IBAction func addContacts(sender: AnyObject) {
+        
+        //        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
+        //        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
+        //
+        //        subChildArray = childArray.filter({
+        //            if (parentArray[indexPath!.section].category_id == $0.parent_id) {
+        //                return true
+        //            }
+        //            return false
+        //        })
+        
+        //            if self.balanceCredit == 0 {
+        //                toastViewForTextfield("You do not have any running subscription")
+        //            }else{
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("customerRegistrationID") as! CustomerRegistrationViewController
+        //popOverVC.serviceLists = self.serviceLists
+        //popOverVC.categoryList = self.subChildArray[(indexPath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+        //            }
     }
     
         
