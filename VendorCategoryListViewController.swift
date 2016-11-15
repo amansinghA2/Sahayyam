@@ -78,6 +78,8 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
             "service_id":serviceId
         ]
         
+        print(params)
+        
         ServerManager.sharedInstance().vendorsCategoryList(params) { (isSuccessful, error, result , result1) in
             self.hideHud()
             self.categoryLists = result!

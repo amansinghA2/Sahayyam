@@ -38,6 +38,8 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         prepareUI()
         tokenCheck()
         
+        productMainFunction("25", page: "1", filterName: "")
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.refreshList1(_:)), name: "refresh1", object: nil)
@@ -122,14 +124,23 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
-                self.hideHud()
+                
+                if let totalPage = result1!["TotalPages"]{
+                    self.totalPages = Int(totalPage as! String)!
+                }
                 self.dataSourceForSearchResult = result!
                 self.getProductCollectionList = result!
+                
+                for service in self.getProductCollectionList {
+                    self.serviceString = service.service_id
+                }
+                
                 print(self.getProductCollectionList.count)
                 self.getProductCollectionListAdd += self.getProductCollectionList
                 self.globalListTableView.delegate = self
                 self.globalListTableView.dataSource = self
                 self.globalListTableView.reloadData()
+                self.hideHud()
             }else{
                 self.hideHud()
             }
@@ -137,9 +148,8 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     }
     
     func productMainFunction(limit:String , page:String , filterName:String ) {
-        
+         self.showHud("Loading...")
         if Reachability.isConnectedToNetwork(){
-            self.showHud("Loading...")
             let params = [
                 "token":token,
                 "product_name":filterName,
@@ -154,14 +164,27 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             
             ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
                 if isSuccessful {
-                    self.hideHud()
+                   
+                    
+                    if let totalPage = result1!["TotalPages"]{
+                        self.totalPages = Int(totalPage as! String)!
+                    }
+                    
+                  
+                    
                     self.dataSourceForSearchResult = result!
                     self.getProductCollectionList = result!
+                    
+                    for service in self.getProductCollectionList {
+                        self.serviceString = service.service_id
+                    }
+                    
                     print(self.getProductCollectionList.count)
                     self.getProductCollectionListAdd += self.getProductCollectionList
                     self.globalListTableView.delegate = self
                     self.globalListTableView.dataSource = self
                     self.globalListTableView.reloadData()
+                     self.hideHud()
                 }else{
                     self.hideHud()
                 }
@@ -178,7 +201,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
-        productMainFunction("25", page: "1", filterName: "")
+        //productMainFunction("25", page: "1", filterName: "")
         
     }
     
@@ -485,7 +508,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                         cell.getProductCollectionLists1 = self.getProductList
                     }
                 }
-                
                 cell.addButtonLabel.addTarget(self, action: #selector(GlobalListViewController.addProductAction), forControlEvents: UIControlEvents.TouchUpInside)
                 
                 //        cell.contentView.frame = cell.bounds;
@@ -533,10 +555,10 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             let cell = sender.superview?.superview as! GlobalListTableViewCell
             let indexPath = globalListTableView.indexPathForCell(cell)
             
-            getSpecificProductList = getProductCollectionList[(indexPath?.row)!]
+            getSpecificProductList = getProductCollectionListAdd[(indexPath?.row)!]
             
             let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("addProductID") as! AddProductViewController
-            popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
+            popOverVC.getproductCollectionList = getProductCollectionListAdd[(indexPath?.row)!]
             self.addChildViewController(popOverVC)
             popOverVC.view.frame = self.view.frame
             self.view.addSubview(popOverVC.view)
@@ -546,18 +568,17 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 
     func loadButtonClicked(sender:UIButton) {
             page += 1
-            if page <= totalPages{
-                productFunction("25", page: "\(page)" , filterName: "" , serviceName: serviceString)
+            if page < totalPages{
+                productFunction("25", page: "\(page)", filterName: "", serviceName: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
             }
 
     }
     
-    
     @IBAction func vendorServiceAction(sender: AnyObject) {
 //      self.performSegueWithIdentifier("globalListServices", sender: nil)
-        isServicesSelected == true
+        isServicesSelected = true
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
         self.addChildViewController(popOverVC)
         popOverVC.str = "1"

@@ -37,6 +37,8 @@ let gcmRegistrationKey = "onRegistrationCompleted"
 var connectedToGCM = false
 var subscribedToTopic = false
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , GCMReceiverDelegate{
 
@@ -44,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        
+       
+//         selectIndexpath = NSUserDefaults.standardUserDefaults().objectForKey("radioButtonPath") as! NSIndexPath
         
 //        gcmRegistrationHandler = {(registrationToken: String, error: NSError) -> Void in
 //            if registrationToken != nil {

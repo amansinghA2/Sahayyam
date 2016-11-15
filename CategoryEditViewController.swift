@@ -55,7 +55,7 @@ class CategoryEditViewController: UIViewController , DropperDelegate {
     @IBAction func updateButton(sender: AnyObject) {
 //        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
 //        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
-        NSNotificationCenter.defaultCenter().postNotificationName("updateProduct", object: nil)
+        self.showHud("Loading...")
         let params:[String:AnyObject] = [
             "token":token,
             "device_id":"1234",
@@ -71,6 +71,8 @@ class CategoryEditViewController: UIViewController , DropperDelegate {
         
         ServerManager.sharedInstance().vendorEditcategory(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                NSNotificationCenter.defaultCenter().postNotificationName("updateProduct", object: nil)
+                self.hideHud()
                 
             }else{
                 self.hideHud()
@@ -89,7 +91,7 @@ class CategoryEditViewController: UIViewController , DropperDelegate {
         
 //        let cell = sender.superview?.superview as! VendorCategorySubListTableViewCell
 //        let indexPath = vendorCategoryTableview.indexPathForCell(cell)
-        NSNotificationCenter.defaultCenter().postNotificationName("updateProduct", object: nil)
+        self.showHud("Loading...")
         let params = [
             "token":token,
             "device_id":"1234",
@@ -100,6 +102,7 @@ class CategoryEditViewController: UIViewController , DropperDelegate {
         
         ServerManager.sharedInstance().vendorDeletCategory(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                NSNotificationCenter.defaultCenter().postNotificationName("updateProduct", object: nil)
                 self.hideHud()
             }else{
                 self.hideHud()

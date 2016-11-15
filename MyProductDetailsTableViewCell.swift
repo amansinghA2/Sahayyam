@@ -43,16 +43,35 @@ class MyProductDetailsTableViewCell: UICollectionViewCell {
             self.customerProductName.text = customerProductName
         }
         
-        if let customerproductCost = getProductCollectionLists1?.price {
-            self.customerproductCost.text = customerproductCost
+//        if let customerproductCost = getProductCollectionLists1?.price {
+//            self.customerproductCost.text = customerproductCost
+//        }
+        
+        if let customerproductCost = getProductCollectionLists1?.price  {
+            if getProductCollectionLists1?.offerPrice != "0"  && getProductCollectionLists1?.offerPrice != "0.00" && getProductCollectionLists1?.offerPrice != "" {
+                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rs. " + customerproductCost)
+                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+                attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+                self.customerproductCost.attributedText = attributeString
+            }else{
+                self.customerproductCost.text = "Rs. " + customerproductCost
+            }
         }
         
         if let offerPrice = getProductCollectionLists1?.offerPrice {
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: offerPrice)
-            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
-            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
-            self.productOfferPrice.attributedText = attributeString
+            if offerPrice != "0"  && offerPrice != "0.00" && offerPrice != ""{
+                self.productOfferPrice.text = "Rs. " + offerPrice
+            }else{
+                self.productOfferPrice.text = ""
+            }
         }
+        
+//        if let offerPrice = getProductCollectionLists1?.offerPrice {
+//            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: offerPrice)
+//            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+//            attributeString.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.lightGrayColor(), range: NSMakeRange(0, attributeString.length))
+//            self.productOfferPrice.attributedText = attributeString
+//        }
     }
     
     @IBAction func addToWishList(sender: AnyObject) {

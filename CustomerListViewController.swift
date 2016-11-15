@@ -23,9 +23,8 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         super.viewDidLoad()
         self.balanceCreditLabel.font = UIFont(name: "", size: 12)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
-        
+         tokenCheck()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.navigationDisableAction(_:)), name: "disableNavigation", object: nil)
-        tokenCheck()
                 slideMenuShow(slideMenuButton, viewcontroller: self)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "CustomerListTableViewCell", bundle: nil)
@@ -77,10 +76,10 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 self.customerListTableView.reloadData()
                 self.balanceCreditLabel.text = "SUBSCRIPTION : FEES PER SALES" // + String(self.balanceCredit)
             }else{
+                self.hideHud()
                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
             }
         }
-
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -60,12 +60,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         stockLabelString = "0"
         statusLabel.text = "Enabled"
         substractStockLabel.text = "No"
-        priceLabel.keyboardType = .PhonePad
-        offerPriceLabel.keyboardType = .PhonePad
+        priceLabel.keyboardType = UIKeyboardType.DecimalPad
+        offerPriceLabel.keyboardType = UIKeyboardType.DecimalPad
+        unitValueLabel.keyboardType = UIKeyboardType.PhonePad
         
-      
         if fromDesc == "fromDescriptionPage"{
              tokenCheck()
+            weightClassID = getProductDetails.weight_class_id
            // bindModelToViews()
             setBackButtonForNavigation()
             unitGramAction(getProductDetails.weight_class_id)
@@ -124,9 +125,25 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             offerPriceLabel.text = CustomClass.roundOfDecimal(name)
         }
         
-        if let name = getProductDetails.unit as? Int{
-            unitTypeLabel.text = String(name)
+        if let name = getProductDetails.weight as? String{
+            unitTypeLabel.text = name
         }
+        
+//        if let name = getProductDetails.service_id as? String{
+//            service_id = name
+//            for serviceList in serviceLists {
+//                if name == serviceList.id {
+//                    serviceLabel.text = serviceList.desc
+//                }
+//            }
+//            
+//            //            if contents == serviceList.desc {
+//            //                service_id = serviceList.id
+//            //            }
+//            //
+//            //            service_id = name
+//            //            serviceLabel.text = name
+//        }
         
         if let name = getProductDetails.service_id as? String{
             service_id = name
@@ -172,8 +189,14 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.subtract as? String{
-            stockLabelString = name
-            substractStockLabel.text = name
+            
+            if name == "0" {
+                stockLabelString = name
+               substractStockLabel.text = "NO"
+            }else{
+               stockLabelString = name
+               substractStockLabel.text = "YES"
+            }
         }
         
         if let name = getProductDetails.ref_code as? String{
@@ -277,6 +300,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             return false
         }
         
+        if unitTypeLabel.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Unit Type cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         if nameLabel.text?.characters.count == 0 {
             AlertView.alertView("Alert", message: "Name field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
@@ -311,8 +339,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         "image":str,
                         "price":priceLabel.text!,
                         "product_special[0][price]":offerPriceLabel.text!,
-                        "weight_class_id":getProductDetails!.weight_class_id,
-                        "weight":getProductDetails!.weight,
+                        "weight_class_id":weightClassID,
+                        "weight":unitTypeLabel.text!,
                         "quantity":quantityLabel.text!,
                         "subtract":stockLabelString,
                         "status":statusString,
@@ -484,7 +512,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     weightClassID = unitGram.weight_class_id
                 }
             }
-            
         case 4:
             substractStockLabel.text = "\(contents)"
             if contents == "Yes"{
@@ -521,7 +548,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     "image":str,
                     "price":priceLabel.text!,
                     "product_special[0][price]":offerPriceLabel.text!,
-                    "weight_class_id":unitValueLabel.text!,
+                    "weight_class_id":weightClassID,
                     "weight":unitTypeLabel.text!,
                     "quantity":quantityLabel.text!,
                     "subtract":stockLabelString,
@@ -544,7 +571,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                             }
                         }else{
                           self.toastViewForTextfield("New product successfully created")
-                          self.navigationController?.popToRootViewControllerAnimated(true)
+                            let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MyProductsViewID") as! MyProductsViewController
+                            self.navigationController!.pushViewController(secondViewController, animated: true)
                         }
                         self.hideHud()
                     }else{

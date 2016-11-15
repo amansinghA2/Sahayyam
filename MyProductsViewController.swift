@@ -52,9 +52,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
@@ -109,17 +106,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.prepareUI()
 
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
-        if Reachability.isConnectedToNetwork(){
-             if editedSuccess == false {
-            productFunction("25", page: "1", filterName: "")
-             }else{
-                
-            }
-        }
-        else {
-            self.hideHud()
-            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
-        }
+//        if Reachability.isConnectedToNetwork(){
+////             if editedSuccess == false {
+////              productFunction("25", page: "1", filterName: "")
+////             }else{
+////                
+////            }
+//        }
+//        else {
+//            self.hideHud()
+//            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+//        }
     }
 
     
@@ -212,7 +209,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         
         ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
             if isSuccessful {
-                self.hideHud()
                 if let totalPage = result1!["TotalPages"]{
                     self.totalPages = Int(totalPage as! String)!
                 }
@@ -226,18 +222,24 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 print(self.getProductCollectionList.count)
                 self.getProductCollectionListAdd += self.getProductCollectionList
                 
+                for service in self.getProductCollectionList {
+                    self.serviceString = service.service_id
+                }
+                
                 if self.noImage == "1" {
                     self.myproductsCollectionView.hidden = true
                     self.myProductsTableView.hidden = false
                     self.myProductsTableView.dataSource = self
                     self.myProductsTableView.delegate = self
                     self.myProductsTableView.reloadData()
+                    self.hideHud()
                 }else{
                     self.myProductsTableView.hidden = true
                     self.myproductsCollectionView.hidden = false
                     self.myproductsCollectionView.dataSource = self
                     self.myproductsCollectionView.delegate = self
                     self.myproductsCollectionView.reloadData()
+                    self.hideHud()
                 }
             }else{
                 self.hideHud()
@@ -651,7 +653,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         
         ServerManager.sharedInstance().blockMyProductsImage(params, completionClosure: { (isSuccessful, error, result) in
             if isSuccessful {
-                self.productFunction("25", page: "\(self.page)" , filterName: "")
+                self.serviceProductFunction("25", page: "1", filterName: "", service_id: self.serviceString)
                 self.hideHud()
             }else{
                 self.hideHud()
@@ -694,6 +696,16 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.myProductsTableView.registerNib(nib3, forCellReuseIdentifier: "loadMoreIdentifier")
         self.myProductsTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         self.changeNavigationBarColor()
+        
+        
+        if Reachability.isConnectedToNetwork(){
+           productFunction("25", page: "1", filterName: "")
+        }
+        else {
+            self.hideHud()
+            AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+        }
+       
     }
 
     

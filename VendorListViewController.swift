@@ -21,7 +21,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         tokenCheck()
         self.showHud("Loading...")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorListViewController.toastViewShowing(_:)), name: "toastViewShow", object: nil)
-            slideMenuShow(menuButton, viewcontroller: self)
+        slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
         // Do any additional setup after loading the view.
@@ -46,7 +46,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
                 self.vendorLIstTableView.dataSource = self
                 self.vendorLIstTableView.reloadData()
             }else{
-                
+                self.hideHud()
             }
         }
     }

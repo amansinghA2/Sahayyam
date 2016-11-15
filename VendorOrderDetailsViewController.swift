@@ -14,6 +14,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
     var vendorListData = CustomerOrders()
     var customerDetails = CustomerOrderDetails()
    // var orderDetailsList = CustomerOrderDetails()
+    var isOrderCancelled = false
     
     @IBOutlet weak var orderStatusButton: UIBarButtonItem!
     override func viewDidLoad() {
@@ -92,6 +93,8 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
                 cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
                 cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+                isOrderCancelled = true
+                
             default:
                 ""
             }
@@ -101,6 +104,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
                 cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
                 cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+                isOrderCancelled = true
             default:
                 ""
             }
@@ -147,6 +151,9 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
 
     func cancelOrderAction(sender:UIButton) {
         
+        if isOrderCancelled == true {
+            AlertView.alertView("Alert", message: "Order already cancelled", alertTitle: "OK", viewController: self)
+        }else{
         let alertController = UIAlertController(title: "Alert", message: "Do you want to cancel the order" , preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
@@ -167,6 +174,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
                     cell.cancelOrderLabel.backgroundColor = UIColor.redColor()
                     cell.cancelOrderLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                     cell.cancelOrderLabel.setTitle("Order Cancelled", forState: .Normal)
+                    self.isOrderCancelled = true
                     self.hideHud()
                 }else{
                     self.hideHud()
@@ -179,6 +187,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
             self.hideHud()
         }))
         self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func orderStatusButtonAction(sender: AnyObject) {

@@ -23,8 +23,11 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         
    NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
         
-       NSNotificationCenter.defaultCenter().addObserver(self, selector: "radioButtonClicked1:", name: "", object: <#T##AnyObject?#>)
-        
+        if let data1 = NSUserDefaults.standardUserDefaults().objectForKey("indexKey") as? NSData{
+           selectIndexpath = NSKeyedUnarchiver.unarchiveObjectWithData(data1) as! NSIndexPath
+            
+        }
+
        self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
        let nibName = UINib(nibName: "SelectServicesTableViewCell", bundle:nil)
        self.selectServicesTableView.registerNib(nibName, forCellReuseIdentifier: "servicesCell")
@@ -37,8 +40,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         showAnimate()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     override func viewWillAppear(animated: Bool) {
         
         self.showHud("Loading...")
@@ -70,6 +72,10 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         cell.vendorService = self.vendorServices[indexPath.row]
         cell.serviceRadioButton.tag = indexPath.row
         
+//        let cell = selectServicesTableView.cellForRowAtIndexPath(selectIndexpath) as! SelectServicesTableViewCell
+//        
+//        cell.serviceRadioButton.selected = true
+        
         _ = SSRadioButtonsController(buttons: cell.serviceRadioButton)
         
         cell.serviceRadioButton.addTarget(self, action: #selector(SelectSevicesViewController.radioButtonClicked(_:)), forControlEvents: .TouchUpInside)
@@ -79,14 +85,16 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
      // self.vendorService = self.vendorServices[indexPath.row]
         
-        NSNotificationCenter.defaultCenter().postNotificationName("buttonSelected", object: indexPath)
-        
         let cell = selectServicesTableView.cellForRowAtIndexPath(indexPath) as! SelectServicesTableViewCell
         
         cell.serviceRadioButton.selected = true
         
-//      let cell = selectServicesTableView.cellForRowAtIndexPath(indexPath) as!
+//        NSUserDefaults.standardUserDefaults().setObject(indexPath , forKey: "radioButtonPath")
+
+        let data = NSKeyedArchiver.archivedDataWithRootObject(indexPath)
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "indexKey")
         
+//      let cell = selectServicesTableView.cellForRowAtIndexPath(indexPath) as!
 //        let params = [
 //            "token":token,
 //            "product_name":"",
@@ -96,7 +104,7 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
 //            "global":"0",
 //            "service":self.vendorServices[indexPath.row].id
 //        ]
-//        
+//
 //        let params1 = [
 //            "token":token,
 //            "product_name":"",
@@ -130,10 +138,8 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     }
 
     func radioButtonClicked(sender:UIButton)  {
-        
         let cell = sender.superview?.superview as! SelectServicesTableViewCell
         let indexPath = selectServicesTableView.indexPathForCell(cell)
-        
 //        let params = [
 //            "token":token,
 //            "product_name":"",
@@ -173,7 +179,6 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
 //                self.removeAnimate()
 //            }
 //        }
-        
     }
     
     func showAnimate() {

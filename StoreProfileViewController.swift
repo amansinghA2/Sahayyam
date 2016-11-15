@@ -220,7 +220,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         freeDeliveryContraint.constant = 0
         deliveryCharges.selected = true
         
-        
         fromDate1 = fromLabel1.text!
         toDate1 = toLabel1.text!
         fromDate2 = fromLabel2.text!
@@ -257,7 +256,6 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         //        toLabel1.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         //        toLabel2.setTextFieldStyle(TextFieldStyle.TextFieldTime)
         //        toLabel3.setTextFieldStyle(TextFieldStyle.TextFieldTime)
-        
         
         deliveryTimeTextField0.delegate = self
         deliveryTimeTextField1.delegate = self
@@ -337,7 +335,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
                 toHour1 = ""
                 toMin1 = ""
                 toAmPm1 = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+                AlertView.alertView("Alert", message: "Invalid Business Timing", alertTitle: "OK", viewController: self)
                 return false
             }
         }
@@ -353,7 +351,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
                 toHour2 = ""
                 toMin2 = ""
                 toAmPm2 = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+                AlertView.alertView("Alert", message: "Invalid Business Timing", alertTitle: "OK", viewController: self)
                 return false
             }
         }
@@ -369,7 +367,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
                 toHour3 = ""
                 toMin3 = ""
                 toAmPm3 = ""
-                AlertView.alertView("Alert", message: "To is greater than from", alertTitle: "OK", viewController: self)
+                AlertView.alertView("Alert", message: "Invalid Business Timing", alertTitle: "OK", viewController: self)
             }
         }
         
@@ -1011,10 +1009,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         dateFormatter.dateFormat = "hh:mm a"
         //dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT+0:00")
         let date = dateFormatter.dateFromString(labelString)
-        
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute] , fromDate: date!)
-        
         return "\(components.minute)"
     }
     

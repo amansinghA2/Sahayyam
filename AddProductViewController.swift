@@ -18,6 +18,10 @@ class AddProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        priceLabel.keyboardType = .DecimalPad
+        offerPriceLabel.keyboardType = .DecimalPad
+        quantityLabel.keyboardType = .NumberPad
+        
         slideMenuShow(slideMenuButton, viewcontroller: self)
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
         self.showAnimate()
@@ -44,13 +48,11 @@ class AddProductViewController: UIViewController {
     
     
     @IBAction func cancelButtonClicked(sender: AnyObject) {
-        
         self.removeAnimate()
-        
     }
     
     func formValidation() -> Bool{
-        if (quantityLabel.text?.isBlank == true  || offerPriceLabel.text?.isBlank == true || priceLabel.text?.isBlank == true){
+        if (priceLabel.text?.isBlank == true){
             AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
         }
@@ -59,6 +61,8 @@ class AddProductViewController: UIViewController {
     }
     
     @IBAction func saveButtonClicked(sender: AnyObject) {
+        
+        if formValidation() {
         self.removeAnimate()
         self.showHud("Loading...")
         let params = [
@@ -88,6 +92,9 @@ class AddProductViewController: UIViewController {
             }else{
                 self.hideHud()
             }
+        }
+        }else{
+            self.hideHud()
         }
         
     }

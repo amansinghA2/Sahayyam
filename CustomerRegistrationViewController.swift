@@ -93,7 +93,21 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
         self.presentViewController(picker, animated: true, completion: nil)
     }
     
+    func formValidation() -> Bool{
+        
+        if contactTextField.text?.characters.count == 0 {
+            AlertView.alertView("Alert", message: "Text field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        return true
+    }
+    
     @IBAction func saveRegistration(sender: AnyObject) {
+        
+        self.showHud("Loading...")
+        
+        if formValidation() {
         
         let params:[String:AnyObject] = [
         "token":token,
@@ -105,9 +119,7 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
             if isSuccessful {
                 
                 if error != nil {
-//                    AlertView.alertView("Alert", message: "\(error)", alertTitle: "OK", viewController: self)
-                   // self.toastViewForTextfield("\(error)")
-               NSNotificationCenter.defaultCenter().postNotificationName("vendorRegisterStatus", object: error)
+              NSNotificationCenter.defaultCenter().postNotificationName("vendorRegisterStatus", object: error)
                     self.removeAnimate()
                     self.hideHud()
                 }
@@ -125,6 +137,9 @@ class CustomerRegistrationViewController: UIViewController  , CNContactPickerDel
             }else{
                 self.hideHud()
             }
+        }
+        }else {
+            self.hideHud()
         }
         
    

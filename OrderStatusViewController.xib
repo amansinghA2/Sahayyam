@@ -16,16 +16,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NeW-ka-fW6">
-                    <rect key="frame" x="90" y="168" width="141" height="232"/>
+                    <rect key="frame" x="62" y="154" width="196" height="259"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="259" id="k3G-RD-38k"/>
+                        <constraint firstAttribute="width" constant="196" id="rNt-Bz-GJN"/>
+                    </constraints>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NeW-ka-fW6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="168" id="Bor-fb-wvT"/>
-                <constraint firstItem="NeW-ka-fW6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="90" id="Hp6-48-Fc6"/>
-                <constraint firstAttribute="bottom" secondItem="NeW-ka-fW6" secondAttribute="bottom" constant="168" id="OHp-j2-eyK"/>
-                <constraint firstAttribute="trailing" secondItem="NeW-ka-fW6" secondAttribute="trailing" constant="89" id="aby-7Z-gg1"/>
+                <constraint firstItem="NeW-ka-fW6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C1W-x8-6g4"/>
+                <constraint firstItem="NeW-ka-fW6" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KQq-he-Eon"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="-91" y="188"/>

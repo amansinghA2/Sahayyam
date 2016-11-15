@@ -93,7 +93,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             cell.notifyButton.hidden = false
         }else{
             cell.deactivateButton.setTitle("Deactivated", forState: .Normal)
-            isBoolActivate = false
             cell.notifyButton.hidden = true
         }
         
@@ -107,7 +106,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
         
         if isBoolActivate ==  true {
-            toastViewForTextfield("Please deactivate active promotion to add new one.")
+            toastViewForPromotions("Please deactivate active promotion to add new one.")
         }else{
            self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
         }
@@ -120,7 +119,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
 
     @IBAction func createPromotionAction(sender: AnyObject){
         if isBoolActivate ==  true {
-           toastViewForTextfield("Please deactivate active promotion to add new one.")
+           toastViewForPromotions("Please deactivate active promotion to add new one.")
         }else{
         self.performSegueWithIdentifier("goToCreatePromotion", sender: nil)
         }
@@ -184,6 +183,11 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                 presentViewController(refreshAlert, animated: true, completion: nil)
              }
              else{
+                
+                if isBoolActivate == true {
+                    toastViewForPromotions("Please deactivate active promotion to activate this one.")
+                }else{
+                
                 let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to activate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
                 refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
                    
@@ -214,6 +218,8 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                 presentViewController(refreshAlert, animated: true, completion: nil)
                 }
            }
+        }
+
     }
     
     func deleteButtonClicked(sender:UIButton){

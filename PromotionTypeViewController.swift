@@ -76,7 +76,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         
         if str == "fromEdit"{
             discountType = "A"
-            unitGramAction("")
+            unitGramAction("") 
             createPromotionButtonOutlet.setTitle("Edit promotion", forState: .Normal)
             self.amountpromotionOutlet.checkState = .Checked
             productnameQuantityConstraint.constant  = 0
