@@ -37,15 +37,12 @@ let gcmRegistrationKey = "onRegistrationCompleted"
 var connectedToGCM = false
 var subscribedToTopic = false
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , GCMReceiverDelegate{
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
        
 //         selectIndexpath = NSUserDefaults.standardUserDefaults().objectForKey("radioButtonPath") as! NSIndexPath
         
@@ -379,7 +376,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
        // self.saveContext()
-
     }
 
     func viewControllerPassing(storyBoard:String , identifier:String) {

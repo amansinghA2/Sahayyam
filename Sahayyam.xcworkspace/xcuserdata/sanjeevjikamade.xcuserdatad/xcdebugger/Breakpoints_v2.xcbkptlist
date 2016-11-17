@@ -59,38 +59,6 @@
             endingLineNumber = "565"
             landmarkName = "editOrAddDetails()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.VndornewProductAddViewController.editOrAddDetails () -&gt; ()"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "500904324.919648"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "565"
-                  endingLineNumber = "565"
-                  offsetFromSymbolStart = "7748">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sahayyam.VndornewProductAddViewController.(editOrAddDetails () -&gt; ()).(closure #1)"
-                  moduleName = "Sahayyam"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjeevjikamade/Documents/Shayyam%20Git/Sahayyam/VndornewProductAddViewController.swift"
-                  timestampString = "500904324.919759"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "566"
-                  endingLineNumber = "566"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,6 +106,22 @@
             startingLineNumber = "81"
             endingLineNumber = "81"
             landmarkName = "productFunction(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VndornewProductAddViewController.swift"
+            timestampString = "501049296.65146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "bindModelToViews()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

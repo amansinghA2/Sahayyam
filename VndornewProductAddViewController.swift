@@ -65,7 +65,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         unitValueLabel.keyboardType = UIKeyboardType.PhonePad
         
         if fromDesc == "fromDescriptionPage"{
-             tokenCheck()
+            tokenCheck()
             weightClassID = getProductDetails.weight_class_id
            // bindModelToViews()
             setBackButtonForNavigation()
@@ -80,13 +80,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             slideMenuShow(slideMenuButton, viewcontroller: self)
         }
 
-        imagePicker.delegate = self
-        // Do any additional setup after loading the view.
+            imagePicker.delegate = self
+            // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
