@@ -46,8 +46,10 @@ class CityHeadProfileViewController: UIViewController, UIImagePickerControllerDe
         if isLogin == "customerDropDown" {
             tokenCheck()
             phoneNumber.userInteractionEnabled = false
-            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                 if isSuccessful{
+                    
+                    
                     self.populateDataList  = result!
                     self.dataInTextField()
                     self.acceptLabel.hidden = true

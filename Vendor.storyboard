@@ -42,13 +42,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="cNO-3s-sUa">
+                            <barButtonItem image="add-contact" id="cNO-3s-sUa">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="addContacts:" destination="Mwi-eg-ZKH" id="lIo-HY-PG3"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="ERB-3a-dyz">
+                            <barButtonItem image="ch_ic_filter" id="ERB-3a-dyz">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="vendorServiceAction:" destination="Mwi-eg-ZKH" id="DrM-MO-VGJ"/>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAz-Zk-gMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="1072"/>
+            <point key="canvasLocation" x="-94" y="1072"/>
         </scene>
         <!--Under Construction View Controller-->
         <scene sceneID="8mD-an-3SJ">
@@ -85,7 +85,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="nay-GC-oc2">
             <objects>
-                <viewController id="TCQ-sB-waJ" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="revealView" id="TCQ-sB-waJ" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="chx-gI-p6C"/>
                         <viewControllerLayoutGuide type="bottom" id="eCZ-8Z-dm2"/>
@@ -129,7 +129,7 @@
             <objects>
                 <viewController id="rEI-1E-ttD" customClass="VendorOrderDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Order Details" id="1Vi-jF-tRU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gdj-S1-0Av">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="gdj-S1-0Av">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="orderStatusButtonAction:" destination="rEI-1E-ttD" id="iZj-Bi-pxd"/>
@@ -155,13 +155,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="add" id="NZP-4v-eSf">
+                            <barButtonItem image="add-contact" style="plain" id="NZP-4v-eSf">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="addContacts:" destination="lwM-zS-L8R" id="3FJ-Fq-KGh"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="OSM-4J-IWr">
+                            <barButtonItem image="ch_ic_filter" id="OSM-4J-IWr">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="vendorServiceAction:" destination="lwM-zS-L8R" id="VYB-yZ-U8O"/>
@@ -178,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iaw-sM-2nS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="1004"/>
+            <point key="canvasLocation" x="1031" y="1040"/>
         </scene>
         <!--Select Sevices View Controller-->
         <scene sceneID="6t0-sj-CHq">
@@ -288,7 +288,7 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="Dzz-53-bHX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="acG-RU-ygU">
+                        <barButtonItem key="rightBarButtonItem" image="add-contact" id="acG-RU-ygU">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addContacts:" destination="K3q-Qo-7OE" id="BpY-Hy-NVm"/>
@@ -387,13 +387,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="yEU-az-KS6">
+                            <barButtonItem image="plus" id="yEU-az-KS6">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="categoryAddAction:" destination="2pf-qB-exL" id="Lop-vU-kyX"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="n57-ee-btb">
+                            <barButtonItem image="ch_ic_filter" id="n57-ee-btb">
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="searchServiceButton:" destination="2pf-qB-exL" id="fvW-U9-CQN"/>
@@ -429,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cU4-4X-XDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="1748"/>
+            <point key="canvasLocation" x="674" y="1762"/>
         </scene>
         <!--Show Invoice View Controller-->
         <scene sceneID="Koq-fG-WFn">
@@ -495,7 +495,7 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="lJE-Nd-JDM">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ug8-7m-qtG">
+                        <barButtonItem key="rightBarButtonItem" image="plus" id="Ug8-7m-qtG">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="createPromotionAction:" destination="hBy-7w-ip3" id="QFS-79-a98"/>
@@ -606,5 +606,8 @@
     </scenes>
     <resources>
         <image name="List Filled-35" width="35" height="35"/>
+        <image name="add-contact" width="24" height="24"/>
+        <image name="ch_ic_filter" width="24" height="24"/>
+        <image name="plus" width="24" height="24"/>
     </resources>
 </document>

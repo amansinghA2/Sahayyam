@@ -164,13 +164,10 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             
             ServerManager.sharedInstance().vendorMyProductsList(params) { (isSuccessful, error, result , result1) in
                 if isSuccessful {
-                   
-                    
+
                     if let totalPage = result1!["TotalPages"]{
                         self.totalPages = Int(totalPage as! String)!
                     }
-                    
-                  
                     
                     self.dataSourceForSearchResult = result!
                     self.getProductCollectionList = result!
@@ -184,7 +181,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                     self.globalListTableView.delegate = self
                     self.globalListTableView.dataSource = self
                     self.globalListTableView.reloadData()
-                     self.hideHud()
+                    self.hideHud()
                 }else{
                     self.hideHud()
                 }

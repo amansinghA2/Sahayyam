@@ -68,7 +68,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    
     func productFunction(serviceId:String) {
         self.showHud("Loading...")
      
@@ -220,7 +219,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
 //            
 //        }
 //    }
-    
 //    func globalEditButtonClicked(sender:UIButton) {
 //        
 //        let cell = sender.superview?.superview as! VendorCategoryListTableViewCell

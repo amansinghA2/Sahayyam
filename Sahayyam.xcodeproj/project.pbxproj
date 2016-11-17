@@ -157,6 +157,10 @@
 		AF8036B31D62EA4700422C54 /* VendorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036B11D62EA4700422C54 /* VendorListTableViewCell.swift */; };
 		AF8036B41D62EA4700422C54 /* VendorListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8036B21D62EA4700422C54 /* VendorListTableViewCell.xib */; };
 		AF8036B61D62F38900422C54 /* VendorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8036B51D62F38900422C54 /* VendorList.swift */; };
+		AF8391961DDD7F980095FE2B /* ServiceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8391941DDD7F980095FE2B /* ServiceListViewController.swift */; };
+		AF8391971DDD7F980095FE2B /* ServiceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8391951DDD7F980095FE2B /* ServiceListViewController.xib */; };
+		AF83919A1DDD7FAC0095FE2B /* ServiceListSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8391981DDD7FAC0095FE2B /* ServiceListSubViewController.swift */; };
+		AF83919B1DDD7FAC0095FE2B /* ServiceListSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8391991DDD7FAC0095FE2B /* ServiceListSubViewController.xib */; };
 		AF868EA31DC0D2D0006A6BF0 /* UnitGram.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */; };
 		AFA2A52A1D50CBA3006F1D41 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A5291D50CBA3006F1D41 /* Customer.swift */; };
 		AFA2A52C1D50CE9D006F1D41 /* CustomerCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */; };
@@ -449,6 +453,10 @@
 		AF8036B11D62EA4700422C54 /* VendorListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorListTableViewCell.swift; sourceTree = "<group>"; };
 		AF8036B21D62EA4700422C54 /* VendorListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VendorListTableViewCell.xib; sourceTree = "<group>"; };
 		AF8036B51D62F38900422C54 /* VendorList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorList.swift; sourceTree = "<group>"; };
+		AF8391941DDD7F980095FE2B /* ServiceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceListViewController.swift; sourceTree = "<group>"; };
+		AF8391951DDD7F980095FE2B /* ServiceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceListViewController.xib; sourceTree = "<group>"; };
+		AF8391981DDD7FAC0095FE2B /* ServiceListSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceListSubViewController.swift; sourceTree = "<group>"; };
+		AF8391991DDD7FAC0095FE2B /* ServiceListSubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceListSubViewController.xib; sourceTree = "<group>"; };
 		AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitGram.swift; sourceTree = "<group>"; };
 		AFA2A5291D50CBA3006F1D41 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		AFA2A52B1D50CE9D006F1D41 /* CustomerCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerCategory.swift; sourceTree = "<group>"; };
@@ -1022,6 +1030,10 @@
 				AF6327D11D951A550030F1C5 /* StoreProfileTimingTableViewCell.xib */,
 				AF4D928B1DB1EAF10027E992 /* LoadMoreTableViewCell.swift */,
 				AF4D928C1DB1EAF10027E992 /* LoadMoreTableViewCell.xib */,
+				AF8391941DDD7F980095FE2B /* ServiceListViewController.swift */,
+				AF8391951DDD7F980095FE2B /* ServiceListViewController.xib */,
+				AF8391981DDD7FAC0095FE2B /* ServiceListSubViewController.swift */,
+				AF8391991DDD7FAC0095FE2B /* ServiceListSubViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1282,6 +1294,7 @@
 				AFBF9CB51D58996B007E17C3 /* CartListTableViewCell.xib in Resources */,
 				AFE659551D81509300B632D6 /* ChangePasswordViewController.xib in Resources */,
 				AFBC27411D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.xib in Resources */,
+				AF8391971DDD7F980095FE2B /* ServiceListViewController.xib in Resources */,
 				AFBF9CB11D5898B0007E17C3 /* CartListViewController.xib in Resources */,
 				0701434F1D7F43AA009E2F19 /* VendorEditPFViewController.xib in Resources */,
 				AF6D18DC1D86910400F220FE /* VendorOrderDetailsViewController.xib in Resources */,
@@ -1317,6 +1330,7 @@
 				AFBC27491D54B08B003ECBF6 /* CustomerBestDealsViewController.xib in Resources */,
 				AF5438A81D87B41400CDCCD9 /* GlobalListTableViewCell.xib in Resources */,
 				AFCD866B1D896CCE00F10ABB /* ProductDetailsViewController.xib in Resources */,
+				AF83919B1DDD7FAC0095FE2B /* ServiceListSubViewController.xib in Resources */,
 				AFEB25571D50649F006B52C5 /* CustomerUpdateProfileViewController.xib in Resources */,
 				AF6327F71D9559A30030F1C5 /* AddVendorViewController.xib in Resources */,
 				AF1F1F541D4A07E400E36DB0 /* Assets.xcassets in Resources */,
@@ -1573,6 +1587,7 @@
 				AF6D18CE1D8666C600F220FE /* CustomerListViewController.swift in Sources */,
 				AF5438AF1D87BB4300CDCCD9 /* PaymentDetailsTableViewCell.swift in Sources */,
 				AF6D18DF1D86A10D00F220FE /* VndornewProductAddViewController.swift in Sources */,
+				AF8391961DDD7F980095FE2B /* ServiceListViewController.swift in Sources */,
 				AF6A88181D5325DB00986ECC /* CartProductList.swift in Sources */,
 				AF6327F31D95534C0030F1C5 /* CityHeadJsonMapper.swift in Sources */,
 				AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */,
@@ -1636,6 +1651,7 @@
 				AF8036B31D62EA4700422C54 /* VendorListTableViewCell.swift in Sources */,
 				AFADBEA91D9BA5D800A3F0F1 /* UnderConstructionViewController.swift in Sources */,
 				AFA2A5301D50D2A9006F1D41 /* CustomerLoginData.swift in Sources */,
+				AF83919A1DDD7FAC0095FE2B /* ServiceListSubViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

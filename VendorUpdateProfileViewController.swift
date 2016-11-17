@@ -23,6 +23,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
     var isAccept = false
     
     var isLogin = ""
+    var mTos = ""
     
     var populateDataList = PopulateData()
     
@@ -35,15 +36,19 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         let range : NSRange = str.rangeOfString("Accept the terms and conditions")
         acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
         acceptLabel.textColor = UIColor.blueColor()
-        self.showHud("Loading...")
         if isLogin == "customerDropDown" {
             tokenCheck()
             self.acceptLabel.hidden = true
             self.acceptCheckbox.hidden = true
             mobileNumberLabel.userInteractionEnabled = false
             slideMenuShow(slidemenuButton, viewcontroller: self)
-            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                 if isSuccessful{
+                    
+                    if let tos = result1!["TOS"] as? String{
+                       self.mTos = tos
+                    }
+                    
                     self.hideHud()
                     self.populateDataList  = result!
                     customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
@@ -55,9 +60,26 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 }
             })
         }else {
-            self.hideHud()
             profile = false
             NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
+            setBackButtonForNavigation()
+            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
+                if isSuccessful{
+                    self.hideHud()
+                    
+                    if let tos = result1!["TOS"] as? String{
+                        self.mTos = tos
+                    }
+                    
+                    self.populateDataList  = result!
+                    customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
+                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+                    self.dataInTextField()
+                    self.hideHud()
+                }else{
+                    self.hideHud()
+                }
+            })
             self.acceptLabel.hidden = false
             acceptCheckbox.hidden = false
         }
@@ -120,7 +142,6 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 "confirm":confirmPassword.text!,
                 "tos":"on"
             ]
-            
         }
         
         print(params)
@@ -130,27 +151,20 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
             if formValidation() {
                 ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
                     if isSuccessful {
-                    self.hideHud()
-                    
+//                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+//                            if isSuccessful{
+//                                self.hideHud()
+//                                self.populateDataList  = result!
+//                                customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
+//                                NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+//                                self.hideHud()
+//                            }else{
+//                                self.hideHud()
+//                            }
+//                        })
                     let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
-                        if self.isLogin == "customerDropDown" {
-                            self.showHud("Loading...")
-                            ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
-                                if isSuccessful{
-                                    self.hideHud()
-                                    self.populateDataList  = result!
-                                    customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
-                                    NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
-                                    self.hideHud()
-                                }else{
-                                    self.hideHud()
-                                }
-                            })
-                               self.viewControllerPassing("Vendor")
-                        }else{
-                            self.viewControllerPassing("Vendor")
-                        }
+                       self.viewControllerPassing("Vendor")
                     }))
                     self.presentViewController(alertController, animated: true, completion: nil)
                     }
@@ -221,6 +235,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         dateOfBirthTextField.text = populateDataList.dateOfBirth
         emailIdTextField.text = populateDataList.emailId
         dateOfBirthTextField.text = populateDataList.dateOfBirth
+        
     }
     
     func checkBoxState(){

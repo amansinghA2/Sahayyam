@@ -676,7 +676,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         tokenCheck()
         prepareUI()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastView), name: "showtoast", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastView(_:)), name: "showtoast", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.refreshList(_:)), name: "refresh", object: nil)
         
@@ -709,10 +709,14 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     
-    func showToastView() {
+    func showToastView(notification:NSNotification) {
         editedSuccess = true
+        
+        if let object = notification.object as? String {
         self.toastViewForTextfield("Product edited successfully")
-        serviceProductFunction("25", page: "1" , filterName: "" , service_id: serviceString)
+//        productFunction("25", page: "1", filterName: "")
+        serviceProductFunction("25", page: "1" , filterName: "" , service_id: object)
+        }
     }
     
     // MARK: - Search Bar UI

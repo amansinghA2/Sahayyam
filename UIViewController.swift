@@ -176,10 +176,12 @@ extension UIViewController {
         toastLabel.clipsToBounds  =  true
         
         UIView.animateWithDuration(3.0, delay: 0.1, options: .CurveEaseOut, animations: {
+           
             toastLabel.alpha = 0.0
         }) { (completion) in
             let mapViewControllerObj = self.storyboard?.instantiateViewControllerWithIdentifier(identifierString)
             //                    self.presentViewController(mapViewControllerObj!, animated: true, completion: nil)
+            self.hideHud()
             self.navigationController?.pushViewController(mapViewControllerObj!, animated: true)
         }
     }

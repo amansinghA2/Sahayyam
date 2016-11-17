@@ -327,8 +327,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = toLabel1.text where !fromLabel.isEmpty{
             if !(earlierAndAfterDate(fromLabel1.text!, to: toLabel1.text!, dateString: "")){
-                fromLabel1.text = ""
-                toLabel1.text = ""
+                fromLabel1.layer.borderWidth = 1.0
+                toLabel1.layer.borderWidth = 1.0
+                fromLabel1.layer.borderColor = UIColor.redColor().CGColor
+                toLabel1.layer.borderColor = UIColor.redColor().CGColor
+//                fromLabel1.text = ""
+//                toLabel1.text = ""
                 fromHour1 = ""
                 fromMin1 = ""
                 fromAmPm1 = ""
@@ -343,8 +347,13 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = toLabel2.text where !fromLabel.isEmpty{
             if !(earlierAndAfterDate(fromLabel2.text!, to: toLabel2.text!, dateString: "")) {
-                toLabel2.text = ""
-                fromLabel2.text = ""
+                fromLabel2.layer.borderWidth = 1.0
+                toLabel2.layer.borderWidth = 1.0
+                fromLabel2.layer.borderColor = UIColor.redColor().CGColor
+                toLabel2.layer.borderColor = UIColor.redColor().CGColor
+                
+//              toLabel2.text = ""
+//              fromLabel2.text = ""
                 fromHour2 = ""
                 fromMin2 = ""
                 fromAmPm2 = ""
@@ -359,8 +368,12 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = toLabel3.text where !fromLabel.isEmpty{
             if !(earlierAndAfterDate(fromLabel3.text!, to: toLabel3.text!, dateString: "")) {
-                toLabel3.text = ""
-                fromLabel3.text = ""
+                fromLabel3.layer.borderWidth = 1.0
+                toLabel3.layer.borderWidth = 1.0
+                fromLabel3.layer.borderColor = UIColor.redColor().CGColor
+                toLabel3.layer.borderColor = UIColor.redColor().CGColor
+//                toLabel3.text = ""
+//                fromLabel3.text = ""
                 fromHour3 = ""
                 fromMin3 = ""
                 fromAmPm3 = ""
@@ -374,7 +387,10 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField0.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField0.text!){
-                deliveryTimeTextField0.text = ""
+                deliveryTimeTextField0.layer.borderWidth = 1.0
+                deliveryTimeTextField0.layer.borderColor = UIColor.redColor().CGColor
+                
+               // deliveryTimeTextField0.text = ""
                 delHour1 = ""
                 deltoMin1 = ""
                 delAmPm1 = ""
@@ -387,7 +403,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         if let fromLabel = deliveryTimeTextField1.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField1
                 .text!){
-                deliveryTimeTextField1.text = ""
+                deliveryTimeTextField1.layer.borderWidth = 1.0
+                deliveryTimeTextField1.layer.borderColor = UIColor.redColor().CGColor
                 delHour2 = ""
                 deltoMin2 = ""
                 delAmPm2 = ""
@@ -399,7 +416,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField2.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField2.text!){
-                deliveryTimeTextField2.text = ""
+                deliveryTimeTextField2.layer.borderWidth = 1.0
+                deliveryTimeTextField2.layer.borderColor = UIColor.redColor().CGColor
                 delHour3 = ""
                 deltoMin3 = ""
                 delAmPm3 = ""
@@ -411,7 +429,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField3.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField3.text!){
-                deliveryTimeTextField3.text = ""
+                deliveryTimeTextField3.layer.borderWidth = 1.0
+                deliveryTimeTextField3.layer.borderColor = UIColor.redColor().CGColor
                 delHour4 = ""
                 deltoMin4 = ""
                 delAmPm4 = ""
@@ -422,7 +441,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField4.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField4.text!){
-                deliveryTimeTextField4.text = ""
+                deliveryTimeTextField4.layer.borderWidth = 1.0
+                deliveryTimeTextField4.layer.borderColor = UIColor.redColor().CGColor
                 delHour5 = ""
                 deltoMin5 = ""
                 delAmPm5 = ""
@@ -433,7 +453,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField5.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField5.text!){
-                deliveryTimeTextField5.text = ""
+                deliveryTimeTextField5.layer.borderWidth = 1.0
+                deliveryTimeTextField5.layer.borderColor = UIColor.redColor().CGColor
                 delHour6 = ""
                 deltoMin6 = ""
                 delAmPm6 = ""
@@ -445,7 +466,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField6.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField6.text!){
-                deliveryTimeTextField6.text = ""
+                deliveryTimeTextField6.layer.borderWidth = 1.0
+                deliveryTimeTextField6.layer.borderColor = UIColor.redColor().CGColor
                 delHour7 = ""
                 deltoMin7 = ""
                 delAmPm7 = ""
@@ -456,7 +478,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField7.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField7.text!){
-                deliveryTimeTextField7.text = ""
+                deliveryTimeTextField7.layer.borderWidth = 1.0
+                deliveryTimeTextField7.layer.borderColor = UIColor.redColor().CGColor
                 delHour8 = ""
                 deltoMin8 = ""
                 delAmPm8 = ""
@@ -467,7 +490,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField8.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField8.text!){
-                deliveryTimeTextField8.text = ""
+                deliveryTimeTextField8.layer.borderWidth = 1.0
+                deliveryTimeTextField8.layer.borderColor = UIColor.redColor().CGColor
                 delHour9 = ""
                 deltoMin9 = ""
                 delAmPm9 = ""
@@ -479,7 +503,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         
         if let fromLabel = deliveryTimeTextField9.text where !fromLabel.isEmpty{
             if !checkDeliveryTime(deliveryTimeTextField9.text!){
-                deliveryTimeTextField9.text = ""
+                deliveryTimeTextField9.layer.borderWidth = 1.0
+                deliveryTimeTextField9.layer.borderColor = UIColor.redColor().CGColor
                 delHour10 = ""
                 deltoMin10 = ""
                 delAmPm10 = ""
@@ -775,7 +800,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             self.showHud("Loading...")
             ServerManager.sharedInstance().vendorStoreProfile(params) { (isSuccessful, error, result) in
                 if isSuccessful {
-                    
+                    self.showHud("Loading...")
                     self.toastViewWithNavigation("Store profile updated successfully", identifierString: "VendorListID")
                     
                     //                    let storyboard = UIStoryboard(name: "Vendor", bundle: nil)

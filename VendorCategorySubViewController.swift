@@ -56,6 +56,8 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
             serviceListAction("")
             //categoryListIds = categoryList.service_id
         }else{
+            mainCategoryLabel.text = "Select Service"
+            subCategoryLabel.text = "Enter category name"
             serviceButtonOutlet.userInteractionEnabled = true
             mainCategoryTextField.userInteractionEnabled = true
             subCtategoryHeightContraint.constant = 0
@@ -179,7 +181,7 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
         }else{
             categoryParentIDString = categoryList.category_id
             dropper.hide()
-            mainCategoryLabel.text = "Main Category"
+            mainCategoryLabel.text = "Select service"
             serviceButtonOutlet.userInteractionEnabled = false
             mainCategoryTextField.text = categoryList.name
             mainCategoryTextField.userInteractionEnabled = false

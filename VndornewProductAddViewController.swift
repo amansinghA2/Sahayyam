@@ -12,7 +12,7 @@ import Dropper
 class VndornewProductAddViewController: UIViewController , UITextFieldDelegate , DropperDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
 
     
-     let dropper = Dropper(width: 131, height: 200)
+     var dropper = Dropper(width: 131, height: 150)
     @IBOutlet weak var manufacturerLabel: UITextField!
     
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
@@ -370,9 +370,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                                     }
                                 }
                             }else{
-                            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: nil)
-                                self.navigationController?.popToRootViewControllerAnimated(true)
-                                print("Success")
+                                let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MyProductsViewID") as! MyProductsViewController
+                                self.navigationController!.pushViewController(secondViewController, animated: true)
+                                NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: self.service_id)
+                               
                             }
                         }else{
                            self.hideHud()
@@ -412,6 +413,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         self.view.endEditing(true)
         var categoryListArray = [String]()
 
+        //dropper = Dropper(width: categoryLabel.frame.size.width, height: 150)
+        
         for categoryLIst in categoryLists {
             categoryListArray.append(categoryLIst.name)
         }
@@ -424,6 +427,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             dropper.spacing = 0
             dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options:Dropper.Alignment.Center, button:categoryDropDown)
+//            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: categoryDropDown)
         } else {
             dropper.hideWithAnimation(0.1)
         }
@@ -445,7 +449,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             dropper.delegate = self
             dropper.spacing = 0
             dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitTypeButton)
+//            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitTypeButton)
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitTypeButton)
         } else {
             dropper.hideWithAnimation(0.1)
         }

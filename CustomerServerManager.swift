@@ -427,7 +427,7 @@ extension ServerManager {
 
     // MARK: - Update Profile
 
-    func customerUpdateProfilePopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: PopulateData?) -> Void) {
+    func customerUpdateProfilePopulateData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: PopulateData? , result1:[String:AnyObject]?) -> Void) {
         
         let params = [
             "token":token,
@@ -446,12 +446,12 @@ extension ServerManager {
                         if let dict = response.result.value {
                             print(dict)
                             let arr = CommonJsonMapper.customerPopulateDataMapper((dict as? [String:AnyObject])!)
-                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String : AnyObject])
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
                         }
                     case .Failure(let error):
-                       completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1:nil)
                     }
                 }
             }

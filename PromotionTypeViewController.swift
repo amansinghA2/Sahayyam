@@ -55,7 +55,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     var unitTypeString = String()
     var productNameString = String()
     var weightClassID = String()
-    
+    var isEditPage = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
@@ -75,6 +75,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         //      radioButtonController.shouldLetDeSelect = true
         
         if str == "fromEdit"{
+            isEditPage = true
             discountType = "A"
             unitGramAction("") 
             createPromotionButtonOutlet.setTitle("Edit promotion", forState: .Normal)
@@ -83,15 +84,15 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             nameAndQuantityView.hidden = true
             bindModelToViews()
         }else{
+            isEditPage = false
             unitGramAction("")
+            discountType = "A"
             createPromotionButtonOutlet.setTitle("Create Promotion", forState: .Normal)
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
             discounttypeConstraint.constant = 0
             typeandValueView.hidden = true
         }
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -106,13 +107,12 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         
         if str == "fromEdit"{
             self.promotionAddService(vendorPromotionList.product_id)
-            toastString = "Promotion edited successfully"
-            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: toastString)
-            
+//            toastString = "Promotion edited successfully"
+//            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: toastString)
         }else{
             promotionAddService("")
-            toastString = "Promotion created successfully"
-            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: toastString)
+//            toastString = "Promotion created successfully"
+//            NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: toastString)
             
         }
         
@@ -172,7 +172,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     @IBAction func productDescriptionAction(sender: AnyObject) {
         if self.productPromotionOutlet.checkState == .Unchecked{
-            productNameString = vendorPromotionList.promo_name
+            if isEditPage == true {
+              productNameString = vendorPromotionList.promo_name
+            }else{
+                productNameString = ""
+            }
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
             isCheck = true
@@ -397,18 +401,29 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
                 "device_id":"1234"
             ]
             
+            print(params)
+            
             ServerManager.sharedInstance().addPromotion(params) { (isSuccessful, error, result) in
                 if isSuccessful{
+                    if self.str == "fromEdit"{
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                        self.toastString = "Promotion edited successfully"
+                        NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: self.toastString)
+                        self.hideHud()
+                    }else{
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                        self.toastString = "Promotion created successfully"
+                        NSNotificationCenter.defaultCenter().postNotificationName("showtoast", object: self.toastString)
+                        self.hideHud()                        
+                    }
                     
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                    self.hideHud()
                 }else{
                     if let error1 = error{
+                        self.hideHud()
                         AlertView.alertView("Alert", message: error1, alertTitle: "OK", viewController: self)
                         self.navigationController?.popToRootViewControllerAnimated(true)
-                        self.hideHud()
+                        
                     }
-                    self.hideHud()
                 }
             }
         }else{

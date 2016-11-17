@@ -50,7 +50,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         
         if isLogin == "customerDropDown" {
             tokenCheck()
-         ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+         ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                 if isSuccessful{
                     self.hideHud()
                     self.populateDataList  = result!
@@ -179,8 +179,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
                      if self.isLogin == "customerDropDown" {
-                        
-                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
+                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                             if isSuccessful{
                                 self.populateDataList  = result!
                                 customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName

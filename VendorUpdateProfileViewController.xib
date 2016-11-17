@@ -15,6 +15,7 @@
                 <outlet property="lastNameLabel" destination="QfD-yn-bg8" id="aD6-uW-dQd"/>
                 <outlet property="mobileNumberLabel" destination="tFE-yv-i2h" id="ZQJ-kb-mFr"/>
                 <outlet property="passwordTextField" destination="vsr-6H-Xsv" id="2kx-qD-7XF"/>
+                <outlet property="updateButtonOutlet" destination="1ct-fI-eu7" id="1yT-2b-xQG"/>
                 <outlet property="view" destination="3Iz-mR-sLp" id="gnc-7Z-znl"/>
             </connections>
         </placeholder>

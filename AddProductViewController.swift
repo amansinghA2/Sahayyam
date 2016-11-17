@@ -83,7 +83,10 @@ class AddProductViewController: UIViewController {
                 self.hideHud()
                 if let _ = result1!["success"] {
                     self.hideHud()
-                    AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
+//                    AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
+                    self.toastViewForTextfield("Global Product successfully added")
+                    let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MyProductsViewID") as! MyProductsViewController
+                    self.navigationController!.pushViewController(secondViewController, animated: true)
                 }else{
                     self.hideHud()
                     AlertView.alertView("Alert", message: "Offer price cannot be more than the product price", alertTitle: "OK", viewController: self)

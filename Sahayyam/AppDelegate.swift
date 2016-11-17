@@ -173,10 +173,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
                     }
                 case 1:
                     viewControllerPassing("Customer", identifier: "revealView")
-               
                 case 2:
-                    viewControllerPassing("Main", identifier: "LoginVC")
-
+                    viewControllerPassing("Vendor", identifier: "revealView")
                 case 3:
                     viewControllerPassing("Main", identifier: "SwitchUVController")
                 default:
@@ -377,6 +375,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
         // Saves changes in the application's managed object context before the application terminates.
        // self.saveContext()
     }
+    
 
     func viewControllerPassing(storyBoard:String , identifier:String) {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

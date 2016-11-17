@@ -61,15 +61,16 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     
     
     func showToastView(notification:NSNotification) {
-         displayPromotionList()
+        
         if let object1 = notification.object as? String {
             if object1 == "Promotion created successfully" {
                self.toastViewForTextfield(object1)
+                displayPromotionList()
             }else{
                self.toastViewForTextfield("Product edited successfully")
+                displayPromotionList()
             }
         }
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,7 +107,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
         vendorPromotionsList = self.vendorPromotionsLists[indexPath.row]
         
         if isBoolActivate ==  true {
-            toastViewForPromotions("Please deactivate active promotion to add new one.")
+           toastViewForPromotions("Please deactivate active promotion to add new one.")
         }else{
            self.performSegueWithIdentifier("goToEditPromotion", sender: nil)
         }
@@ -155,7 +156,6 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
                
              let refreshAlert = UIAlertController(title: "Alert", message: "Do you want to deactivate this promotion?", preferredStyle: UIAlertControllerStyle.Alert)
              refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
- 
                     let params = [
                         "token":token,
                         "device_id":"1234",
