@@ -7,7 +7,7 @@ import UIKit
 import M13Checkbox
 import TTTAttributedLabel
 
-class VendorUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate{
+class VendorUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate {
 
     @IBOutlet weak var slidemenuButton: UIBarButtonItem!
     @IBOutlet weak var updateButtonOutlet: Button!
@@ -29,7 +29,6 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let str : NSString = "Accept the terms and conditions"
         acceptLabel.delegate = self
         acceptLabel.text = str as String
@@ -38,6 +37,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         acceptLabel.textColor = UIColor.blueColor()
         if isLogin == "customerDropDown" {
             tokenCheck()
+            revealTouch(self)
             self.acceptLabel.hidden = true
             self.acceptCheckbox.hidden = true
             mobileNumberLabel.userInteractionEnabled = false
@@ -194,17 +194,17 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
             if formValidation() {
                 ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
                     if isSuccessful {
-//                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result) in
-//                            if isSuccessful{
-//                                self.hideHud()
-//                                self.populateDataList  = result!
-//                                customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
-//                                NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
-//                                self.hideHud()
-//                            }else{
-//                                self.hideHud()
-//                            }
-//                        })
+                        ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
+                            if isSuccessful{
+                                self.hideHud()
+                                self.populateDataList  = result!
+                                customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
+                                NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
+                                self.hideHud()
+                            }else{
+                                self.hideHud()
+                            }
+                        })
                     let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
                        self.viewControllerPassing("Vendor")

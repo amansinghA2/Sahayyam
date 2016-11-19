@@ -27,7 +27,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
-        
+         revealTouch(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.refreshList1(_:)), name: "refresh1", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorCategoryListViewController.mainUpdate(_:)), name: "updateProduct", object: nil)
@@ -178,7 +178,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
 //               cell.globalEditButton.addTarget(self, action: #selector(VendorCategoryListViewController.localEditButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.deleteButton.addTarget(self, action: #selector(VendorCategoryListViewController.localDeleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.globalEditButton.setImage(UIImage(named: "v_ic_edit_cat"), forState: .Normal)
-                cell.deleteButton.setImage(UIImage(named: "garbage"), forState: .Normal)
+                cell.deleteButton.setImage(UIImage(named: "v_ic_edit"), forState: .Normal)
                 cell.productName.textColor = UIColor.blueColor()
             }else{
                 cell.globalEditButton.userInteractionEnabled = false
@@ -329,7 +329,7 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
                 cell.deleteButton.tag = section
                  cell.deleteButton.addTarget(self, action: #selector(VendorCategoryListViewController.globalDeleteButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 cell.globalEditbutton.setImage(UIImage(named: "v_ic_edit_cat"), forState: .Normal)
-                cell.deleteButton.setImage(UIImage(named: "garbage"), forState: .Normal)
+                cell.deleteButton.setImage(UIImage(named: "v_ic_edit"), forState: .Normal)
                 cell.productName.textColor = UIColor.blueColor()
             }else{
                 cell.globalEditbutton.userInteractionEnabled = false
@@ -439,7 +439,6 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
         }
     }
 
-    
     /*
     // MARK: - Navigation
 

@@ -20,6 +20,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
         tokenCheck()
         self.showHud("Loading...")
+        revealTouch(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorListViewController.toastViewShowing(_:)), name: "toastViewShow", object: nil)
         slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
@@ -83,7 +84,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     
-    // MARk:-  RevealView Controler Delegate
+    // MARK:-  RevealView Controller Delegate
     
     func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
         if position == FrontViewPosition.Left{
@@ -102,7 +103,6 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         
     }
 
-    
     func toastViewShowing(notification:NSNotification) {
         if let obj = notification.object as? String {
             self.toastViewForTextfield(" Order Successfully \(obj)")

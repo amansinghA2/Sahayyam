@@ -693,7 +693,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func setUpView(){
         tokenCheck()
         prepareUI()
-        
+        revealTouch(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastView(_:)), name: "showtoast", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.refreshList(_:)), name: "refresh", object: nil)

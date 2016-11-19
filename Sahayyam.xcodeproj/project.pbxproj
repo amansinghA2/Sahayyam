@@ -739,6 +739,7 @@
 		AF1F1F951D4A090500E36DB0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AFECA13C1DE05C6400B75D84 /* New Group */,
 				AF3D71771D4C609F0025EF32 /* Sahayyam-Bridging-Header.h */,
 				AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */,
 				AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */,
@@ -1106,6 +1107,13 @@
 				AF4680C51D71C7EF005BF406 /* CategoryList.swift */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AFECA13C1DE05C6400B75D84 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		AFF1A4081D63522000B819C5 /* Checkout  */ = {

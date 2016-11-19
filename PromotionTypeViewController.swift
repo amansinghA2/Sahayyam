@@ -161,10 +161,10 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             productNameString = ""
             discounttypeConstraint.constant  = 0
             typeandValueView.hidden = true
-            isCheck = true
+            isCheck = false
         }else{
             productNameString = ""
-            isCheck = false
+            isCheck = true
             discounttypeConstraint.constant  = 67
             typeandValueView.hidden = false
         }
@@ -179,10 +179,10 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             }
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
-            isCheck = true
+            isCheck = false
         }else{
             productNameString = ""
-            isCheck = false
+            isCheck = true
             productnameQuantityConstraint.constant  = 106
             nameAndQuantityView.hidden = false
         }
@@ -272,6 +272,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     func formValidation() -> Bool{
         
+        if isCheck == false {
+            AlertView.alertView("Alert", message: "Please Select Promotion Type", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         //        if categoryLists.contains(nameLabel.text!){
         //            AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
         //            return false
@@ -283,6 +288,17 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         //                return false
         //            }
         //        }
+        
+        if nameTextField.text?.characters.count == 0  {
+            AlertView.alertView("Alert", message: "Name Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        
+        if amountLabel.text?.characters.count == 0  {
+            AlertView.alertView("Alert", message: "Amount cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
         
         let a:Int? = Int(discountValue.text!)
         
@@ -299,16 +315,6 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
                 AlertView.alertView("Alert", message: "Invalid amount value", alertTitle: "OK", viewController: self)
                 return false
             }
-        }
-        
-        if nameTextField.text?.characters.count == 0  {
-            AlertView.alertView("Alert", message: "Name Field cannot be left blank", alertTitle: "OK", viewController: self)
-            return false
-        }
-        
-        if amountLabel.text?.characters.count == 0  {
-            AlertView.alertView("Alert", message: "Amount cannot be left blank", alertTitle: "OK", viewController: self)
-            return false
         }
         
         let b:Double? = Double(amountLabel.text!)

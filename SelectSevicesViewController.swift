@@ -18,13 +18,14 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     var str = ""
     var selectIndexpath = NSIndexPath()
     
+    @IBOutlet weak var selectServiceHeightContraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
         if let data1 = NSUserDefaults.standardUserDefaults().objectForKey("indexKey") as? NSData{
            selectIndexpath = NSKeyedUnarchiver.unarchiveObjectWithData(data1) as! NSIndexPath
-            
         }
 
        self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
@@ -36,8 +37,29 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
-        showAnimate()
+       
         // Dispose of any resources that can be recreated.
+    }
+
+//    override func viewDidAppear(animated: Bool) {
+//        selectServicesTableView.frame = CGRectMake(0 , 0, 219, selectServicesTableView.contentSize.height)
+//
+//    }
+    
+    
+//    override func viewDidLayoutSubviews(){
+//        selectServicesTableView.frame = CGRectMake(0 , 0, 219, selectServicesTableView.contentSize.height)
+//        selectServicesTableView.reloadData()
+//    }
+    
+    
+//    override func updateViewConstraints() {
+//        super.updateViewConstraints()
+//        selectServiceHeightContraint.constant = selectServicesTableView.contentSize.height
+//    }
+    
+    override func viewDidAppear(animated: Bool) {
+        showAnimate()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -70,7 +92,23 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         
         cell.vendorService = self.vendorServices[indexPath.row]
         cell.serviceRadioButton.tag = indexPath.row
-        
+       
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            var newHeight: CGFloat = self.selectServicesTableView.contentSize.height
+            let screenHeightPermissible: CGFloat = (self.view.bounds.size.height - self.selectServicesTableView.frame.origin.y - 50)
+            if newHeight > screenHeightPermissible {
+                //so that table view remains scrollable when 'newHeight'  exceeds the screen bounds
+                newHeight = screenHeightPermissible
+            }
+            var frame = self.selectServicesTableView.frame
+            frame.size.height = newHeight + 10
+            self.selectServicesTableView.frame = frame
+            
+//            var frame = self.selectServicesTableView.frame;
+//            frame.size.height = self.selectServicesTableView.contentSize.height + 10;
+//            self.selectServicesTableView.frame = frame
+        }
 //        let cell = selectServicesTableView.cellForRowAtIndexPath(selectIndexpath) as! SelectServicesTableViewCell
 //        
 //        cell.serviceRadioButton.selected = true

@@ -18,11 +18,7 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
     
     @IBOutlet weak var orderStatusButton: UIBarButtonItem!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.showHud("Loading...")
         
-        tokenCheck()
-        setUpView()
     }
     
     override func viewWillAppear(animated: Bool) {

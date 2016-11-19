@@ -21,6 +21,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         revealTouch(self)
         self.balanceCreditLabel.font = UIFont(name: "", size: 12)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
          tokenCheck()

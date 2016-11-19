@@ -73,8 +73,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             unitGramAction(getProductDetails.weight_class_id)
             serviceListAction(getProductDetails.service_id)
             autoCompleteCategoryAction(getProductDetails.service_id)
-            self.showHud("Loading...")
-            
+            self.showHud("Loading...") 
             let params:[String:AnyObject] = [
                 "token":token,
                 "device_id":"1234",
@@ -94,6 +93,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                 }
             }
         }else{
+            revealTouch(self)
             tokenCheck()
             serviceListAction("")
            // autoCompleteCategoryAction("")
@@ -665,7 +665,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     
     func serviceListAction(getProductDetailsServiceId:String) {
-        
+        self.showHud("Loading...")
         let params1 = [
             "token":token,
             "device_id":"1234"
@@ -673,6 +673,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         
         ServerManager.sharedInstance().getVendorServices(params1) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.hideHud()
                 self.serviceLists = result!
                 
                 if self.fromDesc == "fromDescriptionPage"{
@@ -680,20 +681,24 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     self.bindModelToViews()
                     }
                 }else{
-                    
+                 self.hideHud()
                 }
                 
                 if getProductDetailsServiceId != "" {
-                    
+                    self.hideHud()
                 }else{
                 if self.fromDesc == "fromDescriptionPage"{
+                    self.hideHud()
                     for serviceList in self.serviceLists {
+                        self.hideHud()
                         if getProductDetailsServiceId == serviceList.id {
+                            self.hideHud()
                             self.serviceLabel.text = serviceList.desc
                             self.service_id = self.serviceLists[0].id
                         }
                     }
                 }else{
+                    self.hideHud()
                     self.serviceLabel.text = self.serviceLists[0].desc
                     self.service_id = self.serviceLists[0].id
                     self.autoCompleteCategoryAction(self.service_id)
@@ -711,7 +716,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     func unitGramAction(unitTypeString:String) {
-
+        self.showHud("Loading...")
         let params = [
         "token":token,
         "device_id":"1234"
@@ -719,13 +724,15 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         
         ServerManager.sharedInstance().vendorUnitGram(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.hideHud()
                 self.unitGrams = result!
                 for unitGram in self.unitGrams {
+                    self.hideHud()
                     if unitTypeString == unitGram.weight_class_id {
+                        self.hideHud()
                         self.unitTypeLabel.text = unitGram.title
                     }
                 }
-                self.hideHud()
             }else{
                 self.hideHud()
             }

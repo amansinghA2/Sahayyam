@@ -20,6 +20,7 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     override func viewDidLoad() {
         super.viewDidLoad()
         tokenCheck()
+        revealTouch(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorPromotionsViewController.showToastView(_:)), name: "showtoast", object: nil)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nibName = UINib(nibName: "VendorPromotionTableViewCell", bundle:nil)

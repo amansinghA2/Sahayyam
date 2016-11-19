@@ -20,6 +20,7 @@ class SubscriptionDetailsViewController: UIViewController , UITableViewDelegate 
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         tokenCheck()
+        revealTouch(self)
         let nib1 = UINib(nibName: "SubscriptionDetailsTableViewCell", bundle: nil)
         self.subscriptionDetailsTableView.registerNib(nib1, forCellReuseIdentifier: "subscriptionDetailsIdentifier")
         // Do any additional setup after loading the view.

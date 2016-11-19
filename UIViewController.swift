@@ -201,6 +201,12 @@ extension UIViewController {
         tableView.backgroundView = emptyLabel
         emptyLabel.textColor = UIColor.grayColor()
     }
+    
+    func revealTouch(controller:UIViewController) {
+        let revealController = controller.revealViewController()
+        let tap = revealController.tapGestureRecognizer()
+        self.view.addGestureRecognizer(tap)
+    }
 
 
 }

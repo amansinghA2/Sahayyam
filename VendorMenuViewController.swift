@@ -7,7 +7,7 @@
 
 import UIKit
 
-class VendorMenuViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
+class VendorMenuViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate {
 
     var listArray = []
     var listImageArray = []
@@ -20,7 +20,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
        menuListTableView.delegate = self
        menuListTableView.dataSource = self
-        
+       
         let nib1 = UINib(nibName: "VendorMenuTableViewCell", bundle: nil)
         self.menuListTableView.registerNib(nib1, forCellReuseIdentifier: "menuCell")
         

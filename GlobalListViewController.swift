@@ -37,7 +37,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
         tokenCheck()
-        
+         revealTouch(self)
         productMainFunction("25", page: "1", filterName: "")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)

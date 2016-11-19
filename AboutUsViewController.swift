@@ -23,7 +23,7 @@ class AboutUsViewController: UIViewController {
         super.viewDidLoad()
         
         slideMenuShow(slidemenuButton, viewcontroller: self)
-        
+        revealTouch(self)
         addresstextField.setTextFieldStyle(TextFieldStyle.EmailID)
         
        // setBackButtonForNavigation()
@@ -65,6 +65,7 @@ class AboutUsViewController: UIViewController {
         
         ServerManager.sharedInstance().vendorAboutUs(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.toastViewWithNavigation("Email sent successfully", identifierString: "VendorListID")
                 self.hideHud()
             }else{
               self.hideHud()  
@@ -77,7 +78,6 @@ class AboutUsViewController: UIViewController {
     }
     
     func formValidation() -> Bool {
-        
         if nameTextField.text?.characters.count == 0 {
             AlertView.alertView("Alert", message: "Name field cannot be left blank", alertTitle: "OK", viewController: self)
             return false
@@ -91,7 +91,7 @@ class AboutUsViewController: UIViewController {
 //        if emailTextField.text?.characters.count == 0 {
 //            AlertView.alertView("Alert", message: "email Field cannot be left blank", alertTitle: "OK", viewController: self)
 //            return false
-//        }.
+//        }
         
         if messageTextField.text?.characters.count == 0 {
             AlertView.alertView("Alert", message: "Message field cannot be left blank", alertTitle: "OK", viewController: self)

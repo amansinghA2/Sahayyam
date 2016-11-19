@@ -43,6 +43,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         pinccodeTextfield.setTextFieldStyle(TextFieldStyle.Pincode)
         
         slideMenuShow(slidemenuButton, viewcontroller: self)
+        revealTouch(self)
         // Do any additional setup after loading the view.
         address.layer.borderWidth = 1
         address.layer.borderColor = UIColor.lightGrayColor().CGColor
@@ -251,7 +252,6 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         
         if Reachability.isConnectedToNetwork() {
             if formValidation() {
-                
                 let params:[String:AnyObject]? = [
                     "token":token,
                     "device_id":"1234",

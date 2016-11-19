@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSevicesViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="selectServiceHeightContraint" destination="Eu3-Ky-A5B" id="iHR-82-7F5"/>
                 <outlet property="selectServicesTableView" destination="W8n-i0-bvu" id="DJD-wW-3iJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,8 +27,8 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6V6-BS-CTH"/>
-                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gDS-VU-aLK"/>
+                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DH4-e8-8nl"/>
+                <constraint firstItem="W8n-i0-bvu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gWI-Q6-Nh6"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="212" y="184"/>

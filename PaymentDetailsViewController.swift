@@ -20,6 +20,7 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         tokenCheck()
+         revealTouch(self)
         let nib1 = UINib(nibName: "PaymentDetailsTableViewCell", bundle: nil)
         self.paymentdetailsTableView.registerNib(nib1, forCellReuseIdentifier: "paymentdetailsIdentifier")
     // Do any additional setup after loading the view.

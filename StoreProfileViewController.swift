@@ -185,6 +185,8 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tokenCheck()
+        revealTouch(self)
         textfieldArray = [deliveryTimeTextField0 , deliveryTimeTextField1 , deliveryTimeTextField2 , deliveryTimeTextField3 , deliveryTimeTextField4 , deliveryTimeTextField5, deliveryTimeTextField6 , deliveryTimeTextField7, deliveryTimeTextField8 , deliveryTimeTextField9 ]
         
         
