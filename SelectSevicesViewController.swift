@@ -22,7 +22,6 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         super.viewDidLoad()
         
    NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
-        
         if let data1 = NSUserDefaults.standardUserDefaults().objectForKey("indexKey") as? NSData{
            selectIndexpath = NSKeyedUnarchiver.unarchiveObjectWithData(data1) as! NSIndexPath
             

@@ -60,6 +60,7 @@
 		AF302DB41DBB581D00A9BF71 /* CustomNSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF302DB31DBB581D00A9BF71 /* CustomNSDate.swift */; };
 		AF3844BB1D7415E100E4F2B4 /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3844BA1D7415E100E4F2B4 /* CustomClass.swift */; };
 		AF3D717A1D4C60A00025EF32 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */; };
+		AF42BC281DDEC28200AB29B0 /* VendorProductInDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42BC271DDEC28200AB29B0 /* VendorProductInDetails.swift */; };
 		AF4680C61D71C7EF005BF406 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4680C51D71C7EF005BF406 /* CategoryList.swift */; };
 		AF4D7EEE1DB2398500C9BCB3 /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4D7EEC1DB2398500C9BCB3 /* CategoryEditViewController.swift */; };
 		AF4D7EEF1DB2398500C9BCB3 /* CategoryEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF4D7EED1DB2398500C9BCB3 /* CategoryEditViewController.xib */; };
@@ -356,6 +357,7 @@
 		AF3D71771D4C609F0025EF32 /* Sahayyam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sahayyam-Bridging-Header.h"; sourceTree = "<group>"; };
 		AF3D71781D4C60A00025EF32 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		AF3D71791D4C60A00025EF32 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		AF42BC271DDEC28200AB29B0 /* VendorProductInDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendorProductInDetails.swift; sourceTree = "<group>"; };
 		AF4680C51D71C7EF005BF406 /* CategoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		AF4D7EEC1DB2398500C9BCB3 /* CategoryEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
 		AF4D7EED1DB2398500C9BCB3 /* CategoryEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryEditViewController.xib; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				AFFBDC401DA76AB7006DDA28 /* OrderStatus.swift */,
 				AF0A91B21DABA9EB00A2160D /* ProductCategoryList.swift */,
 				AF868EA21DC0D2D0006A6BF0 /* UnitGram.swift */,
+				AF42BC271DDEC28200AB29B0 /* VendorProductInDetails.swift */,
 			);
 			name = Vendors;
 			sourceTree = "<group>";
@@ -1505,6 +1508,7 @@
 				AF4E78C31D5085D900E2FB20 /* TrackOrderTableViewCell.swift in Sources */,
 				AF5438D21D88193D00CDCCD9 /* VendorPayment.swift in Sources */,
 				AF5CB11E1D98EA6C007C0261 /* SubsPaymentTableViewCell.swift in Sources */,
+				AF42BC281DDEC28200AB29B0 /* VendorProductInDetails.swift in Sources */,
 				AF1685B41D840C57002EA5F4 /* CustomerDropDownTableViewCell.swift in Sources */,
 				AFC26FC61D4F192E0003471B /* CommonJsonMapper.swift in Sources */,
 				AFCD86671D895AE000F10ABB /* VendorService.swift in Sources */,

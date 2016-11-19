@@ -23,7 +23,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
     var isAccept = false
     
     var isLogin = ""
-    var mTos = ""
+    var mTos = false
     
     var populateDataList = PopulateData()
     
@@ -45,7 +45,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
             ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                 if isSuccessful{
                     
-                    if let tos = result1!["TOS"] as? String{
+                    if let tos = result1!["TOS"] as? Bool{
                        self.mTos = tos
                     }
                     
@@ -67,7 +67,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 if isSuccessful{
                     self.hideHud()
                     
-                    if let tos = result1!["TOS"] as? String{
+                    if let tos = result1!["TOS"] as? Bool{
                         self.mTos = tos
                     }
                     
@@ -115,7 +115,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         checkBoxState()
         
         let params:[String:AnyObject]?
-        if isLogin == "customerDropDown" {
+        if mTos {
             params = [
                 "token":token,
                 "device_id":"1234",
@@ -127,6 +127,14 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 "telephone":mobileNumberLabel.text!,
                 "password":passwordTextField.text!,
                 "confirm":confirmPassword.text!,
+                "address[0][address_1]":populateDataList.address,
+                "address[0][zone_id]":populateDataList.zone_id,
+                "address[0][city]":populateDataList.cityName,
+                "address[0][postcode]":populateDataList.pincode,
+                "image":"",
+                "image_path":"",
+                "selected_id_proof":"",
+                "tos":"on"
             ]
         }else{
             params = [
@@ -140,12 +148,47 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 "telephone":mobileNumberLabel.text!,
                 "password":passwordTextField.text!,
                 "confirm":confirmPassword.text!,
-                "tos":"on"
+                "address[0][address_1]":populateDataList.address,
+                "address[0][zone_id]":populateDataList.zone_id,
+                "address[0][city]":populateDataList.cityName,
+                "address[0][postcode]":populateDataList.pincode,
+                "image_path":"",
+                "selected_id_proof":"",
+                "image":"",
             ]
+  
         }
         
+//        let params:[String:AnyObject]?
+//        if isLogin == "customerDropDown" {
+//            params = [
+//                "token":token,
+//                "device_id":"1234",
+//                "action":"info",
+//                "firstname":firstNameLabel.text!,
+//                "lastname":lastNameLabel.text!,
+//                "dob":dateOfBirthTextField.text!,
+//                "email":emailIdTextField.text!,
+//                "telephone":mobileNumberLabel.text!,
+//                "password":passwordTextField.text!,
+//                "confirm":confirmPassword.text!,
+//            ]
+//        }else{
+//            params = [
+//                "token":token,
+//                "device_id":"1234",
+//                "action":"info",
+//                "firstname":firstNameLabel.text!,
+//                "lastname":lastNameLabel.text!,
+//                "dob":dateOfBirthTextField.text!,
+//                "email":emailIdTextField.text!,
+//                "telephone":mobileNumberLabel.text!,
+//                "password":passwordTextField.text!,
+//                "confirm":confirmPassword.text!,
+//                "tos":"on"
+//            ]
+//        }
         print(params)
-        
         self.view.endEditing(true)
         if Reachability.isConnectedToNetwork() {
             if formValidation() {
@@ -167,10 +210,11 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                        self.viewControllerPassing("Vendor")
                     }))
                     self.presentViewController(alertController, animated: true, completion: nil)
+                    }else{
+                        AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                        self.hideHud()
                     }
-                }
-            }else{
-                
+            }
             }
         }
         else{
@@ -209,6 +253,18 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
             AlertView.alertView("Alert", message: "Invalid Mail Id", alertTitle: "OK", viewController: self)
             return false
         }
+        
+//        if !(firstNameLabel.text?.characters.count > 1 && firstNameLabel.text?.characters.count < 32) {
+//            self.hideHud()
+//            AlertView.alertView("Alert", message: "Invalid First Name", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+//        
+//        if !(lastNameLabel.text?.characters.count > 1 && lastNameLabel.text?.characters.count < 32) {
+//            self.hideHud()
+//            AlertView.alertView("Alert", message: "Invalid Last Name", alertTitle: "OK", viewController: self)
+//            return false
+//        }
         
         if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
             self.hideHud()

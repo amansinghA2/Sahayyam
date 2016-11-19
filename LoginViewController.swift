@@ -78,6 +78,8 @@ class LoginViewController: UIViewController {
                         switch profile{
                         case true:
                             switch customerType{
+                            case 0:
+                                self.performSegueWithIdentifier("gotoSwitchUser", sender: nil)
                             case 1:
                                 self.performSegueWithIdentifier("goToCustomerUpdate", sender: nil)
                             case 2:

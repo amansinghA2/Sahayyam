@@ -62,7 +62,8 @@ class ServerManager: NSObject {
                                 }
                             }
                         }
-                    case .Failure(let error):
+                        
+                    case .Failure( let error):
                         print(error)
                         completionClosure(isSuccessful: false,error: nil,result: nil)
                     }

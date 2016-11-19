@@ -203,7 +203,7 @@ extension ServerManager {
     
     // MARK: Wish LIst
     
-    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:[ProductCollectionList]? , result1:[String:AnyObject]?) -> Void) {
+    func vendorMyProductsList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:NSError?, result:[ProductCollectionList]? , result1:[String:AnyObject]?) -> Void) {
         
         //token, product_name,  limit, page, device_id, global=0, service_id
         
@@ -226,7 +226,7 @@ extension ServerManager {
                         }
                     case .Failure( let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1:nil)
+                        completionClosure(isSuccessful: false,error:error ,result: nil , result1:nil)
                 }
             }
         }
@@ -256,8 +256,8 @@ extension ServerManager {
                         completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
                     }
                 }
-        }
-    }
+            }
+       }
     
     func displayPromotionList(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [VendorPromotionList]?) -> Void) {
         
@@ -955,6 +955,37 @@ extension ServerManager {
                 }
         }
     }
+    
+    
+    
+    func vendorProductDetailDetails(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: VendorProductInDetails?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, productDetailDetailsURl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.productDetailsDetailsMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    
     
     
 }

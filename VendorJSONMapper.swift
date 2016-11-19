@@ -459,6 +459,91 @@ class VendorJSONMapper: NSObject {
         }
         return unitGrams
     }
+    
+    
+    class func  productDetailsDetailsMapper(result:[String:AnyObject]) -> VendorProductInDetails {
+        
+        
+        let customerList = VendorProductInDetails()
+        
+            if let banner = result["name"] as? String{
+                customerList.productName = banner
+            }
+            
+            if let addr = result["price"] as? String{
+                customerList.price = addr
+            }
+            
+            if let addr = result["product_id"] as? String{
+                customerList.product_id = addr
+            }
+            
+            if let addr = result["description"] as? String{
+                customerList.mDescription = addr
+            }
+            
+            if let addr = result["quantity"] as? String{
+                customerList.mQuantity = addr
+            }
+            
+            if let banner = result["manufacturer"] as? String{
+                customerList.productName = banner
+            }
+            
+            if let addr = result["image"] as? String{
+                customerList.mImgDir = addr
+            }
+        
+            if let addr = result["images"] as? String{
+            customerList.mImgDirs = addr
+            }
+        
+            if let addr = result["offerPrice"] as? String{
+                customerList.mOfferPrice = addr
+            }
+            
+            if let addr = result["manufacturer_id"] as? Int{
+                customerList.mManufacturarId = addr
+            }
+            
+            if let addr = result["weight_class_id"] as? String{
+                customerList.mWeightId = addr
+            }
+            
+            if let addr = result["subtract"] as? String{
+                customerList.mSubstract = addr
+            }
+            
+            if let addr = result["status"] as? String{
+                customerList.mStatus = addr
+            }
+            
+            if let banner = result["service_id"] as? String{
+                customerList.mService = banner
+            }
+            
+            if let addr = result["productCategories"] as? String{
+                customerList.mCategoryId = addr
+            }
+            
+            if let addr = result["weight"] as? String{
+                customerList.mUnits = addr
+            }
+            
+            if let addr = result["productCategories"] as? String{
+                customerList.mCatId = addr
+            }
+            
+            if let addr = result["categoryName"] as? String{
+                customerList.mCatName = addr
+            }
+            
+            if let addr = result["ref_code"] as? Int{
+                customerList.mRefCode = addr
+            }
+  
+        return customerList
+    }
 
 
     

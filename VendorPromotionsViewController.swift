@@ -241,6 +241,13 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
             
             ServerManager.sharedInstance().vendorDeletePromotion(params) { (isSuccessful, error, result) in
                 if isSuccessful {
+                    
+                   if self.vendorPromotionsLists[(indexPath?.row)!].status == "1"{
+                       self.isBoolActivate = false
+                    }else{
+                        self.isBoolActivate = true
+                    }
+
                     self.hideHud()
                     self.vendorPromotionsLists.removeAtIndex((indexPath?.row)!)
                     self.vendorPromotionTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)

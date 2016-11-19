@@ -53,7 +53,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     var serviceList = ServiceList()
     var categoryListIds = String()
     var weightClassID = String()
-    
+    var vendorProductDetails = VendorProductInDetails()
+    var isServicealreadySelected = false
     override func viewDidLoad() {
         super.viewDidLoad()
         statusString = "1"
@@ -63,7 +64,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         priceLabel.keyboardType = UIKeyboardType.DecimalPad
         offerPriceLabel.keyboardType = UIKeyboardType.DecimalPad
         unitValueLabel.keyboardType = UIKeyboardType.PhonePad
-        
+
         if fromDesc == "fromDescriptionPage"{
             tokenCheck()
             weightClassID = getProductDetails.weight_class_id
@@ -72,11 +73,31 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             unitGramAction(getProductDetails.weight_class_id)
             serviceListAction(getProductDetails.service_id)
             autoCompleteCategoryAction(getProductDetails.service_id)
+            self.showHud("Loading...")
+            
+            let params:[String:AnyObject] = [
+                "token":token,
+                "device_id":"1234",
+                "product_id":getProductDetails.product_id,
+                "width":"515",
+                "height":"500"
+            ]
+            
+            ServerManager.sharedInstance().vendorProductDetailDetails(params) { (isSuccessful, error, result) in
+                if isSuccessful {
+                    print(result)
+                    self.vendorProductDetails = result!
+                    self.bindModelToViews()
+                    self.hideHud()
+                }else{
+                    self.hideHud()
+                }
+            }
         }else{
+            tokenCheck()
             serviceListAction("")
-            autoCompleteCategoryAction("")
+           // autoCompleteCategoryAction("")
             unitGramAction("")
-             tokenCheck()
             slideMenuShow(slideMenuButton, viewcontroller: self)
         }
 
@@ -90,7 +111,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     override func viewWillAppear(animated: Bool) {
-        
     }
     
     func bindModelToViews() {
@@ -109,7 +129,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             manufacturerLabel.text = String(name)
         }
         
-        if let name = getProductDetails.categoryName as? String{
+        if let name = vendorProductDetails.mCatName as? String{
             categoryLabel.text = name
         }
         
@@ -126,7 +146,10 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if let name = getProductDetails.weight as? String{
-            unitTypeLabel.text = name
+            if name.containsString("0.00000000"){
+            }else{
+                unitTypeLabel.text = name
+            }
         }
         
 //        if let name = getProductDetails.service_id as? String{
@@ -179,12 +202,19 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
 //        }
         
        
-        if let name = getProductDetails.image as? String{
+        if let name = vendorProductDetails.mImgDir as? String{
             if name == "" {
             productImage.image = UIImage(named: "v_no_image")
             }else{
-                str = name
                 productImage.imageFromUrl(name)
+            }
+        }
+        
+        if let name = vendorProductDetails.mImgDirs as? String{
+            if name == "" {
+                productImage.image = UIImage(named: "v_no_image")
+            }else{
+                str = name
             }
         }
         
@@ -412,13 +442,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBAction func categoryAction(sender: AnyObject) {
         self.view.endEditing(true)
         var categoryListArray = [String]()
-
-        //dropper = Dropper(width: categoryLabel.frame.size.width, height: 150)
         
+        //dropper = Dropper(width: categoryLabel.frame.size.width, height: 150)
+       
         for categoryLIst in categoryLists {
             categoryListArray.append(categoryLIst.name)
         }
-        
+
         if dropper.status == .Hidden {
             dropper.tag = 2
             dropper.items = categoryListArray
@@ -470,7 +500,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         } else {
             dropper.hideWithAnimation(0.1)
         }
-        
     }
     
     @IBAction func statusAction(sender: AnyObject) {
@@ -499,10 +528,8 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     service_id = serviceList.id
                 }
             }
-            
-           serviceListAction(service_id)
-           autoCompleteCategoryAction(service_id)
-            
+            //serviceListAction(service_id)
+            autoCompleteCategoryAction(service_id)
         case 2:
             categoryLabel.text = "\(contents)"
             for categoryList in categoryLists {
@@ -593,32 +620,40 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     }
     
     func autoCompleteCategoryAction(service_id:String) {
-    
+        self.showHud("Loading...")
         let params = [
             "token":token,
             "device_id":"1234",
             "service_id":service_id,
             "filter_name":""
         ]
+
+        print(params)
         
         ServerManager.sharedInstance().autocompleteCategoryList(params) { (isSuccessful, error, result) in
             if isSuccessful {
+                self.hideHud()
                 self.categoryLists = result!
                 if self.fromDesc == "fromDescriptionPage"{
                     if self.clickedField == false {
+                        self.hideHud()
                         self.bindModelToViews()
                     }
                 }else{
-                    
+                  self.hideHud()
                 }
                 
                 if service_id != "" {
+                    self.hideHud()
                     self.categoryLabel.text = self.categoryLists[0].name
+                    self.categoryListIds = self.categoryLists[0].category_id
                 }else{
                 if self.fromDesc == "fromDescriptionPage"{
-                    
+                   self.hideHud()
                 }else{
                     self.categoryLabel.text = self.categoryLists[0].name
+                    self.categoryListIds = self.categoryLists[0].category_id
+                    self.hideHud()
                 }
                 }
             }else{
@@ -655,11 +690,13 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                     for serviceList in self.serviceLists {
                         if getProductDetailsServiceId == serviceList.id {
                             self.serviceLabel.text = serviceList.desc
+                            self.service_id = self.serviceLists[0].id
                         }
                     }
                 }else{
                     self.serviceLabel.text = self.serviceLists[0].desc
                     self.service_id = self.serviceLists[0].id
+                    self.autoCompleteCategoryAction(self.service_id)
                 }
                 }
             }else{

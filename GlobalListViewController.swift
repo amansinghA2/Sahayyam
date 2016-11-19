@@ -24,7 +24,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var vendorService = VendorService()
     var tableView = UITableView()
     var getProductCollectionListAdd = [ProductCollectionList]()
-    var page = 0
+    var page = 1
     var totalPages:Int?
     var limit = 25
     var isDataSOurceREsultEmpty = false
@@ -565,7 +565,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 
     func loadButtonClicked(sender:UIButton) {
             page += 1
-            if page < totalPages{
+            if page <= totalPages{
                 productFunction("25", page: "\(page)", filterName: "", serviceName: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")

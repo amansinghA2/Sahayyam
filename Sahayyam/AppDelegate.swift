@@ -153,10 +153,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
             switch profile{
             case true:
                 switch customerType{
+                case 0:
+                    viewControllerPassing("Main", identifier: "SwitchUVController")
                 case 1:
-                    viewControllerPassing("Main", identifier: "CustomerUPViewController")
+                    print("")
+                   // viewControllerPassing("Main", identifier: "CustomerUPViewController")
                 case 2:
-                    viewControllerPassing("Main", identifier: "VendorUpdateID")
+                    print("")
+//                    viewControllerPassing("Main", identifier: "VendorUpdateID")
                 default:
                     print("")
                 }

@@ -14,7 +14,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
 
     @IBOutlet weak var updateButtonOutlet: Button!
     @IBOutlet weak var acceptCheckbox: M13Checkbox!
-    
     @IBOutlet weak var acceptLabel: TTTAttributedLabel!
     @IBOutlet weak var customerImage: UIImageView!
     @IBOutlet weak var firstNameLabel: TextField!
@@ -31,7 +30,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var confirmPassword: TextField!
     var str = ""
     var isAccept = false
-    
+    var mTos = ""
     var isLogin = ""
     let imagePicker = UIImagePickerController()
     
@@ -54,6 +53,10 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 if isSuccessful{
                     self.hideHud()
                     self.populateDataList  = result!
+                    
+                    if let tos = result1!["TOS"] as? String{
+                        self.mTos = tos
+                    }
                     customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
                     NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                     
@@ -67,13 +70,13 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             })
         }else {
             self.hideHud()
-            profile = false
+           // profile = false
 //            customerType = 0
 //            profileType = 1
 //
 //            NSUserDefaults.standardUserDefaults().setInteger(customerType, forKey: "customerType")
 //            NSUserDefaults.standardUserDefaults().setInteger(profileType, forKey: "profileType")
-            NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
+           // NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
             
             self.acceptLabel.hidden = false
             acceptCheckbox.hidden = false
@@ -126,9 +129,9 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
 
         checkBoxState()
-        
+        self.showHud("Loading...")
         let params:[String:AnyObject]?
-        if isLogin == "customerDropDown" {
+        if self.mTos == "0"{
             params = [
                 "token":token,
                 "device_id":"1234",
@@ -144,29 +147,72 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 "address[0][zone_id]":stateTextField.text!,
                 "address[0][city]":cityTextField.text!,
                 "address[0][postcode]":pincodeTextfield.text!,
-                "image":self.str
+                "image":self.str,
+                "image_path":"",
+                "selected_id_proof":"1",
             ]
         }else{
-           params = [
-                "token":token,
-                "device_id":"1234",
-                "action":"info",
-                "firstname":firstNameLabel.text!,
-                "lastname":lastNameLabel.text!,
-                "dob":dateOfBirthTextField.text!,
-                "email":emailIdTextField.text!,
-                "telephone":mobileNumberLabel.text!,
-                "password":passwordTextField.text!,
-                "confirm":confirmPassword.text!,
-                "address[0][address_1]":addressTextField.text!,
-                "address[0][zone_id]":stateTextField.text!,
-                "address[0][city]":cityTextField.text!,
-                "address[0][postcode]":pincodeTextfield.text!,
-                "image":self.str,
-                "tos":"on"
-            ]
-
+                       params = [
+                            "token":token,
+                            "device_id":"1234",
+                            "action":"info",
+                            "firstname":firstNameLabel.text!,
+                            "lastname":lastNameLabel.text!,
+                            "dob":dateOfBirthTextField.text!,
+                            "email":emailIdTextField.text!,
+                            "telephone":mobileNumberLabel.text!,
+                            "password":passwordTextField.text!,
+                            "confirm":confirmPassword.text!,
+                            "address[0][address_1]":addressTextField.text!,
+                            "address[0][zone_id]":stateTextField.text!,
+                            "address[0][city]":cityTextField.text!,
+                            "address[0][postcode]":pincodeTextfield.text!,
+                            "image":self.str,
+                            "selected_id_proof":"1",
+                            "tos":"on"
+                        ]
         }
+        
+//        let params:[String:AnyObject]?
+//        if isLogin == "customerDropDown" {
+//            params = [
+//                "token":token,
+//                "device_id":"1234",
+//                "action":"info",
+//                "firstname":firstNameLabel.text!,
+//                "lastname":lastNameLabel.text!,
+//                "dob":dateOfBirthTextField.text!,
+//                "email":emailIdTextField.text!,
+//                "telephone":mobileNumberLabel.text!,
+//                "password":passwordTextField.text!,
+//                "confirm":confirmPassword.text!,
+//                "address[0][address_1]":addressTextField.text!,
+//                "address[0][zone_id]":stateTextField.text!,
+//                "address[0][city]":cityTextField.text!,
+//                "address[0][postcode]":pincodeTextfield.text!,
+//                "image":self.str
+//            ]
+//        }else{
+//           params = [
+//                "token":token,
+//                "device_id":"1234",
+//                "action":"info",
+//                "firstname":firstNameLabel.text!,
+//                "lastname":lastNameLabel.text!,
+//                "dob":dateOfBirthTextField.text!,
+//                "email":emailIdTextField.text!,
+//                "telephone":mobileNumberLabel.text!,
+//                "password":passwordTextField.text!,
+//                "confirm":confirmPassword.text!,
+//                "address[0][address_1]":addressTextField.text!,
+//                "address[0][zone_id]":stateTextField.text!,
+//                "address[0][city]":cityTextField.text!,
+//                "address[0][postcode]":pincodeTextfield.text!,
+//                "image":self.str,
+//                "tos":"on"
+//            ]
+//
+//        }
 
         print(params)
         
@@ -174,25 +220,33 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         if Reachability.isConnectedToNetwork() {
         if formValidation() {
             ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in
-                self.hideHud()
                 
+                if isSuccessful {
+                self.hideHud()
                 let alertController = UIAlertController(title: "Alert", message: "Profile Updated", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
                      if self.isLogin == "customerDropDown" {
                         ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                             if isSuccessful{
+                                self.hideHud()
                                 self.populateDataList  = result!
                                 customerFullName = self.populateDataList.firstname + " " + self.populateDataList.lastName
                                 NSUserDefaults.standardUserDefaults().setObject(customerFullName, forKey: "customerFullName")
                             }
                         })
-   
-                    self.navigationController?.popViewControllerAnimated(true)
+
+                        self.navigationController?.popViewControllerAnimated(true)
                      }else{
+                       self.hideHud()
                        self.viewControllerPassing("Customer")
                      }
                 }))
                 self.presentViewController(alertController, animated: true, completion: nil)
+            }
+                else{
+                    AlertView.alertViewWithPopup("Alert", message: error!, alertTitle: "OK", viewController: self)
+                        self.hideHud()
+                }
             }
         }else{
             
@@ -287,6 +341,18 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             return false
         }
         
+//        if !(firstNameLabel.text?.characters.count > 1 && firstNameLabel.text?.characters.count < 32) {
+//            self.hideHud()
+//            AlertView.alertView("Alert", message: "Invalid First Name", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+//        
+//        if !(lastNameLabel.text?.characters.count > 1 && lastNameLabel.text?.characters.count < 32) {
+//            self.hideHud()
+//            AlertView.alertView("Alert", message: "Invalid Last Name", alertTitle: "OK", viewController: self)
+//            return false
+//        }
+        
         if !(Validations.isValidPassAndConfirmPassword(passwordTextField.text! , confirmPassword: confirmPassword.text!)) {
             self.hideHud()
             AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
@@ -298,7 +364,6 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
         }else{
         if isAccept == false {
             AlertView.alertView("Alert", message: "Didn't accept the aggrement", alertTitle: "OK", viewController: self)
-        
             return false
         }else{
             return true
@@ -307,7 +372,7 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     }
     
     func dataInTextField(){
-
+        
         firstNameLabel.text = populateDataList.firstname
         lastNameLabel.text = populateDataList.lastName
         mobileNumberLabel.text = populateDataList.mobileNumber

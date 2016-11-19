@@ -39,7 +39,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     var vendorList:VendorList!
     var favSetter = false
     var selectedCategoryLIst:CategoryList!
-    var page = 0
+    var page = 1
     var totalPages:Int?
     var limit = 25
     var isDataSOurceREsultEmpty = false
@@ -87,10 +87,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.view.endEditing(true)
         tableView.hidden = true
     }
-
-    override func viewDidAppear(animated: Bool) {
-
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,7 +98,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     override func viewWillAppear(animated: Bool) {
         
         isServicesSelected = false
-        getProductCollectionListAdd.removeAll()
         super.viewWillAppear(animated)
         self.prepareUI()
 
@@ -165,28 +161,28 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                     self.myproductsCollectionView.reloadData()
                 }
             }else{
+                
                 if (error != nil) {
                     self.getProductCollectionListAdd.removeAll()
                     
-                    if self.noImage == "1" {
-                        self.myproductsCollectionView.hidden = true
-                        self.myProductsTableView.hidden = false
-                        self.myProductsTableView.dataSource = self
-                        self.myProductsTableView.delegate = self
-                        self.myProductsTableView.reloadData()
-                    }else{
-                        self.myProductsTableView.hidden = true
-                        self.myproductsCollectionView.hidden = false
-                        self.myproductsCollectionView.dataSource = self
-                        self.myproductsCollectionView.delegate = self
-                        self.myproductsCollectionView.reloadData()
-                    }
+//                    if self.noImage == "1" {
+//                        self.myproductsCollectionView.hidden = true
+//                        self.myProductsTableView.hidden = false
+//                        self.myProductsTableView.dataSource = self
+//                        self.myProductsTableView.delegate = self
+//                        self.myProductsTableView.reloadData()
+//                    }else{
+//                        self.myProductsTableView.hidden = true
+//                        self.myproductsCollectionView.hidden = false
+//                        self.myproductsCollectionView.dataSource = self
+//                        self.myproductsCollectionView.delegate = self
+//                        self.myproductsCollectionView.reloadData()
+//                    }
+                    
                     self.tableViewCustomLabel("No Products", tableView: self.myProductsTableView)
                     self.collectionViewCustomLabel("No Products", collectionView: self.myproductsCollectionView)
                     self.hideHud()
-                    
                 }
-                
                 self.hideHud()
             }
         }
@@ -242,6 +238,28 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                     self.hideHud()
                 }
             }else{
+                
+                if (error != nil) {
+                    self.getProductCollectionListAdd.removeAll()
+                    
+                    //                    if self.noImage == "1" {
+                    //                        self.myproductsCollectionView.hidden = true
+                    //                        self.myProductsTableView.hidden = false
+                    //                        self.myProductsTableView.dataSource = self
+                    //                        self.myProductsTableView.delegate = self
+                    //                        self.myProductsTableView.reloadData()
+                    //                    }else{
+                    //                        self.myProductsTableView.hidden = true
+                    //                        self.myproductsCollectionView.hidden = false
+                    //                        self.myproductsCollectionView.dataSource = self
+                    //                        self.myproductsCollectionView.delegate = self
+                    //                        self.myproductsCollectionView.reloadData()
+                    //                    }
+                    
+                    self.tableViewCustomLabel("No Products", tableView: self.myProductsTableView)
+                    self.collectionViewCustomLabel("No Products", collectionView: self.myproductsCollectionView)
+                    self.hideHud()
+                }
                 self.hideHud()
             }
         }
@@ -361,7 +379,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        getSpecificProductList = getProductCollectionList[indexPath.row]
+        getSpecificProductList = getProductCollectionListAdd[indexPath.row]
         performSegueWithIdentifier("vendorProductDetailsSegue", sender: nil)
     }
 
@@ -454,7 +472,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        getSpecificProductList = getProductCollectionList[indexPath.row]
+        getSpecificProductList = getProductCollectionListAdd[indexPath.row]
         performSegueWithIdentifier("vendorProductDetailsSegue", sender: nil)
     }
 
@@ -632,8 +650,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
         }else{
             page += 1
-            if page < totalPages{
-                productFunction("25", page: "\(page)" , filterName: "")
+            if page <= totalPages{
+                serviceProductFunction("25", page: "\(page)", filterName: "", service_id: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
                 sender.hidden = true
@@ -711,7 +729,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     
     func showToastView(notification:NSNotification) {
         editedSuccess = true
-        
         if let object = notification.object as? String {
         self.toastViewForTextfield("Product edited successfully")
 //        productFunction("25", page: "1", filterName: "")
@@ -811,7 +828,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     @IBAction func vendorServiceAction(sender: AnyObject) {
         isServicesSelected = true
         // self.performSegueWithIdentifier("myproductSelectServices", sender: nil)
-        
+        getProductCollectionListAdd.removeAll()
         let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("SelectServicesID") as! SelectSevicesViewController
         // popOverVC.getproductCollectionList = getProductCollectionList[(indexPath?.row)!]
         self.addChildViewController(popOverVC)
