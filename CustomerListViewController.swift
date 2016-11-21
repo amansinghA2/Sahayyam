@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomerListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , SWRevealViewControllerDelegate {
+class CustomerListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate  {
     
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var customerListTableView: UITableView!
@@ -157,22 +157,22 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         return 44
     }
     
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        
-        if position == FrontViewPosition.Left{
-            self.view.userInteractionEnabled = true
-        }else{
-            self.view.userInteractionEnabled = false
-        }
-    }
-    
-    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-        if position == FrontViewPosition.Left{
-            self.view.userInteractionEnabled = true
-        }else{
-            self.view.userInteractionEnabled = false
-        }
-    }
+//    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+//        
+//        if position == FrontViewPosition.Left{
+//            self.view.userInteractionEnabled = true
+//        }else{
+//            self.view.userInteractionEnabled = false
+//        }
+//    }
+//    
+//    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
+//        if position == FrontViewPosition.Left{
+//            self.view.userInteractionEnabled = true
+//        }else{
+//            self.view.userInteractionEnabled = false
+//        }
+//    }
     
     func blockUnblockButton(sender:UIButton){
         let section = sender.tag

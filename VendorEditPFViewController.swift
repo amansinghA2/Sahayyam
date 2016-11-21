@@ -74,8 +74,9 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         ]
         
         //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VendorEditPFViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        tapToDismiss(self)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VendorEditPFViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
         ServerManager.sharedInstance().sellerPopulateData(params, completionClosure: {(isSuccessful, error, result) in
             if isSuccessful{
                 self.hideHud()
@@ -92,9 +93,9 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         
     }
     
-    func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
+//    func dismissKeyboard() {
+//        self.view.endEditing(true)
+//    }
     
     override func didReceiveMemoryWarning() {
         // Dispose of any resources that can be recreated.
@@ -284,7 +285,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
                         //                        self.presentViewController(alertController, animated: true, completion: nil)
                     }
                     else{
-                        
+                      self.hideHud()
                     }
                 }
             }else{

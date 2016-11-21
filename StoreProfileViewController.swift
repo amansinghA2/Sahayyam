@@ -9,7 +9,7 @@
 import UIKit
 import Dropper
 
-class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate , DropperDelegate{
+class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate , DropperDelegate , UIGestureRecognizerDelegate{
     
     
     var businessViewConstant = CGFloat(43)
@@ -30,7 +30,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     @IBOutlet weak var toLabel1: UITextField!
     @IBOutlet weak var toLabel2: UITextField!
     @IBOutlet weak var toLabel3: UITextField!
-    @IBOutlet weak var expressDeliveryButton: UITextField!
+    @IBOutlet weak var expressDeliveryButton: TextField!
     @IBOutlet weak var businessHolidayField: UITextField!
     @IBOutlet weak var deliveryTimeTextField0: UITextField!
     @IBOutlet weak var deliveryTimeTextField1: UITextField!
@@ -62,7 +62,7 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     var date15 = NSDate()
     var date16 = NSDate()
     // Labels
-    let dropper = Dropper(width: 131, height: 141)
+    var dropper = Dropper(width: 131, height: 141)
     
     @IBOutlet weak var from1: UILabel!
     @IBOutlet weak var from2: UILabel!
@@ -189,11 +189,21 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
         revealTouch(self)
         textfieldArray = [deliveryTimeTextField0 , deliveryTimeTextField1 , deliveryTimeTextField2 , deliveryTimeTextField3 , deliveryTimeTextField4 , deliveryTimeTextField5, deliveryTimeTextField6 , deliveryTimeTextField7, deliveryTimeTextField8 , deliveryTimeTextField9 ]
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StoreProfileViewController.dismissKeyboard))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
+        deliveryChargesTextField.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        expressDeliveryButton.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        minOrderTExtfField.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        lessThanMinOrderTextField.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
         
         deliveryChargesTextField.keyboardType = .DecimalPad
         expressDeliveryButton.keyboardType = .DecimalPad
         minOrderTExtfField.keyboardType = .DecimalPad
         lessThanMinOrderTextField.keyboardType = .DecimalPad
+        
+        
         
         startTextFieldArray = [fromLabel1 , fromLabel2 , fromLabel3]
         endTextFieldArray = [toLabel1 , toLabel2 , toLabel3]
@@ -299,6 +309,21 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
             }else{
                 self.hideHud()
             }
+        }
+    }
+    
+    override func dismissKeyboard() {
+        self.view.endEditing(true)
+        dropper.hideWithAnimation(0.1)
+    }
+    
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        
+        if CGRectContainsPoint(self.dropper.bounds, touch.locationInView(dropper)){
+            return false
+        }else{
+            return true
         }
     }
     
@@ -1044,17 +1069,19 @@ class StoreProfileViewController: UIViewController , SSRadioButtonControllerDele
     // Dropper Methods and delegates
     
     @IBAction func holidayDayAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
+    
         if dropper.status == .Hidden {
+                dropper = Dropper(x: businessHolidayField.frame.origin.x, y: businessHolidayField.frame.origin.y + businessHolidayField.frame.size.height, width: businessHolidayField.frame.size.width, height: 150)
             dropper.tag = 3
             dropper.items = ["Sunday" , "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday"]
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
             dropper.spacing = 1
+            dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
-            dropper.maxHeight = 100
-            dropper.cellTextSize = 12
-//            dropper.show(Dropper.Alignment.Center, position: Dropper.Position.Top, button:businessHolidayButton)
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: businessHolidayButton)
         } else {
             dropper.hideWithAnimation(0.1)

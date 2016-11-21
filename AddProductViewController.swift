@@ -10,9 +10,9 @@ import UIKit
 
 class AddProductViewController: UIViewController {
 
-    @IBOutlet weak var quantityLabel: UITextField!
-    @IBOutlet weak var offerPriceLabel: UITextField!
-    @IBOutlet weak var priceLabel: UITextField!
+    @IBOutlet weak var quantityLabel: TextField!
+    @IBOutlet weak var offerPriceLabel: TextField!
+    @IBOutlet weak var priceLabel: TextField!
     
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     override func viewDidLoad() {
@@ -21,6 +21,10 @@ class AddProductViewController: UIViewController {
         priceLabel.keyboardType = .DecimalPad
         offerPriceLabel.keyboardType = .DecimalPad
         quantityLabel.keyboardType = .NumberPad
+        
+        priceLabel.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        offerPriceLabel.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        quantityLabel.setTextFieldStyle(TextFieldStyle.TextFieldUnit)
         
         slideMenuShow(slideMenuButton, viewcontroller: self)
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
@@ -83,10 +87,10 @@ class AddProductViewController: UIViewController {
                 self.hideHud()
                 if let _ = result1!["success"] {
                     self.hideHud()
-//                    AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
-                    self.toastViewForTextfield("Global Product successfully added")
-                    let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MyProductsViewID") as! MyProductsViewController
-                    self.navigationController!.pushViewController(secondViewController, animated: true)
+                    AlertView.alertView("Confirmation", message: "Successfully added to the product list", alertTitle: "OK", viewController: self)
+                   // self.toastViewForTextfield("Global Product successfully added")
+//                    let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier("MyProductsViewID") as! MyProductsViewController
+//                    self.navigationController!.pushViewController(secondViewController, animated: true)
                 }else{
                     self.hideHud()
                     AlertView.alertView("Alert", message: "Offer price cannot be more than the product price", alertTitle: "OK", viewController: self)

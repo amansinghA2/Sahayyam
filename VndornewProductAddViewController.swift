@@ -9,7 +9,7 @@
 import UIKit
 import Dropper
 
-class VndornewProductAddViewController: UIViewController , UITextFieldDelegate , DropperDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+class VndornewProductAddViewController: UIViewController , UITextFieldDelegate , DropperDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIGestureRecognizerDelegate{
 
     
      var dropper = Dropper(width: 131, height: 150)
@@ -26,11 +26,11 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var descriptionLabel: UITextField!
     @IBOutlet weak var referenceCodeLabel: UITextField!
-    @IBOutlet weak var offerPriceLabel: UITextField!
-    @IBOutlet weak var priceLabel: UITextField!
-    @IBOutlet weak var unitValueLabel: UITextField!
+    @IBOutlet weak var offerPriceLabel: TextField!
+    @IBOutlet weak var priceLabel: TextField!
+    @IBOutlet weak var unitValueLabel: TextField!
     @IBOutlet weak var unitTypeLabel: UITextField!
-    @IBOutlet weak var quantityLabel: UITextField!
+    @IBOutlet weak var quantityLabel: TextField!
     @IBOutlet weak var substractStockLabel: UITextField!
     @IBOutlet weak var statusLabel: UITextField!
     @IBOutlet weak var productImage: UIImageView!
@@ -61,10 +61,25 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         stockLabelString = "0"
         statusLabel.text = "Enabled"
         substractStockLabel.text = "No"
+        
+        priceLabel.delegate = self
+        offerPriceLabel.delegate = self
+        unitValueLabel.delegate = self
+        
         priceLabel.keyboardType = UIKeyboardType.DecimalPad
         offerPriceLabel.keyboardType = UIKeyboardType.DecimalPad
-        unitValueLabel.keyboardType = UIKeyboardType.PhonePad
+        unitValueLabel.keyboardType = UIKeyboardType.NumberPad
+        quantityLabel.keyboardType = UIKeyboardType.NumberPad
 
+        priceLabel.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        offerPriceLabel.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        unitValueLabel.setTextFieldStyle(TextFieldStyle.TextFieldUnit)
+        quantityLabel.setTextFieldStyle(TextFieldStyle.TextFieldUnit)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(VndornewProductAddViewController.dismissKeyboard))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
         if fromDesc == "fromDescriptionPage"{
             tokenCheck()
             weightClassID = getProductDetails.weight_class_id
@@ -105,6 +120,21 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             // Do any additional setup after loading the view.
     }
 
+    override func dismissKeyboard() {
+        self.view.endEditing(true)
+        dropper.hideWithAnimation(0.1)
+    }
+    
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        
+        if CGRectContainsPoint(self.dropper.bounds, touch.locationInView(dropper)){
+            return false
+        }else{
+            return true
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
@@ -234,6 +264,42 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
     }
+   
+    
+//    func textField(textField: UITextField,shouldChangeCharactersInRange range: NSRange,replacementString string: String) -> Bool
+//    {
+//        
+//        if textField == unitValueLabel {
+//            let newCharacters = NSCharacterSet(charactersInString: string)
+//            let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
+//            if boolIsNumber == true {
+//                return true
+//            }else{
+//                return false
+//            }
+//        }else{
+//        let newCharacters = NSCharacterSet(charactersInString: string)
+//        let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
+//        if boolIsNumber == true {
+//            return true
+//        } else {
+//            if string == "." {
+//                let countdots = textField.text!.componentsSeparatedByString(".").count - 1
+//                if countdots == 0 {
+//                    return true
+//                } else {
+//                    if countdots > 0 && string == "." {
+//                        return false
+//                    } else {
+//                        return true
+//                    }
+//                }
+//            } else {
+//                return false
+//            }
+//        }
+//        }
+//    }
     
     /*
     // MARK: - Navigation
@@ -304,6 +370,35 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             AlertView.alertView("Alert", message: "Name title should be minimum of 4 characters", alertTitle: "OK", viewController: self)
             return false
         }
+        
+//        let possibleNumber = priceLabel.text ?? ""
+//        if let convertedNumber = Int(possibleNumber) {
+//
+//
+//            print("'\(possibleNumber)' is an Int")
+//        }
+//        else {
+//            print("'\(possibleNumber)' is not an Int")
+//        }
+//        
+//        let possibleNumber = offerPriceLabel.text ?? ""
+//        if let convertedNumber = Int(possibleNumber) {
+//            print("'\(possibleNumber)' is an Int")
+//            totalTime = convertedNumber
+//        }
+//        else {
+//            print("'\(possibleNumber)' is not an Int")
+//        }
+//        
+//        let possibleNumber = unitTypeLabel.text ?? ""
+//        if let convertedNumber = Int(possibleNumber) {
+//            print("'\(possibleNumber)' is an Int")
+//            totalTime = convertedNumber
+//        }
+//        else {
+//            print("'\(possibleNumber)' is not an Int")
+//        }
+        
         
 //        if categoryLists.contains(nameLabel.text!){
 //            AlertView.alertView("Alert", message: "Product name already exist. You must enter a valid product name!", alertTitle: "OK", viewController: self)
@@ -422,17 +517,31 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
    }
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+        self.dropper.hideWithAnimation(0.1)
+    }
+    
     @IBAction func serviceAction(sender: AnyObject) {
+        
+
+        
         var serviceName = [String]()
         for serviceList in serviceLists {
             serviceName.append(serviceList.desc)
         }
         if dropper.status == .Hidden {
+                    dropper = Dropper(x: categoryLabel.frame.origin.x, y: categoryLabel.frame.origin.y + categoryLabel.frame.size.height, width: categoryLabel.frame.size.width, height: 150)
             dropper.tag = 1
             dropper.items = serviceName
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
+            dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
+           // dropper.cellColor = UIColor.lightGrayColor()
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: nameDropDown)
         } else {
             dropper.hideWithAnimation(0.1)
@@ -443,18 +552,22 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         self.view.endEditing(true)
         var categoryListArray = [String]()
         
-        //dropper = Dropper(width: categoryLabel.frame.size.width, height: 150)
+
        
         for categoryLIst in categoryLists {
             categoryListArray.append(categoryLIst.name)
         }
 
         if dropper.status == .Hidden {
+                    dropper = Dropper(x: categoryLabel.frame.origin.x, y: categoryLabel.frame.origin.y + categoryLabel.frame.size.height, width: categoryLabel.frame.size.width, height: 150)
             dropper.tag = 2
             dropper.items = categoryListArray
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
-            dropper.spacing = 0
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
+            dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
             dropper.showWithAnimation(0.15, options:Dropper.Alignment.Center, button:categoryDropDown)
 //            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: categoryDropDown)
@@ -473,11 +586,15 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
         }
         
         if dropper.status == .Hidden {
+              dropper = Dropper(x: categoryLabel.frame.origin.x, y: categoryLabel.frame.origin.y + categoryLabel.frame.size.height, width: categoryLabel.frame.size.width, height: 150)
             dropper.tag = 3
             dropper.items = unitGramArray
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
-            dropper.spacing = 0
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
+            dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
 //            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: unitTypeButton)
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitTypeButton)
@@ -488,12 +605,19 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func substractStockAction(sender: AnyObject) {
         self.view.endEditing(true)
+        
+
+    
         if dropper.status == .Hidden {
+                    dropper = Dropper(x: statusLabel.frame.origin.x, y: statusLabel.frame.origin.y + statusLabel.frame.size.height, width: statusLabel.frame.size.width, height: 150)
             dropper.tag = 4
             dropper.items = ["Yes" , "No"]
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
-            dropper.spacing = 0
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
+            dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
 //            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: substractStockButton)
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: substractStockButton)
@@ -504,13 +628,20 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func statusAction(sender: AnyObject) {
         self.view.endEditing(true)
+        
+        
+        
         if dropper.status == .Hidden {
+                    dropper = Dropper(x: statusLabel.frame.origin.x, y: statusLabel.frame.origin.y + statusLabel.frame.size.height, width: statusLabel.frame.size.width, height: 150)
             dropper.tag = 5
             dropper.items = ["Enabled" , "Disabled"]
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
-            dropper.spacing = 0
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
             dropper.cornerRadius = 3
+            dropper.cellTextSize = 13.0
              dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: statusButton)
 //            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, button: statusButton)
         } else {
@@ -709,10 +840,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
             }
         }
   
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
     }
     
     func unitGramAction(unitTypeString:String) {

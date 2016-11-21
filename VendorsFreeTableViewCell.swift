@@ -10,7 +10,6 @@ import UIKit
 
 class VendorsFreeTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var mobileLabel: UILabel!
@@ -18,7 +17,6 @@ class VendorsFreeTableViewCell: UITableViewCell {
     @IBOutlet weak var busTypeLabel: UILabel!
     
     @IBOutlet weak var subFeesLabel: UILabel!
-    
     
     @IBOutlet weak var subscriptionButton: UIButton!
     
@@ -29,7 +27,6 @@ class VendorsFreeTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

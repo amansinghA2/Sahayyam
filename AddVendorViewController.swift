@@ -94,6 +94,8 @@ class AddVendorViewController: UIViewController , DropperDelegate{
     
     func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
         
+        
+        
     }
     
     @IBAction func continueButtonAction(sender: AnyObject) {

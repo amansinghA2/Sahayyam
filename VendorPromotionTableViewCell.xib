@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb8-ft-uEu">
-                        <rect key="frame" x="13" y="72" width="147" height="21"/>
+                        <rect key="frame" x="13" y="72" width="127" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508619999996" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -87,9 +87,9 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="End:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJp-Ee-EEh">
-                        <rect key="frame" x="176" y="72" width="136" height="21"/>
+                        <rect key="frame" x="148" y="72" width="164" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="136" id="n4t-eL-NtX"/>
+                            <constraint firstAttribute="width" constant="164" id="2VC-py-7XT"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508619999996" colorSpace="calibratedRGB"/>
@@ -101,7 +101,7 @@
                     <constraint firstAttribute="trailing" secondItem="y9k-re-iS7" secondAttribute="trailing" constant="53" id="1pZ-CU-Hfo"/>
                     <constraint firstAttribute="trailing" secondItem="GJp-Ee-EEh" secondAttribute="trailing" constant="8" id="2vQ-i8-rer"/>
                     <constraint firstItem="y9k-re-iS7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3Kv-mn-Whr"/>
-                    <constraint firstItem="GJp-Ee-EEh" firstAttribute="leading" secondItem="Yb8-ft-uEu" secondAttribute="trailing" constant="16" id="47F-WO-cWL"/>
+                    <constraint firstItem="GJp-Ee-EEh" firstAttribute="leading" secondItem="Yb8-ft-uEu" secondAttribute="trailing" constant="8" id="47F-WO-cWL"/>
                     <constraint firstAttribute="trailing" secondItem="W3v-9n-n9o" secondAttribute="trailing" constant="23" id="7yw-9L-Av4"/>
                     <constraint firstItem="Yb8-ft-uEu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="97a-BM-t7V"/>
                     <constraint firstItem="oVG-9S-3kr" firstAttribute="top" secondItem="W3v-9n-n9o" secondAttribute="bottom" id="AEv-cM-6Ub"/>

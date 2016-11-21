@@ -17,6 +17,8 @@ enum TextFieldStyle {
     case EmailID
     case Pincode
     case TextfieldNames
+    case TextfiledAmount
+    case TextFieldUnit
 }
 
 
@@ -44,6 +46,14 @@ class TextField: UITextField , UITextFieldDelegate {
             self.delegate = self
             textFieldStyle = "TextFieldUserName"
             self.keyboardType = .PhonePad
+        case .TextfiledAmount:
+            self.delegate = self
+            textFieldStyle = "TextfiledAmount"
+           // self.keyboardType = .PhonePad
+        case .TextFieldUnit:
+            self.delegate = self
+            textFieldStyle = "TextFieldUnit"
+        // self.keyboardType = .PhonePad
         case .TextFieldPassword:
             self.delegate = self
             self.secureTextEntry = true
@@ -97,6 +107,27 @@ class TextField: UITextField , UITextFieldDelegate {
             guard let text = textField.text else { return true }
             let newLength = text.utf16.count + string.utf16.count - range.length
             return newLength <= 10
+        case "TextfiledAmount":
+            let newCharacters = NSCharacterSet(charactersInString: string)
+            let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
+            if boolIsNumber == true {
+                return true
+            } else {
+                if string == "." {
+                    let countdots = textField.text!.componentsSeparatedByString(".").count - 1
+                    if countdots == 0 {
+                        return true
+                    } else {
+                        if countdots > 0 && string == "." {
+                            return false
+                        } else {
+                            return true
+                        }
+                    }
+                } else {
+                    return false
+                }
+            }
         case "TextfieldNames":
             guard let text = textField.text else { return true }
             let newLength = text.utf16.count + string.utf16.count - range.length
@@ -105,18 +136,38 @@ class TextField: UITextField , UITextFieldDelegate {
             guard let text = textField.text else { return true }
             let newLength = text.utf16.count + string.utf16.count - range.length
             return newLength <= 15
+        case "TextFieldUnit":
+            let newCharacters = NSCharacterSet(charactersInString: string)
+            let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
+            if boolIsNumber == true {
+                return true
+            }else{
+                return false
+            }
         case "TextFieldDOB":
             return false
         case "TextFieldTime":
             return false
         case "MobileNumber":
+            let newCharacters = NSCharacterSet(charactersInString: string)
+            let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
             guard let text = textField.text else { return true }
             let newLength = text.utf16.count + string.utf16.count - range.length
-            return newLength <= 10
+            if boolIsNumber == true {
+                return newLength <= 10
+            }else{
+                return false
+            }
         case "Pincode":
+            let newCharacters = NSCharacterSet(charactersInString: string)
+            let boolIsNumber = NSCharacterSet.decimalDigitCharacterSet().isSupersetOfSet(newCharacters)
             guard let text = textField.text else { return true }
             let newLength = text.utf16.count + string.utf16.count - range.length
-            return newLength <= 6
+            if boolIsNumber == true {
+                return newLength <= 6
+            }else{
+                return false
+            }
         case "EmailID":
             return true
         default:

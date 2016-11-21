@@ -10,7 +10,7 @@ import UIKit
 import M13Checkbox
 import Dropper
 
-class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate , DropperDelegate{
+class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate , DropperDelegate , UIGestureRecognizerDelegate{
     
     
     var vendorPromotionList:VendorPromotionList!
@@ -43,7 +43,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     var toastString = String()
     var someGlobalNSInteger = Int()
-    let dropper = Dropper(width: 131, height: 100)
+    var dropper = Dropper(width: 131, height: 100)
     var date = NSDate()
     var date1 = NSDate()
     var unitGrams = [UnitGram]()
@@ -62,8 +62,17 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         //      fromLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         //      toLabel.setTextFieldStyle(TextFieldStyle.TextFieldDOB)
         
-        discountValue.keyboardType = .NumberPad
-        amountLabel.keyboardType = .NumberPad
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PromotionTypeViewController.dismissKeyboard))
+        tap.delegate = self
+        view.addGestureRecognizer(tap)
+        
+        discountValue.keyboardType = .DecimalPad
+        amountLabel.keyboardType = .DecimalPad
+        quantityLabel.keyboardType = .NumberPad
+        
+        amountLabel.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        discountValue.setTextFieldStyle(TextFieldStyle.TextfiledAmount)
+        quantityLabel.setTextFieldStyle(TextFieldStyle.TextFieldUnit)
         
         fromLabel.delegate = self
         toLabel.delegate = self
@@ -94,6 +103,21 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             typeandValueView.hidden = true
         }
         // Do any additional setup after loading the view.
+    }
+    
+    override func dismissKeyboard() {
+        self.view.endEditing(true)
+        dropper.hideWithAnimation(0.1)
+    }
+    
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        
+        if CGRectContainsPoint(self.dropper.bounds, touch.locationInView(dropper)){
+            return false
+        }else{
+            return true
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -198,15 +222,16 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         print(unitGramArray)
         
         if dropper.status == .Hidden {
+            dropper = Dropper(x: unitDropDownButton.frame.origin.x, y: unitDropDownButton.frame.origin.y + unitDropDownButton.frame.size.height, width: unitDropDownButton.frame.size.width, height: 150)
             dropper.tag = 3
             dropper.items = unitGramArray
-            dropper.theme = Dropper.Themes.White
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
             dropper.spacing = 1
             dropper.cornerRadius = 3
-            dropper.maxHeight = 100
-            dropper.cellTextSize = 12
-            dropper.show(Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitDropDownButton)
+            dropper.cellTextSize = 13.0
             dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: unitDropDownButton)
         } else {
             dropper.hideWithAnimation(0.1)

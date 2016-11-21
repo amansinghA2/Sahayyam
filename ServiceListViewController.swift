@@ -18,7 +18,7 @@ class ServiceListViewController: UIViewController {
     }
 
     func serviceListFunction() {
-        
+//        serverman
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,8 +31,8 @@ class ServiceListViewController: UIViewController {
 //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //       return 1
 //    }
-//    
-//    cell
+    
+    
     
     /*
     // MARK: - Navigation

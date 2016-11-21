@@ -6,9 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddProductViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="offerPriceLabel" destination="MFd-Mb-N6u" id="QgR-HT-OqY"/>
-                <outlet property="priceLabel" destination="SOy-5H-yzA" id="1JN-2Q-2RC"/>
-                <outlet property="quantityLabel" destination="NhJ-Jz-c6P" id="9Pt-53-neM"/>
+                <outlet property="offerPriceLabel" destination="MFd-Mb-N6u" id="7pC-bC-igg"/>
+                <outlet property="priceLabel" destination="SOy-5H-yzA" id="tWT-P5-kKs"/>
+                <outlet property="quantityLabel" destination="NhJ-Jz-c6P" id="JxZ-nO-d9A"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -50,13 +50,13 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74948814655172413" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOy-5H-yzA">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOy-5H-yzA" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                             <rect key="frame" x="136" y="61" width="132" height="30"/>
                             <color key="textColor" white="0.0" alpha="0.75067349137931039" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhJ-Jz-c6P">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhJ-Jz-c6P" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                             <rect key="frame" x="136" y="158" width="132" height="30"/>
                             <color key="textColor" white="0.0" alpha="0.74948814655172413" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,7 +124,7 @@
                         <constraint firstItem="NhJ-Jz-c6P" firstAttribute="leading" secondItem="sRc-AO-HPF" secondAttribute="trailing" constant="17" id="nxu-z6-Gbl"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Mb-N6u">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-Mb-N6u" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
                     <rect key="frame" x="158" y="269" width="132" height="30"/>
                     <color key="textColor" white="0.0" alpha="0.75067349137931039" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

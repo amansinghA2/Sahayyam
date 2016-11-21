@@ -207,6 +207,16 @@ extension UIViewController {
         let tap = revealController.tapGestureRecognizer()
         self.view.addGestureRecognizer(tap)
     }
+    
+    func tapToDismiss(controller:UIViewController) {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: controller, action: #selector(controller.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+        revealTouch(self)
+    }
 
 
 }

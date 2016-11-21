@@ -268,25 +268,26 @@ class VendorPromotionsViewController: UIViewController , UITableViewDelegate , U
     }
     
     func notifyButtonClicked(sender:UIButton){
-        
-        let cell = sender.superview?.superview as! VendorPromotionTableViewCell
-        let indexPath = vendorPromotionTableView.indexPathForCell(cell)
-
-        let params = [
-        "token":token,
-        "device_id":"1234",
-        "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + " on Price : INR " + self.vendorPromotionsLists[(indexPath?.row)!].discount
-        ]
-        
-        print(params) 
-        
-        ServerManager.sharedInstance().vendorNotifcation(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.hideHud()
-            }else{
-                self.hideHud()
-            }
-        }
+         AlertView.alertView("Alert", message: "Notification cannot be sent at this point of time", alertTitle: "OK", viewController: self)
+//        let cell = sender.superview?.superview as! VendorPromotionTableViewCell
+//        let indexPath = vendorPromotionTableView.indexPathForCell(cell)
+//
+//        let params = [
+//        "token":token,
+//        "device_id":"1234",
+//        "messageText":self.vendorPromotionsLists[(indexPath?.row)!].promotionDescription + " on Price : INR " + self.vendorPromotionsLists[(indexPath?.row)!].discount
+//        ]
+//        
+//        print(params) 
+//        
+//        ServerManager.sharedInstance().vendorNotifcation(params) { (isSuccessful, error, result) in
+//            if isSuccessful {
+//               
+//                self.hideHud()
+//            }else{
+//                self.hideHud()
+//            }
+//        }
     }
     
 

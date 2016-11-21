@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GlobalListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate,UIPopoverPresentationControllerDelegate ,UISearchBarDelegate ,SWRevealViewControllerDelegate{
+class GlobalListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate,UIPopoverPresentationControllerDelegate ,UISearchBarDelegate{
 
     @IBOutlet weak var slideMenuButton: UIBarButtonItem!
     @IBOutlet weak var globalListTableView: UITableView!
@@ -37,7 +37,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
         tokenCheck()
-         revealTouch(self)
+        revealTouch(self)
         productMainFunction("25", page: "1", filterName: "")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
@@ -56,7 +56,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         self.globalListTableView.registerNib(nib2, forCellReuseIdentifier: "loadMoreIdentifier")
        self.globalListTableView.contentInset = UIEdgeInsetsMake(self.searchBar!.frame.size.height, 0, 0, 0)
         // slideMenuShow(menuButton, viewcontroller: self)
-        self.revealViewController().delegate = self
+        //self.revealViewController().delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -186,20 +186,16 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                     self.hideHud()
                 }
             }
-            
-            
         }
         else {
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         getProductCollectionListAdd.removeAll()
         //productMainFunction("25", page: "1", filterName: "")
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -431,7 +427,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         }
     }
     
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -527,24 +522,24 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
             return UITableViewAutomaticDimension
         }
     
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-        
-        if position == FrontViewPosition.Left{
-            self.view.userInteractionEnabled = true
-        }else{
-            self.view.userInteractionEnabled = false
-        }
-    }
-    
-    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-        
-        if position == FrontViewPosition.Left{
-            self.view.userInteractionEnabled = true
-        }else{
-            self.view.userInteractionEnabled = false
-        }
-        
-    }
+//    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+//        
+//        if position == FrontViewPosition.Left{
+//            self.view.userInteractionEnabled = true
+//        }else{
+//            self.view.userInteractionEnabled = false
+//        }
+//    }
+//    
+//    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
+//        
+//        if position == FrontViewPosition.Left{
+//            self.view.userInteractionEnabled = true
+//        }else{
+//            self.view.userInteractionEnabled = false
+//        }
+//        
+//    }
 
         //MARK: - Custom Actions
     
