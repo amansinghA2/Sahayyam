@@ -109,6 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
             vendorAddress = defaultVendName as! String
         }
 
+//        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "editedSuccess")
+        
         if let customerFullName1 = NSUserDefaults.standardUserDefaults().objectForKey("customerFullName"){
             customerFullName = customerFullName1 as! String
         }

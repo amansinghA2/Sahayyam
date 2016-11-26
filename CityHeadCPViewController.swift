@@ -12,6 +12,8 @@ class CityHeadCPViewController: UIViewController {
     @IBOutlet weak var changePassword: TextField!
 
     @IBOutlet weak var confirmPassword: TextField!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

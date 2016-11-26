@@ -60,4 +60,12 @@ class CustomClass: NSObject {
         return finalTotal
     }
     
+    class func nullToNil(value : AnyObject?) -> AnyObject? {
+        if value is NSNull {
+            return nil
+        } else {
+            return value
+        }
+    }
+    
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
@@ -28,7 +27,7 @@
                         <constraint firstAttribute="height" constant="21" id="JzT-P9-o3b"/>
                         <constraint firstAttribute="width" constant="135" id="dOP-Gb-VnO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75299030172413794" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -37,34 +36,36 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-Ij-fAx" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
-                    <rect key="frame" x="266" y="188" width="46" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="8zs-yX-wnn"/>
-                        <constraint firstAttribute="width" constant="46" id="Qfl-yf-hp3"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="submitAction:" destination="-1" eventType="touchUpInside" id="5a3-Xm-5IT"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvn-zv-t3L">
                     <rect key="frame" x="9" y="123" width="132" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="32U-Lm-UDd"/>
                         <constraint firstAttribute="width" constant="132" id="R0M-Ji-VSz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75299030172413794" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3L-Ij-fAx" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="126" y="191" width="68" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8zs-yX-wnn"/>
+                        <constraint firstAttribute="width" constant="68" id="Qfl-yf-hp3"/>
+                    </constraints>
+                    <state key="normal" title="Submit">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="submitAction:" destination="-1" eventType="touchUpInside" id="5a3-Xm-5IT"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="U3L-Ij-fAx" firstAttribute="top" secondItem="maJ-7B-NmQ" secondAttribute="bottom" constant="36" id="1Es-wR-bUI"/>
+                <constraint firstItem="U3L-Ij-fAx" firstAttribute="top" secondItem="maJ-7B-NmQ" secondAttribute="bottom" constant="39" id="1Es-wR-bUI"/>
+                <constraint firstItem="U3L-Ij-fAx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3mf-AY-lG8"/>
                 <constraint firstAttribute="trailing" secondItem="wtm-AO-3L4" secondAttribute="trailing" constant="8" id="5to-yg-HEu"/>
                 <constraint firstItem="YVq-F3-ZSb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="7Ef-87-TqI"/>
-                <constraint firstAttribute="trailing" secondItem="U3L-Ij-fAx" secondAttribute="trailing" constant="8" id="AVE-Qh-XsM"/>
                 <constraint firstItem="Gvn-zv-t3L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="Jxd-aC-mG9"/>
                 <constraint firstItem="wtm-AO-3L4" firstAttribute="leading" secondItem="YVq-F3-ZSb" secondAttribute="trailing" constant="13" id="NZR-lJ-KAM"/>
                 <constraint firstItem="wtm-AO-3L4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="NgD-gG-aiZ"/>

@@ -12,7 +12,7 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
 
     @IBOutlet weak var subsTableView: UITableView!
     
-    var subsDetails = [SubsNameDetails]()
+    var subsDetails = [CHVendorSubsList]()
     var customerId = String()
     
     override func viewDidLoad() {
@@ -75,7 +75,7 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPaymentInfoSegue" {
-            let vc = segue.destinationViewController as! SubsPaymentInfoViewController
+            let vc = segue.destinationViewController as! AddSubscriptionViewController
             vc.customerId = self.customerId
             print(self.customerId)
         }

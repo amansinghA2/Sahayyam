@@ -985,6 +985,60 @@ extension ServerManager {
         }
     }
     
+    func vendorProductGetService(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: VendorServiceList?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorGetServiceURl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorProductGetServiceMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorProductAddService(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: VendorProductInDetails?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorUpdateServicesURl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.productDetailsDetailsMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
+    
     
     
     

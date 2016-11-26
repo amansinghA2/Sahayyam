@@ -551,9 +551,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBAction func categoryAction(sender: AnyObject) {
         self.view.endEditing(true)
         var categoryListArray = [String]()
-        
-
-       
         for categoryLIst in categoryLists {
             categoryListArray.append(categoryLIst.name)
         }
@@ -825,7 +822,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
                         if getProductDetailsServiceId == serviceList.id {
                             self.hideHud()
                             self.serviceLabel.text = serviceList.desc
-                            self.service_id = self.serviceLists[0].id
+                            self.service_id = getProductDetailsServiceId
                         }
                     }
                 }else{

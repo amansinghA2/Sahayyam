@@ -49,13 +49,13 @@
             </objects>
             <point key="canvasLocation" x="-106" y="812"/>
         </scene>
-        <!--Subs Payment Info View Controller-->
+        <!--Add Subscription View Controller-->
         <scene sceneID="qe2-V6-BSr">
             <objects>
-                <viewController id="icm-FN-ppj" customClass="SubsPaymentInfoViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="icm-FN-ppj" customClass="AddSubscriptionViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pzt-uY-ohb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="1526"/>
+            <point key="canvasLocation" x="-305" y="1519"/>
         </scene>
         <!--Vendor City Head View Controller-->
         <scene sceneID="rgr-3c-TT7">

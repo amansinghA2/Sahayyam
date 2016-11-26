@@ -430,12 +430,17 @@ class VendorCategoryListViewController: UIViewController  , UITableViewDelegate 
     }
     
     func refreshList1(notification: NSNotification) {
-        navigationController?.navigationBar.userInteractionEnabled = true
+        
         if let myString = notification.object as? String {
+            if myString == "fromServices"{
+            navigationController?.navigationBar.userInteractionEnabled = true
+            }else{
+            navigationController?.navigationBar.userInteractionEnabled = true
             serviceString = myString
             print(serviceString)
             self.toastViewForTextfield("Service has been updated")
             productFunction(serviceString)
+            }
         }
     }
 

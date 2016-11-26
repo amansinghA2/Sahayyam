@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="okButtonSegue" id="KGk-i7-Jjw" customClass="ServiceLIstSubOkTableViewCell" customModule="Sahayyam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t05-cF-sLv" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                        <rect key="frame" x="251" y="8" width="46" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Fzf-pH-Lh7"/>
+                            <constraint firstAttribute="width" constant="46" id="gUL-XT-3uT"/>
+                        </constraints>
+                        <state key="normal" title="OK">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="t05-cF-sLv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="15d-kk-o7O"/>
+                    <constraint firstAttribute="trailing" secondItem="t05-cF-sLv" secondAttribute="trailing" constant="23" id="8la-Pr-fxP"/>
+                    <constraint firstAttribute="bottom" secondItem="t05-cF-sLv" secondAttribute="bottom" constant="5" id="HOD-rS-NBV"/>
+                    <constraint firstItem="t05-cF-sLv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="251" id="MZe-oc-Kxo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="okButton" destination="t05-cF-sLv" id="GrD-P8-NKC"/>
+            </connections>
+            <point key="canvasLocation" x="261" y="242"/>
+        </tableViewCell>
+    </objects>
+</document>

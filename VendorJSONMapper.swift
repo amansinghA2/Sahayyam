@@ -545,9 +545,58 @@ class VendorJSONMapper: NSObject {
         return customerList
     }
 
+//vendorProductGetServiceMapper
+    
+    class func  vendorProductGetServiceMapper(result:[String:AnyObject]) -> VendorServiceList {
+        
+        let unitGrams = VendorServiceList()
+        if let arr = result["getLeftService"] as? NSArray {
+            for (_, value) in arr.enumerate() {
+                let unitGram = LeftService()
+                if let languageId = value.valueForKey("bus_type") as? String{
+                    unitGram.bus_type = languageId
+                }
+                
+                if let languageId = value.valueForKey("code") as? String{
+                    unitGram.code = languageId
+                }
+                
+                if let languageId = value.valueForKey("desc") as? String{
+                    unitGram.desc = languageId
+                }
+                
+                if let languageId = value.valueForKey("id") as? String{
+                    unitGram.id = languageId
+                }
+                unitGrams.getLeftService.append(unitGram)
+            }
+            
+        }
+        
+        if let arr = result["serviceDesc"] as? NSArray {
+            for (_, value) in arr.enumerate() {
+                let unitGram = ServiceDesc()
+                if let languageId = value.valueForKey("desc") as? String{
+                    unitGram.desc = languageId
+                }
+                
+                if let languageId = value.valueForKey("id") as? String{
+                    unitGram.id = languageId
+                }
+                
+                if let languageId = value.valueForKey("total") as? String{
+                    unitGram.total = languageId
+                }
+                
+                unitGrams.serviceDesc.append(unitGram)
+            }
+        }
 
+        return unitGrams
+    }
+    
     
 }
-    
-    
+
+
 

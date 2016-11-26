@@ -32,15 +32,23 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     var serviceString = ""
     var servicesShown = false
     var isServicesSelected = false
+    var productId = String()
+    var selectedIndexPath = NSIndexPath()
+    var isTick = false
+    var searchText1 = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         slideMenuShow(slideMenuButton, viewcontroller: self)
         prepareUI()
         tokenCheck()
         revealTouch(self)
+        page = 1
         productMainFunction("25", page: "1", filterName: "")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.productAddTick(_:)), name: "productAdded", object: nil)
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GlobalListViewController.refreshList1(_:)), name: "refresh1", object: nil)
         
@@ -59,6 +67,23 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         //self.revealViewController().delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    func productAddTick(notification:NSNotification) {
+//        if let object = notification.object as? ProductCollectionList {
+//            productId = object.product_id
+//            self.toastViewForTextfield("Successfully added to the product list")
+//            let cell = globalListTableView.cellForRowAtIndexPath(selectedIndexPath) as! GlobalListTableViewCell
+//            cell.addButtonImage.image = UIImage(named: "checked")
+//            cell.addButtonLabel.hidden = true
+//           // cell.addButtonLabel.setImage(UIImage(named: "checked"), forState: .Normal)
+////          self.globalListTableView.delegate = self
+////            self.globalListTableView.dataSource = self
+////            self.globalListTableView.reloadData()
+////          productFunction("25", page: "1", filterName: "", serviceName: object.service_id)
+//        }
+    }
+    
+    
     
     func showToastForRegister(notification:NSNotification) {
         if let object = notification.object as? String {
@@ -105,7 +130,6 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 //        }
         
     }
-    
     
     func productFunction(limit:String , page:String , filterName:String , serviceName:String) {
         self.showHud("Loading...")
@@ -230,36 +254,44 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
         
         getProductCollectionListAdd.removeAll()
         if isServicesSelected == false {
-            if searchText.characters.count > 0 {
+            if searchText.characters.count > 2 {
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                searchText1 = searchText
                 productMainFunction("25", page: "1" , filterName: String(searchText))
                 //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
                 
                 self.searchBarActive = true
                 self.filterContentForSearchText(searchText)
-                self.globalListTableView?.reloadData()
+//                self.globalListTableView?.reloadData()
             }else{
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                searchText1 = ""
                 productMainFunction("25", page: "1", filterName: "")
                 //                productFunction("25", page: "1" , filterName: "" , service_id: serviceString)
                 //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
                 self.searchBarActive = false
-                self.globalListTableView?.reloadData()
+//                self.globalListTableView?.reloadData()
             }
         }else{
-            if searchText.characters.count > 0 {
+            if searchText.characters.count > 2{
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                searchText1 = searchText
                 productFunction("25", page: "1" , filterName: String(searchText) , serviceName: serviceString)
                 //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
                 self.searchBarActive = true
                 self.filterContentForSearchText(searchText)
-                self.globalListTableView?.reloadData()
+//                self.globalListTableView?.reloadData()
             }else{
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                searchText1 = ""
                 productFunction("25", page: "1" , filterName: "" , serviceName: serviceString)
                 //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
                 self.searchBarActive = false
-                self.globalListTableView?.reloadData()
+//                self.globalListTableView?.reloadData()
             }
         }
 
@@ -311,13 +343,17 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     
     
     func refreshList1(notification: NSNotification) {
-        navigationController?.navigationBar.userInteractionEnabled = true
+        
         if let myString = notification.object as? String {
+            if myString == "fromServices" {
+            navigationController?.navigationBar.userInteractionEnabled = true
+            }else{
+            navigationController?.navigationBar.userInteractionEnabled = true
             serviceString = myString
             print(serviceString)
             self.showHud("Loading...")
             self.getProductCollectionListAdd.removeAll()
-            
+            page = 1
             productFunction("25", page: "1", filterName: "", serviceName: serviceString)
             
 //            ServerManager.sharedInstance().vendorMyProductsList(myDict) { (isSuccessful, error, result , result1) in
@@ -343,6 +379,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 //                    self.globalListTableView.reloadData()
 //                }
 //            }
+        }
         }
     }
     
@@ -498,6 +535,13 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
                     if self.getProductCollectionListAdd.count > 0 {
                         getProductList = self.getProductCollectionListAdd[indexPath.row]
                         cell.getProductCollectionLists1 = self.getProductList
+//                        if productId == self.getProductCollectionListAdd[indexPath.row].product_id {
+//                            cell.addButtonImage.image = UIImage(named: "checked")
+//                            cell.addButtonLabel.hidden = true
+//                        }else{
+//                            cell.addButtonImage.image = UIImage(named: "")
+//                            cell.addButtonLabel.hidden = false
+//                        }
                     }
                 }
                 cell.addButtonLabel.addTarget(self, action: #selector(GlobalListViewController.addProductAction), forControlEvents: UIControlEvents.TouchUpInside)
@@ -546,7 +590,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     func addProductAction(sender:UIButton) {
             let cell = sender.superview?.superview as! GlobalListTableViewCell
             let indexPath = globalListTableView.indexPathForCell(cell)
-            
+            selectedIndexPath = indexPath!
             getSpecificProductList = getProductCollectionListAdd[(indexPath?.row)!]
             
             let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("addProductID") as! AddProductViewController
@@ -561,7 +605,7 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
     func loadButtonClicked(sender:UIButton) {
             page += 1
             if page <= totalPages{
-                productFunction("25", page: "\(page)", filterName: "", serviceName: serviceString)
+                productFunction("25", page: "\(page)", filterName: searchText1, serviceName: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
             }

@@ -9,8 +9,9 @@
 import UIKit
 import M13Checkbox
 import TTTAttributedLabel
+import Dropper
 
-class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate{
+class CustomerUpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate , TTTAttributedLabelDelegate , DropperDelegate{
 
     @IBOutlet weak var updateButtonOutlet: Button!
     @IBOutlet weak var acceptCheckbox: M13Checkbox!
@@ -29,12 +30,20 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var passwordTextField: TextField!
     @IBOutlet weak var confirmPassword: TextField!
     var str = ""
+    var str1 = ""
     var isAccept = false
     var mTos = ""
     var isLogin = ""
+    var isImageCount = 0
     let imagePicker = UIImagePickerController()
     
+    @IBOutlet weak var idProfileImage: UIImageView!
+    
+    
+    @IBOutlet weak var selectIdButton: UIButton!
+    
     var populateDataList = PopulateData()
+    var dropper = Dropper(width: 150, height: 150)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +124,13 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     }
     
     @IBAction func choosImageAction(sender: AnyObject) {
+        
+        if sender.tag == 1{
+            isImageCount = 1
+        }else{
+            isImageCount = 2
+        }
+        
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .SavedPhotosAlbum
         
@@ -122,8 +138,13 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     }
 
     @IBAction func removeButtonAction(sender: AnyObject) {
-
-        self.customerImage.image = nil
+        
+        if sender.tag == 1 {
+           self.customerImage.image = nil
+        }else{
+           self.idProfileImage.image = nil
+        }
+        
     }
     
     @IBAction func uploadCustomerProfileAction(sender: AnyObject) {
@@ -282,8 +303,11 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+
         self.customerImage.image = image
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
+            if self.isImageCount == 1 {
             if let image = self.customerImage.image {
                 self.showHud("Loading...")
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -312,9 +336,38 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
                 self.hideHud()
                 AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
             }
-
+            }else{
+                if let image = self.customerImage.image {
+                    self.showHud("Loading...")
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                        let params:[String:AnyObject] = [
+                            "file":self.convertImageToBase64(image),
+                            "flag":1,
+                            "token":token,
+                            "device_id":"1234"
+                        ]
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            ServerManager.sharedInstance().customerUploadImage(params) { (isSuccessful, error, result) in
+                                if isSuccessful{
+                                    self.hideHud()
+                                    if let imgStr = result!["img_dir"]{
+                                        self.str = (imgStr as! String)
+                                    }
+                                }else{
+                                    self.hideHud()
+                                }
+                            }
+                            
+                        })
+                    }
+                }else{
+                    self.hideHud()
+                    AlertView.alertView("Alert", message: "First choose the image", alertTitle: "OK", viewController: self)
+                }
+            }
         })
-    }
+      }
     
     //  MARK: - Navigation
     
@@ -405,6 +458,41 @@ class CustomerUpdateProfileViewController: UIViewController, UIImagePickerContro
             case .Mixed:
                 print("")
             }
+        }
+    }
+    
+    
+    @IBAction func selectIdButtonAction(sender: AnyObject) {
+        
+//        var subsPakageArray = [String]()
+//        
+//        for subPackage in self.subInfo.period {
+//            subsPakageArray.append(subPackage.name)
+//        }
+        
+        if dropper.status == .Hidden {
+            dropper = Dropper(x: selectIdButton.frame.origin.x, y: selectIdButton.frame.origin.y + selectIdButton.frame.size.height, width: selectIdButton.frame.size.width, height: 150)
+            dropper.tag = 2
+            dropper.items = [""]
+            dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
+            dropper.delegate = self
+            dropper.cellBackgroundColor = UIColor.grayColor()
+            dropper.cellColor = UIColor.whiteColor()
+            dropper.spacing = 1
+            dropper.cellTextSize = 13.0
+            dropper.cornerRadius = 3
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Bottom, button: selectIdButton)
+        } else {
+            dropper.hideWithAnimation(0.1)
+        }
+    }
+    
+    
+    func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
+        if tag == 1 {
+            selectIdButton.setTitle("\(contents)", forState: .Normal)
+        }else{
+            selectIdButton.setTitle("\(contents)", forState: .Normal)
         }
     }
 

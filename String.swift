@@ -91,6 +91,8 @@ let vendorDeletePromotionUrl = BASE_URL + "index.php?route=api/promotion/delProm
 let vendorUnitGramUrl = BASE_URL + "index.php?route=api/appUtility/getWeightClass"
 let vendorRegistrationUrl = BASE_URL + "index.php?route=api/account-customer/register"
 let productDetailDetailsURl = BASE_URL + "index.php?route=api/vendor/getProducts"
+let vendorGetServiceURl = BASE_URL + "index.php?route=api/vendorService"
+let vendorUpdateServicesURl = BASE_URL + "index.php?route=api/vendorService/updateService"
 
     // CityHead URl
 

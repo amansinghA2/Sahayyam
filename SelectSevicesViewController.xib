@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSevicesViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="cancelView" destination="Di8-Jd-rAR" id="eti-hY-ham"/>
                 <outlet property="selectServiceHeightContraint" destination="Eu3-Ky-A5B" id="iHR-82-7F5"/>
                 <outlet property="selectServicesTableView" destination="W8n-i0-bvu" id="DJD-wW-3iJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -24,14 +25,46 @@
                         <constraint firstAttribute="width" constant="219" id="cBC-8j-ZUG"/>
                     </constraints>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-Jd-rAR">
+                    <rect key="frame" x="51" y="98" width="219" height="41"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-2s-pwa">
+                            <rect key="frame" x="181" y="4" width="32" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="elv-9o-Ms3"/>
+                                <constraint firstAttribute="height" constant="33" id="jB5-ww-1wc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="cancel">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="qei-L7-EoE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="sqe-2s-pwa" firstAttribute="top" secondItem="Di8-Jd-rAR" secondAttribute="top" constant="4" id="7JK-IS-NaU"/>
+                        <constraint firstAttribute="bottom" secondItem="sqe-2s-pwa" secondAttribute="bottom" constant="4" id="HbS-Y4-7Ex"/>
+                        <constraint firstItem="sqe-2s-pwa" firstAttribute="centerY" secondItem="Di8-Jd-rAR" secondAttribute="centerY" id="cvT-5l-Wph"/>
+                        <constraint firstAttribute="trailing" secondItem="sqe-2s-pwa" secondAttribute="trailing" constant="6" id="pvh-p5-rqW"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Di8-Jd-rAR" firstAttribute="trailing" secondItem="W8n-i0-bvu" secondAttribute="trailing" id="0nM-xW-JJU"/>
                 <constraint firstItem="W8n-i0-bvu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DH4-e8-8nl"/>
+                <constraint firstItem="W8n-i0-bvu" firstAttribute="top" secondItem="Di8-Jd-rAR" secondAttribute="bottom" id="fOY-F5-uRB"/>
                 <constraint firstItem="W8n-i0-bvu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gWI-Q6-Nh6"/>
+                <constraint firstItem="Di8-Jd-rAR" firstAttribute="leading" secondItem="W8n-i0-bvu" secondAttribute="leading" id="owQ-Uu-VtW"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="212" y="184"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="32" height="32"/>
+    </resources>
 </document>

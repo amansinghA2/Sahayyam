@@ -14,7 +14,9 @@ import UIKit
 //    optional func collapseSidePanels()
 //}
 
-class MyProductsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate , SWRevealViewControllerDelegate , UITableViewDelegate , UITableViewDataSource{
+    var editedSuccess = false
+
+class MyProductsViewController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout ,UIPopoverPresentationControllerDelegate , UITextFieldDelegate , UISearchBarDelegate , SWRevealViewControllerDelegate , UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate{
 
     @IBOutlet weak var myProductsTableView: UITableView!
         @IBOutlet weak var slidemenuButton: UIBarButtonItem!
@@ -47,8 +49,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     var noImage = String()
     var serviceString = ""
     var isServicesSelected = false
-    var editedSuccess = false
-    
+    var fromFilterSearch = false
+    var isTick = false
+    var searchText1 = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -56,10 +59,34 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
         
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.serviceFunctionCalling(_:)), name: "callServiceFunction", object: nil)
+
+//        NSNotificationCenter.defaultCenter().postNotificationName("callServiceFunction", object: "fromViewDidLoad")
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.navigationEnableAction(_:)), name: "enableCategoryNavigation1", object: nil)
         
     }
-
+    
+//    func serviceFunctionCalling(notification:NSNotification) {
+//        
+//        if let object = notification.object as? String {
+//            
+//            if object == "fromViewDidLoad" {
+//                if Reachability.isConnectedToNetwork(){
+//                    self.hideHud()
+//                    productFunction("25", page: "1", filterName: "")
+//                }
+//                else {
+//                    self.hideHud()
+//                    AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
+//                }
+//            }else{
+//                
+//            }
+//            
+//        }
+//        
+//    }
+    
     func showToastForRegister(notification:NSNotification) {
         if let object = notification.object as? String {
             if object == "cancel" {
@@ -96,9 +123,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
 
     
     override func viewWillAppear(animated: Bool) {
-        
-        isServicesSelected = false
         super.viewWillAppear(animated)
+        isServicesSelected = false
         self.prepareUI()
 
         NSUserDefaults.standardUserDefaults().setObject(defaultVendorName, forKey:"defaultvendorName")
@@ -165,19 +191,19 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 if (error != nil) {
                     self.getProductCollectionListAdd.removeAll()
                     
-//                    if self.noImage == "1" {
-//                        self.myproductsCollectionView.hidden = true
-//                        self.myProductsTableView.hidden = false
-//                        self.myProductsTableView.dataSource = self
-//                        self.myProductsTableView.delegate = self
-//                        self.myProductsTableView.reloadData()
-//                    }else{
-//                        self.myProductsTableView.hidden = true
-//                        self.myproductsCollectionView.hidden = false
-//                        self.myproductsCollectionView.dataSource = self
-//                        self.myproductsCollectionView.delegate = self
-//                        self.myproductsCollectionView.reloadData()
-//                    }
+                    if self.noImage == "1" {
+                        self.myproductsCollectionView.hidden = true
+                        self.myProductsTableView.hidden = false
+                        self.myProductsTableView.dataSource = self
+                        self.myProductsTableView.delegate = self
+                        self.myProductsTableView.reloadData()
+                    }else{
+                        self.myProductsTableView.hidden = true
+                        self.myproductsCollectionView.hidden = false
+                        self.myproductsCollectionView.dataSource = self
+                        self.myproductsCollectionView.delegate = self
+                        self.myproductsCollectionView.reloadData()
+                    }
                     
                     self.tableViewCustomLabel("No Products", tableView: self.myProductsTableView)
                     self.collectionViewCustomLabel("No Products", collectionView: self.myproductsCollectionView)
@@ -242,19 +268,19 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                 if (error != nil) {
                     self.getProductCollectionListAdd.removeAll()
                     
-                    //                    if self.noImage == "1" {
-                    //                        self.myproductsCollectionView.hidden = true
-                    //                        self.myProductsTableView.hidden = false
-                    //                        self.myProductsTableView.dataSource = self
-                    //                        self.myProductsTableView.delegate = self
-                    //                        self.myProductsTableView.reloadData()
-                    //                    }else{
-                    //                        self.myProductsTableView.hidden = true
-                    //                        self.myproductsCollectionView.hidden = false
-                    //                        self.myproductsCollectionView.dataSource = self
-                    //                        self.myproductsCollectionView.delegate = self
-                    //                        self.myproductsCollectionView.reloadData()
-                    //                    }
+                                        if self.noImage == "1" {
+                                            self.myproductsCollectionView.hidden = true
+                                            self.myProductsTableView.hidden = false
+                                            self.myProductsTableView.dataSource = self
+                                            self.myProductsTableView.delegate = self
+                                            self.myProductsTableView.reloadData()
+                                        }else{
+                                            self.myProductsTableView.hidden = true
+                                            self.myproductsCollectionView.hidden = false
+                                            self.myproductsCollectionView.dataSource = self
+                                            self.myproductsCollectionView.delegate = self
+                                            self.myproductsCollectionView.reloadData()
+                                        }
                     
                     self.tableViewCustomLabel("No Products", tableView: self.myProductsTableView)
                     self.collectionViewCustomLabel("No Products", collectionView: self.myproductsCollectionView)
@@ -306,7 +332,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
             }
         }else {
             
-            if getProductCollectionListAdd.count <= 25 && getProductCollectionListAdd.count > 0{
+            if getProductCollectionListAdd.count < 25 && getProductCollectionListAdd.count > 0{
                 return 1
             }
             
@@ -436,7 +462,6 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("menuItemIdentifier1",forIndexPath: indexPath) as! MyProductDetailsTableViewCell
-
             if (self.searchBarActive) {
                 getProductList = self.dataSourceForSearchResult[indexPath.row]
                 cell.getProductCollectionLists1 = getProductList
@@ -462,6 +487,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
                     //self.blockUnblockImages("1")
                 }
             }else{
+                if getProductCollectionListAdd.count >= 25{
+                    cell.loadMoreButton.hidden = false
+                }
                 cell.loadMoreButton.setTitle("Load More", forState: .Normal)
                 cell.loadMoreButton.tag = 1
             }
@@ -525,40 +553,53 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         searchBar.text = searchText.lowercaseString
         getProductCollectionListAdd.removeAll()
         if isServicesSelected == false {
-            if searchText.characters.count > 0 {
+            if searchText.characters.count > 2 {
                 getProductCollectionListAdd.removeAll()
+                var escapedAddress = address.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+                page = 1
+                fromFilterSearch = true
+                searchText1 = searchText
                 productFunction("25", page: "1" , filterName: String(searchText))
-                //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
-                
+//             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
                 self.searchBarActive = true
-                self.filterContentForSearchText(searchText)
-                self.myproductsCollectionView?.reloadData()
-                self.myProductsTableView.reloadData()
+//                self.filterContentForSearchText(searchText)
+//                self.myproductsCollectionView?.reloadData()
+//                self.myProductsTableView.reloadData()
             }else{
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                fromFilterSearch = false
+                searchText1 = ""
                 productFunction("25", page: "1", filterName: "")
 //                productFunction("25", page: "1" , filterName: "" , service_id: serviceString)
-                //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
-                self.searchBarActive = false
-                self.myproductsCollectionView?.reloadData()
-                self.myProductsTableView.reloadData()
+//                productFunction("25", page: "" , filterName:"" , service_id: serviceString)
+                  self.searchBarActive = false
+//                self.myproductsCollectionView?.reloadData()
+//                self.myProductsTableView.reloadData()
             }
         }else{
-            if searchText.characters.count > 0 {
+            if searchText.characters.count > 2 {
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                fromFilterSearch = true
+                searchText1 = searchText
                 serviceProductFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
-                //             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+//             productFunction("25", page: "1" , filterName: String(searchText) , service_id: serviceString)
+//                 serviceProductFunction("25", page: "1" , filterName: String(searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())) , service_id: serviceString
                 self.searchBarActive = true
                 self.filterContentForSearchText(searchText)
-                self.myproductsCollectionView?.reloadData()
-                self.myProductsTableView.reloadData()
+//                self.myproductsCollectionView?.reloadData()
+//                self.myProductsTableView.reloadData()
             }else{
                 getProductCollectionListAdd.removeAll()
+                page = 1
+                fromFilterSearch = false
+                searchText1 = ""
                 serviceProductFunction("25", page: "1" , filterName: "" , service_id: serviceString)
-                //          productFunction("25", page: "" , filterName:"" , service_id: serviceString)
+              //productFunction("25", page: "" , filterName:"" , service_id: serviceString)
                 self.searchBarActive = false
-                self.myproductsCollectionView?.reloadData()
-                self.myProductsTableView.reloadData()
+//                self.myproductsCollectionView?.reloadData()
+//                self.myProductsTableView.reloadData()
             }
         }
     }
@@ -651,7 +692,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         }else{
             page += 1
             if page <= totalPages{
-                serviceProductFunction("25", page: "\(page)", filterName: "", service_id: serviceString)
+                serviceProductFunction("25", page: "\(page)", filterName: searchText1.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!, service_id: serviceString)
             }else{
                 self.toastViewForTextfield("No More Products")
                 sender.hidden = true
@@ -671,7 +712,8 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         
         ServerManager.sharedInstance().blockMyProductsImage(params, completionClosure: { (isSuccessful, error, result) in
             if isSuccessful {
-                self.serviceProductFunction("25", page: "1", filterName: "", service_id: self.serviceString)
+                self.page = 1
+                self.serviceProductFunction("25", page: "1", filterName: self.searchText1, service_id: self.serviceString)
                 self.hideHud()
             }else{
                 self.hideHud()
@@ -680,13 +722,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     }
 
     func refreshList(notification: NSNotification) {
-        navigationController?.navigationBar.userInteractionEnabled = true
         if let myString = notification.object as? String {
+            if myString == "enabledUserInteraction" {
+              navigationController?.navigationBar.userInteractionEnabled = true
+            }else{
+            navigationController?.navigationBar.userInteractionEnabled = true
             serviceString = myString
             self.showHud("Loading...")
             self.getProductCollectionListAdd.removeAll()
-            
+            page = 1
             serviceProductFunction("25", page: "1", filterName: "", service_id: serviceString)
+            }
         }
     }
     
@@ -697,6 +743,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastView(_:)), name: "showtoast", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.refreshList(_:)), name: "refresh", object: nil)
+        
+        
+        editedSuccess = NSUserDefaults.standardUserDefaults().boolForKey("editedSuccess")
         
         slideMenuShow(slidemenuButton, viewcontroller: self)
         self.revealViewController().delegate = self
@@ -715,24 +764,36 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.myProductsTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         self.changeNavigationBarColor()
         
-        
+        if NSUserDefaults.standardUserDefaults().boolForKey("editedSuccess") == false {
         if Reachability.isConnectedToNetwork(){
-           productFunction("25", page: "1", filterName: "")
+            self.hideHud()
+            page = 1
+            productFunction("25", page: "1", filterName: "")
         }
         else {
             self.hideHud()
             AlertView.alertViewToGoToLogin("OK", message: "No internet connection", alertTitle: "OK", viewController: self)
         }
-       
+        }else{
+            self.toastViewForTextfield("Product edited successfully")
+            let object = NSUserDefaults.standardUserDefaults().objectForKey("serviceString") as! String
+            page = 1
+            serviceProductFunction("25", page: "1" , filterName: "" , service_id: object)
+            editedSuccess = false
+            NSUserDefaults.standardUserDefaults().setBool(editedSuccess, forKey: "editedSuccess")
+            //        productFunction("25", page: "1", filterName: "")
+          
+        }
     }
 
-    
     func showToastView(notification:NSNotification) {
-        editedSuccess = true
+        
         if let object = notification.object as? String {
-        self.toastViewForTextfield("Product edited successfully")
-//        productFunction("25", page: "1", filterName: "")
-        serviceProductFunction("25", page: "1" , filterName: "" , service_id: object)
+        editedSuccess = true
+        NSUserDefaults.standardUserDefaults().setBool(editedSuccess, forKey: "editedSuccess")
+        NSUserDefaults.standardUserDefaults().setObject(object, forKey: "serviceString")
+       
+//        NSNotificationCenter.defaultCenter().postNotificationName("callServiceFunction", object: "fromService")
         }
     }
     

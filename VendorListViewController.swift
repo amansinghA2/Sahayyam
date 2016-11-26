@@ -20,6 +20,10 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
         tokenCheck()
         revealTouch(self)
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(animated: Bool) {
         self.showHud("Loading...")
         let params = [
             "token":token ,
@@ -34,7 +38,7 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
                 self.vendorLIstTableView.delegate = self
                 self.vendorLIstTableView.dataSource = self
                 self.vendorLIstTableView.reloadData()
-               self.hideHud()
+                self.hideHud()
             }else{
                 self.hideHud()
             }
@@ -44,11 +48,6 @@ class VendorListViewController: UIViewController , UITableViewDelegate , UITable
         slideMenuShow(menuButton, viewcontroller: self)
         let nib = UINib(nibName: "TrackOrderTableViewCell", bundle: nil)
         vendorLIstTableView.registerNib(nib, forCellReuseIdentifier: "trackOrderCell")
-        // Do any additional setup after loading the view.
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        
       //  self.revealViewController().delegate = self
  
     }

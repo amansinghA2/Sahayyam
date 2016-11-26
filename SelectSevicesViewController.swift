@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate{
 
+    @IBOutlet weak var cancelView: UIView!
     @IBOutlet weak var selectServicesTableView: UITableView!
     var vendorServices = [VendorService]()
     var vendorService = VendorService()
@@ -22,18 +23,41 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        selectServicesTableView.hidden = true
+        cancelView.hidden = true
     NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation1", object: nil)
         if let data1 = NSUserDefaults.standardUserDefaults().objectForKey("indexKey") as? NSData{
            selectIndexpath = NSKeyedUnarchiver.unarchiveObjectWithData(data1) as! NSIndexPath
         }
 
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SelectSevicesViewController.dismissKeyboard))
+//        tap.delegate = self
+//        view.addGestureRecognizer(tap)
+        
        self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
        let nibName = UINib(nibName: "SelectServicesTableViewCell", bundle:nil)
        self.selectServicesTableView.registerNib(nibName, forCellReuseIdentifier: "servicesCell")
         // Do any additional setup after loading the view.
     }
 
+//    override func dismissKeyboard() {
+//        NSNotificationCenter.defaultCenter().postNotificationName("refresh", object: "enabledUserInteraction")
+//        NSNotificationCenter.defaultCenter().postNotificationName("refresh1", object: "")
+//    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+
+        return true
+//        var point = tapGestureRecognizer.location(in: parentView)
+//        var tappedView = parentView.hitTest(point, withEvent: nil)!
+        
+//        if (((touch.view?.isDescendantOfView(view))) != nil){
+//            return false
+//        }else{
+//            return true
+//        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
@@ -73,6 +97,8 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
             if isSuccessful {
                 self.hideHud()
+                self.selectServicesTableView.hidden = false
+                self.cancelView.hidden = false
                 self.vendorServices = result!
                 self.selectServicesTableView.delegate = self
                 self.selectServicesTableView.dataSource = self
@@ -94,7 +120,8 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         cell.serviceRadioButton.tag = indexPath.row
        
         dispatch_async(dispatch_get_main_queue()) {
-            
+            self.selectServicesTableView.hidden = false
+            self.cancelView.hidden = false
             var newHeight: CGFloat = self.selectServicesTableView.contentSize.height
             let screenHeightPermissible: CGFloat = (self.view.bounds.size.height - self.selectServicesTableView.frame.origin.y - 50)
             if newHeight > screenHeightPermissible {
@@ -245,6 +272,12 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("refresh", object: "enabledUserInteraction")
+        NSNotificationCenter.defaultCenter().postNotificationName("refresh1", object: "fromServices")
+        removeAnimate()
     }
  
 

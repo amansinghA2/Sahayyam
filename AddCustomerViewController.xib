@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddCustomerViewController" customModule="Sahayyam" customModuleProvider="target">
+            <connections>
+                <outlet property="mobileNumberTextfield" destination="fGX-5e-WO9" id="eVi-xO-Cfb"/>
+                <outlet property="selectVendor" destination="Hhk-XV-Uka" id="aWA-Tj-VVU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIv-do-xIt" customClass="SSRadioButton" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="168" y="39" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="Kc9-kA-RBS"/>
+                        <constraint firstAttribute="height" constant="30" id="V8N-Lq-ZT0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Resent SMS">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Vendor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqb-Vz-dJo">
+                    <rect key="frame" x="8" y="94" width="108" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="AfK-lU-356"/>
+                        <constraint firstAttribute="width" constant="108" id="fuo-m3-Piq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhk-XV-Uka">
+                    <rect key="frame" x="11" y="123" width="298" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="BZj-Ks-IvH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="--Select vendor--">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="selectVendorAction:" destination="-1" eventType="touchUpInside" id="MD9-JS-F9M"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Customer Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBf-jE-XJ9">
+                    <rect key="frame" x="8" y="166" width="222" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="222" id="nIk-fI-KK7"/>
+                        <constraint firstAttribute="height" constant="21" id="vq6-hX-JCE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGX-5e-WO9" customClass="TextField" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="8" y="195" width="304" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="FFB-Ub-ibX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ey-oE-4Rw" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="122" y="248" width="76" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Bnd-Je-LTc"/>
+                        <constraint firstAttribute="width" constant="76" id="XBY-W9-2xn"/>
+                    </constraints>
+                    <state key="normal" title="Submit">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ot0-gL-QD3" customClass="SSRadioButton" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="44" y="39" width="116" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="116" id="ckB-c7-A8C"/>
+                        <constraint firstAttribute="height" constant="30" id="oij-bb-XTT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Add Customer">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fGX-5e-WO9" secondAttribute="trailing" constant="8" id="1eQ-7G-Mvq"/>
+                <constraint firstItem="AIv-do-xIt" firstAttribute="leading" secondItem="ot0-gL-QD3" secondAttribute="trailing" constant="8" id="31h-Tr-vKB"/>
+                <constraint firstAttribute="trailing" secondItem="Hhk-XV-Uka" secondAttribute="trailing" constant="11" id="6j8-I6-oTc"/>
+                <constraint firstItem="ot0-gL-QD3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="9Ik-cL-EMF"/>
+                <constraint firstItem="6ey-oE-4Rw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="L8T-lc-rMA"/>
+                <constraint firstItem="6ey-oE-4Rw" firstAttribute="top" secondItem="fGX-5e-WO9" secondAttribute="bottom" constant="23" id="OxS-lP-DkH"/>
+                <constraint firstItem="ot0-gL-QD3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="39" id="Q8R-Y0-K5B"/>
+                <constraint firstItem="Hhk-XV-Uka" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="11" id="ScX-hI-0ep"/>
+                <constraint firstItem="Hhk-XV-Uka" firstAttribute="top" secondItem="Eqb-Vz-dJo" secondAttribute="bottom" constant="8" id="T0G-5o-HkF"/>
+                <constraint firstItem="fGX-5e-WO9" firstAttribute="top" secondItem="PBf-jE-XJ9" secondAttribute="bottom" constant="8" id="cdd-Ms-MzY"/>
+                <constraint firstItem="Eqb-Vz-dJo" firstAttribute="top" secondItem="ot0-gL-QD3" secondAttribute="bottom" constant="25" id="fX2-eN-bEm"/>
+                <constraint firstItem="AIv-do-xIt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="39" id="gaG-T5-Mb4"/>
+                <constraint firstItem="fGX-5e-WO9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="icO-eQ-xBB"/>
+                <constraint firstItem="PBf-jE-XJ9" firstAttribute="top" secondItem="Hhk-XV-Uka" secondAttribute="bottom" constant="13" id="jSg-Vr-Tha"/>
+                <constraint firstItem="PBf-jE-XJ9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="mK2-N8-cYb"/>
+                <constraint firstItem="Hhk-XV-Uka" firstAttribute="top" secondItem="AIv-do-xIt" secondAttribute="bottom" constant="54" id="v50-jS-mbd"/>
+                <constraint firstItem="Eqb-Vz-dJo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="vgF-CS-ha3"/>
+                <constraint firstAttribute="trailing" secondItem="AIv-do-xIt" secondAttribute="trailing" constant="46" id="y7b-RX-9cd"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="210" y="236"/>
+        </view>
+    </objects>
+</document>

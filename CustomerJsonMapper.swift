@@ -743,6 +743,25 @@ extension CommonJsonMapper {
                 populateData.stateName = zone_name
             }
             
+            if let arr = result["id_proof"] as? NSArray {
+                for (_,value) in arr.enumerate() {
+                    let totalDetail = CustomerIDProof()
+                    
+                    if let str = value.valueForKey("code") {
+                        totalDetail.code = str as! String
+                    }
+                    
+                    if let str = value.valueForKey("id") {
+                        totalDetail.id = str as! String
+                    }
+                    
+                    if let str = value.valueForKey("id_proof_type") {
+                        totalDetail.id_proof_type = str as! String
+                    }
+                    
+                    populateData.id_proof.append(totalDetail)
+                }
+            }
         }
         return populateData
     }
@@ -752,28 +771,7 @@ extension CommonJsonMapper {
     class func getVendorcategoryList(result:[String:AnyObject]) -> [CategoryList] {
         
         var categoryLists = [CategoryList]()
-        
-//        if let dict = result["customer"] {
-//            if let name = dict["firstname"]{
-//        
-//            }
-//            
-//            if let name = dict["lastname"]{
-//                
-//            }
-//            
-//        }
-//
-//        if let dict = result["vendors"] {
-//            if let is_default = dict["company"]{
-//                
-//            }
-//            
-//            if let is_default = dict["is_default"]{
-//                
-//            }
-//        }
-        
+
         if let arr = result["category"] as? NSArray{
             
             for (_, value) in arr.enumerate(){
@@ -822,13 +820,8 @@ extension CommonJsonMapper {
             }
             
         }
-        
-        print(categoryLists)
         return categoryLists
-        
     }
-    
-    
     
     class func customerPromotionOrdersMapper(result:[String:AnyObject]) -> [DisplayPromotionDetails] {
         

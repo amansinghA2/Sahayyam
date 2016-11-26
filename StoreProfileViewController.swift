@@ -11,7 +11,6 @@ import Dropper
 
 class StoreProfileViewController: UIViewController , SSRadioButtonControllerDelegate , UITextFieldDelegate , DropperDelegate , UIGestureRecognizerDelegate{
     
-    
     var businessViewConstant = CGFloat(43)
     @IBOutlet weak var deliveryChargesView: UIView!
     @IBOutlet weak var freeDeliveryView: UIView!

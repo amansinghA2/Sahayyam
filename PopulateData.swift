@@ -28,4 +28,6 @@ class PopulateData: NSObject {
         dynamic var zone_id = String()
         dynamic var postcode_id = String()
         dynamic var image1 = String()
+        dynamic var id_proof = [CustomerIDProof]()
+    
 }

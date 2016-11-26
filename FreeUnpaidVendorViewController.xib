@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FreeUnpaidVendorViewController" customModule="Sahayyam" customModuleProvider="target">
+            <connections>
+                <outlet property="freeUnpaidListTableView" destination="8vQ-8t-RLF" id="wMF-OZ-61n"/>
+                <outlet property="segmentControl" destination="DIE-7N-qkS" id="2df-fd-cco"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-7N-qkS">
+                    <rect key="frame" x="0.0" y="64" width="320" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="HZ1-sy-0Bo"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Active Vendors"/>
+                        <segment title="Inactive vendors"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="pKJ-eD-UEA"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8vQ-8t-RLF">
+                    <rect key="frame" x="0.0" y="104" width="320" height="463"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="DIE-7N-qkS" secondAttribute="trailing" id="0hW-AQ-QNb"/>
+                <constraint firstItem="8vQ-8t-RLF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BgF-hz-24y"/>
+                <constraint firstItem="DIE-7N-qkS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FVx-aM-fvg"/>
+                <constraint firstItem="DIE-7N-qkS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="KwL-En-Orl"/>
+                <constraint firstAttribute="trailing" secondItem="8vQ-8t-RLF" secondAttribute="trailing" id="eqg-o4-fJW"/>
+                <constraint firstAttribute="bottom" secondItem="8vQ-8t-RLF" secondAttribute="bottom" constant="1" id="tts-fP-kkk"/>
+                <constraint firstItem="8vQ-8t-RLF" firstAttribute="top" secondItem="DIE-7N-qkS" secondAttribute="bottom" id="uQi-0Z-agh"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="251" y="137"/>
+        </view>
+    </objects>
+</document>
