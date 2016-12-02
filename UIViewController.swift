@@ -217,6 +217,18 @@ extension UIViewController {
         self.view.endEditing(true)
         revealTouch(self)
     }
+    
+//    func stringToUTF16String (stringaDaConvertire stringa: String) -> String {
+//        
+//        let encodedData = stringa.dataUsingEncoding(NSUTF16StringEncoding)!
+//        let attributedOptions = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType]
+//        let attributedString = NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+//        
+//        let attributedString = NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil, error: nil)!
+//        //println(attributedString.string)
+//        return attributedString.string
+//    }
+
 
 
 }

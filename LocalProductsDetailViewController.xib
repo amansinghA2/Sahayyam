@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocalProductsDetailViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="localProductDetailsTableview" destination="AK9-eV-pnc" id="aUc-6Z-df3"/>
+                <outlet property="segmentControl" destination="cas-Ez-X72" id="1F8-e3-KE2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,23 +16,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-eV-pnc">
+                    <rect key="frame" x="0.0" y="99" width="320" height="469"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cas-Ez-X72">
-                    <rect key="frame" x="0.0" y="58" width="320" height="29"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="m4g-DV-A1s"/>
+                    </constraints>
                     <segments>
                         <segment title="Approved"/>
                         <segment title="Pending"/>
                         <segment title="Rejected"/>
                     </segments>
                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.74835668099999997" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="Mez-Da-j4r"/>
+                    </connections>
                 </segmentedControl>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AK9-eV-pnc">
-                    <rect key="frame" x="0.0" y="86" width="320" height="482"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="cas-Ez-X72" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="58" id="2fu-Cl-zL8"/>
+                <constraint firstItem="cas-Ez-X72" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="2fu-Cl-zL8"/>
                 <constraint firstItem="AK9-eV-pnc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6bg-xV-cB8"/>
                 <constraint firstAttribute="trailing" secondItem="cas-Ez-X72" secondAttribute="trailing" id="LV9-Mp-hez"/>
                 <constraint firstItem="cas-Ez-X72" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Roz-uF-kg6"/>
@@ -39,7 +47,7 @@
                 <constraint firstAttribute="trailing" secondItem="AK9-eV-pnc" secondAttribute="trailing" id="z4h-aw-abH"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="214" y="238"/>
+            <point key="canvasLocation" x="100" y="228"/>
         </view>
     </objects>
 </document>

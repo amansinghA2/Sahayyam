@@ -505,6 +505,7 @@ extension ServerManager {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
+                        print(dict)
                       //let dict = JSON(data: data)
                         completionClosure(isSuccessful: true, error: nil, result: nil)
                         print(dict)
@@ -1039,7 +1040,59 @@ extension ServerManager {
         }
     }
     
+    func vendorProductCount(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: ProductApprovalStatus?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, vendorProductCountUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorProductCountMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+        }
+    }
     
+    func vendorApprovePendingRejected(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorApprovePendingRejectedUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
     
-    
+  
 }

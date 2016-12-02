@@ -268,7 +268,7 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75352909482758623" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qlT-js-7C7">
+                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v_no_image" translatesAutoresizingMaskIntoConstraints="NO" id="qlT-js-7C7">
                                     <rect key="frame" x="15" y="83" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="GWr-dw-oaD"/>
@@ -314,7 +314,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W2-YA-CSu" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7W2-YA-CSu" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
                                     <rect key="frame" x="121" y="123" width="99" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Trv-yp-Vxd"/>
@@ -338,7 +338,7 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75352909479999997" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Irl-Z7-z6W">
+                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v_no_image" translatesAutoresizingMaskIntoConstraints="NO" id="Irl-Z7-z6W">
                                     <rect key="frame" x="15" y="751" width="80" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="MWk-oC-VlK"/>
@@ -359,7 +359,7 @@
                                         <action selector="choosImageAction:" destination="-1" eventType="touchUpInside" id="wLd-cC-abv"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgg-KY-OuX" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgg-KY-OuX" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
                                     <rect key="frame" x="103" y="785" width="99" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="99" id="KYY-Sn-IKw"/>
@@ -375,6 +375,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDP-yy-lNJ">
                                     <rect key="frame" x="125" y="713" width="187" height="30"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="4nA-fd-y8b"/>
                                     </constraints>
@@ -514,4 +515,7 @@
             <point key="canvasLocation" x="131" y="-455.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="v_no_image" width="100" height="100"/>
+    </resources>
 </document>

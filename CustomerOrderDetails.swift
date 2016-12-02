@@ -11,6 +11,7 @@ import UIKit
 class CustomerOrderDetails: NSObject {
     
     dynamic var order_id = String()
+    dynamic var customer_name = String()
     dynamic var date_added = String()
     dynamic var payment_address = String()
     dynamic var sales_order = String()

@@ -34,17 +34,6 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
         self.gradientView.layer.addSublayer(gradientLayer)
         self.gradientView.addSubview(vendorName)
         
-//        if customerType == 2 {
-//            listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" ,  "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
-//            
-//            listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_global_products" , "v_ic_new_product" , "v_ic_store_profile" , "v_ic_promotion" , "v_ic_category" , "v_ic_subscription" , "v_ic_history", "ic_personalvendoredit" , "v_ic_update" , "v_ic_store_profile", "v_ic_logout"]
-//        }else{
-//        
-//       listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
-//        
-//       listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_global_products" , "v_ic_new_product" , "v_ic_store_profile" , "v_ic_promotion" , "v_ic_category" , "v_ic_subscription" , "v_ic_history" , "ch_ic_switch_profile" , "ic_personalvendoredit" , "v_ic_update" , "v_ic_store_profile", "v_ic_logout"]
-//        }
-        
         
         if customerType == 2 {
             listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Services" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
@@ -56,6 +45,17 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             
             listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_global_products" , "v_ic_new_product" , "v_ic_store_profile" , "v_ic_promotion" , "v_ic_category" , "v_ic_subscription" , "v_ic_history" , "v_ic_history", "ch_ic_switch_profile" , "ic_personalvendoredit" , "v_ic_update" , "v_ic_store_profile", "v_ic_logout"]
         }
+        
+        
+//        if customerType == 2 {
+//            listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Services" , "Local Product Status" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
+//            
+//            listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_global_products" , "v_ic_new_product" , "v_ic_store_profile" , "v_ic_promotion" , "v_ic_category" , "v_ic_subscription" , "v_ic_history", "v_ic_history" , "v_ic_history", "ic_personalvendoredit" , "v_ic_update" , "v_ic_store_profile", "v_ic_logout"]
+//        }else{
+//            listArray = ["Orders" , "Customers" , "My Products" , "Product Global List" , "New Product" , "Store Profile" ,"Promotions", "Categories" , "Subscription Details" , "Payment details" , "Services" , "Local Product Status" , "Switch profile" , "Update Vendor Profile" , "Update profile Account" , "About us" , "Logout"]
+//            
+//            listImageArray = ["v_ic_order" , "v_ic_customer" , "v_ic_products" , "v_ic_global_products" , "v_ic_new_product" , "v_ic_store_profile" , "v_ic_promotion" , "v_ic_category" , "v_ic_subscription" , "v_ic_history" , "v_ic_history" , "v_ic_history", "ch_ic_switch_profile" , "ic_personalvendoredit" , "v_ic_update" , "v_ic_store_profile", "v_ic_logout"]
+//        }
 
         // Do any additional setup after loading the view.
     }
@@ -82,92 +82,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-//        if customerType == 2 {
-//            switch indexPath.row {
-//            case 0:
-//            self.cellClickNavigation("Vendor" , identifier: "VendorListID")
-//            case 1:
-//            self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
-//            case 2:
-//            self.cellClickNavigation("Vendor" , identifier: "MyProductsViewID")
-//            case 3:
-//            self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
-//            case 4:
-//            self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
-//            case 5:
-//            self.cellClickNavigation("Vendor" , identifier: "showStoreProfileSegue")
-//            case 6:
-//            self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
-//            case 7:
-//            self.cellClickNavigation("Vendor" , identifier: "categoryListID")
-//            case 8:
-//            self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
-//            case 9:
-//            self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
-//            case 10:
-//            self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
-//            case 11:
-//            let sb = UIStoryboard(name: "Vendor", bundle: nil)
-//            let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
-//            vc1.isLogin = "customerDropDown"
-//            let nc = UINavigationController(rootViewController: vc1)
-//            nc.setViewControllers([vc1], animated: true)
-//            nc.navigationBar.barTintColor = UIColor.orangeColor()
-//            self.revealViewController().setFrontViewController(nc, animated: false)
-//            self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
-//            self.revealViewController().revealToggleAnimated(true)
-//            case 12:
-//            self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
-//            case 13:
-//            alertControllerToLogout()
-//            default:
-//            print("")
-//        }
-//        }else{
-//        switch indexPath.row {
-//        case 0:
-//            self.cellClickNavigation("Vendor" , identifier: "VendorListID")
-//        case 1:
-//            self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
-//        case 2:
-//            self.cellClickNavigation("Vendor" , identifier: "MyProductsViewID")
-//        case 3:
-//            self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
-//        case 4:
-//            self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
-//        case 5:
-//            self.cellClickNavigation("Vendor" , identifier: "showStoreProfileSegue")
-//        case 6:
-//            self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
-//        case 7:
-//            self.cellClickNavigation("Vendor" , identifier: "categoryListID")
-//        case 8:
-//            self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
-//        case 9:
-//            self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
-//        case 10:
-//            self.cellClickNavigation("Main" , identifier: "SwitchUVController")
-//        case 11:
-//            self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
-//        case 12:
-//            let sb = UIStoryboard(name: "Vendor", bundle: nil)
-//            let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
-//            vc1.isLogin = "customerDropDown"
-//            let nc = UINavigationController(rootViewController: vc1)
-//            nc.setViewControllers([vc1], animated: true)
-//            nc.navigationBar.barTintColor = UIColor.orangeColor()
-//            self.revealViewController().setFrontViewController(nc, animated: false)
-//            self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
-//            self.revealViewController().revealToggleAnimated(true)
-//        case 13:
-//            self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
-//        case 14:
-//            alertControllerToLogout()
-//        default:
-//            print("")
-//        }
-//        }
-        
+
         if customerType == 2 {
             switch indexPath.row {
             case 0:
@@ -209,7 +124,8 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
             case 14:
                 alertControllerToLogout()
             default:
-                print("")
+                print("localProductStatusID")
+                
             }
         }else{
             switch indexPath.row {
@@ -257,8 +173,104 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
                 print("")
             }
         }
-
         
+        
+//        if customerType == 2 {
+//            switch indexPath.row {
+//            case 0:
+//                self.cellClickNavigation("Vendor" , identifier: "VendorListID")
+//            case 1:
+//                self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
+//            case 2:
+//                self.cellClickNavigation("Vendor" , identifier: "MyProductsViewID")
+//            case 3:
+//                self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
+//            case 4:
+//                self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
+//            case 5:
+//                self.cellClickNavigation("Vendor" , identifier: "showStoreProfileSegue")
+//            case 6:
+//                self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
+//            case 7:
+//                self.cellClickNavigation("Vendor" , identifier: "categoryListID")
+//            case 8:
+//                self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
+//            case 9:
+//                self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
+//            case 10:
+//                self.cellClickNavigation("Vendor" , identifier: "servicesID")
+//            case 11:
+//                self.cellClickNavigation("Vendor" , identifier: "localProductStatusID")
+//            case 12:
+//                self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
+//            case 13:
+//                let sb = UIStoryboard(name: "Vendor", bundle: nil)
+//                let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
+//                vc1.isLogin = "customerDropDown"
+//                let nc = UINavigationController(rootViewController: vc1)
+//                nc.setViewControllers([vc1], animated: true)
+//                nc.navigationBar.barTintColor = UIColor.orangeColor()
+//                self.revealViewController().setFrontViewController(nc, animated: false)
+//                self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+//                self.revealViewController().revealToggleAnimated(true)
+//            case 14:
+//                self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
+//            case 15:
+//                alertControllerToLogout()
+//            default:
+//                print("localProductStatusID")
+//                
+//            }
+//        }else{
+//            switch indexPath.row {
+//            case 0:
+//                self.cellClickNavigation("Vendor" , identifier: "VendorListID")
+//            case 1:
+//                self.cellClickNavigation("Vendor" , identifier: "CustomerListID")
+//            case 2:
+//                self.cellClickNavigation("Vendor" , identifier: "MyProductsViewID")
+//            case 3:
+//                self.cellClickNavigation("Vendor" , identifier: "GlobalLIstId")
+//            case 4:
+//                self.cellClickNavigation("Vendor" , identifier: "ProductAddID")
+//            case 5:
+//                self.cellClickNavigation("Vendor" , identifier: "showStoreProfileSegue")
+//            case 6:
+//                self.cellClickNavigation("Vendor" , identifier: "vendorPromotionID")
+//            case 7:
+//                self.cellClickNavigation("Vendor" , identifier: "categoryListID")
+//            case 8:
+//                self.cellClickNavigation("Vendor" , identifier: "SubscriptionID")
+//            case 9:
+//                self.cellClickNavigation("Vendor" , identifier: "PaymentDetailsID")
+//            case 10:
+//                self.cellClickNavigation("Vendor" , identifier: "servicesID")
+//            case 11:
+//                self.cellClickNavigation("Vendor" , identifier: "localProductStatusID")
+//            case 12:
+//                self.cellClickNavigation("Main" , identifier: "SwitchUVController")
+//            case 13:
+//                self.cellClickNavigation("Vendor" , identifier: "vendorEFID")
+//            case 14:
+//                let sb = UIStoryboard(name: "Vendor", bundle: nil)
+//                let vc1 = sb.instantiateViewControllerWithIdentifier("vendorUpdateID") as! VendorUpdateProfileViewController
+//                vc1.isLogin = "customerDropDown"
+//                let nc = UINavigationController(rootViewController: vc1)
+//                nc.setViewControllers([vc1], animated: true)
+//                nc.navigationBar.barTintColor = UIColor.orangeColor()
+//                self.revealViewController().setFrontViewController(nc, animated: false)
+//                self.revealViewController().setFrontViewPosition(FrontViewPosition.Right, animated: false)
+//                self.revealViewController().revealToggleAnimated(true)
+//            case 15:
+//                self.cellClickNavigation("Vendor" , identifier: "AboutUsID")
+//            case 16:
+//                alertControllerToLogout()
+//            default:
+//                print("")
+//            }
+//        }
+
+  
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

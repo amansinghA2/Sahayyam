@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerListViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="balanceCreditLabel" destination="fhd-DU-qTS" id="eFt-9V-yJV"/>
                 <outlet property="customerListTableView" destination="bzi-PU-1Jx" id="BHF-Fh-hnv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,29 +16,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bzi-PU-1Jx">
-                    <rect key="frame" x="0.0" y="28" width="320" height="540"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhd-DU-qTS">
-                    <rect key="frame" x="0.0" y="64" width="320" height="28"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.74951508620689655" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="28" id="gdJ-ot-am9"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74835668103448272" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="bzi-PU-1Jx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="230-bg-ahV"/>
-                <constraint firstAttribute="trailing" secondItem="fhd-DU-qTS" secondAttribute="trailing" id="4hI-LW-vOf"/>
+                <constraint firstItem="bzi-PU-1Jx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="230-bg-ahV"/>
                 <constraint firstAttribute="bottom" secondItem="bzi-PU-1Jx" secondAttribute="bottom" id="Nwp-IS-EIX"/>
                 <constraint firstItem="bzi-PU-1Jx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S2v-dA-m0y"/>
-                <constraint firstItem="fhd-DU-qTS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHG-yZ-nFz"/>
                 <constraint firstAttribute="trailing" secondItem="bzi-PU-1Jx" secondAttribute="trailing" id="j4x-js-AwM"/>
-                <constraint firstItem="fhd-DU-qTS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="vJj-Oh-qeb"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="-81" y="197"/>

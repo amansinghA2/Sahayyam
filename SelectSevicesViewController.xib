@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectSevicesViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
-                <outlet property="cancelView" destination="Di8-Jd-rAR" id="eti-hY-ham"/>
+                <outlet property="cancelView" destination="Di8-Jd-rAR" id="Xxh-zu-QSA"/>
                 <outlet property="selectServiceHeightContraint" destination="Eu3-Ky-A5B" id="iHR-82-7F5"/>
                 <outlet property="selectServicesTableView" destination="W8n-i0-bvu" id="DJD-wW-3iJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -18,18 +18,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W8n-i0-bvu">
-                    <rect key="frame" x="51" y="139" width="219" height="290"/>
+                    <rect key="frame" x="8" y="139" width="304" height="290"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="290" id="Eu3-Ky-A5B"/>
-                        <constraint firstAttribute="width" constant="219" id="cBC-8j-ZUG"/>
+                        <constraint firstAttribute="width" constant="304" id="cBC-8j-ZUG"/>
                     </constraints>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-Jd-rAR">
-                    <rect key="frame" x="51" y="98" width="219" height="41"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-Jd-rAR" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="8" y="98" width="304" height="41"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-2s-pwa">
-                            <rect key="frame" x="181" y="4" width="32" height="33"/>
+                            <rect key="frame" x="264" y="4" width="32" height="33"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="elv-9o-Ms3"/>
                                 <constraint firstAttribute="height" constant="33" id="jB5-ww-1wc"/>
@@ -48,7 +48,7 @@
                         <constraint firstItem="sqe-2s-pwa" firstAttribute="top" secondItem="Di8-Jd-rAR" secondAttribute="top" constant="4" id="7JK-IS-NaU"/>
                         <constraint firstAttribute="bottom" secondItem="sqe-2s-pwa" secondAttribute="bottom" constant="4" id="HbS-Y4-7Ex"/>
                         <constraint firstItem="sqe-2s-pwa" firstAttribute="centerY" secondItem="Di8-Jd-rAR" secondAttribute="centerY" id="cvT-5l-Wph"/>
-                        <constraint firstAttribute="trailing" secondItem="sqe-2s-pwa" secondAttribute="trailing" constant="6" id="pvh-p5-rqW"/>
+                        <constraint firstAttribute="trailing" secondItem="sqe-2s-pwa" secondAttribute="trailing" constant="8" id="pvh-p5-rqW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -61,7 +61,7 @@
                 <constraint firstItem="Di8-Jd-rAR" firstAttribute="leading" secondItem="W8n-i0-bvu" secondAttribute="leading" id="owQ-Uu-VtW"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="212" y="184"/>
+            <point key="canvasLocation" x="-23" y="134"/>
         </view>
     </objects>
     <resources>

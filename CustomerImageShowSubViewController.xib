@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerImageShowSubViewController" customModule="Sahayyam" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="sxi-PA-tLQ" id="G0d-RW-b2C"/>
+                <outlet property="customerIdImage" destination="6iu-2z-4Pc" id="Ymb-fh-2oD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68X-YV-wgk" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="10" y="91" width="300" height="43"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxi-PA-tLQ">
+                            <rect key="frame" x="262" y="7" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="GLQ-qy-pyX"/>
+                                <constraint firstAttribute="height" constant="30" id="lKo-BD-EdN"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="cancel"/>
+                            <connections>
+                                <action selector="cancelButton:" destination="-1" eventType="touchUpInside" id="lkS-KW-Vjt"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="sxi-PA-tLQ" firstAttribute="centerY" secondItem="68X-YV-wgk" secondAttribute="centerY" id="Xl7-gx-v2E"/>
+                        <constraint firstAttribute="width" constant="300" id="ecK-q6-c2n"/>
+                        <constraint firstAttribute="height" constant="43" id="nfe-Ex-oBs"/>
+                        <constraint firstAttribute="trailing" secondItem="sxi-PA-tLQ" secondAttribute="trailing" constant="8" id="wHD-Ja-Kox"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6iu-2z-4Pc">
+                    <rect key="frame" x="10" y="134" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Ufb-QB-I16"/>
+                        <constraint firstAttribute="width" constant="300" id="X7p-U5-bIy"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="68X-YV-wgk" firstAttribute="trailing" secondItem="6iu-2z-4Pc" secondAttribute="trailing" id="3v7-tU-DVF"/>
+                <constraint firstItem="68X-YV-wgk" firstAttribute="centerX" secondItem="6iu-2z-4Pc" secondAttribute="centerX" id="Ko0-NW-lKD"/>
+                <constraint firstItem="6iu-2z-4Pc" firstAttribute="top" secondItem="68X-YV-wgk" secondAttribute="bottom" id="LSe-79-lNY"/>
+                <constraint firstItem="6iu-2z-4Pc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="a2H-YQ-yRO"/>
+                <constraint firstItem="68X-YV-wgk" firstAttribute="leading" secondItem="6iu-2z-4Pc" secondAttribute="leading" id="c9R-Am-pgo"/>
+                <constraint firstItem="6iu-2z-4Pc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="eP8-gh-8mF"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="221" y="203"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cancel" width="32" height="32"/>
+    </resources>
+</document>

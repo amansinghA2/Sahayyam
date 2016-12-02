@@ -68,19 +68,19 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
             }
             
             if offerPrice.title != "" {
-                priceShowLabel.text = offerPrice.text
+                priceShowLabel.text = offerPrice.text + " /-"
             }
             
             if deliveryCharges.title != "" {
-                deliverychargesShowLabel.text = deliveryCharges.text
+                deliverychargesShowLabel.text = deliveryCharges.text + " /-"
             }
             
             if deliveryCharges.title != "" {
-                subTotalShowLabel.text = subTotal.text
+                subTotalShowLabel.text = subTotal.text + " /-"
             }
             
             if total.title != "" {
-                totalShowLabel.text = total.text
+                totalShowLabel.text = total.text + " /-"
             }
     }
         
@@ -88,7 +88,7 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
                    for i in total {
                     if i.title != "" {
                     expressDeliveryLabel.text = "Express Delivery Cost"
-                    expressDeliveryShowLabel.text = i.text
+                    expressDeliveryShowLabel.text = i.text + " /-"
                     }
             }
         }
@@ -96,7 +96,7 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
         if let total = orderdetailList?.extraOrderCosts {
             for i in total {
                 grandTotalLabel.text = "Grand Total"
-                grandTotalShowLabel.text = i.text
+                grandTotalShowLabel.text = i.text + " /-"
             }
         }
         
@@ -128,19 +128,19 @@ class OrderDetailsFotterTableViewCell: UITableViewCell {
             }
             
             if offerPrice.title != "" {
-                priceShowLabel.text = offerPrice.text
+                priceShowLabel.text = offerPrice.text + " /-"
             }
             
             if deliveryCharges.title != "" {
-                deliverychargesShowLabel.text = deliveryCharges.text
+                deliverychargesShowLabel.text = deliveryCharges.text + " /-"
             }
             
             if deliveryCharges.title != "" {
-                subTotalShowLabel.text = subTotal.text
+                subTotalShowLabel.text = subTotal.text + " /-"
             }
             
             if total.title != "" {
-                totalShowLabel.text = total.text
+                totalShowLabel.text = total.text + " /-"
             }
         }
         

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductServicesDetailViewController" customModule="Sahayyam" customModuleProvider="target">
+            <connections>
+                <outlet property="categoryNameLabel" destination="7jP-Hx-P5K" id="YfZ-yx-LJB"/>
+                <outlet property="servicesDetailTableView" destination="U4m-Hj-HLJ" id="ROS-ge-uO5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U4m-Hj-HLJ">
+                    <rect key="frame" x="0.0" y="42" width="320" height="526"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jP-Hx-P5K">
+                    <rect key="frame" x="0.0" y="13" width="320" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="fOC-Jz-BWo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="U4m-Hj-HLJ" firstAttribute="top" secondItem="7jP-Hx-P5K" secondAttribute="bottom" id="0ZV-KZ-lyL"/>
+                <constraint firstAttribute="bottom" secondItem="U4m-Hj-HLJ" secondAttribute="bottom" id="FnH-oP-RV3"/>
+                <constraint firstItem="7jP-Hx-P5K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="13" id="JqZ-39-USf"/>
+                <constraint firstAttribute="trailing" secondItem="U4m-Hj-HLJ" secondAttribute="trailing" id="MuE-sM-AKe"/>
+                <constraint firstItem="U4m-Hj-HLJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d22-JO-KFd"/>
+                <constraint firstAttribute="trailing" secondItem="7jP-Hx-P5K" secondAttribute="trailing" id="jZV-Jl-f0X"/>
+                <constraint firstItem="7jP-Hx-P5K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tMx-Vc-Err"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="198" y="197"/>
+        </view>
+    </objects>
+</document>

@@ -31,11 +31,10 @@
                     <constraint firstItem="o4R-kG-a6F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vKb-h3-ik8"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="statusLabel" destination="o4R-kG-a6F" id="8GR-iJ-4N4"/>
             </connections>
-            <point key="canvasLocation" x="325" y="189"/>
+            <point key="canvasLocation" x="257" y="166"/>
         </tableViewCell>
     </objects>
 </document>

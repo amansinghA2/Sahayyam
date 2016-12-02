@@ -47,23 +47,23 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         // Do any additional setup after loading the view.
         address.layer.borderWidth = 1
         address.layer.borderColor = UIColor.lightGrayColor().CGColor
-        address.layer.cornerRadius = 3
+        address.layer.cornerRadius = 10
         
         descriptionTextview.layer.borderWidth = 1
         descriptionTextview.layer.borderColor = UIColor.lightGrayColor().CGColor
-        descriptionTextview.layer.cornerRadius = 3
+        descriptionTextview.layer.cornerRadius = 10
         
         taxNameAndNoView.layer.borderWidth = 1
         taxNameAndNoView.layer.borderColor = UIColor.lightGrayColor().CGColor
-        taxNameAndNoView.layer.cornerRadius = 3
+        taxNameAndNoView.layer.cornerRadius = 10
         
         address.layer.borderWidth = 1
         address.layer.borderColor = UIColor.lightGrayColor().CGColor
-        address.layer.cornerRadius = 3
+        address.layer.cornerRadius = 10
         
         address2.layer.borderWidth = 1
         address2.layer.borderColor = UIColor.lightGrayColor().CGColor
-        address2.layer.cornerRadius = 3
+        address2.layer.cornerRadius = 10
         
         tokenCheck()
         imagePicker.delegate = self
@@ -105,7 +105,7 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
         
         if sender.tag == 0 {
             imageSelected = 1
-        }else{
+        }else if sender.tag == 1{
             imageSelected = 2
         }
         
@@ -219,6 +219,11 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
             return false
         }
         
+        if (pinccodeTextfield.text!.characters.count != 6 ) {
+            AlertView.alertView("Alert", message: "Invalid pincode entered", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
         return true
     }
     
@@ -308,5 +313,19 @@ class VendorEditPFViewController: UIViewController , UIImagePickerControllerDele
      // Pass the selected object to the new view controller.
      }
      */
+    
+    @IBAction func removeImageAction(sender: AnyObject) {
+        
+        if sender.tag == 2 {
+            str = ""
+            self.profileImage.image = UIImage(named: "v_no_image")
+        }else if sender.tag == 3{
+            str1 = ""
+            self.bannerImage.image = UIImage(named: "v_no_image")
+        }
+        
+    }
+    
+    
     
 }

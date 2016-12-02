@@ -93,6 +93,8 @@ let vendorRegistrationUrl = BASE_URL + "index.php?route=api/account-customer/reg
 let productDetailDetailsURl = BASE_URL + "index.php?route=api/vendor/getProducts"
 let vendorGetServiceURl = BASE_URL + "index.php?route=api/vendorService"
 let vendorUpdateServicesURl = BASE_URL + "index.php?route=api/vendorService/updateService"
+let vendorProductCountUrl = BASE_URL + "index.php?route=api/productapproval"
+let vendorApprovePendingRejectedUrl = BASE_URL + "index.php?route=api/ProductDetailApproval"
 
     // CityHead URl
 
@@ -107,6 +109,9 @@ let chAddNewVendorUrl = BASE_URL+"index.php?route=api/cityHead/addVendor"
 let storePormotionUrl = BASE_URL+"index.php?route=api/subscription/storeSubscription"
 let vendorListSubscriptionUrl = BASE_URL+"index.php?route=api/cityHead"
 let chAddNewVendor = BASE_URL+"index.php?route=api/cityHead/addVendor"
+let freeToPaidUrl = BASE_URL + "index.php?route=api/cityHead/freeToPaid"
+let cityheadAddCustomerUrl = BASE_URL + "index.php?route=api/cityheadAddCustomer"
+let addSingleCustomerUrl = BASE_URL + "index.php?route=api/cityheadAddCustomer/addSingleCustomer"
 
 var getHour = String()
 var getMinute = String()

@@ -20,41 +20,72 @@ class VendorsFreeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var subscriptionButton: UIButton!
     
-//    var vendoSubsLIst:CHVendorSubsList!{
-//        didSet{
-//            bindModelToViews()
-//        }
-//    }
+    var freevendorList:FreeVendorList!{
+        didSet{
+            bindModelToViews()
+        }
+    }
+    
+    var unpaidVendorList:UnpaidVendorList!{
+        didSet{
+            bindModelToViews1()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-//    func bindModelToViews(){
-//        
-//        if let _ = vendoSubsLIst.firstname as? String {
-//            nameLabel.text = vendoSubsLIst.firstname + " " + vendoSubsLIst.lastname
+    func bindModelToViews(){
+        
+        if let busType = freevendorList.bus_type as? String {
+            busTypeLabel.text = busType
+        }
+        
+        if let telephone = freevendorList.seller as? String {
+            nameLabel.text = telephone
+        }
+        
+//        if let sellerId = freevendorList.seller_id as? String {
+//            nameLabel.text = sellerId
 //        }
-//        
-//        if let telephone = vendoSubsLIst.telephone as? String {
-//            mobileLabel.text = telephone
-//        }
-//        
-//        if let _ = vendoSubsLIst.firstname as? String {
-//            nameLabel.text = vendoSubsLIst.firstname + " " + vendoSubsLIst.lastname
-//        }
-//        
-//        if let _ = vendoSubsLIst.email as? String {
-//            email.text = vendoSubsLIst.firstname + " " + vendoSubsLIst.lastname
-//        }
-//        
-//        if let _ = vendoSubsLIst.firstname as? String {
-//            nameLabel.text = vendoSubsLIst.firstname + " " + vendoSubsLIst.lastname
-//        }
-//        
-//        
-//    }
+        
+        if let subsfees = freevendorList.subscription_fees as? String {
+           subFeesLabel.text = subsfees
+        }
+        
+        if let telephone = freevendorList.telephone as? String {
+            mobileLabel.text = telephone
+        }
+        
+        
+    }
+    
+    func bindModelToViews1(){
+        
+        if let busType = freevendorList.bus_type as? String {
+            busTypeLabel.text = busType
+        }
+        
+        if let telephone = freevendorList.seller as? String {
+            nameLabel.text = telephone
+        }
+        
+        //        if let sellerId = freevendorList.seller_id as? String {
+        //            nameLabel.text = sellerId
+        //        }
+        
+        if let subsfees = freevendorList.subscription_fees as? String {
+            subFeesLabel.text = subsfees
+        }
+        
+        if let telephone = freevendorList.telephone as? String {
+            mobileLabel.text = telephone
+        }
+        
+        
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

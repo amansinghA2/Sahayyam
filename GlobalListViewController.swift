@@ -562,6 +562,8 @@ class GlobalListViewController: UIViewController , UITableViewDataSource , UITab
 
     }
 
+    
+    
         func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             return UITableViewAutomaticDimension
         }

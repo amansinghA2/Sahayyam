@@ -17,6 +17,10 @@ class CustomerListDetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var popUpImage: UIButton!
+    
+    @IBOutlet weak var proddIdLabel: UILabel!
+    
     var customerList:CustomerList!{
         didSet{
             bindMOdelToViews()
@@ -42,6 +46,16 @@ class CustomerListDetailTableViewCell: UITableViewCell {
             addressLabel.text = address
         }
         
+        if let address = customerList.idCardType as? String{
+            if address == "" {
+              proddIdLabel.text = "--"
+              popUpImage.hidden = true
+            }else{
+                popUpImage.hidden = false
+            proddIdLabel.text = address
+            }
+        }
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -49,5 +63,6 @@ class CustomerListDetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+ 
     
 }

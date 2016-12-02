@@ -9,19 +9,49 @@
 import UIKit
 import Dropper
 
-class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate , DropperDelegate{
+class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate , DropperDelegate , SSRadioButtonControllerDelegate{
 
     var dropper = Dropper(width: 131, height: 141)
     
     @IBOutlet weak var mobileNumberTextfield: TextField!
     @IBOutlet weak var selectVendor: UIButton!
+    var radioButtonController = SSRadioButtonsController()
+
+    @IBOutlet weak var addCustomerButton: SSRadioButton!
+    
+    @IBOutlet weak var resendSmsButton: SSRadioButton!
+    var vendorLists = [CHVendorSubsList]()
+    var customerId = ""
+//    var telephoneNo = ""
+    var isResendSms = false
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StoreProfileViewController.dismissKeyboard))
         tap.delegate = self
         view.addGestureRecognizer(tap)
         mobileNumberTextfield.setTextFieldStyle(TextFieldStyle.MobileNumber)
+        
+        radioButtonController.setButtonsArray([addCustomerButton!,resendSmsButton!])
+        radioButtonController.delegate = self
+        addCustomerButton.selected = true
+        
+        let params = [
+        "token":token,
+        "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().chAddCustomerGetdataUrl(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                    self.vendorLists = result!
+                    self.customerId = self.vendorLists[0].customer_id
+                    self.hideHud()
+            }
+           else{
+                self.hideHud()
+            }
+        
         // Do any additional setup after loading the view.
+      }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,10 +77,17 @@ class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate 
     
     @IBAction func selectVendorAction(sender: AnyObject) {
         
+        var vendorListArray = [String]()
+        
+        for vendorList in self.vendorLists {
+            vendorListArray.append(vendorList.firstname + " " + vendorList.lastname + " " + vendorList.telephone)
+        }
+        
         if dropper.status == .Hidden {
             dropper = Dropper(x: selectVendor.frame.origin.x, y: selectVendor.frame.origin.y + selectVendor.frame.size.height, width: selectVendor.frame.size.width, height: 150)
             dropper.tag = 3
-            dropper.items = ["Sunday" , "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday" , "Saturday"]
+            dropper.items = vendorListArray
+            
             dropper.theme = Dropper.Themes.Black(UIColor.grayColor())
             dropper.delegate = self
             dropper.cellBackgroundColor = UIColor.grayColor()
@@ -58,7 +95,7 @@ class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate 
             dropper.spacing = 1
             dropper.cellTextSize = 13.0
             dropper.cornerRadius = 3
-            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Top, button: selectVendor)
+            dropper.showWithAnimation(0.15, options: Dropper.Alignment.Center, position: Dropper.Position.Bottom, button: selectVendor)
         } else {
             dropper.hideWithAnimation(0.1)
         }
@@ -67,7 +104,53 @@ class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate 
 
     func DropperSelectedRow(path: NSIndexPath, contents: String, tag: Int) {
         
+        for vendorList in vendorLists {
+            if contents == vendorList.firstname + " " + vendorList.lastname + " " + vendorList.telephone {
+                customerId = vendorList.customer_id
+//                telephoneNo = vendorList.telephone
+                selectVendor.setTitle("\(contents)", forState: .Normal)
+            }
+        }
+        
     }
+    
+    func didSelectButton(aButton: UIButton?) {
+        if aButton == addCustomerButton {
+            isResendSms = false
+        }else{
+            isResendSms = true
+        }
+    }
+    
+    @IBAction func addCustomerAction(sender: AnyObject) {
+        
+        var params = [
+        "token":token,
+        "device_id":"1234",
+        "vendor_id":customerId,
+        "telephone":String(mobileNumberTextfield.text!)
+        ]
+        
+        if isResendSms == true {
+           params["type"] = "ReSendSms"
+        }
+        
+        print(params)
+        
+        ServerManager.sharedInstance().chAddCustomerUrl(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+//                if res = dictResult[""]
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+        
+        
+    }
+    
+
+    
     
     /*
     // MARK: - Navigation

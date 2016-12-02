@@ -31,6 +31,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIj-WU-7DF">
                         <rect key="frame" x="0.0" y="0.0" width="279" height="45"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.2542564655172414" colorSpace="calibratedWhite"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COe-x7-8mt">
                         <rect key="frame" x="287" y="8" width="25" height="27"/>
@@ -72,7 +73,7 @@
                 <outlet property="nameLabel" destination="eVb-34-uqm" id="ST9-jr-8lE"/>
                 <outlet property="numberLabel" destination="4jL-gr-LN6" id="vAd-Eo-QnX"/>
             </connections>
-            <point key="canvasLocation" x="184" y="134.5"/>
+            <point key="canvasLocation" x="147" y="107.5"/>
         </tableViewCell>
     </objects>
 </document>

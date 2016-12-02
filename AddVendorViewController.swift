@@ -103,7 +103,6 @@ class AddVendorViewController: UIViewController , DropperDelegate{
         ServerManager.sharedInstance().cityWisePincodeLocation(params) { (isSuccessful, error, result, dictResult) in
             if isSuccessful {
                 self.cityWisePincode = result!
-                
                 var getPostCodeList = [String]()
                 
                 for data in self.cityWisePincode.postcodesList {

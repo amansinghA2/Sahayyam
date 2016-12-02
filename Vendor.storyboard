@@ -131,7 +131,7 @@
             <objects>
                 <viewController id="rEI-1E-ttD" customClass="VendorOrderDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Order Details" id="1Vi-jF-tRU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="gdj-S1-0Av">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="gdj-S1-0Av">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="orderStatusButtonAction:" destination="rEI-1E-ttD" id="iZj-Bi-pxd"/>
@@ -207,7 +207,7 @@
             <objects>
                 <viewController id="KSC-0X-Spb" customClass="ProductDetailsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="LCn-Vh-iFJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Hwo-i9-U4F">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Hwo-i9-U4F">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="editProductAction:" destination="KSC-0X-Spb" id="VTu-SL-N92"/>
@@ -269,7 +269,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVH-l1-jbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="438"/>
+            <point key="canvasLocation" x="-149" y="446"/>
         </scene>
         <!--Customer Registration View Controller-->
         <scene sceneID="d8A-T4-yo5">
@@ -279,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcW-va-hsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="290" y="1120"/>
+            <point key="canvasLocation" x="290" y="1092"/>
         </scene>
         <!--Customers-->
         <scene sceneID="MdJ-nM-Mhc">
@@ -302,11 +302,12 @@
                     <connections>
                         <outlet property="slideMenuButton" destination="Dzz-53-bHX" id="dTf-Gv-z8z"/>
                         <segue destination="rry-Rj-Mbt" kind="show" id="6U6-W0-QCX"/>
+                        <segue destination="OKY-2L-Mr2" kind="show" id="xKb-7l-gmQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPf-bW-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273" y="1638"/>
+            <point key="canvasLocation" x="652" y="2196"/>
         </scene>
         <!--Subscription Details View Controller-->
         <scene sceneID="HA8-wW-KTk">
@@ -577,8 +578,8 @@
                         <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="seW-qJ-EJo">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Uns-rC-evx">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <barButtonItem key="rightBarButtonItem" image="ch_ic_filter" id="Uns-rC-evx">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="serviceListFunction:" destination="Sst-4k-lwP" id="gGC-cW-lfg"/>
                             </connections>
@@ -631,15 +632,24 @@
             </objects>
             <point key="canvasLocation" x="652" y="2379"/>
         </scene>
-        <!--Local Product Status View Controller-->
+        <!--Product Status-->
         <scene sceneID="SV8-S4-uZa">
             <objects>
-                <viewController id="iA4-cY-4Dp" customClass="LocalProductStatusViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="localProductStatusID" id="iA4-cY-4Dp" customClass="LocalProductStatusViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Product Status" id="hYg-gL-FGM">
+                        <barButtonItem key="leftBarButtonItem" image="List Filled-35" id="60P-DW-tOn">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="slideMenuButton" destination="60P-DW-tOn" id="zcb-hb-Xrd"/>
+                        <segue destination="uzP-is-mf9" kind="show" identifier="localProductDetailSegue" id="LaQ-np-J0a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLk-ku-itG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="8"/>
+            <point key="canvasLocation" x="397" y="-264"/>
         </scene>
         <!--Services-->
         <scene sceneID="qev-jD-nNU">
@@ -652,6 +662,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7B-hV-4bO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4" y="-601"/>
+        </scene>
+        <!--Local Products Detail View Controller-->
+        <scene sceneID="ssQ-y5-MAc">
+            <objects>
+                <viewController storyboardIdentifier="localProductDetailID" automaticallyAdjustsScrollViewInsets="NO" id="uzP-is-mf9" customClass="LocalProductsDetailViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="HIz-BI-CUy" kind="show" id="mfF-hn-SuD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bh0-r4-6T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="-264"/>
+        </scene>
+        <!--Vendor Product Subdetail View Controller-->
+        <scene sceneID="51j-Jh-4Q3">
+            <objects>
+                <viewController storyboardIdentifier="vendorProductDetailID" automaticallyAdjustsScrollViewInsets="NO" id="HIz-BI-CUy" customClass="VendorProductSubdetailViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fs-8y-KtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1081" y="-264"/>
+        </scene>
+        <!--Customer Image Show Sub View Controller-->
+        <scene sceneID="Ncl-ao-ec4">
+            <objects>
+                <viewController storyboardIdentifier="CustomerShowImageID" id="OKY-2L-Mr2" customClass="CustomerImageShowSubViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="tjp-hw-mrq"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UBa-sf-sdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="2350"/>
         </scene>
     </scenes>
     <resources>

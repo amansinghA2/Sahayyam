@@ -49,7 +49,7 @@ class AboutUsViewController: UIViewController {
     }
     */
     @IBAction func sendEmailAction(sender: AnyObject) {
-        
+        self.view.endEditing(true)
         self.showHud("Loading...")
         if formValidation() {
         let params = [

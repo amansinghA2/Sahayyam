@@ -83,6 +83,7 @@ class TrackOrderViewController: UIViewController , UITableViewDataSource , UITab
  
         if segue.identifier == "trackOrderDetailsSegue" {
             let vc = segue.destinationViewController as! OrderDetailsViewController
+            vc.trackLoadData = self.trackLoadDataList[selectedIndexPath.row]
             vc.trackLoadData.order_id = self.trackLoadDataList[selectedIndexPath.row].order_id
             print("\(vc.trackLoadData.products)")
         }

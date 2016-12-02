@@ -13,6 +13,7 @@ class CustomerDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var customerLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,12 +10,12 @@
                 <viewController id="uE6-oY-47J" customClass="AboutUsViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="9AC-yY-Hd6" kind="show" identifier="aboutUs" id="roO-ka-hOj"/>
+                        <segue destination="9AC-yY-Hd6" kind="show" identifier="aboutUsSegue" id="roO-ka-hOj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofb-lH-lVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62" y="-544"/>
+            <point key="canvasLocation" x="-106" y="-623"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="L4w-od-oj1">
@@ -30,6 +30,8 @@
                         <segue destination="9gp-oU-5ST" kind="show" identifier="changePasswordSegue" id="CJ6-bk-9oq"/>
                         <segue destination="jv2-I1-gwG" kind="show" identifier="goToSubsPayment" id="6eD-3N-4mJ"/>
                         <segue destination="Imv-VF-13Z" kind="show" identifier="loginSegue" id="kSL-yd-gxb"/>
+                        <segue destination="ihV-Qv-TRk" kind="show" identifier="addCustomerSegue" id="Q84-kp-Sok"/>
+                        <segue destination="Hi1-eE-8Kr" kind="show" identifier="dashBoardSegue" id="e5v-DS-Ogj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cQI-Pg-VXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zpy-YE-YXg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="1115"/>
+            <point key="canvasLocation" x="617" y="1139"/>
         </scene>
         <!--Add Vendor View Controller-->
         <scene sceneID="HRf-XQ-jhm">
@@ -75,7 +77,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MGO-iA-155" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="448"/>
+            <point key="canvasLocation" x="497" y="600"/>
         </scene>
         <!--City Head Profile View Controller-->
         <scene sceneID="o8s-54-rAp">
@@ -85,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsF-U2-513" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="-224"/>
+            <point key="canvasLocation" x="503" y="460"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ICo-ys-mjv">
@@ -114,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGX-zZ-ktl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="1064"/>
+            <point key="canvasLocation" x="262" y="1139"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="4rR-RB-NxT">
@@ -122,7 +124,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="LoginVC" id="Imv-VF-13Z" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtc-jc-LLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="235" y="-378"/>
+            <point key="canvasLocation" x="237" y="24"/>
         </scene>
         <!--Under Construction View Controller-->
         <scene sceneID="30O-0L-ZQ2">
@@ -170,6 +172,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXi-O9-6LD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-366" y="-660"/>
+        </scene>
+        <!--Add Customer View Controller-->
+        <scene sceneID="XeF-IJ-SbE">
+            <objects>
+                <viewController id="ihV-Qv-TRk" customClass="AddCustomerViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9g-IG-rTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="491" y="430"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="rvg-me-8vU">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Hi1-eE-8Kr" customClass="DashboardViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="y8q-q0-feo" kind="show" id="V7x-xc-kLn"/>
+                        <segue destination="S6D-75-ONA" kind="show" identifier="totalVendorSegue" id="TlN-ws-EEZ"/>
+                        <segue destination="1UK-a9-iiy" kind="show" identifier="freeUnpaidVendorSegue" id="wAQ-Yb-5z4"/>
+                        <segue destination="zdb-ge-i67" kind="show" id="GPK-M4-Lff"/>
+                        <segue destination="Xap-W8-V7S" kind="show" id="X3Y-K4-cgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcz-kY-l5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="356" y="-270"/>
+        </scene>
+        <!--Free Unpaid Vendor View Controller-->
+        <scene sceneID="k9B-Mq-fpN">
+            <objects>
+                <viewController id="1UK-a9-iiy" customClass="FreeUnpaidVendorViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHo-5w-wf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="-947"/>
+        </scene>
+        <!--Total Vendor View Controller-->
+        <scene sceneID="3XF-Ie-v6m">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="S6D-75-ONA" customClass="TotalVendorViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MpU-17-Fcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="345" y="-953"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="KmO-f3-x2i">
+            <objects>
+                <viewController id="Xap-W8-V7S" customClass="DashboardViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74T-ga-Qxi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1117" y="-290"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="zPd-Rd-1Vf">
+            <objects>
+                <viewController id="zdb-ge-i67" customClass="DashboardViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7A-IW-H4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="-947"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="0cU-Tl-VQS">
+            <objects>
+                <viewController id="y8q-q0-feo" customClass="DashboardViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3y-GR-jPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="744" y="-290"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -12,7 +12,9 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var vendorSubsListTableView: UITableView!
-        var vendorSubsLIsts = [CHVendorSubsList]()
+    var vendorSubsLIsts = [CHVendorSubsList]()
+    var freeUnpaidVendorList = FreeUnpaidVendorList()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,32 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         let nib2 = UINib(nibName: "VendorsFreeTableViewCell", bundle: nil)
         self.vendorSubsListTableView.registerNib(nib2, forCellReuseIdentifier: "freeVendorsIdentifier")
         
-         setUpVendorList()
+        setUpVendorList()
+       
+    }
+    
+    func setUpFreeVendorsList() {
+        
+        self.showHud("Loading...")
+        
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "filter_name":"",
+        ]
+        
+        ServerManager.sharedInstance().chVendorListFree(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                self.freeUnpaidVendorList = result!
+               // self.vendorSubsLIsts = result!
+                self.vendorSubsListTableView.delegate = self
+                self.vendorSubsListTableView.dataSource = self
+                self.vendorSubsListTableView.reloadData()
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
         
     }
     
@@ -47,62 +74,6 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         
     }
     
-    func setUpFreeVendors() {
-        let params = [
-            "token":token,
-            "device_id":"1234",
-            "amount":"1234",
-            "seller_id":"1234",
-            "customer_no":"1234",
-            "seller_group_id":"1234",
-            "totalmonth":"1234",
-            "mTotalMonthDay":"1234",
-            "current_date":"1234",
-            "expiry_date":"1234",
-            "remainingdays":"1234",
-            "order_id":"1234",
-            "sub_type":"1234",
-            "product_id":"1234",
-            "subscriptin_dur":"1234",
-            "fess":"1234"
-        ]
-        
-        ServerManager.sharedInstance().paidSubscriptionInfo(params) { (isSuccessful, error, result, dictResult) in
-            if isSuccessful {
-                
-            }
-        }
-
-    }
-    
-    func setUpUnpaidVendor() {
-        let params = [
-            "token":token,
-            "device_id":"1234",
-            "amount":"1234",
-            "seller_id":"1234",
-            "customer_no":"1234",
-            "seller_group_id":"1234",
-            "totalmonth":"1234",
-            "mTotalMonthDay":"1234",
-            "current_date":"1234",
-            "expiry_date":"1234",
-            "remainingdays":"1234",
-            "order_id":"1234",
-            "sub_type":"1234",
-            "product_id":"1234",
-            "subscriptin_dur":"1234",
-            "fess":"1234"
-        ]
-        
-        ServerManager.sharedInstance().paidSubscriptionInfo(params) { (isSuccessful, error, result, dictResult) in
-            if isSuccessful {
-                
-            }
-        }
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -112,9 +83,9 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         if segmentControl.selectedSegmentIndex == 0 {
             return self.vendorSubsLIsts.count
         }else if segmentControl.selectedSegmentIndex == 1{
-            return 4
+            return self.freeUnpaidVendorList.freevendorList.count
         }else{
-            return 4
+            return self.freeUnpaidVendorList.unpaidVendorList.count
         }
     }
     
@@ -131,16 +102,22 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
             return cell
         }else if segmentControl.selectedSegmentIndex == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
-            
+           if self.freeUnpaidVendorList.freevendorList.count > 0 {
+                cell.freevendorList = self.freeUnpaidVendorList.freevendorList[indexPath.row]
+            }else{
+                self.toastViewForTextfield("No Vendors")            }
             
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
-            
+            if self.freeUnpaidVendorList.unpaidVendorList.count > 0 {
+                cell.unpaidVendorList = self.freeUnpaidVendorList.unpaidVendorList[indexPath.row]
+            }else{
+                self.toastViewForTextfield("No Vendors")
+            }
             
             return cell
         }
-        
         
     }
     
@@ -157,15 +134,11 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         switch segmentControl.selectedSegmentIndex {
         case 0:
             setUpVendorList()
-        case 1: break
-            
-        default: break
-            
+        case 1:
+            setUpFreeVendorsList()
+        default:
+            setUpFreeVendorsList()
         }
-        
-    }
-    
-    func vendorDetails() {
         
     }
     

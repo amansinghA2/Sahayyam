@@ -19,6 +19,8 @@ class PopulateData: NSObject {
         dynamic var mobileNumber = String()
         dynamic var cityName = String()
         dynamic var stateName = String()
+        dynamic var id_card = String()
+        dynamic var id_card_type = String()
         dynamic var country = String()
         dynamic var pincode = String()
         dynamic var password = String()

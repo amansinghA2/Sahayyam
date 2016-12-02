@@ -11,13 +11,17 @@ import UIKit
 class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
 
     @IBOutlet weak var orderDetailsTableView: UITableView!
-    var vendorListData = CustomerOrders()
+    var vendorListData:CustomerOrders!
     var customerDetails = CustomerOrderDetails()
    // var orderDetailsList = CustomerOrderDetails()
     var isOrderCancelled = false
     
     @IBOutlet weak var orderStatusButton: UIBarButtonItem!
     override func viewDidLoad() {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorOrderDetailsViewController.refreshList(_:)), name: "refresh2", object: nil)
+        
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VendorOrderDetailsViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation2", object: nil)
+        
         tokenCheck()
         setUpView()
     }
@@ -78,6 +82,8 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
             
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("customerDetailsIdentifier") as! CustomerDetailsTableViewCell
+            cell.customerLabel.text = "Name"
+            cell.customerName.text = self.vendorListData.customer_name
             cell.addressLabel.text = self.customerDetails.payment_address
             return cell
             
@@ -221,6 +227,24 @@ class VendorOrderDetailsViewController: UIViewController , UITableViewDataSource
 
     }
 
+    
+    func refreshList(notification: NSNotification) {
+        if let myString = notification.object as? String {
+            if myString == "enabledUserInteraction" {
+              self.navigationController?.navigationBar.userInteractionEnabled = true
+            }else{
+                
+            }
+        }
+    }
+    
+    func navigationDisableAction(notification:NSNotification) {
+        
+        navigationController?.navigationBar.userInteractionEnabled = false
+        navigationController?.navigationBar.tintColor = UIColor.lightGrayColor()
+        
+    }
+    
     /*
     // MARK: - Navigation
 

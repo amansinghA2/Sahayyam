@@ -32,6 +32,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
         let str : NSString = "Accept the terms and conditions"
         acceptLabel.delegate = self
         acceptLabel.text = str as String
+        dateOfBirthTextField.userInteractionEnabled = false
         let range : NSRange = str.rangeOfString("Accept the terms and conditions")
         acceptLabel.addLinkToURL(NSURL(string: BASE_URL + "/tos/terms.html")!, withRange: range)
         acceptLabel.textColor = UIColor.blueColor()
@@ -60,8 +61,7 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 }
             })
         }else {
-            profile = false
-            NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
+            
             setBackButtonForNavigation()
             ServerManager.sharedInstance().customerUpdateProfilePopulateData(nil, completionClosure: {(isSuccessful, error, result , result1) in
                 if isSuccessful{
@@ -136,6 +136,8 @@ class VendorUpdateProfileViewController: UIViewController, UIImagePickerControll
                 "selected_id_proof":"",
                 "tos":"on"
             ]
+            profile = false
+            NSUserDefaults.standardUserDefaults().setBool(profile, forKey: "profile")
         }else{
             params = [
                 "token":token,

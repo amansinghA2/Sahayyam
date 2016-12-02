@@ -10,8 +10,8 @@ import UIKit
 
 class ServiceListSubViewController: UIViewController , UIGestureRecognizerDelegate , UITableViewDelegate , UITableViewDataSource{
     
-    @IBOutlet weak var selectServiceView: UIView!
-    @IBOutlet weak var addView: UIView!
+    @IBOutlet weak var selectServiceView: RoundedView!
+    @IBOutlet weak var addView: RoundedView!
     @IBOutlet weak var serviceListSubTableView: UITableView!
     var serviceList = VendorServiceList()
     override func viewDidLoad() {
@@ -75,7 +75,7 @@ class ServiceListSubViewController: UIViewController , UIGestureRecognizerDelega
         let cell = tableView.dequeueReusableCellWithIdentifier("subServiceListSegue") as! ServiceListSubTableViewCell
         let selectedIndexPaths = tableView.indexPathsForSelectedRows
         let rowIsSelected = selectedIndexPaths != nil && selectedIndexPaths!.contains(indexPath)
-        cell.accessoryType = rowIsSelected ? .Checkmark : .None
+        cell.checkBoxView.checkState = rowIsSelected ? .Checked : .Unchecked
          
          tableHeightChange()
 
@@ -94,16 +94,18 @@ class ServiceListSubViewController: UIViewController , UIGestureRecognizerDelega
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-    tableHeightChange()
+        tableHeightChange()
         
-        let cell = serviceListSubTableView.cellForRowAtIndexPath(indexPath)
-        cell!.accessoryType = .Checkmark
+        let cell = serviceListSubTableView.cellForRowAtIndexPath(indexPath) as! ServiceListSubTableViewCell
+       // cell.accessoryType = .Checkmark
+        cell.checkBoxView.setCheckState(.Checked, animated: true)
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         tableHeightChange()
-        let cell = serviceListSubTableView.cellForRowAtIndexPath(indexPath)
-        cell!.accessoryType = .None
+        let cell = serviceListSubTableView.cellForRowAtIndexPath(indexPath) as! ServiceListSubTableViewCell
+       // cell.accessoryType = .None
+        cell.checkBoxView.setCheckState(.Unchecked, animated: true)
     }
     
 //    func checkBoxSelected(hd:String){
@@ -112,12 +114,15 @@ class ServiceListSubViewController: UIViewController , UIGestureRecognizerDelega
     
     func tableHeightChange() {
         dispatch_async(dispatch_get_main_queue()) {
+            self.serviceListSubTableView.layer.borderColor = UIColor .grayColor().CGColor
+            self.serviceListSubTableView.layer.borderWidth = 1.0
+            self.serviceListSubTableView.layer.cornerRadius = 5.0
             self.serviceListSubTableView.hidden = false
             self.addView.hidden = false
             self.selectServiceView.hidden = false
             
             var newHeight: CGFloat = self.serviceListSubTableView.contentSize.height
-            let screenHeightPermissible: CGFloat = (self.view.bounds.size.height - self.serviceListSubTableView.frame.origin.y - 50)
+            let screenHeightPermissible: CGFloat = (self.view.bounds.size.height - self.serviceListSubTableView.frame.origin.y - 200)
             if newHeight > screenHeightPermissible {
                 //so that table view remains scrollable when 'newHeight'  exceeds the screen bounds
                 newHeight = screenHeightPermissible

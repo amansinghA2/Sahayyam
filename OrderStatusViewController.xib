@@ -16,21 +16,53 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NeW-ka-fW6">
-                    <rect key="frame" x="62" y="154" width="196" height="259"/>
+                    <rect key="frame" x="8" y="154" width="304" height="259"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="259" id="k3G-RD-38k"/>
-                        <constraint firstAttribute="width" constant="196" id="rNt-Bz-GJN"/>
+                        <constraint firstAttribute="width" constant="304" id="rNt-Bz-GJN"/>
                     </constraints>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9RG-wG-dlR" customClass="RoundedView" customModule="Sahayyam" customModuleProvider="target">
+                    <rect key="frame" x="8" y="112" width="304" height="41"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xg-NJ-wEh">
+                            <rect key="frame" x="264" y="4" width="32" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="4CE-BK-F8n"/>
+                                <constraint firstAttribute="width" constant="32" id="7qr-c5-FV4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" backgroundImage="cancel">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelButton:" destination="-1" eventType="touchUpInside" id="xM0-Zp-hgr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="1Xg-NJ-wEh" firstAttribute="top" secondItem="9RG-wG-dlR" secondAttribute="top" constant="4" id="CDz-gO-IYc"/>
+                        <constraint firstAttribute="bottom" secondItem="1Xg-NJ-wEh" secondAttribute="bottom" constant="4" id="QgM-Sr-4JI"/>
+                        <constraint firstItem="1Xg-NJ-wEh" firstAttribute="centerY" secondItem="9RG-wG-dlR" secondAttribute="centerY" id="bY3-vV-F1f"/>
+                        <constraint firstAttribute="trailing" secondItem="1Xg-NJ-wEh" secondAttribute="trailing" constant="8" id="vIi-NW-PZC"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="NeW-ka-fW6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="C1W-x8-6g4"/>
                 <constraint firstItem="NeW-ka-fW6" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KQq-he-Eon"/>
+                <constraint firstItem="NeW-ka-fW6" firstAttribute="top" secondItem="9RG-wG-dlR" secondAttribute="bottom" constant="1" id="NXb-Id-WOq"/>
+                <constraint firstItem="9RG-wG-dlR" firstAttribute="trailing" secondItem="NeW-ka-fW6" secondAttribute="trailing" id="kYR-It-Wmd"/>
+                <constraint firstItem="9RG-wG-dlR" firstAttribute="leading" secondItem="NeW-ka-fW6" secondAttribute="leading" id="y6A-Yd-WXg"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="-91" y="188"/>
+            <point key="canvasLocation" x="-22" y="189"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="32" height="32"/>
+    </resources>
 </document>

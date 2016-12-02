@@ -32,7 +32,6 @@ class CHMainMenuViewController: UIViewController {
 //        circularImage(updateProfileOutlet)
 //        circularImage(logoutOutlet)
         
-        
         // Do any additional setup after loading the view.
     }
 
@@ -59,6 +58,47 @@ class CHMainMenuViewController: UIViewController {
     
     @IBAction func updateProfileAction(sender: AnyObject) {
        self.performSegueWithIdentifier("chprofileUpdateSegue", sender: nil)
+    }
+    
+    @IBAction func dashboardAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("dashBoardSegue", sender: nil)
+    }
+    
+    @IBAction func aboutUsAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("aboutUsSegue", sender: nil)
+    }
+    
+    @IBAction func addCustomerAction(sender: AnyObject) {
+        
+        let params = [
+            "token":token,
+            "device_id":"1234"
+        ]
+        
+        ServerManager.sharedInstance().chAddCustomerGetdataUrl(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                if let dict = dictResult!["cityheadVendor"] {
+                    if dict as! NSObject == 0  {
+                        AlertView.alertView("Alert", message: "No vendors", alertTitle: "OK", viewController: self)
+                        self.hideHud()
+                    }else{
+                        self.performSegueWithIdentifier("addCustomerSegue", sender: nil)
+                        self.hideHud()
+                    }
+  
+                }
+            }else{
+                self.hideHud()
+            }
+            
+            // Do any additional setup after loading the view.
+        }
+
+        
+    }
+    
+    @IBAction func switchProfileAction(sender: AnyObject) {
+        
     }
     
     @IBAction func logoutAction(sender: AnyObject) {

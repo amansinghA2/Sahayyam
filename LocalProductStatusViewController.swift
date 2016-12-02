@@ -10,27 +10,40 @@ import UIKit
 
 class LocalProductStatusViewController: UIViewController {
 
+    
+    @IBOutlet weak var slideMenuButton: UIBarButtonItem!
+    
     @IBOutlet weak var approvedProductLabel: UILabel!
     
     @IBOutlet weak var pendingProductLabel: UILabel!
     
     @IBOutlet weak var rejectedProductLabel: UILabel!
+    var productCountDetails = ProductApprovalStatus()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        slideMenuShow(slideMenuButton, viewcontroller: self)
+        revealTouch(self)
+        self.showHud("Loading...")
         
         let params = [
         "token":token,
         "device_id":"1234",
         ]
         
-        ServerManager.sharedInstance().addNewVendor(params) { (isSuccessful, error, result, dictResult) in
+        ServerManager.sharedInstance().vendorProductCount(params) { (isSuccessful, error, result) in
             if isSuccessful {
-               self.hideHud()
+                self.productCountDetails = result!
+                self.approvedProductLabel.text = String(self.productCountDetails.Product_Approved_count)
+                self.pendingProductLabel.text = String(self.productCountDetails.Product_Pending_count)
+                self.rejectedProductLabel.text = String(self.productCountDetails.Product_Rejected_count)
+                self.hideHud()
             }else{
                 self.hideHud()
             }
         }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -40,16 +53,21 @@ class LocalProductStatusViewController: UIViewController {
     }
 
     @IBAction func getDetails(sender: AnyObject) {
+       
+       self.performSegueWithIdentifier("localProductDetailSegue", sender: nil)
         
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == "localProductDetailSegue" {
+            let vc = segue.destinationViewController as! LocalProductsDetailViewController
+        }
+        
     }
-    */
+ 
 
 }

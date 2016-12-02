@@ -287,7 +287,84 @@ extension ServerManager {
                 }
         }
     }
-
+    
+    func chVendorListFree(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: FreeUnpaidVendorList? , dictResult:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, freeToPaidUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if response.response != nil {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = CommonJsonMapper.vendorListForFreenMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
+                        }
+                        else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
+                        }
+                    case .Failure( _):
+                        completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
+                    }
+                }
+        }
+    }
+    
+    func chAddCustomerGetdataUrl(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: [CHVendorSubsList]? , dictResult:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, cityheadAddCustomerUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if response.response != nil {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = CommonJsonMapper.vendorListForAddCustomer(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
+                        }
+                        else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
+                        }
+                    case .Failure( _):
+                        completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
+                    }
+                }
+        }
+    }
+    
+    func chAddCustomerUrl(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: FreeUnpaidVendorList? , dictResult:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, addSingleCustomerUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if response.response != nil {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = CommonJsonMapper.vendorListForFreenMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])
+                        }
+                        else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , dictResult: nil)
+                        }
+                    case .Failure( _):
+                        completionClosure(isSuccessful: false,error: nil,result: nil , dictResult: nil)
+                    }
+                }
+        }
+    }
     
     
 }

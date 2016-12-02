@@ -55,6 +55,9 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyProductsViewController.navigationDisableAction(_:)), name: "disableCategoryNavigation1", object: nil)
@@ -724,7 +727,7 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
     func refreshList(notification: NSNotification) {
         if let myString = notification.object as? String {
             if myString == "enabledUserInteraction" {
-              navigationController?.navigationBar.userInteractionEnabled = true
+            navigationController?.navigationBar.userInteractionEnabled = true
             }else{
             navigationController?.navigationBar.userInteractionEnabled = true
             serviceString = myString
@@ -898,20 +901,17 @@ class MyProductsViewController: UIViewController , UICollectionViewDataSource , 
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)
         
-        let params = [
-            "token":token,
-            "device_id":"1234"
-        ]
-        
-        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
-            if isSuccessful {
-                self.vendorServices = result!
-                //                productFunction("25", page: "1", filterName: "", service_id: )
-                self.myproductsCollectionView.delegate = self
-                self.myproductsCollectionView.dataSource = self
-                self.myproductsCollectionView.reloadData()
-            }
-        }
+//        let params = [
+//            "token":token,
+//            "device_id":"1234"
+//        ]
+//        
+//        ServerManager.sharedInstance().getVendorServices(params) { (isSuccessful, error, result) in
+//            if isSuccessful {
+//                self.vendorServices = result!
+//                //                productFunction("25", page: "1", filterName: "", service_id: )
+//            }
+//        }
     }
 
     @IBAction func addContacts(sender: AnyObject) {

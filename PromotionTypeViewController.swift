@@ -47,7 +47,8 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     var date = NSDate()
     var date1 = NSDate()
     var unitGrams = [UnitGram]()
-    var isCheck = false
+    var isAmountCheck = false
+    var isPromotionCheck = false
     var str = ""
     var radioButtonController = SSRadioButtonsController()
     var discountType = String()
@@ -81,10 +82,11 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
         radioButtonController.delegate = self
         amountRadioButton.selected = true
         
-        //      radioButtonController.shouldLetDeSelect = true
+//      radioButtonController.shouldLetDeSelect = true
         
         if str == "fromEdit"{
             isEditPage = true
+            isAmountCheck = true
             discountType = "A"
             unitGramAction("") 
             createPromotionButtonOutlet.setTitle("Edit promotion", forState: .Normal)
@@ -185,10 +187,10 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             productNameString = ""
             discounttypeConstraint.constant  = 0
             typeandValueView.hidden = true
-            isCheck = false
+            isAmountCheck = false
         }else{
             productNameString = ""
-            isCheck = true
+            isAmountCheck = true
             discounttypeConstraint.constant  = 67
             typeandValueView.hidden = false
         }
@@ -203,10 +205,10 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
             }
             productnameQuantityConstraint.constant  = 0
             nameAndQuantityView.hidden = true
-            isCheck = false
+            isPromotionCheck = false
         }else{
             productNameString = ""
-            isCheck = true
+            isPromotionCheck = true
             productnameQuantityConstraint.constant  = 106
             nameAndQuantityView.hidden = false
         }
@@ -297,7 +299,7 @@ class PromotionTypeViewController: UIViewController , SSRadioButtonControllerDel
     
     func formValidation() -> Bool{
         
-        if isCheck == false {
+        if isAmountCheck == false && isPromotionCheck == false {
             AlertView.alertView("Alert", message: "Please Select Promotion Type", alertTitle: "OK", viewController: self)
             return false
         }

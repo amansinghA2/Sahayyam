@@ -111,7 +111,6 @@ class TotalVendorViewController: UIViewController {
         
     }
 
-
     /*
     // MARK: - Navigation
 

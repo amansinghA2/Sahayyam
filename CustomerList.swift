@@ -18,6 +18,9 @@ class CustomerList: NSObject {
     dynamic var grant = String()
     dynamic var customerId = String()
     dynamic var blockCustomerImage = String()
+    dynamic var idCardType = String()
+    dynamic var idProofImage = String()
+    dynamic var idCardTypes = [CustomerIDProof]()
     dynamic var collapsed = true
     
 }

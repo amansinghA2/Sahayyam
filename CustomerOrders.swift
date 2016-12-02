@@ -12,6 +12,7 @@ class CustomerOrders: NSObject {
     
   
     var date_added = String()
+    var customer_name = String()
     var href = String()
     var name = String()
     var order_id = String()

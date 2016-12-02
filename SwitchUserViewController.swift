@@ -76,6 +76,7 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                 "token":token
             ]
             
+           print(params)
             
             ServerManager.sharedInstance().requestSwitchProfile(params) { (isSuccessful, error, result , dicResult) in
                 if (isSuccessful){

@@ -392,6 +392,11 @@ extension CommonJsonMapper {
                     data.name = dateAdded
                 }
                 
+                if let dateAdded = dict["customer_name"].string {
+                    data.customer_name = dateAdded
+                }
+                
+                
                 if let dateAdded = dict["order_id"].string {
                     data.order_id = dateAdded
                 }
@@ -530,6 +535,7 @@ extension CommonJsonMapper {
         let productDetail = CustomerOrderDetails()
         //        var totalDetails = [CheckoutOrderTotals]()
         
+        
         if let orderID = result["order_id"] {
             productDetail.order_id = orderID as! String
         }
@@ -570,7 +576,7 @@ extension CommonJsonMapper {
                     productList.quantity = totalDetailTitle 
                 }
                 
-                let text2:AnyObject = value.valueForKey("order_status")!
+                if  let text2 = value.valueForKey("order_status") {
                 if text2 is String {
                     productList.order_status = text2 as! String
                 }else{
@@ -582,6 +588,7 @@ extension CommonJsonMapper {
                     productList.price = text as! String
                 }else{
                     productList.price = String(text)
+                }
                 }
                 
                 if let totalDetailTitle = value.valueForKey("product_id") as? String{
@@ -741,6 +748,14 @@ extension CommonJsonMapper {
             
             if let zone_name = dic["zone_id"] as? String {
                 populateData.stateName = zone_name
+            }
+            
+            if let image = dic["id_card"] as? String {
+                populateData.id_card = image
+            }
+            
+            if let zone_name = dic["id_card_type"] as? String {
+                populateData.id_card_type = zone_name
             }
             
             if let arr = result["id_proof"] as? NSArray {

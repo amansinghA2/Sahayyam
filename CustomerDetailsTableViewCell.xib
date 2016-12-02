@@ -30,6 +30,9 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrb-Sf-q7S">
                         <rect key="frame" x="13" y="8" width="78" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="78" id="Buu-R1-Qux"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74951508619999996" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,7 +48,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="wns-Mf-Qva" secondAttribute="trailing" id="5V9-Tc-Hjd"/>
+                    <constraint firstAttribute="trailing" secondItem="wns-Mf-Qva" secondAttribute="trailing" priority="250" id="5V9-Tc-Hjd"/>
                     <constraint firstItem="uaW-2z-m53" firstAttribute="leading" secondItem="jOB-Xk-NST" secondAttribute="trailing" constant="38" id="8Og-pf-9Kv"/>
                     <constraint firstItem="jOB-Xk-NST" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="MJc-Oh-PeJ"/>
                     <constraint firstAttribute="trailing" secondItem="uaW-2z-m53" secondAttribute="trailing" id="WWB-G8-aE8"/>

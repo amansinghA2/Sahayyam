@@ -15,11 +15,20 @@ class OrderStatusViewController: UIViewController , UITableViewDelegate , UITabl
     var customerDetails = CustomerOrderDetails()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.showAnimate()
+        
+      NSNotificationCenter.defaultCenter().postNotificationName("disableCategoryNavigation2", object: nil)
+        
+//          NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OrderStatusViewController.refreshList(_:)), name: "refresh", object: nil)
+        
         self.orderStatusTableView.delegate = self
         self.orderStatusTableView.dataSource = self
         self.view.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
-        self.showAnimate()
+        
+        self.orderStatusTableView.layer.borderColor = UIColor .grayColor().CGColor
+        self.orderStatusTableView.layer.borderWidth = 1.0
+        self.orderStatusTableView.layer.cornerRadius = 5.0
+        
         let nib1 = UINib(nibName: "OrderStatusTableViewCell", bundle: nil)
         self.orderStatusTableView.registerNib(nib1, forCellReuseIdentifier: "orderStatusIdentifier")
         let nib2 = UINib(nibName: "OrderDetailHeaderTableViewCell", bundle: nil)
@@ -84,6 +93,8 @@ class OrderStatusViewController: UIViewController , UITableViewDelegate , UITabl
         return UITableViewAutomaticDimension
     }
     
+  
+    
     func showAnimate() {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
@@ -106,10 +117,23 @@ class OrderStatusViewController: UIViewController , UITableViewDelegate , UITabl
     }
     
     func overallOrderStatus(statusId:String) {
+
+    }
+    
+    func navigationDisableAction(notification:NSNotification) {
         
-   
+        navigationController?.navigationBar.userInteractionEnabled = false
+        navigationController?.navigationBar.tintColor = UIColor.lightGrayColor()
         
     }
+    
+    
+    @IBAction func cancelButton(sender: AnyObject) {
+        removeAnimate()
+    NSNotificationCenter.defaultCenter().postNotificationName("refresh2", object: "enabledUserInteraction")
+        
+    }
+    
     
     /*
     // MARK: - Navigation

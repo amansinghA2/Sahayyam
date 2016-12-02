@@ -10,7 +10,7 @@ import UIKit
 
 class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UIGestureRecognizerDelegate{
 
-    @IBOutlet weak var cancelView: UIView!
+    @IBOutlet weak var cancelView: RoundedView!
     @IBOutlet weak var selectServicesTableView: UITableView!
     var vendorServices = [VendorService]()
     var vendorService = VendorService()
@@ -120,6 +120,9 @@ class SelectSevicesViewController: UIViewController , UITableViewDelegate , UITa
         cell.serviceRadioButton.tag = indexPath.row
        
         dispatch_async(dispatch_get_main_queue()) {
+            self.selectServicesTableView.layer.borderColor = UIColor .grayColor().CGColor
+            self.selectServicesTableView.layer.borderWidth = 1.0
+            self.selectServicesTableView.layer.cornerRadius = 5.0
             self.selectServicesTableView.hidden = false
             self.cancelView.hidden = false
             var newHeight: CGFloat = self.selectServicesTableView.contentSize.height

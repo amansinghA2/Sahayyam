@@ -14,23 +14,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQY-JD-fEM">
-                        <rect key="frame" x="18" y="16" width="294" height="27"/>
+                        <rect key="frame" x="8" y="16" width="267" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74835668103448272" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjF-7J-YX4" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="283" y="16" width="29" height="27"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="4KS-aS-CGi"/>
+                            <constraint firstAttribute="width" constant="29" id="KlV-HZ-saR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBBoxType" value="Square"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vQY-JD-fEM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="4rx-Uf-aty"/>
+                    <constraint firstItem="vQY-JD-fEM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4rx-Uf-aty"/>
+                    <constraint firstItem="DjF-7J-YX4" firstAttribute="leading" secondItem="vQY-JD-fEM" secondAttribute="trailing" constant="8" id="5MC-Vm-lbk"/>
                     <constraint firstItem="vQY-JD-fEM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="DFK-cC-sNL"/>
+                    <constraint firstAttribute="trailing" secondItem="DjF-7J-YX4" secondAttribute="trailing" constant="8" id="WE9-Ep-bBl"/>
+                    <constraint firstItem="DjF-7J-YX4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e2n-gf-5aK"/>
                     <constraint firstAttribute="bottom" secondItem="vQY-JD-fEM" secondAttribute="bottom" constant="16" id="kzp-pm-KD5"/>
-                    <constraint firstAttribute="trailing" secondItem="vQY-JD-fEM" secondAttribute="trailing" constant="8" id="rAT-8f-ohb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="checkBoxView" destination="DjF-7J-YX4" id="N40-yX-Rjj"/>
                 <outlet property="serviceNameLabel" destination="vQY-JD-fEM" id="Cl8-yd-OqO"/>
             </connections>
-            <point key="canvasLocation" x="24" y="213"/>
+            <point key="canvasLocation" x="114" y="215"/>
         </tableViewCell>
     </objects>
 </document>

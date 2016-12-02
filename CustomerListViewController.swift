@@ -14,17 +14,16 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     @IBOutlet weak var customerListTableView: UITableView!
     var customerListArray = [CustomerList]()
     var customreList = CustomerList()
+    var customerList1 = CustomerList()
     var isActive = false
     var balanceCredit = 5
-    
-    @IBOutlet weak var balanceCreditLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
          revealTouch(self)
-        self.balanceCreditLabel.font = UIFont(name: "", size: 12)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.showToastForRegister(_:)), name: "vendorRegisterStatus", object: nil)
          tokenCheck()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.navigationDisableAction1(_:)), name: "disableCategoryNavigation2", object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.refreshList(_:)), name: "refresh2", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CustomerListViewController.navigationDisableAction(_:)), name: "disableNavigation", object: nil)
                 slideMenuShow(slideMenuButton, viewcontroller: self)
         slideMenuShow(slideMenuButton, viewcontroller: self)
@@ -34,6 +33,11 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         let nib2 = UINib(nibName: "CustomerListDetailTableViewCell", bundle: nil)
         self.customerListTableView.registerNib(nib2, forCellReuseIdentifier: "customerListDetailcell")
         
+    }
+    
+    
+    func navigationDisableAction1(notification:NSNotification) {
+        self.navigationController?.navigationBar.userInteractionEnabled = false
     }
     
     func navigationDisableAction(notification:NSNotification) {
@@ -75,10 +79,20 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
                 self.customerListTableView.delegate = self
                 self.customerListTableView.dataSource = self
                 self.customerListTableView.reloadData()
-                self.balanceCreditLabel.text = "SUBSCRIPTION : FEES PER SALES" // + String(self.balanceCredit)
+//                self.balanceCreditLabel.text = "SUBSCRIPTION : FEES PER SALES" // + String(self.balanceCredit)
             }else{
                 self.hideHud()
                 AlertView.alertViewToGoToLogin("OK", message: "Server Error", alertTitle: "OK", viewController: self)
+            }
+        }
+    }
+    
+    func refreshList(notification: NSNotification) {
+        if let myString = notification.object as? String {
+            if myString == "enabledUserInteraction" {
+                self.navigationController?.navigationBar.userInteractionEnabled = true
+            }else{
+                
             }
         }
     }
@@ -111,7 +125,6 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         header.customerList = customerListArray[section]
         
         header.blockUnblockButton.tag = section
-        
         if customerListArray[section].grant == "0" {
             header.blockUnblockButton.setBackgroundImage(UIImage(named: "v_ic_blocked_user"), forState: .Normal)
         }else{
@@ -129,11 +142,22 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         let cell:CustomerListDetailTableViewCell = tableView.dequeueReusableCellWithIdentifier("customerListDetailcell") as! CustomerListDetailTableViewCell
         
         cell.customerList = customreList
-        
+        cell.popUpImage.tag = indexPath.row
+        cell.popUpImage.addTarget(self, action: #selector(CustomerListViewController.PopUpButtonClicked(_:)), forControlEvents: .TouchUpInside)
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    func PopUpButtonClicked(sender:UIButton) {
+        let cell = sender.superview?.superview as! CustomerListDetailTableViewCell
+        let indexpath = customerListTableView.indexPathForCell(cell)
+        
+        let popOverVC = UIStoryboard(name: "Vendor", bundle: nil).instantiateViewControllerWithIdentifier("CustomerShowImageID") as! CustomerImageShowSubViewController
+        popOverVC.customerList1 = customerListArray[(indexpath?.section)!]
+     // customerList1 = customerListArray[(indexpath?.row)!]
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
         
     }
     
@@ -300,14 +324,16 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
 //            }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "goToCustomerImage" {
+//            let vc = segue.destinationViewController as! CustomerImageShowSubViewController
+//            vc.customerList1 = self.customerList1
+//        }
+//    }
+ 
 
 }

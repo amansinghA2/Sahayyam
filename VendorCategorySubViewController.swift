@@ -207,7 +207,6 @@ class VendorCategorySubViewController: UIViewController , SSRadioButtonControlle
     
     @IBAction func saveButton(sender: AnyObject){
         
-        
         if formValidation() {
       NSNotificationCenter.defaultCenter().postNotificationName("enableCategoryNavigation1", object: nil)
         if str1 == "fromCell" {

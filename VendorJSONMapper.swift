@@ -46,6 +46,44 @@ class VendorJSONMapper: NSObject {
                 if let address_1 = value.valueForKey("customer_id") as? String{
                     customerList.customerId = address_1
                 }
+                
+                if let address_1 = value.valueForKey("idCardType") as? String{
+                    customerList.idCardType = address_1
+                }
+                
+                if let address_1 = value.valueForKey("idProofImage") as? String{
+                    customerList.idProofImage = address_1
+                }
+                
+                if let arr = result["idCardTypes"] as? NSArray {
+                    for (_,value) in arr.enumerate() {
+                        
+                        let totalDetail = CustomerIDProof()
+
+                        if let str = value.valueForKey("code") {
+                            totalDetail.code = str as! String
+                        }
+                        
+                        if let str = value.valueForKey("id") {
+                            totalDetail.id = str as! String
+                        }
+                        
+                        if let str = value.valueForKey("id_proof_type") {
+                            totalDetail.id_proof_type = str as! String
+                        }
+                        
+                        customerList.idCardTypes.append(totalDetail)
+                    }
+                }
+
+                
+//                if let address_1 = value.valueForKey("idCardType") as? String{
+//                    customerList.idCardType = address_1
+//                }
+//                
+//                if let address_1 = value.valueForKey("idCardTypes") as? String{
+//                    customerList.idCardTypes = address_1
+//                }
                 customerLists.append(customerList)
             }
             
@@ -594,6 +632,119 @@ class VendorJSONMapper: NSObject {
 
         return unitGrams
     }
+    
+    
+  
+    class func  vendorApprovePendingMapper(result:[String:AnyObject]) -> [ApprovePendingStatus]  {
+        
+        var customerList = [ApprovePendingStatus]()
+        
+        if let arr = result["Product Details"] as? NSArray {
+            for (_, value) in arr.enumerate() {
+                let unitGram = ApprovePendingStatus()
+                if let languageId = value.valueForKey("category_name") as? String{
+                    unitGram.category_name = languageId
+                }
+                
+                if let languageId = value.valueForKey("date") as? String{
+                    unitGram.date = languageId
+                }
+                
+                if let languageId = value.valueForKey("description") as? String{
+                    unitGram.desc = languageId
+                }
+                
+                if let languageId = value.valueForKey("i") as? String{
+                    unitGram.i = languageId
+                }
+                
+                if let languageId = value.valueForKey("img") as? String{
+                    unitGram.img = languageId
+                }
+                
+                if let languageId = value.valueForKey("manufacturer") as? String{
+                    unitGram.manufacturer = languageId
+                }
+                
+                if let languageId = value.valueForKey("offerPrice") as? String{
+                    unitGram.offerPrice = languageId
+                }
+                
+                if let languageId = value.valueForKey("price") as? String{
+                    unitGram.price = languageId
+                }
+                
+                if let languageId = value.valueForKey("product_id") as? String{
+                    unitGram.product_id = languageId
+                }
+                
+                if let languageId = value.valueForKey("product_name") as? String{
+                    unitGram.product_name = languageId
+                }
+                
+                if let languageId = value.valueForKey("quantity") as? String{
+                    unitGram.quantity = languageId
+                }
+                
+                if let languageId = value.valueForKey("ref_code") as? String{
+                    unitGram.ref_code = languageId
+                }
+                
+                if let languageId = value.valueForKey("service_desc") as? String{
+                    unitGram.service_desc = languageId
+                }
+                
+                if let languageId = value.valueForKey("subtract") as? String{
+                    unitGram.subtract = languageId
+                }
+                
+                if let languageId = value.valueForKey("unit") as? String{
+                    unitGram.unit = languageId
+                }
+                
+                if let languageId = value.valueForKey("unit_value") as? String{
+                    unitGram.unit_value = languageId
+                }
+                
+                customerList.append(unitGram)
+            }
+        }
+        return customerList
+    }
+    
+    class func  vendorProductCountMapper(result:[String:AnyObject]) -> ProductApprovalStatus  {
+        
+        let customerList = ProductApprovalStatus()
+        
+        if let customers = result["product Approval Status"]{
+                
+            if let addr = customers["Product_Approved"] as? String{
+                customerList.Product_Approved = addr
+            }
+            
+            if let addr = customers["Product_Approved_count"] as? Int{
+                customerList.Product_Approved_count = addr
+            }
+            
+            if let addr = customers["Product_Pending"] as? String{
+                customerList.Product_Pending = addr
+            }
+            
+            if let addr = customers["Product_Pending_count"] as? Int{
+                customerList.Product_Pending_count = addr
+            }
+            
+            if let addr = customers["Product_Rejected"] as? String{
+                customerList.Product_Rejected = addr
+            }
+            
+            if let addr = customers["Product_Rejected_count"] as? Int{
+                customerList.Product_Rejected_count = addr
+            }
+        }
+        return customerList
+    }
+    
     
     
 }
