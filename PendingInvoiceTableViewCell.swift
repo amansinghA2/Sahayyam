@@ -34,6 +34,55 @@ class PendingInvoiceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var payOfflineButton: Button!
     
+    var pendingInvoiceList:PendingInvoiceList! {
+        didSet{
+            bindModelToViews()
+        }
+    }
+
+    func bindModelToViews() {
+        if let name = pendingInvoiceList.vendor_name as? String{
+            nameLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.shop_name as? String{
+            shopNameLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.telephone as? String{
+            mobileNumber.text = name
+        }
+        
+        if let name = pendingInvoiceList.address as? String{
+            addressLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.email as? String{
+            emailIdLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.city as? String{
+            cityLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.order_no as? String{
+            orderNoLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.invoice_no as? String{
+            invoiceNumberLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.invoice_amt as? String{
+            invoiceAmountLabel.text = name
+        }
+        
+        if let name = pendingInvoiceList.create_date as? String{
+            invoiceDateLabel.text = name
+        }
+
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

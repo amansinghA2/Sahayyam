@@ -68,7 +68,8 @@ class AddSubscriptionViewController: UIViewController , DropperDelegate{
             
             if let subsType = subInfo.sub_type[0].flat as? String {
                 
-                pricePerCustomerLabel.text = "INR " + CustomClass.roundOfDecimal(CustomClass.nullToNil(subsType)!)
+//                pricePerCustomerLabel.text = "INR " + CustomClass.roundOfDecimal(CustomClass.nullToNil(subsType)!)
+                pricePerCustomerLabel.text = subsType
             }
         }
         
@@ -83,7 +84,8 @@ class AddSubscriptionViewController: UIViewController , DropperDelegate{
         
         if subInfo.sub_detail.count > 0{
         if let subsType = subInfo.sub_detail[0].amount as? String {
-            amountLabel.text = "INR " + CustomClass.roundOfDecimal(CustomClass.nullToNil(subsType)!)
+//            amountLabel.text = "INR " + CustomClass.roundOfDecimal(CustomClass.nullToNil(subsType)!)
+            amountLabel.text = subsType
         }
         
         
@@ -100,7 +102,6 @@ class AddSubscriptionViewController: UIViewController , DropperDelegate{
             activeCustomerLabel.text = subsType
         }
     
-        
     }
     
     override func didReceiveMemoryWarning() {

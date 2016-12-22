@@ -24,13 +24,6 @@ class CHMainMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        circularImage(addVendorOutlet)
-//        circularImage(vendorsOutlet)
-//        circularImage(subscriptionsPaymentOutlet)
-//        circularImage(changePasswordOutlet)
-//        circularImage(updateProfileOutlet)
-//        circularImage(logoutOutlet)
         
         // Do any additional setup after loading the view.
     }
@@ -98,11 +91,11 @@ class CHMainMenuViewController: UIViewController {
     }
     
     @IBAction func switchProfileAction(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier("switchSegueIdentifier", sender: nil)
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
-       alertControllerToLogout()
+        alertControllerToLogout()
     }
     
     func alertControllerToLogout() {
@@ -133,6 +126,9 @@ class CHMainMenuViewController: UIViewController {
         if segue.identifier == "chprofileUpdateSegue" {
             let vc = segue.destinationViewController as! CityHeadProfileViewController
             vc.isLogin = "customerDropDown"
+        }else if segue.identifier == "aboutUsSegue" {
+            let vc = segue.destinationViewController as! AboutUsViewController
+            vc.fromCityHeadApp = "fromCityHead"
         }
     }
     

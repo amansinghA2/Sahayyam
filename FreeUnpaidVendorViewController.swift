@@ -8,64 +8,68 @@
 
 import UIKit
 
-class FreeUnpaidVendorViewController: UIViewController {
+class FreeUnpaidVendorViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var freeUnpaidListTableView: UITableView!
-
-    
+    var unpaidList = [UnpaidVendorList]()
+    var freeList = [FreeVendorList]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       // setUp()
-        
+
         let nib2 = UINib(nibName: "VendorsFreeTableViewCell", bundle: nil)
         self.freeUnpaidListTableView.registerNib(nib2, forCellReuseIdentifier: "freeVendorsIdentifier")
         
+        freeToPaidFunction()
+ 
     }
     
-//    func setUp() {
-//        
-//        let params = [
-//            "token":token,
-//            "device_id":"1234"
-//        ]
-//        
-//        ServerManager.sharedInstance().chVendorListForSbbscription(params) { (isSuccessful, error, result, dictResult) in
-//            if isSuccessful {
-//                self.vendorSubsLIsts = result!
-//                self.hideHud()
-//            }else{
-//                self.hideHud()
-//            }
-//        }
-    
-        //        let params = [
-        //        "token":token,
-        //        "device_id":"1234",
-        //        "amount":"1234",
-        //        "seller_id":"1234",
-        //        "customer_no":"1234",
-        //        "seller_group_id":"1234",
-        //        "totalmonth":"1234",
-        //        "mTotalMonthDay":"1234",
-        //        "current_date":"1234",
-        //        "expiry_date":"1234",
-        //        "remainingdays":"1234",
-        //        "order_id":"1234",
-        //        "sub_type":"1234",
-        //        "product_id":"1234",
-        //        "subscriptin_dur":"1234",
-        //        "fess":"1234"
-        //        ]
-        //
-        //        ServerManager.sharedInstance().paidSubscriptionInfo(params) { (isSuccessful, error, result, dictResult) in
-        //            if isSuccessful {
-        //
-        //            }
-        //        }
+    func paidUnpaidVendorFunction() {
+        self.showHud("Loading...")
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "filter_name":""
+        ]
         
-    //}
+        ServerManager.sharedInstance().chUnpaidvendorList(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                self.unpaidList = result!
+                self.freeUnpaidListTableView.delegate = self
+                self.freeUnpaidListTableView.dataSource = self
+                self.freeUnpaidListTableView.reloadData()
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+ 
+    }
+    
+    func freeToPaidFunction() {
+        
+        self.showHud("Loading...")
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "filter_name":""
+        ]
+
+        ServerManager.sharedInstance().chfreeToPaidList(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                self.freeList = result!
+                self.freeUnpaidListTableView.delegate = self
+                self.freeUnpaidListTableView.dataSource = self
+                self.freeUnpaidListTableView.reloadData()
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,8 +77,14 @@ class FreeUnpaidVendorViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     return 4
-        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            return self.freeList.count
+        case 1:
+            return self.unpaidList.count
+        default:
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -82,12 +92,25 @@ class FreeUnpaidVendorViewController: UIViewController {
         if segmentControl.selectedSegmentIndex == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
             
+            if freeList.count > 0 {
+            cell.freevendorList = self.freeList[indexPath.row]
+            }
+            
+            return cell
+        }else if segmentControl.selectedSegmentIndex == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
+            
+            if unpaidList.count > 0 {
+                cell.unpaidVendorList = self.unpaidList[indexPath.row]
+            }
             
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
             
-            
+//            if unpaidList.count > 0 {
+//                cell.unpaidVendorList = self.unpaidList[indexPath.row]
+//            }
             
             return cell
         }
@@ -104,5 +127,15 @@ class FreeUnpaidVendorViewController: UIViewController {
     }
 
     @IBAction func segmentControlAction(sender: AnyObject) {
+        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            freeToPaidFunction()
+        case 1:
+            paidUnpaidVendorFunction()
+        default:
+            print("")
+        }
+        
     }
 }

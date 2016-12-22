@@ -18,12 +18,19 @@ class AboutUsViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var messageTextField: UITextView!
+    var fromCityHeadApp = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if fromCityHeadApp == ""{
         slideMenuShow(slidemenuButton, viewcontroller: self)
         revealTouch(self)
+        }else {
+            
+        }
+        
         addresstextField.setTextFieldStyle(TextFieldStyle.EmailID)
         
        // setBackButtonForNavigation()

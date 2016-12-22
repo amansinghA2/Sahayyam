@@ -1094,5 +1094,143 @@ extension ServerManager {
         }
     }
     
+    func vendorSubsReg(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorSubsRegUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
+
+    
+    func vendorSubsRenew(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorSubsRenewUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
+
+    
+    func vendorSubsSubs(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorSubsUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
+    
+    func invoicePaymentFeesPerSales(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorInvoicePaymentUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
+    
+    func vendorInvoicePaymentFreetoPaid(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [ApprovePendingStatus]? , result1:[String:AnyObject]?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.GET, vendorInvoiceFreeToPaidUrl , parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = VendorJSONMapper.vendorApprovePendingMapper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: arr , result1:dict as? [String:AnyObject])
+                            
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1:nil)
+                        }
+                    case .Failure(let error):
+                        print(error)
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil , result1: nil)
+                    }
+                }
+        }
+    }
+
+    
   
 }

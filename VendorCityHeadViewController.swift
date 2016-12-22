@@ -8,40 +8,72 @@
 
 import UIKit
 
-class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate{
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var vendorSubsListTableView: UITableView!
     var vendorSubsLIsts = [CHVendorSubsList]()
-    var freeUnpaidVendorList = FreeUnpaidVendorList()
+    var unpaidList = [UnpaidVendorList]()
+    var freeList = [FreeVendorList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        createSearchBar()
+        
         let nib1 = UINib(nibName: "AllVendorsTableViewCell", bundle: nil)
         self.vendorSubsListTableView.registerNib(nib1, forCellReuseIdentifier: "allVendorsIdentifier")
         
         let nib2 = UINib(nibName: "VendorsFreeTableViewCell", bundle: nil)
         self.vendorSubsListTableView.registerNib(nib2, forCellReuseIdentifier: "freeVendorsIdentifier")
         
-        setUpVendorList()
+        setUpVendorList("")
        
     }
     
-    func setUpFreeVendorsList() {
+    func createSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = false
+        searchBar.delegate = self
+        searchBar.placeholder = "Enter Mobile No. or Name"
+        self.navigationItem.titleView = searchBar
+    }
+    
+    // Search Bar delegates
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            setUpVendorList(searchText)
+        case 1:
+            freeToPaidFunction(searchText)
+        case 2:
+            paidUnpaidVendorFunction(searchText)
+        default:
+            print("")
+        }
+    
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+    }
+    
+    func paidUnpaidVendorFunction(filterName:String) {
         
         self.showHud("Loading...")
         
         let params = [
-        "token":token,
-        "device_id":"1234",
-        "filter_name":"",
+            "token":token,
+            "device_id":"1234",
+            "filter_name":filterName
         ]
         
-        ServerManager.sharedInstance().chVendorListFree(params) { (isSuccessful, error, result, dictResult) in
+        ServerManager.sharedInstance().chUnpaidvendorList(params) { (isSuccessful, error, result, dictResult) in
             if isSuccessful {
-                self.freeUnpaidVendorList = result!
-               // self.vendorSubsLIsts = result!
+                self.unpaidList = result!
                 self.vendorSubsListTableView.delegate = self
                 self.vendorSubsListTableView.dataSource = self
                 self.vendorSubsListTableView.reloadData()
@@ -53,11 +85,36 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         
     }
     
-    func setUpVendorList() {
+    func freeToPaidFunction(filterName:String) {
+        
+        self.showHud("Loading...")
+        
+        let params = [
+            "token":token,
+            "device_id":"1234",
+            "filter_name":filterName
+        ]
+        
+        ServerManager.sharedInstance().chfreeToPaidList(params) { (isSuccessful, error, result, dictResult) in
+            if isSuccessful {
+                self.freeList = result!
+                self.vendorSubsListTableView.delegate = self
+                self.vendorSubsListTableView.dataSource = self
+                self.vendorSubsListTableView.reloadData()
+                self.hideHud()
+            }else{
+                self.hideHud()
+            }
+        }
+    }
+
+    
+    func setUpVendorList(filterName:String) {
         self.showHud("Loading...")
         let params = [
             "token":token,
-            "device_id":"1234"
+            "device_id":"1234",
+            "filter_name":filterName
         ]
         
         ServerManager.sharedInstance().chVendorListForSbbscription(params) { (isSuccessful, error, result, dictResult) in
@@ -83,9 +140,14 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         if segmentControl.selectedSegmentIndex == 0 {
             return self.vendorSubsLIsts.count
         }else if segmentControl.selectedSegmentIndex == 1{
-            return self.freeUnpaidVendorList.freevendorList.count
+            return self.freeList.count
         }else{
-            return self.freeUnpaidVendorList.unpaidVendorList.count
+            if self.unpaidList.count > 0 {
+               return self.unpaidList.count
+            }else{
+               self.toastViewForTextfield("No Vendors")
+               return 0
+            }
         }
     }
     
@@ -102,16 +164,16 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
             return cell
         }else if segmentControl.selectedSegmentIndex == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
-           if self.freeUnpaidVendorList.freevendorList.count > 0 {
-                cell.freevendorList = self.freeUnpaidVendorList.freevendorList[indexPath.row]
+           if self.freeList.count > 0 {
+                cell.freevendorList = self.freeList[indexPath.row]
             }else{
                 self.toastViewForTextfield("No Vendors")            }
             
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("freeVendorsIdentifier") as! VendorsFreeTableViewCell
-            if self.freeUnpaidVendorList.unpaidVendorList.count > 0 {
-                cell.unpaidVendorList = self.freeUnpaidVendorList.unpaidVendorList[indexPath.row]
+            if self.unpaidList.count > 0 {
+                cell.unpaidVendorList = self.unpaidList[indexPath.row]
             }else{
                 self.toastViewForTextfield("No Vendors")
             }
@@ -133,11 +195,11 @@ class VendorCityHeadViewController: UIViewController , UITableViewDelegate , UIT
         
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            setUpVendorList()
+            setUpVendorList("")
         case 1:
-            setUpFreeVendorsList()
+            freeToPaidFunction("")
         default:
-            setUpFreeVendorsList()
+            paidUnpaidVendorFunction("")
         }
         
     }

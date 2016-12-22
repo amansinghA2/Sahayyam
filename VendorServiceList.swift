@@ -12,6 +12,5 @@ class VendorServiceList: NSObject {
 
     var getLeftService = [LeftService]()
     var serviceDesc = [ServiceDesc]()
-//  var serviceId = []
     
 }

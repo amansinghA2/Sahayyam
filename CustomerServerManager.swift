@@ -184,7 +184,7 @@ extension ServerManager {
 
     // MARK: - Checkout
 
-    func customerCheckout(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [String:AnyObject]?) -> Void) {
+    func customerCheckout(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result: [String:AnyObject]? , result1:PaymentEBSDetails?) -> Void) {
 
         
         let headers = [
@@ -198,13 +198,14 @@ extension ServerManager {
                     case .Success:
                         if let dict = response.result.value {
                             print(dict)
-                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject])
+                            let arr = CommonJsonMapper.customerCheckoutListMApper(dict as! [String : AnyObject])
+                            completionClosure(isSuccessful: true, error: nil, result: dict as? [String : AnyObject] , result1:arr)
                         }else{
-                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                            completionClosure(isSuccessful: false, error: nil, result: nil , result1: nil)
                         }
                     case .Failure(let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil)
+                        completionClosure(isSuccessful: false,error: error.localizedDescription,result: nil , result1: nil)
                     }
                 }
         }
@@ -589,6 +590,31 @@ extension ServerManager {
                 }
         }
     }
+    
+    func getDummyData(params:[String:AnyObject]?  ,completionClosure: (isSuccessful:Bool,error:String?, result:DummyEmailData?) -> Void) {
+        
+        let headers = [
+            "Cookie":"PHPSESSID=" + sessionID
+        ]
+        
+        defaultManager.request(.POST, getDummyDetailUrl, parameters: params, encoding: .URL, headers: headers)
+            .responseJSON { response in
+                if let _ = response.response {
+                    switch response.result {
+                    case .Success:
+                        if let dict = response.result.value {
+                            print(dict)
+                            let arr = CommonJsonMapper.getDummyDataMapper((dict as? [String:AnyObject])!)
+                            completionClosure(isSuccessful: true, error: nil, result: arr)
+                        }else{
+                            completionClosure(isSuccessful: false, error: nil, result: nil)
+                        }
+                    case .Failure(let error):
+                        completionClosure(isSuccessful: false, error: error.localizedDescription, result: nil)
+                    }
+                }
+            }
+        }
 
     
 

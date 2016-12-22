@@ -35,7 +35,7 @@ class CityHeadProfileViewController: UIViewController, UIImagePickerControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       // createSearchBar()
         let str : NSString = "Accept the terms and conditions"
         acceptLabel.delegate = self
         acceptLabel.text = str as String
@@ -84,6 +84,14 @@ class CityHeadProfileViewController: UIViewController, UIImagePickerControllerDe
         // dataInTextField()
         
     }
+    
+//    func createSearchBar() {
+//        let searchBar = UISearchBar()
+//        searchBar.showsCancelButton = false
+//        searchBar.delegate = self
+//        searchBar.placeholder = "Enter Mobile No. or Name"
+//        self.navigationItem.titleView = searchBar
+//    }
     
     func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
         UIApplication.sharedApplication().openURL(url)
@@ -149,8 +157,7 @@ class CityHeadProfileViewController: UIViewController, UIImagePickerControllerDe
         }
         
         print(params)
-        
-        self.view.endEditing(true)
+    
         if Reachability.isConnectedToNetwork() {
             if formValidation() {
                 ServerManager.sharedInstance().customerUpdateProfile(params) { (isSuccessful, error, result) in

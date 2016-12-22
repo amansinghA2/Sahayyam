@@ -36,16 +36,15 @@ var gcmRegistrationToken: String?
 let gcmRegistrationKey = "onRegistrationCompleted"
 var connectedToGCM = false
 var subscribedToTopic = false
-
-@UIApplicationMain
+var cityHeadStatusString = String()
+// @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , GCMReceiverDelegate{
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-       
-//         selectIndexpath = NSUserDefaults.standardUserDefaults().objectForKey("radioButtonPath") as! NSIndexPath
         
+//         selectIndexpath = NSUserDefaults.standardUserDefaults().objectForKey("radioButtonPath") as! NSIndexPath
 //        gcmRegistrationHandler = {(registrationToken: String, error: NSError) -> Void in
 //            if registrationToken != nil {
 //                weakSelf.registrationToken = registrationToken
@@ -69,7 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
 //        if let launchOptions = launchOptions {
 //           
 //        }
-        
         // ...
         // Register for remote notifications
 //            let settings: UIUserNotificationSettings =
@@ -100,6 +98,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("defaultvendorName"){
             defaultVendorName = defaultVendName as! String
         }
+        
+        if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("cityHeadStatusString"){
+            cityHeadStatusString = defaultVendName as! String
+        }
+
         
         if let defaultVendName = NSUserDefaults.standardUserDefaults().objectForKey("tel"){
             telephone = defaultVendName as! String
@@ -172,8 +175,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
                     switch profileType{
                     case 1:
                         viewControllerPassing("Main", identifier: "SwitchUVController")
+                    case 2:
+                        if cityHeadStatusString == "1" {
+                            viewControllerPassing("Customer", identifier: "revealView")
+                        }else{
+                            viewControllerPassing("Main", identifier: "SwitchUVController")
+                        }
                     case 3:
-                        viewControllerPassing("Main", identifier: "SwitchUVController")
+                        if cityHeadStatusString == "1" {
+                         viewControllerPassing("Customer", identifier: "revealView")
+                        }else{
+                         viewControllerPassing("Main", identifier: "SwitchUVController")
+                        }
                     default:
                         print("")
                     }
@@ -182,7 +195,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
                 case 2:
                     viewControllerPassing("Vendor", identifier: "revealView")
                 case 3:
-                    viewControllerPassing("Main", identifier: "SwitchUVController")
+                    if cityHeadStatusString == "1" {
+                        
+                    }else{
+                    viewControllerPassing("CityHead", identifier: "CHMainMenu")
+                    }
                 default:
                     print("")
                 }
@@ -389,6 +406,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GGLInstanceIDDelegate , 
         let viewController = storyBoard.instantiateViewControllerWithIdentifier(identifier)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
+    }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        var controller: ResponseViewController = (storyboard.instantiateViewControllerWithIdentifier("ResponseViewController") as? ResponseViewController)!
+//        var parameterArray: [AnyObject] = url.absoluteString.componentsSeparatedByString("?")
+//        var trans_id: String = parameterArray[1] as! String
+//        controller.transaction_id=trans_id
+//        print("id value \(parameterArray[1])")
+//        var navigationController: UINavigationController = (self.window!.rootViewController as?
+//            UINavigationController)!
+//        navigationController.pushViewController(controller, animated: true)
+        let viewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("ResponseViewController") as! ResponseViewController
+        var parameterArray: [AnyObject] = url.absoluteString.componentsSeparatedByString("?")
+        let trans_id: String = parameterArray[1] as! String
+        viewController.transaction_id=trans_id
+        self.window?.rootViewController = viewController
+        NSNotificationCenter.defaultCenter().postNotificationName("success", object: parameterArray)
+        return true
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        //var url: NSURL?
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        var controller: ResponseViewController =
+//            
+//            (storyboard.instantiateViewControllerWithIdentifier("ResponseViewController") as? ResponseViewController)!
+//        var parameterArray: [AnyObject] = url.absoluteString.componentsSeparatedByString("?")
+//        var trans_id: String = parameterArray[1] as! String
+//        controller.transaction_id=trans_id
+//        var navigationController: UINavigationController = (self.window!.rootViewController as?
+//            UINavigationController)!
+//        navigationController.pushViewController(controller, animated: true)
+        
+        let viewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("ResponseViewController") as! ResponseViewController
+        var parameterArray: [AnyObject] = url.absoluteString.componentsSeparatedByString("?")
+        let trans_id: String = parameterArray[1] as! String
+        viewController.transaction_id=trans_id
+        self.window?.rootViewController = viewController
+        NSNotificationCenter.defaultCenter().postNotificationName("success", object: parameterArray)
+        return true
     }
 
 }

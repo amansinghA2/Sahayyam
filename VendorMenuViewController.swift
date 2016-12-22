@@ -18,6 +18,7 @@ class VendorMenuViewController: UIViewController , UITableViewDelegate , UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
        menuListTableView.delegate = self
        menuListTableView.dataSource = self
        

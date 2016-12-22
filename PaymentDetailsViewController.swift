@@ -64,15 +64,12 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         
         cell.vendorPayment = vendorPayments[indexPath.row]
         
-        if vendorPayments[indexPath.row].payStatus == "1" {
-            cell.viewInvoiceButtonLabel.hidden = false
-        }else{
-            cell.viewInvoiceButtonLabel.hidden = true
-        }
-        
         if vendor_type == "2" && vendorPayments[indexPath.row].payStatus == "1" {
             cell.viewInvoiceButtonLabel.setTitle("Make Payment", forState: .Normal)
             cell.viewInvoiceButtonLabel.hidden = true
+        }else{
+            cell.viewInvoiceButtonLabel.setTitle("View Invoice", forState: .Normal)
+            cell.viewInvoiceButtonLabel.hidden = false
         }
         
         cell.viewInvoiceButtonLabel.addTarget(self, action: #selector(PaymentDetailsViewController.viewInvoice(_:)), forControlEvents: .TouchUpInside)
@@ -91,16 +88,43 @@ class PaymentDetailsViewController: UIViewController , UITableViewDataSource , U
         let indexPath = paymentdetailsTableView.indexPathForCell(cell)
         
         if vendor_type == "2" && vendorPayments[indexPath!.row].payStatus == "1" {
+            let paymentView = PaymentModeViewController(nibName: "PaymentModeViewController", bundle: nil)
+            paymentView.paymentAmtString = "";
+            paymentView.strSaleAmount = "";
+            paymentView.strCurrency = "INR";
+            paymentView.strDisplayCurrency = "INR";
+            // Reference no has to be configured
+            paymentView.reference_no = self.vendorPayments[(indexPath?.row)!].orderID;
+            paymentView.strDescription = "Test Description";
+            paymentView.strBillingName = "Test";
+            paymentView.strBillingAddress = "Bill address";
+            paymentView.strBillingCity = "Bill City";
+            paymentView.strBillingState = "TN";
+            paymentView.strBillingPostal = "410210";
+            paymentView.strBillingCountry = "IND";
+            paymentView.strBillingEmail = "test@testmail.com";
+            paymentView.strBillingTelephone = "9363469999";
+            // Non mandatory parameters
+            paymentView.strDeliveryName = "Aman";
+            paymentView.strDeliveryAddress = "Kharghar";
+            paymentView.strDeliveryCity = "Mumbai";
+            paymentView.strDeliveryState = "Maharashtra";
+            paymentView.strDeliveryPostal = "410210";
+            paymentView.strDeliveryCountry = "India";
+            paymentView.strDeliveryTelephone = "9869796388";
             
+            // Dynamic Values configuration
+            // var dynamicKeyValueDictionary: NSMutableDictionary = NSMutableDictionary()
+            // dynamicKeyValueDictionary.setValue("savings", forKey: "account_detail")
+            // dynamicKeyValueDictionary.setValue("gold", forKey: "merchant_type")
+            // paymentView.dynamicKeyValueDictionary = dynamicKeyValueDictionary
+            self.navigationController!.pushViewController(paymentView, animated: true)
         }else{
             self.vendorPayment = self.vendorPayments[(indexPath?.row)!]
             self.performSegueWithIdentifier("showInvoiceSegue", sender: nil)
         }
-        
     }
-    
-    
-    
+
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

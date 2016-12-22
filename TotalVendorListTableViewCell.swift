@@ -30,6 +30,12 @@ class TotalVendorListTableViewCell: UITableViewCell {
     @IBOutlet weak var noCustomerLabel: UILabel!
     
     
+    var paidvendorList:PaidUnpaidVendor!{
+        didSet{
+            bindModeltoViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,6 +43,38 @@ class TotalVendorListTableViewCell: UITableViewCell {
 
     func bindModeltoViews() {
         
+        if let vendorName = paidvendorList.name as? String {
+            vendorNameLabel.text = vendorName
+        }
+        
+        if let vendorName = paidvendorList.telephone as? String {
+            vendorMobileNoLabel.text = vendorName
+        }
+        
+        if let vendorName = paidvendorList.email as? String {
+            vendorEmailIdLabel.text = vendorName
+        }
+        
+        if let vendorName = paidvendorList.createBy as? String {
+            vendorCreatedByLabel.text = vendorName
+        }
+        
+        if let vendorName = paidvendorList.address as? String {
+            addressLabel.text = vendorName
+        }
+        
+        if let vendorName = paidvendorList.customer as? String {
+            noCustomerLabel.text = vendorName
+        }
+        
+        if let image = paidvendorList.image as? String {
+            if image != "" {
+                vendorImage.imageFromUrl(BASE_URL + image)
+            }else{
+                
+            }
+        }
+  
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -8,28 +8,58 @@
 
 import UIKit
 
-class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource {
+class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate{
 
     @IBOutlet weak var subsTableView: UITableView!
-    
+    var searchBar = UISearchBar()
     @IBOutlet weak var subsSegmentControl: UISegmentedControl!
     var subsDetails = [CHVendorSubsList]()
     var customerId = String()
+    var pendingInvoiceList = PendingInvoiceList()
+    var pendingInvoiceLists = [PendingInvoiceList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        createSearchBar()
         let nib = UINib(nibName: "SubsPaymentTableViewCell", bundle: nil)
         self.subsTableView.registerNib(nib, forCellReuseIdentifier: "subPaymentIdentifier")
         
         let nib1 = UINib(nibName: "PendingInvoiceTableViewCell", bundle: nil)
         self.subsTableView.registerNib(nib1, forCellReuseIdentifier: "pendingInvoiceIdentifier")
         
-        setUpSubsInfo()
+        setUpSubsInfo("")
         
         // Do any additional setup after loading the view.
     }
 
+    func createSearchBar() {
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = false
+        searchBar.delegate = self
+        searchBar.placeholder = "Enter Mobile No. or Name"
+        self.navigationItem.titleView = searchBar
+    }
+    
+    // Search Bar delegates
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        switch subsSegmentControl.selectedSegmentIndex {
+        case 0:
+            setUpSubsInfo(searchText)
+        case 1:
+            setUpVendorInvoice(searchText)
+        default:
+            print("")
+        }
+        
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,10 +69,11 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
       
     }
     
-    func setUpSubsInfo() {
+    func setUpSubsInfo(filterName:String) {
         let params = [
             "token":token,
-            "device_id":"1234"
+            "device_id":"1234",
+            "filter_name":filterName
         ]
         
         ServerManager.sharedInstance().chVendorListForSbbscription(params) { (isSuccessful, error, result, dictResult) in
@@ -55,9 +86,27 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
         }
     }
     
-    func setUpVendorInvoice() {
+    func setUpVendorInvoice(filterName:String) {
         
+       self.showHud("Loading...")
         
+        let params = [
+        "token":token,
+        "device_id":"1234",
+        "filter_name":filterName
+        ]
+        
+       ServerManager.sharedInstance().chVendorInvoiceList(params) { (isSuccessful, error, result, dictResult) in
+        if isSuccessful {
+            self.pendingInvoiceLists = result!
+            self.subsTableView.delegate = self
+            self.subsTableView.dataSource = self
+            self.subsTableView.reloadData()
+            self.hideHud()
+        }else{
+            self.hideHud()
+        }
+        }
         
     }
     
@@ -65,7 +114,7 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
         if subsSegmentControl.selectedSegmentIndex == 0 {
          return self.subsDetails.count
         }else{
-          return 2
+          return self.pendingInvoiceLists.count
         }
     }
     
@@ -82,6 +131,8 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("pendingInvoiceIdentifier") as! PendingInvoiceTableViewCell
             
+            cell.pendingInvoiceList = self.pendingInvoiceLists[indexPath.row]
+            
 //            cell.subsLabel.text = self.subsDetails[indexPath.row].firstname + " " + self.subsDetails[indexPath.row].lastname
             
             cell.payOnlineButton.addTarget(self, action: #selector(SubsPaymentViewController.onlineButtontapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -97,11 +148,19 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
         let cell = sender.superview?.superview as! PendingInvoiceTableViewCell
         let indexPath = self.subsTableView.indexPathForCell(cell)
         
+        pendingInvoiceList = pendingInvoiceLists[(indexPath?.row)!]
+        
+        self.performSegueWithIdentifier("payOnlineIdentifier", sender: nil)
+        
     }
     
     func offlineButtonTapped(sender:Button) {
         let cell = sender.superview?.superview as! PendingInvoiceTableViewCell
         let indexPath = self.subsTableView.indexPathForCell(cell)
+        
+        pendingInvoiceList = pendingInvoiceLists[(indexPath?.row)!]
+        
+        self.performSegueWithIdentifier("payOfflineIdentifier", sender: nil)
         
     }
     
@@ -123,16 +182,21 @@ class SubsPaymentViewController: UIViewController ,UITableViewDelegate , UITable
             let vc = segue.destinationViewController as! AddSubscriptionViewController
             vc.customerId = self.customerId
             print(self.customerId)
+        }else if segue.identifier == "payOnlineIdentifier" {
+            let vc = segue.destinationViewController as! PayOnlineViewController
+            vc.pendingInvoiceList = self.pendingInvoiceList
+        }else if segue.identifier == "payOfflineIdentifier" {
+            let vc = segue.destinationViewController as! PayOfflineViewController
+            vc.pendingInvoiceList = self.pendingInvoiceList
         }
     }
-    
     
     @IBAction func subsPaymentSegmentAction(sender: AnyObject) {
         
         if subsSegmentControl.selectedSegmentIndex == 0 {
-            setUpSubsInfo()
+            setUpSubsInfo("")
         }else{
-            setUpVendorInvoice()
+            setUpVendorInvoice("")
         }
         
     }

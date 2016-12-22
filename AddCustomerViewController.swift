@@ -139,13 +139,12 @@ class AddCustomerViewController: UIViewController , UIGestureRecognizerDelegate 
         
         ServerManager.sharedInstance().chAddCustomerUrl(params) { (isSuccessful, error, result, dictResult) in
             if isSuccessful {
-//                if res = dictResult[""]
+                self.toastViewWithNavigation("Customer Successfully added", identifierString: "CHMainMenu")
                 self.hideHud()
             }else{
                 self.hideHud()
             }
         }
-        
         
     }
     

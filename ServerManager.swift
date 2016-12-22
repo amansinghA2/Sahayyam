@@ -34,7 +34,7 @@ class ServerManager: NSObject {
     
    
     
-    func requestUserLoginWithCredential(userName:String! , passWord:String!, completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: CustomerLoginData?) -> Void) {
+    func requestUserLoginWithCredential(userName:String! , passWord:String!, completionClosure: (isSuccessful:Bool,error:[String:AnyObject]?, result: CustomerLoginData? , result1:[String:AnyObject]?) -> Void) {
         
         let params = [
             "username":userName,
@@ -55,17 +55,17 @@ class ServerManager: NSObject {
                             if let isSuccess = dict["success"]! {
                                 if isSuccess as! Bool {
                                 let loginData = CommonJsonMapper.loginMapper(dict as! [String : AnyObject])
-                                    completionClosure(isSuccessful: true, error: nil, result: loginData)
+                                    completionClosure(isSuccessful: true, error: nil, result: loginData , result1: dict as? [String:AnyObject])
                                     self.getSessionID(response)
                                 }else{
-                                    completionClosure(isSuccessful: false, error: nil, result: nil)
+                                    completionClosure(isSuccessful: false, error: nil, result: nil, result1: nil)
                                 }
                             }
                         }
                         
                     case .Failure( let error):
                         print(error)
-                        completionClosure(isSuccessful: false,error: nil,result: nil)
+                        completionClosure(isSuccessful: false,error: nil,result: nil , result1: nil)
                     }
                 }
             }
@@ -83,8 +83,8 @@ class ServerManager: NSObject {
                     switch response.result {
                     case .Success:
                         if let dict = response.result.value {
-                            if let success = dict["success"]{
-                                if success as! Bool {
+                            if let success = dict["success"] as? Bool{
+                                if success == true {
                                     print(dict)
                                let arr = CommonJsonMapper.getVendorcategoryList(dict as! [String : AnyObject])
                                     completionClosure(isSuccessful: true, error: nil, result: arr , dictResult: dict as? [String:AnyObject])

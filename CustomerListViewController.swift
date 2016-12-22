@@ -29,7 +29,6 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
         slideMenuShow(slideMenuButton, viewcontroller: self)
         let nib1 = UINib(nibName: "CustomerListTableViewCell", bundle: nil)
         self.customerListTableView.registerNib(nib1, forCellReuseIdentifier: "customerLIstCell")
-        
         let nib2 = UINib(nibName: "CustomerListDetailTableViewCell", bundle: nil)
         self.customerListTableView.registerNib(nib2, forCellReuseIdentifier: "customerListDetailcell")
         
@@ -59,10 +58,7 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
       }
     }
     
-    
     func getCustomerListFunction() {
-   
-        //self.view.window!.userInteractionEnabled = true
         self.showHud("Loading...")
         let params = [
             "token":token ,
@@ -180,23 +176,6 @@ class CustomerListViewController: UIViewController , UITableViewDataSource , UIT
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         return 44
     }
-    
-//    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
-//        
-//        if position == FrontViewPosition.Left{
-//            self.view.userInteractionEnabled = true
-//        }else{
-//            self.view.userInteractionEnabled = false
-//        }
-//    }
-//    
-//    func revealController(revealController: SWRevealViewController!, didMoveToPosition position: FrontViewPosition) {
-//        if position == FrontViewPosition.Left{
-//            self.view.userInteractionEnabled = true
-//        }else{
-//            self.view.userInteractionEnabled = false
-//        }
-//    }
     
     func blockUnblockButton(sender:UIButton){
         let section = sender.tag

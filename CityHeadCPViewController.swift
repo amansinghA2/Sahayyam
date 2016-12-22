@@ -16,9 +16,6 @@ class CityHeadCPViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-   
-        
         // Do any additional setup after loading the view.
     }
 
@@ -27,19 +24,51 @@ class CityHeadCPViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func formValidation() -> Bool{
+        
+        if (changePassword.text?.isBlank == true  || confirmPassword.text?.isBlank == true){
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Field cannot be left blank", alertTitle: "OK", viewController: self)
+            return false
+        }
+        
+        if (changePassword.text?.characters.count < 4 || confirmPassword.text?.characters.count < 4) {
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Password should be more than 4 characters", alertTitle: "OK", viewController: self)
+        }
+        
+        if !(Validations.isValidPassAndConfirmPassword(changePassword.text! , confirmPassword: confirmPassword.text!)) {
+            self.hideHud()
+            AlertView.alertView("Alert", message: "Password and confirm password do not match", alertTitle: "OK", viewController: self)
+            return false
+        }
+        return true
+    }
+    
     @IBAction func submitAction(sender: AnyObject) {
         
+        self.showHud("Loading...")
+        
+        if formValidation() {
         let params = [
             "token":token,
             "device_id":"1234",
-            "password":String(changePassword.text),
-            "confirm":String(confirmPassword.text)
+            "password":String(changePassword.text!),
+            "confirm":String(confirmPassword.text!)
         ]
+        
+        print(params)
         
         ServerManager.sharedInstance().chPasswordChange(params) { (isSuccessful, error, result, dictResult) in
             if isSuccessful {
-                
+                self.hideHud()
+                self.toastViewWithNavigation("Password successfully changed", identifierString: "CHMainMenu")
+            }else{
+                self.hideHud()
             }
+          }
+        }else{
+            self.hideHud()
         }
         
     }

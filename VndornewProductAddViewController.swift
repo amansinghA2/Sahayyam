@@ -524,8 +524,6 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func serviceAction(sender: AnyObject) {
         
-
-        
         var serviceName = [String]()
         for serviceList in serviceLists {
             serviceName.append(serviceList.desc)
@@ -551,6 +549,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     @IBAction func categoryAction(sender: AnyObject) {
         self.view.endEditing(true)
         var categoryListArray = [String]()
+        
         for categoryLIst in categoryLists {
             categoryListArray.append(categoryLIst.name)
         }
@@ -625,9 +624,7 @@ class VndornewProductAddViewController: UIViewController , UITextFieldDelegate ,
     
     @IBAction func statusAction(sender: AnyObject) {
         self.view.endEditing(true)
-        
-        
-        
+
         if dropper.status == .Hidden {
                     dropper = Dropper(x: statusLabel.frame.origin.x, y: statusLabel.frame.origin.y + statusLabel.frame.size.height, width: statusLabel.frame.size.width, height: 150)
             dropper.tag = 5

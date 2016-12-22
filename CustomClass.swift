@@ -28,14 +28,11 @@ class CustomClass: NSObject {
             }
             return false
          })
-        print(filteredLists)
         return filteredLists
-        
     }
     
     class func htmlTrimmed(text:String) -> String {
         let trimmedString = text.stringByReplacingOccurrencesOfString("<[^>]+>", withString: " , ", options: .RegularExpressionSearch, range: nil)
-        
         return trimmedString
     }
     

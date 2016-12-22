@@ -408,4 +408,178 @@ class CommonJsonMapper: NSObject {
         return categoryLists
     }
     
+    
+    class func chVendorDetailsMapper(result:[String:AnyObject])  -> CHServiceDetails {
+        
+        let categoryLists = CHServiceDetails()
+        
+        if let countryId = result["page"] as? String {
+            categoryLists.page = countryId
+        }
+        
+        if let arr = result["data_service"] as? NSArray{
+            for (_, value) in arr.enumerate(){
+                let categoryList = DataService()
+                if let categoryID = value.valueForKey("id") as? String{
+                    categoryList.id = categoryID
+                }
+                if let categoryName = value.valueForKey("desc") as? String{
+                    categoryList.desc = categoryName
+                }
+                
+                categoryLists.data_service.append(categoryList)
+            }
+        }
+        
+        if let arr = result["product_details"] as? NSArray{
+            for (_, value) in arr.enumerate(){
+                let categoryList = CHProductDetails()
+                if let categoryID = value.valueForKey("category_id") as? String{
+                    categoryList.category_id = categoryID
+                }
+                if let categoryName = value.valueForKey("category_name") as? String{
+                    categoryList.category_name = categoryName
+                }
+                if let categoryName = value.valueForKey("parent_id") as? String{
+                    categoryList.parent_id = categoryName
+                }
+                if let categoryName = value.valueForKey("service_name") as? String{
+                    categoryList.service_name = categoryName
+                }
+                categoryLists.product_details.append(categoryList)
+            }
+        }
+              return categoryLists
+    }
+    
+    
+    class func vendorListForPendingInvoiceMapper(result:[String:AnyObject])  -> [PendingInvoiceList] {
+        
+        var categoryLists = [PendingInvoiceList]()
+        
+        if let arr = result["invoice"] as? NSArray{
+            for (_, value) in arr.enumerate(){
+                let categoryList = PendingInvoiceList()
+                if let categoryID = value.valueForKey("address") as? String{
+                    categoryList.address = categoryID
+                }
+                if let categoryName = value.valueForKey("city") as? String{
+                    categoryList.city = categoryName
+                }
+                if let categoryName = value.valueForKey("create_date") as? String{
+                    categoryList.create_date = categoryName
+                }
+                if let categoryName = value.valueForKey("email") as? String{
+                    categoryList.email = categoryName
+                }
+                if let categoryName = value.valueForKey("invoice_amt") as? String{
+                    categoryList.invoice_amt = categoryName
+                }
+                if let categoryName = value.valueForKey("invoice_no") as? String{
+                    categoryList.invoice_no = categoryName
+                }
+                if let categoryName = value.valueForKey("order_no") as? String{
+                    categoryList.order_no = categoryName
+                }
+                if let categoryName = value.valueForKey("seller_id") as? String{
+                    categoryList.seller_id = categoryName
+                }
+                if let categoryName = value.valueForKey("shop_name") as? String{
+                    categoryList.shop_name = categoryName
+                }
+                if let categoryName = value.valueForKey("telephone") as? String{
+                    categoryList.telephone = categoryName
+                }
+                if let categoryName = value.valueForKey("vendor_name") as? String{
+                    categoryList.vendor_name = categoryName
+                }
+                categoryLists.append(categoryList)
+            }
+        }
+        return categoryLists
+    }
+    
+
+    class func customerCheckoutListMApper(result:[String:AnyObject])  -> PaymentEBSDetails {
+        
+        let categoryLists = PaymentEBSDetails()
+        
+        if let res = result["vendor_subscription_fess"] as? NSDictionary {
+            
+            if let amount = res["amount"] as? String {
+               categoryLists.amount = amount
+            }
+            
+            if let amount = res["calculate_partial"] as? String {
+               categoryLists.amount = amount
+            }
+            
+            if let amount = res["currency_code"] as? String {
+               categoryLists.currency_code = amount
+            }
+            
+            if let amount = res["currency_id"] as? String {
+               categoryLists.currency_id = amount
+            }
+            
+            if let amount = res["id"] as? String {
+               categoryLists.id = amount
+            }
+            
+            if let amount = res["order_id"] as? String {
+              categoryLists.order_id = amount
+            }
+            
+            if let amount = res["order_id1"] as? String {
+              categoryLists.order_id1 = amount
+            }
+            
+            if let amount = res["product_id"] as? String {
+              categoryLists.product_id = amount
+            }
+            
+            if let amount = res["seller_id"] as? String {
+                categoryLists.seller_id = amount
+            }
+            
+        }
+        return categoryLists
+    }
+    
+
+    class func getDummyDataMapper(result:[String:AnyObject])  -> DummyEmailData {
+        
+        let categoryLists = DummyEmailData()
+            
+            if let amount = result["address"] as? String {
+                categoryLists.address = amount
+            }
+            
+            if let amount = result["city"] as? String {
+                categoryLists.city = amount
+            }
+            
+            if let amount = result["country"] as? String {
+                categoryLists.country = amount
+            }
+            
+            if let amount = result["email"] as? String {
+                categoryLists.email = amount
+            }
+            
+            if let amount = result["name"] as? String {
+                categoryLists.name = amount
+            }
+            
+            if let amount = result["postcode"] as? String {
+                categoryLists.postcode = amount
+            }
+            
+            if let amount = result["telephone"] as? String {
+                categoryLists.telephone = amount
+            }
+        
+        return categoryLists
+    }
+    
 }

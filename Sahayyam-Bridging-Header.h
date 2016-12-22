@@ -7,3 +7,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import <TTTAttributedLabel/TTTAttributedLabel.h>
 #import <Google/CloudMessaging.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "PaymentModeViewController.h"
+#import "ResponseViewController.h"
+#import "TIMERUIApplication.h"
+
+

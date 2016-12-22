@@ -57,10 +57,18 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                 case 2:
                     vendorEntry = "mutipleProfile"
                     self.custTypeString = "cityhead"
-                    self.viewControllerPassing("CityHead")
+                    if cityHeadStatusString == "1" {
+                        AlertView.alertView("OK", message: "Cityhead is blocked", alertTitle: "OK", viewController: self)
+                    }else{
+                       self.viewControllerPassing("CityHead")
+                    }
                 case 3:
                     self.custTypeString = "cityhead"
-                    self.viewControllerPassing("CityHead")
+                    if cityHeadStatusString == "1" {
+                        AlertView.alertView("OK", message: "Cityhead is blocked", alertTitle: "OK", viewController: self)
+                    }else{
+                        self.viewControllerPassing("CityHead")
+                    }
                 default:
                     print("")
                 }
@@ -89,9 +97,7 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                     //                            if let firstname = dict["lastname"]{
                     //
                     //                            }
-                    //
                     //                        }
-                    
                     if let dict = dicResult!["vendors"] {
                         if let firstname = dict["company"]{
                             
@@ -110,6 +116,8 @@ class SwitchUserViewController: UIViewController  , UIApplicationDelegate{
                     if let data = NSUserDefaults.standardUserDefaults().objectForKey("categoryLists") as? NSData {
                         filteredArr = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [CategoryList]
                     }
+                }else{
+                    self.hideHud()
                 }
             }
         }

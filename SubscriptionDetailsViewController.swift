@@ -1,3 +1,4 @@
+
 //
 //  SubscriptionDetailsViewController.swift
 //  Sahayyam
@@ -18,6 +19,7 @@ class SubscriptionDetailsViewController: UIViewController , UITableViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SubscriptionDetailsViewController.getDetails(_:)), name: "backNotification", object: nil)
         slideMenuShow(slideMenuButton, viewcontroller: self)
         tokenCheck()
         revealTouch(self)
@@ -48,6 +50,12 @@ class SubscriptionDetailsViewController: UIViewController , UITableViewDelegate 
       }
         
     }
+    
+    func getDetails(message: NSNotification)
+    {
+        print(message)
+    }
+    
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.subscriptionLists.count
@@ -56,10 +64,16 @@ class SubscriptionDetailsViewController: UIViewController , UITableViewDelegate 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:SubscriptionDetailsTableViewCell = tableView.dequeueReusableCellWithIdentifier("subscriptionDetailsIdentifier") as! SubscriptionDetailsTableViewCell
         cell.subscriptionList = subscriptionLists[indexPath.row]
-        
+//        cell.payButton.addTarget(self, action: #selector(SubscriptionDetailsViewController.payButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         return cell
     }
 
+//    func payButtonClicked(sender:UIButton) {
+//        let cell = sender.superview?.superview as! SubscriptionDetailsTableViewCell
+//        let indexPath = subscriptionDetailsTableView.indexPathForCell(cell)
+        
+//    }
+    
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }

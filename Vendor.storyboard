@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMc-Kc-6aI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-523" y="438"/>
+            <point key="canvasLocation" x="-545" y="446"/>
         </scene>
         <!--Orders-->
         <scene sceneID="fuw-dh-swg">
@@ -593,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUk-DU-z2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-347" y="-601"/>
+            <point key="canvasLocation" x="-355" y="-33"/>
         </scene>
         <!--Store Profile View Controller-->
         <scene sceneID="HSR-cA-sJ1">
@@ -622,7 +622,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4G0-Bj-fZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="2532"/>
+            <point key="canvasLocation" x="290" y="2746"/>
         </scene>
         <!--Category Edit View Controller-->
         <scene sceneID="aZh-UL-NtH">
@@ -630,7 +630,7 @@
                 <viewController storyboardIdentifier="categoryEditIdentifier" id="UQ6-L0-cg7" customClass="CategoryEditViewController" customModule="Sahayyam" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzk-A1-9qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="2379"/>
+            <point key="canvasLocation" x="652" y="2867"/>
         </scene>
         <!--Product Status-->
         <scene sceneID="SV8-S4-uZa">

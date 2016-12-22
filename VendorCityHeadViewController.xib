@@ -16,6 +16,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-RC-xiq">
+                    <rect key="frame" x="0.0" y="43" width="320" height="475"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="475" id="0WC-cy-49t"/>
+                    </constraints>
+                </tableView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Pax-Lr-NEW">
                     <rect key="frame" x="0.0" y="64" width="320" height="29"/>
                     <constraints>
@@ -31,20 +38,17 @@
                         <action selector="segmentControlAction:" destination="-1" eventType="valueChanged" id="4ae-t5-EG8"/>
                     </connections>
                 </segmentedControl>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-RC-xiq">
-                    <rect key="frame" x="0.0" y="93" width="320" height="475"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Pax-Lr-NEW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="6Dm-Nh-gjK"/>
-                <constraint firstItem="UeZ-RC-xiq" firstAttribute="top" secondItem="Pax-Lr-NEW" secondAttribute="bottom" constant="1" id="M6h-Zq-mBr"/>
+                <constraint firstItem="UeZ-RC-xiq" firstAttribute="top" secondItem="Pax-Lr-NEW" secondAttribute="bottom" constant="-49" id="M6h-Zq-mBr"/>
                 <constraint firstAttribute="trailing" secondItem="UeZ-RC-xiq" secondAttribute="trailing" id="ZEg-g9-msp"/>
                 <constraint firstItem="Pax-Lr-NEW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="acb-w5-M7d"/>
                 <constraint firstAttribute="trailing" secondItem="Pax-Lr-NEW" secondAttribute="trailing" id="d5g-ZK-hZu"/>
-                <constraint firstAttribute="bottom" secondItem="UeZ-RC-xiq" secondAttribute="bottom" id="i3y-z3-Ry2"/>
+                <constraint firstAttribute="bottom" secondItem="UeZ-RC-xiq" secondAttribute="bottom" constant="50" id="i3y-z3-Ry2"/>
                 <constraint firstItem="UeZ-RC-xiq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="syT-1f-r1R"/>
+                <constraint firstItem="UeZ-RC-xiq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="43" id="y3o-n1-8Jl"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="315" y="179"/>

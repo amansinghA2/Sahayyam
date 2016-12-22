@@ -20,9 +20,32 @@ class PayOnlineViewController: UIViewController {
     
     @IBOutlet weak var amountLabel: UILabel!
     
+    var pendingInvoiceList = PendingInvoiceList()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let customerName = pendingInvoiceList.vendor_name as? String{
+            customerNameLabel.text = customerName
+        }
+        
+        if let customerName = pendingInvoiceList.email as? String{
+            emailIdLabel.text = customerName
+        }
+        
+        if let customerName = pendingInvoiceList.telephone as? String{
+            mobileNumber.text = customerName
+        }
+        
+        if let customerName = pendingInvoiceList.order_no as? String{
+            orderIdLabel.text = customerName
+        }
+        
+        if let customerName = pendingInvoiceList.invoice_amt as? String{
+            amountLabel.text = customerName
+        }
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -44,7 +67,7 @@ class PayOnlineViewController: UIViewController {
     
     @IBAction func proceedAction(sender: AnyObject) {
         
-        
+     
         
     }
     

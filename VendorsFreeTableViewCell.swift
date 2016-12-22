@@ -47,9 +47,9 @@ class VendorsFreeTableViewCell: UITableViewCell {
             nameLabel.text = telephone
         }
         
-//        if let sellerId = freevendorList.seller_id as? String {
+//      if let sellerId = freevendorList.seller_id as? String {
 //            nameLabel.text = sellerId
-//        }
+//      }
         
         if let subsfees = freevendorList.subscription_fees as? String {
            subFeesLabel.text = subsfees
@@ -64,11 +64,11 @@ class VendorsFreeTableViewCell: UITableViewCell {
     
     func bindModelToViews1(){
         
-        if let busType = freevendorList.bus_type as? String {
+        if let busType = unpaidVendorList.bus_type as? String {
             busTypeLabel.text = busType
         }
         
-        if let telephone = freevendorList.seller as? String {
+        if let telephone = unpaidVendorList.seller as? String {
             nameLabel.text = telephone
         }
         
@@ -76,11 +76,11 @@ class VendorsFreeTableViewCell: UITableViewCell {
         //            nameLabel.text = sellerId
         //        }
         
-        if let subsfees = freevendorList.subscription_fees as? String {
+        if let subsfees = unpaidVendorList.subscription_fees as? String {
             subFeesLabel.text = subsfees
         }
         
-        if let telephone = freevendorList.telephone as? String {
+        if let telephone = unpaidVendorList.telephone as? String {
             mobileLabel.text = telephone
         }
         

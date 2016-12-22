@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddVendorViewController" customModule="Sahayyam" customModuleProvider="target">
             <connections>
+                <outlet property="b2bRadioButton" destination="yNP-Kp-lLR" id="fOZ-gt-r2J"/>
+                <outlet property="b2cRadioButton" destination="mbP-Kd-UVE" id="pGQ-Kj-faL"/>
                 <outlet property="citySelectionButton" destination="mBA-Zl-mee" id="P2H-NJ-nnO"/>
                 <outlet property="country" destination="0hF-mh-Qk8" id="mbc-H9-YS3"/>
                 <outlet property="postalCodeButton" destination="imI-Wq-9Xn" id="nzO-gE-ncr"/>
@@ -38,13 +40,19 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74722521549999998" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-mh-Qk8">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hF-mh-Qk8">
                     <rect key="frame" x="92" y="115" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="4Pe-vc-2cA"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-hc-sY5">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pkq-hc-sY5">
                     <rect key="frame" x="206" y="115" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="106" id="Cqo-un-Nt4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -84,7 +92,7 @@
                         <constraint firstAttribute="width" constant="164" id="oMH-LX-EUM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Select City">
+                    <state key="normal">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -97,7 +105,7 @@
                         <constraint firstAttribute="width" constant="164" id="yE2-dt-OCi"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Select PostCode">
+                    <state key="normal">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -160,6 +168,16 @@
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVQ-jw-api">
+                    <rect key="frame" x="129" y="319" width="164" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Select">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="serviceAction:" destination="-1" eventType="touchUpInside" id="qIk-OT-GKg"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4B-ZD-eII" customClass="Button" customModule="Sahayyam" customModuleProvider="target">
                     <rect key="frame" x="228" y="370" width="84" height="30"/>
                     <constraints>
@@ -171,16 +189,6 @@
                     </state>
                     <connections>
                         <action selector="continueButtonAction:" destination="-1" eventType="touchUpInside" id="RjR-TV-prK"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVQ-jw-api">
-                    <rect key="frame" x="129" y="319" width="164" height="23"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Select">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="serviceAction:" destination="-1" eventType="touchUpInside" id="qIk-OT-GKg"/>
                     </connections>
                 </button>
             </subviews>
@@ -211,6 +219,7 @@
                 <constraint firstItem="Kgs-xc-TH7" firstAttribute="top" secondItem="xr1-Jv-avh" secondAttribute="bottom" constant="13" id="Wg2-Et-9cU"/>
                 <constraint firstItem="YFV-08-N2o" firstAttribute="centerY" secondItem="0hF-mh-Qk8" secondAttribute="centerY" id="Xh7-US-boW"/>
                 <constraint firstItem="Kgs-xc-TH7" firstAttribute="centerY" secondItem="mbP-Kd-UVE" secondAttribute="centerY" id="asZ-UT-iRA"/>
+                <constraint firstItem="0hF-mh-Qk8" firstAttribute="leading" secondItem="YFV-08-N2o" secondAttribute="trailing" constant="8" id="dAR-1h-ozA"/>
                 <constraint firstItem="JVQ-jw-api" firstAttribute="top" secondItem="mbP-Kd-UVE" secondAttribute="bottom" constant="13" id="dKO-cG-zc9"/>
                 <constraint firstItem="Lcs-7s-Mg4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="dOv-8W-WS7"/>
                 <constraint firstItem="d2Z-q3-M3F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="dtK-Qk-rRk"/>

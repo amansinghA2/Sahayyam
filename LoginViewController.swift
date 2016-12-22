@@ -42,9 +42,21 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
         if Reachability.checkInternetConnectivity() {
             if (usernameTextField.text?.isPhoneNumber  == true && usernameTextField.text?.isBlank == false) && (passwordTextField.text?.isBlank == false){
-                ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result) in
+                ServerManager.sharedInstance().requestUserLoginWithCredential(usernameTextField.text, passWord: passwordTextField.text, completionClosure: { (isSuccessful, error, result , result1) in
                     if (isSuccessful) {
                         self.customerLoginData = result!
+                        if let cityHeadStatus = result1!["cityhead_status"] as? String {
+                            if cityHeadStatus == "0" {
+                                cityHeadStatusString = "0"
+                                NSUserDefaults.standardUserDefaults().setObject(cityHeadStatusString, forKey:"cityHeadStatusString")
+                            }else if cityHeadStatus == "1" {
+                                cityHeadStatusString = "1"
+                                NSUserDefaults.standardUserDefaults().setObject(cityHeadStatusString, forKey:"cityHeadStatusString")
+                            }else{
+                                cityHeadStatusString = "2"
+                                NSUserDefaults.standardUserDefaults().setObject(cityHeadStatusString, forKey:"cityHeadStatusString")
+                            }
+                        }
                         if let defaultVendor = self.customerLoginData?.vendorList{
                             for list in defaultVendor{
                                 if list.defaultVendorId == "1"{
@@ -93,9 +105,18 @@ class LoginViewController: UIViewController {
                                 switch profileType{
                                 case 1:
                                     self.performSegueWithIdentifier("gotoSwitchUser", sender: nil)
-                                case 2:                                 self.performSegueWithIdentifier("gotoSwitchUser", sender: nil)
-                                case 3:
+                                case 2:
+                                    if cityHeadStatusString == "1" {
+                                    self.viewControllerPassing("Customer")
+                                }else{
                                     self.performSegueWithIdentifier("gotoSwitchUser", sender: nil)
+                                    }
+                                case 3:
+                                    if cityHeadStatusString == "1" {
+                                      self.viewControllerPassing("Customer")
+                                    }else{
+                                    self.performSegueWithIdentifier("gotoSwitchUser", sender: nil)
+                                    }
                                 default:
                                     print("")
                                 }
@@ -106,7 +127,11 @@ class LoginViewController: UIViewController {
                                 self.viewControllerPassing("Vendor")
                             case 3:
                                 vendorEntry = "onlyCityHead"
+                                if cityHeadStatusString == "1" {
+                                    AlertView.alertView("Alert", message: "Invalid Id or password", alertTitle: "OK", viewController: self)
+                                }else{
                                 self.viewControllerPassing("CityHead")
+                                }
                             default:
                                 print("")
                             }
@@ -160,38 +185,34 @@ class LoginViewController: UIViewController {
     @IBAction func facebookButtonAction(sender: AnyObject) {
         webViewOf = "facebook"
         self.performSegueWithIdentifier("showWebViewSegue", sender: nil)
-        
     }
     
     @IBAction func twitterSignInAction(sender: AnyObject) {
         webViewOf = "twitter"
         self.performSegueWithIdentifier("showWebViewSegue", sender: nil)
-        
     }
     
     @IBAction func googleSignInAction(sender: AnyObject) {
         webViewOf = "google"
         self.performSegueWithIdentifier("showWebViewSegue", sender: nil)
-        
     }
     
     @IBAction func pInterestSignInAction(sender: AnyObject) {
         webViewOf = "pinterest"
         self.performSegueWithIdentifier("showWebViewSegue", sender: nil)
-        
     }
     
     func setUpView() {
         hideBackBarButton()
         usernameTextField.setTextFieldStyle(TextFieldStyle.TextFieldUserName)
         passwordTextField.setTextFieldStyle(TextFieldStyle.TextFieldPassword)
-        
         usernameTextField.text =  NSUserDefaults.standardUserDefaults().objectForKey("username") as? String
         passwordTextField.text =  NSUserDefaults.standardUserDefaults().objectForKey("password") as? String
         
         if (usernameTextField.text?.isBlank == false && passwordTextField.text?.isBlank == false ) {
             checkBoxView.checkState = .Checked
         }
+        
     }
     
     func checkBoxState(){
@@ -214,9 +235,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    
-    
-    
     
 }
 

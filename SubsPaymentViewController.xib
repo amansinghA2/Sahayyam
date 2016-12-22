@@ -21,7 +21,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-yr-bur">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="41"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="grh-Wz-x0w"/>
                     </constraints>
@@ -37,9 +37,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Z8p-qF-uur" secondAttribute="trailing" id="1sb-lh-Nv5"/>
-                <constraint firstItem="xcs-yr-bur" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Yq-Ku-J57"/>
+                <constraint firstItem="xcs-yr-bur" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="8Yq-Ku-J57"/>
                 <constraint firstAttribute="trailing" secondItem="xcs-yr-bur" secondAttribute="trailing" id="9hy-uw-XaR"/>
-                <constraint firstItem="Z8p-qF-uur" firstAttribute="top" secondItem="xcs-yr-bur" secondAttribute="bottom" id="OPc-ZS-yMh"/>
+                <constraint firstItem="Z8p-qF-uur" firstAttribute="top" secondItem="xcs-yr-bur" secondAttribute="bottom" constant="-64" id="OPc-ZS-yMh"/>
                 <constraint firstItem="xcs-yr-bur" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g9f-Vx-BaA"/>
                 <constraint firstAttribute="bottom" secondItem="Z8p-qF-uur" secondAttribute="bottom" id="nDL-q5-NNm"/>
                 <constraint firstItem="Z8p-qF-uur" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y2B-In-6a3"/>

@@ -10,14 +10,14 @@ import Foundation
 
     // MARK: - Base Url
 
-let BASE_URL = "http://192.168.1.2/sahayyam/"
-let image_base_url = "http://192.168.1.2/sahayyam/image/"
+//let BASE_URL = "http://192.168.1.2/sahayyam/"
+//let image_base_url = "http://192.168.1.2/sahayyam/image/"
 
 //let BASE_URL = "http://45.118.180.96/"
 //let image_base_url = "http://45.118.180.96/image/"
 
-//let BASE_URL = "http://sahayyam.com/"
-//let image_base_url = "http://sahayyam.com/image/"
+let BASE_URL = "http://sahayyam.com/"
+let image_base_url = "http://sahayyam.com/image/"
 
     // MARK: - Common Url
 
@@ -96,6 +96,14 @@ let vendorUpdateServicesURl = BASE_URL + "index.php?route=api/vendorService/upda
 let vendorProductCountUrl = BASE_URL + "index.php?route=api/productapproval"
 let vendorApprovePendingRejectedUrl = BASE_URL + "index.php?route=api/ProductDetailApproval"
 
+    // Subscription Url
+
+let vendorSubsRegUrl = BASE_URL + "index.php?route=api/response1/UnPaidVendor"
+let vendorSubsRenewUrl = BASE_URL + "index.php?route=api/response1/getserverrsponceFesspersales"
+let vendorSubsUrl = BASE_URL + "index.php?route=api/response1"
+let vendorInvoicePaymentUrl = BASE_URL + "index.php?route=api/response1/getserverrsponceFesspersales"
+let vendorInvoiceFreeToPaidUrl = BASE_URL + "index.php?route=api/response1/freeToPaid"
+
     // CityHead URl
 
 let changePasswordUrl = BASE_URL+"index.php?route=api/passwordChange"
@@ -112,6 +120,21 @@ let chAddNewVendor = BASE_URL+"index.php?route=api/cityHead/addVendor"
 let freeToPaidUrl = BASE_URL + "index.php?route=api/cityHead/freeToPaid"
 let cityheadAddCustomerUrl = BASE_URL + "index.php?route=api/cityheadAddCustomer"
 let addSingleCustomerUrl = BASE_URL + "index.php?route=api/cityheadAddCustomer/addSingleCustomer"
+let chVendorInvoiceListUrl = BASE_URL + "index.php?route=api/vendorInvoice"
+let chVendorOnlinePaymentUrl = BASE_URL + "index.php?route=api/response1/getserverrsponceFesspersales"
+let chVendorOfflinePaymentUrl = BASE_URL + "index.php?route=api/offlineInvoicePay"
+
+// Dashboard cityhead
+
+let chTotalVendorUrl = BASE_URL + "index.php?route=api/totalvendors"
+let chDashboardCountUrl = BASE_URL + "index.php?route=api/dashboard"
+let chb2b2cUrl = BASE_URL + "index.php?route=api/subscriptiondetails"
+let chvendorRegFeesUrl = BASE_URL + "index.php?route=api/vendorregistrationfees"
+let chfreeVendorUrl = BASE_URL + "index.php?route=api/cityHead/freeToPaid"
+let chunpaidVendorUrl = BASE_URL + "index.php?route=api/cityHead/unpaidToPaid"
+let chproductDetailsUrl = BASE_URL + "index.php?route=api/productDetails"
+let getDummyDetailUrl = BASE_URL + "index.php?route=api/getdummyemail"
+
 
 var getHour = String()
 var getMinute = String()

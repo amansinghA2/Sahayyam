@@ -8,59 +8,43 @@
 
 import UIKit
 
-class TotalVendorViewController: UIViewController {
+class TotalVendorViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     @IBOutlet weak var totalVendorListTableView: UITableView!
+    
+    var paidUnapidList = [PaidUnpaidVendor]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setUp()
-        
+        setUp("1", filterName: "", searchtext: "")
         let nib1 = UINib(nibName: "TotalVendorListTableViewCell", bundle: nil)
         self.totalVendorListTableView.registerNib(nib1, forCellReuseIdentifier: "totalVendorListIdentifier")
-        
     }
     
-    func setUp() {
+    func setUp(status:String , filterName :String , searchtext:String) {
+        
+        self.showHud("Loading...")
         
         let params = [
             "token":token,
-            "device_id":"1234"
+            "device_id":"1234",
+            "filter_name":filterName,
+            "searchtext":searchtext,
+            "status":status
         ]
         
-        ServerManager.sharedInstance().chVendorListForSbbscription(params) { (isSuccessful, error, result, dictResult) in
+        ServerManager.sharedInstance().chTotalVendorList(params) { (isSuccessful, error, result, dictResult) in
             if isSuccessful {
+                self.paidUnapidList = result!
+                self.totalVendorListTableView.delegate = self
+                self.totalVendorListTableView.dataSource = self
+                self.totalVendorListTableView.reloadData()
                 self.hideHud()
             }else{
                 self.hideHud()
             }
         }
-        
-        //        let params = [
-        //        "token":token,
-        //        "device_id":"1234",
-        //        "amount":"1234",
-        //        "seller_id":"1234",
-        //        "customer_no":"1234",
-        //        "seller_group_id":"1234",
-        //        "totalmonth":"1234",
-        //        "mTotalMonthDay":"1234",
-        //        "current_date":"1234",
-        //        "expiry_date":"1234",
-        //        "remainingdays":"1234",
-        //        "order_id":"1234",
-        //        "sub_type":"1234",
-        //        "product_id":"1234",
-        //        "subscriptin_dur":"1234",
-        //        "fess":"1234"
-        //        ]
-        //
-        //        ServerManager.sharedInstance().paidSubscriptionInfo(params) { (isSuccessful, error, result, dictResult) in
-        //            if isSuccessful {
-        //
-        //            }
-        //        }
         
     }
     
@@ -70,22 +54,30 @@ class TotalVendorViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.paidUnapidList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if segmentControl.selectedSegmentIndex == 0 {
+//        if segmentControl.selectedSegmentIndex == 0 {
+//            let cell = tableView.dequeueReusableCellWithIdentifier("totalVendorListIdentifier") as! TotalVendorListTableViewCell
+//            cell.paidvendorList = self.paidUnapidList[indexPath.row]
+//            return cell
+//        }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("totalVendorListIdentifier") as! TotalVendorListTableViewCell
-            
-            
-            
+           cell.paidvendorList = self.paidUnapidList[indexPath.row]
+           cell.addSubscriptionButton.addTarget(self, action: #selector(TotalVendorViewController.subscriptionButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+           cell.changeMobileNoButton.addTarget(self, action: #selector(TotalVendorViewController.mobileNoChangeButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
             return cell
-        }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("totalVendorListIdentifier") as! TotalVendorListTableViewCell
-            
-            
-            return cell
-        }
+//        }
+    }
+    
+    func mobileNoChangeButtonClicked(sender:UIButton){
+        self.performSegueWithIdentifier("changeMobileSegue", sender: nil)
+    }
+    
+    func subscriptionButtonClicked(sender:UIButton) {
+        self.performSegueWithIdentifier("addSubsIdentifierSegue", sender: nil)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -98,12 +90,14 @@ class TotalVendorViewController: UIViewController {
     
     @IBAction func segmentControlAction(sender: AnyObject) {
         
-        //        switch segmentControl.selectedSegmentIndex {
-        //        case 0:
-        //           
-        //        default:
-        //            
-        //        }
+                switch segmentControl.selectedSegmentIndex {
+                case 0:
+                   setUp("1", filterName: "", searchtext: "")
+                case 1:
+                   setUp("0", filterName: "", searchtext: "")
+                default:
+                  print("")
+                }
         
     }
     
