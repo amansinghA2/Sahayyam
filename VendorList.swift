@@ -10,7 +10,6 @@ import UIKit
 
 class VendorList: NSObject {
     
-    
     dynamic var nickname = String()
     dynamic var tel = String()
     dynamic var from_date = String()

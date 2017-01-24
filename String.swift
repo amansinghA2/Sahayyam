@@ -8,7 +8,7 @@
 
 import Foundation
 
-    // MARK: - Base Url
+// MARK: - Base Url
 
 //let BASE_URL = "http://192.168.1.2/sahayyam/"
 //let image_base_url = "http://192.168.1.2/sahayyam/image/"

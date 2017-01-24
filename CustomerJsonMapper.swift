@@ -482,7 +482,7 @@ extension CommonJsonMapper {
                         let from_minute = value.valueForKey("from_minute") as! String
                         let from = value.valueForKey("from") as! String
                         
-                        if fromHour == "00" && from_minute == "00" && from == "am" {
+                        if fromHour == "00" && from_minute == "00" && from == "AM" {
                             vendorlist.fromToDate = "Timing Not Mentioned"
                         }else{
                             vendorlist.from_date = fromHour + ":" + from_minute + from
@@ -494,14 +494,34 @@ extension CommonJsonMapper {
                 
                 if let arr = value.valueForKey("to_date") as? NSArray{
                     for (_, value) in arr.enumerate(){
-                        let fromHour = value.valueForKey("end_hour") as! String
-                        let from_minute = value.valueForKey("end_minute") as! String
-                        let from = value.valueForKey("to") as! String
                         
-                        if fromHour == "00" && from_minute == "00" && from == "am" {
+                        var from_hour = String()
+                        var from_minute = String()
+                        var from = String()
+                        
+                        if let fromHour = value.valueForKey("end_hour") where
+                            (fromHour is NSNumber || fromHour is String) {
+                           from_hour = "\(fromHour)"
+                        }
+
+                        if let fromminute = value.valueForKey("end_minute") where
+                            (fromminute is NSNumber || fromminute is String) {
+                            from_minute = fromminute as! String
+                        }
+
+//                        if let fro = value.valueForKey("to") where
+//                            (from is NSNumber || from is String) {
+//                           from = fro as! String
+//                        }
+
+//                        let fromHour = value.valueForKey("end_hour") as! String
+//                        let from_minute = value.valueForKey("end_minute") as! String
+                        from = value.valueForKey("to") as! String
+                        
+                        if from_hour == "00" && from_minute == "00" && from == "AM" {
                             vendorlist.fromToDate = "Timing Not Mentioned"
                         }else{
-                            vendorlist.to_date = fromHour + ":" + from_minute + from
+                            vendorlist.to_date = from_hour + ":" + from_minute + from
                         }
                         
                     }

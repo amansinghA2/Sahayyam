@@ -14,6 +14,7 @@
 		07336BCA1D5FA70500A821AA /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07336BC91D5FA70500A821AA /* Image.swift */; };
 		0754F9FC1D8B22CF005AB58A /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */; };
 		0754F9FD1D8B22CF005AB58A /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0754F9FB1D8B22CF005AB58A /* SSRadioButton.swift */; };
+		07CC94CC1E37B7D100F09C75 /* CashAndNetBankingCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CC94CB1E37B7D100F09C75 /* CashAndNetBankingCell_iPad.xib */; };
 		07F4426F1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4426D1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift */; };
 		07F442701D621E4300733E91 /* OrderProductDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F4426E1D621E4300733E91 /* OrderProductDetailsTableViewCell.xib */; };
 		07F442731D621E5D00733E91 /* CustomerDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F442711D621E5D00733E91 /* CustomerDetailsTableViewCell.swift */; };
@@ -76,17 +77,6 @@
 		AF2D26FF1DFE68C400ADF83D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D26FE1DFE68C400ADF83D /* MobileCoreServices.framework */; };
 		AF2D27011DFE68DA00ADF83D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D27001DFE68DA00ADF83D /* CFNetwork.framework */; };
 		AF2D27031DFE68E400ADF83D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2D27021DFE68E400ADF83D /* SystemConfiguration.framework */; };
-		AF2D27431DFE6CA200ADF83D /* CashAndNetBankingCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D272C1DFE6CA200ADF83D /* CashAndNetBankingCell_iPad.xib */; };
-		AF2D27441DFE6CA200ADF83D /* CashAndNetBankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D272E1DFE6CA200ADF83D /* CashAndNetBankingCell.xib */; };
-		AF2D27451DFE6CA200ADF83D /* CreditAndDebitCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27301DFE6CA200ADF83D /* CreditAndDebitCardCell.xib */; };
-		AF2D27461DFE6CA200ADF83D /* CreditCardCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27321DFE6CA200ADF83D /* CreditCardCell_iPad.xib */; };
-		AF2D27471DFE6CA200ADF83D /* CreditCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27341DFE6CA200ADF83D /* CreditCardCell.xib */; };
-		AF2D27481DFE6CA200ADF83D /* DebitCardCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27361DFE6CA200ADF83D /* DebitCardCell_iPad.xib */; };
-		AF2D27491DFE6CA200ADF83D /* PaymentModeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27381DFE6CA200ADF83D /* PaymentModeViewController_iPad.xib */; };
-		AF2D274A1DFE6CA200ADF83D /* PaymentModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D273A1DFE6CA200ADF83D /* PaymentModeViewController.xib */; };
-		AF2D274B1DFE6CA200ADF83D /* StoredCardCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D273D1DFE6CA200ADF83D /* StoredCardCell_iPad.xib */; };
-		AF2D274C1DFE6CA200ADF83D /* StoredCardCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D273F1DFE6CA200ADF83D /* StoredCardCell_iPhone.xib */; };
-		AF2D274D1DFE6CA200ADF83D /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27421DFE6CA200ADF83D /* WebViewController.xib */; };
 		AF2D27531DFE901E00ADF83D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D27521DFE901E00ADF83D /* main.swift */; };
 		AF2D27561DFEAA4C00ADF83D /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2D27541DFEAA4C00ADF83D /* SuccessViewController.swift */; };
 		AF2D27571DFEAA4C00ADF83D /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2D27551DFEAA4C00ADF83D /* SuccessViewController.xib */; };
@@ -408,6 +398,7 @@
 		07336BC91D5FA70500A821AA /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		0754F9FA1D8B22CF005AB58A /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
 		0754F9FB1D8B22CF005AB58A /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
+		07CC94CB1E37B7D100F09C75 /* CashAndNetBankingCell_iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashAndNetBankingCell_iPad.xib; sourceTree = "<group>"; };
 		07F4426D1D621E4300733E91 /* OrderProductDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		07F4426E1D621E4300733E91 /* OrderProductDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProductDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		07F442711D621E5D00733E91 /* CustomerDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -888,6 +879,7 @@
 		AF1F1F3D1D4A07E400E36DB0 = {
 			isa = PBXGroup;
 			children = (
+				07CC94CB1E37B7D100F09C75 /* CashAndNetBankingCell_iPad.xib */,
 				AFC26FBE1D4F126E0003471B /* Storyboards */,
 				AFC524221D4B6996007864B9 /* Model */,
 				AFC523D41D4B2988007864B9 /* Utility */,
@@ -1628,6 +1620,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC94CC1E37B7D100F09C75 /* CashAndNetBankingCell_iPad.xib in Resources */,
 				AFBF2D331D5C889F007A8655 /* CheckoutViewController.xib in Resources */,
 				AF5438A41D87B3F800CDCCD9 /* GlobalListViewController.xib in Resources */,
 				AFBC27531D54B3E2003ECBF6 /* WishLIstTableViewCell.xib in Resources */,
@@ -1649,7 +1642,6 @@
 				AFA6C1A31DA66E06008E0A01 /* OrderStatusViewController.xib in Resources */,
 				AFBC27451D54A558003ECBF6 /* AboutUsViewController.xib in Resources */,
 				AF13F0A71E0275E60002D9B2 /* b2bcHeaderTableViewCell.xib in Resources */,
-				AF2D27431DFE6CA200ADF83D /* CashAndNetBankingCell_iPad.xib in Resources */,
 				07F442741D621E5D00733E91 /* CustomerDetailsTableViewCell.xib in Resources */,
 				AFDCC9061DE6B9DC00D9CF28 /* AddCustomerViewController.xib in Resources */,
 				AF6D18E41D86D07300F220FE /* VendorPromotionsViewController.xib in Resources */,
@@ -1672,7 +1664,6 @@
 				AFFC5A971D8BCB210039CBD5 /* CustomerRegistrationViewController.xib in Resources */,
 				AF4DE65C1DED902F00929677 /* VendorProductSubdetailViewController.xib in Resources */,
 				AF1F1FA11D4A0C2D00E36DB0 /* LoginViewController.xib in Resources */,
-				AF2D27491DFE6CA200ADF83D /* PaymentModeViewController_iPad.xib in Resources */,
 				AF6D18E01D86A10D00F220FE /* VndornewProductAddViewController.xib in Resources */,
 				AF1F1FA71D4A106200E36DB0 /* Vendor.storyboard in Resources */,
 				AF6327E71D953A990030F1C5 /* VendorsFreeTableViewCell.xib in Resources */,
@@ -1682,9 +1673,7 @@
 				AF6D18CF1D8666C600F220FE /* CustomerListViewController.xib in Resources */,
 				AF1F1FA91D4A106C00E36DB0 /* Customer.storyboard in Resources */,
 				AFA6C19F1DA64033008E0A01 /* VendorCategorySubListTableViewCell.xib in Resources */,
-				AF2D274B1DFE6CA200ADF83D /* StoredCardCell_iPad.xib in Resources */,
 				AF4E78C41D5085D900E2FB20 /* TrackOrderTableViewCell.xib in Resources */,
-				AF2D27481DFE6CA200ADF83D /* DebitCardCell_iPad.xib in Resources */,
 				AFDCC90A1DE6C9B800D9CF28 /* DashboardViewController.xib in Resources */,
 				AF6D18EC1D86D44F00F220FE /* PromotionTypeViewController.xib in Resources */,
 				AFBC274F1D54B3CA003ECBF6 /* WishListViewController.xib in Resources */,
@@ -1700,12 +1689,10 @@
 				AF1A74A31E02BFFB002D73F9 /* VendorRegFeesViewController.xib in Resources */,
 				AFBF9CB51D58996B007E17C3 /* CartListTableViewCell.xib in Resources */,
 				AFE659551D81509300B632D6 /* ChangePasswordViewController.xib in Resources */,
-				AF2D27471DFE6CA200ADF83D /* CreditCardCell.xib in Resources */,
 				AF38D3C91DEFFBFB00C699B5 /* CustomerImageShowSubViewController.xib in Resources */,
 				AFBC27411D5487BD003ECBF6 /* CustomerSecondMenuTableViewCell.xib in Resources */,
 				AF624E801DE55F4800DAB9C9 /* ServiceLIstSubOkTableViewCell.xib in Resources */,
 				AF8391971DDD7F980095FE2B /* ServiceListViewController.xib in Resources */,
-				AF2D27461DFE6CA200ADF83D /* CreditCardCell_iPad.xib in Resources */,
 				AF13F0AB1E0276050002D9B2 /* b2bcTableViewCell.xib in Resources */,
 				AF7B9B371DEC4A760083ABC2 /* PayOnlineViewController.xib in Resources */,
 				AFBF9CB11D5898B0007E17C3 /* CartListViewController.xib in Resources */,
@@ -1716,10 +1703,8 @@
 				AF652C8A1D8FA0D4009852A3 /* SelectServicesTableViewCell.xib in Resources */,
 				AF4D7EEF1DB2398500C9BCB3 /* CategoryEditViewController.xib in Resources */,
 				AF445BD31DE8086A00FB8A13 /* TotalVendorViewController.xib in Resources */,
-				AF2D27441DFE6CA200ADF83D /* CashAndNetBankingCell.xib in Resources */,
 				AF445BDF1DE815A800FB8A13 /* AddSubscriptionViewController.xib in Resources */,
 				AFC26FD01D4F33320003471B /* ForgotPasswordViewController.xib in Resources */,
-				AF2D274A1DFE6CA200ADF83D /* PaymentModeViewController.xib in Resources */,
 				AFCD866F1D897CCB00F10ABB /* MyProductDetailsTableViewCell.xib in Resources */,
 				AF1F1F571D4A07E400E36DB0 /* LaunchScreen.storyboard in Resources */,
 				AF6327D71D9533E30030F1C5 /* VendorCityHeadViewController.xib in Resources */,
@@ -1755,15 +1740,12 @@
 				AF83919B1DDD7FAC0095FE2B /* ServiceListSubViewController.xib in Resources */,
 				AFEB25571D50649F006B52C5 /* CustomerUpdateProfileViewController.xib in Resources */,
 				AF6327F71D9559A30030F1C5 /* AddVendorViewController.xib in Resources */,
-				AF2D274C1DFE6CA200ADF83D /* StoredCardCell_iPhone.xib in Resources */,
 				AF1F1F541D4A07E400E36DB0 /* Assets.xcassets in Resources */,
 				AFB6A1FD1D5DF07400A9731B /* OrderDetailsFotterTableViewCell.xib in Resources */,
 				AFEB255F1D506BF9006B52C5 /* VendorUpdateProfileViewController.xib in Resources */,
-				AF2D27451DFE6CA200ADF83D /* CreditAndDebitCardCell.xib in Resources */,
 				AF445BDB1DE80BDA00FB8A13 /* TotalVendorListTableViewCell.xib in Resources */,
 				AF445BD71DE80AAA00FB8A13 /* FreeUnpaidVendorViewController.xib in Resources */,
 				AF1F1F4F1D4A07E400E36DB0 /* Main.storyboard in Resources */,
-				AF2D274D1DFE6CA200ADF83D /* WebViewController.xib in Resources */,
 				AF6D18D81D86901500F220FE /* DetailsOrderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
